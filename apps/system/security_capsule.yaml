@@ -1,0 +1,58 @@
+capsule:
+  name: "Security Capsule"
+  version: "1.0.0"
+  type: "system"
+  description: >
+    The Security Capsule — sovereign encryption and access governance engine.
+    It crowns Dominion with TLS seals, key management, and access rituals,
+    ensuring every capsule and scroll is protected by sovereign cryptography.
+
+lineage:
+  ancestry_id: "system-0002"
+  parent_capsules:
+    - "health-capsule-system-0001"
+  remix_policy: "read-only-verified"
+  contributor_roles:
+    - name: "Jermaine Merritt"
+      role: "Custodian of Keys"
+      seal: "⚜️"
+    - name: "System Guardians"
+      role: "Access Stewards"
+      seal: "🛡️"
+
+ethics:
+  consent_required: true
+  attribution: required
+  retention: "eternal"
+  encryption_required: true
+  transparency: "security seals visible to councils and contributors"
+  revocation_policy: "keys may be rotated or revoked by Custodian decree"
+
+deployment:
+  storage: "IONOS Object Storage"
+  archive_path: "s3://codex-dominion/system/security_capsule/"
+  broadcast: "TLS/SSL Crown + Codex Access Engine"
+  checksum: "to-be-generated"
+
+security:
+  tls:
+    enabled: true
+    certificate_path: "/etc/ssl/certs/codex.pem"
+    key_path: "/etc/ssl/private/codex.key"
+    renewal: "90d"
+  access_control:
+    - role: "Custodian"
+      permissions: ["all"]
+    - role: "Contributor"
+      permissions: ["read", "submit"]
+    - role: "Council"
+      permissions: ["read"]
+  audit:
+    log_path: "/var/log/codex/security_audit.log"
+    retention: "eternal"
+    broadcast_alerts: true
+
+seals:
+  created_at: "2025-10-27T17:07:00Z"
+  custodian_signature: "Jermaine Merritt"
+  codex_seal: "SECURITY-SYSTEM"

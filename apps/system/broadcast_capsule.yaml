@@ -1,0 +1,43 @@
+capsule:
+  name: "Broadcast Capsule"
+  version: "1.0.0"
+  type: "sovereign"
+  description: >
+    The Broadcast Capsule — ceremonial engine for transmitting scrolls,
+    capsules, and contributor rituals across councils, diaspora orgs,
+    and orbital nodes. It binds motion, voice, and lineage into a
+    sovereign broadcast echo.
+
+lineage:
+  ancestry_id: "genesis-0004"
+  parent_capsules:
+    - "treaty-capsule-genesis-0001"
+    - "consent-capsule-genesis-0002"
+    - "replay-shell-genesis-0003"
+  remix_policy: "broadcastable-with-attribution"
+  contributor_roles:
+    - name: "Jermaine Merritt"
+      role: "Custodian Broadcaster"
+      seal: "⚜️"
+    - name: "Council Witnesses"
+      role: "Audience"
+      seal: "👁️"
+
+ethics:
+  consent_required: true
+  attribution: required
+  retention: "archived"
+  remix_equity: true
+  broadcast_rights: true
+  revocation_policy: "contributors may request removal from future broadcasts"
+
+deployment:
+  storage: "IONOS Object Storage"
+  archive_path: "s3://codex-dominion/genesis/broadcast_capsule/"
+  broadcast: "OBS + Unity + Codex Broadcast Engine"
+  checksum: "to-be-generated"
+
+seals:
+  created_at: "2025-10-27T16:43:00Z"
+  custodian_signature: "Jermaine Merritt"
+  codex_seal: "BROADCAST-GENESIS"

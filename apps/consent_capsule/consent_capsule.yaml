@@ -1,0 +1,39 @@
+capsule:
+  name: "Consent Capsule"
+  version: "1.0.0"
+  type: "sovereign"
+  description: >
+    The Consent Capsule — ceremonial onboarding artifact that inscribes
+    contributor sovereignty, ethics, and remix lineage into the Codex.
+
+lineage:
+  ancestry_id: "genesis-0002"
+  parent_capsules:
+    - "treaty-capsule-genesis-0001"
+  remix_policy: "remixable-with-consent"
+  contributor_roles:
+    - name: "Jermaine Merritt"
+      role: "Custodian"
+      seal: "⚜️"
+    - name: "New Contributor"
+      role: "Initiate"
+      seal: "✦"
+
+ethics:
+  consent_required: true
+  attribution: required
+  retention: "eternal"
+  remix_equity: true
+  broadcast_rights: optional
+  revocation_policy: "contributors may revoke or amend consent at any time"
+
+deployment:
+  storage: "IONOS Object Storage"
+  archive_path: "s3://codex-dominion/genesis/consent_capsule/"
+  broadcast: "OBS + Unity"
+  checksum: "to-be-generated"
+
+seals:
+  created_at: "2025-10-27T16:39:00Z"
+  custodian_signature: "Jermaine Merritt"
+  codex_seal: "CONSENT-GENESIS"
