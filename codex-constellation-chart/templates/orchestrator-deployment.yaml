@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.orchestrator.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.orchestrator.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.orchestrator.name }}
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 2000
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - {{ .Values.orchestrator.name }}
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: {{ .Values.orchestrator.name }}
+          image: {{ .Values.orchestrator.image }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.orchestrator.port }}
+          env:
+            - name: CORE_HOST
+              value: {{ .Values.core.name }}
+            - name: CORE_PORT
+              value: "{{ .Values.core.port }}"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: {{ .Values.orchestrator.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: {{ .Values.orchestrator.port }}
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.orchestrator.name }}
+spec:
+  selector:
+    app: {{ .Values.orchestrator.name }}
+  ports:
+    - port: 80
+      targetPort: {{ .Values.orchestrator.port }}
+      name: http

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: codex-dominion
+  labels:
+    purpose: "codex-constellation"
+    steward: "jermaine-merritt"
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: dominion-quota
+  namespace: codex-dominion
+spec:
+  hard:
+    pods: "100"
+    requests.cpu: "8"
+    requests.memory: "16Gi"
+    limits.cpu: "16"
+    limits.memory: "32Gi"

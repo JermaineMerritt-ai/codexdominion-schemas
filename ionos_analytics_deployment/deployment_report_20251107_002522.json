@@ -1,0 +1,124 @@
+{
+  "deployment_timestamp": "2025-11-07T00:25:22.694435",
+  "platforms": {
+    "stock_analytics": {
+      "domain": "stockanalytics.aistorelab.com",
+      "subdomain": "stocks",
+      "primary_file": "ai_action_stock_analytics.py",
+      "port": 8515,
+      "description": "AI-powered stock market analytics and portfolio management",
+      "features": [
+        "Daily AI stock picks",
+        "Portfolio optimization",
+        "Market analytics",
+        "AMM services",
+        "Customer portfolio building"
+      ],
+      "database_requirements": {
+        "stock_data": "Real-time market data",
+        "user_portfolios": "Customer portfolio tracking",
+        "analytics_cache": "Performance optimization",
+        "amm_pools": "Liquidity pool data"
+      },
+      "api_endpoints": [
+        "/api/daily-picks",
+        "/api/portfolio/create",
+        "/api/portfolio/analyze",
+        "/api/market-data",
+        "/api/amm/pools",
+        "/api/customer/dashboard"
+      ],
+      "external_apis": [
+        "Alpha Vantage (stock data)",
+        "Yahoo Finance API",
+        "IEX Cloud",
+        "Polygon.io",
+        "Quandl Financial Data"
+      ]
+    },
+    "data_analytics": {
+      "domain": "analytics.aistorelab.com",
+      "subdomain": "data",
+      "primary_file": "advanced_data_analytics_dashboard.py",
+      "port": 8516,
+      "description": "Advanced data analytics and business intelligence platform",
+      "features": [
+        "Business intelligence dashboards",
+        "Customer analytics",
+        "Market research",
+        "Predictive modeling",
+        "KPI tracking"
+      ],
+      "database_requirements": {
+        "business_metrics": "KPI and performance data",
+        "customer_data": "Customer behavior analytics",
+        "market_research": "Industry and competitive data",
+        "predictive_models": "ML model data and results"
+      },
+      "api_endpoints": [
+        "/api/business-insights",
+        "/api/customer-analytics",
+        "/api/market-research",
+        "/api/kpi-dashboard",
+        "/api/predictive-models",
+        "/api/data-export"
+      ],
+      "data_sources": [
+        "Customer databases",
+        "Web analytics APIs",
+        "Social media APIs",
+        "Economic indicators APIs",
+        "Industry report APIs"
+      ]
+    }
+  },
+  "ionos_configuration": {
+    "hosting_provider": "IONOS",
+    "server_ip": "74.208.123.158",
+    "server_location": "IONOS Data Center",
+    "server_os": "Ubuntu 24.04 LTS",
+    "web_server": "Nginx with reverse proxy",
+    "database": "MySQL 8.0 + Redis for caching",
+    "ssl_certificates": "Let's Encrypt + Custom SSL",
+    "cdn": "IONOS Global CDN enabled",
+    "backup_system": "Daily automated backups",
+    "monitoring": "24/7 uptime monitoring",
+    "security": "WAF + DDoS protection",
+    "python_version": "Python 3.11+",
+    "frameworks": [
+      "FastAPI",
+      "Streamlit",
+      "Plotly Dash"
+    ],
+    "api_gateway": "IONOS API Gateway",
+    "container_support": "Docker with Kubernetes"
+  },
+  "deployment_files": [
+    "nginx.conf",
+    "init.sql",
+    "deploy.sh",
+    "docker-compose.yml",
+    "Dockerfile.stock",
+    "Dockerfile.analytics",
+    "stock_analytics.service",
+    "data_analytics.service"
+  ],
+  "domains": [
+    "stockanalytics.aistorelab.com",
+    "analytics.aistorelab.com"
+  ],
+  "ssl_certificates": "Let's Encrypt",
+  "database": "MySQL 8.0 with Redis caching",
+  "monitoring": "Health checks + log rotation",
+  "backup": "Daily automated backups",
+  "deployment_status": "Ready for production",
+  "estimated_deployment_time": "45-60 minutes",
+  "post_deployment": [
+    "Verify SSL certificates",
+    "Test all API endpoints",
+    "Configure monitoring alerts",
+    "Setup backup verification",
+    "Performance optimization",
+    "Security hardening"
+  ]
+}

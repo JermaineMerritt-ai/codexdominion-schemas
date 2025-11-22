@@ -1,0 +1,32 @@
+
+# Docker Compose for jermaineai.store
+version: '3.8'
+
+services:
+  jermaineai-store-web:
+    build: .
+    ports:
+      - "8500:8500"
+    environment:
+      - DOMAIN=jermaineai.store
+      - SSL_ENABLED=true
+    volumes:
+      - ./ssl:/etc/ssl
+      - ./logs:/var/log
+    restart: unless-stopped
+    
+  jermaineai-store-db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: jermaineai_store_db
+    volumes:
+      - mysql_data_jermaineai_store:/var/lib/mysql
+    restart: unless-stopped
+    
+  jermaineai-store-redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    
+volumes:
+  mysql_data_jermaineai_store:

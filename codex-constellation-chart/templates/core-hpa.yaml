@@ -1,0 +1,24 @@
+{{- if .Values.core.autoscaling.enabled }}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Values.core.name }}-hpa
+  labels:
+    app: {{ .Values.core.name }}
+  annotations:
+    description: "Auto-scaled by Helm chart"
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Values.core.name }}
+  minReplicas: {{ .Values.core.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.core.autoscaling.maxReplicas }}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.core.autoscaling.targetCPUUtilizationPercentage }}
+{{- end }}

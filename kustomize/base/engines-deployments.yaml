@@ -1,0 +1,640 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine01
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine01
+  template:
+    metadata:
+      labels:
+        app: engine01
+    spec:
+      containers:
+        - name: engine01
+          image: ghcr.io/your-org/engine01:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine02
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine02
+  template:
+    metadata:
+      labels:
+        app: engine02
+    spec:
+      containers:
+        - name: engine02
+          image: ghcr.io/your-org/engine02:latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: PORT
+              value: "8082"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8082
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8082
+            initialDelaySeconds: 10
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine03
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine03
+  template:
+    metadata:
+      labels:
+        app: engine03
+    spec:
+      containers:
+        - name: engine03
+          image: ghcr.io/your-org/engine03:latest
+          ports:
+            - containerPort: 8083
+          env:
+            - name: PORT
+              value: "8083"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8083
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8083
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine04
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine04
+  template:
+    metadata:
+      labels:
+        app: engine04
+    spec:
+      containers:
+        - name: engine04
+          image: ghcr.io/your-org/engine04:latest
+          ports:
+            - containerPort: 8084
+          env:
+            - name: PORT
+              value: "8084"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8084
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8084
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine05
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine05
+  template:
+    metadata:
+      labels:
+        app: engine05
+    spec:
+      containers:
+        - name: engine05
+          image: ghcr.io/your-org/engine05:latest
+          ports:
+            - containerPort: 8085
+          env:
+            - name: PORT
+              value: "8085"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8085
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8085
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine06
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine06
+  template:
+    metadata:
+      labels:
+        app: engine06
+    spec:
+      containers:
+        - name: engine06
+          image: ghcr.io/your-org/engine06:latest
+          ports:
+            - containerPort: 8086
+          env:
+            - name: PORT
+              value: "8086"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8086
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8086
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine07
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine07
+  template:
+    metadata:
+      labels:
+        app: engine07
+    spec:
+      containers:
+        - name: engine07
+          image: ghcr.io/your-org/engine07:latest
+          ports:
+            - containerPort: 8087
+          env:
+            - name: PORT
+              value: "8087"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8087
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8087
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine08
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine08
+  template:
+    metadata:
+      labels:
+        app: engine08
+    spec:
+      containers:
+        - name: engine08
+          image: ghcr.io/your-org/engine08:latest
+          ports:
+            - containerPort: 8088
+          env:
+            - name: PORT
+              value: "8088"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8088
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8088
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine09
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine09
+  template:
+    metadata:
+      labels:
+        app: engine09
+    spec:
+      containers:
+        - name: engine09
+          image: ghcr.io/your-org/engine09:latest
+          ports:
+            - containerPort: 8089
+          env:
+            - name: PORT
+              value: "8089"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8089
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8089
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine10
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine10
+  template:
+    metadata:
+      labels:
+        app: engine10
+    spec:
+      containers:
+        - name: engine10
+          image: ghcr.io/your-org/engine10:latest
+          ports:
+            - containerPort: 8090
+          env:
+            - name: PORT
+              value: "8090"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8090
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8090
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine11
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine11
+  template:
+    metadata:
+      labels:
+        app: engine11
+    spec:
+      containers:
+        - name: engine11
+          image: ghcr.io/your-org/engine11:latest
+          ports:
+            - containerPort: 8091
+          env:
+            - name: PORT
+              value: "8091"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8091
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8091
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine12
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine12
+  template:
+    metadata:
+      labels:
+        app: engine12
+    spec:
+      containers:
+        - name: engine12
+          image: ghcr.io/your-org/engine12:latest
+          ports:
+            - containerPort: 8092
+          env:
+            - name: PORT
+              value: "8092"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8092
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8092
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine13
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine13
+  template:
+    metadata:
+      labels:
+        app: engine13
+    spec:
+      containers:
+        - name: engine13
+          image: ghcr.io/your-org/engine13:latest
+          ports:
+            - containerPort: 8093
+          env:
+            - name: PORT
+              value: "8093"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8093
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8093
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine14
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine14
+  template:
+    metadata:
+      labels:
+        app: engine14
+    spec:
+      containers:
+        - name: engine14
+          image: ghcr.io/your-org/engine14:latest
+          ports:
+            - containerPort: 8094
+          env:
+            - name: PORT
+              value: "8094"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8094
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8094
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine15
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine15
+  template:
+    metadata:
+      labels:
+        app: engine15
+    spec:
+      containers:
+        - name: engine15
+          image: ghcr.io/your-org/engine15:latest
+          ports:
+            - containerPort: 8095
+          env:
+            - name: PORT
+              value: "8095"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8095
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8095
+            initialDelaySeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine16
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine16
+  template:
+    metadata:
+      labels:
+        app: engine16
+    spec:
+      containers:
+        - name: engine16
+          image: ghcr.io/your-org/engine16:latest
+          ports:
+            - containerPort: 8096
+          env:
+            - name: PORT
+              value: "8096"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8096
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8096
+            initialDelaySeconds: 10

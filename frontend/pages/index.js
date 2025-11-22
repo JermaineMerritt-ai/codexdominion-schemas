@@ -1,0 +1,614 @@
+// pages/index.js
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Layout from '../components/Layout';
+import apiClient from '../utils/apiClient';
+
+export default function Home() {
+  const router = useRouter();
+  const [systemStats, setSystemStats] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchSystemStats = async () => {
+      try {
+        const stats = await apiClient.getStats();
+        setSystemStats(stats);
+      } catch (err) {
+        setError('Failed to load system statistics');
+        console.error('Error fetching stats:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSystemStats();
+  }, []);
+
+  return (
+    <Layout>
+      <div className="dashboard-home">
+        <header className="dashboard-header">
+          <h1>🚀 Codex Dominion Dashboard</h1>
+          <p>Advanced Trading Platform & Market Intelligence</p>
+        </header>
+
+        {/* System Status */}
+        <section className="status-section">
+          <h2>📊 System Status</h2>
+          {loading ? (
+            <div className="loading">Loading system stats...</div>
+          ) : error ? (
+            <div className="error">{error}</div>
+          ) : systemStats ? (
+            <div className="stats-grid">
+              <div className="stat-card">
+                <h3>💰 Total Revenue</h3>
+                <p className="stat-value">
+                  ${systemStats.stats?.ledger?.total_revenue_usd?.toLocaleString() || '0'}
+                </p>
+              </div>
+              <div className="stat-card">
+                <h3>📈 Active Signals</h3>
+                <p className="stat-value">
+                  {systemStats.stats?.signals?.active_signals || 0}
+                </p>
+              </div>
+              <div className="stat-card">
+                <h3>🏊 Active Pools</h3>
+                <p className="stat-value">
+                  {systemStats.stats?.pools?.active_pools || 0}
+                </p>
+              </div>
+              <div className="stat-card">
+                <h3>💵 Treasury Balance</h3>
+                <p className="stat-value">
+                  ${systemStats.stats?.treasury?.total_balance_usd?.toLocaleString() || '0'}
+                </p>
+              </div>
+            </div>
+          ) : null}
+        </section>
+
+        {/* Sacred Constellation Preview */}
+        <section className="constellation-preview">
+          <h2>✨ Constellation of the Codex Crowns</h2>
+          <div className="constellation-container">
+            <div className="ascii-art">
+              <div className="central-crown">
+                <div className="crown-name">✨ Codexdominion.app ✨</div>
+                <div className="crown-subtitle">(Ceremonial Crown — Codex Bulletin)</div>
+              </div>
+              
+              <div className="connection-tree">
+                <pre>{`                               /     |     \\
+                              /      |      \\
+                             /       |       \\
+                            /        |        \\
+                           /         |         \\
+                          /          |          \\
+                         /           |           \\
+                        /            |            \\
+                       /             |             \\
+                      /              |              \\
+                     /               |               \\
+                    /                |                \\
+                   /                 |                 \\
+                  /                  |                  \\
+                 /                   |                   \\
+                /                    |                    \\
+               /                     |                     \\
+              /                      |                      \\
+             /                       |                       \\
+            /                        |                        \\
+           /                         |                         \\
+          /                          |                          \\
+         /                           |                           \\
+        /                            |                            \\
+       /                             |                             \\
+      /                              |                              \\
+     /                               |                               \\
+    /                                |                                \\
+   /                                 |                                 \\
+  /                                  |                                  \\
+ /                                   |                                   \\
+/                                    |                                    \\`}</pre>
+              </div>
+
+              <div className="domain-crowns">
+                <div className="crown-column">
+                  <div className="crown-item storefront">🛍️ aistorelab.com</div>
+                  <div className="crown-desc">(Storefront Crown)</div>
+                  <div className="crown-item experimental">⚗️ aistorelab.online</div>
+                  <div className="crown-desc">(Experimental Crown)</div>
+                </div>
+                
+                <div className="crown-column">
+                  <div className="crown-item personal">✍️ jermaineai.com</div>
+                  <div className="crown-desc">(Personal Crown)</div>
+                  <div className="crown-item council">🏛️ jermaineai.online</div>
+                  <div className="crown-desc">(Council Crown)</div>
+                </div>
+                
+                <div className="crown-column">
+                  <div className="crown-item educational">📚 themerrittmethod.com</div>
+                  <div className="crown-desc">(Educational Crown)</div>
+                  <div className="crown-item premium">💎 jermaineai.store</div>
+                  <div className="crown-desc">(Premium Crown)</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="constellation-actions">
+              <Link href="/codex-constellation" className="constellation-btn">
+                <span className="btn-icon">✨</span>
+                <span className="btn-text">Explore Full Constellation</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Navigation */}
+        <nav className="dashboard-nav">
+          <h2>🎯 Quick Access</h2>
+          <div className="nav-grid">
+            <Link href="/treasury" className="nav-card">
+              <div className="nav-icon">💰</div>
+              <h3>Treasury</h3>
+              <p>Manage funds and view balances</p>
+            </Link>
+
+            <Link href="/store" className="nav-card">
+              <div className="nav-icon">🏪</div>
+              <h3>Store</h3>
+              <p>AI Store Lab marketplace</p>
+            </Link>
+
+            <Link href="/signals" className="nav-card">
+              <div className="nav-icon">📡</div>
+              <h3>Trading Signals</h3>
+              <p>Premium market intelligence</p>
+            </Link>
+
+            <Link href="/amm" className="nav-card">
+              <div className="nav-icon">🌊</div>
+              <h3>AMM Pools</h3>
+              <p>Automated Market Making</p>
+            </Link>
+
+            <Link href="/portfolio" className="nav-card">
+              <div className="nav-icon">📊</div>
+              <h3>Portfolio</h3>
+              <p>Track investments & performance</p>
+            </Link>
+
+            <Link href="/ledger" className="nav-card">
+              <div className="nav-icon">📋</div>
+              <h3>Ledger</h3>
+              <p>Transaction history & records</p>
+            </Link>
+
+            <Link href="/capsules" className="nav-card">
+              <div className="nav-icon">🏛️</div>
+              <h3>Capsules</h3>
+              <p>Operational sovereignty tracking</p>
+            </Link>
+
+            <Link href="/festival" className="nav-card">
+              <div className="nav-icon">🎭</div>
+              <h3>Festival</h3>
+              <p>Sacred ceremonies & proclamations</p>
+            </Link>
+
+            <Link href="/dashboard-selector" className="nav-card">
+              <div className="nav-icon">⚡</div>
+              <h3>Dashboard Selector</h3>
+              <p>Custodian, Heir & Customer portals</p>
+            </Link>
+
+            <Link href="/codex-constellation" className="nav-card">
+              <div className="nav-icon">✨</div>
+              <h3>Codex Constellation</h3>
+              <p>Sacred domain architecture & crown network</p>
+            </Link>
+
+            <Link href="/blessed-storefronts" className="nav-card">
+              <div className="nav-icon">🕯️</div>
+              <h3>Blessed Storefronts</h3>
+              <p>Council-approved sacred commerce spaces</p>
+            </Link>
+
+            <Link href="/seven-crowns-transmission" className="nav-card featured">
+              <div className="nav-icon">👑</div>
+              <h3>Seven Crowns Transmission</h3>
+              <p>Sacred proclamation of constellation completion</p>
+            </Link>
+          </div>
+        </nav>
+
+        {/* Revenue Streams */}
+        {systemStats?.stats?.ledger?.streams && (
+          <section className="revenue-section">
+            <h2>💸 Revenue Streams</h2>
+            <div className="revenue-grid">
+              {Object.entries(systemStats.stats.ledger.streams).map(([stream, amount]) => (
+                <div key={stream} className="revenue-card">
+                  <h4>{stream.charAt(0).toUpperCase() + stream.slice(1)}</h4>
+                  <p className="revenue-amount">${amount.toLocaleString()}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <style jsx>{`
+          .dashboard-home {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+          }
+
+          .dashboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+          }
+
+          .dashboard-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+          }
+
+          .dashboard-header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+            font-size: 1.2rem;
+          }
+
+          .status-section, .revenue-section {
+            margin-bottom: 3rem;
+          }
+
+          .status-section h2, .revenue-section h2 {
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+            font-size: 1.5rem;
+          }
+
+          .stats-grid, .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+          }
+
+          .stat-card, .revenue-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+          }
+
+          .stat-card h3, .revenue-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #4a5568;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          .stat-value, .revenue-amount {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2d3748;
+          }
+
+          .dashboard-nav h2 {
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+            font-size: 1.5rem;
+          }
+
+          .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+          }
+
+          .nav-card {
+            display: block;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+          }
+
+          .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-color: #667eea;
+          }
+
+          .nav-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+          }
+
+          .nav-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #2d3748;
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+
+          .nav-card p {
+            margin: 0;
+            color: #718096;
+            font-size: 0.95rem;
+            line-height: 1.4;
+          }
+
+          .nav-card.featured {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #1f2937;
+            border: 2px solid #d97706;
+            box-shadow: 0 8px 32px rgba(251, 191, 36, 0.3);
+            animation: sacred-glow 3s ease-in-out infinite alternate;
+          }
+
+          .nav-card.featured:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(251, 191, 36, 0.4);
+          }
+
+          .nav-card.featured h3 {
+            color: #1f2937;
+          }
+
+          .nav-card.featured p {
+            color: #374151;
+          }
+
+          .nav-card.featured .nav-icon {
+            animation: crown-pulse 2s ease-in-out infinite;
+          }
+
+          @keyframes sacred-glow {
+            0% { box-shadow: 0 8px 32px rgba(251, 191, 36, 0.3); }
+            100% { box-shadow: 0 12px 40px rgba(251, 191, 36, 0.5); }
+          }
+
+          @keyframes crown-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+          }
+
+          .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #718096;
+            font-style: italic;
+          }
+
+          .error {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+          }
+
+          /* Constellation Preview Styles */
+          .constellation-preview {
+            margin: 3rem 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 2px solid rgba(251, 191, 36, 0.3);
+            position: relative;
+            overflow: hidden;
+          }
+
+          .constellation-preview::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+          }
+
+          .constellation-preview h2 {
+            color: #fbbf24;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+          }
+
+          .constellation-container {
+            position: relative;
+            z-index: 1;
+          }
+
+          .ascii-art {
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            line-height: 1;
+            text-align: center;
+            margin-bottom: 2rem;
+          }
+
+          .central-crown {
+            margin-bottom: 1rem;
+          }
+
+          .crown-name {
+            color: #fbbf24;
+            font-weight: bold;
+            font-size: 0.9rem;
+            animation: pulse 2s ease-in-out infinite;
+          }
+
+          .crown-subtitle {
+            color: #a78bfa;
+            font-size: 0.6rem;
+            font-style: italic;
+            margin-top: 0.2rem;
+          }
+
+          .connection-tree {
+            color: #fbbf24;
+            opacity: 0.6;
+            margin: 1rem 0;
+            overflow-x: auto;
+            animation: glow 3s ease-in-out infinite alternate;
+          }
+
+          .connection-tree pre {
+            margin: 0;
+            white-space: pre;
+            font-size: 0.5rem;
+          }
+
+          .domain-crowns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            font-size: 0.6rem;
+          }
+
+          .crown-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+          }
+
+          .crown-item {
+            font-weight: bold;
+            padding: 0.2rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+          }
+
+          .crown-item:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 8px currentColor;
+          }
+
+          .crown-item.storefront { color: #10b981; }
+          .crown-item.personal { color: #fbbf24; }
+          .crown-item.educational { color: #22c55e; }
+          .crown-item.experimental { color: #f97316; }
+          .crown-item.council { color: #3b82f6; }
+          .crown-item.premium { color: #a855f7; }
+
+          .crown-desc {
+            color: #9ca3af;
+            font-size: 0.5rem;
+            opacity: 0.8;
+          }
+
+          .constellation-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+          }
+
+          .constellation-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #1f2937;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+          }
+
+          .constellation-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+          }
+
+          .btn-icon {
+            font-size: 1.2rem;
+            animation: sparkle 1.5s ease-in-out infinite;
+          }
+
+          @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+          }
+
+          @keyframes glow {
+            0% { opacity: 0.4; }
+            100% { opacity: 0.8; }
+          }
+
+          @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+          }
+
+          @media (max-width: 768px) {
+            .dashboard-home {
+              padding: 1rem;
+            }
+
+            .dashboard-header h1 {
+              font-size: 2rem;
+            }
+
+            .nav-grid {
+              grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+              grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .constellation-preview {
+              padding: 1rem;
+              margin: 2rem 0;
+            }
+
+            .ascii-art {
+              font-size: 0.6rem;
+            }
+
+            .connection-tree pre {
+              font-size: 0.4rem;
+            }
+
+            .domain-crowns {
+              grid-template-columns: 1fr;
+              gap: 0.5rem;
+            }
+
+            .crown-item {
+              font-size: 0.7rem;
+            }
+          }
+        `}</style>
+      </div>
+    </Layout>
+  );
+}

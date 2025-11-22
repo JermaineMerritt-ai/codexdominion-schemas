@@ -1,0 +1,128 @@
+monitoring:
+  enabled: true
+  metrics_port: 9090
+  alerts_port: 9093
+  grafana_port: 3000
+  
+  prometheus:
+    scrape_interval: 15s
+    evaluation_interval: 15s
+    retention: "30d"
+    storage_path: "/var/lib/prometheus"
+    
+    targets:
+      - job_name: "codex-dominion"
+        static_configs:
+          - targets: ["localhost:8501"]
+        metrics_path: "/metrics"
+        scrape_interval: 5s
+        
+      - job_name: "system-metrics"
+        static_configs:
+          - targets: ["localhost:9100"]
+        scrape_interval: 10s
+        
+      - job_name: "redis-metrics"
+        static_configs:
+          - targets: ["localhost:9121"]
+        scrape_interval: 10s
+        
+      - job_name: "nginx-metrics"
+        static_configs:
+          - targets: ["localhost:9113"]
+        scrape_interval: 10s
+
+  alerting:
+    rules:
+      - name: "system-health"
+        rules:
+          - alert: "HighCPUUsage"
+            expr: "cpu_usage_percent > 80"
+            for: "5m"
+            annotations:
+              summary: "High CPU usage detected"
+              description: "CPU usage has been above 80% for more than 5 minutes"
+              
+          - alert: "HighMemoryUsage"
+            expr: "memory_usage_percent > 85"
+            for: "3m"
+            annotations:
+              summary: "High memory usage detected"
+              description: "Memory usage has been above 85% for more than 3 minutes"
+              
+          - alert: "DiskSpaceLow"
+            expr: "disk_free_percent < 10"
+            for: "1m"
+            annotations:
+              summary: "Low disk space detected"
+              description: "Less than 10% disk space remaining"
+              
+      - name: "application-health"
+        rules:
+          - alert: "ApplicationDown"
+            expr: "up == 0"
+            for: "30s"
+            annotations:
+              summary: "Application is down"
+              description: "Codex Dominion application is not responding"
+              
+          - alert: "HighErrorRate"
+            expr: "error_rate > 5"
+            for: "2m"
+            annotations:
+              summary: "High error rate detected"
+              description: "Error rate has been above 5% for more than 2 minutes"
+
+  dashboards:
+    system_overview:
+      title: "Codex Dominion - System Overview"
+      panels:
+        - "CPU Usage"
+        - "Memory Usage"
+        - "Disk Usage"
+        - "Network Traffic"
+        - "Application Status"
+        
+    application_metrics:
+      title: "Codex Dominion - Application Metrics"
+      panels:
+        - "Request Rate"
+        - "Response Time"
+        - "Error Rate"
+        - "Active Users"
+        - "Video Processing Queue"
+        
+    infrastructure:
+      title: "Codex Dominion - Infrastructure"
+      panels:
+        - "Redis Performance"
+        - "Database Connections"
+        - "SSL Certificate Status"
+        - "Backup Status"
+        - "Security Events"
+
+  notifications:
+    webhook:
+      enabled: true
+      url: "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+      channel: "#codex-alerts"
+      username: "Codex Monitor"
+      
+    email:
+      enabled: true
+      smtp_server: "smtp.ionos.com"
+      smtp_port: 587
+      from_email: "alerts@aistorelab.com"
+      to_emails:
+        - "admin@aistorelab.com"
+        
+  retention:
+    metrics: "30d"
+    logs: "90d"
+    alerts: "1y"
+    
+  backup:
+    enabled: true
+    interval: "daily"
+    retention: "30d"
+    storage: "s3://codex-dominion/monitoring-backups/"

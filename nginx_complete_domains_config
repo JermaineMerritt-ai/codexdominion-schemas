@@ -1,0 +1,165 @@
+# Complete nginx configuration for IONOS server
+# This handles both themerrittmethod.com and aistorelab.com domains
+# Save as: /etc/nginx/sites-available/complete-domains
+
+# ========================================
+# THEMERRITTMETHOD.COM CONFIGURATION
+# ========================================
+
+# HTTP to HTTPS redirect for themerrittmethod.com
+server {
+    listen 80;
+    server_name themerrittmethod.com www.themerrittmethod.com;
+    return 301 https://themerrittmethod.com$request_uri;
+}
+
+# HTTPS server for themerrittmethod.com (WordPress/PHP)
+server {
+    listen 443 ssl http2;
+    server_name themerrittmethod.com www.themerrittmethod.com;
+    
+    # SSL Configuration
+    ssl_certificate /etc/letsencrypt/live/themerrittmethod.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/themerrittmethod.com/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256;
+    ssl_prefer_server_ciphers off;
+    
+    # Security headers
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+
+    # Proxy to WordPress/PHP application (port 9000)
+    location / {
+        proxy_pass http://127.0.0.1:9000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
+        
+        # WordPress specific settings
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+    
+    # Health check for themerrittmethod.com
+    location /health {
+        access_log off;
+        return 200 "Merritt Method Active\n";
+        add_header Content-Type text/plain;
+    }
+}
+
+# ========================================
+# AISTORELAB.COM CONFIGURATION (CODEX DOMINION)
+# ========================================
+
+# HTTP to HTTPS redirect for aistorelab.com
+server {
+    listen 80;
+    server_name aistorelab.com www.aistorelab.com;
+    return 301 https://aistorelab.com$request_uri;
+}
+
+# HTTPS server for aistorelab.com (Codex Production)
+server {
+    listen 443 ssl http2;
+    server_name aistorelab.com www.aistorelab.com;
+
+    # SSL Configuration
+    ssl_certificate /etc/letsencrypt/live/aistorelab.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/aistorelab.com/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256;
+    ssl_prefer_server_ciphers off;
+    
+    # Security headers
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload";
+
+    # Reverse proxy to Streamlit Production (port 8501)
+    location / {
+        proxy_pass http://127.0.0.1:8501;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+        proxy_read_timeout 86400;
+        proxy_connect_timeout 60;
+        proxy_send_timeout 60;
+        
+        # Handle Streamlit WebSocket connections
+        proxy_buffering off;
+        proxy_redirect off;
+    }
+    
+    # Health check endpoint
+    location /health {
+        access_log off;
+        return 200 "Codex Flame Burns Eternal\n";
+        add_header Content-Type text/plain;
+    }
+}
+
+# HTTP to HTTPS redirect for staging.aistorelab.com
+server {
+    listen 80;
+    server_name staging.aistorelab.com;
+    return 301 https://staging.aistorelab.com$request_uri;
+}
+
+# HTTPS server for staging.aistorelab.com (Codex Staging)
+server {
+    listen 443 ssl http2;
+    server_name staging.aistorelab.com;
+
+    # SSL Configuration (using aistorelab.com cert for subdomain)
+    ssl_certificate /etc/letsencrypt/live/aistorelab.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/aistorelab.com/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256;
+    ssl_prefer_server_ciphers off;
+    
+    # Security headers
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload";
+
+    # Reverse proxy to Streamlit Staging (port 8502)
+    location / {
+        proxy_pass http://127.0.0.1:8502;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+        proxy_read_timeout 86400;
+        proxy_connect_timeout 60;
+        proxy_send_timeout 60;
+        
+        # Handle Streamlit WebSocket connections
+        proxy_buffering off;
+        proxy_redirect off;
+    }
+    
+    # Health check endpoint
+    location /health {
+        access_log off;
+        return 200 "Codex Staging Flame Burns Eternal\n";
+        add_header Content-Type text/plain;
+    }
+}

@@ -1,0 +1,96 @@
+# Enhanced Dockerfile for Codex Dashboard with proper initialization
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Set environment variables
+ENV STREAMLIT_SERVER_HEADLESS=true
+ENV STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+ENV STREAMLIT_SERVER_PORT=8501
+ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
+
+# Install system dependencies including curl for health checks
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+RUN pip install --no-cache-dir streamlit pandas plotly
+
+# Copy essential files
+COPY codex_dashboard.py .
+
+# Create proper data initialization
+RUN echo '#!/bin/bash\n\
+echo "🔥 Initializing Codex Dominion..."\n\
+\n\
+# Create proper ledger file\n\
+cat > codex_ledger.json << EOF\n\
+{\n\
+    "meta": {\n\
+        "version": "1.0.0",\n\
+        "omega_seal": false,\n\
+        "last_updated": "2025-11-08T00:00:00Z"\n\
+    },\n\
+    "heartbeat": {\n\
+        "status": "luminous",\n\
+        "last_dispatch": "",\n\
+        "next_dispatch": ""\n\
+    },\n\
+    "proclamations": [],\n\
+    "cycles": [],\n\
+    "accounts": {\n\
+        "custodians": [],\n\
+        "heirs": [],\n\
+        "customers": [],\n\
+        "councils": []\n\
+    },\n\
+    "contributions": [],\n\
+    "completed_archives": [],\n\
+    "transmitted_scrolls": [],\n\
+    "avatar_interactions": [],\n\
+    "agent_activations": [],\n\
+    "dispatches": [],\n\
+    "video_generations": [],\n\
+    "capsules": []\n\
+}\n\
+EOF\n\
+\n\
+# Create Copilot instruction file\n\
+cat > Copilot-instruction.md << EOF\n\
+# Codex Dominion Copilot Instructions\n\
+\n\
+## Sacred Purpose\n\
+You are the AI assistant for the Codex Dominion Digital Sovereignty system.\n\
+\n\
+## Key Principles\n\
+- Always maintain ceremonial and respectful tone\n\
+- Assist with digital sovereignty concepts\n\
+- Help with dashboard navigation and features\n\
+- Provide guidance on system usage\n\
+\n\
+## Capabilities\n\
+- Explain dashboard features\n\
+- Help with contribution management\n\
+- Guide through ritual proclamations\n\
+- Assist with ledger operations\n\
+\n\
+Sacred flames burn eternal! 🔥\n\
+EOF\n\
+\n\
+# Create data directory\n\
+mkdir -p data\n\
+\n\
+echo "✅ Codex Dominion initialized successfully!"\n\
+\n\
+# Start Streamlit\n\
+exec streamlit run codex_dashboard.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true' > /app/init_and_run.sh \
+    && chmod +x /app/init_and_run.sh
+
+# Expose port
+EXPOSE 8501
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
+    CMD curl -f http://localhost:8501/_stcore/health || exit 1
+
+# Run initialization and start dashboard
+CMD ["/app/init_and_run.sh"]

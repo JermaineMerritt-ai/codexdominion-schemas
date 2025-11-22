@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  codex-complete:
+    build: 
+      context: .
+      dockerfile: Dockerfile.fixed
+    container_name: codex-complete-dashboard
+    ports:
+      - "8080:8080"
+    environment:
+      - STREAMLIT_SERVER_PORT=8080
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+      - STREAMLIT_SERVER_HEADLESS=true
+    volumes:
+      - ./codex_ledger.json:/app/codex_ledger.json
+      - ./accounts.json:/app/accounts.json
+      - ./twitter_config.json:/app/twitter_config.json:ro
+      - ./woocommerce_config.json:/app/woocommerce_config.json:ro
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - codex-network
+
+  # Redis for caching and sessions
+  redis:
+    image: redis:alpine
+    container_name: codex-redis
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - codex-network
+
+  # Optional: Production Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: codex-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.production.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - codex-complete
+    restart: unless-stopped
+    networks:
+      - codex-network
+    profiles:
+      - production
+
+networks:
+  codex-network:
+    driver: bridge
+
+volumes:
+  redis_data:
+    driver: local
+  data:
+    driver: local
+  logs:
+    driver: local

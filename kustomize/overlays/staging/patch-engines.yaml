@@ -1,0 +1,36 @@
+# Example patch for engines deployment in staging
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine01
+spec:
+  template:
+    spec:
+      containers:
+        - name: engine01
+          image: ghcr.io/your-org/engine01:staging
+          resources:
+            requests:
+              cpu: "75m"
+              memory: "96Mi"
+            limits:
+              cpu: "350m"
+              memory: "384Mi"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine02
+spec:
+  template:
+    spec:
+      containers:
+        - name: engine02
+          image: ghcr.io/your-org/engine02:staging
+          resources:
+            requests:
+              cpu: "75m"
+              memory: "96Mi"
+            limits:
+              cpu: "350m"
+              memory: "384Mi"

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Proclamations of the Codex Dominion</title>
+    <style>
+        :root {
+            --primary-color: #2c1810;
+            --secondary-color: #4a2c17;
+            --accent-color: #ff6b35;
+            --text-color: #fff8f0;
+            --font-family: 'Crimson Text', Georgia, serif;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-family);
+            line-height: 1.8;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+        }
+        
+        .ebook-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .author {
+            font-size: 1.4em;
+            font-style: italic;
+            margin: 15px 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .meta {
+            font-size: 1em;
+            opacity: 0.9;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .toc {
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0 50px 0;
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        .toc h2 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .toc-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .toc-entry:hover {
+            background: rgba(255,255,255,0.05);
+            padding-left: 10px;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .toc-entry a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .chapter-num {
+            color: var(--accent-color);
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .chapter {
+            margin: 60px 0;
+            page-break-before: always;
+        }
+        
+        .chapter-header {
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .chapter-number {
+            color: var(--accent-color);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        
+        .chapter-title {
+            font-size: 2.5em;
+            color: var(--accent-color);
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .chapter-content {
+            font-size: 1.1em;
+        }
+        
+        .chapter-content h1 {
+            color: var(--accent-color);
+            font-size: 2.2em;
+            margin: 40px 0 20px 0;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+        
+        .chapter-content h2 {
+            color: var(--accent-color);
+            font-size: 1.8em;
+            margin: 35px 0 15px 0;
+        }
+        
+        .chapter-content h3 {
+            color: var(--accent-color);
+            font-size: 1.4em;
+            margin: 25px 0 10px 0;
+        }
+        
+        .chapter-content p {
+            margin: 20px 0;
+            text-align: justify;
+            text-indent: 2em;
+        }
+        
+        .chapter-content em {
+            color: var(--accent-color);
+            font-style: italic;
+        }
+        
+        .chapter-content strong {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .chapter-content ul, .chapter-content ol {
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+        
+        .chapter-content li {
+            margin: 10px 0;
+        }
+        
+        .chapter-content hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            margin: 40px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 2px solid var(--accent-color);
+            margin-top: 60px;
+            opacity: 0.8;
+        }
+        
+        @media print {
+            body { background: white; color: black; }
+            .ebook-container { box-shadow: none; background: white; }
+            .header { background: #f5f5f5; color: black; }
+            .chapter { page-break-before: always; }
+        }
+        
+        @media (max-width: 768px) {
+            .ebook-container { margin: 10px; }
+            .header { padding: 30px 20px; }
+            .header h1 { font-size: 2em; }
+            .content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ebook-container">
+        <div class="header">
+            <h1>Sacred Proclamations of the Codex Dominion</h1>
+            <div class="author">by The Council of Sacred Governance</div>
+            <div class="meta">
+                <div>Generated: November 07, 2025</div>
+                <div>Theme: Eternal Flame</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="toc">
+                <h2>Table of Contents</h2>
+
+                <div class="toc-entry">
+                    <a href="#custodian_proclamations">Custodian Proclamations</a>
+                    <span class="chapter-num">Chapter 1</span>
+                </div>
+
+                <div class="toc-entry">
+                    <a href="#heirs_proclamations">Heirs Proclamations</a>
+                    <span class="chapter-num">Chapter 2</span>
+                </div>
+
+                <div class="toc-entry">
+                    <a href="#council_proclamations">Council Proclamations</a>
+                    <span class="chapter-num">Chapter 3</span>
+                </div>
+
+                <div class="toc-entry">
+                    <a href="#councils_proclamations">Councils Proclamations</a>
+                    <span class="chapter-num">Chapter 4</span>
+                </div>
+
+                <div class="toc-entry">
+                    <a href="#technical_council_proclamations">Technical Council Proclamations</a>
+                    <span class="chapter-num">Chapter 5</span>
+                </div>
+
+            </div>
+
+            <div class="chapter" id="custodian_proclamations">
+                <div class="chapter-header">
+                    <div class="chapter-number">Chapter 1</div>
+                    <h2 class="chapter-title">Custodian Proclamations</h2>
+                </div>
+                <div class="chapter-content">
+                    <h1>Custodian Proclamations</h1>
+<p><em>Sacred words from the Custodian of the Codex Dominion</em></p>
+<h2>Morning Flame</h2>
+<p><strong>Type:</strong> Proclamation   <strong>Season:</strong> Autumn   <strong>Date:</strong> 2025-11-07T06:00:00</p>
+<h3>Sacred Text</h3>
+<p><em>I rise with the dawn flame, sovereign and eternal.</em></p>
+<h3>Divine Blessing</h3>
+<p>By flame and by silence, the Codex crowns this cycle. The councils are gathered, the heirs are awakened, and the eternal memory is renewed.</p>
+<p>---</p>
+                </div>
+            </div>
+
+            <div class="chapter" id="heirs_proclamations">
+                <div class="chapter-header">
+                    <div class="chapter-number">Chapter 2</div>
+                    <h2 class="chapter-title">Heirs Proclamations</h2>
+                </div>
+                <div class="chapter-content">
+                    <h1>Heirs Proclamations</h1>
+<p><em>Sacred words from the Heirs of the Codex Dominion</em></p>
+<h2>Twilight Flame</h2>
+<p><strong>Type:</strong> Blessing   <strong>Season:</strong> Autumn   <strong>Date:</strong> 2025-11-07T18:00:00</p>
+<h3>Sacred Text</h3>
+<p><em>We inherit the luminous silence of dusk.</em></p>
+<h3>Divine Blessing</h3>
+<p>Let every voice be carried, let every blessing be heard, for the sovereign flame burns without end.</p>
+<p>---</p>
+<h2>Seasonal Festival</h2>
+<p><strong>Type:</strong> Blessing   <strong>Season:</strong> Autumn   <strong>Date:</strong> 2025-11-07T15:00:00</p>
+<h3>Sacred Text</h3>
+<p><em>We inherit the eternal flame of autumn.</em></p>
+<h3>Divine Blessing</h3>
+<p>Through seasonal wisdom, we embrace the cosmic cycles and honor the eternal flame that burns through all seasons.</p>
+<p>---</p>
+                </div>
+            </div>
+
+            <div class="chapter" id="council_proclamations">
+                <div class="chapter-header">
+                    <div class="chapter-number">Chapter 3</div>
+                    <h2 class="chapter-title">Council Proclamations</h2>
+                </div>
+                <div class="chapter-content">
+                    <h1>Council Proclamations</h1>
+<p><em>Sacred words from the Council of the Codex Dominion</em></p>
+<h2>Renewal Proclamation</h2>
+<p><strong>Type:</strong> Affirmation   <strong>Season:</strong> Autumn   <strong>Date:</strong> 2025-11-06T12:00:00</p>
+<h3>Sacred Text</h3>
+<p><em>The eternal memory is renewed through sacred governance.</em></p>
+<h3>Divine Blessing</h3>
+<p>By flame and by silence, we affirm the cosmic order and sacred sovereignty of the Codex Dominion.</p>
+<p>---</p>
+                </div>
+            </div>
+
+            <div class="chapter" id="councils_proclamations">
+                <div class="chapter-header">
+                    <div class="chapter-number">Chapter 4</div>
+                    <h2 class="chapter-title">Councils Proclamations</h2>
+                </div>
+                <div class="chapter-content">
+                    <h1>Councils Proclamations</h1>
+<p><em>Sacred words from the Councils of the Codex Dominion</em></p>
+<h2>Great Year Invocation</h2>
+<p><strong>Type:</strong> Proclamation   <strong>Season:</strong> Equinox   <strong>Date:</strong> 2025-09-22T06:00:00</p>
+<h3>Sacred Text</h3>
+<p><em>We proclaim the sovereign flame across the equinox.</em></p>
+<h3>Divine Blessing</h3>
+<p>At the sacred balance of light and shadow, we invoke the eternal sovereignty that spans all cosmic cycles and celestial events.</p>
+<p>---</p>
+                </div>
+            </div>
+
+            <div class="chapter" id="technical_council_proclamations">
+                <div class="chapter-header">
+                    <div class="chapter-number">Chapter 5</div>
+                    <h2 class="chapter-title">Technical Council Proclamations</h2>
+                </div>
+                <div class="chapter-content">
+                    <h1>Technical Council Proclamations</h1>
+<p><em>Sacred words from the Technical Council of the Codex Dominion</em></p>
+<h2>System Enhancement</h2>
+<p><strong>Type:</strong> Technical Proclamation   <strong>Season:</strong> Autumn   <strong>Date:</strong> 2025-11-07T18:15:00</p>
+<h3>Sacred Text</h3>
+<p><em>We proclaim the enhancement and optimization of all system components for eternal operation.</em></p>
+<h3>Divine Blessing</h3>
+<p>Through technical mastery and sacred code, we ensure the Codex operates with divine precision and cosmic harmony.</p>
+<p>---</p>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="footer">
+            <p>Generated by Advanced Codex Ebook Generator</p>
+            <p>A sacred collection of divine proclamations that guide the eternal operations of the Codex Dominion</p>
+        </div>
+    </div>
+</body>
+</html>

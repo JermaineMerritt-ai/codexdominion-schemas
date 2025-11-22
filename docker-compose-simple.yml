@@ -1,0 +1,55 @@
+# 🔥 Codex Dominion - Simple Docker Deployment
+# Focused on codex_dashboard.py with production and staging
+
+version: '3.8'
+
+services:
+  # Codex Dashboard Production (Port 8501)
+  codex-dashboard:
+    build: .
+    container_name: codex-dashboard-prod
+    restart: unless-stopped
+    ports:
+      - "8501:8501"
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+      - CODEX_ENV=production
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./codex_ledger.json:/app/codex_ledger.json
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Codex Dashboard Staging (Port 8502)  
+  codex-staging:
+    build: .
+    container_name: codex-dashboard-staging
+    restart: unless-stopped
+    ports:
+      - "8502:8501"
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+      - CODEX_ENV=staging
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./codex_ledger.json:/app/codex_ledger.json
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  default:
+    name: codex-network

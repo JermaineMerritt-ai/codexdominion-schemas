@@ -1,0 +1,48 @@
+# 🌅🎪 FESTIVAL SCROLL DAWN RENEWAL TIMER 🎪🌅
+# File: /etc/systemd/system/festival-scroll.timer
+# Authority: Sovereign Succession - Dawn Ceremonial Scheduling
+# Purpose: Automated festival scroll renewal at dawn for codexdominion.app
+
+[Unit]
+Description=Run Festival Scroll Renewal at Dawn
+
+[Timer]
+OnCalendar=*-*-* 06:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
+# ================================================================
+# 🌅 DAWN FESTIVAL SCROLL TIMER DEPLOYMENT COMMANDS
+# ================================================================
+# 1. Copy this file to server:
+#    sudo cp festival-scroll.timer /etc/systemd/system/
+#
+# 2. Deploy the timer system:
+#    sudo systemctl daemon-reload
+#    sudo systemctl enable festival-scroll.timer
+#    sudo systemctl start festival-scroll.timer
+#
+# 3. Timer management commands:
+#    sudo systemctl status festival-scroll.timer
+#    sudo systemctl list-timers festival-scroll.timer
+#    sudo journalctl -u festival-scroll.timer -f
+#
+# ================================================================
+# 🎪 DAWN RENEWAL FEATURES
+# ================================================================
+# 🌅 Dawn Timing: Every day at 06:00:00 (6 AM)
+# 🔄 Persistent: Runs missed timers after system boot
+# ⏰ Calendar Format: *-*-* 06:00:00 (Year-Month-Day Hour:Minute:Second)
+# 🎯 Target: timers.target (systemd timer management)
+# 🌟 Ceremonial Dawn: Daily festival scroll renewal at sunrise
+# 📜 Scroll Generation: Automated dawn ceremonial processes
+# 
+# ================================================================
+# 🌅 TIMER SCHEDULE EXAMPLES
+# ================================================================
+# Current: *-*-* 06:00:00         # Daily at 6 AM
+# Hourly:  *-*-* *:00:00          # Every hour
+# Weekly:  Mon *-*-* 06:00:00     # Mondays at 6 AM  
+# Monthly: *-*-01 06:00:00        # 1st of month at 6 AM

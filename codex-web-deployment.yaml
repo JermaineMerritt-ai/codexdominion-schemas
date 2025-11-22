@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codex-web
+  namespace: codex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: codex-web
+  template:
+    metadata:
+      labels:
+        app: codex-web
+    spec:
+      containers:
+        - name: codex-web
+          image: us-east1-docker.pkg.dev/codex-dominion-production/codex-repo-east/codex-web:latest
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          envFrom:
+            - configMapRef:
+                name: codex-config
+            - secretRef:
+                name: codex-secrets
+          resources:
+            requests:
+              cpu: 10m
+              memory: 64Mi
+            limits:
+              cpu: 50m
+              memory: 128Mi

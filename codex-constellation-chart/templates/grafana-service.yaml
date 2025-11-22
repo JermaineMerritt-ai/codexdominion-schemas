@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+spec:
+  selector:
+    app: grafana
+  ports:
+    - port: {{ .Values.monitoring.grafana.port }}
+      targetPort: {{ .Values.monitoring.grafana.port }}
+      protocol: TCP
+      name: http

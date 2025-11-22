@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codex-deployment
+  namespace: observability
+  labels:
+    app: codex
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: codex
+  template:
+    metadata:
+      labels:
+        app: codex
+    spec:
+      affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - codex
+                topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: codex-container
+        image: your-registry/codex:latest
+        ports:
+        - containerPort: 3000
+        resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 15
+          periodSeconds: 20
+          timeoutSeconds: 5
+
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: codex-service
+            port:
+              number: 3000

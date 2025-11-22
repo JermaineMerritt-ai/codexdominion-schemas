@@ -1,0 +1,68 @@
+{
+  "flows": [
+    {
+      "id": "eternal-flame-flow",
+      "name": "Eternal Flame Maintenance Flow",
+      "description": "Sacred flow to maintain the eternal flame of the Codex Dominion",
+      "nodes": [
+        {
+          "node": "Cron",
+          "config": {
+            "expr": "0 6 * * *",
+            "description": "Daily dawn invocation at 6 AM"
+          }
+        },
+        {
+          "node": "PublishInvocation", 
+          "config": {
+            "role": "Custodian",
+            "text": "The dawn flame rises eternal, blessing all Codex operations"
+          }
+        },
+        {
+          "node": "PublishLedger",
+          "config": {
+            "proclamation": "Daily flame maintenance completed - all systems blessed"
+          }
+        }
+      ],
+      "created_at": "2025-11-07T00:00:00.000000",
+      "version": 1,
+      "status": "active",
+      "last_executed": null,
+      "execution_count": 0
+    },
+    {
+      "id": "revenue-crown-flow",
+      "name": "Revenue Crown Automation",
+      "description": "Automated revenue tracking and constellation management",
+      "nodes": [
+        {
+          "node": "CronTwilight",
+          "config": {
+            "expr": "0 18 * * *",
+            "description": "Evening revenue consolidation at 6 PM"
+          }
+        },
+        {
+          "node": "PublishLedger",
+          "config": {
+            "proclamation": "Revenue Crown daily consolidation completed"
+          }
+        }
+      ],
+      "created_at": "2025-11-07T00:00:00.000000",
+      "version": 1,
+      "status": "active",
+      "last_executed": null,
+      "execution_count": 0
+    }
+  ],
+  "active_flows": ["eternal-flame-flow", "revenue-crown-flow"],
+  "metadata": {
+    "total_flows": 2,
+    "active_count": 2,
+    "last_updated": "2025-11-07T00:00:00.000000",
+    "system_version": "2.0.0"
+  }
+}

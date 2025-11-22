@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: orchestrator
+spec:
+  hosts: ["orchestrator.codex.svc.cluster.local"]
+  http:
+    - route:
+        - destination:
+            host: orchestrator
+            subset: stable
+          weight: 50
+        - destination:
+            host: orchestrator
+            subset: canary
+          weight: 50

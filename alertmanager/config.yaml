@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-config
+  namespace: monitoring
+  labels:
+    app: alertmanager
+    managed-by: copilot
+    extended: "true"
+data:
+  alertmanager.yaml: |
+    global:
+      resolve_timeout: 5m
+    route:
+      receiver: 'default-notification'
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 1h
+      routes:
+        - receiver: 'slack-notifications'
+          matchers:
+            severity = "critical"
+        - receiver: 'teams-notifications'
+          matchers:
+            severity = "warning"
+        - receiver: 'email-notifications'
+          matchers:
+            severity = "info"
+        - receiver: 'twilio-notifications'
+          matchers:
+            alertname = "TwilioAlert"
+        - receiver: 'copilot-notifications'
+          matchers:
+            alertname = "CopilotAlert"
+        - receiver: 'super-action-ai-notifications'
+          matchers:
+            alertname = "SuperActionAIAlert"
+    receivers:
+      - name: 'default-notification'
+        webhook_configs:
+          - url: 'https://hooks.default.local/alertmanager'
+      - name: 'slack-notifications'
+        slack_configs:
+          - api_url: 'https://hooks.slack.com/services/your/slack/webhook'
+            channel: '#alerts'
+            send_resolved: true
+      - name: 'teams-notifications'
+        webhook_configs:
+          - url: 'https://outlook.office.com/webhook/your/teams/webhook'
+      - name: 'email-notifications'
+        email_configs:
+          - to: 'your@email.com'
+            from: 'alertmanager@email.com'
+            smarthost: 'smtp.email.com:587'
+            auth_username: 'alertmanager@email.com'
+            auth_password: 'yourpassword'
+            send_resolved: true
+      - name: 'twilio-notifications'
+        webhook_configs:
+          - url: 'https://api.twilio.com/2010-04-01/Accounts/your_account/Messages.json'
+      - name: 'copilot-notifications'
+        webhook_configs:
+          - url: 'https://copilot.yourdomain.com/alertmanager'
+      - name: 'super-action-ai-notifications'
+        webhook_configs:
+          - url: 'https://superactionai.yourdomain.com/alertmanager'
+    inhibit_rules:
+      - source_matchers: [severity = 'critical']
+        target_matchers: [severity = 'warning']
+        equal: ['alertname']

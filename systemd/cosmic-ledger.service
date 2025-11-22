@@ -1,0 +1,46 @@
+# 🔥 COSMIC DOMINION - SYSTEMD SERVICE CONFIGURATION 🔥
+# Sacred Ledger System Service
+
+[Unit]
+Description=📊 Cosmic Dominion - Sacred Ledger System
+Documentation=https://github.com/cosmic-dominion/codex-suite
+After=network.target cosmic-dashboard.service
+Wants=network.target
+
+[Service]
+Type=simple
+User=codex
+Group=codex
+WorkingDirectory=/srv/codex-dominion
+Environment=PATH=/srv/codex-dominion/venv/bin:/usr/local/bin:/usr/bin:/bin
+Environment=PYTHONPATH=/srv/codex-dominion
+Environment=STREAMLIT_SERVER_HEADLESS=true
+Environment=STREAMLIT_SERVER_ENABLE_CORS=false
+Environment=STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
+ExecStart=/srv/codex-dominion/venv/bin/python -m streamlit run codex-suite/apps/dashboard/sacred_ledger.py --server.port=8502 --server.address=127.0.0.1
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=cosmic-ledger
+
+# Security settings
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/srv/codex-dominion/logs
+ReadWritePaths=/srv/codex-dominion/data
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=1G
+CPUQuota=100%
+
+# Health check
+TimeoutStartSec=60
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

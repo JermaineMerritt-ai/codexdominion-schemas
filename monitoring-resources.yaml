@@ -1,0 +1,87 @@
+# --- Prometheus ServiceMonitor for orchestrator
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: orchestrator-monitor
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: orchestrator
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 30s
+---
+# --- Prometheus ServiceMonitor for codex-core
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: codex-core-monitor
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: codex-core
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 30s
+---
+# --- Prometheus ServiceMonitor for engine01
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: engine01-monitor
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: engine01
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 30s
+---
+# --- Grafana Dashboard ConfigMap (success-rate, latency, rollback events)
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: codex-dominion-dashboard
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+data:
+  codex-dominion.json: |
+    {
+      "title": "Codex Dominion Rollouts",
+      "panels": [
+        {
+          "type": "graph",
+          "title": "HTTP Success Rate",
+          "targets": [
+            {
+              "expr": "sum(rate(nginx_ingress_controller_requests{status!~\"5..\"}[1m])) / sum(rate(nginx_ingress_controller_requests[1m]))"
+            }
+          ]
+        },
+        {
+          "type": "graph",
+          "title": "Latency (ms)",
+          "targets": [
+            {
+              "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Rollback Events",
+          "targets": [
+            {
+              "expr": "argo_rollouts_info{phase=\"Rollback\"}"
+            }
+          ]
+        }
+      ]
+    }

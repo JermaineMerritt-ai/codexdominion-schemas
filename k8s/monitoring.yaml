@@ -1,0 +1,115 @@
+# --- Prometheus ServiceMonitor for orchestrator
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: orchestrator-monitor
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: orchestrator
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 30s
+---
+# --- Prometheus ServiceMonitor for codex-core
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: codex-core-monitor
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: codex-core
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 30s
+---
+# --- Prometheus ServiceMonitor for engine01
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: engine01-monitor
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: engine01
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 30s
+---
+# --- Grafana Dashboard ConfigMap (success-rate, latency, rollback events)
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: codex-dominion-dashboard
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+data:
+  codex-dominion.json: |
+    {
+      "title": "Codex Dominion Rollouts",
+      "timezone": "browser",
+      "panels": [
+        {
+          "type": "gauge",
+          "title": "HTTP Success Rate",
+          "targets": [
+            {
+              "expr": "sum(rate(http_requests_total{code!~\"5..\"}[1m])) / sum(rate(http_requests_total[1m]))"
+            }
+          ],
+          "options": {
+            "reduceOptions": { "values": false, "calcs": ["lastNotNull"] },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                { "color": "red", "value": null },
+                { "color": "yellow", "value": 0.95 },
+                { "color": "green", "value": 0.99 }
+              ]
+            }
+          }
+        },
+        {
+          "type": "graph",
+          "title": "95th Percentile Latency (ms)",
+          "targets": [
+            {
+              "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))"
+            }
+          ],
+          "lines": true,
+          "linewidth": 2
+        },
+        {
+          "type": "barchart",
+          "title": "Rollback Events per Hour",
+          "targets": [
+            {
+              "expr": "increase(argo_rollouts_rollback_count[1h])"
+            }
+          ]
+        },
+        {
+          "type": "timeseries",
+          "title": "Canary Weight Progression (Orchestrator)",
+          "targets": [
+            {
+              "expr": "argo_rollouts_canary_weight{rollout=\"orchestrator\"}"
+            }
+          ],
+          "lines": true,
+          "linewidth": 2
+        }
+      ],
+      "schemaVersion": 27,
+      "version": 1,
+      "refresh": "30s"
+    }

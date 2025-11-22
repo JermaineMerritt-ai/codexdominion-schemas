@@ -1,0 +1,15 @@
+resources:
+  - ../../base
+patches:
+  - path: patch-orchestrator.yaml
+  - path: patch-core.yaml
+  - path: patch-engines.yaml
+
+nameSuffix: -dev
+
+images:
+  - name: ghcr.io/your-org/codex-orchestrator
+    newTag: dev
+  - name: ghcr.io/your-org/codex-core
+    newTag: dev
+  # engines can follow dev tags too

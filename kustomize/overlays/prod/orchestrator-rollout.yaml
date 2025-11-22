@@ -1,0 +1,70 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: orchestrator
+  namespace: codex
+spec:
+  replicas: 3
+  strategy:
+    canary:
+      canaryService: orchestrator-canary
+      stableService: orchestrator-stable
+      trafficRouting:
+        nginx:
+          stableIngress: orchestrator-ingress
+      steps:
+      - setWeight: 20
+      - pause: { duration: 120 }
+      - setWeight: 50
+      - pause: { duration: 180 }
+      - setWeight: 100
+      analysis:
+        templates:
+        - templateName: nginx-success-rate
+        args:
+        - name: service-name
+          value: orchestrator
+        startingStep: 1
+  selector:
+    matchLabels:
+      app: orchestrator
+  template:
+    metadata:
+      labels:
+        app: orchestrator
+    spec:
+      containers:
+      - name: orchestrator
+        image: ghcr.io/your-org/codex-orchestrator:v1.0.0
+        ports:
+        - containerPort: 8000
+        readinessProbe:
+          httpGet: { path: /health/ready, port: 8000 }
+          initialDelaySeconds: 5
+        livenessProbe:
+          httpGet: { path: /health/live, port: 8000 }
+          initialDelaySeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orchestrator-stable
+  namespace: codex
+spec:
+  selector: { app: orchestrator }
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orchestrator-canary
+  namespace: codex
+spec:
+  selector: { app: orchestrator }
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8000

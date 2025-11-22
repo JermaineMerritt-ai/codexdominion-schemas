@@ -1,0 +1,32 @@
+
+# Docker Compose for legacytactichq.com
+version: '3.8'
+
+services:
+  legacytactichq-com-web:
+    build: .
+    ports:
+      - "8500:8500"
+    environment:
+      - DOMAIN=legacytactichq.com
+      - SSL_ENABLED=true
+    volumes:
+      - ./ssl:/etc/ssl
+      - ./logs:/var/log
+    restart: unless-stopped
+    
+  legacytactichq-com-db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: legacytactichq_com_db
+    volumes:
+      - mysql_data_legacytactichq_com:/var/lib/mysql
+    restart: unless-stopped
+    
+  legacytactichq-com-redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    
+volumes:
+  mysql_data_legacytactichq_com:

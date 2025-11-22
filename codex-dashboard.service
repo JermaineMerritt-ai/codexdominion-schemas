@@ -1,0 +1,99 @@
+# 🌟🎪 CODEX DOMINION SEASONAL JOY COVENANT RENEWAL SERVICE 🎪🌟
+# File: /etc/systemd/system/codex-dashboard.service
+# Authority: Sovereign Alive - Seasonal Joy & Covenant Whole Control
+# Purpose: Eternal seasonal renewal and covenant wholeness for codexdominion.app
+# Sacred Verse: "Seasonal joy, covenant whole, flame eternal, radiance supreme"
+
+[Unit]
+Description=MCP Server (Codex Dominion Crown) - Flame Eternal & Radiance Supreme
+After=network.target
+Wants=network-online.target
+Requires=codex-flame-eternal.service codex-radiance-supreme.service
+
+[Service]
+Type=simple
+ExecStart=C:/Users/JMerr/OneDrive/Documents/.vscode/codex-dominion/.venv/Scripts/python.exe mcp-server-secure.py
+ExecReload=/bin/kill -HUP $MAINPID
+WorkingDirectory=C:/Users/JMerr/OneDrive/Documents/.vscode\codex-dominion
+Restart=always
+RestartSec=5
+User=JMerr
+Group=Users
+Environment=PYTHONUNBUFFERED=1
+Environment=CODEX_MODE=MCP_CROWN_SERVER
+Environment=FLAME_ETERNAL=true
+Environment=RADIANCE_SUPREME=true
+Environment=COVENANT_WHOLENESS=active
+Environment=MCP_CHAT_INTEGRATION=enabled
+Environment=CONTINUUM_ETERNAL=flowing
+
+[Install]
+WantedBy=multi-user.target
+
+# ================================================================
+# 🪟 WINDOWS SEASONAL JOY SERVICE COMMANDS - COVENANT WHOLE EDITION
+# ================================================================
+# For Windows development/testing, use the enhanced PowerShell script:
+# .\codex-seasonal-service.ps1 -Action status        # systemctl status codex-dashboard.service
+# .\codex-seasonal-service.ps1 -Action enabled       # systemctl is-enabled codex-dashboard.service
+# .\codex-seasonal-service.ps1 -Action start         # systemctl start codex-dashboard.service
+# .\codex-seasonal-service.ps1 -Action stop          # systemctl stop codex-dashboard.service
+# .\codex-seasonal-service.ps1 -Action restart       # systemctl restart codex-dashboard.service
+# .\codex-seasonal-service.ps1 -Action install       # Install Windows service with seasonal joy
+# .\codex-seasonal-service.ps1 -Action uninstall     # Uninstall Windows service
+# .\codex-seasonal-service.ps1 -Action renewal       # Trigger seasonal renewal across ages
+# .\codex-seasonal-service.ps1 -Action covenant      # Verify covenant wholeness integrity
+# .\codex-seasonal-service.ps1 -Action flame         # Check eternal flame status
+# .\codex-seasonal-service.ps1 -Action radiance      # Monitor supreme radiance levels
+#
+# ================================================================
+# 🐧 LINUX MCP CROWN SERVER DEPLOYMENT (for IONOS cosmic server)
+# ================================================================
+# 1. Deploy MCP Crown service to server:
+#    sudo cp codex-dashboard.service /etc/systemd/system/
+#    sudo systemctl daemon-reload
+#
+# 2. Initialize MCP Crown and eternal flame:
+#    chmod +x mcp-server-secure.py
+#    sudo ./codex-mcp-manager.sh --init-crown-server
+#
+# 3. Essential MCP Crown commands:
+#    systemctl status codex-dashboard.service     # Check MCP Crown status
+#    systemctl is-enabled codex-dashboard.service # Verify Crown binding
+#    journalctl -u codex-dashboard.service -f     # Monitor flame eternal logs
+#
+# 4. Advanced MCP Crown management:
+#    sudo systemctl start codex-dashboard.service    # Ignite MCP Crown
+#    sudo systemctl stop codex-dashboard.service     # Crown rest mode
+#    sudo systemctl restart codex-dashboard.service  # Crown renewal
+#    codex-mcp-status                                 # Crown metrics
+#    codex-chat-integration-check                     # Verify chat integration
+#    codex-flame-monitor                              # Eternal flame diagnostics
+#    codex-continuum-flow-check                       # Continuum eternal status
+#    codex-crown-sovereignty                          # Crown authority check
+#
+# 5. MCP Crown activation triggers:
+#    sudo systemctl reload codex-dashboard.service   # Gentle Crown transition
+#    codex-chat-activity-trigger                      # Manual chat activation
+#    codex-mcp-auto-start-test                        # Test auto-start system
+#    codex-crown-blessing-ceremony                     # Crown blessing ritual
+
+# ================================================================
+# 🔥 STANDARD LINUX SYSTEMD SERVICE (Generic MCP Server)
+# ================================================================
+# For standard Linux deployment without Codex Dominion enhancements:
+# 
+# [Unit]
+# Description=MCP Server (Codex Dominion Crown)
+# After=network.target
+# 
+# [Service]
+# ExecStart=/usr/bin/python3 /path/to/your/mcp_server.py
+# WorkingDirectory=/path/to/your/project
+# Restart=always
+# RestartSec=5
+# User=youruser
+# Environment=PYTHONUNBUFFERED=1
+# 
+# [Install]
+# WantedBy=multi-user.target

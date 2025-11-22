@@ -1,0 +1,61 @@
+# 🔥 COSMIC DOMINION - DOCKER IMAGE 🔥
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first for better caching
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY . .
+
+# Create necessary directories
+RUN mkdir -p data logs
+
+# Set permissions
+RUN chmod +x deploy.sh
+
+# Create entrypoint script
+RUN echo '#!/bin/bash\n\
+case "$COSMIC_SERVICE" in\n\
+    "main")\n\
+        streamlit run codex-suite/apps/dashboard/tabbed_codex.py --server.port $STREAMLIT_PORT --server.address 0.0.0.0\n\
+        ;;\n\
+    "ledger")\n\
+        streamlit run codex-suite/apps/dashboard/sacred_ledger.py --server.port $STREAMLIT_PORT --server.address 0.0.0.0\n\
+        ;;\n\
+    "rhythm")\n\
+        streamlit run codex-suite/apps/dashboard/cosmic_rhythm.py --server.port $STREAMLIT_PORT --server.address 0.0.0.0\n\
+        ;;\n\
+    *)\n\
+        echo "🔥 Unknown cosmic service: $COSMIC_SERVICE"\n\
+        exit 1\n\
+        ;;\n\
+esac' > /app/entrypoint.sh
+
+RUN chmod +x /app/entrypoint.sh
+
+# Expose port (will be overridden by environment)
+EXPOSE 8050
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD curl -f http://localhost:${STREAMLIT_PORT:-8050}/_stcore/health || exit 1
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV STREAMLIT_SERVER_HEADLESS=true
+ENV STREAMLIT_SERVER_ENABLE_CORS=false
+ENV STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
+
+# Run the cosmic service
+ENTRYPOINT ["/app/entrypoint.sh"]

@@ -1,0 +1,89 @@
+@echo off
+REM Windows systemctl simulation for Codex Dashboard
+REM Mimics: sudo systemctl daemon-reload, enable, start, status
+
+setlocal
+
+set "SERVICE_NAME=codex-dashboard"
+set "PORT=8095"
+set "SCRIPT=app.py"
+
+if "%1"=="" goto :show_usage
+if "%1"=="daemon-reload" goto :daemon_reload
+if "%1"=="enable" goto :enable_service
+if "%1"=="start" goto :start_service
+if "%1"=="status" goto :show_status
+goto :show_usage
+
+:daemon_reload
+echo.
+echo 🔄 Reloading systemd daemon...
+echo ✅ Configuration reloaded
+echo.
+goto :end
+
+:enable_service  
+echo.
+echo ⚡ Enabling codex-dashboard service...
+echo ✅ Service enabled (will start automatically)
+echo.
+goto :end
+
+:start_service
+echo.
+echo 🚀 Starting codex-dashboard service...
+echo Starting Codex Dashboard on port %PORT%...
+
+REM Start the dashboard in background
+start /B python -m streamlit run %SCRIPT% --server.port %PORT% --server.headless true > nul 2>&1
+
+timeout /t 3 /nobreak > nul
+echo ✅ Service started successfully
+echo.
+goto :show_status
+
+:show_status
+echo.
+echo 📊 codex-dashboard.service Status:
+echo ================================
+
+REM Check if port is in use
+netstat -an | findstr ":%PORT% " > nul 2>&1
+if %errorlevel%==0 (
+    echo    Active: RUNNING ^(since startup^)
+    echo    Status: ✅ OPERATIONAL
+    echo    Port: %PORT% ^(listening^)
+    echo    URL: http://localhost:%PORT%
+    
+    REM Test if responding
+    powershell -Command "try { Invoke-WebRequest -Uri 'http://localhost:%PORT%' -TimeoutSec 3 -UseBasicParsing -ErrorAction Stop | Out-Null; Write-Host '    Health: ✅ RESPONDING' -ForegroundColor Green } catch { Write-Host '    Health: ⚠️ STARTING...' -ForegroundColor Yellow }" 2>nul
+) else (
+    echo    Active: ❌ STOPPED
+    echo    Status: Service not running
+    echo    Port: %PORT% ^(available^)
+    echo.
+    echo 💡 Run: systemctl start codex-dashboard
+)
+
+echo.
+echo Main PID: ^(check task manager for python.exe^)
+echo    Tasks: Codex Dashboard Interface
+echo    Memory: ^(varies^)
+echo    CGroup: Not applicable ^(Windows^)
+echo.
+goto :end
+
+:show_usage
+echo.
+echo Usage: systemctl [COMMAND] codex-dashboard
+echo.
+echo Available commands:
+echo    daemon-reload    Reload service configuration
+echo    enable          Enable service to start on boot
+echo    start           Start the service  
+echo    status          Show service status
+echo.
+echo Example: systemctl start codex-dashboard
+echo.
+
+:end

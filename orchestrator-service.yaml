@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: orchestrator
+  namespace: codex
+  labels:
+    app: orchestrator
+spec:
+  ports:
+    - name: http-metrics
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: orchestrator

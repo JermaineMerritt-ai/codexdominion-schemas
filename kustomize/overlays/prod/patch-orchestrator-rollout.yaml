@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: orchestrator
+spec:
+  replicas: 3
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: { duration: 60 }
+        - setWeight: 50
+        - pause: { duration: 120 }
+        - setWeight: 100
+  selector:
+    matchLabels: { app: orchestrator }
+  template:
+    metadata:
+      labels: { app: orchestrator }
+    spec:
+      containers:
+        - name: orchestrator
+          image: ghcr.io/your-org/codex-orchestrator:v1.0.0
+          ports: [{ containerPort: 8000 }]
+          env:
+            - name: CORE_HOST
+              value: "codex-core"
+            - name: CORE_PORT
+              value: "8081"
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+            limits:
+              cpu: "2000m"
+              memory: "2Gi"
+          readinessProbe:
+            httpGet: { path: /health/ready, port: 8000 }
+          livenessProbe:
+            httpGet: { path: /health/live, port: 8000 }

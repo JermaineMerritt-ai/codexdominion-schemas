@@ -1,0 +1,226 @@
+# Codex Dominion - Production Docker Compose for aistorelab.com
+version: '3.8'
+
+services:
+  # Nginx Reverse Proxy with SSL
+  nginx:
+    image: nginx:alpine
+    container_name: codex-nginx-prod
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx-production.conf:/etc/nginx/nginx.conf:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./ssl-challenge:/var/www/certbot:ro
+      - nginx_logs:/var/log/nginx
+    depends_on:
+      - codex-main
+      - codex-contributions
+      - codex-council
+      - codex-viewer
+    networks:
+      - codex-network
+    labels:
+      - "traefik.enable=false"
+
+  # Main Dashboard Service (Port 8080)
+  codex-main:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-main-prod
+    restart: unless-stopped
+    command: streamlit run codex_summary.py --server.port=8080 --server.address=0.0.0.0 --server.headless=true
+    expose:
+      - "8080"
+    volumes:
+      - ./codex_ledger.json:/app/codex_ledger.json
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_SERVER_ENABLE_CORS=false
+      - STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
+      - PYTHONPATH=/app
+    networks:
+      - codex-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # Community Contributions Service (Port 8083)
+  codex-contributions:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-contributions-prod
+    restart: unless-stopped
+    command: streamlit run contributions.py --server.port=8083 --server.address=0.0.0.0 --server.headless=true
+    expose:
+      - "8083"
+    volumes:
+      - ./codex_ledger.json:/app/codex_ledger.json
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - PYTHONPATH=/app
+    networks:
+      - codex-network
+    depends_on:
+      codex-main:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # Council Oversight Service (Port 8086)
+  codex-council:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-council-prod
+    restart: unless-stopped
+    command: streamlit run enhanced_council_oversight.py --server.port=8086 --server.address=0.0.0.0 --server.headless=true
+    expose:
+      - "8086"
+    volumes:
+      - ./codex_ledger.json:/app/codex_ledger.json
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - PYTHONPATH=/app
+    networks:
+      - codex-network
+    depends_on:
+      codex-main:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8086/"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # Contributions Viewer Service (Port 8090)
+  codex-viewer:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-viewer-prod
+    restart: unless-stopped
+    command: streamlit run contributions_viewer.py --server.port=8090 --server.address=0.0.0.0 --server.headless=true
+    expose:
+      - "8090"
+    volumes:
+      - ./codex_ledger.json:/app/codex_ledger.json
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - PYTHONPATH=/app
+    networks:
+      - codex-network
+    depends_on:
+      codex-main:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # SSL Certificate Management (Let's Encrypt)
+  certbot:
+    image: certbot/certbot:latest
+    container_name: codex-certbot
+    restart: "no"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - ./ssl-challenge:/var/www/certbot
+    command: >
+      sh -c "
+      while :; do
+        certbot renew --webroot --webroot-path=/var/www/certbot --quiet
+        sleep 12h
+      done
+      "
+    depends_on:
+      - nginx
+
+  # Log Management with Logrotate
+  logrotate:
+    image: blacklabelops/logrotate
+    container_name: codex-logrotate
+    restart: unless-stopped
+    volumes:
+      - nginx_logs:/var/log/nginx
+      - ./logs:/var/log/codex
+      - ./logrotate.conf:/etc/logrotate.d/codex
+    environment:
+      - LOGS_DIRECTORIES=/var/log/nginx /var/log/codex
+      - LOGROTATE_INTERVAL=daily
+      - LOGROTATE_COPIES=7
+
+  # Redis for caching and sessions
+  redis:
+    image: redis:7-alpine
+    container_name: codex-redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    networks:
+      - codex-network
+    command: redis-server --appendonly yes --requirepass "codex_secure_password"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Monitoring with basic health checks
+  healthcheck:
+    image: alpine/curl
+    container_name: codex-healthcheck
+    restart: unless-stopped
+    networks:
+      - codex-network
+    command: >
+      sh -c "
+      while :; do
+        echo '[HEALTH] Checking Codex Services...'
+        curl -f http://codex-main-prod:8080/ || echo 'Main Dashboard: FAILED'
+        curl -f http://codex-contributions-prod:8083/ || echo 'Contributions: FAILED'  
+        curl -f http://codex-council-prod:8086/ || echo 'Council: FAILED'
+        curl -f http://codex-viewer-prod:8090/ || echo 'Viewer: FAILED'
+        sleep 300
+      done
+      "
+    depends_on:
+      - codex-main
+      - codex-contributions
+      - codex-council
+      - codex-viewer
+
+networks:
+  codex-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  nginx_logs:
+    driver: local
+  redis_data:
+    driver: local

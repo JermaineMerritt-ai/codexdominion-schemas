@@ -1,0 +1,37 @@
+[Unit]
+Description=Festival Transmission Service - Sacred Ceremony Preservation System
+After=network.target
+Wants=network.target
+
+[Service]
+Type=exec
+User=www-data
+Group=www-data
+WorkingDirectory=/path/to/your/codex-dominion
+Environment=PATH=/path/to/your/venv/bin
+Environment=FLASK_ENV=production
+ExecStart=/path/to/your/venv/bin/gunicorn --bind 0.0.0.0:5555 --workers 4 festival_transmission_flask:app
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=always
+RestartSec=10
+KillMode=mixed
+TimeoutStopSec=30
+StandardOutput=journal
+StandardError=journal
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/path/to/your/codex-dominion/logs
+
+[Install]
+WantedBy=multi-user.target
+
+# Installation commands:
+# sudo cp festival-transmission.service /etc/systemd/system/
+# sudo systemctl daemon-reload
+# sudo systemctl enable festival-transmission.service
+# sudo systemctl start festival-transmission.service
+# sudo systemctl status festival-transmission.service

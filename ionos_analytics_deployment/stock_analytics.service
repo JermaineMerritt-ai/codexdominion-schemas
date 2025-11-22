@@ -1,0 +1,16 @@
+
+[Unit]
+Description=Stock Analytics Platform
+After=network.target mysql.service redis.service
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/analytics-platform
+Environment=PATH=/opt/analytics-platform/venv/bin
+ExecStart=/opt/analytics-platform/venv/bin/streamlit run ai_action_stock_analytics.py --server.port=8515 --server.headless=true
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

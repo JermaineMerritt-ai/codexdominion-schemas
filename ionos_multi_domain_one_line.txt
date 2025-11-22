@@ -1,0 +1,61 @@
+# 🔥 IONOS Multi-Domain One-Line Emergency Fix
+# Copy and paste this command into your IONOS server terminal:
+
+sudo bash -c 'echo "🔥 MULTI-DOMAIN EMERGENCY FIX"; systemctl stop nginx codex-dashboard codex-staging apache2 php-fpm php7.4-fpm php8.0-fpm php8.1-fpm 2>/dev/null; pkill -f streamlit; pkill -f python.*codex; sleep 3; cd /var/www/codex 2>/dev/null && git pull origin main; cd /var/www/codex-staging 2>/dev/null && git pull origin staging; pip3 install --upgrade streamlit pandas numpy requests 2>/dev/null; systemctl daemon-reload; systemctl start apache2 php8.1-fpm php-fpm 2>/dev/null; sleep 3; systemctl start codex-dashboard; sleep 5; systemctl start codex-staging; sleep 5; systemctl start nginx; echo "✅ ALL DOMAINS RESTORED"; systemctl status nginx codex-dashboard codex-staging apache2 --no-pager'
+
+# ========================================
+# INDIVIDUAL COMMANDS (if you prefer step-by-step):
+# ========================================
+
+# 1. Stop all services and clean up:
+sudo systemctl stop nginx codex-dashboard codex-staging apache2 php-fpm
+sudo pkill -f streamlit && sudo pkill -f "python.*codex"
+
+# 2. Update Codex repositories:
+cd /var/www/codex && sudo git pull origin main
+cd /var/www/codex-staging && sudo git pull origin staging
+
+# 3. Update dependencies:
+sudo pip3 install --upgrade streamlit pandas numpy requests
+
+# 4. Start WordPress/PHP services:
+sudo systemctl start apache2 php-fpm
+
+# 5. Start Codex services:
+sudo systemctl daemon-reload
+sudo systemctl start codex-dashboard
+sleep 5
+sudo systemctl start codex-staging
+
+# 6. Start nginx:
+sudo systemctl start nginx
+
+# 7. Check all services:
+sudo systemctl status nginx codex-dashboard codex-staging apache2
+
+# 8. Test all domains:
+# https://themerrittmethod.com
+# https://aistorelab.com  
+# https://staging.aistorelab.com
+
+# ========================================
+# TROUBLESHOOTING IF STILL NOT WORKING:
+# ========================================
+
+# Check what's actually running on each port:
+sudo netstat -tlnp | grep -E '(:80|:443|:8501|:8502|:9000)'
+
+# Check nginx configuration:
+sudo nginx -t
+sudo nginx -T | grep -A10 -B5 server_name
+
+# Check recent logs:
+sudo journalctl -u nginx -n 10
+sudo journalctl -u codex-dashboard -n 10
+sudo journalctl -u codex-staging -n 10
+sudo tail /var/log/nginx/error.log
+
+# Test backend connections:
+curl -I http://127.0.0.1:9000   # Should respond for WordPress
+curl -I http://127.0.0.1:8501   # Should respond for Codex Production
+curl -I http://127.0.0.1:8502   # Should respond for Codex Staging

@@ -1,0 +1,52 @@
+# Codex Dashboard systemd service for IONOS Linux
+# /etc/systemd/system/codex-dashboard.service
+
+[Unit]
+Description=Codex Dashboard - Digital Sovereignty Control Interface
+Documentation=https://streamlit.io/
+After=network.target network-online.target
+Wants=network-online.target
+RequiresMountsFor=/opt/codex-dominion
+
+[Service]
+Type=simple
+User=codex
+Group=codex
+WorkingDirectory=/opt/codex-dominion/app
+Environment=PATH=/opt/codex-dominion/venv/bin
+Environment=PYTHONPATH=/opt/codex-dominion/app
+Environment=STREAMLIT_SERVER_HEADLESS=true
+Environment=STREAMLIT_SERVER_PORT=8095
+Environment=STREAMLIT_SERVER_ADDRESS=127.0.0.1
+
+# Main command
+ExecStart=/opt/codex-dominion/venv/bin/streamlit run app.py --server.port=8095 --server.address=127.0.0.1 --server.headless=true
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitInterval=60
+StartLimitBurst=3
+
+# Security settings
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/codex-dominion
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=2G
+CPUQuota=200%
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=codex-dashboard
+
+[Install]
+WantedBy=multi-user.target

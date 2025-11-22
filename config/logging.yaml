@@ -1,0 +1,81 @@
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  detailed:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+  simple:
+    format: '%(levelname)s - %(message)s'
+  json:
+    format: '{"timestamp": "%(asctime)s", "level": "%(levelname)s", "logger": "%(name)s", "file": "%(filename)s", "line": %(lineno)d, "message": "%(message)s"}'
+    datefmt: '%Y-%m-%dT%H:%M:%S'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: simple
+    stream: ext://sys.stdout
+  
+  file_handler:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: detailed
+    filename: logs/codex-dominion.log
+    maxBytes: 10485760  # 10MB
+    backupCount: 5
+    encoding: utf8
+  
+  error_handler:
+    class: logging.handlers.RotatingFileHandler
+    level: ERROR
+    formatter: detailed
+    filename: logs/error.log
+    maxBytes: 10485760  # 10MB
+    backupCount: 3
+    encoding: utf8
+  
+  json_handler:
+    class: logging.handlers.RotatingFileHandler
+    level: INFO
+    formatter: json
+    filename: logs/codex-dominion.json
+    maxBytes: 10485760  # 10MB
+    backupCount: 5
+    encoding: utf8
+
+loggers:
+  codex_dominion:
+    level: DEBUG
+    handlers: [console, file_handler, error_handler]
+    propagate: false
+  
+  system_performance:
+    level: INFO
+    handlers: [json_handler]
+    propagate: false
+  
+  video_studio:
+    level: DEBUG
+    handlers: [file_handler, json_handler]
+    propagate: false
+  
+  lovable_destroyer:
+    level: INFO
+    handlers: [file_handler]
+    propagate: false
+  
+  ionos_dominion:
+    level: INFO
+    handlers: [file_handler, json_handler]
+    propagate: false
+  
+  security:
+    level: WARNING
+    handlers: [error_handler, json_handler]
+    propagate: false
+
+root:
+  level: INFO
+  handlers: [console, file_handler]

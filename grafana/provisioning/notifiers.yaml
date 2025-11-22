@@ -1,0 +1,15 @@
+notifiers:
+  - name: Slack Notifier
+    type: slack
+    uid: slack-notifier
+    isDefault: false
+    settings:
+      url: ${SLACK_WEBHOOK_URL}
+      recipient: "#codex-alerts"
+
+  - name: Teams Notifier
+    type: webhook
+    uid: teams-notifier
+    isDefault: false
+    settings:
+      url: ${TEAMS_WEBHOOK_URL}
