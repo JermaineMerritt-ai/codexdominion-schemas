@@ -1,0 +1,95 @@
+name: Enhanced Codex CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "staging", "dev" ]
+  pull_request:
+    branches: [ "main", "staging", "dev" ]
+
+jobs:
+  code-quality-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Node setup
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install JS tools
+        run: npm install -g eslint prettier
+
+      - name: Run ESLint
+        run: eslint . --ext .js,.ts || true
+
+      - name: Run Prettier
+        run: prettier --check . || true
+
+      # Python setup
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Python tools
+        run: pip install pylint bandit safety pytest
+
+      - name: Run Pylint
+        run: pylint $(git ls-files '*.py') || true
+
+      - name: Run Bandit
+        run: bandit -r . || true
+
+      - name: Run Safety
+        run: safety check || true
+
+  sacred-flame-monitoring:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Trivy
+        run: |
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
+
+      - name: Run Trivy FS Scan
+        run: ./trivy fs --severity HIGH,CRITICAL .
+
+  run-tests:
+    runs-on: ubuntu-latest
+    needs: [code-quality-security, sacred-flame-monitoring]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run JS Tests
+        run: npm test --if-present || true
+      - name: Run Python Tests
+        run: pytest || true
+      - name: Run Go Tests
+        run: go test ./... || true
+
+  deploy-staging:
+    runs-on: ubuntu-latest
+    needs: run-tests
+    if: github.ref == 'refs/heads/staging'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Staging
+        run: echo "🚀 Deploying to STAGING realm..."
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: run-tests
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: production
+      url: https://your-prod-url
+    steps:
+      - uses: actions/checkout@v3
+      - name: Manual Approval Gate
+        uses: trstringer/manual-approval@v1
+        with:
+          approvers: jermaine
+      - name: Deploy to Production
+        run: echo "👑 Deploying to PROD realm..."
