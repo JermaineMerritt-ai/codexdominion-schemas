@@ -1,5 +1,6 @@
 // components/SignalsCard.tsx
 import React from 'react';
+import styles from './SignalsCard.module.css';
 
 type Pick = {
   symbol: string;
@@ -21,50 +22,38 @@ const tierColors = {
 };
 
 export const SignalsCard: React.FC<SignalsCardProps> = ({ pick }) => {
-  const tierColor = tierColors[pick.tier as keyof typeof tierColors] || '#6b7280';
+  const borderClass =
+    pick.tier === 'Alpha' ? styles.borderAlpha :
+    pick.tier === 'Beta' ? styles.borderBeta :
+    pick.tier === 'Gamma' ? styles.borderGamma :
+    pick.tier === 'Delta' ? styles.borderDelta : '';
+  const tierClass =
+    pick.tier === 'Alpha' ? styles.tierAlpha :
+    pick.tier === 'Beta' ? styles.tierBeta :
+    pick.tier === 'Gamma' ? styles.tierGamma :
+    pick.tier === 'Delta' ? styles.tierDelta : '';
   
   return (
-    <div style={{
-      border: '1px solid #e5e7eb',
-      borderRadius: '8px',
-      padding: '16px',
-      margin: '8px 0',
-      backgroundColor: '#f9fafb',
-      borderLeft: `4px solid ${tierColor}`
-    }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-        <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 'bold' }}>
-          {pick.symbol}
-        </h3>
-        <div style={{
-          backgroundColor: tierColor,
-          color: 'white',
-          padding: '4px 8px',
-          borderRadius: '4px',
-          fontSize: '12px',
-          fontWeight: 'bold'
-        }}>
+    <div className={`${styles.card} ${borderClass}`}>
+      <div className={styles.header}>
+        <h3 className={styles.symbol}>{pick.symbol}</h3>
+        <div className={`${styles.tier} ${tierClass}`}>
           {pick.tier}
         </div>
       </div>
-      
-      <div style={{ marginBottom: '12px' }}>
+      <div className={styles.targetWeight}>
         <strong>Target Weight:</strong> {(pick.target_weight * 100).toFixed(2)}%
       </div>
-      
-      <div style={{ marginBottom: '12px' }}>
+      <div className={styles.rationale}>
         <strong>Rationale:</strong>
-        <p style={{ margin: '4px 0 0 0', color: '#374151', fontSize: '14px' }}>
-          {pick.rationale}
-        </p>
+        <p className={styles.rationaleText}>{pick.rationale}</p>
       </div>
-      
       {pick.risk_factors && pick.risk_factors.length > 0 && (
         <div>
           <strong>Risk Factors:</strong>
-          <ul style={{ margin: '4px 0 0 0', paddingLeft: '16px' }}>
+          <ul className={styles.riskFactors}>
             {pick.risk_factors.map((risk, index) => (
-              <li key={index} style={{ color: '#dc2626', fontSize: '14px' }}>
+              <li key={index} className={styles.riskItem}>
                 {risk}
               </li>
             ))}

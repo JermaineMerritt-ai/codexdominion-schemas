@@ -29,7 +29,9 @@ ethics:
   audit_trail: "all checks logged in Replay Shell"
 
 deployment:
-  storage: "IONOS Object Storage"
+metadata:
+  name: health-capsule
+---
   archive_path: "s3://codex-dominion/system/health_capsule/"
   broadcast: "Grafana + Prometheus + Codex Health Beacon"
   checksum: "to-be-generated"

@@ -1,5 +1,6 @@
 // components/TierSummary.tsx
 import React from 'react';
+import styles from './TierSummary.module.css';
 
 interface TierCounts {
   Alpha: number;
@@ -29,56 +30,42 @@ export const TierSummary: React.FC<TierSummaryProps> = ({
   ];
 
   return (
-    <div style={{
-      backgroundColor: '#1f2937',
-      color: 'white',
-      padding: '24px',
-      borderRadius: '12px',
-      marginBottom: '24px'
-    }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-        <h2 style={{ margin: 0, fontSize: '24px' }}>🔥 Codex Signals</h2>
-        <div style={{ fontSize: '14px', opacity: 0.8 }}>
-          {new Date(generatedAt).toLocaleString()}
-        </div>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h2 className={styles.title}>🔥 Codex Signals</h2>
+        <div className={styles.date}>{new Date(generatedAt).toLocaleString()}</div>
       </div>
-      
-      <div style={{
-        backgroundColor: '#374151',
-        padding: '12px',
-        borderRadius: '8px',
-        marginBottom: '20px',
-        borderLeft: '4px solid #fbbf24'
-      }}>
+      <div className={styles.banner}>
         <strong>📢 Market Banner:</strong> {banner}
       </div>
-
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '16px' }}>
+      <div className={styles.tierGrid}>
         {tierData.map((tier) => (
-          <div key={tier.name} style={{
-            backgroundColor: '#374151',
-            padding: '16px',
-            borderRadius: '8px',
-            textAlign: 'center',
-            border: `2px solid ${tier.color}`
-          }}>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: tier.color }}>
+          <div
+            key={tier.name}
+            className={`${styles.tierCard} ${
+              tier.name === 'Alpha' ? styles.tierAlpha :
+              tier.name === 'Beta' ? styles.tierBeta :
+              tier.name === 'Gamma' ? styles.tierGamma :
+              tier.name === 'Delta' ? styles.tierDelta : ''
+            }`}
+          >
+            <div className={`${styles.tierCount} ${
+              tier.name === 'Alpha' ? styles.tierCountAlpha :
+              tier.name === 'Beta' ? styles.tierCountBeta :
+              tier.name === 'Gamma' ? styles.tierCountGamma :
+              tier.name === 'Delta' ? styles.tierCountDelta : ''
+            }`}>
               {tier.count}
             </div>
-            <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '4px' }}>
-              {tier.name}
-            </div>
-            <div style={{ fontSize: '12px', opacity: 0.8 }}>
-              {tier.description}
-            </div>
-            <div style={{ fontSize: '12px', opacity: 0.6, marginTop: '4px' }}>
+            <div className={styles.tierName}>{tier.name}</div>
+            <div className={styles.tierDesc}>{tier.description}</div>
+            <div className={styles.tierPercent}>
               {total > 0 ? `${((tier.count / total) * 100).toFixed(1)}%` : '0%'}
             </div>
           </div>
         ))}
       </div>
-
-      <div style={{ marginTop: '16px', textAlign: 'center', fontSize: '14px', opacity: 0.8 }}>
+      <div className={styles.footer}>
         <strong>Total Positions:</strong> {total} | 
         <strong> Portfolio Intelligence:</strong> Active |
         <strong> The Merritt Method™</strong> 👑

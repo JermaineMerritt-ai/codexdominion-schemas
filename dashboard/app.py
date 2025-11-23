@@ -7,6 +7,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, date, timedelta
+from pathlib import Path
 
 # Configuration
 API_BASE = os.getenv("API_BASE", "http://localhost:8000")
@@ -75,6 +76,20 @@ def make_request(method, endpoint, data=None, timeout=10):
     except Exception as e:
         return None, f"Unexpected Error: {str(e)}"
 
+# Resource Compliance & Health Loader
+@st.cache_data(ttl=60)
+def load_ledger_status():
+    ledger_path = Path("codex_ledger.json")
+    if ledger_path.exists():
+        try:
+            with open(ledger_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            return data
+        except Exception as e:
+            st.error(f"Error loading ledger: {e}")
+            return None
+    return None
+
 def display_error(message):
     """Display error message"""
     st.markdown(f'<div class="error-message">❌ {message}</div>', unsafe_allow_html=True)
@@ -93,10 +108,9 @@ def main():
     </div>
     """, unsafe_allow_html=True)
     
-    # API Status Check
+    # API Status & Resource Compliance Sidebar
     with st.sidebar:
         st.header("🔧 System Status")
-        
         # Check API health
         health_data, health_error = make_request("GET", "/health")
         if health_data:
@@ -107,27 +121,83 @@ def main():
             st.error("❌ API Unavailable")
             if health_error:
                 st.error(health_error)
-        
-        # API Base URL
         st.text_input("API Base URL", value=API_BASE, disabled=True)
-        
-        # Quick stats
-        if health_data:
-            st.header("📈 Quick Stats")
-            analytics_data, _ = make_request("GET", "/analytics/summary")
-            if analytics_data:
-                portfolios = analytics_data.get('portfolios', {})
-                st.metric("Total Portfolios", portfolios.get('total_portfolios', 0))
-                st.metric("Total Positions", portfolios.get('total_positions', 0))
-                
-                total_value = portfolios.get('total_value_usd', 0)
-                if total_value > 0:
-                    st.metric("Total Value", f"${total_value:,.2f}")
+
+        # Resource Compliance & Health
+        st.header("🛡️ Resource Compliance & Health")
+        ledger = load_ledger_status()
+        if ledger:
+            meta = ledger.get("meta", {})
+            metrics = ledger.get("system_metrics", {})
+            st.metric("System Completeness", metrics.get("system_completeness", "Unknown"))
+            st.metric("Sovereignty Score", metrics.get("digital_sovereignty_score", 0))
+            st.metric("Flame Power", metrics.get("flame_power_level", 0))
+            st.metric("Omega Seal", "Active" if meta.get("omega_seal") else "Inactive")
+            st.metric("Completed Cycles", len(ledger.get("cycles", [])))
+            st.metric("Proclamations", len(ledger.get("proclamations", [])))
+            st.metric("Archives", len(ledger.get("completed_archives", [])))
+            st.caption(f"Last Updated: {meta.get('last_updated', 'N/A')}")
+        else:
+            st.warning("No ledger data found.")
 
     # Main Tabs
-    tab_portfolio, tab_picks, tab_ai, tab_affiliate, tab_amm = st.tabs([
-        "📊 Portfolio", "📈 Daily Picks", "🤖 AI Builder", "🤝 Affiliate Marketing", "🔄 AMM Trading"
+    tab_portfolio, tab_picks, tab_ai, tab_affiliate, tab_amm, tab_compliance = st.tabs([
+        "📊 Portfolio", "📈 Daily Picks", "🤖 AI Builder", "🤝 Affiliate Marketing", "🔄 AMM Trading", "🛡️ Compliance & Lineage"
     ])
+    with tab_compliance:
+        st.header("🛡️ Resource Compliance & Lineage Dashboard")
+        ledger = load_ledger_status()
+        if ledger:
+            meta = ledger.get("meta", {})
+            metrics = ledger.get("system_metrics", {})
+            st.subheader("System Metrics")
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                st.metric("Completeness", metrics.get("system_completeness", "Unknown"))
+            with col2:
+                st.metric("Sovereignty Score", metrics.get("digital_sovereignty_score", 0))
+            with col3:
+                st.metric("Flame Power", metrics.get("flame_power_level", 0))
+            with col4:
+                st.metric("Omega Seal", "Active" if meta.get("omega_seal") else "Inactive")
+
+            st.subheader("Cycles & Proclamations")
+            st.write(f"**Completed Cycles:** {len(ledger.get('cycles', []))}")
+            st.write(f"**Proclamations:** {len(ledger.get('proclamations', []))}")
+            st.write(f"**Archives:** {len(ledger.get('completed_archives', []))}")
+            st.caption(f"Last Updated: {meta.get('last_updated', 'N/A')}")
+
+            # Timeline chart for cycles
+            cycles = ledger.get("cycles", [])
+            if cycles:
+                df_cycles = pd.DataFrame(cycles)
+                if "name" in df_cycles and "completed_at" in df_cycles:
+                    df_cycles["completed_at"] = pd.to_datetime(df_cycles["completed_at"], errors="coerce")
+                    fig = px.timeline(df_cycles, x_start="initiated_date" if "initiated_date" in df_cycles else "started_at", x_end="completed_at", y="name", title="Cycle Completion Timeline")
+                    st.plotly_chart(fig, use_container_width=True)
+
+            # List proclamations
+            st.subheader("Proclamations")
+            for proc in ledger.get("proclamations", []):
+                st.write(f"- {proc.get('title', 'N/A')} ({proc.get('status', 'N/A')})")
+
+            # List archives
+            st.subheader("Completed Archives")
+            for arch in ledger.get("completed_archives", []):
+                st.write(f"- {arch.get('name', 'N/A')} (Sealed: {arch.get('custodian_seal', 'N/A')}, Date: {arch.get('completed_at', 'N/A')})")
+
+        else:
+            st.warning("No ledger data found for compliance dashboard.")
+
+        # Display ceremonial summary scroll for heirs and councils
+        scroll_path = Path("scrolls/ceremonial_summary_scroll.md")
+        if scroll_path.exists():
+            st.subheader("Ceremonial Summary Scroll")
+            with open(scroll_path, "r", encoding="utf-8") as f:
+                ceremonial_text = f.read()
+            st.markdown(ceremonial_text)
+        else:
+            st.info("No ceremonial summary scroll found.")
 
     with tab_portfolio:
         st.header("📊 Portfolio Management")

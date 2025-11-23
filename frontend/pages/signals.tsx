@@ -1,5 +1,6 @@
 // pages/signals.tsx
 import { useEffect, useState } from 'react';
+import styles from './signals.module.css';
 
 type Pick = {
   symbol: string;
@@ -72,20 +73,20 @@ export default function SignalsPage() {
   }
 
   return (
-    <div style={{ padding: 24 }}>
+    <div className={styles.container}>
       <h1>Signals</h1>
       {!snapshot ? (
         <p>Loading snapshot…</p>
       ) : (
         <>
-          <div>
+          <div className={styles.banner}>
             <strong>Banner:</strong> {snapshot.banner}
           </div>
-          <div style={{ marginTop: 16 }}>
+          <div className={styles.tiers}>
             <strong>Tiers:</strong>{" "}
             Alpha {snapshot.tier_counts.Alpha} | Beta {snapshot.tier_counts.Beta} | Gamma {snapshot.tier_counts.Gamma} | Delta {snapshot.tier_counts.Delta}
           </div>
-          <div style={{ marginTop: 24 }}>
+          <div className={styles.bulletin}>
             <strong>Bulletin:</strong>
             <div dangerouslySetInnerHTML={{ __html: bulletin }} />
           </div>

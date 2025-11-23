@@ -148,10 +148,10 @@ def save_json(name, data, create_backup=True, atomic=True):
             try:
                 with open(temp_filepath, 'w', encoding='utf-8') as f:
                     json.dump(data, f, indent=2, ensure_ascii=False, separators=(',', ': '))
-                
-                # Atomic rename
+                # If destination exists, remove it before renaming
+                if os.path.exists(filepath):
+                    os.remove(filepath)
                 os.rename(temp_filepath, filepath)
-                
             except Exception as e:
                 # Clean up temp file on error
                 if os.path.exists(temp_filepath):
@@ -361,8 +361,10 @@ class CodexLedger:
             "metadata": metadata or {}
         }
         result = append_entry(self.ledger_file, "entries", entry)
-        # Return the timestamp as the transaction ID
-        return result.get("timestamp")
+        # Return the timestamp as the transaction ID if result is a dict
+        if isinstance(result, dict):
+            return result.get("timestamp")
+        return None
     
     def get_transaction(self, transaction_id):
         """Get transaction by ID (simplified)"""

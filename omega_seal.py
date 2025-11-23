@@ -4,7 +4,7 @@ import json, datetime, uuid
 LEDGER_PATH = "codex_ledger.json"
 
 def load_ledger():
-    with open(LEDGER_PATH, "r") as f:
+    with open(LEDGER_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
 
 def save_ledger(data):

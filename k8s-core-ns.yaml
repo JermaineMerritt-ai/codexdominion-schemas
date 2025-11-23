@@ -13,14 +13,14 @@ spec:
       labels:
         app: codex-core
     spec:
-        # Ensure 'regcred' secret exists in this namespace
-        # Ensure 'dominion-config' ConfigMap and 'dominion-secrets' Secret exist
+      # Ensure 'regcred' secret exists in this namespace
+      # Ensure 'dominion-config' ConfigMap and 'dominion-secrets' Secret exist
       imagePullSecrets:
         - name: regcred
-        initContainers:
-          - name: setup-script
-            image: busybox
-            command: ['sh', '-c', 'echo Hello, setup!']
+      initContainers:
+        - name: setup-script
+          image: busybox
+          command: ['sh', '-c', 'echo Hello, setup!']
       containers:
         - name: codex-core
           image: ghcr.io/your-org/codex-core:latest
@@ -32,13 +32,13 @@ spec:
                 name: dominion-config
             - secretRef:
                 name: dominion-secrets
-            lifecycle:
-              postStart:
-                exec:
-                  command: ["sh", "-c", "echo PostStart hook executed"]
-              preStop:
-                exec:
-                  command: ["sh", "-c", "echo PreStop hook executed"]
+          lifecycle:
+            postStart:
+              exec:
+                command: ["sh", "-c", "echo PostStart hook executed"]
+            preStop:
+              exec:
+                command: ["sh", "-c", "echo PreStop hook executed"]
           readinessProbe:
             httpGet:
               path: /health

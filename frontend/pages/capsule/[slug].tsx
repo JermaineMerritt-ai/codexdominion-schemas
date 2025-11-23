@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import CapsuleView from '../../components/CapsuleView';
+import styles from './capsule-slug.module.css';
 
 interface TierCounts {
   Alpha: number;
@@ -66,90 +67,43 @@ export default function CapsulePage() {
 
   if (loading) {
     return (
-      <div style={{ padding: 24 }}>
-        <div className="loading-container">
-          <div className="spinner"></div>
+      <div className={styles.container}>
+        <div className={styles.loadingContainer}>
+          <div className={styles.spinner}></div>
           <p>Loading capsule artifact for {slug}...</p>
         </div>
-        <style jsx>{`
-          .loading-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 2rem;
-          }
-          .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #0070f3;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 1rem;
-          }
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-        `}</style>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div style={{ padding: 24 }}>
-        <div className="error-container">
+      <div className={styles.container}>
+        <div className={styles.errorContainer}>
           <h1>❌ Error Loading Capsule</h1>
           <p><strong>Capsule:</strong> {slug}</p>
-          <p className="error-message">{error}</p>
+          <p className={styles.errorMessage}>{error}</p>
           <button 
             onClick={() => router.back()}
-            className="back-button"
+            className={styles.backButton}
           >
             ← Back to Capsules
           </button>
         </div>
-        <style jsx>{`
-          .error-container {
-            text-align: center;
-            margin-top: 2rem;
-          }
-          .error-message {
-            color: #e74c3c;
-            font-family: monospace;
-            background: #fdf2f2;
-            padding: 1rem;
-            border-radius: 4px;
-            border-left: 4px solid #e74c3c;
-          }
-          .back-button {
-            background: #0070f3;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 1rem;
-          }
-          .back-button:hover {
-            background: #0051a2;
-          }
-        `}</style>
       </div>
     );
   }
 
   if (!artifact) {
     return (
-      <div style={{ padding: 24 }}>
+      <div className={styles.container}>
         <p>No artifact found for capsule: {slug}</p>
       </div>
     );
   }
 
   return (
-    <div style={{ padding: 24 }}>
+    <div className={styles.container}>
       <div className="capsule-header">
         <button 
           onClick={() => router.back()}

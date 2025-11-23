@@ -54,6 +54,7 @@ spec:
               cpu: 250m
               memory: 256Mi
 
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -67,6 +68,8 @@ spec:
       port: 80
       targetPort: 80
   type: NodePort
+
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -76,13 +79,13 @@ metadata:
     networking.gke.io/managed-certificates: codex-cert
 spec:
   rules:
-  - host: codexdominion.app
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: codex-service
-            port:
-              number: 80
+    - host: codexdominion.app
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: codex-service
+                port:
+                  number: 80

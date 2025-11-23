@@ -1,5 +1,6 @@
 // pages/capsules.tsx
 import React from "react";
+import styles from './capsules.module.css';
 import { GetServerSideProps } from "next";
 
 interface Capsule {
@@ -36,29 +37,29 @@ export default function Capsules({ capsules = [], runs = [], error }: CapsulesPr
     return new Date(dateStr).toLocaleString();
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'success': return '#10b981';
-      case 'error': return '#ef4444';
-      case 'running': return '#f59e0b';
-      default: return '#6b7280';
+  const getModeClass = (mode: string) => {
+    switch (mode) {
+      case 'automated': return styles.modeAutomated;
+      case 'custodian': return styles.modeCustodian;
+      case 'manual': return styles.modeManual;
+      default: return styles.modeManual;
     }
   };
 
-  const getModeColor = (mode: string) => {
-    switch (mode) {
-      case 'automated': return '#3b82f6';
-      case 'custodian': return '#8b5cf6';
-      case 'manual': return '#6b7280';
-      default: return '#6b7280';
+  const getStatusClass = (status: string) => {
+    switch (status) {
+      case 'success': return styles.statusSuccess;
+      case 'error': return styles.statusError;
+      case 'running': return styles.statusRunning;
+      default: return styles.statusDefault;
     }
   };
 
   if (error) {
     return (
-      <div style={{ padding: 24 }}>
+      <div className={styles.container}>
         <h1>Codex Capsules</h1>
-        <div style={{ color: '#ef4444', padding: 16, backgroundColor: '#fef2f2', borderRadius: 8 }}>
+        <div className={styles.error}>
           <strong>Error:</strong> {error}
         </div>
       </div>
@@ -66,69 +67,40 @@ export default function Capsules({ capsules = [], runs = [], error }: CapsulesPr
   }
 
   return (
-    <div style={{ padding: 24, fontFamily: 'system-ui, sans-serif' }}>
-      <div style={{ marginBottom: 32 }}>
-        <h1 style={{ margin: 0, color: '#1f2937', fontSize: '2rem' }}>
-          🏛️ Codex Capsules Registry
-        </h1>
-        <p style={{ color: '#6b7280', margin: '8px 0 0 0' }}>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>🏛️ Codex Capsules Registry</h1>
+        <p className={styles.subtitle}>
           Operational sovereignty tracking for ceremonial and technical operations
         </p>
       </div>
-
       {/* Capsules Section */}
-      <section style={{ marginBottom: 48 }}>
-        <h2 style={{ 
-          color: '#374151', 
-          borderBottom: '2px solid #e5e7eb', 
-          paddingBottom: 8,
-          marginBottom: 16 
-        }}>
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>
           📦 Registered Capsules ({capsules.length})
         </h2>
-        
         {capsules.length === 0 ? (
-          <p style={{ color: '#6b7280', fontStyle: 'italic' }}>No capsules registered yet.</p>
+          <p className={styles.italic}>No capsules registered yet.</p>
         ) : (
-          <div style={{ display: 'grid', gap: 16 }}>
+          <div className={styles.grid}>
             {capsules.map((c) => (
-              <div 
-                key={c.slug}
-                style={{
-                  border: '1px solid #e5e7eb',
-                  borderRadius: 8,
-                  padding: 16,
-                  backgroundColor: '#fff'
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: 8 }}>
-                  <h3 style={{ margin: 0, color: '#1f2937' }}>{c.title}</h3>
-                  <span style={{
-                    backgroundColor: c.status === 'active' ? '#dcfce7' : '#fee2e2',
-                    color: c.status === 'active' ? '#166534' : '#991b1b',
-                    padding: '4px 8px',
-                    borderRadius: 4,
-                    fontSize: '0.75rem',
-                    fontWeight: 'bold'
-                  }}>
+              <div key={c.slug} className={styles.capsuleCard}>
+                <div className={styles.capsuleHeader}>
+                  <h3 className={styles.capsuleTitle}>{c.title}</h3>
+                  <span className={c.status === 'active' ? styles.capsuleStatusActive : styles.capsuleStatusInactive}>
                     {c.status.toUpperCase()}
                   </span>
                 </div>
-                
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, fontSize: '0.875rem' }}>
+                <div className={styles.capsuleGrid}>
                   <div>
-                    <strong>Slug:</strong> <code style={{ backgroundColor: '#f3f4f6', padding: '2px 4px', borderRadius: 2 }}>{c.slug}</code>
+                    <strong>Slug:</strong> <code className={styles.capsuleSlug}>{c.slug}</code>
                   </div>
                   <div>
                     <strong>Kind:</strong> {c.kind}
                   </div>
                   <div>
                     <strong>Mode:</strong> 
-                    <span style={{
-                      color: getModeColor(c.mode),
-                      fontWeight: 'bold',
-                      marginLeft: 4
-                    }}>
+                    <span className={`${styles.capsuleMode} ${getModeClass(c.mode)}`}>
                       {c.mode}
                     </span>
                   </div>
@@ -139,19 +111,10 @@ export default function Capsules({ capsules = [], runs = [], error }: CapsulesPr
                     <strong>Schedule:</strong> {c.schedule || '—'}
                   </div>
                 </div>
-                
                 {c.entrypoint && (
-                  <div style={{ marginTop: 8, fontSize: '0.875rem' }}>
+                  <div className={styles.capsuleEntrypoint}>
                     <strong>Entrypoint:</strong> 
-                    <code style={{ 
-                      backgroundColor: '#f3f4f6', 
-                      padding: '2px 4px', 
-                      borderRadius: 2,
-                      marginLeft: 4,
-                      fontSize: '0.75rem'
-                    }}>
-                      {c.entrypoint}
-                    </code>
+                    <code className={styles.capsuleEntrypointCode}>{c.entrypoint}</code>
                   </div>
                 )}
               </div>
@@ -159,56 +122,32 @@ export default function Capsules({ capsules = [], runs = [], error }: CapsulesPr
           </div>
         )}
       </section>
-
       {/* Recent Runs Section */}
       <section>
-        <h2 style={{ 
-          color: '#374151', 
-          borderBottom: '2px solid #e5e7eb', 
-          paddingBottom: 8,
-          marginBottom: 16 
-        }}>
+        <h2 className={styles.sectionTitle}>
           🚀 Recent Execution Runs ({runs.length})
         </h2>
-        
         {runs.length === 0 ? (
-          <p style={{ color: '#6b7280', fontStyle: 'italic' }}>No execution runs recorded yet.</p>
+          <p className={styles.italic}>No execution runs recorded yet.</p>
         ) : (
-          <div style={{ display: 'grid', gap: 12 }}>
+          <div className={styles.runGrid}>
             {runs.slice(0, 20).map((r, i) => (
-              <div 
-                key={i}
-                style={{
-                  border: '1px solid #e5e7eb',
-                  borderRadius: 6,
-                  padding: 12,
-                  backgroundColor: '#fafafa',
-                  fontSize: '0.875rem'
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+              <div key={i} className={styles.runCard}>
+                <div className={styles.runHeader}>
                   <div>
                     <strong>{r.capsule_slug}</strong> executed by <em>{r.actor}</em>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{
-                      color: getStatusColor(r.status),
-                      fontWeight: 'bold'
-                    }}>
-                      ●
-                    </span>
-                    <span style={{ color: '#6b7280' }}>
-                      {formatDateTime(r.started_at)}
-                    </span>
+                  <div className={styles.flexRow}>
+                    <span className={`${styles.runStatus} ${getStatusClass(r.status)}`}>●</span>
+                    <span className={styles.runDate}>{formatDateTime(r.started_at)}</span>
                   </div>
                 </div>
-                
                 {r.artifact_uri && (
-                  <div style={{ color: '#6b7280', fontSize: '0.75rem' }}>
+                  <div className={styles.runArtifact}>
                     📦 Artifact: 
                     <a 
                       href={r.artifact_uri} 
-                      style={{ color: '#3b82f6', textDecoration: 'none', marginLeft: 4 }}
+                      className={styles.runArtifactLink}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
