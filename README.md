@@ -1,3 +1,26 @@
+# CodexDominion Schemas
+
+Publicly hosted via GitHub Pages for validation, integration, and sharing.
+
+## Available Schemas
+
+- [Charter Schema](https://jermainemerritt-ai.github.io/codexdominion-schemas/charter-schema.json)
+- [Eternal Capsule Schema](https://jermainemerritt-ai.github.io/codexdominion-schemas/eternalcapsule-schema.json)
+- [Infinity Archive Schema](https://jermainemerritt-ai.github.io/codexdominion-schemas/infinityarchive-schema.json)
+- [Omega Capsule Schema](https://jermainemerritt-ai.github.io/codexdominion-schemas/omegacapsule-schema.json)
+
+## Usage
+
+You can fetch these schemas directly via HTTPS for:
+- Public validation workflows
+- Integration into CI/CD pipelines
+- Documentation and onboarding for heirs and councils
+
+## Notes
+
+- Schemas are versioned and hosted in the `docs/` folder.
+- GitHub Pages automatically serves the latest committed versions.
+- For future updates, add new schema files to `docs/`, commit, and push.
 # 🏛️ Codex Dominion - Operational Sovereignty Platform
 
 > **Total Operational Independence Through Autonomous Capsule Execution**
