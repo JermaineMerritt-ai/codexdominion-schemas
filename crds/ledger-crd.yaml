@@ -1,0 +1,44 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: ledgers.codexdominion.com
+spec:
+  group: codexdominion.com
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                kind:
+                  type: string
+                name:
+                  type: string
+                version:
+                  type: string
+                crown:
+                  type: string
+                seal:
+                  type: string
+                checksum:
+                  type: string
+                cycle:
+                  type: string
+                timestamp:
+                  type: string
+                actor:
+                  type: string
+                pipelineRunId:
+                  type: string
+  scope: Namespaced
+  names:
+    plural: ledgers
+    singular: ledger
+    kind: ledger
+    shortNames:
+      - lgr

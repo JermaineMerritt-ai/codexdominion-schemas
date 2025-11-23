@@ -1,4 +1,16 @@
+  flame-monitoring:
+    needs: deploy-with-super-ai
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Flame Monitoring
+        run: echo "🔥 Running post-deployment flame monitoring..."
 name: Enhanced Codex CI/CD Pipeline
+
+env:
+  SUPER_AI_TOKEN: ${{ secrets.SUPER_AI_TOKEN }}
+  DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
 
 on:
   push:
@@ -93,6 +105,13 @@ jobs:
           approvers: jermaine
       - name: Deploy to Production
         run: echo "👑 Deploying to PROD realm..."
+
+        - name: Deploy with Super AI
+          run: |
+            echo "🚀 Deploying with Super Action AI..."
+            curl -X POST "$DEPLOY_URL" \
+              -H "Authorization: Bearer $SUPER_AI_TOKEN" \
+              -d '{"version":"${{ github.sha }}"}'
 
     compliance-archive:
       runs-on: ubuntu-latest

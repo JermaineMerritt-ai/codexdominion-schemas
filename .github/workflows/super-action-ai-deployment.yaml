@@ -2,63 +2,113 @@ name: Super Action AI Deployment
 
 on:
   push:
-    branches: [ "main", "staging", "dev" ]
+    branches: ["main", "staging", "dev"]
   pull_request:
-    branches: [ "main", "staging", "dev" ]
+    branches: ["main", "staging", "dev"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "18"
 
 jobs:
   super-ai-analysis:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Analyze AI lineage
-        run: echo "🔍 Super AI lineage analysis complete"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+      - name: Install dependencies
+        run: npm ci
+      - name: Run analysis
+        run: npm run analysis
 
   deploy-with-super-ai:
-    runs-on: ubuntu-latest
     needs: super-ai-analysis
+    runs-on: ubuntu-latest
     env:
       SUPER_AI_TOKEN: ${{ secrets.SUPER_AI_TOKEN }}
       DEPLOY_URL: ${{ secrets.DEPLOY_URL }}
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Deploy with Super Action AI
         run: |
-          echo "🚀 Deploying with Super Action AI..."
-          curl -X POST "$DEPLOY_URL" \
+          echo "🚀 Deploying commit ${{ github.sha }}"
+          RESP_CODE=$(curl -s -o /tmp/resp.json -w "%{http_code}" -X POST "$DEPLOY_URL" \
             -H "Authorization: Bearer $SUPER_AI_TOKEN" \
-            -d '{"version":"${{ github.sha }}"}' || echo "⚠️ Deployment failed"
+            -H "Content-Type: application/json" \
+            -d "{\"commit\":\"${{ github.sha }}\"}")
+          echo "HTTP Response Code: $RESP_CODE"
+          cat /tmp/resp.json || true
+          if [ "$RESP_CODE" -ne 200 ]; then
+            echo "::error::Deploy failed (HTTP $RESP_CODE)"
+            exit 1
+          fi
 
   flame-monitoring:
-    runs-on: ubuntu-latest
     needs: deploy-with-super-ai
-    if: success()
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Install Trivy
         run: |
           curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
-      - name: Run Trivy FS Scan
-        run: ./trivy fs --severity HIGH,CRITICAL .
+          sudo mv trivy /usr/local/bin/
+      - name: Run Trivy filesystem scan
+        run: trivy fs . --severity HIGH,CRITICAL --exit-code 1 --no-progress --format table
 
   compliance-archive:
-    runs-on: ubuntu-latest
     needs: flame-monitoring
     if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: us-east-1
     steps:
-      - uses: actions/checkout@v3
-      - name: Bundle compliance artifacts
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Bundle compliance capsule
         run: |
           mkdir -p evidence/${{ github.sha }}
-          echo "realm=${GITHUB_REF##*/}" > evidence/${{ github.sha }}/manifest.txt
-          echo "commit=${GITHUB_SHA}" >> evidence/${{ github.sha }}/manifest.txt
+          echo "commit=${GITHUB_SHA}" > evidence/${{ github.sha }}/manifest.txt
+          echo "branch=${GITHUB_REF##*/}" >> evidence/${{ github.sha }}/manifest.txt
           echo "timestamp=$(date -u)" >> evidence/${{ github.sha }}/manifest.txt
           tar -czf evidence-${{ github.sha }}.tar.gz evidence/${{ github.sha }}
+      - name: Upload capsule
+        run: aws s3 cp evidence-${{ github.sha }}.tar.gz s3://codexdominion-compliance/${{ github.sha }}.tar.gz
 
-      - name: Upload to S3
+  tests:
+    runs-on: ubuntu-latest
+    needs: super-ai-analysis
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm test -- --ci
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: [tests, flame-monitoring]
+    if: failure()
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload: |
+            {
+              "text": "🔥 Dominion workflow failed on commit ${{ github.sha }}"
+            }
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-        run: |
-          aws s3 cp evidence-${{ github.sha }}.tar.gz s3://codexdominion-compliance/${{ github.sha }}.tar.gz
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

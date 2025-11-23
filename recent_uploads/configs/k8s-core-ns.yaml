@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codex-core
+  namespace: codex-dominion
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: codex-core
+  template:
+    metadata:
+      labels:
+        app: codex-core
+    spec:
+      # Ensure 'regcred' secret exists in this namespace
+      # Ensure 'dominion-config' ConfigMap and 'dominion-secrets' Secret exist
+      imagePullSecrets:
+        - name: regcred
+      initContainers:
+        - name: setup-script
+          image: busybox
+          command: ['sh', '-c', 'echo Hello, setup!']
+      containers:
+        - name: codex-core
+          image: ghcr.io/your-org/codex-core:latest
+          ports:
+            - containerPort: 8080
+            # Service exposes port 8080, mapped to container port 8080
+          envFrom:
+            - configMapRef:
+                name: dominion-config
+            - secretRef:
+                name: dominion-secrets
+          lifecycle:
+            postStart:
+              exec:
+                command: ["sh", "-c", "echo PostStart hook executed"]
+            preStop:
+              exec:
+                command: ["sh", "-c", "echo PreStop hook executed"]
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              # Ensure /health endpoint exists in your app
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              # Ensure /health endpoint exists in your app
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: codex-core
+  namespace: codex-dominion
+spec:
+  selector:
+    app: codex-core
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: http
