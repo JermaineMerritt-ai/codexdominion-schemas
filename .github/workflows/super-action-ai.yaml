@@ -64,6 +64,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: appleboy/ssh-action@v0.1.10
         with:
+          # Ensure these secrets are set in your GitHub repository settings
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_KEY }}
