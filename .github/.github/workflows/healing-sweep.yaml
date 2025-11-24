@@ -1,0 +1,21 @@
+name: Healing Sweep
+
+on: [push, pull_request]
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Terraform Validation
+        run: terraform fmt -recursive && terraform validate
+      - name: Security Scan
+        run: trivy fs .
+      - name: Linting
+        run: eslint . --fix && pylint **/*.py
+      - name: Dependency Audit
+        run: npm audit fix || true
+      - name: Formatting
+        run: prettier --write .
+      - name: Tests
+        run: npm test || pytest

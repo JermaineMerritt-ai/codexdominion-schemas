@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "spec": {
+      "type": "object",
+      "properties": {
+        "crown": { "type": "string" },
+        "seal": { "type": "string" },
+        "lineage": {
+          "type": "object",
+          "properties": {
+            "origin": { "type": "string" },
+            "legacy": { "type": "string" },
+            "renewal": { "type": "string" }
+          }
+        },
+        "replayPolicy": { "type": "string" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "binding": {
+          "type": "object",
+          "properties": {
+            "pipeline": { "type": "string" },
+            "dashboard": { "type": "string" },
+            "capsule": { "type": "string" }
+          }
+        },
+        "rights": {
+          "type": "object",
+          "properties": {
+            "councils": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "custodians": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
