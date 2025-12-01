@@ -6,21 +6,35 @@
   "workspaces": [
     "apps/*",
     "packages/*",
+    "agents/*",
+    "core",
+    "customers",
     "system_capsules/*",
     "avatars/*"
   ],
   "scripts": {
     "dev": "turbo run dev",
+    "dev:chatbot": "cd apps/chatbot && npm run dev",
+    "dev:commerce": "cd apps/commerce && npm run dev",
+    "dev:observatory": "cd apps/observatory && npm run dev",
+    "dev:compliance": "cd apps/compliance && npm run dev",
     "build": "turbo run build",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "type-check": "turbo run type-check",
-    "council:status": "node scripts/council-status.js",
+    "council:status": "ts-node -e \"import { councilSeal } from './core/councilSeal'; console.log(councilSeal.getSystemStatus());\"",
+    "sovereign:list": "ts-node -e \"import { sovereignService } from './core/sovereigns'; console.log(sovereignService.getAllSovereigns());\"",
     "sovereign:deploy": "turbo run deploy --filter='./apps/*'",
     "custodian:check": "turbo run check --filter='./packages/*'",
-    "agents:execute": "node scripts/execute-agents.js"
+    "custodian:health": "ts-node -e \"import { custodianService } from './core/custodians'; console.log(custodianService.getSystemHealth());\"",
+    "agents:healthcare": "ts-node agents/healthcare/index.ts",
+    "agents:legal": "ts-node agents/legal/index.ts",
+    "agents:commerce": "ts-node agents/commerce/index.ts",
+    "agents:cybersecurity": "ts-node agents/cybersecurity/index.ts",
+    "customers:stats": "ts-node -e \"import { customerPortal } from './customers/customerPortal'; console.log(customerPortal.getPortalStats());\"",
+    "flows:metrics": "ts-node -e \"import { flowOrchestrator } from './core/flows'; console.log(flowOrchestrator.getFlowMetrics());\""
   },
   "devDependencies": {
     "@types/node": "^20.8.0",
