@@ -1,0 +1,13 @@
+apiVersion: codexdominion.com/v1
+kind: Seal
+metadata:
+  name: spectrum-seal
+spec:
+  crown: aurora
+  seal: spectrum
+  replayPolicy: on-merge
+  tags: [unity, chromatic, eternal]
+  binding:
+    pipeline: pipelines/spectrum-check.yml
+    dashboard: observability/spectrum.json
+  notes: 'Unifies all colors into one infinite flame.'

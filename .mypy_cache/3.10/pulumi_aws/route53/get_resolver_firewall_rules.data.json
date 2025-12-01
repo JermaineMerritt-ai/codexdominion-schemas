@@ -1,0 +1,961 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi_aws.route53.get_resolver_firewall_rules",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Any",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "AwaitableGetResolverFirewallRulesResult": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.AwaitableGetResolverFirewallRulesResult",
+          "name": "AwaitableGetResolverFirewallRulesResult",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.AwaitableGetResolverFirewallRulesResult",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.route53.get_resolver_firewall_rules",
+        "mro": [
+          "pulumi_aws.route53.get_resolver_firewall_rules.AwaitableGetResolverFirewallRulesResult",
+          "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__await__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.AwaitableGetResolverFirewallRulesResult.__await__",
+              "name": "__await__",
+              "type": null
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.AwaitableGetResolverFirewallRulesResult.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.route53.get_resolver_firewall_rules.AwaitableGetResolverFirewallRulesResult",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "GetResolverFirewallRulesResult": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult",
+          "name": "GetResolverFirewallRulesResult",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.route53.get_resolver_firewall_rules",
+        "mro": [
+          "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "__self__",
+                "action",
+                "firewall_rule_group_id",
+                "firewall_rules",
+                "id",
+                "priority",
+                "region"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.__init__",
+              "name": "__init__",
+              "type": null
+            }
+          },
+          "action": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.action",
+                "name": "action",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "action of GetResolverFirewallRulesResult",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.action",
+                "name": "action",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "action of GetResolverFirewallRulesResult",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "firewall_rule_group_id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.firewall_rule_group_id",
+                "name": "firewall_rule_group_id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "firewall_rule_group_id of GetResolverFirewallRulesResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.firewall_rule_group_id",
+                "name": "firewall_rule_group_id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "firewall_rule_group_id of GetResolverFirewallRulesResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "firewall_rules": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.firewall_rules",
+                "name": "firewall_rules",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "firewall_rules of GetResolverFirewallRulesResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      "pulumi_aws.route53.outputs.GetResolverFirewallRulesFirewallRuleResult"
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Sequence"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.firewall_rules",
+                "name": "firewall_rules",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "firewall_rules of GetResolverFirewallRulesResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      "pulumi_aws.route53.outputs.GetResolverFirewallRulesFirewallRuleResult"
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Sequence"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.id",
+                "name": "id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "id of GetResolverFirewallRulesResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.id",
+                "name": "id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "id of GetResolverFirewallRulesResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "priority": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.priority",
+                "name": "priority",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "priority of GetResolverFirewallRulesResult",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.int", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.priority",
+                "name": "priority",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "priority of GetResolverFirewallRulesResult",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.int", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of GetResolverFirewallRulesResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of GetResolverFirewallRulesResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "Mapping": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Mapping",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NotRequired": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing_extensions.NotRequired",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Optional": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Optional",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Sequence": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Sequence",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypeAlias": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypeAlias",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypedDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypedDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Union": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Union",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "__all__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.__all__",
+        "name": "__all__",
+        "type": {
+          ".class": "Instance",
+          "args": ["builtins.str"],
+          "extra_attrs": null,
+          "type_ref": "builtins.list"
+        }
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_builtins": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "builtins",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_utilities": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws._utilities",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "get_resolver_firewall_rules": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [1, 1, 1, 1, 1],
+        "arg_names": ["action", "firewall_rule_group_id", "priority", "region", "opts"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.get_resolver_firewall_rules",
+        "name": "get_resolver_firewall_rules",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [1, 1, 1, 1, 1],
+          "arg_names": ["action", "firewall_rule_group_id", "priority", "region", "opts"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.int", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["pulumi.invoke.InvokeOptions", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "get_resolver_firewall_rules",
+          "ret_type": "pulumi_aws.route53.get_resolver_firewall_rules.AwaitableGetResolverFirewallRulesResult",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "get_resolver_firewall_rules_output": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [1, 1, 1, 1, 1],
+        "arg_names": ["action", "firewall_rule_group_id", "priority", "region", "opts"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.route53.get_resolver_firewall_rules.get_resolver_firewall_rules_output",
+        "name": "get_resolver_firewall_rules_output",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [1, 1, 1, 1, 1],
+          "arg_names": ["action", "firewall_rule_group_id", "priority", "region", "opts"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [
+                    {
+                      ".class": "UnionType",
+                      "items": ["builtins.str", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "type_ref": "pulumi.output.Input"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": ["builtins.str"],
+                  "type_ref": "pulumi.output.Input"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [
+                    {
+                      ".class": "UnionType",
+                      "items": ["builtins.int", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "type_ref": "pulumi.output.Input"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [
+                    {
+                      ".class": "UnionType",
+                      "items": ["builtins.str", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "type_ref": "pulumi.output.Input"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                "pulumi.invoke.InvokeOptions",
+                "pulumi.invoke.InvokeOutputOptions",
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "get_resolver_firewall_rules_output",
+          "ret_type": {
+            ".class": "Instance",
+            "args": [
+              "pulumi_aws.route53.get_resolver_firewall_rules.GetResolverFirewallRulesResult"
+            ],
+            "extra_attrs": null,
+            "type_ref": "pulumi.output.Output"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "outputs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.route53.outputs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "overload": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.overload",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "pulumi": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "sys": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "sys",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "warnings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "warnings",
+      "kind": "Gdef",
+      "module_public": false
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi_aws\\route53\\get_resolver_firewall_rules.py"
+}

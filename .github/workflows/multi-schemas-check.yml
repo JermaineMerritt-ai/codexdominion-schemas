@@ -1,0 +1,31 @@
+name: Schema Dependency Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display schema dependency secret
+        run: echo "🔐 CODE_DEPEND_ON_SCHEMAS=${{ secrets.CODE_DEPEND_ON_SCHEMAS }}"
+
+      - name: Use schema in validation script
+        run: |
+          echo "🧪 Validating schema dependency..."
+          if [[ "${{ secrets.CODE_DEPEND_ON_SCHEMAS }}" == "true" ]]; then
+            echo "✅ Schema dependency confirmed."
+          else
+            echo "⚠️ Schema dependency missing or invalid."
+            exit 1
+          fi
+
+      - name: Notify Slack (optional)
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"✅ Schema dependency check passed in codedimension-schemas."}' \
+          "${{ secrets.SLACK_WEBHOOK_URL }}"

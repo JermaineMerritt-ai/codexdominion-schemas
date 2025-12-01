@@ -1,0 +1,49 @@
+name: Multi-Repo Hygiene Sweep
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo:
+          - jermaine-merritt/codex-dominion
+          - JermaineMerritt1/codedimension-schemas
+          - JeramiaSmith/codedemodominion-schema
+    steps:
+      - name: Checkout ${{ matrix.repo }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.repo }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Validate workflows
+        run: yamllint .github/workflows || true
+
+      - name: Confirm secrets
+        env:
+          CODE_DEPEND_ON_SCHEMAS: ${{ secrets.CODE_DEPEND_ON_SCHEMAS }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          for secret in CODE_DEPEND_ON_SCHEMAS SLACK_WEBHOOK_URL; do
+            if [ -z "${!secret}" ]; then
+              echo "❌ Missing secret: $secret"
+              exit 1
+            else
+              echo "✅ Secret $secret is set"
+            fi
+          done
+
+      - name: Schema validation
+        env:
+          CODE_DEPEND_ON_SCHEMAS: ${{ secrets.CODE_DEPEND_ON_SCHEMAS }}
+        run: |
+          echo "🧪 Validating schema for ${{ matrix.repo }}..."
+          if [[ "$CODE_DEPEND_ON_SCHEMAS" == "true" ]]; then
+            echo "✅ Schema dependency confirmed."
+          else
+            echo "⚠️ Schema dependency missing."
+            exit 1
+          fi

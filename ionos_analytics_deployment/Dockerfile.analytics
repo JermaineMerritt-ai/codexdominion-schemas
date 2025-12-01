@@ -1,0 +1,40 @@
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Additional analytics packages
+RUN pip install --no-cache-dir \
+    plotly \
+    streamlit \
+    pandas \
+    numpy \
+    scikit-learn \
+    tensorflow \
+    redis \
+    celery
+
+# Copy application code
+COPY advanced_data_analytics_dashboard.py .
+COPY data/ ./data/
+COPY models/ ./models/
+
+# Expose port
+EXPOSE 8516
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8516/_stcore/health || exit 1
+
+# Run application
+CMD ["streamlit", "run", "advanced_data_analytics_dashboard.py", "--server.port=8516", "--server.address=0.0.0.0", "--server.headless=true"]

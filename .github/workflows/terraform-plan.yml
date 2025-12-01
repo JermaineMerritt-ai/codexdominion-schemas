@@ -1,0 +1,125 @@
+name: Terraform Plan
+on:
+  pull_request:
+    paths:
+      - infra/**
+
+jobs:
+  plan-azure:
+    name: Azure Terraform Plan
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with: { terraform_version: 1.6.6 }
+
+      - name: Azure login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Terraform Init
+        working-directory: infra/envs/dev
+        run: terraform init
+
+      - name: Terraform Plan
+        working-directory: infra/envs/dev
+        run: terraform plan -out=tfplan
+
+      - name: Show Plan Summary
+        working-directory: infra/envs/dev
+        run: terraform show -no-color tfplan
+
+      - name: Show Plan
+        working-directory: infra/envs/dev
+        run: terraform show tfplan
+      - name: Upload plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan
+          path: infra/envs/dev/tfplan
+
+  plan-ionos-hybrid:
+    name: IONOS Terraform Plan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    if: ${{ github.event.pull_request.changed_files > 0 }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with: { terraform_version: 1.6.6 }
+
+      - name: Terraform Init (IONOS)
+        working-directory: infra/envs/dev
+        env:
+          IONOS_USERNAME: ${{ secrets.IONOS_USERNAME }}
+          IONOS_PASSWORD: ${{ secrets.IONOS_PASSWORD }}
+        run: terraform init
+
+      - name: Terraform Plan (IONOS)
+        working-directory: infra/envs/dev
+        env:
+          IONOS_USERNAME: ${{ secrets.IONOS_USERNAME }}
+          IONOS_PASSWORD: ${{ secrets.IONOS_PASSWORD }}
+        run: terraform plan -out=tfplan-ionos
+
+      - name: Show Plan Summary (IONOS)
+        working-directory: infra/envs/dev
+        run: terraform show -no-color tfplan-ionos
+
+      - name: Upload IONOS plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan-ionos
+          path: infra/envs/dev/tfplan-ionos
+
+      - name: Show Plan Summary
+        working-directory: infra/envs/dev
+        run: terraform show -no-color tfplan
+
+      - name: Upload plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan
+          path: infra/envs/dev/tfplan
+
+  plan-ionos:
+    name: IONOS Terraform Plan
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.changed_files > 0
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with: { terraform_version: 1.6.6 }
+
+      - name: Terraform Init (IONOS)
+        working-directory: infra/envs/dev
+        env:
+          IONOS_USERNAME: ${{ secrets.IONOS_USERNAME }}
+          IONOS_PASSWORD: ${{ secrets.IONOS_PASSWORD }}
+        run: terraform init
+
+      - name: Terraform Plan (IONOS)
+        working-directory: infra/envs/dev
+        env:
+          IONOS_USERNAME: ${{ secrets.IONOS_USERNAME }}
+          IONOS_PASSWORD: ${{ secrets.IONOS_PASSWORD }}
+        run: terraform plan -out=tfplan-ionos
+
+      - name: Show Plan Summary (IONOS)
+        working-directory: infra/envs/dev
+        run: terraform show -no-color tfplan-ionos
+
+      - name: Upload IONOS plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan-ionos
+          path: infra/envs/dev/tfplan-ionos

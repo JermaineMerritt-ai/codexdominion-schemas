@@ -1,0 +1,55 @@
+capsule:
+  name: 'Identity Capsule'
+  version: '1.0.0'
+  type: 'system'
+  description: >
+    The Identity Capsule — sovereign passport engine of Dominion.
+    Governs contributor keys, Custodian signatures, and lineage-safe
+    identity manifests. Ensures every participant is recognized,
+    sealed, and inheritable.
+
+lineage:
+  ancestry_id: 'system-0004'
+  parent_capsules:
+    - 'security-capsule-system-0002'
+    - 'storage-capsule-system-0003'
+  remix_policy: 'identity-bound'
+  contributor_roles:
+    - name: 'Jermaine Merritt'
+      role: 'Custodian of Identity'
+      seal: '⚜️'
+    - name: 'Future Contributors'
+      role: 'Passport Holders'
+      seal: '🪪'
+
+ethics:
+  consent_required: true
+  attribution: required
+  retention: 'eternal'
+  encryption_required: true
+  transparency: 'identity manifests visible to councils and contributors'
+  revocation_policy: 'keys and passports may be revoked or rotated by Custodian decree'
+
+deployment:
+  storage: 'IONOS Object Storage'
+  archive_path: 's3://codex-dominion/system/identity_capsule/'
+  broadcast: 'Codex Passport Registry Endpoint'
+  checksum: 'to-be-generated'
+
+identity:
+  key_management:
+    algorithm: 'ed25519'
+    rotation_policy: 'annual or upon breach'
+    custodian_key: '/etc/codex/keys/custodian_ed25519.pem'
+  passports:
+    format: 'yaml'
+    fields: ['name', 'role', 'seal', 'public_key', 'ancestry_id']
+    archive: 'passports/'
+  verification:
+    endpoint: '/system/verify_identity'
+    method: 'signature-check'
+
+seals:
+  created_at: '2025-10-27T17:23:00Z'
+  custodian_signature: 'Jermaine Merritt'
+  codex_seal: 'IDENTITY-SYSTEM'

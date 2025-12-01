@@ -1,0 +1,1387 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi_aws.cloudformation.get_stack",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Any",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "AwaitableGetStackResult": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.cloudformation.get_stack.AwaitableGetStackResult",
+          "name": "AwaitableGetStackResult",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.cloudformation.get_stack.AwaitableGetStackResult",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.cloudformation.get_stack",
+        "mro": [
+          "pulumi_aws.cloudformation.get_stack.AwaitableGetStackResult",
+          "pulumi_aws.cloudformation.get_stack.GetStackResult",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__await__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.cloudformation.get_stack.AwaitableGetStackResult.__await__",
+              "name": "__await__",
+              "type": null
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.cloudformation.get_stack.AwaitableGetStackResult.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.cloudformation.get_stack.AwaitableGetStackResult",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "GetStackResult": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult",
+          "name": "GetStackResult",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.cloudformation.get_stack",
+        "mro": ["pulumi_aws.cloudformation.get_stack.GetStackResult", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "__self__",
+                "capabilities",
+                "description",
+                "disable_rollback",
+                "iam_role_arn",
+                "id",
+                "name",
+                "notification_arns",
+                "outputs",
+                "parameters",
+                "region",
+                "tags",
+                "template_body",
+                "timeout_in_minutes"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.__init__",
+              "name": "__init__",
+              "type": null
+            }
+          },
+          "capabilities": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.capabilities",
+                "name": "capabilities",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "capabilities of GetStackResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Sequence"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.capabilities",
+                "name": "capabilities",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "capabilities of GetStackResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Sequence"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "description": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.description",
+                "name": "description",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "description of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.description",
+                "name": "description",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "description of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "disable_rollback": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.disable_rollback",
+                "name": "disable_rollback",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "disable_rollback of GetStackResult",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.disable_rollback",
+                "name": "disable_rollback",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "disable_rollback of GetStackResult",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "iam_role_arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.iam_role_arn",
+                "name": "iam_role_arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "iam_role_arn of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.iam_role_arn",
+                "name": "iam_role_arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "iam_role_arn of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.id",
+                "name": "id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "id of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.id",
+                "name": "id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "id of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.name",
+                "name": "name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "name of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.name",
+                "name": "name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "name of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "notification_arns": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.notification_arns",
+                "name": "notification_arns",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "notification_arns of GetStackResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Sequence"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.notification_arns",
+                "name": "notification_arns",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "notification_arns of GetStackResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Sequence"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "outputs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.outputs",
+                "name": "outputs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "outputs of GetStackResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str", "builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Mapping"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.outputs",
+                "name": "outputs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "outputs of GetStackResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str", "builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Mapping"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "parameters": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.parameters",
+                "name": "parameters",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "parameters of GetStackResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str", "builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Mapping"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.parameters",
+                "name": "parameters",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "parameters of GetStackResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str", "builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Mapping"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "tags": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.tags",
+                "name": "tags",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "tags of GetStackResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str", "builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Mapping"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.tags",
+                "name": "tags",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "tags of GetStackResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str", "builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Mapping"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "template_body": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.template_body",
+                "name": "template_body",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "template_body of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.template_body",
+                "name": "template_body",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "template_body of GetStackResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "timeout_in_minutes": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.timeout_in_minutes",
+                "name": "timeout_in_minutes",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "timeout_in_minutes of GetStackResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.timeout_in_minutes",
+                "name": "timeout_in_minutes",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "timeout_in_minutes of GetStackResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.cloudformation.get_stack.GetStackResult.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.cloudformation.get_stack.GetStackResult",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "Mapping": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Mapping",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NotRequired": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing_extensions.NotRequired",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Optional": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Optional",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Sequence": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Sequence",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypeAlias": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypeAlias",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypedDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypedDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Union": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Union",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "__all__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "pulumi_aws.cloudformation.get_stack.__all__",
+        "name": "__all__",
+        "type": {
+          ".class": "Instance",
+          "args": ["builtins.str"],
+          "extra_attrs": null,
+          "type_ref": "builtins.list"
+        }
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.cloudformation.get_stack.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.cloudformation.get_stack.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.cloudformation.get_stack.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.cloudformation.get_stack.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.cloudformation.get_stack.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.cloudformation.get_stack.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_builtins": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "builtins",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_utilities": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws._utilities",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "get_stack": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [1, 1, 1, 1],
+        "arg_names": ["name", "region", "tags", "opts"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.cloudformation.get_stack.get_stack",
+        "name": "get_stack",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [1, 1, 1, 1],
+          "arg_names": ["name", "region", "tags", "opts"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "Instance",
+                  "args": ["builtins.str", "builtins.str"],
+                  "extra_attrs": null,
+                  "type_ref": "typing.Mapping"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["pulumi.invoke.InvokeOptions", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "get_stack",
+          "ret_type": "pulumi_aws.cloudformation.get_stack.AwaitableGetStackResult",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "get_stack_output": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [1, 1, 1, 1],
+        "arg_names": ["name", "region", "tags", "opts"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.cloudformation.get_stack.get_stack_output",
+        "name": "get_stack_output",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [1, 1, 1, 1],
+          "arg_names": ["name", "region", "tags", "opts"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": ["builtins.str"],
+                  "type_ref": "pulumi.output.Input"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [
+                    {
+                      ".class": "UnionType",
+                      "items": ["builtins.str", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "type_ref": "pulumi.output.Input"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "Instance",
+                          "args": ["builtins.str", "builtins.str"],
+                          "extra_attrs": null,
+                          "type_ref": "typing.Mapping"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "type_ref": "pulumi.output.Input"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                "pulumi.invoke.InvokeOptions",
+                "pulumi.invoke.InvokeOutputOptions",
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "get_stack_output",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["pulumi_aws.cloudformation.get_stack.GetStackResult"],
+            "extra_attrs": null,
+            "type_ref": "pulumi.output.Output"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "overload": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.overload",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "pulumi": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "sys": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "sys",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "warnings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "warnings",
+      "kind": "Gdef",
+      "module_public": false
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi_aws\\cloudformation\\get_stack.py"
+}

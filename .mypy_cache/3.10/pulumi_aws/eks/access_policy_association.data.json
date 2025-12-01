@@ -1,0 +1,4795 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi_aws.eks.access_policy_association",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "AccessPolicyAssociation": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi.resource.CustomResource"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+          "name": "AccessPolicyAssociation",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.eks.access_policy_association",
+        "mro": [
+          "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+          "pulumi.resource.CustomResource",
+          "pulumi.resource.Resource",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.__init__",
+              "impl": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 0, 2, 4],
+                "arg_names": ["__self__", "resource_name", "args", "kwargs"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_overload"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.__init__",
+                "name": "__init__",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 2, 4],
+                  "arg_names": ["__self__", "resource_name", "args", "kwargs"],
+                  "arg_types": [
+                    "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+                    "builtins.str",
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 1
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 1
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "__self__" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "__init__ of AccessPolicyAssociation",
+                  "ret_type": { ".class": "NoneType" },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                    "arg_names": [
+                      "__self__",
+                      "resource_name",
+                      "opts",
+                      "access_scope",
+                      "cluster_name",
+                      "policy_arn",
+                      "principal_arn",
+                      "region",
+                      "__props__"
+                    ],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                      "arg_names": [
+                        "__self__",
+                        "resource_name",
+                        "opts",
+                        "access_scope",
+                        "cluster_name",
+                        "policy_arn",
+                        "principal_arn",
+                        "region",
+                        "__props__"
+                      ],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+                        "builtins.str",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs",
+                                    {
+                                      ".class": "TypeAliasType",
+                                      "args": [],
+                                      "type_ref": "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgsDict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 1
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of AccessPolicyAssociation",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                      "arg_names": [
+                        "__self__",
+                        "resource_name",
+                        "opts",
+                        "access_scope",
+                        "cluster_name",
+                        "policy_arn",
+                        "principal_arn",
+                        "region",
+                        "__props__"
+                      ],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+                        "builtins.str",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs",
+                                    {
+                                      ".class": "TypeAliasType",
+                                      "args": [],
+                                      "type_ref": "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgsDict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 1
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of AccessPolicyAssociation",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 0, 1],
+                    "arg_names": ["__self__", "resource_name", "args", "opts"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 0, 1],
+                      "arg_names": ["__self__", "resource_name", "args", "opts"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+                        "builtins.str",
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of AccessPolicyAssociation",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 0, 1],
+                      "arg_names": ["__self__", "resource_name", "args", "opts"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+                        "builtins.str",
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of AccessPolicyAssociation",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                    "arg_names": [
+                      "__self__",
+                      "resource_name",
+                      "opts",
+                      "access_scope",
+                      "cluster_name",
+                      "policy_arn",
+                      "principal_arn",
+                      "region",
+                      "__props__"
+                    ],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+                      "builtins.str",
+                      {
+                        ".class": "UnionType",
+                        "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              {
+                                ".class": "UnionType",
+                                "items": [
+                                  "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs",
+                                  {
+                                    ".class": "TypeAliasType",
+                                    "args": [],
+                                    "type_ref": "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgsDict"
+                                  }
+                                ],
+                                "uses_pep604_syntax": false
+                              }
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "__self__" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "__init__ of AccessPolicyAssociation",
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  },
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0, 0, 1],
+                    "arg_names": ["__self__", "resource_name", "args", "opts"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+                      "builtins.str",
+                      "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+                      {
+                        ".class": "UnionType",
+                        "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "__self__" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "__init__ of AccessPolicyAssociation",
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "_internal_init": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "__self__",
+                "resource_name",
+                "opts",
+                "access_scope",
+                "cluster_name",
+                "policy_arn",
+                "principal_arn",
+                "region",
+                "__props__"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation._internal_init",
+              "name": "_internal_init",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "__self__",
+                  "resource_name",
+                  "opts",
+                  "access_scope",
+                  "cluster_name",
+                  "policy_arn",
+                  "principal_arn",
+                  "region",
+                  "__props__"
+                ],
+                "arg_types": [
+                  "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+                  "builtins.str",
+                  {
+                    ".class": "UnionType",
+                    "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          {
+                            ".class": "UnionType",
+                            "items": [
+                              "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs",
+                              {
+                                ".class": "TypeAliasType",
+                                "args": [],
+                                "type_ref": "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgsDict"
+                              }
+                            ],
+                            "uses_pep604_syntax": false
+                          }
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 1
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_internal_init of AccessPolicyAssociation",
+                "ret_type": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 1
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "access_scope": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.access_scope",
+                "name": "access_scope",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "access_scope of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["pulumi_aws.eks.outputs.AccessPolicyAssociationAccessScope"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.access_scope",
+                "name": "access_scope",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "access_scope of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["pulumi_aws.eks.outputs.AccessPolicyAssociationAccessScope"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "associated_at": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.associated_at",
+                "name": "associated_at",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "associated_at of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.associated_at",
+                "name": "associated_at",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "associated_at of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "cluster_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.cluster_name",
+                "name": "cluster_name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "cluster_name of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.cluster_name",
+                "name": "cluster_name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "cluster_name of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "get": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "resource_name",
+                  "id",
+                  "opts",
+                  "access_scope",
+                  "associated_at",
+                  "cluster_name",
+                  "modified_at",
+                  "policy_arn",
+                  "principal_arn",
+                  "region"
+                ],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_static", "is_decorated"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.get",
+                "name": "get",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+                  "arg_names": [
+                    "resource_name",
+                    "id",
+                    "opts",
+                    "access_scope",
+                    "associated_at",
+                    "cluster_name",
+                    "modified_at",
+                    "policy_arn",
+                    "principal_arn",
+                    "region"
+                  ],
+                  "arg_types": [
+                    "builtins.str",
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            {
+                              ".class": "UnionType",
+                              "items": [
+                                "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs",
+                                {
+                                  ".class": "TypeAliasType",
+                                  "args": [],
+                                  "type_ref": "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgsDict"
+                                }
+                              ],
+                              "uses_pep604_syntax": false
+                            }
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": null },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "get of AccessPolicyAssociation",
+                  "ret_type": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_staticmethod", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.get",
+                "name": "get",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+                  "arg_names": [
+                    "resource_name",
+                    "id",
+                    "opts",
+                    "access_scope",
+                    "associated_at",
+                    "cluster_name",
+                    "modified_at",
+                    "policy_arn",
+                    "principal_arn",
+                    "region"
+                  ],
+                  "arg_types": [
+                    "builtins.str",
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            {
+                              ".class": "UnionType",
+                              "items": [
+                                "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs",
+                                {
+                                  ".class": "TypeAliasType",
+                                  "args": [],
+                                  "type_ref": "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgsDict"
+                                }
+                              ],
+                              "uses_pep604_syntax": false
+                            }
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": null },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "get of AccessPolicyAssociation",
+                  "ret_type": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "modified_at": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.modified_at",
+                "name": "modified_at",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "modified_at of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.modified_at",
+                "name": "modified_at",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "modified_at of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "policy_arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.policy_arn",
+                "name": "policy_arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "policy_arn of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.policy_arn",
+                "name": "policy_arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "policy_arn of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "principal_arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.principal_arn",
+                "name": "principal_arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "principal_arn of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.principal_arn",
+                "name": "principal_arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "principal_arn of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.eks.access_policy_association.AccessPolicyAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of AccessPolicyAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociation",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "AccessPolicyAssociationAccessScopeArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "AccessPolicyAssociationAccessScopeArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "AccessPolicyAssociationArgs": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+          "name": "AccessPolicyAssociationArgs",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.eks.access_policy_association",
+        "mro": [
+          "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 3, 3, 3, 3, 5],
+              "arg_names": [
+                "__self__",
+                "access_scope",
+                "cluster_name",
+                "policy_arn",
+                "principal_arn",
+                "region"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 3, 3, 3, 3, 5],
+                "arg_names": [
+                  "__self__",
+                  "access_scope",
+                  "cluster_name",
+                  "policy_arn",
+                  "principal_arn",
+                  "region"
+                ],
+                "arg_types": [
+                  "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of AccessPolicyAssociationArgs",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "access_scope": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.access_scope",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.access_scope",
+                    "name": "access_scope",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "access_scope of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.access_scope",
+                    "name": "access_scope",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "access_scope of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.access_scope",
+                    "name": "access_scope",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "access_scope of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "access_scope",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "access_scope of AccessPolicyAssociationArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "cluster_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.cluster_name",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.cluster_name",
+                    "name": "cluster_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "cluster_name of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.cluster_name",
+                    "name": "cluster_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "cluster_name of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.cluster_name",
+                    "name": "cluster_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "cluster_name of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "cluster_name",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "cluster_name of AccessPolicyAssociationArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "policy_arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.policy_arn",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.policy_arn",
+                    "name": "policy_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "policy_arn of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.policy_arn",
+                    "name": "policy_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "policy_arn of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.policy_arn",
+                    "name": "policy_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "policy_arn of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "policy_arn",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "policy_arn of AccessPolicyAssociationArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "principal_arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.principal_arn",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.principal_arn",
+                    "name": "principal_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "principal_arn of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.principal_arn",
+                    "name": "principal_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "principal_arn of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.principal_arn",
+                    "name": "principal_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "principal_arn of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "principal_arn",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "principal_arn of AccessPolicyAssociationArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.region",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of AccessPolicyAssociationArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "region",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "region of AccessPolicyAssociationArgs",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.eks.access_policy_association.AccessPolicyAssociationArgs",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "AddonPodIdentityAssociationArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.AddonPodIdentityAssociationArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "AddonPodIdentityAssociationArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.AddonPodIdentityAssociationArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Any": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Any",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterAccessConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterAccessConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterAccessConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterAccessConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterCertificateAuthorityArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterCertificateAuthorityArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterCertificateAuthorityArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterCertificateAuthorityArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterComputeConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterComputeConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterComputeConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterComputeConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterEncryptionConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterEncryptionConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterEncryptionConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterEncryptionConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterEncryptionConfigProviderArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterEncryptionConfigProviderArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterEncryptionConfigProviderArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterEncryptionConfigProviderArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterIdentityArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterIdentityArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterIdentityArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterIdentityArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterIdentityOidcArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterIdentityOidcArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterIdentityOidcArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterIdentityOidcArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterKubernetesNetworkConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterKubernetesNetworkConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterKubernetesNetworkConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterKubernetesNetworkConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterKubernetesNetworkConfigElasticLoadBalancingArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterKubernetesNetworkConfigElasticLoadBalancingArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterKubernetesNetworkConfigElasticLoadBalancingArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterKubernetesNetworkConfigElasticLoadBalancingArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterOutpostConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterOutpostConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterOutpostConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterOutpostConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterOutpostConfigControlPlanePlacementArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterOutpostConfigControlPlanePlacementArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterOutpostConfigControlPlanePlacementArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterOutpostConfigControlPlanePlacementArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterRemoteNetworkConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterRemoteNetworkConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterRemoteNetworkConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterRemoteNetworkConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterRemoteNetworkConfigRemoteNodeNetworksArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterRemoteNetworkConfigRemoteNodeNetworksArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterRemoteNetworkConfigRemoteNodeNetworksArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterRemoteNetworkConfigRemoteNodeNetworksArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterRemoteNetworkConfigRemotePodNetworksArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterRemoteNetworkConfigRemotePodNetworksArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterRemoteNetworkConfigRemotePodNetworksArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterRemoteNetworkConfigRemotePodNetworksArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterStorageConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterStorageConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterStorageConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterStorageConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterStorageConfigBlockStorageArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterStorageConfigBlockStorageArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterStorageConfigBlockStorageArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterStorageConfigBlockStorageArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterUpgradePolicyArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterUpgradePolicyArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterUpgradePolicyArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterUpgradePolicyArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterVpcConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterVpcConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterVpcConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterVpcConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterZonalShiftConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterZonalShiftConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ClusterZonalShiftConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.ClusterZonalShiftConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "FargateProfileSelectorArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.FargateProfileSelectorArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "FargateProfileSelectorArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.FargateProfileSelectorArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "IdentityProviderConfigOidcArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.IdentityProviderConfigOidcArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "IdentityProviderConfigOidcArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.IdentityProviderConfigOidcArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Mapping": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Mapping",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupLaunchTemplateArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupLaunchTemplateArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupLaunchTemplateArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupLaunchTemplateArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupNodeRepairConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupNodeRepairConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupNodeRepairConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupNodeRepairConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupNodeRepairConfigNodeRepairConfigOverrideArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupNodeRepairConfigNodeRepairConfigOverrideArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupNodeRepairConfigNodeRepairConfigOverrideArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupNodeRepairConfigNodeRepairConfigOverrideArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupRemoteAccessArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupRemoteAccessArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupRemoteAccessArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupRemoteAccessArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupResourceArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupResourceArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupResourceArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupResourceArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupResourceAutoscalingGroupArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupResourceAutoscalingGroupArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupResourceAutoscalingGroupArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupResourceAutoscalingGroupArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupScalingConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupScalingConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupScalingConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupScalingConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupTaintArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupTaintArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupTaintArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupTaintArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupUpdateConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupUpdateConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NodeGroupUpdateConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks._inputs.NodeGroupUpdateConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NotRequired": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing_extensions.NotRequired",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Optional": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Optional",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Sequence": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Sequence",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypeAlias": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypeAlias",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypedDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypedDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Union": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Union",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_AccessPolicyAssociationState": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+          "name": "_AccessPolicyAssociationState",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.eks.access_policy_association",
+        "mro": [
+          "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 5, 5, 5, 5, 5, 5, 5],
+              "arg_names": [
+                "__self__",
+                "access_scope",
+                "associated_at",
+                "cluster_name",
+                "modified_at",
+                "policy_arn",
+                "principal_arn",
+                "region"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 5, 5, 5, 5, 5, 5, 5],
+                "arg_names": [
+                  "__self__",
+                  "access_scope",
+                  "associated_at",
+                  "cluster_name",
+                  "modified_at",
+                  "policy_arn",
+                  "principal_arn",
+                  "region"
+                ],
+                "arg_types": [
+                  "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of _AccessPolicyAssociationState",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "access_scope": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.access_scope",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.access_scope",
+                    "name": "access_scope",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "access_scope of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs"
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.access_scope",
+                    "name": "access_scope",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "access_scope of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs"
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.access_scope",
+                    "name": "access_scope",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                "pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs"
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "access_scope of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "access_scope",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "access_scope of _AccessPolicyAssociationState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["pulumi_aws.eks._inputs.AccessPolicyAssociationAccessScopeArgs"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "associated_at": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.associated_at",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.associated_at",
+                    "name": "associated_at",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "associated_at of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.associated_at",
+                    "name": "associated_at",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "associated_at of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.associated_at",
+                    "name": "associated_at",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "associated_at of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "associated_at",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "associated_at of _AccessPolicyAssociationState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "cluster_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.cluster_name",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.cluster_name",
+                    "name": "cluster_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "cluster_name of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.cluster_name",
+                    "name": "cluster_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "cluster_name of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.cluster_name",
+                    "name": "cluster_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "cluster_name of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "cluster_name",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "cluster_name of _AccessPolicyAssociationState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "modified_at": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.modified_at",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.modified_at",
+                    "name": "modified_at",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "modified_at of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.modified_at",
+                    "name": "modified_at",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "modified_at of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.modified_at",
+                    "name": "modified_at",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "modified_at of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "modified_at",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "modified_at of _AccessPolicyAssociationState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "policy_arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.policy_arn",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.policy_arn",
+                    "name": "policy_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "policy_arn of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.policy_arn",
+                    "name": "policy_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "policy_arn of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.policy_arn",
+                    "name": "policy_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "policy_arn of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "policy_arn",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "policy_arn of _AccessPolicyAssociationState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "principal_arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.principal_arn",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.principal_arn",
+                    "name": "principal_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "principal_arn of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.principal_arn",
+                    "name": "principal_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "principal_arn of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.principal_arn",
+                    "name": "principal_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "principal_arn of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "principal_arn",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "principal_arn of _AccessPolicyAssociationState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.region",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _AccessPolicyAssociationState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "region",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": [
+                      "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "region of _AccessPolicyAssociationState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.eks.access_policy_association._AccessPolicyAssociationState",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "__all__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "pulumi_aws.eks.access_policy_association.__all__",
+        "name": "__all__",
+        "type": {
+          ".class": "Instance",
+          "args": ["builtins.str"],
+          "extra_attrs": null,
+          "type_ref": "builtins.list"
+        }
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.eks.access_policy_association.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.eks.access_policy_association.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.eks.access_policy_association.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.eks.access_policy_association.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.eks.access_policy_association.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.eks.access_policy_association.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_builtins": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "builtins",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_utilities": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws._utilities",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "outputs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.eks.outputs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "overload": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.overload",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "pulumi": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "sys": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "sys",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "warnings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "warnings",
+      "kind": "Gdef",
+      "module_public": false
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi_aws\\eks\\access_policy_association.py"
+}

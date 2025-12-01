@@ -1,0 +1,162 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codex-dominion"
+version = "1.0.0"
+description = "Digital Empire Automation Platform - Supreme competitive domination across video production, web development, automation, and content creation"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Jermaine Merritt", email = "jermaine@codex-dominion.com"},
+]
+maintainers = [
+    {name = "Codex Council", email = "council@codex-dominion.com"},
+]
+keywords = [
+    "automation", "ai", "video-production", "web-development", 
+    "content-creation", "affiliate-marketing", "digital-empire"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Office/Business",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Monitoring",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.32.0",
+    "pyyaml>=6.0.0",
+    "pytest>=8.4.0",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.8.0",
+    "streamlit>=1.28.0",
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+    "python-dotenv>=1.0.0",
+    "jinja2>=3.1.0",
+    "pillow>=10.0.0",
+    "opencv-python>=4.8.0",
+    "scikit-learn>=1.3.0",
+    "aiofiles>=23.2.0",
+    "httpx>=0.25.0",
+    "websockets>=12.0",
+    "cryptography>=41.0.0",
+    "rich>=13.7.0",
+    "typer>=0.9.0",
+    "psutil>=5.9.0",
+    "schedule>=1.2.0",
+    "watchdog>=3.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "flake8>=6.1.0",
+    "mypy>=1.7.0",
+    "pre-commit>=3.5.0",
+]
+video = [
+    "opencv-python>=4.8.0",
+    "moviepy>=1.0.3",
+    "imageio>=2.31.0",
+    "pillow>=10.0.0",
+]
+ai = [
+    "torch>=2.1.0",
+    "transformers>=4.35.0",
+    "openai>=1.3.0",
+    "anthropic>=0.7.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/YourUser/codex-dominion"
+Documentation = "https://codex-dominion.com/docs"
+Repository = "https://github.com/YourUser/codex-dominion.git"
+"Bug Reports" = "https://github.com/YourUser/codex-dominion/issues"
+"Funding" = "https://github.com/sponsors/YourUser"
+
+[project.scripts]
+codex-empire = "codex_integration.digital_empire_orchestrator:main"
+video-studio = "codex_integration.video_studio_omega:main" 
+lovable-destroyer = "codex_integration.lovable_destroyer:main"
+flow-engine = "codex_integration.codex_flow_engine:main"
+system-monitor = "codex_integration.system_performance_monitor:main"
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["codex_integration*"]
+exclude = ["tests*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py310', 'py311', 'py312']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers"
+testpaths = [
+    "tests",
+    "codex-integration/tests",
+]
+python_files = [
+    "test_*.py",
+    "*_test.py",
+]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.coverage.run]
+source = ["codex_integration"]
+omit = [
+    "*/tests/*",
+    "*/__pycache__/*",
+    "*/site-packages/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+]

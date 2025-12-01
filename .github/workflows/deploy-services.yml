@@ -1,0 +1,54 @@
+name: Deploy Services to IONOS
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'dev/staging/prod'
+        required: true
+        default: prod
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set tags
+        run: echo "TAG_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Verify images with Cosign
+        run: |
+          cosign verify ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_SHA} || exit 1
+          cosign verify ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_SHA} || exit 1
+
+      - name: SSH to IONOS and deploy
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.IONOS_HOST }}
+          username: ${{ secrets.IONOS_USER }}
+          key: ${{ secrets.IONOS_SSH_KEY }}
+          script: |
+            set -e
+            export ACR=${{ secrets.ACR_LOGIN_SERVER }}
+            export TAG=${TAG_SHA}
+            docker login $ACR --username 00000000-0000-0000-0000-000000000000 --password-stdin <<< "${{ secrets.AZURE_ACR_OIDC_PASSWORD || 'unused' }}"
+            sed -e "s#IMAGE_CHATBOT#${ACR}/chatbot:${TAG}#g" \
+                -e "s#IMAGE_CRM#${ACR}/crm:${TAG}#g" \
+              docker/compose.prod.yml > compose.rendered.yml
+            docker compose -f compose.rendered.yml pull
+            docker compose -f compose.rendered.yml up -d --remove-orphans
+            sleep 5
+            docker compose ps
+            curl -fsS https://your.domain/health || (echo "Health check failed" && exit 1)
+            echo "Deployment complete."
+            # Update Prometheus scrape config (if applicable)
+            if [ -f /etc/prometheus/prometheus.yml ]; then
+              echo "Reloading Prometheus scrape config..."
+              docker kill -s SIGHUP prometheus || true
+            fi

@@ -1,0 +1,2003 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi_aws.resiliencehub.outputs",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Any",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Mapping": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Mapping",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NotRequired": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing_extensions.NotRequired",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Optional": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Optional",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ResiliencyPolicyPolicy": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": [
+          {
+            ".class": "Instance",
+            "args": [
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              },
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          }
+        ],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy",
+          "name": "ResiliencyPolicyPolicy",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy",
+        "has_param_spec_type": false,
+        "metaclass_type": "abc.ABCMeta",
+        "metadata": {},
+        "module_name": "pulumi_aws.resiliencehub.outputs",
+        "mro": [
+          "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy",
+          "builtins.dict",
+          "typing.MutableMapping",
+          "typing.Mapping",
+          "typing.Collection",
+          "typing.Iterable",
+          "typing.Container",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 5, 5, 5, 5],
+              "arg_names": ["__self__", "az", "hardware", "region", "software"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 5, 5, 5, 5],
+                "arg_names": ["__self__", "az", "hardware", "region", "software"],
+                "arg_types": [
+                  "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of ResiliencyPolicyPolicy",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "az": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy.az",
+                "name": "az",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "az of ResiliencyPolicyPolicy",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy.az",
+                "name": "az",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "az of ResiliencyPolicyPolicy",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "hardware": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy.hardware",
+                "name": "hardware",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "hardware of ResiliencyPolicyPolicy",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy.hardware",
+                "name": "hardware",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "hardware of ResiliencyPolicyPolicy",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of ResiliencyPolicyPolicy",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of ResiliencyPolicyPolicy",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "software": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy.software",
+                "name": "software",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "software of ResiliencyPolicyPolicy",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy.software",
+                "name": "software",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "software of ResiliencyPolicyPolicy",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicy",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "ResiliencyPolicyPolicyAz": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": [
+          {
+            ".class": "Instance",
+            "args": [
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              },
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          }
+        ],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz",
+          "name": "ResiliencyPolicyPolicyAz",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz",
+        "has_param_spec_type": false,
+        "metaclass_type": "abc.ABCMeta",
+        "metadata": {},
+        "module_name": "pulumi_aws.resiliencehub.outputs",
+        "mro": [
+          "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz",
+          "builtins.dict",
+          "typing.MutableMapping",
+          "typing.Mapping",
+          "typing.Collection",
+          "typing.Iterable",
+          "typing.Container",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 3, 3],
+              "arg_names": ["__self__", "rpo", "rto"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 3, 3],
+                "arg_names": ["__self__", "rpo", "rto"],
+                "arg_types": [
+                  "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of ResiliencyPolicyPolicyAz",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "rpo": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz.rpo",
+                "name": "rpo",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rpo of ResiliencyPolicyPolicyAz",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz.rpo",
+                "name": "rpo",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rpo of ResiliencyPolicyPolicyAz",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "rto": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz.rto",
+                "name": "rto",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rto of ResiliencyPolicyPolicyAz",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz.rto",
+                "name": "rto",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rto of ResiliencyPolicyPolicyAz",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyAz",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "ResiliencyPolicyPolicyHardware": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": [
+          {
+            ".class": "Instance",
+            "args": [
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              },
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          }
+        ],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware",
+          "name": "ResiliencyPolicyPolicyHardware",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware",
+        "has_param_spec_type": false,
+        "metaclass_type": "abc.ABCMeta",
+        "metadata": {},
+        "module_name": "pulumi_aws.resiliencehub.outputs",
+        "mro": [
+          "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware",
+          "builtins.dict",
+          "typing.MutableMapping",
+          "typing.Mapping",
+          "typing.Collection",
+          "typing.Iterable",
+          "typing.Container",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 3, 3],
+              "arg_names": ["__self__", "rpo", "rto"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 3, 3],
+                "arg_names": ["__self__", "rpo", "rto"],
+                "arg_types": [
+                  "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of ResiliencyPolicyPolicyHardware",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "rpo": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware.rpo",
+                "name": "rpo",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rpo of ResiliencyPolicyPolicyHardware",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware.rpo",
+                "name": "rpo",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rpo of ResiliencyPolicyPolicyHardware",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "rto": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware.rto",
+                "name": "rto",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rto of ResiliencyPolicyPolicyHardware",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware.rto",
+                "name": "rto",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rto of ResiliencyPolicyPolicyHardware",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyHardware",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "ResiliencyPolicyPolicyRegion": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": [
+          {
+            ".class": "Instance",
+            "args": [
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              },
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          }
+        ],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion",
+          "name": "ResiliencyPolicyPolicyRegion",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion",
+        "has_param_spec_type": false,
+        "metaclass_type": "abc.ABCMeta",
+        "metadata": {},
+        "module_name": "pulumi_aws.resiliencehub.outputs",
+        "mro": [
+          "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion",
+          "builtins.dict",
+          "typing.MutableMapping",
+          "typing.Mapping",
+          "typing.Collection",
+          "typing.Iterable",
+          "typing.Container",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 5, 5],
+              "arg_names": ["__self__", "rpo", "rto"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 5, 5],
+                "arg_names": ["__self__", "rpo", "rto"],
+                "arg_types": [
+                  "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of ResiliencyPolicyPolicyRegion",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "rpo": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion.rpo",
+                "name": "rpo",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rpo of ResiliencyPolicyPolicyRegion",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion.rpo",
+                "name": "rpo",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rpo of ResiliencyPolicyPolicyRegion",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "rto": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion.rto",
+                "name": "rto",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rto of ResiliencyPolicyPolicyRegion",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion.rto",
+                "name": "rto",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rto of ResiliencyPolicyPolicyRegion",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicyRegion",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "ResiliencyPolicyPolicySoftware": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": [
+          {
+            ".class": "Instance",
+            "args": [
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              },
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          }
+        ],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware",
+          "name": "ResiliencyPolicyPolicySoftware",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware",
+        "has_param_spec_type": false,
+        "metaclass_type": "abc.ABCMeta",
+        "metadata": {},
+        "module_name": "pulumi_aws.resiliencehub.outputs",
+        "mro": [
+          "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware",
+          "builtins.dict",
+          "typing.MutableMapping",
+          "typing.Mapping",
+          "typing.Collection",
+          "typing.Iterable",
+          "typing.Container",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 3, 3],
+              "arg_names": ["__self__", "rpo", "rto"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 3, 3],
+                "arg_names": ["__self__", "rpo", "rto"],
+                "arg_types": [
+                  "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of ResiliencyPolicyPolicySoftware",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "rpo": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware.rpo",
+                "name": "rpo",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rpo of ResiliencyPolicyPolicySoftware",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware.rpo",
+                "name": "rpo",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rpo of ResiliencyPolicyPolicySoftware",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "rto": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware.rto",
+                "name": "rto",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rto of ResiliencyPolicyPolicySoftware",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware.rto",
+                "name": "rto",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "rto of ResiliencyPolicyPolicySoftware",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyPolicySoftware",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "ResiliencyPolicyTimeouts": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": [
+          {
+            ".class": "Instance",
+            "args": [
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              },
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          }
+        ],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts",
+          "name": "ResiliencyPolicyTimeouts",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts",
+        "has_param_spec_type": false,
+        "metaclass_type": "abc.ABCMeta",
+        "metadata": {},
+        "module_name": "pulumi_aws.resiliencehub.outputs",
+        "mro": [
+          "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts",
+          "builtins.dict",
+          "typing.MutableMapping",
+          "typing.Mapping",
+          "typing.Collection",
+          "typing.Iterable",
+          "typing.Container",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 5, 5, 5],
+              "arg_names": ["__self__", "create", "delete", "update"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 5, 5, 5],
+                "arg_names": ["__self__", "create", "delete", "update"],
+                "arg_types": [
+                  "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of ResiliencyPolicyTimeouts",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "create": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts.create",
+                "name": "create",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "create of ResiliencyPolicyTimeouts",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts.create",
+                "name": "create",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "create of ResiliencyPolicyTimeouts",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "delete": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts.delete",
+                "name": "delete",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "delete of ResiliencyPolicyTimeouts",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts.delete",
+                "name": "delete",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "delete of ResiliencyPolicyTimeouts",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "update": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts.update",
+                "name": "update",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "update of ResiliencyPolicyTimeouts",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts.update",
+                "name": "update",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "update of ResiliencyPolicyTimeouts",
+                  "ret_type": {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.resiliencehub.outputs.ResiliencyPolicyTimeouts",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "Sequence": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Sequence",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypeAlias": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypeAlias",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypedDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypedDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Union": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Union",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "__all__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "pulumi_aws.resiliencehub.outputs.__all__",
+        "name": "__all__",
+        "type": {
+          ".class": "Instance",
+          "args": ["builtins.str"],
+          "extra_attrs": null,
+          "type_ref": "builtins.list"
+        }
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.resiliencehub.outputs.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.resiliencehub.outputs.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.resiliencehub.outputs.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.resiliencehub.outputs.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.resiliencehub.outputs.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.resiliencehub.outputs.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_builtins": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "builtins",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_utilities": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws._utilities",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "outputs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.resiliencehub.outputs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "overload": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.overload",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "pulumi": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "sys": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "sys",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "warnings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "warnings",
+      "kind": "Gdef",
+      "module_public": false
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi_aws\\resiliencehub\\outputs.py"
+}

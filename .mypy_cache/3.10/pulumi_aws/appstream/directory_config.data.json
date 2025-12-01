@@ -1,0 +1,4571 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi_aws.appstream.directory_config",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Any",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "DirectoryConfig": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi.resource.CustomResource"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig",
+          "name": "DirectoryConfig",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.appstream.directory_config",
+        "mro": [
+          "pulumi_aws.appstream.directory_config.DirectoryConfig",
+          "pulumi.resource.CustomResource",
+          "pulumi.resource.Resource",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.__init__",
+              "impl": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 0, 2, 4],
+                "arg_names": ["__self__", "resource_name", "args", "kwargs"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_overload"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.__init__",
+                "name": "__init__",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 2, 4],
+                  "arg_names": ["__self__", "resource_name", "args", "kwargs"],
+                  "arg_types": [
+                    "pulumi_aws.appstream.directory_config.DirectoryConfig",
+                    "builtins.str",
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 1
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 1
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "__self__" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "__init__ of DirectoryConfig",
+                  "ret_type": { ".class": "NoneType" },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                    "arg_names": [
+                      "__self__",
+                      "resource_name",
+                      "opts",
+                      "certificate_based_auth_properties",
+                      "directory_name",
+                      "organizational_unit_distinguished_names",
+                      "region",
+                      "service_account_credentials",
+                      "__props__"
+                    ],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                      "arg_names": [
+                        "__self__",
+                        "resource_name",
+                        "opts",
+                        "certificate_based_auth_properties",
+                        "directory_name",
+                        "organizational_unit_distinguished_names",
+                        "region",
+                        "service_account_credentials",
+                        "__props__"
+                      ],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config.DirectoryConfig",
+                        "builtins.str",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs",
+                                    {
+                                      ".class": "TypeAliasType",
+                                      "args": [],
+                                      "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgsDict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                {
+                                  ".class": "Instance",
+                                  "args": [
+                                    {
+                                      ".class": "TypeAliasType",
+                                      "args": ["builtins.str"],
+                                      "type_ref": "pulumi.output.Input"
+                                    }
+                                  ],
+                                  "extra_attrs": null,
+                                  "type_ref": "typing.Sequence"
+                                }
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs",
+                                    {
+                                      ".class": "TypeAliasType",
+                                      "args": [],
+                                      "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgsDict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 1
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of DirectoryConfig",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                      "arg_names": [
+                        "__self__",
+                        "resource_name",
+                        "opts",
+                        "certificate_based_auth_properties",
+                        "directory_name",
+                        "organizational_unit_distinguished_names",
+                        "region",
+                        "service_account_credentials",
+                        "__props__"
+                      ],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config.DirectoryConfig",
+                        "builtins.str",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs",
+                                    {
+                                      ".class": "TypeAliasType",
+                                      "args": [],
+                                      "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgsDict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                {
+                                  ".class": "Instance",
+                                  "args": [
+                                    {
+                                      ".class": "TypeAliasType",
+                                      "args": ["builtins.str"],
+                                      "type_ref": "pulumi.output.Input"
+                                    }
+                                  ],
+                                  "extra_attrs": null,
+                                  "type_ref": "typing.Sequence"
+                                }
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs",
+                                    {
+                                      ".class": "TypeAliasType",
+                                      "args": [],
+                                      "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgsDict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 1
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of DirectoryConfig",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 0, 1],
+                    "arg_names": ["__self__", "resource_name", "args", "opts"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 0, 1],
+                      "arg_names": ["__self__", "resource_name", "args", "opts"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config.DirectoryConfig",
+                        "builtins.str",
+                        "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of DirectoryConfig",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 0, 1],
+                      "arg_names": ["__self__", "resource_name", "args", "opts"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config.DirectoryConfig",
+                        "builtins.str",
+                        "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of DirectoryConfig",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                    "arg_names": [
+                      "__self__",
+                      "resource_name",
+                      "opts",
+                      "certificate_based_auth_properties",
+                      "directory_name",
+                      "organizational_unit_distinguished_names",
+                      "region",
+                      "service_account_credentials",
+                      "__props__"
+                    ],
+                    "arg_types": [
+                      "pulumi_aws.appstream.directory_config.DirectoryConfig",
+                      "builtins.str",
+                      {
+                        ".class": "UnionType",
+                        "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              {
+                                ".class": "UnionType",
+                                "items": [
+                                  "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs",
+                                  {
+                                    ".class": "TypeAliasType",
+                                    "args": [],
+                                    "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgsDict"
+                                  }
+                                ],
+                                "uses_pep604_syntax": false
+                              }
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "TypeAliasType",
+                                    "args": ["builtins.str"],
+                                    "type_ref": "pulumi.output.Input"
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "typing.Sequence"
+                              }
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              {
+                                ".class": "UnionType",
+                                "items": [
+                                  "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs",
+                                  {
+                                    ".class": "TypeAliasType",
+                                    "args": [],
+                                    "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgsDict"
+                                  }
+                                ],
+                                "uses_pep604_syntax": false
+                              }
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "__self__" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "__init__ of DirectoryConfig",
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  },
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0, 0, 1],
+                    "arg_names": ["__self__", "resource_name", "args", "opts"],
+                    "arg_types": [
+                      "pulumi_aws.appstream.directory_config.DirectoryConfig",
+                      "builtins.str",
+                      "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+                      {
+                        ".class": "UnionType",
+                        "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "__self__" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "__init__ of DirectoryConfig",
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "_internal_init": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "__self__",
+                "resource_name",
+                "opts",
+                "certificate_based_auth_properties",
+                "directory_name",
+                "organizational_unit_distinguished_names",
+                "region",
+                "service_account_credentials",
+                "__props__"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig._internal_init",
+              "name": "_internal_init",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "__self__",
+                  "resource_name",
+                  "opts",
+                  "certificate_based_auth_properties",
+                  "directory_name",
+                  "organizational_unit_distinguished_names",
+                  "region",
+                  "service_account_credentials",
+                  "__props__"
+                ],
+                "arg_types": [
+                  "pulumi_aws.appstream.directory_config.DirectoryConfig",
+                  "builtins.str",
+                  {
+                    ".class": "UnionType",
+                    "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          {
+                            ".class": "UnionType",
+                            "items": [
+                              "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs",
+                              {
+                                ".class": "TypeAliasType",
+                                "args": [],
+                                "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgsDict"
+                              }
+                            ],
+                            "uses_pep604_syntax": false
+                          }
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          {
+                            ".class": "Instance",
+                            "args": [
+                              {
+                                ".class": "TypeAliasType",
+                                "args": ["builtins.str"],
+                                "type_ref": "pulumi.output.Input"
+                              }
+                            ],
+                            "extra_attrs": null,
+                            "type_ref": "typing.Sequence"
+                          }
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          {
+                            ".class": "UnionType",
+                            "items": [
+                              "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs",
+                              {
+                                ".class": "TypeAliasType",
+                                "args": [],
+                                "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgsDict"
+                              }
+                            ],
+                            "uses_pep604_syntax": false
+                          }
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 1
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_internal_init of DirectoryConfig",
+                "ret_type": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 1
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "certificate_based_auth_properties": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.certificate_based_auth_properties",
+                "name": "certificate_based_auth_properties",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "certificate_based_auth_properties of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          "pulumi_aws.appstream.outputs.DirectoryConfigCertificateBasedAuthProperties",
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.certificate_based_auth_properties",
+                "name": "certificate_based_auth_properties",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "certificate_based_auth_properties of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          "pulumi_aws.appstream.outputs.DirectoryConfigCertificateBasedAuthProperties",
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "created_time": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.created_time",
+                "name": "created_time",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "created_time of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.created_time",
+                "name": "created_time",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "created_time of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "directory_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.directory_name",
+                "name": "directory_name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "directory_name of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.directory_name",
+                "name": "directory_name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "directory_name of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "get": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "resource_name",
+                  "id",
+                  "opts",
+                  "certificate_based_auth_properties",
+                  "created_time",
+                  "directory_name",
+                  "organizational_unit_distinguished_names",
+                  "region",
+                  "service_account_credentials"
+                ],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_static", "is_decorated"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.get",
+                "name": "get",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                  "arg_names": [
+                    "resource_name",
+                    "id",
+                    "opts",
+                    "certificate_based_auth_properties",
+                    "created_time",
+                    "directory_name",
+                    "organizational_unit_distinguished_names",
+                    "region",
+                    "service_account_credentials"
+                  ],
+                  "arg_types": [
+                    "builtins.str",
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            {
+                              ".class": "UnionType",
+                              "items": [
+                                "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs",
+                                {
+                                  ".class": "TypeAliasType",
+                                  "args": [],
+                                  "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgsDict"
+                                }
+                              ],
+                              "uses_pep604_syntax": false
+                            }
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "TypeAliasType",
+                                  "args": ["builtins.str"],
+                                  "type_ref": "pulumi.output.Input"
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "typing.Sequence"
+                            }
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            {
+                              ".class": "UnionType",
+                              "items": [
+                                "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs",
+                                {
+                                  ".class": "TypeAliasType",
+                                  "args": [],
+                                  "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgsDict"
+                                }
+                              ],
+                              "uses_pep604_syntax": false
+                            }
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": null },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "get of DirectoryConfig",
+                  "ret_type": "pulumi_aws.appstream.directory_config.DirectoryConfig",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_staticmethod", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.get",
+                "name": "get",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                  "arg_names": [
+                    "resource_name",
+                    "id",
+                    "opts",
+                    "certificate_based_auth_properties",
+                    "created_time",
+                    "directory_name",
+                    "organizational_unit_distinguished_names",
+                    "region",
+                    "service_account_credentials"
+                  ],
+                  "arg_types": [
+                    "builtins.str",
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            {
+                              ".class": "UnionType",
+                              "items": [
+                                "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs",
+                                {
+                                  ".class": "TypeAliasType",
+                                  "args": [],
+                                  "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgsDict"
+                                }
+                              ],
+                              "uses_pep604_syntax": false
+                            }
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "TypeAliasType",
+                                  "args": ["builtins.str"],
+                                  "type_ref": "pulumi.output.Input"
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "typing.Sequence"
+                            }
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            {
+                              ".class": "UnionType",
+                              "items": [
+                                "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs",
+                                {
+                                  ".class": "TypeAliasType",
+                                  "args": [],
+                                  "type_ref": "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgsDict"
+                                }
+                              ],
+                              "uses_pep604_syntax": false
+                            }
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": null },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "get of DirectoryConfig",
+                  "ret_type": "pulumi_aws.appstream.directory_config.DirectoryConfig",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "organizational_unit_distinguished_names": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.organizational_unit_distinguished_names",
+                "name": "organizational_unit_distinguished_names",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "organizational_unit_distinguished_names of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "Instance",
+                        "args": ["builtins.str"],
+                        "extra_attrs": null,
+                        "type_ref": "typing.Sequence"
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.organizational_unit_distinguished_names",
+                "name": "organizational_unit_distinguished_names",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "organizational_unit_distinguished_names of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "Instance",
+                        "args": ["builtins.str"],
+                        "extra_attrs": null,
+                        "type_ref": "typing.Sequence"
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "service_account_credentials": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.service_account_credentials",
+                "name": "service_account_credentials",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "service_account_credentials of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      "pulumi_aws.appstream.outputs.DirectoryConfigServiceAccountCredentials"
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.service_account_credentials",
+                "name": "service_account_credentials",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfig"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "service_account_credentials of DirectoryConfig",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      "pulumi_aws.appstream.outputs.DirectoryConfigServiceAccountCredentials"
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfig.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.appstream.directory_config.DirectoryConfig",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "DirectoryConfigArgs": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+          "name": "DirectoryConfigArgs",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.appstream.directory_config",
+        "mro": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 3, 3, 3, 5, 5],
+              "arg_names": [
+                "__self__",
+                "directory_name",
+                "organizational_unit_distinguished_names",
+                "service_account_credentials",
+                "certificate_based_auth_properties",
+                "region"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 3, 3, 3, 5, 5],
+                "arg_names": [
+                  "__self__",
+                  "directory_name",
+                  "organizational_unit_distinguished_names",
+                  "service_account_credentials",
+                  "certificate_based_auth_properties",
+                  "region"
+                ],
+                "arg_types": [
+                  "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "TypeAliasType",
+                    "args": [
+                      {
+                        ".class": "Instance",
+                        "args": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "typing.Sequence"
+                      }
+                    ],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "TypeAliasType",
+                    "args": [
+                      "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs"
+                    ],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs"
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of DirectoryConfigArgs",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "certificate_based_auth_properties": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.certificate_based_auth_properties",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.certificate_based_auth_properties",
+                    "name": "certificate_based_auth_properties",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "certificate_based_auth_properties of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs"
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.certificate_based_auth_properties",
+                    "name": "certificate_based_auth_properties",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "certificate_based_auth_properties of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs"
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.certificate_based_auth_properties",
+                    "name": "certificate_based_auth_properties",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs"
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "certificate_based_auth_properties of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "certificate_based_auth_properties",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "certificate_based_auth_properties of DirectoryConfigArgs",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs"
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "directory_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.directory_name",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.directory_name",
+                    "name": "directory_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "directory_name of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.directory_name",
+                    "name": "directory_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "directory_name of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.directory_name",
+                    "name": "directory_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "directory_name of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "directory_name",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "directory_name of DirectoryConfigArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "organizational_unit_distinguished_names": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.organizational_unit_distinguished_names",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.organizational_unit_distinguished_names",
+                    "name": "organizational_unit_distinguished_names",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "organizational_unit_distinguished_names of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          {
+                            ".class": "Instance",
+                            "args": [
+                              {
+                                ".class": "TypeAliasType",
+                                "args": ["builtins.str"],
+                                "type_ref": "pulumi.output.Input"
+                              }
+                            ],
+                            "extra_attrs": null,
+                            "type_ref": "typing.Sequence"
+                          }
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.organizational_unit_distinguished_names",
+                    "name": "organizational_unit_distinguished_names",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "organizational_unit_distinguished_names of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          {
+                            ".class": "Instance",
+                            "args": [
+                              {
+                                ".class": "TypeAliasType",
+                                "args": ["builtins.str"],
+                                "type_ref": "pulumi.output.Input"
+                              }
+                            ],
+                            "extra_attrs": null,
+                            "type_ref": "typing.Sequence"
+                          }
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.organizational_unit_distinguished_names",
+                    "name": "organizational_unit_distinguished_names",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "TypeAliasType",
+                                  "args": ["builtins.str"],
+                                  "type_ref": "pulumi.output.Input"
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "typing.Sequence"
+                            }
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "organizational_unit_distinguished_names of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "organizational_unit_distinguished_names",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "organizational_unit_distinguished_names of DirectoryConfigArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": [
+                        {
+                          ".class": "Instance",
+                          "args": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            }
+                          ],
+                          "extra_attrs": null,
+                          "type_ref": "typing.Sequence"
+                        }
+                      ],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.region",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "region",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "region of DirectoryConfigArgs",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "service_account_credentials": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.service_account_credentials",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.service_account_credentials",
+                    "name": "service_account_credentials",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "service_account_credentials of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs"
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.service_account_credentials",
+                    "name": "service_account_credentials",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "service_account_credentials of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs"
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.service_account_credentials",
+                    "name": "service_account_credentials",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs"
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "service_account_credentials of DirectoryConfigArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "service_account_credentials",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appstream.directory_config.DirectoryConfigArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "service_account_credentials of DirectoryConfigArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": [
+                        "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs"
+                      ],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.appstream.directory_config.DirectoryConfigArgs",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "DirectoryConfigCertificateBasedAuthPropertiesArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "DirectoryConfigCertificateBasedAuthPropertiesArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "DirectoryConfigServiceAccountCredentialsArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "DirectoryConfigServiceAccountCredentialsArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "FleetComputeCapacityArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.FleetComputeCapacityArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "FleetComputeCapacityArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.FleetComputeCapacityArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "FleetDomainJoinInfoArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.FleetDomainJoinInfoArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "FleetDomainJoinInfoArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.FleetDomainJoinInfoArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "FleetVpcConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.FleetVpcConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "FleetVpcConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.FleetVpcConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ImageBuilderAccessEndpointArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.ImageBuilderAccessEndpointArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ImageBuilderAccessEndpointArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.ImageBuilderAccessEndpointArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ImageBuilderDomainJoinInfoArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.ImageBuilderDomainJoinInfoArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ImageBuilderDomainJoinInfoArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.ImageBuilderDomainJoinInfoArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ImageBuilderVpcConfigArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.ImageBuilderVpcConfigArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "ImageBuilderVpcConfigArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.ImageBuilderVpcConfigArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Mapping": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Mapping",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NotRequired": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing_extensions.NotRequired",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Optional": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Optional",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Sequence": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Sequence",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "StackAccessEndpointArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.StackAccessEndpointArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "StackAccessEndpointArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.StackAccessEndpointArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "StackApplicationSettingsArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.StackApplicationSettingsArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "StackApplicationSettingsArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.StackApplicationSettingsArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "StackStorageConnectorArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.StackStorageConnectorArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "StackStorageConnectorArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.StackStorageConnectorArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "StackStreamingExperienceSettingsArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.StackStreamingExperienceSettingsArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "StackStreamingExperienceSettingsArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.StackStreamingExperienceSettingsArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "StackUserSettingArgs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.StackUserSettingArgs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "StackUserSettingArgsDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream._inputs.StackUserSettingArgsDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypeAlias": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypeAlias",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypedDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypedDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Union": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Union",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_DirectoryConfigState": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState",
+          "name": "_DirectoryConfigState",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.appstream.directory_config",
+        "mro": ["pulumi_aws.appstream.directory_config._DirectoryConfigState", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 5, 5, 5, 5, 5, 5],
+              "arg_names": [
+                "__self__",
+                "certificate_based_auth_properties",
+                "created_time",
+                "directory_name",
+                "organizational_unit_distinguished_names",
+                "region",
+                "service_account_credentials"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 5, 5, 5, 5, 5, 5],
+                "arg_names": [
+                  "__self__",
+                  "certificate_based_auth_properties",
+                  "created_time",
+                  "directory_name",
+                  "organizational_unit_distinguished_names",
+                  "region",
+                  "service_account_credentials"
+                ],
+                "arg_types": [
+                  "pulumi_aws.appstream.directory_config._DirectoryConfigState",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs"
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          {
+                            ".class": "Instance",
+                            "args": [
+                              {
+                                ".class": "TypeAliasType",
+                                "args": ["builtins.str"],
+                                "type_ref": "pulumi.output.Input"
+                              }
+                            ],
+                            "extra_attrs": null,
+                            "type_ref": "typing.Sequence"
+                          }
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [
+                          "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs"
+                        ],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of _DirectoryConfigState",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "certificate_based_auth_properties": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.certificate_based_auth_properties",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.certificate_based_auth_properties",
+                    "name": "certificate_based_auth_properties",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "certificate_based_auth_properties of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs"
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.certificate_based_auth_properties",
+                    "name": "certificate_based_auth_properties",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "certificate_based_auth_properties of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs"
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.certificate_based_auth_properties",
+                    "name": "certificate_based_auth_properties",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config._DirectoryConfigState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs"
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "certificate_based_auth_properties of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "certificate_based_auth_properties",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "certificate_based_auth_properties of _DirectoryConfigState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            "pulumi_aws.appstream._inputs.DirectoryConfigCertificateBasedAuthPropertiesArgs"
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "created_time": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.created_time",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.created_time",
+                    "name": "created_time",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "created_time of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.created_time",
+                    "name": "created_time",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "created_time of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.created_time",
+                    "name": "created_time",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config._DirectoryConfigState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "created_time of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "created_time",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "created_time of _DirectoryConfigState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "directory_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.directory_name",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.directory_name",
+                    "name": "directory_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "directory_name of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.directory_name",
+                    "name": "directory_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "directory_name of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.directory_name",
+                    "name": "directory_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config._DirectoryConfigState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "directory_name of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "directory_name",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "directory_name of _DirectoryConfigState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "organizational_unit_distinguished_names": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.organizational_unit_distinguished_names",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.organizational_unit_distinguished_names",
+                    "name": "organizational_unit_distinguished_names",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "organizational_unit_distinguished_names of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "TypeAliasType",
+                                    "args": ["builtins.str"],
+                                    "type_ref": "pulumi.output.Input"
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "typing.Sequence"
+                              }
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.organizational_unit_distinguished_names",
+                    "name": "organizational_unit_distinguished_names",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "organizational_unit_distinguished_names of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "TypeAliasType",
+                                    "args": ["builtins.str"],
+                                    "type_ref": "pulumi.output.Input"
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "typing.Sequence"
+                              }
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.organizational_unit_distinguished_names",
+                    "name": "organizational_unit_distinguished_names",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config._DirectoryConfigState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                {
+                                  ".class": "Instance",
+                                  "args": [
+                                    {
+                                      ".class": "TypeAliasType",
+                                      "args": ["builtins.str"],
+                                      "type_ref": "pulumi.output.Input"
+                                    }
+                                  ],
+                                  "extra_attrs": null,
+                                  "type_ref": "typing.Sequence"
+                                }
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "organizational_unit_distinguished_names of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "organizational_unit_distinguished_names",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "organizational_unit_distinguished_names of _DirectoryConfigState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "TypeAliasType",
+                                  "args": ["builtins.str"],
+                                  "type_ref": "pulumi.output.Input"
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "typing.Sequence"
+                            }
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.region",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config._DirectoryConfigState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "region",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "region of _DirectoryConfigState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "service_account_credentials": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.service_account_credentials",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.service_account_credentials",
+                    "name": "service_account_credentials",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "service_account_credentials of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs"
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.service_account_credentials",
+                    "name": "service_account_credentials",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "service_account_credentials of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [
+                              "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs"
+                            ],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.service_account_credentials",
+                    "name": "service_account_credentials",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appstream.directory_config._DirectoryConfigState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [
+                                "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs"
+                              ],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "service_account_credentials of _DirectoryConfigState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "service_account_credentials",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appstream.directory_config._DirectoryConfigState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "service_account_credentials of _DirectoryConfigState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [
+                            "pulumi_aws.appstream._inputs.DirectoryConfigServiceAccountCredentialsArgs"
+                          ],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.appstream.directory_config._DirectoryConfigState.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.appstream.directory_config._DirectoryConfigState",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "__all__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "pulumi_aws.appstream.directory_config.__all__",
+        "name": "__all__",
+        "type": {
+          ".class": "Instance",
+          "args": ["builtins.str"],
+          "extra_attrs": null,
+          "type_ref": "builtins.list"
+        }
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appstream.directory_config.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appstream.directory_config.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appstream.directory_config.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appstream.directory_config.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appstream.directory_config.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appstream.directory_config.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_builtins": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "builtins",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_utilities": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws._utilities",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "outputs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.appstream.outputs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "overload": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.overload",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "pulumi": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "sys": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "sys",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "warnings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "warnings",
+      "kind": "Gdef",
+      "module_public": false
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi_aws\\appstream\\directory_config.py"
+}

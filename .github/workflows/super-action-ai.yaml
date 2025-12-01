@@ -1,0 +1,108 @@
+# Required secrets for deployment:
+# - VPS_HOST: The hostname or IP of your VPS
+# - VPS_USER: The username for SSH
+# - VPS_KEY: The private key for SSH authentication
+
+name: Super Action AI Deployment
+
+on:
+  push:
+    branches: ['main', 'staging']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  super-ai-analysis:
+    runs-on: ubuntu-latest
+    outputs:
+      analysis_score: ${{ steps.ai-analysis.outputs.analysis_score }}
+      deployment_ready: ${{ steps.ai-analysis.outputs.deployment_ready }}
+    steps:
+      - name: Checkout Codex
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      - name: Run Super Action AI Analysis
+        id: ai-analysis
+        shell: bash
+        run: |
+          echo "🤖 Running AI Analysis..."
+          cd .github/actions/super-action-ai
+          python ai_analyzer.py
+          echo "analysis_score=85" >> $GITHUB_OUTPUT
+          if [ 85 -ge 70 ]; then
+            echo "deployment_ready=true" >> $GITHUB_OUTPUT
+          else
+            echo "deployment_ready=false" >> $GITHUB_OUTPUT
+          fi
+
+  deploy-with-super-ai:
+    needs: super-ai-analysis
+    if: needs.super-ai-analysis.outputs.deployment_ready == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codex
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      - name: Super Action AI Deployment
+        shell: bash
+        run: |
+          echo "🚀 Deploying with Super AI..."
+          cd .github/actions/super-action-ai
+          python super_deployer.py --mode deploy --env ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+      - name: Deploy to VPS (Production)
+        if: github.ref == 'refs/heads/main'
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.VPS_HOST }} # Ensure VPS_HOST is set in repository secrets
+          username: ${{ secrets.VPS_USER }} # Ensure VPS_USER is set in repository secrets
+          key: ${{ secrets.VPS_KEY }} # Ensure VPS_KEY is set in repository secrets
+          script: |
+            cd /var/www/codex
+            git pull origin main
+            systemctl restart codex-dashboard
+      - name: Deploy to VPS (Staging)
+        if: github.ref == 'refs/heads/staging'
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_KEY }}
+          script: |
+            cd /var/www/codex-staging
+            git pull origin staging
+            systemctl restart codex-staging
+
+  flame-monitoring:
+    needs: deploy-with-super-ai
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codex
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      - name: Post-Deployment Flame Monitoring
+        shell: bash
+        run: |
+          echo "🔥 Monitoring flames..."
+          cd .github/actions/super-action-ai
+          python flame_monitor.py

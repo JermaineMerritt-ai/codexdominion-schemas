@@ -1,0 +1,60 @@
+{
+  "title": "Constellation Compliance Overview",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Fact-Check Errors",
+      "targets": [{ "expr": "count_over_time(fact_check_errors[1h])" }]
+    },
+    {
+      "type": "stat",
+      "title": "Drift Events",
+      "targets": [{ "expr": "count_over_time(drift_events_detected[1h])" }]
+    },
+    {
+      "type": "stat",
+      "title": "Blocked Prompts",
+      "targets": [
+        { "expr": "count_over_time(prompt_filter_decision_total{decision=\"block\"}[1h])" }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Review Prompts",
+      "targets": [
+        { "expr": "count_over_time(prompt_filter_decision_total{decision=\"review\"}[1h])" }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Fact-Check & Drift Trends",
+      "targets": [
+        { "expr": "rate(fact_check_errors[5m])" },
+        { "expr": "rate(drift_events_detected[5m])" }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Prompt Filter Activity",
+      "targets": [{ "expr": "rate(prompt_filter_decision_total[5m])" }]
+    },
+    {
+      "type": "table",
+      "title": "Recent Compliance Logs",
+      "targets": [{ "expr": "compliance_log_entries" }],
+      "columns": [
+        { "text": "timestamp" },
+        { "text": "consent_id" },
+        { "text": "subject_id" },
+        { "text": "artifact" },
+        { "text": "decision" },
+        { "text": "reason" }
+      ]
+    },
+    {
+      "type": "alertlist",
+      "title": "Active Alerts",
+      "targets": [{ "expr": "ALERTS{alertstate=\"firing\"}" }]
+    }
+  ]
+}

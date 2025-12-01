@@ -1,0 +1,15 @@
+prometheusOperator:
+  enabled: true
+  createCustomResource: true
+  tls:
+    enabled: false # adjust if you want TLS between operator components
+  admissionWebhooks:
+    enabled: true
+    patch:
+      enabled: true
+
+global:
+  rbac:
+    create: true
+  podSecurityPolicy:
+    enabled: false

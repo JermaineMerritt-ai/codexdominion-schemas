@@ -1,0 +1,3382 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi.runtime.mocks",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "ABC": { ".class": "SymbolTableNode", "cross_ref": "abc.ABC", "kind": "Gdef" },
+    "MockCallArgs": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.runtime.mocks.MockCallArgs",
+          "name": "MockCallArgs",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.runtime.mocks.MockCallArgs",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.runtime.mocks",
+        "mro": ["pulumi.runtime.mocks.MockCallArgs", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 0],
+              "arg_names": ["self", "token", "args", "provider"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockCallArgs.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 0],
+                "arg_names": ["self", "token", "args", "provider"],
+                "arg_types": [
+                  "pulumi.runtime.mocks.MockCallArgs",
+                  "builtins.str",
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  },
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of MockCallArgs",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "args": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime.mocks.MockCallArgs.args",
+              "name": "args",
+              "type": {
+                ".class": "Instance",
+                "args": [
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 4
+                  },
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 4
+                  }
+                ],
+                "extra_attrs": null,
+                "type_ref": "builtins.dict"
+              }
+            }
+          },
+          "provider": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime.mocks.MockCallArgs.provider",
+              "name": "provider",
+              "type": "builtins.str"
+            }
+          },
+          "token": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime.mocks.MockCallArgs.token",
+              "name": "token",
+              "type": "builtins.str"
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.runtime.mocks.MockCallArgs.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.runtime.mocks.MockCallArgs",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "MockEngine": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.runtime.mocks.MockEngine",
+          "name": "MockEngine",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.runtime.mocks.MockEngine",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.runtime.mocks",
+        "mro": ["pulumi.runtime.mocks.MockEngine", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "Log": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "request"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockEngine.Log",
+              "name": "Log",
+              "type": null
+            }
+          },
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "logger"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockEngine.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "logger"],
+                "arg_types": [
+                  "pulumi.runtime.mocks.MockEngine",
+                  {
+                    ".class": "UnionType",
+                    "items": ["logging.Logger", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of MockEngine",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "logger": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime.mocks.MockEngine.logger",
+              "name": "logger",
+              "type": "logging.Logger"
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.runtime.mocks.MockEngine.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.runtime.mocks.MockEngine",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "MockMonitor": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.runtime.mocks.MockMonitor",
+          "name": "MockMonitor",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.runtime.mocks.MockMonitor",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.runtime.mocks",
+        "mro": ["pulumi.runtime.mocks.MockMonitor", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "Invoke": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "request"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.Invoke",
+              "name": "Invoke",
+              "type": null
+            }
+          },
+          "ReadResource": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "request"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.ReadResource",
+              "name": "ReadResource",
+              "type": null
+            }
+          },
+          "RegisterPackage": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "request"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.RegisterPackage",
+              "name": "RegisterPackage",
+              "type": null
+            }
+          },
+          "RegisterResource": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "request"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.RegisterResource",
+              "name": "RegisterResource",
+              "type": null
+            }
+          },
+          "RegisterResourceOutputs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "request"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.RegisterResourceOutputs",
+              "name": "RegisterResourceOutputs",
+              "type": null
+            }
+          },
+          "ResourceRegistration": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "TypeInfo",
+              "_promote": [],
+              "abstract_attributes": [],
+              "alt_promote": null,
+              "bases": [
+                {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        "builtins.str",
+                        {
+                          ".class": "Instance",
+                          "args": [
+                            {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            },
+                            {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            }
+                          ],
+                          "extra_attrs": null,
+                          "type_ref": "builtins.dict"
+                        }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.tuple"
+                }
+              ],
+              "dataclass_transform_spec": null,
+              "declared_metaclass": null,
+              "defn": {
+                ".class": "ClassDef",
+                "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration",
+                "name": "ResourceRegistration",
+                "type_vars": []
+              },
+              "deletable_attributes": [],
+              "deprecated": null,
+              "flags": ["is_named_tuple"],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration",
+              "has_param_spec_type": false,
+              "metaclass_type": null,
+              "metadata": { "namedtuple": { "fields": ["urn", "id", "state"] } },
+              "module_name": "pulumi.runtime.mocks",
+              "mro": [
+                "pulumi.runtime.mocks.MockMonitor.ResourceRegistration",
+                "builtins.tuple",
+                "typing.Sequence",
+                "typing.Reversible",
+                "typing.Collection",
+                "typing.Iterable",
+                "typing.Container",
+                "builtins.object"
+              ],
+              "names": {
+                ".class": "SymbolTable",
+                "_NT": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "TypeVarExpr",
+                    "default": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                    "name": "_NT",
+                    "upper_bound": {
+                      ".class": "TupleType",
+                      "implicit": false,
+                      "items": [
+                        "builtins.str",
+                        "builtins.str",
+                        {
+                          ".class": "Instance",
+                          "args": [
+                            {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            },
+                            {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            }
+                          ],
+                          "extra_attrs": null,
+                          "type_ref": "builtins.dict"
+                        }
+                      ],
+                      "partial_fallback": {
+                        ".class": "Instance",
+                        "args": [
+                          {
+                            ".class": "UnionType",
+                            "items": [
+                              "builtins.str",
+                              {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  },
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "builtins.dict"
+                              }
+                            ],
+                            "uses_pep604_syntax": false
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.tuple"
+                      }
+                    },
+                    "values": [],
+                    "variance": 0
+                  }
+                },
+                "__annotations__": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_initialized_in_class", "is_ready"],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.__annotations__",
+                    "name": "__annotations__",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        "builtins.str",
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 6
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "builtins.dict"
+                    }
+                  }
+                },
+                "__doc__": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_initialized_in_class", "is_ready"],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.__doc__",
+                    "name": "__doc__",
+                    "type": "builtins.str"
+                  }
+                },
+                "__match_args__": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_initialized_in_class", "is_ready"],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.__match_args__",
+                    "name": "__match_args__",
+                    "type": {
+                      ".class": "TupleType",
+                      "implicit": false,
+                      "items": [
+                        { ".class": "LiteralType", "fallback": "builtins.str", "value": "urn" },
+                        { ".class": "LiteralType", "fallback": "builtins.str", "value": "id" },
+                        { ".class": "LiteralType", "fallback": "builtins.str", "value": "state" }
+                      ],
+                      "partial_fallback": {
+                        ".class": "Instance",
+                        "args": [
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 6
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.tuple"
+                      }
+                    }
+                  }
+                },
+                "__new__": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 0, 0],
+                    "arg_names": ["_cls", "urn", "id", "state"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_static"],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.__new__",
+                    "name": "__new__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 0, 0],
+                      "arg_names": ["_cls", "urn", "id", "state"],
+                      "arg_types": [
+                        {
+                          ".class": "TypeType",
+                          "item": {
+                            ".class": "TypeVarType",
+                            "default": {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            },
+                            "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                            "id": -1,
+                            "name": "_NT",
+                            "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.__new__",
+                            "upper_bound": {
+                              ".class": "TupleType",
+                              "implicit": false,
+                              "items": [
+                                "builtins.str",
+                                "builtins.str",
+                                {
+                                  ".class": "Instance",
+                                  "args": [
+                                    {
+                                      ".class": "AnyType",
+                                      "missing_import_name": null,
+                                      "source_any": null,
+                                      "type_of_any": 4
+                                    },
+                                    {
+                                      ".class": "AnyType",
+                                      "missing_import_name": null,
+                                      "source_any": null,
+                                      "type_of_any": 4
+                                    }
+                                  ],
+                                  "extra_attrs": null,
+                                  "type_ref": "builtins.dict"
+                                }
+                              ],
+                              "partial_fallback": {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "UnionType",
+                                    "items": [
+                                      "builtins.str",
+                                      {
+                                        ".class": "Instance",
+                                        "args": [
+                                          {
+                                            ".class": "AnyType",
+                                            "missing_import_name": null,
+                                            "source_any": null,
+                                            "type_of_any": 4
+                                          },
+                                          {
+                                            ".class": "AnyType",
+                                            "missing_import_name": null,
+                                            "source_any": null,
+                                            "type_of_any": 4
+                                          }
+                                        ],
+                                        "extra_attrs": null,
+                                        "type_ref": "builtins.dict"
+                                      }
+                                    ],
+                                    "uses_pep604_syntax": false
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "builtins.tuple"
+                              }
+                            },
+                            "values": [],
+                            "variance": 0
+                          }
+                        },
+                        "builtins.str",
+                        "builtins.str",
+                        {
+                          ".class": "Instance",
+                          "args": [
+                            {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            },
+                            {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            }
+                          ],
+                          "extra_attrs": null,
+                          "type_ref": "builtins.dict"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": {},
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__new__ of ResourceRegistration",
+                      "ret_type": {
+                        ".class": "TypeVarType",
+                        "default": {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                        "id": -1,
+                        "name": "_NT",
+                        "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.__new__",
+                        "upper_bound": {
+                          ".class": "TupleType",
+                          "implicit": false,
+                          "items": [
+                            "builtins.str",
+                            "builtins.str",
+                            {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "AnyType",
+                                  "missing_import_name": null,
+                                  "source_any": null,
+                                  "type_of_any": 4
+                                },
+                                {
+                                  ".class": "AnyType",
+                                  "missing_import_name": null,
+                                  "source_any": null,
+                                  "type_of_any": 4
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "builtins.dict"
+                            }
+                          ],
+                          "partial_fallback": {
+                            ".class": "Instance",
+                            "args": [
+                              {
+                                ".class": "UnionType",
+                                "items": [
+                                  "builtins.str",
+                                  {
+                                    ".class": "Instance",
+                                    "args": [
+                                      {
+                                        ".class": "AnyType",
+                                        "missing_import_name": null,
+                                        "source_any": null,
+                                        "type_of_any": 4
+                                      },
+                                      {
+                                        ".class": "AnyType",
+                                        "missing_import_name": null,
+                                        "source_any": null,
+                                        "type_of_any": 4
+                                      }
+                                    ],
+                                    "extra_attrs": null,
+                                    "type_ref": "builtins.dict"
+                                  }
+                                ],
+                                "uses_pep604_syntax": false
+                              }
+                            ],
+                            "extra_attrs": null,
+                            "type_ref": "builtins.tuple"
+                          }
+                        },
+                        "values": [],
+                        "variance": 0
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": [
+                        {
+                          ".class": "TypeVarType",
+                          "default": {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                          "id": -1,
+                          "name": "_NT",
+                          "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.__new__",
+                          "upper_bound": {
+                            ".class": "TupleType",
+                            "implicit": false,
+                            "items": [
+                              "builtins.str",
+                              "builtins.str",
+                              {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  },
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "builtins.dict"
+                              }
+                            ],
+                            "partial_fallback": {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "builtins.str",
+                                    {
+                                      ".class": "Instance",
+                                      "args": [
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        },
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        }
+                                      ],
+                                      "extra_attrs": null,
+                                      "type_ref": "builtins.dict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "builtins.tuple"
+                            }
+                          },
+                          "values": [],
+                          "variance": 0
+                        }
+                      ]
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "_asdict": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["_self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": [],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._asdict",
+                    "name": "_asdict",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["_self"],
+                      "arg_types": [
+                        {
+                          ".class": "TypeVarType",
+                          "default": {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                          "id": -1,
+                          "name": "_NT",
+                          "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._asdict",
+                          "upper_bound": {
+                            ".class": "TupleType",
+                            "implicit": false,
+                            "items": [
+                              "builtins.str",
+                              "builtins.str",
+                              {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  },
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "builtins.dict"
+                              }
+                            ],
+                            "partial_fallback": {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "builtins.str",
+                                    {
+                                      ".class": "Instance",
+                                      "args": [
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        },
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        }
+                                      ],
+                                      "extra_attrs": null,
+                                      "type_ref": "builtins.dict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "builtins.tuple"
+                            }
+                          },
+                          "values": [],
+                          "variance": 0
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": {},
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "_asdict of ResourceRegistration",
+                      "ret_type": {
+                        ".class": "Instance",
+                        "args": [
+                          "builtins.str",
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 6
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.dict"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": [
+                        {
+                          ".class": "TypeVarType",
+                          "default": {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                          "id": -1,
+                          "name": "_NT",
+                          "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._asdict",
+                          "upper_bound": {
+                            ".class": "TupleType",
+                            "implicit": false,
+                            "items": [
+                              "builtins.str",
+                              "builtins.str",
+                              {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  },
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "builtins.dict"
+                              }
+                            ],
+                            "partial_fallback": {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "builtins.str",
+                                    {
+                                      ".class": "Instance",
+                                      "args": [
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        },
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        }
+                                      ],
+                                      "extra_attrs": null,
+                                      "type_ref": "builtins.dict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "builtins.tuple"
+                            }
+                          },
+                          "values": [],
+                          "variance": 0
+                        }
+                      ]
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "_field_defaults": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_initialized_in_class", "is_ready"],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._field_defaults",
+                    "name": "_field_defaults",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        "builtins.str",
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 6
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "builtins.dict"
+                    }
+                  }
+                },
+                "_field_types": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_initialized_in_class", "is_ready"],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._field_types",
+                    "name": "_field_types",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        "builtins.str",
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 6
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "builtins.dict"
+                    }
+                  }
+                },
+                "_fields": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_initialized_in_class", "is_ready"],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._fields",
+                    "name": "_fields",
+                    "type": {
+                      ".class": "TupleType",
+                      "implicit": false,
+                      "items": ["builtins.str", "builtins.str", "builtins.str"],
+                      "partial_fallback": {
+                        ".class": "Instance",
+                        "args": [
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 6
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.tuple"
+                      }
+                    }
+                  }
+                },
+                "_make": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Decorator",
+                    "func": {
+                      ".class": "FuncDef",
+                      "abstract_status": 0,
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["_cls", "iterable"],
+                      "dataclass_transform_spec": null,
+                      "deprecated": null,
+                      "flags": ["is_class", "is_decorated"],
+                      "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._make",
+                      "name": "_make",
+                      "type": {
+                        ".class": "CallableType",
+                        "arg_kinds": [0, 0],
+                        "arg_names": ["_cls", "iterable"],
+                        "arg_types": [
+                          {
+                            ".class": "TypeType",
+                            "item": {
+                              ".class": "TypeVarType",
+                              "default": {
+                                ".class": "AnyType",
+                                "missing_import_name": null,
+                                "source_any": null,
+                                "type_of_any": 4
+                              },
+                              "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                              "id": -1,
+                              "name": "_NT",
+                              "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._make",
+                              "upper_bound": {
+                                ".class": "TupleType",
+                                "implicit": false,
+                                "items": [
+                                  "builtins.str",
+                                  "builtins.str",
+                                  {
+                                    ".class": "Instance",
+                                    "args": [
+                                      {
+                                        ".class": "AnyType",
+                                        "missing_import_name": null,
+                                        "source_any": null,
+                                        "type_of_any": 4
+                                      },
+                                      {
+                                        ".class": "AnyType",
+                                        "missing_import_name": null,
+                                        "source_any": null,
+                                        "type_of_any": 4
+                                      }
+                                    ],
+                                    "extra_attrs": null,
+                                    "type_ref": "builtins.dict"
+                                  }
+                                ],
+                                "partial_fallback": {
+                                  ".class": "Instance",
+                                  "args": [
+                                    {
+                                      ".class": "UnionType",
+                                      "items": [
+                                        "builtins.str",
+                                        {
+                                          ".class": "Instance",
+                                          "args": [
+                                            {
+                                              ".class": "AnyType",
+                                              "missing_import_name": null,
+                                              "source_any": null,
+                                              "type_of_any": 4
+                                            },
+                                            {
+                                              ".class": "AnyType",
+                                              "missing_import_name": null,
+                                              "source_any": null,
+                                              "type_of_any": 4
+                                            }
+                                          ],
+                                          "extra_attrs": null,
+                                          "type_ref": "builtins.dict"
+                                        }
+                                      ],
+                                      "uses_pep604_syntax": false
+                                    }
+                                  ],
+                                  "extra_attrs": null,
+                                  "type_ref": "builtins.tuple"
+                                }
+                              },
+                              "values": [],
+                              "variance": 0
+                            }
+                          },
+                          {
+                            ".class": "Instance",
+                            "args": [
+                              {
+                                ".class": "AnyType",
+                                "missing_import_name": null,
+                                "source_any": null,
+                                "type_of_any": 6
+                              }
+                            ],
+                            "extra_attrs": null,
+                            "type_ref": "typing.Iterable"
+                          }
+                        ],
+                        "bound_args": [],
+                        "def_extras": {},
+                        "fallback": "builtins.function",
+                        "from_concatenate": false,
+                        "implicit": false,
+                        "imprecise_arg_kinds": false,
+                        "is_ellipsis_args": false,
+                        "name": "_make of ResourceRegistration",
+                        "ret_type": {
+                          ".class": "TypeVarType",
+                          "default": {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                          "id": -1,
+                          "name": "_NT",
+                          "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._make",
+                          "upper_bound": {
+                            ".class": "TupleType",
+                            "implicit": false,
+                            "items": [
+                              "builtins.str",
+                              "builtins.str",
+                              {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  },
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "builtins.dict"
+                              }
+                            ],
+                            "partial_fallback": {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "builtins.str",
+                                    {
+                                      ".class": "Instance",
+                                      "args": [
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        },
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        }
+                                      ],
+                                      "extra_attrs": null,
+                                      "type_ref": "builtins.dict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "builtins.tuple"
+                            }
+                          },
+                          "values": [],
+                          "variance": 0
+                        },
+                        "type_guard": null,
+                        "type_is": null,
+                        "unpack_kwargs": false,
+                        "variables": [
+                          {
+                            ".class": "TypeVarType",
+                            "default": {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            },
+                            "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                            "id": -1,
+                            "name": "_NT",
+                            "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._make",
+                            "upper_bound": {
+                              ".class": "TupleType",
+                              "implicit": false,
+                              "items": [
+                                "builtins.str",
+                                "builtins.str",
+                                {
+                                  ".class": "Instance",
+                                  "args": [
+                                    {
+                                      ".class": "AnyType",
+                                      "missing_import_name": null,
+                                      "source_any": null,
+                                      "type_of_any": 4
+                                    },
+                                    {
+                                      ".class": "AnyType",
+                                      "missing_import_name": null,
+                                      "source_any": null,
+                                      "type_of_any": 4
+                                    }
+                                  ],
+                                  "extra_attrs": null,
+                                  "type_ref": "builtins.dict"
+                                }
+                              ],
+                              "partial_fallback": {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "UnionType",
+                                    "items": [
+                                      "builtins.str",
+                                      {
+                                        ".class": "Instance",
+                                        "args": [
+                                          {
+                                            ".class": "AnyType",
+                                            "missing_import_name": null,
+                                            "source_any": null,
+                                            "type_of_any": 4
+                                          },
+                                          {
+                                            ".class": "AnyType",
+                                            "missing_import_name": null,
+                                            "source_any": null,
+                                            "type_of_any": 4
+                                          }
+                                        ],
+                                        "extra_attrs": null,
+                                        "type_ref": "builtins.dict"
+                                      }
+                                    ],
+                                    "uses_pep604_syntax": false
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "builtins.tuple"
+                              }
+                            },
+                            "values": [],
+                            "variance": 0
+                          }
+                        ]
+                      }
+                    },
+                    "is_overload": false,
+                    "var": {
+                      ".class": "Var",
+                      "flags": ["is_classmethod", "is_ready"],
+                      "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._make",
+                      "name": "_make",
+                      "type": {
+                        ".class": "CallableType",
+                        "arg_kinds": [0, 0],
+                        "arg_names": ["_cls", "iterable"],
+                        "arg_types": [
+                          {
+                            ".class": "TypeType",
+                            "item": {
+                              ".class": "TypeVarType",
+                              "default": {
+                                ".class": "AnyType",
+                                "missing_import_name": null,
+                                "source_any": null,
+                                "type_of_any": 4
+                              },
+                              "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                              "id": -1,
+                              "name": "_NT",
+                              "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._make",
+                              "upper_bound": {
+                                ".class": "TupleType",
+                                "implicit": false,
+                                "items": [
+                                  "builtins.str",
+                                  "builtins.str",
+                                  {
+                                    ".class": "Instance",
+                                    "args": [
+                                      {
+                                        ".class": "AnyType",
+                                        "missing_import_name": null,
+                                        "source_any": null,
+                                        "type_of_any": 4
+                                      },
+                                      {
+                                        ".class": "AnyType",
+                                        "missing_import_name": null,
+                                        "source_any": null,
+                                        "type_of_any": 4
+                                      }
+                                    ],
+                                    "extra_attrs": null,
+                                    "type_ref": "builtins.dict"
+                                  }
+                                ],
+                                "partial_fallback": {
+                                  ".class": "Instance",
+                                  "args": [
+                                    {
+                                      ".class": "UnionType",
+                                      "items": [
+                                        "builtins.str",
+                                        {
+                                          ".class": "Instance",
+                                          "args": [
+                                            {
+                                              ".class": "AnyType",
+                                              "missing_import_name": null,
+                                              "source_any": null,
+                                              "type_of_any": 4
+                                            },
+                                            {
+                                              ".class": "AnyType",
+                                              "missing_import_name": null,
+                                              "source_any": null,
+                                              "type_of_any": 4
+                                            }
+                                          ],
+                                          "extra_attrs": null,
+                                          "type_ref": "builtins.dict"
+                                        }
+                                      ],
+                                      "uses_pep604_syntax": false
+                                    }
+                                  ],
+                                  "extra_attrs": null,
+                                  "type_ref": "builtins.tuple"
+                                }
+                              },
+                              "values": [],
+                              "variance": 0
+                            }
+                          },
+                          {
+                            ".class": "Instance",
+                            "args": [
+                              {
+                                ".class": "AnyType",
+                                "missing_import_name": null,
+                                "source_any": null,
+                                "type_of_any": 6
+                              }
+                            ],
+                            "extra_attrs": null,
+                            "type_ref": "typing.Iterable"
+                          }
+                        ],
+                        "bound_args": [],
+                        "def_extras": {},
+                        "fallback": "builtins.function",
+                        "from_concatenate": false,
+                        "implicit": false,
+                        "imprecise_arg_kinds": false,
+                        "is_ellipsis_args": false,
+                        "name": "_make of ResourceRegistration",
+                        "ret_type": {
+                          ".class": "TypeVarType",
+                          "default": {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                          "id": -1,
+                          "name": "_NT",
+                          "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._make",
+                          "upper_bound": {
+                            ".class": "TupleType",
+                            "implicit": false,
+                            "items": [
+                              "builtins.str",
+                              "builtins.str",
+                              {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  },
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "builtins.dict"
+                              }
+                            ],
+                            "partial_fallback": {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "builtins.str",
+                                    {
+                                      ".class": "Instance",
+                                      "args": [
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        },
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        }
+                                      ],
+                                      "extra_attrs": null,
+                                      "type_ref": "builtins.dict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "builtins.tuple"
+                            }
+                          },
+                          "values": [],
+                          "variance": 0
+                        },
+                        "type_guard": null,
+                        "type_is": null,
+                        "unpack_kwargs": false,
+                        "variables": [
+                          {
+                            ".class": "TypeVarType",
+                            "default": {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            },
+                            "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                            "id": -1,
+                            "name": "_NT",
+                            "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._make",
+                            "upper_bound": {
+                              ".class": "TupleType",
+                              "implicit": false,
+                              "items": [
+                                "builtins.str",
+                                "builtins.str",
+                                {
+                                  ".class": "Instance",
+                                  "args": [
+                                    {
+                                      ".class": "AnyType",
+                                      "missing_import_name": null,
+                                      "source_any": null,
+                                      "type_of_any": 4
+                                    },
+                                    {
+                                      ".class": "AnyType",
+                                      "missing_import_name": null,
+                                      "source_any": null,
+                                      "type_of_any": 4
+                                    }
+                                  ],
+                                  "extra_attrs": null,
+                                  "type_ref": "builtins.dict"
+                                }
+                              ],
+                              "partial_fallback": {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "UnionType",
+                                    "items": [
+                                      "builtins.str",
+                                      {
+                                        ".class": "Instance",
+                                        "args": [
+                                          {
+                                            ".class": "AnyType",
+                                            "missing_import_name": null,
+                                            "source_any": null,
+                                            "type_of_any": 4
+                                          },
+                                          {
+                                            ".class": "AnyType",
+                                            "missing_import_name": null,
+                                            "source_any": null,
+                                            "type_of_any": 4
+                                          }
+                                        ],
+                                        "extra_attrs": null,
+                                        "type_ref": "builtins.dict"
+                                      }
+                                    ],
+                                    "uses_pep604_syntax": false
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "builtins.tuple"
+                              }
+                            },
+                            "values": [],
+                            "variance": 0
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "_replace": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 5, 5, 5],
+                    "arg_names": ["_self", "urn", "id", "state"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": [],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._replace",
+                    "name": "_replace",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 5, 5, 5],
+                      "arg_names": ["_self", "urn", "id", "state"],
+                      "arg_types": [
+                        {
+                          ".class": "TypeVarType",
+                          "default": {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                          "id": -1,
+                          "name": "_NT",
+                          "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._replace",
+                          "upper_bound": {
+                            ".class": "TupleType",
+                            "implicit": false,
+                            "items": [
+                              "builtins.str",
+                              "builtins.str",
+                              {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  },
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "builtins.dict"
+                              }
+                            ],
+                            "partial_fallback": {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "builtins.str",
+                                    {
+                                      ".class": "Instance",
+                                      "args": [
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        },
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        }
+                                      ],
+                                      "extra_attrs": null,
+                                      "type_ref": "builtins.dict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "builtins.tuple"
+                            }
+                          },
+                          "values": [],
+                          "variance": 0
+                        },
+                        "builtins.str",
+                        "builtins.str",
+                        {
+                          ".class": "Instance",
+                          "args": [
+                            {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            },
+                            {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            }
+                          ],
+                          "extra_attrs": null,
+                          "type_ref": "builtins.dict"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": {},
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "_replace of ResourceRegistration",
+                      "ret_type": {
+                        ".class": "TypeVarType",
+                        "default": {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                        "id": -1,
+                        "name": "_NT",
+                        "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._replace",
+                        "upper_bound": {
+                          ".class": "TupleType",
+                          "implicit": false,
+                          "items": [
+                            "builtins.str",
+                            "builtins.str",
+                            {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "AnyType",
+                                  "missing_import_name": null,
+                                  "source_any": null,
+                                  "type_of_any": 4
+                                },
+                                {
+                                  ".class": "AnyType",
+                                  "missing_import_name": null,
+                                  "source_any": null,
+                                  "type_of_any": 4
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "builtins.dict"
+                            }
+                          ],
+                          "partial_fallback": {
+                            ".class": "Instance",
+                            "args": [
+                              {
+                                ".class": "UnionType",
+                                "items": [
+                                  "builtins.str",
+                                  {
+                                    ".class": "Instance",
+                                    "args": [
+                                      {
+                                        ".class": "AnyType",
+                                        "missing_import_name": null,
+                                        "source_any": null,
+                                        "type_of_any": 4
+                                      },
+                                      {
+                                        ".class": "AnyType",
+                                        "missing_import_name": null,
+                                        "source_any": null,
+                                        "type_of_any": 4
+                                      }
+                                    ],
+                                    "extra_attrs": null,
+                                    "type_ref": "builtins.dict"
+                                  }
+                                ],
+                                "uses_pep604_syntax": false
+                              }
+                            ],
+                            "extra_attrs": null,
+                            "type_ref": "builtins.tuple"
+                          }
+                        },
+                        "values": [],
+                        "variance": 0
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": [
+                        {
+                          ".class": "TypeVarType",
+                          "default": {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._NT",
+                          "id": -1,
+                          "name": "_NT",
+                          "namespace": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._replace",
+                          "upper_bound": {
+                            ".class": "TupleType",
+                            "implicit": false,
+                            "items": [
+                              "builtins.str",
+                              "builtins.str",
+                              {
+                                ".class": "Instance",
+                                "args": [
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  },
+                                  {
+                                    ".class": "AnyType",
+                                    "missing_import_name": null,
+                                    "source_any": null,
+                                    "type_of_any": 4
+                                  }
+                                ],
+                                "extra_attrs": null,
+                                "type_ref": "builtins.dict"
+                              }
+                            ],
+                            "partial_fallback": {
+                              ".class": "Instance",
+                              "args": [
+                                {
+                                  ".class": "UnionType",
+                                  "items": [
+                                    "builtins.str",
+                                    {
+                                      ".class": "Instance",
+                                      "args": [
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        },
+                                        {
+                                          ".class": "AnyType",
+                                          "missing_import_name": null,
+                                          "source_any": null,
+                                          "type_of_any": 4
+                                        }
+                                      ],
+                                      "extra_attrs": null,
+                                      "type_ref": "builtins.dict"
+                                    }
+                                  ],
+                                  "uses_pep604_syntax": false
+                                }
+                              ],
+                              "extra_attrs": null,
+                              "type_ref": "builtins.tuple"
+                            }
+                          },
+                          "values": [],
+                          "variance": 0
+                        }
+                      ]
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "_source": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_initialized_in_class", "is_ready"],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration._source",
+                    "name": "_source",
+                    "type": "builtins.str"
+                  }
+                },
+                "id": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.id",
+                    "name": "id",
+                    "type": "builtins.str"
+                  }
+                },
+                "id-redefinition": {
+                  ".class": "SymbolTableNode",
+                  "cross_ref": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.id",
+                  "kind": "Mdef"
+                },
+                "state": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.state",
+                    "name": "state",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "builtins.dict"
+                    }
+                  }
+                },
+                "state-redefinition": {
+                  ".class": "SymbolTableNode",
+                  "cross_ref": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.state",
+                  "kind": "Mdef"
+                },
+                "urn": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.urn",
+                    "name": "urn",
+                    "type": "builtins.str"
+                  }
+                },
+                "urn-redefinition": {
+                  ".class": "SymbolTableNode",
+                  "cross_ref": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.urn",
+                  "kind": "Mdef"
+                }
+              },
+              "self_type": {
+                ".class": "TypeVarType",
+                "default": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 4
+                },
+                "fullname": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration.Self",
+                "id": 0,
+                "name": "Self",
+                "namespace": "",
+                "upper_bound": {
+                  ".class": "TupleType",
+                  "implicit": false,
+                  "items": [
+                    "builtins.str",
+                    "builtins.str",
+                    {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "builtins.dict"
+                    }
+                  ],
+                  "partial_fallback": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration"
+                },
+                "values": [],
+                "variance": 0
+              },
+              "slots": null,
+              "tuple_type": {
+                ".class": "TupleType",
+                "implicit": false,
+                "items": [
+                  "builtins.str",
+                  "builtins.str",
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  }
+                ],
+                "partial_fallback": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        "builtins.str",
+                        {
+                          ".class": "Instance",
+                          "args": [
+                            {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            },
+                            {
+                              ".class": "AnyType",
+                              "missing_import_name": null,
+                              "source_any": null,
+                              "type_of_any": 4
+                            }
+                          ],
+                          "extra_attrs": null,
+                          "type_ref": "builtins.dict"
+                        }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.tuple"
+                }
+              },
+              "type_vars": [],
+              "typeddict_type": null
+            }
+          },
+          "SignalAndWaitForShutdown": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "request"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.SignalAndWaitForShutdown",
+              "name": "SignalAndWaitForShutdown",
+              "type": null
+            }
+          },
+          "SupportsFeature": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "request"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.SupportsFeature",
+              "name": "SupportsFeature",
+              "type": null
+            }
+          },
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "mocks"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "mocks"],
+                "arg_types": ["pulumi.runtime.mocks.MockMonitor", "pulumi.runtime.mocks.Mocks"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of MockMonitor",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "get_registered_resources": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.get_registered_resources",
+              "name": "get_registered_resources",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.runtime.mocks.MockMonitor"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "get_registered_resources of MockMonitor",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    "builtins.str",
+                    {
+                      ".class": "TypeAliasType",
+                      "args": [],
+                      "type_ref": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration"
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.dict"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "make_urn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 0],
+              "arg_names": ["self", "parent", "type_", "name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.make_urn",
+              "name": "make_urn",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 0],
+                "arg_names": ["self", "parent", "type_", "name"],
+                "arg_types": [
+                  "pulumi.runtime.mocks.MockMonitor",
+                  "builtins.str",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "make_urn of MockMonitor",
+                "ret_type": "builtins.str",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "mocks": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.mocks",
+              "name": "mocks",
+              "type": "pulumi.runtime.mocks.Mocks"
+            }
+          },
+          "resources": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime.mocks.MockMonitor.resources",
+              "name": "resources",
+              "type": {
+                ".class": "Instance",
+                "args": [
+                  "builtins.str",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": [],
+                    "type_ref": "pulumi.runtime.mocks.MockMonitor.ResourceRegistration"
+                  }
+                ],
+                "extra_attrs": null,
+                "type_ref": "builtins.dict"
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.runtime.mocks.MockMonitor.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.runtime.mocks.MockMonitor",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "MockResourceArgs": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.runtime.mocks.MockResourceArgs",
+          "name": "MockResourceArgs",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.runtime.mocks.MockResourceArgs",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.runtime.mocks",
+        "mro": ["pulumi.runtime.mocks.MockResourceArgs", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 0, 1, 1, 1],
+              "arg_names": ["self", "typ", "name", "inputs", "provider", "resource_id", "custom"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockResourceArgs.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 0, 1, 1, 1],
+                "arg_names": ["self", "typ", "name", "inputs", "provider", "resource_id", "custom"],
+                "arg_types": [
+                  "pulumi.runtime.mocks.MockResourceArgs",
+                  "builtins.str",
+                  "builtins.str",
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.bool", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of MockResourceArgs",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "custom": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.runtime.mocks.MockResourceArgs.custom",
+              "name": "custom",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.bool", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "inputs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime.mocks.MockResourceArgs.inputs",
+              "name": "inputs",
+              "type": {
+                ".class": "Instance",
+                "args": [
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 4
+                  },
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 4
+                  }
+                ],
+                "extra_attrs": null,
+                "type_ref": "builtins.dict"
+              }
+            }
+          },
+          "name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime.mocks.MockResourceArgs.name",
+              "name": "name",
+              "type": "builtins.str"
+            }
+          },
+          "provider": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.runtime.mocks.MockResourceArgs.provider",
+              "name": "provider",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "resource_id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.runtime.mocks.MockResourceArgs.resource_id",
+              "name": "resource_id",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "typ": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime.mocks.MockResourceArgs.typ",
+              "name": "typ",
+              "type": "builtins.str"
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.runtime.mocks.MockResourceArgs.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.runtime.mocks.MockResourceArgs",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "MockSettings": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi.runtime.settings.Settings"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.runtime.mocks.MockSettings",
+          "name": "MockSettings",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.runtime.mocks.MockSettings",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.runtime.mocks",
+        "mro": [
+          "pulumi.runtime.mocks.MockSettings",
+          "pulumi.runtime.settings.Settings",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 2, 4],
+              "arg_names": ["self", "_", "kwargs"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockSettings.__init__",
+              "name": "__init__",
+              "type": null
+            }
+          },
+          "__repr__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": [null],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime.mocks.MockSettings.__repr__",
+              "name": "__repr__",
+              "type": null
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.runtime.mocks.MockSettings.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.runtime.mocks.MockSettings",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "Mocks": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [
+          ["call", 1],
+          ["new_resource", 1]
+        ],
+        "alt_promote": null,
+        "bases": ["abc.ABC"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.runtime.mocks.Mocks",
+          "name": "Mocks",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": ["is_abstract"],
+        "fullname": "pulumi.runtime.mocks.Mocks",
+        "has_param_spec_type": false,
+        "metaclass_type": "abc.ABCMeta",
+        "metadata": {},
+        "module_name": "pulumi.runtime.mocks",
+        "mro": ["pulumi.runtime.mocks.Mocks", "abc.ABC", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "call": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 1,
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "args"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_decorated"],
+                "fullname": "pulumi.runtime.mocks.Mocks.call",
+                "name": "call",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0],
+                  "arg_names": ["self", "args"],
+                  "arg_types": ["pulumi.runtime.mocks.Mocks", "pulumi.runtime.mocks.MockCallArgs"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "call of Mocks",
+                  "ret_type": {
+                    ".class": "TupleType",
+                    "implicit": false,
+                    "items": [
+                      {
+                        ".class": "Instance",
+                        "args": [
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.dict"
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "Instance",
+                            "args": [
+                              {
+                                ".class": "TupleType",
+                                "implicit": false,
+                                "items": ["builtins.str", "builtins.str"],
+                                "partial_fallback": {
+                                  ".class": "Instance",
+                                  "args": [
+                                    {
+                                      ".class": "AnyType",
+                                      "missing_import_name": null,
+                                      "source_any": null,
+                                      "type_of_any": 6
+                                    }
+                                  ],
+                                  "extra_attrs": null,
+                                  "type_ref": "builtins.tuple"
+                                }
+                              }
+                            ],
+                            "extra_attrs": null,
+                            "type_ref": "builtins.list"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "partial_fallback": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 6
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "builtins.tuple"
+                    }
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_ready", "is_inferred"],
+                "fullname": "pulumi.runtime.mocks.Mocks.call",
+                "name": "call",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0],
+                  "arg_names": ["self", "args"],
+                  "arg_types": ["pulumi.runtime.mocks.Mocks", "pulumi.runtime.mocks.MockCallArgs"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "call of Mocks",
+                  "ret_type": {
+                    ".class": "TupleType",
+                    "implicit": false,
+                    "items": [
+                      {
+                        ".class": "Instance",
+                        "args": [
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.dict"
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "Instance",
+                            "args": [
+                              {
+                                ".class": "TupleType",
+                                "implicit": false,
+                                "items": ["builtins.str", "builtins.str"],
+                                "partial_fallback": {
+                                  ".class": "Instance",
+                                  "args": [
+                                    {
+                                      ".class": "AnyType",
+                                      "missing_import_name": null,
+                                      "source_any": null,
+                                      "type_of_any": 6
+                                    }
+                                  ],
+                                  "extra_attrs": null,
+                                  "type_ref": "builtins.tuple"
+                                }
+                              }
+                            ],
+                            "extra_attrs": null,
+                            "type_ref": "builtins.list"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "partial_fallback": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 6
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "builtins.tuple"
+                    }
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "new_resource": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 1,
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "args"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_decorated"],
+                "fullname": "pulumi.runtime.mocks.Mocks.new_resource",
+                "name": "new_resource",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0],
+                  "arg_names": ["self", "args"],
+                  "arg_types": [
+                    "pulumi.runtime.mocks.Mocks",
+                    "pulumi.runtime.mocks.MockResourceArgs"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "new_resource of Mocks",
+                  "ret_type": {
+                    ".class": "TupleType",
+                    "implicit": false,
+                    "items": [
+                      {
+                        ".class": "UnionType",
+                        "items": ["builtins.str", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "Instance",
+                        "args": [
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.dict"
+                      }
+                    ],
+                    "partial_fallback": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 6
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "builtins.tuple"
+                    }
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_ready", "is_inferred"],
+                "fullname": "pulumi.runtime.mocks.Mocks.new_resource",
+                "name": "new_resource",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0],
+                  "arg_names": ["self", "args"],
+                  "arg_types": [
+                    "pulumi.runtime.mocks.Mocks",
+                    "pulumi.runtime.mocks.MockResourceArgs"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "new_resource of Mocks",
+                  "ret_type": {
+                    ".class": "TupleType",
+                    "implicit": false,
+                    "items": [
+                      {
+                        ".class": "UnionType",
+                        "items": ["builtins.str", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "Instance",
+                        "args": [
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.dict"
+                      }
+                    ],
+                    "partial_fallback": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 6
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "builtins.tuple"
+                    }
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.runtime.mocks.Mocks.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.runtime.mocks.Mocks",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "NamedTuple": { ".class": "SymbolTableNode", "cross_ref": "typing.NamedTuple", "kind": "Gdef" },
+    "Optional": { ".class": "SymbolTableNode", "cross_ref": "typing.Optional", "kind": "Gdef" },
+    "SETTINGS": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.settings.SETTINGS",
+      "kind": "Gdef"
+    },
+    "Settings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.settings.Settings",
+      "kind": "Gdef"
+    },
+    "Stack": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.stack.Stack",
+      "kind": "Gdef"
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime.mocks.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime.mocks.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime.mocks.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime.mocks.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime.mocks.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime.mocks.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_ensure_event_loop": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.sync_await._ensure_event_loop",
+      "kind": "Gdef"
+    },
+    "_sync_await": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.sync_await._sync_await",
+      "kind": "Gdef"
+    },
+    "abstractmethod": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "abc.abstractmethod",
+      "kind": "Gdef"
+    },
+    "configure": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.settings.configure",
+      "kind": "Gdef"
+    },
+    "empty_pb2": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_suppressed_import", "is_ready", "is_inferred"],
+        "fullname": "pulumi.runtime.mocks.empty_pb2",
+        "name": "empty_pb2",
+        "type": {
+          ".class": "AnyType",
+          "missing_import_name": "pulumi.runtime.mocks.empty_pb2",
+          "source_any": null,
+          "type_of_any": 3
+        }
+      }
+    },
+    "engine_pb2": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.proto.engine_pb2",
+      "kind": "Gdef"
+    },
+    "functools": { ".class": "SymbolTableNode", "cross_ref": "functools", "kind": "Gdef" },
+    "get_project": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.settings.get_project",
+      "kind": "Gdef"
+    },
+    "get_root_resource": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.settings.get_root_resource",
+      "kind": "Gdef"
+    },
+    "get_stack": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.settings.get_stack",
+      "kind": "Gdef"
+    },
+    "logging": { ".class": "SymbolTableNode", "cross_ref": "logging", "kind": "Gdef" },
+    "provider_pb2": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.proto.provider_pb2",
+      "kind": "Gdef"
+    },
+    "resource_pb2": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.proto.resource_pb2",
+      "kind": "Gdef"
+    },
+    "rpc": { ".class": "SymbolTableNode", "cross_ref": "pulumi.runtime.rpc", "kind": "Gdef" },
+    "rpc_manager": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.rpc_manager",
+      "kind": "Gdef"
+    },
+    "run_pulumi_func": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.stack.run_pulumi_func",
+      "kind": "Gdef"
+    },
+    "set_mocks": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 1, 1, 1, 1, 1, 1],
+        "arg_names": ["mocks", "project", "stack", "preview", "logger", "monitor", "organization"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.runtime.mocks.set_mocks",
+        "name": "set_mocks",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 1, 1, 1, 1, 1, 1],
+          "arg_names": [
+            "mocks",
+            "project",
+            "stack",
+            "preview",
+            "logger",
+            "monitor",
+            "organization"
+          ],
+          "arg_types": [
+            "pulumi.runtime.mocks.Mocks",
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.bool", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["logging.Logger", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["pulumi.runtime.mocks.MockMonitor", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "set_mocks",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 1
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "test": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["fn"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.runtime.mocks.test",
+        "name": "test",
+        "type": null
+      }
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi\\runtime\\mocks.py"
+}

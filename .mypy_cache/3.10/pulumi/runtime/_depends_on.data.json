@@ -1,0 +1,267 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi.runtime._depends_on",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Input": { ".class": "SymbolTableNode", "cross_ref": "pulumi.output.Input", "kind": "Gdef" },
+    "Optional": { ".class": "SymbolTableNode", "cross_ref": "typing.Optional", "kind": "Gdef" },
+    "Output": { ".class": "SymbolTableNode", "cross_ref": "pulumi.output.Output", "kind": "Gdef" },
+    "Resource": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.resource.Resource",
+      "kind": "Gdef"
+    },
+    "TYPE_CHECKING": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TYPE_CHECKING",
+      "kind": "Gdef"
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._depends_on.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._depends_on.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._depends_on.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._depends_on.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._depends_on.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._depends_on.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_expand_dependencies": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.rpc._expand_dependencies",
+      "kind": "Gdef"
+    },
+    "_resolve_depends_on": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["depends_on"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": ["is_coroutine"],
+        "fullname": "pulumi.runtime._depends_on._resolve_depends_on",
+        "name": "_resolve_depends_on",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["depends_on"],
+          "arg_types": [
+            {
+              ".class": "TypeAliasType",
+              "args": [
+                {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["pulumi.resource.Resource"],
+                      "type_ref": "pulumi.output.Input"
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.list"
+                }
+              ],
+              "type_ref": "pulumi.output.Input"
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_resolve_depends_on",
+          "ret_type": {
+            ".class": "Instance",
+            "args": [
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 6
+              },
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 6
+              },
+              {
+                ".class": "Instance",
+                "args": ["pulumi.resource.Resource"],
+                "extra_attrs": null,
+                "type_ref": "builtins.set"
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "typing.Coroutine"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_resolve_depends_on_urns": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 1],
+        "arg_names": ["depends_on", "from_resource"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": ["is_coroutine"],
+        "fullname": "pulumi.runtime._depends_on._resolve_depends_on_urns",
+        "name": "_resolve_depends_on_urns",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 1],
+          "arg_names": ["depends_on", "from_resource"],
+          "arg_types": [
+            {
+              ".class": "TypeAliasType",
+              "args": [
+                {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["pulumi.resource.Resource"],
+                      "type_ref": "pulumi.output.Input"
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.list"
+                }
+              ],
+              "type_ref": "pulumi.output.Input"
+            },
+            {
+              ".class": "UnionType",
+              "items": ["pulumi.resource.Resource", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_resolve_depends_on_urns",
+          "ret_type": {
+            ".class": "Instance",
+            "args": [
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 6
+              },
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 6
+              },
+              {
+                ".class": "Instance",
+                "args": ["builtins.str"],
+                "extra_attrs": null,
+                "type_ref": "builtins.set"
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "typing.Coroutine"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi\\runtime\\_depends_on.py"
+}

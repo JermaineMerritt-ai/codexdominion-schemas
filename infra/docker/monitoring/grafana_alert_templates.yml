@@ -1,0 +1,14 @@
+templates:
+  - name: 'grafana-alert-template'
+    type: 'grafana'
+    text: |
+      🚨 *{{ .CommonLabels.alertname }}*
+      Severity: {{ .CommonLabels.severity }}
+      Summary: {{ .Annotations.summary }}
+      Description: {{ .Annotations.description }}
+      Consent ID: {{ .Labels.consent_id }}
+      Subject ID: {{ .Labels.subject_id }}
+      Prompt Count: {{ .Labels.prompt_count }}
+      Reason: {{ .Annotations.reason }}
+      Time: {{ .StartsAt }}
+      Dashboard: [Constellation Overview](https://grafana.codexdominion.app/d/constellation-overview)

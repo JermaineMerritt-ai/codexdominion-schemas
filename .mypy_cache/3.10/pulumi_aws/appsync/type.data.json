@@ -1,0 +1,4003 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi_aws.appsync.type",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Any",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Mapping": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Mapping",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NotRequired": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing_extensions.NotRequired",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Optional": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Optional",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Sequence": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Sequence",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Type": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi.resource.CustomResource"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.appsync.type.Type",
+          "name": "Type",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.appsync.type.Type",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.appsync.type",
+        "mro": [
+          "pulumi_aws.appsync.type.Type",
+          "pulumi.resource.CustomResource",
+          "pulumi.resource.Resource",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.appsync.type.Type.__init__",
+              "impl": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 0, 2, 4],
+                "arg_names": ["__self__", "resource_name", "args", "kwargs"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_overload"],
+                "fullname": "pulumi_aws.appsync.type.Type.__init__",
+                "name": "__init__",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 2, 4],
+                  "arg_names": ["__self__", "resource_name", "args", "kwargs"],
+                  "arg_types": [
+                    "pulumi_aws.appsync.type.Type",
+                    "builtins.str",
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 1
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 1
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "__self__" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "__init__ of Type",
+                  "ret_type": { ".class": "NoneType" },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+                    "arg_names": [
+                      "__self__",
+                      "resource_name",
+                      "opts",
+                      "api_id",
+                      "definition",
+                      "format",
+                      "region",
+                      "__props__"
+                    ],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type.Type.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+                      "arg_names": [
+                        "__self__",
+                        "resource_name",
+                        "opts",
+                        "api_id",
+                        "definition",
+                        "format",
+                        "region",
+                        "__props__"
+                      ],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type.Type",
+                        "builtins.str",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 1
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of Type",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "pulumi_aws.appsync.type.Type.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+                      "arg_names": [
+                        "__self__",
+                        "resource_name",
+                        "opts",
+                        "api_id",
+                        "definition",
+                        "format",
+                        "region",
+                        "__props__"
+                      ],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type.Type",
+                        "builtins.str",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 1
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of Type",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 0, 1],
+                    "arg_names": ["__self__", "resource_name", "args", "opts"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type.Type.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 0, 1],
+                      "arg_names": ["__self__", "resource_name", "args", "opts"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type.Type",
+                        "builtins.str",
+                        "pulumi_aws.appsync.type.TypeArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of Type",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "pulumi_aws.appsync.type.Type.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 0, 1],
+                      "arg_names": ["__self__", "resource_name", "args", "opts"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type.Type",
+                        "builtins.str",
+                        "pulumi_aws.appsync.type.TypeArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of Type",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+                    "arg_names": [
+                      "__self__",
+                      "resource_name",
+                      "opts",
+                      "api_id",
+                      "definition",
+                      "format",
+                      "region",
+                      "__props__"
+                    ],
+                    "arg_types": [
+                      "pulumi_aws.appsync.type.Type",
+                      "builtins.str",
+                      {
+                        ".class": "UnionType",
+                        "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "__self__" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "__init__ of Type",
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  },
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0, 0, 1],
+                    "arg_names": ["__self__", "resource_name", "args", "opts"],
+                    "arg_types": [
+                      "pulumi_aws.appsync.type.Type",
+                      "builtins.str",
+                      "pulumi_aws.appsync.type.TypeArgs",
+                      {
+                        ".class": "UnionType",
+                        "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "__self__" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "__init__ of Type",
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "_internal_init": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "__self__",
+                "resource_name",
+                "opts",
+                "api_id",
+                "definition",
+                "format",
+                "region",
+                "__props__"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.appsync.type.Type._internal_init",
+              "name": "_internal_init",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "__self__",
+                  "resource_name",
+                  "opts",
+                  "api_id",
+                  "definition",
+                  "format",
+                  "region",
+                  "__props__"
+                ],
+                "arg_types": [
+                  "pulumi_aws.appsync.type.Type",
+                  "builtins.str",
+                  {
+                    ".class": "UnionType",
+                    "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 1
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_internal_init of Type",
+                "ret_type": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 1
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "api_id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appsync.type.Type.api_id",
+                "name": "api_id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "api_id of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appsync.type.Type.api_id",
+                "name": "api_id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "api_id of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appsync.type.Type.arn",
+                "name": "arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "arn of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appsync.type.Type.arn",
+                "name": "arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "arn of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "definition": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appsync.type.Type.definition",
+                "name": "definition",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "definition of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appsync.type.Type.definition",
+                "name": "definition",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "definition of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "description": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appsync.type.Type.description",
+                "name": "description",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "description of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appsync.type.Type.description",
+                "name": "description",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "description of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "format": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appsync.type.Type.format",
+                "name": "format",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "format of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appsync.type.Type.format",
+                "name": "format",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "format of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "get": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "resource_name",
+                  "id",
+                  "opts",
+                  "api_id",
+                  "arn",
+                  "definition",
+                  "description",
+                  "format",
+                  "name",
+                  "region"
+                ],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_static", "is_decorated"],
+                "fullname": "pulumi_aws.appsync.type.Type.get",
+                "name": "get",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+                  "arg_names": [
+                    "resource_name",
+                    "id",
+                    "opts",
+                    "api_id",
+                    "arn",
+                    "definition",
+                    "description",
+                    "format",
+                    "name",
+                    "region"
+                  ],
+                  "arg_types": [
+                    "builtins.str",
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": null },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "get of Type",
+                  "ret_type": "pulumi_aws.appsync.type.Type",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_staticmethod", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appsync.type.Type.get",
+                "name": "get",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+                  "arg_names": [
+                    "resource_name",
+                    "id",
+                    "opts",
+                    "api_id",
+                    "arn",
+                    "definition",
+                    "description",
+                    "format",
+                    "name",
+                    "region"
+                  ],
+                  "arg_types": [
+                    "builtins.str",
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": null },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "get of Type",
+                  "ret_type": "pulumi_aws.appsync.type.Type",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appsync.type.Type.name",
+                "name": "name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "name of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appsync.type.Type.name",
+                "name": "name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "name of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.appsync.type.Type.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.appsync.type.Type.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.appsync.type.Type"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of Type",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.appsync.type.Type.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.appsync.type.Type",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "TypeAlias": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypeAlias",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypeArgs": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.appsync.type.TypeArgs",
+          "name": "TypeArgs",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.appsync.type.TypeArgs",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.appsync.type",
+        "mro": ["pulumi_aws.appsync.type.TypeArgs", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 3, 3, 3, 5],
+              "arg_names": ["__self__", "api_id", "definition", "format", "region"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.appsync.type.TypeArgs.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 3, 3, 3, 5],
+                "arg_names": ["__self__", "api_id", "definition", "format", "region"],
+                "arg_types": [
+                  "pulumi_aws.appsync.type.TypeArgs",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of TypeArgs",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "api_id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appsync.type.TypeArgs.api_id",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.api_id",
+                    "name": "api_id",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "api_id of TypeArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.api_id",
+                    "name": "api_id",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "api_id of TypeArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.api_id",
+                    "name": "api_id",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type.TypeArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "api_id of TypeArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "api_id",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "api_id of TypeArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "definition": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appsync.type.TypeArgs.definition",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.definition",
+                    "name": "definition",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "definition of TypeArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.definition",
+                    "name": "definition",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "definition of TypeArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.definition",
+                    "name": "definition",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type.TypeArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "definition of TypeArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "definition",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "definition of TypeArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "format": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appsync.type.TypeArgs.format",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.format",
+                    "name": "format",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "format of TypeArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.format",
+                    "name": "format",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "format of TypeArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.format",
+                    "name": "format",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type.TypeArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "format of TypeArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "format",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "format of TypeArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appsync.type.TypeArgs.region",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of TypeArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of TypeArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type.TypeArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type.TypeArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of TypeArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "region",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appsync.type.TypeArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "region of TypeArgs",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.appsync.type.TypeArgs.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.appsync.type.TypeArgs",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "TypedDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypedDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Union": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Union",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_TypeState": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.appsync.type._TypeState",
+          "name": "_TypeState",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.appsync.type._TypeState",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.appsync.type",
+        "mro": ["pulumi_aws.appsync.type._TypeState", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 5, 5, 5, 5, 5, 5, 5],
+              "arg_names": [
+                "__self__",
+                "api_id",
+                "arn",
+                "definition",
+                "description",
+                "format",
+                "name",
+                "region"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.appsync.type._TypeState.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 5, 5, 5, 5, 5, 5, 5],
+                "arg_names": [
+                  "__self__",
+                  "api_id",
+                  "arn",
+                  "definition",
+                  "description",
+                  "format",
+                  "name",
+                  "region"
+                ],
+                "arg_types": [
+                  "pulumi_aws.appsync.type._TypeState",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of _TypeState",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "api_id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appsync.type._TypeState.api_id",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.api_id",
+                    "name": "api_id",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "api_id of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.api_id",
+                    "name": "api_id",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "api_id of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.api_id",
+                    "name": "api_id",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type._TypeState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "api_id of _TypeState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "api_id",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "api_id of _TypeState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appsync.type._TypeState.arn",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.arn",
+                    "name": "arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "arn of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.arn",
+                    "name": "arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "arn of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.arn",
+                    "name": "arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type._TypeState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "arn of _TypeState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "arn",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "arn of _TypeState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "definition": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appsync.type._TypeState.definition",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.definition",
+                    "name": "definition",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "definition of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.definition",
+                    "name": "definition",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "definition of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.definition",
+                    "name": "definition",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type._TypeState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "definition of _TypeState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "definition",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "definition of _TypeState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "description": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appsync.type._TypeState.description",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.description",
+                    "name": "description",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "description of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.description",
+                    "name": "description",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "description of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.description",
+                    "name": "description",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type._TypeState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "description of _TypeState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "description",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "description of _TypeState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "format": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appsync.type._TypeState.format",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.format",
+                    "name": "format",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "format of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.format",
+                    "name": "format",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "format of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.format",
+                    "name": "format",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type._TypeState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "format of _TypeState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "format",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "format of _TypeState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appsync.type._TypeState.name",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.name",
+                    "name": "name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "name of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.name",
+                    "name": "name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "name of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.name",
+                    "name": "name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type._TypeState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "name of _TypeState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "name",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "name of _TypeState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.appsync.type._TypeState.region",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _TypeState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.appsync.type._TypeState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.appsync.type._TypeState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _TypeState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "region",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.appsync.type._TypeState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "region of _TypeState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.appsync.type._TypeState.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.appsync.type._TypeState",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "__all__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "pulumi_aws.appsync.type.__all__",
+        "name": "__all__",
+        "type": {
+          ".class": "Instance",
+          "args": ["builtins.str"],
+          "extra_attrs": null,
+          "type_ref": "builtins.list"
+        }
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appsync.type.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appsync.type.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appsync.type.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appsync.type.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appsync.type.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.appsync.type.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_builtins": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "builtins",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_utilities": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws._utilities",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "overload": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.overload",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "pulumi": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "sys": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "sys",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "warnings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "warnings",
+      "kind": "Gdef",
+      "module_public": false
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi_aws\\appsync\\type.py"
+}

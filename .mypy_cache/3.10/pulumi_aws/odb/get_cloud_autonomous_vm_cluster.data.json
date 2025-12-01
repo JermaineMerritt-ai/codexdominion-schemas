@@ -1,0 +1,3984 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Any",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "AwaitableGetCloudAutonomousVmClusterResult": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": [
+          "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+        ],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.AwaitableGetCloudAutonomousVmClusterResult",
+          "name": "AwaitableGetCloudAutonomousVmClusterResult",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.AwaitableGetCloudAutonomousVmClusterResult",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster",
+        "mro": [
+          "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.AwaitableGetCloudAutonomousVmClusterResult",
+          "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__await__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.AwaitableGetCloudAutonomousVmClusterResult.__await__",
+              "name": "__await__",
+              "type": null
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.AwaitableGetCloudAutonomousVmClusterResult.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.AwaitableGetCloudAutonomousVmClusterResult",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "GetCloudAutonomousVmClusterResult": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult",
+          "name": "GetCloudAutonomousVmClusterResult",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster",
+        "mro": [
+          "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [
+                0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+              ],
+              "arg_names": [
+                "__self__",
+                "arn",
+                "autonomous_data_storage_percentage",
+                "autonomous_data_storage_size_in_tbs",
+                "available_autonomous_data_storage_size_in_tbs",
+                "available_container_databases",
+                "available_cpus",
+                "cloud_exadata_infrastructure_id",
+                "compute_model",
+                "cpu_core_count",
+                "cpu_core_count_per_node",
+                "cpu_percentage",
+                "created_at",
+                "data_storage_size_in_gbs",
+                "data_storage_size_in_tbs",
+                "db_servers",
+                "description",
+                "display_name",
+                "domain",
+                "exadata_storage_in_tbs_lowest_scaled_value",
+                "hostname",
+                "id",
+                "is_mtls_enabled_vm_cluster",
+                "license_model",
+                "maintenance_windows",
+                "max_acds_lowest_scaled_value",
+                "memory_per_oracle_compute_unit_in_gbs",
+                "memory_size_in_gbs",
+                "node_count",
+                "non_provisionable_autonomous_container_databases",
+                "oci_resource_anchor_name",
+                "oci_url",
+                "ocid",
+                "odb_network_id",
+                "odb_node_storage_size_in_gbs",
+                "percent_progress",
+                "provisionable_autonomous_container_databases",
+                "provisioned_autonomous_container_databases",
+                "provisioned_cpus",
+                "reclaimable_cpus",
+                "region",
+                "reserved_cpus",
+                "scan_listener_port_non_tls",
+                "scan_listener_port_tls",
+                "shape",
+                "status",
+                "status_reason",
+                "tags",
+                "time_database_ssl_certificate_expires",
+                "time_ords_certificate_expires",
+                "time_zone",
+                "total_container_databases"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.__init__",
+              "name": "__init__",
+              "type": null
+            }
+          },
+          "arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.arn",
+                "name": "arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "arn of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.arn",
+                "name": "arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "arn of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "autonomous_data_storage_percentage": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.autonomous_data_storage_percentage",
+                "name": "autonomous_data_storage_percentage",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "autonomous_data_storage_percentage of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.autonomous_data_storage_percentage",
+                "name": "autonomous_data_storage_percentage",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "autonomous_data_storage_percentage of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "autonomous_data_storage_size_in_tbs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.autonomous_data_storage_size_in_tbs",
+                "name": "autonomous_data_storage_size_in_tbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "autonomous_data_storage_size_in_tbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.autonomous_data_storage_size_in_tbs",
+                "name": "autonomous_data_storage_size_in_tbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "autonomous_data_storage_size_in_tbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "available_autonomous_data_storage_size_in_tbs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.available_autonomous_data_storage_size_in_tbs",
+                "name": "available_autonomous_data_storage_size_in_tbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "available_autonomous_data_storage_size_in_tbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.available_autonomous_data_storage_size_in_tbs",
+                "name": "available_autonomous_data_storage_size_in_tbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "available_autonomous_data_storage_size_in_tbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "available_container_databases": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.available_container_databases",
+                "name": "available_container_databases",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "available_container_databases of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.available_container_databases",
+                "name": "available_container_databases",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "available_container_databases of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "available_cpus": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.available_cpus",
+                "name": "available_cpus",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "available_cpus of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.available_cpus",
+                "name": "available_cpus",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "available_cpus of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "cloud_exadata_infrastructure_id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.cloud_exadata_infrastructure_id",
+                "name": "cloud_exadata_infrastructure_id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "cloud_exadata_infrastructure_id of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.cloud_exadata_infrastructure_id",
+                "name": "cloud_exadata_infrastructure_id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "cloud_exadata_infrastructure_id of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "compute_model": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.compute_model",
+                "name": "compute_model",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "compute_model of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.compute_model",
+                "name": "compute_model",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "compute_model of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "cpu_core_count": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.cpu_core_count",
+                "name": "cpu_core_count",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "cpu_core_count of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.cpu_core_count",
+                "name": "cpu_core_count",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "cpu_core_count of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "cpu_core_count_per_node": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.cpu_core_count_per_node",
+                "name": "cpu_core_count_per_node",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "cpu_core_count_per_node of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.cpu_core_count_per_node",
+                "name": "cpu_core_count_per_node",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "cpu_core_count_per_node of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "cpu_percentage": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.cpu_percentage",
+                "name": "cpu_percentage",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "cpu_percentage of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.cpu_percentage",
+                "name": "cpu_percentage",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "cpu_percentage of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "created_at": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.created_at",
+                "name": "created_at",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "created_at of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.created_at",
+                "name": "created_at",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "created_at of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "data_storage_size_in_gbs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.data_storage_size_in_gbs",
+                "name": "data_storage_size_in_gbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "data_storage_size_in_gbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.data_storage_size_in_gbs",
+                "name": "data_storage_size_in_gbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "data_storage_size_in_gbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "data_storage_size_in_tbs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.data_storage_size_in_tbs",
+                "name": "data_storage_size_in_tbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "data_storage_size_in_tbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.data_storage_size_in_tbs",
+                "name": "data_storage_size_in_tbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "data_storage_size_in_tbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "db_servers": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.db_servers",
+                "name": "db_servers",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "db_servers of GetCloudAutonomousVmClusterResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Sequence"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.db_servers",
+                "name": "db_servers",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "db_servers of GetCloudAutonomousVmClusterResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Sequence"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "description": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.description",
+                "name": "description",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "description of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.description",
+                "name": "description",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "description of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "display_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.display_name",
+                "name": "display_name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "display_name of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.display_name",
+                "name": "display_name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "display_name of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "domain": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.domain",
+                "name": "domain",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "domain of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.domain",
+                "name": "domain",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "domain of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "exadata_storage_in_tbs_lowest_scaled_value": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.exadata_storage_in_tbs_lowest_scaled_value",
+                "name": "exadata_storage_in_tbs_lowest_scaled_value",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "exadata_storage_in_tbs_lowest_scaled_value of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.exadata_storage_in_tbs_lowest_scaled_value",
+                "name": "exadata_storage_in_tbs_lowest_scaled_value",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "exadata_storage_in_tbs_lowest_scaled_value of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "hostname": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.hostname",
+                "name": "hostname",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "hostname of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.hostname",
+                "name": "hostname",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "hostname of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.id",
+                "name": "id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "id of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.id",
+                "name": "id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "id of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "is_mtls_enabled_vm_cluster": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.is_mtls_enabled_vm_cluster",
+                "name": "is_mtls_enabled_vm_cluster",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_mtls_enabled_vm_cluster of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.is_mtls_enabled_vm_cluster",
+                "name": "is_mtls_enabled_vm_cluster",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_mtls_enabled_vm_cluster of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "license_model": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.license_model",
+                "name": "license_model",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "license_model of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.license_model",
+                "name": "license_model",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "license_model of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "maintenance_windows": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.maintenance_windows",
+                "name": "maintenance_windows",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "maintenance_windows of GetCloudAutonomousVmClusterResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      "pulumi_aws.odb.outputs.GetCloudAutonomousVmClusterMaintenanceWindowResult"
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Sequence"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.maintenance_windows",
+                "name": "maintenance_windows",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "maintenance_windows of GetCloudAutonomousVmClusterResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      "pulumi_aws.odb.outputs.GetCloudAutonomousVmClusterMaintenanceWindowResult"
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Sequence"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "max_acds_lowest_scaled_value": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.max_acds_lowest_scaled_value",
+                "name": "max_acds_lowest_scaled_value",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "max_acds_lowest_scaled_value of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.max_acds_lowest_scaled_value",
+                "name": "max_acds_lowest_scaled_value",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "max_acds_lowest_scaled_value of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "memory_per_oracle_compute_unit_in_gbs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.memory_per_oracle_compute_unit_in_gbs",
+                "name": "memory_per_oracle_compute_unit_in_gbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "memory_per_oracle_compute_unit_in_gbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.memory_per_oracle_compute_unit_in_gbs",
+                "name": "memory_per_oracle_compute_unit_in_gbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "memory_per_oracle_compute_unit_in_gbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "memory_size_in_gbs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.memory_size_in_gbs",
+                "name": "memory_size_in_gbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "memory_size_in_gbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.memory_size_in_gbs",
+                "name": "memory_size_in_gbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "memory_size_in_gbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "node_count": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.node_count",
+                "name": "node_count",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "node_count of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.node_count",
+                "name": "node_count",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "node_count of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "non_provisionable_autonomous_container_databases": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.non_provisionable_autonomous_container_databases",
+                "name": "non_provisionable_autonomous_container_databases",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "non_provisionable_autonomous_container_databases of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.non_provisionable_autonomous_container_databases",
+                "name": "non_provisionable_autonomous_container_databases",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "non_provisionable_autonomous_container_databases of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "oci_resource_anchor_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.oci_resource_anchor_name",
+                "name": "oci_resource_anchor_name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "oci_resource_anchor_name of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.oci_resource_anchor_name",
+                "name": "oci_resource_anchor_name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "oci_resource_anchor_name of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "oci_url": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.oci_url",
+                "name": "oci_url",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "oci_url of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.oci_url",
+                "name": "oci_url",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "oci_url of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "ocid": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.ocid",
+                "name": "ocid",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "ocid of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.ocid",
+                "name": "ocid",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "ocid of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "odb_network_id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.odb_network_id",
+                "name": "odb_network_id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "odb_network_id of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.odb_network_id",
+                "name": "odb_network_id",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "odb_network_id of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "odb_node_storage_size_in_gbs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.odb_node_storage_size_in_gbs",
+                "name": "odb_node_storage_size_in_gbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "odb_node_storage_size_in_gbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.odb_node_storage_size_in_gbs",
+                "name": "odb_node_storage_size_in_gbs",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "odb_node_storage_size_in_gbs of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "percent_progress": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.percent_progress",
+                "name": "percent_progress",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "percent_progress of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.percent_progress",
+                "name": "percent_progress",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "percent_progress of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "provisionable_autonomous_container_databases": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.provisionable_autonomous_container_databases",
+                "name": "provisionable_autonomous_container_databases",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "provisionable_autonomous_container_databases of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.provisionable_autonomous_container_databases",
+                "name": "provisionable_autonomous_container_databases",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "provisionable_autonomous_container_databases of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "provisioned_autonomous_container_databases": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.provisioned_autonomous_container_databases",
+                "name": "provisioned_autonomous_container_databases",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "provisioned_autonomous_container_databases of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.provisioned_autonomous_container_databases",
+                "name": "provisioned_autonomous_container_databases",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "provisioned_autonomous_container_databases of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "provisioned_cpus": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.provisioned_cpus",
+                "name": "provisioned_cpus",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "provisioned_cpus of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.provisioned_cpus",
+                "name": "provisioned_cpus",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "provisioned_cpus of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "reclaimable_cpus": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.reclaimable_cpus",
+                "name": "reclaimable_cpus",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "reclaimable_cpus of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.reclaimable_cpus",
+                "name": "reclaimable_cpus",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "reclaimable_cpus of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "reserved_cpus": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.reserved_cpus",
+                "name": "reserved_cpus",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "reserved_cpus of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.reserved_cpus",
+                "name": "reserved_cpus",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "reserved_cpus of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.float",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "scan_listener_port_non_tls": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.scan_listener_port_non_tls",
+                "name": "scan_listener_port_non_tls",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "scan_listener_port_non_tls of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.scan_listener_port_non_tls",
+                "name": "scan_listener_port_non_tls",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "scan_listener_port_non_tls of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "scan_listener_port_tls": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.scan_listener_port_tls",
+                "name": "scan_listener_port_tls",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "scan_listener_port_tls of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.scan_listener_port_tls",
+                "name": "scan_listener_port_tls",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "scan_listener_port_tls of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "shape": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.shape",
+                "name": "shape",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "shape of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.shape",
+                "name": "shape",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "shape of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "status": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.status",
+                "name": "status",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "status of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.status",
+                "name": "status",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "status of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "status_reason": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.status_reason",
+                "name": "status_reason",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "status_reason of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.status_reason",
+                "name": "status_reason",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "status_reason of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "tags": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.tags",
+                "name": "tags",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "tags of GetCloudAutonomousVmClusterResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str", "builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Mapping"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.tags",
+                "name": "tags",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "tags of GetCloudAutonomousVmClusterResult",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str", "builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Mapping"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "time_database_ssl_certificate_expires": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.time_database_ssl_certificate_expires",
+                "name": "time_database_ssl_certificate_expires",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "time_database_ssl_certificate_expires of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.time_database_ssl_certificate_expires",
+                "name": "time_database_ssl_certificate_expires",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "time_database_ssl_certificate_expires of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "time_ords_certificate_expires": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.time_ords_certificate_expires",
+                "name": "time_ords_certificate_expires",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "time_ords_certificate_expires of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.time_ords_certificate_expires",
+                "name": "time_ords_certificate_expires",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "time_ords_certificate_expires of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "time_zone": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.time_zone",
+                "name": "time_zone",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "time_zone of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.time_zone",
+                "name": "time_zone",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "time_zone of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "total_container_databases": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.total_container_databases",
+                "name": "total_container_databases",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "total_container_databases of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.total_container_databases",
+                "name": "total_container_databases",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": [
+                    "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "total_container_databases of GetCloudAutonomousVmClusterResult",
+                  "ret_type": "builtins.int",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "Mapping": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Mapping",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NotRequired": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing_extensions.NotRequired",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Optional": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Optional",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Sequence": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Sequence",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypeAlias": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypeAlias",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypedDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypedDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Union": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Union",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "__all__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.__all__",
+        "name": "__all__",
+        "type": {
+          ".class": "Instance",
+          "args": ["builtins.str"],
+          "extra_attrs": null,
+          "type_ref": "builtins.list"
+        }
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_builtins": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "builtins",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_utilities": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws._utilities",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "get_cloud_autonomous_vm_cluster": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [1, 1, 1],
+        "arg_names": ["id", "region", "opts"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.get_cloud_autonomous_vm_cluster",
+        "name": "get_cloud_autonomous_vm_cluster",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [1, 1, 1],
+          "arg_names": ["id", "region", "opts"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["pulumi.invoke.InvokeOptions", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "get_cloud_autonomous_vm_cluster",
+          "ret_type": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.AwaitableGetCloudAutonomousVmClusterResult",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "get_cloud_autonomous_vm_cluster_output": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [1, 1, 1],
+        "arg_names": ["id", "region", "opts"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.get_cloud_autonomous_vm_cluster_output",
+        "name": "get_cloud_autonomous_vm_cluster_output",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [1, 1, 1],
+          "arg_names": ["id", "region", "opts"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": ["builtins.str"],
+                  "type_ref": "pulumi.output.Input"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [
+                    {
+                      ".class": "UnionType",
+                      "items": ["builtins.str", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "type_ref": "pulumi.output.Input"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                "pulumi.invoke.InvokeOptions",
+                "pulumi.invoke.InvokeOutputOptions",
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "get_cloud_autonomous_vm_cluster_output",
+          "ret_type": {
+            ".class": "Instance",
+            "args": [
+              "pulumi_aws.odb.get_cloud_autonomous_vm_cluster.GetCloudAutonomousVmClusterResult"
+            ],
+            "extra_attrs": null,
+            "type_ref": "pulumi.output.Output"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "outputs": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws.odb.outputs",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "overload": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.overload",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "pulumi": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "sys": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "sys",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "warnings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "warnings",
+      "kind": "Gdef",
+      "module_public": false
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi_aws\\odb\\get_cloud_autonomous_vm_cluster.py"
+}

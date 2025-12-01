@@ -1,0 +1,43 @@
+version: '1.0'
+last_updated: '2025-11-28'
+
+rules:
+  # ✅ Allowed prompts
+  allow:
+    - 'speak as jermaine'
+    - 'tell our family story'
+    - 'create a bedtime tale'
+    - 'share a parable'
+    - 'teach multiplication'
+    - 'describe the water cycle'
+    - 'make a birthday toast'
+    - 'create a cheerful poem'
+
+  # 🚫 Blocked prompts
+  block:
+    - 'impersonate'
+    - 'sound exactly like'
+    - 'be [PERSON]'
+    - 'call as [PERSON]'
+    - 'political persuasion'
+    - 'medical advice'
+    - 'financial advice'
+
+  # ⚠️ Review prompts (custodian escalation)
+  review:
+    - 'use a public figure’s style for education'
+    - 'discuss sensitive topics'
+    - 'simulate historical figures'
+    - 'advanced emotional roleplay'
+
+enforcement:
+  watermarking:
+    visual: true
+    audio: true
+    metadata_embed: true
+
+audit:
+  log_decisions: true
+  log_path: 'studio/logs/policy_decisions/'
+  notify_on_block: true
+  notify_on_review: true

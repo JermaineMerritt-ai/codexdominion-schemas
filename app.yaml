@@ -1,0 +1,22 @@
+name: festival-transmission
+metadata:
+  name: festival-transmission
+runtime: python39
+
+# Environment variables
+env_variables:
+  GOOGLE_CLOUD_PROJECT: codex-dominion-prod
+  CODEX_ENV: production
+
+# Resource configuration for ceremonial processing
+automatic_scaling:
+  min_instances: 0
+  max_instances: 10
+  target_cpu_utilization: 0.6
+
+# Sacred function configuration
+functions_framework: 'festival_transmission'
+# Required permissions for Cloud Storage access
+# Ensure service account has:
+# - Storage Object Admin (for bucket read/write)
+# - Cloud Functions Invoker (for function execution)

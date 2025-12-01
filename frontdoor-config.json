@@ -1,0 +1,62 @@
+{
+  "properties": {
+    "backendPools": [
+      {
+        "name": "gke-codex-backendpool",
+        "properties": {
+          "backends": [
+            {
+              "address": "<GKE_NODE_IP_1>",
+              "httpPort": 32267,
+              "enabledState": "Enabled",
+              "priority": 1,
+              "weight": 50
+            },
+            {
+              "address": "<GKE_NODE_IP_2>",
+              "httpPort": 32267,
+              "enabledState": "Enabled",
+              "priority": 1,
+              "weight": 50
+            }
+          ],
+          "loadBalancingSettings": {
+            "name": "lb-settings",
+            "properties": {
+              "sampleSize": 4,
+              "successfulSamplesRequired": 2
+            }
+          },
+          "healthProbeSettings": {
+            "name": "health-probe",
+            "properties": {
+              "protocol": "Http",
+              "path": "/health",
+              "intervalInSeconds": 30
+            }
+          }
+        }
+      }
+    ],
+    "routingRules": [
+      {
+        "name": "codex-web-rule",
+        "properties": {
+          "frontendEndpoints": [
+            {
+              "id": "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Cdn/frontDoors/<FRONTDOOR_NAME>/frontendEndpoints/<FRONTEND_ENDPOINT_NAME>"
+            }
+          ],
+          "acceptedProtocols": ["Http", "Https"],
+          "patternsToMatch": ["/*"],
+          "routeConfiguration": {
+            "@odata.type": "#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration",
+            "backendPool": {
+              "id": "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Cdn/frontDoors/<FRONTDOOR_NAME>/backendPools/gke-codex-backendpool"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: engine01
+  namespace: codex
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: engine01
+  template:
+    metadata:
+      labels:
+        app: engine01
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: engine01
+          image: ghcr.io/your-org/engine01:v1.0.0
+          ports:
+            - name: http-metrics
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+          resources:
+            requests:
+              cpu: '200m'
+              memory: '128Mi'
+            limits:
+              cpu: '400m'
+              memory: '256Mi'
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: { duration: 10m }
+        - setWeight: 50
+        - pause: { duration: 10m }
+      trafficRouting:
+        nginx:
+          stableIngress: engine01-ingress

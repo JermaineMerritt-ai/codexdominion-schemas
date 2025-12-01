@@ -1,0 +1,50 @@
+resources:
+  - rollouts.yaml
+  - analysistemplate.yaml
+  - hpa.yaml
+
+nameSuffix: -prod
+
+images:
+  - name: ghcr.io/your-org/codex-orchestrator
+    newTag: prod
+  - name: ghcr.io/your-org/codex-core
+    newTag: prod
+  - name: ghcr.io/your-org/engine01
+    newTag: prod
+  - name: ghcr.io/your-org/engine02
+    newTag: prod
+  - name: ghcr.io/your-org/engine03
+    newTag: prod
+  - name: ghcr.io/your-org/engine04
+    newTag: prod
+  - name: ghcr.io/your-org/engine05
+    newTag: prod
+  - name: ghcr.io/your-org/engine06
+    newTag: prod
+  - name: ghcr.io/your-org/engine07
+    newTag: prod
+  - name: ghcr.io/your-org/engine08
+    newTag: prod
+  - name: ghcr.io/your-org/engine09
+    newTag: prod
+  - name: ghcr.io/your-org/engine10
+    newTag: prod
+  - name: ghcr.io/your-org/engine11
+    newTag: prod
+  - name: ghcr.io/your-org/engine12
+    newTag: prod
+  - name: ghcr.io/your-org/engine13
+    newTag: prod
+  - name: ghcr.io/your-org/engine14
+    newTag: prod
+  - name: ghcr.io/your-org/engine15
+    newTag: prod
+  - name: ghcr.io/your-org/engine16
+    newTag: prod
+
+patches:
+  - target:
+      kind: Deployment
+      name: gateway
+    path: set-gateway-replicas.yaml

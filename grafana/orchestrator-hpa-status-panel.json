@@ -1,0 +1,29 @@
+{
+  "type": "timeseries",
+  "title": "Orchestrator HPA Status",
+  "datasource": "Prometheus",
+  "targets": [
+    {
+      "expr": "kube_hpa_status_current_replicas{hpa=\"orchestrator-hpa\",namespace=\"codex\"}"
+    },
+    {
+      "expr": "kube_hpa_spec_min_replicas{hpa=\"orchestrator-hpa\",namespace=\"codex\"}"
+    },
+    {
+      "expr": "kube_hpa_spec_max_replicas{hpa=\"orchestrator-hpa\",namespace=\"codex\"}"
+    }
+  ],
+  "fieldConfig": {
+    "defaults": {
+      "unit": "short",
+      "thresholds": {
+        "mode": "absolute",
+        "steps": [
+          { "color": "red", "value": 0 },
+          { "color": "yellow", "value": 5 },
+          { "color": "green", "value": 10 }
+        ]
+      }
+    }
+  }
+}

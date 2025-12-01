@@ -1,0 +1,3088 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi_aws.rds.role_association",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Any",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Mapping": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Mapping",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NotRequired": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing_extensions.NotRequired",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Optional": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Optional",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "RoleAssociation": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi.resource.CustomResource"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.rds.role_association.RoleAssociation",
+          "name": "RoleAssociation",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.rds.role_association.RoleAssociation",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.rds.role_association",
+        "mro": [
+          "pulumi_aws.rds.role_association.RoleAssociation",
+          "pulumi.resource.CustomResource",
+          "pulumi.resource.Resource",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.rds.role_association.RoleAssociation.__init__",
+              "impl": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 0, 2, 4],
+                "arg_names": ["__self__", "resource_name", "args", "kwargs"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_overload"],
+                "fullname": "pulumi_aws.rds.role_association.RoleAssociation.__init__",
+                "name": "__init__",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 2, 4],
+                  "arg_names": ["__self__", "resource_name", "args", "kwargs"],
+                  "arg_types": [
+                    "pulumi_aws.rds.role_association.RoleAssociation",
+                    "builtins.str",
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 1
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 1
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "__self__" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "__init__ of RoleAssociation",
+                  "ret_type": { ".class": "NoneType" },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+                    "arg_names": [
+                      "__self__",
+                      "resource_name",
+                      "opts",
+                      "db_instance_identifier",
+                      "feature_name",
+                      "region",
+                      "role_arn",
+                      "__props__"
+                    ],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociation.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+                      "arg_names": [
+                        "__self__",
+                        "resource_name",
+                        "opts",
+                        "db_instance_identifier",
+                        "feature_name",
+                        "region",
+                        "role_arn",
+                        "__props__"
+                      ],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association.RoleAssociation",
+                        "builtins.str",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 1
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of RoleAssociation",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociation.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+                      "arg_names": [
+                        "__self__",
+                        "resource_name",
+                        "opts",
+                        "db_instance_identifier",
+                        "feature_name",
+                        "region",
+                        "role_arn",
+                        "__props__"
+                      ],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association.RoleAssociation",
+                        "builtins.str",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 1
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of RoleAssociation",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 0, 1],
+                    "arg_names": ["__self__", "resource_name", "args", "opts"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociation.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 0, 1],
+                      "arg_names": ["__self__", "resource_name", "args", "opts"],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association.RoleAssociation",
+                        "builtins.str",
+                        "pulumi_aws.rds.role_association.RoleAssociationArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of RoleAssociation",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociation.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 0, 1],
+                      "arg_names": ["__self__", "resource_name", "args", "opts"],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association.RoleAssociation",
+                        "builtins.str",
+                        "pulumi_aws.rds.role_association.RoleAssociationArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of RoleAssociation",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+                    "arg_names": [
+                      "__self__",
+                      "resource_name",
+                      "opts",
+                      "db_instance_identifier",
+                      "feature_name",
+                      "region",
+                      "role_arn",
+                      "__props__"
+                    ],
+                    "arg_types": [
+                      "pulumi_aws.rds.role_association.RoleAssociation",
+                      "builtins.str",
+                      {
+                        ".class": "UnionType",
+                        "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "__self__" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "__init__ of RoleAssociation",
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  },
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0, 0, 1],
+                    "arg_names": ["__self__", "resource_name", "args", "opts"],
+                    "arg_types": [
+                      "pulumi_aws.rds.role_association.RoleAssociation",
+                      "builtins.str",
+                      "pulumi_aws.rds.role_association.RoleAssociationArgs",
+                      {
+                        ".class": "UnionType",
+                        "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "__self__" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "__init__ of RoleAssociation",
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "_internal_init": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "__self__",
+                "resource_name",
+                "opts",
+                "db_instance_identifier",
+                "feature_name",
+                "region",
+                "role_arn",
+                "__props__"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.rds.role_association.RoleAssociation._internal_init",
+              "name": "_internal_init",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "__self__",
+                  "resource_name",
+                  "opts",
+                  "db_instance_identifier",
+                  "feature_name",
+                  "region",
+                  "role_arn",
+                  "__props__"
+                ],
+                "arg_types": [
+                  "pulumi_aws.rds.role_association.RoleAssociation",
+                  "builtins.str",
+                  {
+                    ".class": "UnionType",
+                    "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 1
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_internal_init of RoleAssociation",
+                "ret_type": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 1
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "db_instance_identifier": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.rds.role_association.RoleAssociation.db_instance_identifier",
+                "name": "db_instance_identifier",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.rds.role_association.RoleAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "db_instance_identifier of RoleAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.rds.role_association.RoleAssociation.db_instance_identifier",
+                "name": "db_instance_identifier",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.rds.role_association.RoleAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "db_instance_identifier of RoleAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "feature_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.rds.role_association.RoleAssociation.feature_name",
+                "name": "feature_name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.rds.role_association.RoleAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "feature_name of RoleAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.rds.role_association.RoleAssociation.feature_name",
+                "name": "feature_name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.rds.role_association.RoleAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "feature_name of RoleAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "get": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 0, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "resource_name",
+                  "id",
+                  "opts",
+                  "db_instance_identifier",
+                  "feature_name",
+                  "region",
+                  "role_arn"
+                ],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_static", "is_decorated"],
+                "fullname": "pulumi_aws.rds.role_association.RoleAssociation.get",
+                "name": "get",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1, 1, 1, 1, 1],
+                  "arg_names": [
+                    "resource_name",
+                    "id",
+                    "opts",
+                    "db_instance_identifier",
+                    "feature_name",
+                    "region",
+                    "role_arn"
+                  ],
+                  "arg_types": [
+                    "builtins.str",
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": null },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "get of RoleAssociation",
+                  "ret_type": "pulumi_aws.rds.role_association.RoleAssociation",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_staticmethod", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.rds.role_association.RoleAssociation.get",
+                "name": "get",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1, 1, 1, 1, 1],
+                  "arg_names": [
+                    "resource_name",
+                    "id",
+                    "opts",
+                    "db_instance_identifier",
+                    "feature_name",
+                    "region",
+                    "role_arn"
+                  ],
+                  "arg_types": [
+                    "builtins.str",
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": null },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "get of RoleAssociation",
+                  "ret_type": "pulumi_aws.rds.role_association.RoleAssociation",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.rds.role_association.RoleAssociation.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.rds.role_association.RoleAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of RoleAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.rds.role_association.RoleAssociation.region",
+                "name": "region",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.rds.role_association.RoleAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "region of RoleAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "role_arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.rds.role_association.RoleAssociation.role_arn",
+                "name": "role_arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.rds.role_association.RoleAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "role_arn of RoleAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.rds.role_association.RoleAssociation.role_arn",
+                "name": "role_arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.rds.role_association.RoleAssociation"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "role_arn of RoleAssociation",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.rds.role_association.RoleAssociation.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.rds.role_association.RoleAssociation",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "RoleAssociationArgs": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs",
+          "name": "RoleAssociationArgs",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.rds.role_association",
+        "mro": ["pulumi_aws.rds.role_association.RoleAssociationArgs", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 3, 3, 3, 5],
+              "arg_names": [
+                "__self__",
+                "db_instance_identifier",
+                "feature_name",
+                "role_arn",
+                "region"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 3, 3, 3, 5],
+                "arg_names": [
+                  "__self__",
+                  "db_instance_identifier",
+                  "feature_name",
+                  "role_arn",
+                  "region"
+                ],
+                "arg_types": [
+                  "pulumi_aws.rds.role_association.RoleAssociationArgs",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of RoleAssociationArgs",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "db_instance_identifier": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.db_instance_identifier",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.db_instance_identifier",
+                    "name": "db_instance_identifier",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "db_instance_identifier of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.db_instance_identifier",
+                    "name": "db_instance_identifier",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "db_instance_identifier of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.db_instance_identifier",
+                    "name": "db_instance_identifier",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association.RoleAssociationArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "db_instance_identifier of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "db_instance_identifier",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "db_instance_identifier of RoleAssociationArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "feature_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.feature_name",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.feature_name",
+                    "name": "feature_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "feature_name of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.feature_name",
+                    "name": "feature_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "feature_name of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.feature_name",
+                    "name": "feature_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association.RoleAssociationArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "feature_name of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "feature_name",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "feature_name of RoleAssociationArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.region",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association.RoleAssociationArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "region",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "region of RoleAssociationArgs",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "role_arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.role_arn",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.role_arn",
+                    "name": "role_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "role_arn of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.role_arn",
+                    "name": "role_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "role_arn of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.role_arn",
+                    "name": "role_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association.RoleAssociationArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "role_arn of RoleAssociationArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "role_arn",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.rds.role_association.RoleAssociationArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "role_arn of RoleAssociationArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.rds.role_association.RoleAssociationArgs.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.rds.role_association.RoleAssociationArgs",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "Sequence": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Sequence",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypeAlias": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypeAlias",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypedDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypedDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Union": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Union",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_RoleAssociationState": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.rds.role_association._RoleAssociationState",
+          "name": "_RoleAssociationState",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.rds.role_association._RoleAssociationState",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.rds.role_association",
+        "mro": ["pulumi_aws.rds.role_association._RoleAssociationState", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 5, 5, 5, 5],
+              "arg_names": [
+                "__self__",
+                "db_instance_identifier",
+                "feature_name",
+                "region",
+                "role_arn"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 5, 5, 5, 5],
+                "arg_names": [
+                  "__self__",
+                  "db_instance_identifier",
+                  "feature_name",
+                  "region",
+                  "role_arn"
+                ],
+                "arg_types": [
+                  "pulumi_aws.rds.role_association._RoleAssociationState",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of _RoleAssociationState",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "db_instance_identifier": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.db_instance_identifier",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.db_instance_identifier",
+                    "name": "db_instance_identifier",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "db_instance_identifier of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.db_instance_identifier",
+                    "name": "db_instance_identifier",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "db_instance_identifier of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.db_instance_identifier",
+                    "name": "db_instance_identifier",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association._RoleAssociationState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "db_instance_identifier of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "db_instance_identifier",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "db_instance_identifier of _RoleAssociationState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "feature_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.feature_name",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.feature_name",
+                    "name": "feature_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "feature_name of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.feature_name",
+                    "name": "feature_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "feature_name of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.feature_name",
+                    "name": "feature_name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association._RoleAssociationState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "feature_name of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "feature_name",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "feature_name of _RoleAssociationState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "region": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.region",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.region",
+                    "name": "region",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association._RoleAssociationState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "region of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "region",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "region of _RoleAssociationState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "role_arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.role_arn",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.role_arn",
+                    "name": "role_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "role_arn of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.role_arn",
+                    "name": "role_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "role_arn of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.role_arn",
+                    "name": "role_arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.rds.role_association._RoleAssociationState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "role_arn of _RoleAssociationState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "role_arn",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.rds.role_association._RoleAssociationState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "role_arn of _RoleAssociationState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.rds.role_association._RoleAssociationState.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.rds.role_association._RoleAssociationState",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "__all__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "pulumi_aws.rds.role_association.__all__",
+        "name": "__all__",
+        "type": {
+          ".class": "Instance",
+          "args": ["builtins.str"],
+          "extra_attrs": null,
+          "type_ref": "builtins.list"
+        }
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.rds.role_association.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.rds.role_association.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.rds.role_association.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.rds.role_association.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.rds.role_association.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.rds.role_association.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_builtins": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "builtins",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_utilities": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws._utilities",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "overload": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.overload",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "pulumi": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "sys": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "sys",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "warnings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "warnings",
+      "kind": "Gdef",
+      "module_public": false
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi_aws\\rds\\role_association.py"
+}

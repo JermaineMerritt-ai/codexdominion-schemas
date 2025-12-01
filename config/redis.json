@@ -1,0 +1,48 @@
+{
+  "redis": {
+    "host": "localhost",
+    "port": 6379,
+    "password": null,
+    "db": 0,
+    "ssl": false,
+    "socket_timeout": 30,
+    "socket_connect_timeout": 30,
+    "health_check_interval": 30,
+    "retry_on_timeout": true,
+    "decode_responses": true
+  },
+  "cache": {
+    "default_ttl": 3600,
+    "max_connections": 50,
+    "connection_pool": true
+  },
+  "sessions": {
+    "prefix": "codex:session:",
+    "ttl": 86400,
+    "cookie_name": "codex_session",
+    "secure": true,
+    "httponly": true,
+    "samesite": "strict"
+  },
+  "queues": {
+    "default": "codex:queue:default",
+    "high": "codex:queue:high",
+    "low": "codex:queue:low",
+    "video_processing": "codex:queue:video",
+    "ai_processing": "codex:queue:ai"
+  },
+  "pubsub": {
+    "channels": {
+      "notifications": "codex:notifications",
+      "broadcast": "codex:broadcast",
+      "system": "codex:system",
+      "user_activity": "codex:activity"
+    }
+  },
+  "monitoring": {
+    "enabled": true,
+    "slow_log": true,
+    "monitor_commands": true,
+    "stats_interval": 60
+  }
+}

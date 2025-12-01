@@ -1,0 +1,5436 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "parver._version",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": { ".class": "SymbolTableNode", "cross_ref": "typing.Any", "kind": "Gdef" },
+    "Attribute": { ".class": "SymbolTableNode", "cross_ref": "attr.Attribute", "kind": "Gdef" },
+    "Callable": { ".class": "SymbolTableNode", "cross_ref": "typing.Callable", "kind": "Gdef" },
+    "Dict": { ".class": "SymbolTableNode", "cross_ref": "typing.Dict", "kind": "Gdef" },
+    "IMPLICIT_ZERO": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "parver._helpers.IMPLICIT_ZERO",
+      "kind": "Gdef"
+    },
+    "ImplicitZero": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "parver._typing.ImplicitZero",
+      "kind": "Gdef"
+    },
+    "Infinity": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "parver._helpers.Infinity",
+      "kind": "Gdef"
+    },
+    "Iterable": { ".class": "SymbolTableNode", "cross_ref": "typing.Iterable", "kind": "Gdef" },
+    "NormalizedPreTag": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "parver._typing.NormalizedPreTag",
+      "kind": "Gdef"
+    },
+    "Optional": { ".class": "SymbolTableNode", "cross_ref": "typing.Optional", "kind": "Gdef" },
+    "POST_TAGS": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "has_explicit_value"],
+        "fullname": "parver._version.POST_TAGS",
+        "name": "POST_TAGS",
+        "type": {
+          ".class": "Instance",
+          "args": [{ ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.PostTag" }],
+          "extra_attrs": null,
+          "type_ref": "builtins.set"
+        }
+      }
+    },
+    "PRE_TAGS": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "has_explicit_value"],
+        "fullname": "parver._version.PRE_TAGS",
+        "name": "PRE_TAGS",
+        "type": {
+          ".class": "Instance",
+          "args": [{ ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.PreTag" }],
+          "extra_attrs": null,
+          "type_ref": "builtins.set"
+        }
+      }
+    },
+    "PostTag": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "parver._typing.PostTag",
+      "kind": "Gdef"
+    },
+    "PreTag": { ".class": "SymbolTableNode", "cross_ref": "parver._typing.PreTag", "kind": "Gdef" },
+    "SEPS": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "has_explicit_value"],
+        "fullname": "parver._version.SEPS",
+        "name": "SEPS",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            { ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.Separator" }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.set"
+        }
+      }
+    },
+    "Separator": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "parver._typing.Separator",
+      "kind": "Gdef"
+    },
+    "Sequence": { ".class": "SymbolTableNode", "cross_ref": "typing.Sequence", "kind": "Gdef" },
+    "Set": { ".class": "SymbolTableNode", "cross_ref": "typing.Set", "kind": "Gdef" },
+    "Tuple": { ".class": "SymbolTableNode", "cross_ref": "typing.Tuple", "kind": "Gdef" },
+    "UNSET": { ".class": "SymbolTableNode", "cross_ref": "parver._helpers.UNSET", "kind": "Gdef" },
+    "Union": { ".class": "SymbolTableNode", "cross_ref": "typing.Union", "kind": "Gdef" },
+    "UnsetType": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "parver._helpers.UnsetType",
+      "kind": "Gdef"
+    },
+    "Version": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "parver._version.Version",
+          "name": "Version",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version.Version",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {
+          "attrs": {
+            "attributes": [
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 285,
+                "converter_init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    "builtins.int",
+                    {
+                      ".class": "Instance",
+                      "args": ["builtins.int"],
+                      "extra_attrs": null,
+                      "type_ref": "typing.Iterable"
+                    }
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "has_converter": true,
+                "has_default": false,
+                "init": true,
+                "init_type": {
+                  ".class": "Instance",
+                  "args": ["builtins.int"],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.tuple"
+                },
+                "kw_only": false,
+                "name": "release"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 288,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": true,
+                "init_type": "builtins.bool",
+                "kw_only": false,
+                "name": "v"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 289,
+                "converter_init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": [],
+                      "type_ref": "parver._typing.ImplicitZero"
+                    },
+                    "builtins.int"
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "has_converter": true,
+                "has_default": true,
+                "init": true,
+                "init_type": "builtins.int",
+                "kw_only": false,
+                "name": "epoch"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 294,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": true,
+                "init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    { ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.PreTag" },
+                    { ".class": "NoneType" }
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "kw_only": false,
+                "name": "pre_tag"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 295,
+                "converter_init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": [],
+                      "type_ref": "parver._typing.ImplicitZero"
+                    },
+                    "builtins.int",
+                    { ".class": "NoneType" }
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "has_converter": true,
+                "has_default": true,
+                "init": true,
+                "init_type": {
+                  ".class": "UnionType",
+                  "items": ["builtins.int", { ".class": "NoneType" }],
+                  "uses_pep604_syntax": false
+                },
+                "kw_only": false,
+                "name": "pre"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 300,
+                "converter_init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": [],
+                      "type_ref": "parver._typing.ImplicitZero"
+                    },
+                    "builtins.int",
+                    { ".class": "NoneType" }
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "has_converter": true,
+                "has_default": true,
+                "init": true,
+                "init_type": {
+                  ".class": "UnionType",
+                  "items": ["builtins.int", { ".class": "NoneType" }],
+                  "uses_pep604_syntax": false
+                },
+                "kw_only": false,
+                "name": "post"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 305,
+                "converter_init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": [],
+                      "type_ref": "parver._typing.ImplicitZero"
+                    },
+                    "builtins.int",
+                    { ".class": "NoneType" }
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "has_converter": true,
+                "has_default": true,
+                "init": true,
+                "init_type": {
+                  ".class": "UnionType",
+                  "items": ["builtins.int", { ".class": "NoneType" }],
+                  "uses_pep604_syntax": false
+                },
+                "kw_only": false,
+                "name": "dev"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 310,
+                "converter_init_type": {
+                  ".class": "UnionType",
+                  "items": ["builtins.str", { ".class": "NoneType" }],
+                  "uses_pep604_syntax": false
+                },
+                "has_converter": true,
+                "has_default": true,
+                "init": true,
+                "init_type": {
+                  ".class": "UnionType",
+                  "items": ["builtins.str", { ".class": "NoneType" }],
+                  "uses_pep604_syntax": false
+                },
+                "kw_only": false,
+                "name": "local"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 314,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": true,
+                "init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": [],
+                      "type_ref": "parver._typing.Separator"
+                    },
+                    { ".class": "NoneType" }
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "kw_only": false,
+                "name": "pre_sep1"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 315,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": true,
+                "init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": [],
+                      "type_ref": "parver._typing.Separator"
+                    },
+                    { ".class": "NoneType" }
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "kw_only": false,
+                "name": "pre_sep2"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 316,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": true,
+                "init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": [],
+                      "type_ref": "parver._typing.Separator"
+                    },
+                    { ".class": "NoneType" }
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "kw_only": false,
+                "name": "post_sep1"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 319,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": true,
+                "init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": [],
+                      "type_ref": "parver._typing.Separator"
+                    },
+                    { ".class": "NoneType" }
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "kw_only": false,
+                "name": "post_sep2"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 322,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": true,
+                "init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": [],
+                      "type_ref": "parver._typing.Separator"
+                    },
+                    { ".class": "NoneType" }
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "kw_only": false,
+                "name": "dev_sep"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 325,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": true,
+                "init_type": {
+                  ".class": "UnionType",
+                  "items": [
+                    { ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.PostTag" },
+                    { ".class": "NoneType" }
+                  ],
+                  "uses_pep604_syntax": false
+                },
+                "kw_only": false,
+                "name": "post_tag"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 327,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": false,
+                "init_type": "builtins.bool",
+                "kw_only": false,
+                "name": "epoch_implicit"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 328,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": false,
+                "init_type": "builtins.bool",
+                "kw_only": false,
+                "name": "pre_implicit"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 329,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": false,
+                "init_type": "builtins.bool",
+                "kw_only": false,
+                "name": "post_implicit"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 330,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": true,
+                "init": false,
+                "init_type": "builtins.bool",
+                "kw_only": false,
+                "name": "dev_implicit"
+              },
+              {
+                "alias": null,
+                "context_column": 4,
+                "context_line": 331,
+                "converter_init_type": null,
+                "has_converter": false,
+                "has_default": false,
+                "init": false,
+                "init_type": null,
+                "kw_only": false,
+                "name": "_key"
+              }
+            ],
+            "frozen": true
+          },
+          "attrs_tag": {}
+        },
+        "module_name": "parver._version",
+        "mro": ["parver._version.Version", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__attrs_attrs__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_classvar", "is_ready", "allow_incompatible_override"],
+              "fullname": "parver._version.Version.__attrs_attrs__",
+              "name": "__attrs_attrs__",
+              "type": {
+                ".class": "TupleType",
+                "implicit": false,
+                "items": [
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "Instance",
+                        "args": ["builtins.int"],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.tuple"
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.bool"],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.int"],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [],
+                            "type_ref": "parver._typing.PreTag"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": ["builtins.int", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": ["builtins.int", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": ["builtins.int", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": ["builtins.str", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [],
+                            "type_ref": "parver._typing.Separator"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [],
+                            "type_ref": "parver._typing.Separator"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [],
+                            "type_ref": "parver._typing.Separator"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [],
+                            "type_ref": "parver._typing.Separator"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [],
+                            "type_ref": "parver._typing.Separator"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [],
+                            "type_ref": "parver._typing.PostTag"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.bool"],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.bool"],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.bool"],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.bool"],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "attr.Attribute"
+                  }
+                ],
+                "partial_fallback": "parver._version.Version.__parver__version_Version_AttrsAttributes__"
+              }
+            },
+            "plugin_generated": true
+          },
+          "__attrs_post_init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__attrs_post_init__",
+              "name": "__attrs_post_init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["parver._version.Version"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__attrs_post_init__ of Version",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__eq__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": [null, null],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__eq__",
+              "name": "__eq__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": [null, null],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__eq__ of Version",
+                "ret_type": "builtins.bool",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__ge__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": [null, null],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__ge__",
+              "name": "__ge__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": [null, null],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__ge__ of Version",
+                "ret_type": "builtins.bool",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__gt__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": [null, null],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__gt__",
+              "name": "__gt__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": [null, null],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__gt__ of Version",
+                "ret_type": "builtins.bool",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__hash__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__hash__",
+              "name": "__hash__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["parver._version.Version"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__hash__ of Version",
+                "ret_type": "builtins.int",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "self",
+                "release",
+                "v",
+                "epoch",
+                "pre_tag",
+                "pre",
+                "post",
+                "dev",
+                "local",
+                "pre_sep1",
+                "pre_sep2",
+                "post_sep1",
+                "post_sep2",
+                "dev_sep",
+                "post_tag"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "self",
+                  "release",
+                  "v",
+                  "epoch",
+                  "pre_tag",
+                  "pre",
+                  "post",
+                  "dev",
+                  "local",
+                  "pre_sep1",
+                  "pre_sep2",
+                  "post_sep1",
+                  "post_sep2",
+                  "dev_sep",
+                  "post_tag"
+                ],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      "builtins.int",
+                      {
+                        ".class": "Instance",
+                        "args": ["builtins.int"],
+                        "extra_attrs": null,
+                        "type_ref": "typing.Iterable"
+                      }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  "builtins.bool",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.ImplicitZero"
+                      },
+                      "builtins.int"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.PreTag"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.ImplicitZero"
+                      },
+                      "builtins.int",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.ImplicitZero"
+                      },
+                      "builtins.int",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.ImplicitZero"
+                      },
+                      "builtins.int",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.Separator"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.Separator"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.Separator"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.Separator"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.Separator"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.PostTag"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": {},
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of Version",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            },
+            "plugin_generated": true
+          },
+          "__le__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": [null, null],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__le__",
+              "name": "__le__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": [null, null],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__le__ of Version",
+                "ret_type": "builtins.bool",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__lt__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": [null, null],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__lt__",
+              "name": "__lt__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": [null, null],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__lt__ of Version",
+                "ret_type": "builtins.bool",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__match_args__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_ready", "allow_incompatible_override"],
+              "fullname": "parver._version.Version.__match_args__",
+              "name": "__match_args__",
+              "type": {
+                ".class": "TupleType",
+                "implicit": false,
+                "items": [
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "release"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "v"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "epoch"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "pre_tag"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "pre"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "post"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "dev"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "local"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "pre_sep1"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "pre_sep2"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "post_sep1"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "post_sep2"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "dev_sep"
+                    },
+                    "type_ref": "builtins.str"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [],
+                    "extra_attrs": null,
+                    "last_known_value": {
+                      ".class": "LiteralType",
+                      "fallback": "builtins.str",
+                      "value": "post_tag"
+                    },
+                    "type_ref": "builtins.str"
+                  }
+                ],
+                "partial_fallback": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.tuple"
+                }
+              }
+            },
+            "plugin_generated": true
+          },
+          "__ne__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": [null, null],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__ne__",
+              "name": "__ne__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": [null, null],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__ne__ of Version",
+                "ret_type": "builtins.bool",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__parver__version_Version_AttrsAttributes__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "TypeInfo",
+              "_promote": [],
+              "abstract_attributes": [],
+              "alt_promote": null,
+              "bases": [
+                {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 2
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.tuple"
+                }
+              ],
+              "dataclass_transform_spec": null,
+              "declared_metaclass": null,
+              "defn": {
+                ".class": "ClassDef",
+                "fullname": "parver._version.Version.__parver__version_Version_AttrsAttributes__",
+                "name": "__parver__version_Version_AttrsAttributes__",
+                "type_vars": []
+              },
+              "deletable_attributes": [],
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__parver__version_Version_AttrsAttributes__",
+              "has_param_spec_type": false,
+              "metaclass_type": null,
+              "metadata": {},
+              "module_name": "parver._version",
+              "mro": [
+                "parver._version.Version.__parver__version_Version_AttrsAttributes__",
+                "builtins.tuple",
+                "typing.Sequence",
+                "typing.Reversible",
+                "typing.Collection",
+                "typing.Iterable",
+                "typing.Container",
+                "builtins.object"
+              ],
+              "names": {
+                ".class": "SymbolTable",
+                "_key": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "_key",
+                    "name": "_key",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 2
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "dev": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "dev",
+                    "name": "dev",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "UnionType",
+                          "items": ["builtins.int", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "dev_implicit": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "dev_implicit",
+                    "name": "dev_implicit",
+                    "type": {
+                      ".class": "Instance",
+                      "args": ["builtins.bool"],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "dev_sep": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "dev_sep",
+                    "name": "dev_sep",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [],
+                              "type_ref": "parver._typing.Separator"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "epoch": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "epoch",
+                    "name": "epoch",
+                    "type": {
+                      ".class": "Instance",
+                      "args": ["builtins.int"],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "epoch_implicit": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "epoch_implicit",
+                    "name": "epoch_implicit",
+                    "type": {
+                      ".class": "Instance",
+                      "args": ["builtins.bool"],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "local": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "local",
+                    "name": "local",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "UnionType",
+                          "items": ["builtins.str", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "post": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "post",
+                    "name": "post",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "UnionType",
+                          "items": ["builtins.int", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "post_implicit": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "post_implicit",
+                    "name": "post_implicit",
+                    "type": {
+                      ".class": "Instance",
+                      "args": ["builtins.bool"],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "post_sep1": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "post_sep1",
+                    "name": "post_sep1",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [],
+                              "type_ref": "parver._typing.Separator"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "post_sep2": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "post_sep2",
+                    "name": "post_sep2",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [],
+                              "type_ref": "parver._typing.Separator"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "post_tag": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "post_tag",
+                    "name": "post_tag",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [],
+                              "type_ref": "parver._typing.PostTag"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "pre": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "pre",
+                    "name": "pre",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "UnionType",
+                          "items": ["builtins.int", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "pre_implicit": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "pre_implicit",
+                    "name": "pre_implicit",
+                    "type": {
+                      ".class": "Instance",
+                      "args": ["builtins.bool"],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "pre_sep1": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "pre_sep1",
+                    "name": "pre_sep1",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [],
+                              "type_ref": "parver._typing.Separator"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "pre_sep2": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "pre_sep2",
+                    "name": "pre_sep2",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [],
+                              "type_ref": "parver._typing.Separator"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "pre_tag": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "pre_tag",
+                    "name": "pre_tag",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [],
+                              "type_ref": "parver._typing.PreTag"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "release": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "release",
+                    "name": "release",
+                    "type": {
+                      ".class": "Instance",
+                      "args": [
+                        {
+                          ".class": "Instance",
+                          "args": ["builtins.int"],
+                          "extra_attrs": null,
+                          "type_ref": "builtins.tuple"
+                        }
+                      ],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                },
+                "v": {
+                  ".class": "SymbolTableNode",
+                  "kind": "Mdef",
+                  "node": {
+                    ".class": "Var",
+                    "flags": ["is_property", "is_ready"],
+                    "fullname": "v",
+                    "name": "v",
+                    "type": {
+                      ".class": "Instance",
+                      "args": ["builtins.bool"],
+                      "extra_attrs": null,
+                      "type_ref": "attr.Attribute"
+                    }
+                  },
+                  "plugin_generated": true
+                }
+              },
+              "self_type": null,
+              "slots": null,
+              "tuple_type": null,
+              "type_vars": [],
+              "typeddict_type": null
+            },
+            "plugin_generated": true
+          },
+          "__repr__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": [null],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__repr__",
+              "name": "__repr__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": [null],
+                "arg_types": ["parver._version.Version"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__repr__ of Version",
+                "ret_type": "builtins.str",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__str__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": [null],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.__str__",
+              "name": "__str__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": [null],
+                "arg_types": ["parver._version.Version"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__str__ of Version",
+                "ret_type": "builtins.str",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_attrs_as_init": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version._attrs_as_init",
+              "name": "_attrs_as_init",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["parver._version.Version"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_attrs_as_init of Version",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    "builtins.str",
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 2
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.dict"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_compare": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "other", "method"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version._compare",
+              "name": "_compare",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "other", "method"],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  },
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0],
+                    "arg_names": [null, null],
+                    "arg_types": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": {},
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": null,
+                    "ret_type": "builtins.bool",
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_compare of Version",
+                "ret_type": "builtins.bool",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_key": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_inferred", "has_explicit_value"],
+              "fullname": "parver._version.Version._key",
+              "name": "_key",
+              "type": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 2
+              }
+            }
+          },
+          "_set_release": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1, 1],
+              "arg_names": ["self", "index", "value", "bump"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version._set_release",
+              "name": "_set_release",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1, 1],
+                "arg_names": ["self", "index", "value", "bump"],
+                "arg_types": [
+                  "parver._version.Version",
+                  "builtins.int",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.int", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "builtins.bool"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_set_release of Version",
+                "ret_type": "parver._version.Version",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_validate_dev": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "set_"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version._validate_dev",
+              "name": "_validate_dev",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "set_"],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0],
+                    "arg_names": [null, null],
+                    "arg_types": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": {},
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": null,
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_validate_dev of Version",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_validate_post": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "set_"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version._validate_post",
+              "name": "_validate_post",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "set_"],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0],
+                    "arg_names": [null, null],
+                    "arg_types": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": {},
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": null,
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_validate_post of Version",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_validate_pre": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "set_"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version._validate_pre",
+              "name": "_validate_pre",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "set_"],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0],
+                    "arg_names": [null, null],
+                    "arg_types": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": {},
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": null,
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_validate_pre of Version",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "base_version": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.base_version",
+              "name": "base_version",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["parver._version.Version"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "base_version of Version",
+                "ret_type": "parver._version.Version",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "bump_dev": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 5],
+              "arg_names": ["self", "by"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.bump_dev",
+              "name": "bump_dev",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 5],
+                "arg_names": ["self", "by"],
+                "arg_types": ["parver._version.Version", "builtins.int"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "bump_dev of Version",
+                "ret_type": "parver._version.Version",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "bump_epoch": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 5],
+              "arg_names": ["self", "by"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.bump_epoch",
+              "name": "bump_epoch",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 5],
+                "arg_names": ["self", "by"],
+                "arg_types": ["parver._version.Version", "builtins.int"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "bump_epoch of Version",
+                "ret_type": "parver._version.Version",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "bump_post": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.bump_post",
+              "impl": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 1, 5],
+                "arg_names": ["self", "tag", "by"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_overload"],
+                "fullname": "parver._version.Version.bump_post",
+                "name": "bump_post",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 1, 5],
+                  "arg_names": ["self", "tag", "by"],
+                  "arg_types": [
+                    "parver._version.Version",
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": [],
+                          "type_ref": "parver._typing.PostTag"
+                        },
+                        { ".class": "NoneType" },
+                        "parver._helpers.UnsetType"
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "builtins.int"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "bump_post of Version",
+                  "ret_type": "parver._version.Version",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 5],
+                    "arg_names": ["self", "tag", "by"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "parver._version.Version.bump_post",
+                    "name": "bump_post",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 5],
+                      "arg_names": ["self", "tag", "by"],
+                      "arg_types": [
+                        "parver._version.Version",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [],
+                              "type_ref": "parver._typing.PostTag"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        "builtins.int"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "bump_post of Version",
+                      "ret_type": "parver._version.Version",
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "parver._version.Version.bump_post",
+                    "name": "bump_post",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 5],
+                      "arg_names": ["self", "tag", "by"],
+                      "arg_types": [
+                        "parver._version.Version",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": [],
+                              "type_ref": "parver._typing.PostTag"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        "builtins.int"
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "bump_post of Version",
+                      "ret_type": "parver._version.Version",
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 5],
+                    "arg_names": ["self", "by"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "parver._version.Version.bump_post",
+                    "name": "bump_post",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 5],
+                      "arg_names": ["self", "by"],
+                      "arg_types": ["parver._version.Version", "builtins.int"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "bump_post of Version",
+                      "ret_type": "parver._version.Version",
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "parver._version.Version.bump_post",
+                    "name": "bump_post",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 5],
+                      "arg_names": ["self", "by"],
+                      "arg_types": ["parver._version.Version", "builtins.int"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "bump_post of Version",
+                      "ret_type": "parver._version.Version",
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0, 5],
+                    "arg_names": ["self", "tag", "by"],
+                    "arg_types": [
+                      "parver._version.Version",
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": [],
+                            "type_ref": "parver._typing.PostTag"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "builtins.int"
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "bump_post of Version",
+                    "ret_type": "parver._version.Version",
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  },
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 5],
+                    "arg_names": ["self", "by"],
+                    "arg_types": ["parver._version.Version", "builtins.int"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "bump_post of Version",
+                    "ret_type": "parver._version.Version",
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "bump_pre": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 5],
+              "arg_names": ["self", "tag", "by"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.bump_pre",
+              "name": "bump_pre",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 5],
+                "arg_names": ["self", "tag", "by"],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.PreTag"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  "builtins.int"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "bump_pre of Version",
+                "ret_type": "parver._version.Version",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "bump_release": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 3],
+              "arg_names": ["self", "index"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.bump_release",
+              "name": "bump_release",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 3],
+                "arg_names": ["self", "index"],
+                "arg_types": ["parver._version.Version", "builtins.int"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "bump_release of Version",
+                "ret_type": "parver._version.Version",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "bump_release_to": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 3, 3],
+              "arg_names": ["self", "index", "value"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.bump_release_to",
+              "name": "bump_release_to",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 3, 3],
+                "arg_names": ["self", "index", "value"],
+                "arg_types": ["parver._version.Version", "builtins.int", "builtins.int"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "bump_release_to of Version",
+                "ret_type": "parver._version.Version",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "dev": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.dev",
+              "name": "dev",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.int", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "dev_implicit": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.dev_implicit",
+              "name": "dev_implicit",
+              "type": "builtins.bool"
+            }
+          },
+          "dev_sep": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.dev_sep",
+              "name": "dev_sep",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  { ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.Separator" },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "epoch": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.epoch",
+              "name": "epoch",
+              "type": "builtins.int"
+            }
+          },
+          "epoch_implicit": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.epoch_implicit",
+              "name": "epoch_implicit",
+              "type": "builtins.bool"
+            }
+          },
+          "is_alpha": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "parver._version.Version.is_alpha",
+                "name": "is_alpha",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_alpha of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "parver._version.Version.is_alpha",
+                "name": "is_alpha",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_alpha of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "is_beta": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "parver._version.Version.is_beta",
+                "name": "is_beta",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_beta of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "parver._version.Version.is_beta",
+                "name": "is_beta",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_beta of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "is_devrelease": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "parver._version.Version.is_devrelease",
+                "name": "is_devrelease",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_devrelease of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "parver._version.Version.is_devrelease",
+                "name": "is_devrelease",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_devrelease of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "is_postrelease": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "parver._version.Version.is_postrelease",
+                "name": "is_postrelease",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_postrelease of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "parver._version.Version.is_postrelease",
+                "name": "is_postrelease",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_postrelease of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "is_prerelease": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "parver._version.Version.is_prerelease",
+                "name": "is_prerelease",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_prerelease of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "parver._version.Version.is_prerelease",
+                "name": "is_prerelease",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_prerelease of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "is_release_candidate": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "parver._version.Version.is_release_candidate",
+                "name": "is_release_candidate",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_release_candidate of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "parver._version.Version.is_release_candidate",
+                "name": "is_release_candidate",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "is_release_candidate of Version",
+                  "ret_type": "builtins.bool",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "local": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.local",
+              "name": "local",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "normalize": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.normalize",
+              "name": "normalize",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["parver._version.Version"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "normalize of Version",
+                "ret_type": "parver._version.Version",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "parse": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 0, 1],
+                "arg_names": ["cls", "version", "strict"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_class", "is_decorated"],
+                "fullname": "parver._version.Version.parse",
+                "name": "parse",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1],
+                  "arg_names": ["cls", "version", "strict"],
+                  "arg_types": [
+                    { ".class": "TypeType", "item": "parver._version.Version" },
+                    "builtins.str",
+                    "builtins.bool"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "cls" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "parse of Version",
+                  "ret_type": "parver._version.Version",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_classmethod", "is_ready", "is_inferred"],
+                "fullname": "parver._version.Version.parse",
+                "name": "parse",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1],
+                  "arg_names": ["cls", "version", "strict"],
+                  "arg_types": [
+                    { ".class": "TypeType", "item": "parver._version.Version" },
+                    "builtins.str",
+                    "builtins.bool"
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "cls" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "parse of Version",
+                  "ret_type": "parver._version.Version",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "post": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.post",
+              "name": "post",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.int", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "post_implicit": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.post_implicit",
+              "name": "post_implicit",
+              "type": "builtins.bool"
+            }
+          },
+          "post_sep1": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.post_sep1",
+              "name": "post_sep1",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  { ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.Separator" },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "post_sep2": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.post_sep2",
+              "name": "post_sep2",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  { ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.Separator" },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "post_tag": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.post_tag",
+              "name": "post_tag",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  { ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.PostTag" },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "pre": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.pre",
+              "name": "pre",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.int", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "pre_implicit": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.pre_implicit",
+              "name": "pre_implicit",
+              "type": "builtins.bool"
+            }
+          },
+          "pre_sep1": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.pre_sep1",
+              "name": "pre_sep1",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  { ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.Separator" },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "pre_sep2": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.pre_sep2",
+              "name": "pre_sep2",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  { ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.Separator" },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "pre_tag": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.pre_tag",
+              "name": "pre_tag",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  { ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.PreTag" },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "public": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "parver._version.Version.public",
+                "name": "public",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "public of Version",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "parver._version.Version.public",
+                "name": "public",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["parver._version.Version"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "public of Version",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "release": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.release",
+              "name": "release",
+              "type": {
+                ".class": "Instance",
+                "args": ["builtins.int"],
+                "extra_attrs": null,
+                "type_ref": "builtins.tuple"
+              }
+            }
+          },
+          "replace": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "self",
+                "release",
+                "v",
+                "epoch",
+                "pre_tag",
+                "pre",
+                "post",
+                "dev",
+                "local",
+                "pre_sep1",
+                "pre_sep2",
+                "post_sep1",
+                "post_sep2",
+                "dev_sep",
+                "post_tag"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.replace",
+              "name": "replace",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "self",
+                  "release",
+                  "v",
+                  "epoch",
+                  "pre_tag",
+                  "pre",
+                  "post",
+                  "dev",
+                  "local",
+                  "pre_sep1",
+                  "pre_sep2",
+                  "post_sep1",
+                  "post_sep2",
+                  "dev_sep",
+                  "post_tag"
+                ],
+                "arg_types": [
+                  "parver._version.Version",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      "builtins.int",
+                      {
+                        ".class": "Instance",
+                        "args": ["builtins.int"],
+                        "extra_attrs": null,
+                        "type_ref": "typing.Iterable"
+                      },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.bool", "parver._helpers.UnsetType"],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.ImplicitZero"
+                      },
+                      "builtins.int",
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.PreTag"
+                      },
+                      { ".class": "NoneType" },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.ImplicitZero"
+                      },
+                      "builtins.int",
+                      { ".class": "NoneType" },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.ImplicitZero"
+                      },
+                      "builtins.int",
+                      { ".class": "NoneType" },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.ImplicitZero"
+                      },
+                      "builtins.int",
+                      { ".class": "NoneType" },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      "builtins.str",
+                      { ".class": "NoneType" },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.Separator"
+                      },
+                      { ".class": "NoneType" },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.Separator"
+                      },
+                      { ".class": "NoneType" },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.Separator"
+                      },
+                      { ".class": "NoneType" },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.Separator"
+                      },
+                      { ".class": "NoneType" },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.Separator"
+                      },
+                      { ".class": "NoneType" },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "parver._typing.PostTag"
+                      },
+                      { ".class": "NoneType" },
+                      "parver._helpers.UnsetType"
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "replace of Version",
+                "ret_type": "parver._version.Version",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "set_release": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 3, 3],
+              "arg_names": ["self", "index", "value"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.set_release",
+              "name": "set_release",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 3, 3],
+                "arg_names": ["self", "index", "value"],
+                "arg_types": ["parver._version.Version", "builtins.int", "builtins.int"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "set_release of Version",
+                "ret_type": "parver._version.Version",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "truncate": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 5],
+              "arg_names": ["self", "min_length"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "parver._version.Version.truncate",
+              "name": "truncate",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 5],
+                "arg_names": ["self", "min_length"],
+                "arg_types": ["parver._version.Version", "builtins.int"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "truncate of Version",
+                "ret_type": "parver._version.Version",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "v": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_property", "is_ready", "has_explicit_value"],
+              "fullname": "parver._version.Version.v",
+              "name": "v",
+              "type": "builtins.bool"
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "parver._version.Version.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "parver._version.Version",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "_ValidatorType": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeAlias",
+        "alias_tvars": [],
+        "column": 0,
+        "fullname": "parver._version._ValidatorType",
+        "line": 32,
+        "no_args": false,
+        "normalized": false,
+        "python_3_12_type_alias": false,
+        "target": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0],
+          "arg_names": [null, null, null],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            },
+            {
+              ".class": "Instance",
+              "args": [
+                {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 6
+                }
+              ],
+              "extra_attrs": null,
+              "type_ref": "attr.Attribute"
+            },
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "bound_args": [],
+          "def_extras": {},
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": null,
+          "ret_type": { ".class": "NoneType" },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "parver._version.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "parver._version.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "parver._version.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "parver._version.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "parver._version.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "parver._version.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_cmpkey": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 0, 0, 0, 0, 0],
+        "arg_names": ["epoch", "release", "pre_tag", "pre_num", "post", "dev", "local"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version._cmpkey",
+        "name": "_cmpkey",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0, 0, 0, 0, 0],
+          "arg_names": ["epoch", "release", "pre_tag", "pre_num", "post", "dev", "local"],
+          "arg_types": [
+            "builtins.int",
+            {
+              ".class": "Instance",
+              "args": ["builtins.int"],
+              "extra_attrs": null,
+              "type_ref": "builtins.tuple"
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [],
+                  "type_ref": "parver._typing.NormalizedPreTag"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.int", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.int", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.int", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_cmpkey",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 2
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_local_version_separators": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "parver._version._local_version_separators",
+        "name": "_local_version_separators",
+        "type": {
+          ".class": "Instance",
+          "args": ["builtins.str"],
+          "extra_attrs": null,
+          "type_ref": "re.Pattern"
+        }
+      }
+    },
+    "_normalize_local": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["local"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version._normalize_local",
+        "name": "_normalize_local",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["local"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_normalize_local",
+          "ret_type": {
+            ".class": "UnionType",
+            "items": ["builtins.str", { ".class": "NoneType" }],
+            "uses_pep604_syntax": false
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_normalize_pre_tag": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["pre_tag"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version._normalize_pre_tag",
+        "name": "_normalize_pre_tag",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["pre_tag"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": [
+                { ".class": "TypeAliasType", "args": [], "type_ref": "parver._typing.PreTag" },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_normalize_pre_tag",
+          "ret_type": {
+            ".class": "UnionType",
+            "items": [
+              {
+                ".class": "TypeAliasType",
+                "args": [],
+                "type_ref": "parver._typing.NormalizedPreTag"
+              },
+              { ".class": "NoneType" }
+            ],
+            "uses_pep604_syntax": false
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_parse_local_version": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "OverloadedFuncDef",
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version._parse_local_version",
+        "impl": {
+          ".class": "FuncDef",
+          "abstract_status": 0,
+          "arg_kinds": [0],
+          "arg_names": ["local"],
+          "dataclass_transform_spec": null,
+          "deprecated": null,
+          "flags": ["is_overload"],
+          "fullname": "parver._version._parse_local_version",
+          "name": "_parse_local_version",
+          "type": {
+            ".class": "CallableType",
+            "arg_kinds": [0],
+            "arg_names": ["local"],
+            "arg_types": [
+              {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            ],
+            "bound_args": [],
+            "def_extras": { "first_arg": null },
+            "fallback": "builtins.function",
+            "from_concatenate": false,
+            "implicit": false,
+            "imprecise_arg_kinds": false,
+            "is_ellipsis_args": false,
+            "name": "_parse_local_version",
+            "ret_type": {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "UnionType",
+                      "items": ["builtins.str", "builtins.int"],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.tuple"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            "type_guard": null,
+            "type_is": null,
+            "unpack_kwargs": false,
+            "variables": []
+          }
+        },
+        "items": [
+          {
+            ".class": "Decorator",
+            "func": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["local"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": ["is_overload", "is_decorated"],
+              "fullname": "parver._version._parse_local_version",
+              "name": "_parse_local_version",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["local"],
+                "arg_types": ["builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": null },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_parse_local_version",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "UnionType",
+                      "items": ["builtins.str", "builtins.int"],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.tuple"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            },
+            "is_overload": true,
+            "var": {
+              ".class": "Var",
+              "flags": ["is_ready", "is_inferred"],
+              "fullname": "parver._version._parse_local_version",
+              "name": "_parse_local_version",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["local"],
+                "arg_types": ["builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": null },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_parse_local_version",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "UnionType",
+                      "items": ["builtins.str", "builtins.int"],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.tuple"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          {
+            ".class": "Decorator",
+            "func": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["local"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": ["is_overload", "is_decorated"],
+              "fullname": "parver._version._parse_local_version",
+              "name": "_parse_local_version",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["local"],
+                "arg_types": [{ ".class": "NoneType" }],
+                "bound_args": [],
+                "def_extras": { "first_arg": null },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_parse_local_version",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            },
+            "is_overload": true,
+            "var": {
+              ".class": "Var",
+              "flags": ["is_ready", "is_inferred"],
+              "fullname": "parver._version._parse_local_version",
+              "name": "_parse_local_version",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["local"],
+                "arg_types": [{ ".class": "NoneType" }],
+                "bound_args": [],
+                "def_extras": { "first_arg": null },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_parse_local_version",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          }
+        ],
+        "type": {
+          ".class": "Overloaded",
+          "items": [
+            {
+              ".class": "CallableType",
+              "arg_kinds": [0],
+              "arg_names": ["local"],
+              "arg_types": ["builtins.str"],
+              "bound_args": [],
+              "def_extras": { "first_arg": null },
+              "fallback": "builtins.function",
+              "from_concatenate": false,
+              "implicit": false,
+              "imprecise_arg_kinds": false,
+              "is_ellipsis_args": false,
+              "name": "_parse_local_version",
+              "ret_type": {
+                ".class": "Instance",
+                "args": [
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", "builtins.int"],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "extra_attrs": null,
+                "type_ref": "builtins.tuple"
+              },
+              "type_guard": null,
+              "type_is": null,
+              "unpack_kwargs": false,
+              "variables": []
+            },
+            {
+              ".class": "CallableType",
+              "arg_kinds": [0],
+              "arg_names": ["local"],
+              "arg_types": [{ ".class": "NoneType" }],
+              "bound_args": [],
+              "def_extras": { "first_arg": null },
+              "fallback": "builtins.function",
+              "from_concatenate": false,
+              "implicit": false,
+              "imprecise_arg_kinds": false,
+              "is_ellipsis_args": false,
+              "name": "_parse_local_version",
+              "ret_type": { ".class": "NoneType" },
+              "type_guard": null,
+              "type_is": null,
+              "unpack_kwargs": false,
+              "variables": []
+            }
+          ]
+        }
+      }
+    },
+    "and_": { ".class": "SymbolTableNode", "cross_ref": "attr.validators.and_", "kind": "Gdef" },
+    "attr": { ".class": "SymbolTableNode", "cross_ref": "attr", "kind": "Gdef" },
+    "cast": { ".class": "SymbolTableNode", "cross_ref": "typing.cast", "kind": "Gdef" },
+    "check_by": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0],
+        "arg_names": ["by", "current"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version.check_by",
+        "name": "check_by",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0],
+          "arg_names": ["by", "current"],
+          "arg_types": [
+            "builtins.int",
+            {
+              ".class": "UnionType",
+              "items": ["builtins.int", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "check_by",
+          "ret_type": { ".class": "NoneType" },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "convert_implicit": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["value"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version.convert_implicit",
+        "name": "convert_implicit",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["value"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [],
+                  "type_ref": "parver._typing.ImplicitZero"
+                },
+                "builtins.int"
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "convert_implicit",
+          "ret_type": "builtins.int",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "convert_local": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["local"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version.convert_local",
+        "name": "convert_local",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["local"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "convert_local",
+          "ret_type": {
+            ".class": "UnionType",
+            "items": ["builtins.str", { ".class": "NoneType" }],
+            "uses_pep604_syntax": false
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "convert_release": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["release"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version.convert_release",
+        "name": "convert_release",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["release"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": [
+                "builtins.int",
+                {
+                  ".class": "Instance",
+                  "args": ["builtins.int"],
+                  "extra_attrs": null,
+                  "type_ref": "typing.Iterable"
+                }
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "convert_release",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.int"],
+            "extra_attrs": null,
+            "type_ref": "builtins.tuple"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "converters": { ".class": "SymbolTableNode", "cross_ref": "attr.converters", "kind": "Gdef" },
+    "deep_iterable": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "attr.validators.deep_iterable",
+      "kind": "Gdef"
+    },
+    "implicit_or": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["validator"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version.implicit_or",
+        "name": "implicit_or",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["validator"],
+          "arg_types": [
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [],
+                  "type_ref": "parver._version._ValidatorType"
+                },
+                {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "TypeAliasType",
+                      "args": [],
+                      "type_ref": "parver._version._ValidatorType"
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "typing.Sequence"
+                }
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "implicit_or",
+          "ret_type": {
+            ".class": "TypeAliasType",
+            "args": [],
+            "type_ref": "parver._version._ValidatorType"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "in_": { ".class": "SymbolTableNode", "cross_ref": "attr.validators.in_", "kind": "Gdef" },
+    "instance_of": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "attr.validators.instance_of",
+      "kind": "Gdef"
+    },
+    "is_bool": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "has_explicit_value"],
+        "fullname": "parver._version.is_bool",
+        "name": "is_bool",
+        "type": {
+          ".class": "TypeAliasType",
+          "args": [],
+          "type_ref": "parver._version._ValidatorType"
+        }
+      }
+    },
+    "is_int": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "has_explicit_value"],
+        "fullname": "parver._version.is_int",
+        "name": "is_int",
+        "type": {
+          ".class": "TypeAliasType",
+          "args": [],
+          "type_ref": "parver._version._ValidatorType"
+        }
+      }
+    },
+    "is_non_negative": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 0],
+        "arg_names": ["inst", "attr", "value"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version.is_non_negative",
+        "name": "is_non_negative",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0],
+          "arg_names": ["inst", "attr", "value"],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            },
+            {
+              ".class": "Instance",
+              "args": [
+                {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 2
+                }
+              ],
+              "extra_attrs": null,
+              "type_ref": "attr.Attribute"
+            },
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "is_non_negative",
+          "ret_type": { ".class": "NoneType" },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "is_str": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "has_explicit_value"],
+        "fullname": "parver._version.is_str",
+        "name": "is_str",
+        "type": {
+          ".class": "TypeAliasType",
+          "args": [],
+          "type_ref": "parver._version._ValidatorType"
+        }
+      }
+    },
+    "is_tuple": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "has_explicit_value"],
+        "fullname": "parver._version.is_tuple",
+        "name": "is_tuple",
+        "type": {
+          ".class": "TypeAliasType",
+          "args": [],
+          "type_ref": "parver._version._ValidatorType"
+        }
+      }
+    },
+    "itertools": { ".class": "SymbolTableNode", "cross_ref": "itertools", "kind": "Gdef" },
+    "last": { ".class": "SymbolTableNode", "cross_ref": "parver._helpers.last", "kind": "Gdef" },
+    "non_empty": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 0],
+        "arg_names": ["inst", "attr", "value"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version.non_empty",
+        "name": "non_empty",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0],
+          "arg_names": ["inst", "attr", "value"],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            },
+            {
+              ".class": "Instance",
+              "args": [
+                {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 2
+                }
+              ],
+              "extra_attrs": null,
+              "type_ref": "attr.Attribute"
+            },
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "non_empty",
+          "ret_type": { ".class": "NoneType" },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "not_bool": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 0],
+        "arg_names": ["inst", "attr", "value"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version.not_bool",
+        "name": "not_bool",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0],
+          "arg_names": ["inst", "attr", "value"],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            },
+            {
+              ".class": "Instance",
+              "args": [
+                {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 2
+                }
+              ],
+              "extra_attrs": null,
+              "type_ref": "attr.Attribute"
+            },
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "not_bool",
+          "ret_type": { ".class": "NoneType" },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "num_comp": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "parver._version.num_comp",
+        "name": "num_comp",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            {
+              ".class": "CallableType",
+              "arg_kinds": [0, 0, 0],
+              "arg_names": [null, null, null],
+              "arg_types": [
+                {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 2
+                },
+                {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 2
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "attr.Attribute"
+                },
+                {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 2
+                }
+              ],
+              "bound_args": [],
+              "def_extras": { "first_arg": null },
+              "fallback": "builtins.function",
+              "from_concatenate": false,
+              "implicit": false,
+              "imprecise_arg_kinds": false,
+              "is_ellipsis_args": false,
+              "name": null,
+              "ret_type": { ".class": "NoneType" },
+              "type_guard": null,
+              "type_is": null,
+              "unpack_kwargs": false,
+              "variables": []
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.list"
+        }
+      }
+    },
+    "operator": { ".class": "SymbolTableNode", "cross_ref": "operator", "kind": "Gdef" },
+    "optional": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "attr.validators.optional",
+      "kind": "Gdef"
+    },
+    "overload": { ".class": "SymbolTableNode", "cross_ref": "typing.overload", "kind": "Gdef" },
+    "parse": { ".class": "SymbolTableNode", "cross_ref": "parver._parse.parse", "kind": "Gdef" },
+    "partial": { ".class": "SymbolTableNode", "cross_ref": "functools.partial", "kind": "Gdef" },
+    "re": { ".class": "SymbolTableNode", "cross_ref": "re", "kind": "Gdef" },
+    "release_validator": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "parver._version.release_validator",
+        "name": "release_validator",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0],
+          "arg_names": [null, null, null],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            },
+            {
+              ".class": "Instance",
+              "args": [
+                {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 6
+                  },
+                  "type_of_any": 7
+                }
+              ],
+              "extra_attrs": null,
+              "type_ref": "attr.Attribute"
+            },
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 6
+              },
+              "type_of_any": 7
+            }
+          ],
+          "bound_args": [],
+          "def_extras": {},
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": null,
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 6
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "segment": { ".class": "SymbolTableNode", "cross_ref": "parver._segments", "kind": "Gdef" },
+    "unset_or": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["validator"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "parver._version.unset_or",
+        "name": "unset_or",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["validator"],
+          "arg_types": [
+            { ".class": "TypeAliasType", "args": [], "type_ref": "parver._version._ValidatorType" }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "unset_or",
+          "ret_type": {
+            ".class": "TypeAliasType",
+            "args": [],
+            "type_ref": "parver._version._ValidatorType"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "validate_post_tag": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "has_explicit_value"],
+        "fullname": "parver._version.validate_post_tag",
+        "name": "validate_post_tag",
+        "type": {
+          ".class": "TypeAliasType",
+          "args": [],
+          "type_ref": "parver._version._ValidatorType"
+        }
+      }
+    },
+    "validate_pre_tag": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "has_explicit_value"],
+        "fullname": "parver._version.validate_pre_tag",
+        "name": "validate_pre_tag",
+        "type": {
+          ".class": "TypeAliasType",
+          "args": [],
+          "type_ref": "parver._version._ValidatorType"
+        }
+      }
+    },
+    "validate_sep": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "has_explicit_value"],
+        "fullname": "parver._version.validate_sep",
+        "name": "validate_sep",
+        "type": {
+          ".class": "TypeAliasType",
+          "args": [],
+          "type_ref": "parver._version._ValidatorType"
+        }
+      }
+    },
+    "validate_sep_or_unset": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "has_explicit_value"],
+        "fullname": "parver._version.validate_sep_or_unset",
+        "name": "validate_sep_or_unset",
+        "type": {
+          ".class": "TypeAliasType",
+          "args": [],
+          "type_ref": "parver._version._ValidatorType"
+        }
+      }
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\parver\\_version.py"
+}

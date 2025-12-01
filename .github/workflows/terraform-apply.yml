@@ -1,0 +1,119 @@
+name: Terraform Apply
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target env (dev/staging/prod)'
+        required: true
+        default: prod
+
+jobs:
+  apply-azure:
+    name: Azure Terraform Apply
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+    permissions:
+      id-token: write
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with: { terraform_version: 1.6.6 }
+
+      - name: Azure login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Terraform Init
+        working-directory: infra/envs/${{ github.event.inputs.environment }}
+        run: terraform init
+
+      - name: Terraform Apply
+        working-directory: infra/envs/${{ github.event.inputs.environment }}
+        run: terraform apply -auto-approve
+
+      - name: Show Apply Output
+        working-directory: infra/envs/${{ github.event.inputs.environment }}
+        run: terraform show -no-color
+
+  jobs:
+    plan:
+      runs-on: ubuntu-latest
+      permissions:
+        contents: read
+        id-token: write
+      steps:
+        - uses: actions/checkout@v4
+        - uses: hashicorp/setup-terraform@v3
+          with: { terraform_version: 1.6.6 }
+
+        - name: Terraform Init
+          working-directory: infra/envs/${{ github.event.inputs.environment }}
+          run: terraform init
+
+        - name: Terraform Plan
+          working-directory: infra/envs/${{ github.event.inputs.environment }}
+          run: terraform plan -var="enable_google_dns=${{ github.event.inputs.enable_google_dns }}" -out=tfplan
+          env:
+            TF_VAR_IONOS_USERNAME: ${{ secrets.IONOS_USERNAME }}
+            TF_VAR_IONOS_PASSWORD: ${{ secrets.IONOS_PASSWORD }}
+            TF_VAR_google_project: ${{ secrets.GOOGLE_PROJECT }}
+            TF_VAR_google_zone: ${{ secrets.GOOGLE_ZONE }}
+
+        - name: Show Plan Output
+          working-directory: infra/envs/${{ github.event.inputs.environment }}
+          run: terraform show -no-color tfplan | tee plan.log
+
+        - name: Upload plan
+          uses: actions/upload-artifact@v4
+          with:
+            name: tfplan
+            path: infra/envs/${{ github.event.inputs.environment }}/tfplan
+
+        - name: Upload plan log
+          uses: actions/upload-artifact@v4
+          with:
+            name: plan.log
+            path: infra/envs/${{ github.event.inputs.environment }}/plan.log
+
+    apply:
+      runs-on: ubuntu-latest
+      needs: plan
+      environment: ${{ github.event.inputs.environment }}
+      permissions:
+        contents: read
+        id-token: write
+      steps:
+        - uses: actions/checkout@v4
+        - uses: hashicorp/setup-terraform@v3
+          with: { terraform_version: 1.6.6 }
+
+        - name: Terraform Init
+          working-directory: infra/envs/${{ github.event.inputs.environment }}
+          run: terraform init
+
+        - name: Terraform Apply
+          working-directory: infra/envs/${{ github.event.inputs.environment }}
+          run: terraform apply -auto-approve tfplan | tee apply.log
+          env:
+            TF_VAR_IONOS_USERNAME: ${{ secrets.IONOS_USERNAME }}
+            TF_VAR_IONOS_PASSWORD: ${{ secrets.IONOS_PASSWORD }}
+            TF_VAR_google_project: ${{ secrets.GOOGLE_PROJECT }}
+            TF_VAR_google_zone: ${{ secrets.GOOGLE_ZONE }}
+
+        - name: Upload apply log
+          uses: actions/upload-artifact@v4
+          with:
+            name: apply.log
+            path: infra/envs/${{ github.event.inputs.environment }}/apply.log
+
+        - name: Show DNS Output Summary
+          if: ${{ github.event.inputs.enable_google_dns == 'true' }}
+          working-directory: infra/envs/${{ github.event.inputs.environment }}
+          run: |
+            terraform output dns_record_names
+            terraform output dns_record_details

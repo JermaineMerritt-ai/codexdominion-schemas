@@ -1,0 +1,3499 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi_aws.route53.traffic_policy",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Any",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Mapping": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Mapping",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "NotRequired": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing_extensions.NotRequired",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Optional": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Optional",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Sequence": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Sequence",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TrafficPolicy": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi.resource.CustomResource"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+          "name": "TrafficPolicy",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.route53.traffic_policy",
+        "mro": [
+          "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+          "pulumi.resource.CustomResource",
+          "pulumi.resource.Resource",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.__init__",
+              "impl": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 0, 2, 4],
+                "arg_names": ["__self__", "resource_name", "args", "kwargs"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_overload"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.__init__",
+                "name": "__init__",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 2, 4],
+                  "arg_names": ["__self__", "resource_name", "args", "kwargs"],
+                  "arg_types": [
+                    "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+                    "builtins.str",
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 1
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 1
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "__self__" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "__init__ of TrafficPolicy",
+                  "ret_type": { ".class": "NoneType" },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 1, 1, 1, 1, 1],
+                    "arg_names": [
+                      "__self__",
+                      "resource_name",
+                      "opts",
+                      "comment",
+                      "document",
+                      "name",
+                      "__props__"
+                    ],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 1, 1, 1, 1, 1],
+                      "arg_names": [
+                        "__self__",
+                        "resource_name",
+                        "opts",
+                        "comment",
+                        "document",
+                        "name",
+                        "__props__"
+                      ],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+                        "builtins.str",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 1
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of TrafficPolicy",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 1, 1, 1, 1, 1],
+                      "arg_names": [
+                        "__self__",
+                        "resource_name",
+                        "opts",
+                        "comment",
+                        "document",
+                        "name",
+                        "__props__"
+                      ],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+                        "builtins.str",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 1
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of TrafficPolicy",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0, 0, 1],
+                    "arg_names": ["__self__", "resource_name", "args", "opts"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 0, 1],
+                      "arg_names": ["__self__", "resource_name", "args", "opts"],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+                        "builtins.str",
+                        "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of TrafficPolicy",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_ready", "is_inferred"],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.__init__",
+                    "name": "__init__",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0, 0, 1],
+                      "arg_names": ["__self__", "resource_name", "args", "opts"],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+                        "builtins.str",
+                        "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "__self__" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "__init__ of TrafficPolicy",
+                      "ret_type": { ".class": "NoneType" },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0, 1, 1, 1, 1, 1],
+                    "arg_names": [
+                      "__self__",
+                      "resource_name",
+                      "opts",
+                      "comment",
+                      "document",
+                      "name",
+                      "__props__"
+                    ],
+                    "arg_types": [
+                      "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+                      "builtins.str",
+                      {
+                        ".class": "UnionType",
+                        "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "__self__" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "__init__ of TrafficPolicy",
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  },
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0, 0, 0, 1],
+                    "arg_names": ["__self__", "resource_name", "args", "opts"],
+                    "arg_types": [
+                      "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+                      "builtins.str",
+                      "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs",
+                      {
+                        ".class": "UnionType",
+                        "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "__self__" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "__init__ of TrafficPolicy",
+                    "ret_type": { ".class": "NoneType" },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "_internal_init": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "__self__",
+                "resource_name",
+                "opts",
+                "comment",
+                "document",
+                "name",
+                "__props__"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy._internal_init",
+              "name": "_internal_init",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "__self__",
+                  "resource_name",
+                  "opts",
+                  "comment",
+                  "document",
+                  "name",
+                  "__props__"
+                ],
+                "arg_types": [
+                  "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+                  "builtins.str",
+                  {
+                    ".class": "UnionType",
+                    "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 1
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_internal_init of TrafficPolicy",
+                "ret_type": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 1
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.arn",
+                "name": "arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "arn of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.arn",
+                "name": "arn",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "arn of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "comment": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.comment",
+                "name": "comment",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "comment of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": ["builtins.str", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.comment",
+                "name": "comment",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "comment of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "UnionType",
+                        "items": ["builtins.str", { ".class": "NoneType" }],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "document": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.document",
+                "name": "document",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "document of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.document",
+                "name": "document",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "document of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "get": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "resource_name",
+                  "id",
+                  "opts",
+                  "arn",
+                  "comment",
+                  "document",
+                  "name",
+                  "type",
+                  "version"
+                ],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_static", "is_decorated"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.get",
+                "name": "get",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                  "arg_names": [
+                    "resource_name",
+                    "id",
+                    "opts",
+                    "arn",
+                    "comment",
+                    "document",
+                    "name",
+                    "type",
+                    "version"
+                  ],
+                  "arg_types": [
+                    "builtins.str",
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.int"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": null },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "get of TrafficPolicy",
+                  "ret_type": "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_staticmethod", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.get",
+                "name": "get",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0, 0, 1, 1, 1, 1, 1, 1, 1],
+                  "arg_names": [
+                    "resource_name",
+                    "id",
+                    "opts",
+                    "arn",
+                    "comment",
+                    "document",
+                    "name",
+                    "type",
+                    "version"
+                  ],
+                  "arg_types": [
+                    "builtins.str",
+                    {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.int"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": null },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "get of TrafficPolicy",
+                  "ret_type": "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.name",
+                "name": "name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "name of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.name",
+                "name": "name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "name of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "type": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.type",
+                "name": "type",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "type of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.type",
+                "name": "type",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "type of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "version": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.version",
+                "name": "version",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "version of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.int"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.version",
+                "name": "version",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicy"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "version of TrafficPolicy",
+                  "ret_type": {
+                    ".class": "Instance",
+                    "args": ["builtins.int"],
+                    "extra_attrs": null,
+                    "type_ref": "pulumi.output.Output"
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicy.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.route53.traffic_policy.TrafficPolicy",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "TrafficPolicyArgs": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs",
+          "name": "TrafficPolicyArgs",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.route53.traffic_policy",
+        "mro": ["pulumi_aws.route53.traffic_policy.TrafficPolicyArgs", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 3, 5, 5],
+              "arg_names": ["__self__", "document", "comment", "name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 3, 5, 5],
+                "arg_names": ["__self__", "document", "comment", "name"],
+                "arg_types": [
+                  "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of TrafficPolicyArgs",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "comment": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.comment",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.comment",
+                    "name": "comment",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicyArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "comment of TrafficPolicyArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.comment",
+                    "name": "comment",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicyArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "comment of TrafficPolicyArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.comment",
+                    "name": "comment",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "comment of TrafficPolicyArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "comment",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicyArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "comment of TrafficPolicyArgs",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "document": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.document",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.document",
+                    "name": "document",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicyArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "document of TrafficPolicyArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.document",
+                    "name": "document",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicyArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "document of TrafficPolicyArgs",
+                      "ret_type": {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.document",
+                    "name": "document",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs",
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "document of TrafficPolicyArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "document",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicyArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "document of TrafficPolicyArgs",
+                    "ret_type": {
+                      ".class": "TypeAliasType",
+                      "args": ["builtins.str"],
+                      "type_ref": "pulumi.output.Input"
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.name",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.name",
+                    "name": "name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicyArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "name of TrafficPolicyArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.name",
+                    "name": "name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicyArgs"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "name of TrafficPolicyArgs",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.name",
+                    "name": "name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "name of TrafficPolicyArgs",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "name",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.route53.traffic_policy.TrafficPolicyArgs"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "name of TrafficPolicyArgs",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.route53.traffic_policy.TrafficPolicyArgs",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "TypeAlias": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypeAlias",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "TypedDict": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TypedDict",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "Union": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.Union",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_TrafficPolicyState": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState",
+          "name": "_TrafficPolicyState",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi_aws.route53.traffic_policy",
+        "mro": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 5, 5, 5, 5, 5, 5],
+              "arg_names": ["__self__", "arn", "comment", "document", "name", "type", "version"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 5, 5, 5, 5, 5, 5],
+                "arg_names": ["__self__", "arn", "comment", "document", "name", "type", "version"],
+                "arg_types": [
+                  "pulumi_aws.route53.traffic_policy._TrafficPolicyState",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.str"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": ["builtins.int"],
+                        "type_ref": "pulumi.output.Input"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "__self__" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of _TrafficPolicyState",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "arn": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.arn",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.arn",
+                    "name": "arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "arn of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.arn",
+                    "name": "arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "arn of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.arn",
+                    "name": "arn",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy._TrafficPolicyState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "arn of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "arn",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "arn of _TrafficPolicyState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "comment": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.comment",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.comment",
+                    "name": "comment",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "comment of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.comment",
+                    "name": "comment",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "comment of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.comment",
+                    "name": "comment",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy._TrafficPolicyState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "comment of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "comment",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "comment of _TrafficPolicyState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "document": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.document",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.document",
+                    "name": "document",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "document of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.document",
+                    "name": "document",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "document of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.document",
+                    "name": "document",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy._TrafficPolicyState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "document of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "document",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "document of _TrafficPolicyState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.name",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.name",
+                    "name": "name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "name of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.name",
+                    "name": "name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "name of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.name",
+                    "name": "name",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy._TrafficPolicyState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "name of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "name",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "name of _TrafficPolicyState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "type": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.type",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.type",
+                    "name": "type",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "type of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.type",
+                    "name": "type",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "type of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.str"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.type",
+                    "name": "type",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy._TrafficPolicyState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.str"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "type of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "type",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "type of _TrafficPolicyState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.str"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          },
+          "version": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "OverloadedFuncDef",
+              "deprecated": null,
+              "flags": ["is_property"],
+              "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.version",
+              "impl": null,
+              "items": [
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_property", "is_overload", "is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.version",
+                    "name": "version",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "version of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.int"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": true,
+                  "var": {
+                    ".class": "Var",
+                    "flags": [
+                      "is_initialized_in_class",
+                      "is_property",
+                      "is_settable_property",
+                      "is_ready",
+                      "is_inferred"
+                    ],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.version",
+                    "name": "version",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0],
+                      "arg_names": ["self"],
+                      "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "version of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "UnionType",
+                        "items": [
+                          {
+                            ".class": "TypeAliasType",
+                            "args": ["builtins.int"],
+                            "type_ref": "pulumi.output.Input"
+                          },
+                          { ".class": "NoneType" }
+                        ],
+                        "uses_pep604_syntax": false
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  }
+                },
+                {
+                  ".class": "Decorator",
+                  "func": {
+                    ".class": "FuncDef",
+                    "abstract_status": 0,
+                    "arg_kinds": [0, 0],
+                    "arg_names": ["self", "value"],
+                    "dataclass_transform_spec": null,
+                    "deprecated": null,
+                    "flags": ["is_decorated"],
+                    "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.version",
+                    "name": "version",
+                    "type": {
+                      ".class": "CallableType",
+                      "arg_kinds": [0, 0],
+                      "arg_names": ["self", "value"],
+                      "arg_types": [
+                        "pulumi_aws.route53.traffic_policy._TrafficPolicyState",
+                        {
+                          ".class": "UnionType",
+                          "items": [
+                            {
+                              ".class": "TypeAliasType",
+                              "args": ["builtins.int"],
+                              "type_ref": "pulumi.output.Input"
+                            },
+                            { ".class": "NoneType" }
+                          ],
+                          "uses_pep604_syntax": false
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": { "first_arg": "self" },
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": false,
+                      "name": "version of _TrafficPolicyState",
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 1
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    }
+                  },
+                  "is_overload": false,
+                  "var": {
+                    ".class": "Var",
+                    "flags": ["is_inferred"],
+                    "fullname": "",
+                    "name": "version",
+                    "type": null
+                  }
+                }
+              ],
+              "type": {
+                ".class": "Overloaded",
+                "items": [
+                  {
+                    ".class": "CallableType",
+                    "arg_kinds": [0],
+                    "arg_names": ["self"],
+                    "arg_types": ["pulumi_aws.route53.traffic_policy._TrafficPolicyState"],
+                    "bound_args": [],
+                    "def_extras": { "first_arg": "self" },
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": false,
+                    "name": "version of _TrafficPolicyState",
+                    "ret_type": {
+                      ".class": "UnionType",
+                      "items": [
+                        {
+                          ".class": "TypeAliasType",
+                          "args": ["builtins.int"],
+                          "type_ref": "pulumi.output.Input"
+                        },
+                        { ".class": "NoneType" }
+                      ],
+                      "uses_pep604_syntax": false
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi_aws.route53.traffic_policy._TrafficPolicyState.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi_aws.route53.traffic_policy._TrafficPolicyState",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "__all__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "pulumi_aws.route53.traffic_policy.__all__",
+        "name": "__all__",
+        "type": {
+          ".class": "Instance",
+          "args": ["builtins.str"],
+          "extra_attrs": null,
+          "type_ref": "builtins.list"
+        }
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.traffic_policy.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.traffic_policy.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.traffic_policy.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.traffic_policy.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.traffic_policy.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "module_public": false,
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi_aws.route53.traffic_policy.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_builtins": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "builtins",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "_utilities": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi_aws._utilities",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "overload": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.overload",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "pulumi": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "sys": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "sys",
+      "kind": "Gdef",
+      "module_public": false
+    },
+    "warnings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "warnings",
+      "kind": "Gdef",
+      "module_public": false
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi_aws\\route53\\traffic_policy.py"
+}

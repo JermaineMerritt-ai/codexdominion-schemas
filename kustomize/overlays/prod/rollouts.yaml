@@ -1,0 +1,134 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: orchestrator
+  namespace: codex
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: orchestrator
+  template:
+    metadata:
+      labels:
+        app: orchestrator
+    spec:
+      containers:
+        - name: orchestrator
+          image: ghcr.io/your-org/codex-orchestrator:prod
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: prod-values
+          resources:
+            requests:
+              cpu: '250m'
+              memory: '256Mi'
+            limits:
+              cpu: '500m'
+              memory: '512Mi'
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: { duration: 10m }
+        - setWeight: 50
+        - pause: { duration: 10m }
+      trafficRouting:
+        nginx:
+          stableIngress: orchestrator-ingress
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: codex-core
+  namespace: codex
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: codex-core
+  template:
+    metadata:
+      labels:
+        app: codex-core
+    spec:
+      containers:
+        - name: codex-core
+          image: ghcr.io/your-org/codex-core:v1.0.0
+          ports:
+            - containerPort: 8081
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8081
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8081
+            initialDelaySeconds: 10
+          resources:
+            requests:
+              cpu: '500m'
+              memory: '512Mi'
+            limits:
+              cpu: '1'
+              memory: '1Gi'
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: { duration: 10m }
+        - setWeight: 50
+        - pause: { duration: 10m }
+      trafficRouting:
+        nginx:
+          stableIngress: codex-core-ingress
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: engine01
+  namespace: codex
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: engine01
+  template:
+    metadata:
+      labels:
+        app: engine01
+    spec:
+      containers:
+        - name: engine01
+          image: ghcr.io/your-org/engine01:v1.0.0
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+          resources:
+            requests:
+              cpu: '200m'
+              memory: '128Mi'
+            limits:
+              cpu: '400m'
+              memory: '256Mi'
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: { duration: 10m }
+        - setWeight: 50
+        - pause: { duration: 10m }
+      trafficRouting:
+        nginx:
+          stableIngress: engine01-ingress

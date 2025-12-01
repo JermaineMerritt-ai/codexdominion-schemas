@@ -1,0 +1,34 @@
+name: Verify After Deploy (Drift Monitor)
+on:
+  schedule:
+    - cron: '0 2 * * *' # nightly sweep
+    - cron: '*/30 13-20 * * 1-5' # markets hours (UTC for 09:30–16:00 ET)
+  workflow_dispatch:
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run drift monitor
+        run: python services/fact-check-tools/drift_monitor.py
+      - name: Upload drift report
+        uses: actions/upload-artifact@v4
+        with:
+          name: drift-report
+          path: .reports/drift.md
+      - name: Open issue if drift detected
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: 'Fact drift detected'
+          content-filepath: .reports/drift.md
+          labels: drift, fact-check
+      - name: Notify Slack on drift
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          if [ -s .reports/drift.md ]; then
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"Fact drift detected. See .reports/drift.md and GitHub issue for details."}' "$SLACK_WEBHOOK_URL"
+          fi
+          path: .reports/drift.md

@@ -1,0 +1,70 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: codex-core
+  namespace: codex
+spec:
+  replicas: 2
+  strategy:
+    canary:
+      stableService: codex-core-stable
+      canaryService: codex-core-canary
+      trafficRouting:
+        nginx:
+          stableIngress: codex-core-ingress
+      steps:
+        - setWeight: 30
+        - pause: { duration: 120 }
+        - setWeight: 60
+        - pause: { duration: 180 }
+        - setWeight: 100
+      analysis:
+        templates:
+          - templateName: nginx-success-rate
+        args:
+          - name: service-name
+            value: codex-core
+        startingStep: 1
+  selector:
+    matchLabels:
+      app: codex-core
+  template:
+    metadata:
+      labels:
+        app: codex-core
+    spec:
+      containers:
+        - name: codex-core
+          image: ghcr.io/your-org/codex-core:v1.0.0
+          ports:
+            - containerPort: 8081
+          readinessProbe:
+            httpGet: { path: /health/ready, port: 8081 }
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet: { path: /health/live, port: 8081 }
+            initialDelaySeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: codex-core-stable
+  namespace: codex
+spec:
+  selector: { app: codex-core }
+  ports:
+    - name: http
+      port: 8081
+      targetPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: codex-core-canary
+  namespace: codex
+spec:
+  selector: { app: codex-core }
+  ports:
+    - name: http
+      port: 8081
+      targetPort: 8081

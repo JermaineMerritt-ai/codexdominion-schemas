@@ -1,0 +1,13 @@
+templates:
+  - name: 'slack-alert-template'
+    type: 'slack'
+    text: |
+      *Alert:* {{ .CommonLabels.alertname }}
+      *Severity:* {{ .CommonLabels.severity }}
+      *Summary:* {{ .Annotations.summary }}
+      *Description:* {{ .Annotations.description }}
+      *Consent ID:* {{ .Labels.consent_id }}
+      *Subject ID:* {{ .Labels.subject_id }}
+      *Prompt Count:* {{ .Labels.prompt_count }}
+      *Decision Reason:* {{ .Annotations.reason }}
+      *Time:* {{ .StartsAt }}

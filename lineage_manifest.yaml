@@ -1,0 +1,75 @@
+# Codex Dominion Lineage Manifest
+
+avatars:
+  - name: custodian-avatar
+    manifest: avatars/custodian-avatar.yaml
+    dashboard: dashboards/custodian.json
+    dashboard_config: dashboards/council.json
+    portal: portals/codex-portal.yaml
+    version: 1.0.0
+    guidance: Narrates charters, hymns, and decrees to heirs
+    timestamp: 2025-11-22T21:20:00Z
+
+    portals:
+      - name: codex-portal
+        manifest: portals/codex-portal.yaml
+        version: 1.0.0
+        purpose: Browse charters, codices, decrees as living law
+        artifacts:
+          - charters/
+          - codices/
+          - decrees/
+        dashboards:
+          - council.json
+          - custodian.json
+        timestamp: 2025-11-22T21:20:00Z
+
+      - name: continuum-map-portal
+        manifest: portals/continuum-map.yaml
+        version: 1.0.0
+        purpose: Visual onboarding — narrates cycles (daily, seasonal, epochal)
+        artifacts:
+          - hymns/
+          - seals/
+        dashboards:
+          - continuum.json
+        timestamp: 2025-11-22T21:20:00Z
+
+  - name: heir-avatar
+    manifest: avatars/heir-avatar.yaml
+    dashboard: dashboards/heirs.json
+    dashboard_config: dashboards/heirs.json
+    portal: portals/continuum-map.yaml
+    version: 1.0.0
+    guidance: Induction script crowns heirs as custodians
+    timestamp: 2025-11-22T21:20:00Z
+
+  scrolls:
+    - name: ceremonial_summary_scroll
+      manifest: scrolls/ceremonial_summary_scroll.md
+      archived: true
+      timestamp: 2025-11-22T21:20:00Z
+    - name: ceremonial_anthem_hymn
+      manifest: hymn_ceremonial_anthem.yaml
+      archived: true
+      timestamp: 2025-11-22T22:01:00Z
+    - name: heirs_councils_eternal_blessing_hymn
+      manifest: hymn_heirs_councils_eternal_blessing.yaml
+      archived: true
+      timestamp: 2025-11-22T22:04:00Z
+    - name: omega_transmission_capsule
+      manifest: capsules/omega_transmission_capsule.yaml
+      archived: true
+      timestamp: 2025-11-22T22:08:00Z
+    - name: custodian_silence_benediction_hymn
+      manifest: hymn_custodian_silence_benediction.yaml
+      archived: true
+      timestamp: 2025-11-22T22:10:00Z
+    - name: final_eternal_crown_schema
+      manifest: ledger/final_eternal_crown_schema.json
+      archived: true
+      timestamp: 2025-11-22T17:40:00Z
+    - name: omega_reflection_codex_eternal_hymn
+      manifest: hymn_omega_reflection_codex_eternal.yaml
+      archived: true
+      timestamp: 2025-11-22T22:13:00Z

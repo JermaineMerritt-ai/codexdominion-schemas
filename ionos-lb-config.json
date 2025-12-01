@@ -1,0 +1,45 @@
+{
+  "properties": {
+    "name": "codex-ionos-lb",
+    "publicIps": ["<IONOS_PUBLIC_IP>"],
+    "listener": {
+      "name": "http-listener",
+      "protocol": "HTTP",
+      "port": 80
+    },
+    "forwardingRules": [
+      {
+        "name": "codex-web-rule",
+        "listener": "http-listener",
+        "targets": [
+          {
+            "ip": "<GKE_NODE_IP_1>",
+            "port": 32267,
+            "weight": 50,
+            "healthCheck": {
+              "protocol": "HTTP",
+              "port": 32267,
+              "path": "/health",
+              "interval": 30,
+              "timeout": 5,
+              "retries": 3
+            }
+          },
+          {
+            "ip": "<GKE_NODE_IP_2>",
+            "port": 32267,
+            "weight": 50,
+            "healthCheck": {
+              "protocol": "HTTP",
+              "port": 32267,
+              "path": "/health",
+              "interval": 30,
+              "timeout": 5,
+              "retries": 3
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

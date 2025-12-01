@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: orchestrator-servicemonitor
+  namespace: monitoring
+  labels:
+    release: prom-crds # match your Prometheus Operator release label
+spec:
+  selector:
+    matchLabels:
+      app: orchestrator
+  namespaceSelector:
+    matchNames:
+      - codex
+  endpoints:
+    - port: http-metrics # must match the Service port name
+      interval: 15s
+      path: /metrics

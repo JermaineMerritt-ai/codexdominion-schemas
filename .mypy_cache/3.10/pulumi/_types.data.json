@@ -1,0 +1,3347 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi._types",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": { ".class": "SymbolTableNode", "cross_ref": "typing.Any", "kind": "Gdef" },
+    "C": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeVarExpr",
+        "default": {
+          ".class": "AnyType",
+          "missing_import_name": null,
+          "source_any": null,
+          "type_of_any": 4
+        },
+        "fullname": "pulumi._types.C",
+        "name": "C",
+        "upper_bound": {
+          ".class": "CallableType",
+          "arg_kinds": [2, 4],
+          "arg_names": [null, null],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 4
+            },
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 4
+            }
+          ],
+          "bound_args": [],
+          "def_extras": {},
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": true,
+          "name": null,
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        },
+        "values": [],
+        "variance": 0
+      }
+    },
+    "Callable": { ".class": "SymbolTableNode", "cross_ref": "typing.Callable", "kind": "Gdef" },
+    "Iterator": { ".class": "SymbolTableNode", "cross_ref": "typing.Iterator", "kind": "Gdef" },
+    "MISSING": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "pulumi._types.MISSING",
+        "name": "MISSING",
+        "type": "pulumi._types._MISSING_TYPE"
+      }
+    },
+    "Optional": { ".class": "SymbolTableNode", "cross_ref": "typing.Optional", "kind": "Gdef" },
+    "T": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeVarExpr",
+        "default": {
+          ".class": "AnyType",
+          "missing_import_name": null,
+          "source_any": null,
+          "type_of_any": 4
+        },
+        "fullname": "pulumi._types.T",
+        "name": "T",
+        "upper_bound": "builtins.object",
+        "values": [],
+        "variance": 0
+      }
+    },
+    "TypeVar": { ".class": "SymbolTableNode", "cross_ref": "typing.TypeVar", "kind": "Gdef" },
+    "Union": { ".class": "SymbolTableNode", "cross_ref": "typing.Union", "kind": "Gdef" },
+    "_MISSING_TYPE": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi._types._MISSING_TYPE",
+          "name": "_MISSING_TYPE",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._MISSING_TYPE",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi._types",
+        "mro": ["pulumi._types._MISSING_TYPE", "builtins.object"],
+        "names": { ".class": "SymbolTable" },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi._types._MISSING_TYPE.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi._types._MISSING_TYPE",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "_PULUMI_DEPRECATED_CALLABLE": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "is_inferred", "has_explicit_value"],
+        "fullname": "pulumi._types._PULUMI_DEPRECATED_CALLABLE",
+        "name": "_PULUMI_DEPRECATED_CALLABLE",
+        "type": "builtins.str"
+      }
+    },
+    "_PULUMI_INPUT_TYPE": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "is_inferred", "has_explicit_value"],
+        "fullname": "pulumi._types._PULUMI_INPUT_TYPE",
+        "name": "_PULUMI_INPUT_TYPE",
+        "type": "builtins.str"
+      }
+    },
+    "_PULUMI_NAME": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "is_inferred", "has_explicit_value"],
+        "fullname": "pulumi._types._PULUMI_NAME",
+        "name": "_PULUMI_NAME",
+        "type": "builtins.str"
+      }
+    },
+    "_PULUMI_OUTPUT_TYPE": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "is_inferred", "has_explicit_value"],
+        "fullname": "pulumi._types._PULUMI_OUTPUT_TYPE",
+        "name": "_PULUMI_OUTPUT_TYPE",
+        "type": "builtins.str"
+      }
+    },
+    "_PULUMI_PYTHON_TO_PULUMI_TABLE": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "is_inferred", "has_explicit_value"],
+        "fullname": "pulumi._types._PULUMI_PYTHON_TO_PULUMI_TABLE",
+        "name": "_PULUMI_PYTHON_TO_PULUMI_TABLE",
+        "type": "builtins.str"
+      }
+    },
+    "_Property": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi._types._Property",
+          "name": "_Property",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._Property",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi._types",
+        "mro": ["pulumi._types._Property", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1],
+              "arg_names": ["self", "name", "default"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi._types._Property.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1],
+                "arg_names": ["self", "name", "default"],
+                "arg_types": [
+                  "pulumi._types._Property",
+                  "builtins.str",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of _Property",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "default": {
+            ".class": "SymbolTableNode",
+            "implicit": true,
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_inferred"],
+              "fullname": "pulumi._types._Property.default",
+              "name": "default",
+              "type": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 2
+              }
+            }
+          },
+          "name": {
+            ".class": "SymbolTableNode",
+            "implicit": true,
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_inferred"],
+              "fullname": "pulumi._types._Property.name",
+              "name": "name",
+              "type": "builtins.str"
+            }
+          },
+          "type": {
+            ".class": "SymbolTableNode",
+            "implicit": true,
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["explicit_self_type", "is_ready", "is_inferred"],
+              "fullname": "pulumi._types._Property.type",
+              "name": "type",
+              "type": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 2
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi._types._Property.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi._types._Property",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "_TRANSLATE_PROPERTY": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "is_inferred", "has_explicit_value"],
+        "fullname": "pulumi._types._TRANSLATE_PROPERTY",
+        "name": "_TRANSLATE_PROPERTY",
+        "type": "builtins.str"
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi._types.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi._types.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi._types.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi._types.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi._types.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi._types.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_create_fn": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 0, 5, 5],
+        "arg_names": ["name", "args", "body", "globals", "locals"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._create_fn",
+        "name": "_create_fn",
+        "type": null
+      }
+    },
+    "_create_py_property": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 0, 1],
+        "arg_names": ["a_name", "pulumi_name", "typ", "setter"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._create_py_property",
+        "name": "_create_py_property",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0, 1],
+          "arg_names": ["a_name", "pulumi_name", "typ", "setter"],
+          "arg_types": [
+            "builtins.str",
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            },
+            "builtins.bool"
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_create_py_property",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 1
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_globals_for_cls": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._globals_for_cls",
+        "name": "_globals_for_cls",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_globals_for_cls",
+          "ret_type": {
+            ".class": "UnionType",
+            "items": [
+              {
+                ".class": "Instance",
+                "args": [
+                  "builtins.str",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  }
+                ],
+                "extra_attrs": null,
+                "type_ref": "builtins.dict"
+              },
+              { ".class": "NoneType" }
+            ],
+            "uses_pep604_syntax": false
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_init_fn": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 0, 0],
+        "arg_names": ["props", "globals", "is_dict", "has_translate"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._init_fn",
+        "name": "_init_fn",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0, 0],
+          "arg_names": ["props", "globals", "is_dict", "has_translate"],
+          "arg_types": [
+            {
+              ".class": "Instance",
+              "args": ["builtins.str", "pulumi._types._Property"],
+              "extra_attrs": null,
+              "type_ref": "builtins.dict"
+            },
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 1
+            },
+            "builtins.bool",
+            "builtins.bool"
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_init_fn",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 1
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_init_param": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0],
+        "arg_names": ["python_name", "prop"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._init_param",
+        "name": "_init_param",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0],
+          "arg_names": ["python_name", "prop"],
+          "arg_types": ["builtins.str", "pulumi._types._Property"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_init_param",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 1
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_is_optional_type": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["tp"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._is_optional_type",
+        "name": "_is_optional_type",
+        "type": null
+      }
+    },
+    "_is_union_type": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["tp"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._is_union_type",
+        "name": "_is_union_type",
+        "type": null
+      }
+    },
+    "_names_from_annotations": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._names_from_annotations",
+        "name": "_names_from_annotations",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_names_from_annotations",
+          "ret_type": {
+            ".class": "Instance",
+            "args": [
+              {
+                ".class": "TupleType",
+                "implicit": false,
+                "items": ["builtins.str", "builtins.str"],
+                "partial_fallback": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.tuple"
+                }
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "typing.Iterator"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_process_class": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 1, 1],
+        "arg_names": ["cls", "signifier_attr", "is_input", "setter"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._process_class",
+        "name": "_process_class",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 1, 1],
+          "arg_names": ["cls", "signifier_attr", "is_input", "setter"],
+          "arg_types": ["builtins.type", "builtins.str", "builtins.bool", "builtins.bool"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_process_class",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 1
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_properties_from_annotations": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._properties_from_annotations",
+        "name": "_properties_from_annotations",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_properties_from_annotations",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "pulumi._types._Property"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_property_init": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 0, 0, 0],
+        "arg_names": ["python_name", "prop", "globals", "is_dict", "has_translate"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._property_init",
+        "name": "_property_init",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0, 0, 0],
+          "arg_names": ["python_name", "prop", "globals", "is_dict", "has_translate"],
+          "arg_types": [
+            "builtins.str",
+            "pulumi._types._Property",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 1
+            },
+            "builtins.bool",
+            "builtins.bool"
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_property_init",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 1
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_pulumi_to_py_names_from_annotations": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._pulumi_to_py_names_from_annotations",
+        "name": "_pulumi_to_py_names_from_annotations",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_pulumi_to_py_names_from_annotations",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.str"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_pulumi_to_py_names_from_py_properties": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._pulumi_to_py_names_from_py_properties",
+        "name": "_pulumi_to_py_names_from_py_properties",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_pulumi_to_py_names_from_py_properties",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.str"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_py_properties": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._py_properties",
+        "name": "_py_properties",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_py_properties",
+          "ret_type": {
+            ".class": "Instance",
+            "args": [
+              {
+                ".class": "TupleType",
+                "implicit": false,
+                "items": ["builtins.str", "builtins.str", "builtins.property"],
+                "partial_fallback": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.tuple"
+                }
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "typing.Iterator"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_py_to_pulumi_names_from_annotations": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._py_to_pulumi_names_from_annotations",
+        "name": "_py_to_pulumi_names_from_annotations",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_py_to_pulumi_names_from_annotations",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.str"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_py_to_pulumi_names_from_py_properties": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._py_to_pulumi_names_from_py_properties",
+        "name": "_py_to_pulumi_names_from_py_properties",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_py_to_pulumi_names_from_py_properties",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.str"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_translate_name": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0],
+        "arg_names": ["obj", "name"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._translate_name",
+        "name": "_translate_name",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0],
+          "arg_names": ["obj", "name"],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            },
+            "builtins.str"
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_translate_name",
+          "ret_type": "builtins.str",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_types_from_annotations": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._types_from_annotations",
+        "name": "_types_from_annotations",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_types_from_annotations",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.type"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_types_from_py_properties": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types._types_from_py_properties",
+        "name": "_types_from_py_properties",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_types_from_py_properties",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.type"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_utils": { ".class": "SymbolTableNode", "cross_ref": "pulumi._utils", "kind": "Gdef" },
+    "abc": { ".class": "SymbolTableNode", "cross_ref": "collections.abc", "kind": "Gdef" },
+    "builtins": { ".class": "SymbolTableNode", "cross_ref": "builtins", "kind": "Gdef" },
+    "cast": { ".class": "SymbolTableNode", "cross_ref": "typing.cast", "kind": "Gdef" },
+    "collections": { ".class": "SymbolTableNode", "cross_ref": "collections", "kind": "Gdef" },
+    "functools": { ".class": "SymbolTableNode", "cross_ref": "functools", "kind": "Gdef" },
+    "get": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0],
+        "arg_names": ["self", "name"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.get",
+        "name": "get",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0],
+          "arg_names": ["self", "name"],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 1
+            },
+            "builtins.str"
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "get",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 2
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "get_origin": { ".class": "SymbolTableNode", "cross_ref": "typing.get_origin", "kind": "Gdef" },
+    "get_type_hints": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.get_type_hints",
+      "kind": "Gdef"
+    },
+    "getter": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "OverloadedFuncDef",
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.getter",
+        "impl": {
+          ".class": "FuncDef",
+          "abstract_status": 0,
+          "arg_kinds": [1, 5],
+          "arg_names": ["_fn", "name"],
+          "dataclass_transform_spec": null,
+          "deprecated": null,
+          "flags": ["is_overload"],
+          "fullname": "pulumi._types.getter",
+          "name": "getter",
+          "type": {
+            ".class": "CallableType",
+            "arg_kinds": [1, 5],
+            "arg_names": ["_fn", "name"],
+            "arg_types": [
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 1
+              },
+              {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            ],
+            "bound_args": [],
+            "def_extras": { "first_arg": null },
+            "fallback": "builtins.function",
+            "from_concatenate": false,
+            "implicit": false,
+            "imprecise_arg_kinds": false,
+            "is_ellipsis_args": false,
+            "name": "getter",
+            "ret_type": {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 1
+            },
+            "type_guard": null,
+            "type_is": null,
+            "unpack_kwargs": false,
+            "variables": []
+          }
+        },
+        "items": [
+          {
+            ".class": "Decorator",
+            "func": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [5],
+              "arg_names": ["name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": ["is_overload", "is_decorated"],
+              "fullname": "pulumi._types.getter",
+              "name": "getter",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [5],
+                "arg_names": ["name"],
+                "arg_types": [
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": null },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "getter",
+                "ret_type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": [null],
+                  "arg_types": [
+                    {
+                      ".class": "TypeVarType",
+                      "default": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "fullname": "pulumi._types.C",
+                      "id": -1,
+                      "name": "C",
+                      "namespace": "",
+                      "upper_bound": {
+                        ".class": "CallableType",
+                        "arg_kinds": [2, 4],
+                        "arg_names": [null, null],
+                        "arg_types": [
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          }
+                        ],
+                        "bound_args": [],
+                        "def_extras": {},
+                        "fallback": "builtins.function",
+                        "from_concatenate": false,
+                        "implicit": false,
+                        "imprecise_arg_kinds": false,
+                        "is_ellipsis_args": true,
+                        "name": null,
+                        "ret_type": {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        "type_guard": null,
+                        "type_is": null,
+                        "unpack_kwargs": false,
+                        "variables": []
+                      },
+                      "values": [],
+                      "variance": 0
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": {},
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": null,
+                  "ret_type": {
+                    ".class": "TypeVarType",
+                    "default": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "fullname": "pulumi._types.C",
+                    "id": -1,
+                    "name": "C",
+                    "namespace": "",
+                    "upper_bound": {
+                      ".class": "CallableType",
+                      "arg_kinds": [2, 4],
+                      "arg_names": [null, null],
+                      "arg_types": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": {},
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": true,
+                      "name": null,
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    },
+                    "values": [],
+                    "variance": 0
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": [
+                    {
+                      ".class": "TypeVarType",
+                      "default": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "fullname": "pulumi._types.C",
+                      "id": -1,
+                      "name": "C",
+                      "namespace": "",
+                      "upper_bound": {
+                        ".class": "CallableType",
+                        "arg_kinds": [2, 4],
+                        "arg_names": [null, null],
+                        "arg_types": [
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          }
+                        ],
+                        "bound_args": [],
+                        "def_extras": {},
+                        "fallback": "builtins.function",
+                        "from_concatenate": false,
+                        "implicit": false,
+                        "imprecise_arg_kinds": false,
+                        "is_ellipsis_args": true,
+                        "name": null,
+                        "ret_type": {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        "type_guard": null,
+                        "type_is": null,
+                        "unpack_kwargs": false,
+                        "variables": []
+                      },
+                      "values": [],
+                      "variance": 0
+                    }
+                  ]
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            },
+            "is_overload": true,
+            "var": {
+              ".class": "Var",
+              "flags": ["is_ready", "is_inferred"],
+              "fullname": "pulumi._types.getter",
+              "name": "getter",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [5],
+                "arg_names": ["name"],
+                "arg_types": [
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": null },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "getter",
+                "ret_type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": [null],
+                  "arg_types": [
+                    {
+                      ".class": "TypeVarType",
+                      "default": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "fullname": "pulumi._types.C",
+                      "id": -1,
+                      "name": "C",
+                      "namespace": "",
+                      "upper_bound": {
+                        ".class": "CallableType",
+                        "arg_kinds": [2, 4],
+                        "arg_names": [null, null],
+                        "arg_types": [
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          }
+                        ],
+                        "bound_args": [],
+                        "def_extras": {},
+                        "fallback": "builtins.function",
+                        "from_concatenate": false,
+                        "implicit": false,
+                        "imprecise_arg_kinds": false,
+                        "is_ellipsis_args": true,
+                        "name": null,
+                        "ret_type": {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        "type_guard": null,
+                        "type_is": null,
+                        "unpack_kwargs": false,
+                        "variables": []
+                      },
+                      "values": [],
+                      "variance": 0
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": {},
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": null,
+                  "ret_type": {
+                    ".class": "TypeVarType",
+                    "default": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "fullname": "pulumi._types.C",
+                    "id": -1,
+                    "name": "C",
+                    "namespace": "",
+                    "upper_bound": {
+                      ".class": "CallableType",
+                      "arg_kinds": [2, 4],
+                      "arg_names": [null, null],
+                      "arg_types": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": {},
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": true,
+                      "name": null,
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    },
+                    "values": [],
+                    "variance": 0
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": [
+                    {
+                      ".class": "TypeVarType",
+                      "default": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "fullname": "pulumi._types.C",
+                      "id": -1,
+                      "name": "C",
+                      "namespace": "",
+                      "upper_bound": {
+                        ".class": "CallableType",
+                        "arg_kinds": [2, 4],
+                        "arg_names": [null, null],
+                        "arg_types": [
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          },
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 4
+                          }
+                        ],
+                        "bound_args": [],
+                        "def_extras": {},
+                        "fallback": "builtins.function",
+                        "from_concatenate": false,
+                        "implicit": false,
+                        "imprecise_arg_kinds": false,
+                        "is_ellipsis_args": true,
+                        "name": null,
+                        "ret_type": {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        "type_guard": null,
+                        "type_is": null,
+                        "unpack_kwargs": false,
+                        "variables": []
+                      },
+                      "values": [],
+                      "variance": 0
+                    }
+                  ]
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          {
+            ".class": "Decorator",
+            "func": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["_fn"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": ["is_overload", "is_decorated"],
+              "fullname": "pulumi._types.getter",
+              "name": "getter",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["_fn"],
+                "arg_types": [
+                  {
+                    ".class": "TypeVarType",
+                    "default": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "fullname": "pulumi._types.C",
+                    "id": -1,
+                    "name": "C",
+                    "namespace": "pulumi._types.getter#1",
+                    "upper_bound": {
+                      ".class": "CallableType",
+                      "arg_kinds": [2, 4],
+                      "arg_names": [null, null],
+                      "arg_types": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": {},
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": true,
+                      "name": null,
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    },
+                    "values": [],
+                    "variance": 0
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": null },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "getter",
+                "ret_type": {
+                  ".class": "TypeVarType",
+                  "default": {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 4
+                  },
+                  "fullname": "pulumi._types.C",
+                  "id": -1,
+                  "name": "C",
+                  "namespace": "pulumi._types.getter#1",
+                  "upper_bound": {
+                    ".class": "CallableType",
+                    "arg_kinds": [2, 4],
+                    "arg_names": [null, null],
+                    "arg_types": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": {},
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": true,
+                    "name": null,
+                    "ret_type": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  },
+                  "values": [],
+                  "variance": 0
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": [
+                  {
+                    ".class": "TypeVarType",
+                    "default": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "fullname": "pulumi._types.C",
+                    "id": -1,
+                    "name": "C",
+                    "namespace": "pulumi._types.getter#1",
+                    "upper_bound": {
+                      ".class": "CallableType",
+                      "arg_kinds": [2, 4],
+                      "arg_names": [null, null],
+                      "arg_types": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": {},
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": true,
+                      "name": null,
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    },
+                    "values": [],
+                    "variance": 0
+                  }
+                ]
+              }
+            },
+            "is_overload": true,
+            "var": {
+              ".class": "Var",
+              "flags": ["is_ready", "is_inferred"],
+              "fullname": "pulumi._types.getter",
+              "name": "getter",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["_fn"],
+                "arg_types": [
+                  {
+                    ".class": "TypeVarType",
+                    "default": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "fullname": "pulumi._types.C",
+                    "id": -1,
+                    "name": "C",
+                    "namespace": "pulumi._types.getter#1",
+                    "upper_bound": {
+                      ".class": "CallableType",
+                      "arg_kinds": [2, 4],
+                      "arg_names": [null, null],
+                      "arg_types": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": {},
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": true,
+                      "name": null,
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    },
+                    "values": [],
+                    "variance": 0
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": null },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "getter",
+                "ret_type": {
+                  ".class": "TypeVarType",
+                  "default": {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 4
+                  },
+                  "fullname": "pulumi._types.C",
+                  "id": -1,
+                  "name": "C",
+                  "namespace": "pulumi._types.getter#1",
+                  "upper_bound": {
+                    ".class": "CallableType",
+                    "arg_kinds": [2, 4],
+                    "arg_names": [null, null],
+                    "arg_types": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": {},
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": true,
+                    "name": null,
+                    "ret_type": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  },
+                  "values": [],
+                  "variance": 0
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": [
+                  {
+                    ".class": "TypeVarType",
+                    "default": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "fullname": "pulumi._types.C",
+                    "id": -1,
+                    "name": "C",
+                    "namespace": "pulumi._types.getter#1",
+                    "upper_bound": {
+                      ".class": "CallableType",
+                      "arg_kinds": [2, 4],
+                      "arg_names": [null, null],
+                      "arg_types": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": {},
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": true,
+                      "name": null,
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    },
+                    "values": [],
+                    "variance": 0
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "type": {
+          ".class": "Overloaded",
+          "items": [
+            {
+              ".class": "CallableType",
+              "arg_kinds": [5],
+              "arg_names": ["name"],
+              "arg_types": [
+                {
+                  ".class": "UnionType",
+                  "items": ["builtins.str", { ".class": "NoneType" }],
+                  "uses_pep604_syntax": false
+                }
+              ],
+              "bound_args": [],
+              "def_extras": { "first_arg": null },
+              "fallback": "builtins.function",
+              "from_concatenate": false,
+              "implicit": false,
+              "imprecise_arg_kinds": false,
+              "is_ellipsis_args": false,
+              "name": "getter",
+              "ret_type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": [null],
+                "arg_types": [
+                  {
+                    ".class": "TypeVarType",
+                    "default": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "fullname": "pulumi._types.C",
+                    "id": -1,
+                    "name": "C",
+                    "namespace": "",
+                    "upper_bound": {
+                      ".class": "CallableType",
+                      "arg_kinds": [2, 4],
+                      "arg_names": [null, null],
+                      "arg_types": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": {},
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": true,
+                      "name": null,
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    },
+                    "values": [],
+                    "variance": 0
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": {},
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": null,
+                "ret_type": {
+                  ".class": "TypeVarType",
+                  "default": {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 4
+                  },
+                  "fullname": "pulumi._types.C",
+                  "id": -1,
+                  "name": "C",
+                  "namespace": "",
+                  "upper_bound": {
+                    ".class": "CallableType",
+                    "arg_kinds": [2, 4],
+                    "arg_names": [null, null],
+                    "arg_types": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": {},
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": true,
+                    "name": null,
+                    "ret_type": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  },
+                  "values": [],
+                  "variance": 0
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": [
+                  {
+                    ".class": "TypeVarType",
+                    "default": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "fullname": "pulumi._types.C",
+                    "id": -1,
+                    "name": "C",
+                    "namespace": "",
+                    "upper_bound": {
+                      ".class": "CallableType",
+                      "arg_kinds": [2, 4],
+                      "arg_names": [null, null],
+                      "arg_types": [
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        },
+                        {
+                          ".class": "AnyType",
+                          "missing_import_name": null,
+                          "source_any": null,
+                          "type_of_any": 4
+                        }
+                      ],
+                      "bound_args": [],
+                      "def_extras": {},
+                      "fallback": "builtins.function",
+                      "from_concatenate": false,
+                      "implicit": false,
+                      "imprecise_arg_kinds": false,
+                      "is_ellipsis_args": true,
+                      "name": null,
+                      "ret_type": {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      "type_guard": null,
+                      "type_is": null,
+                      "unpack_kwargs": false,
+                      "variables": []
+                    },
+                    "values": [],
+                    "variance": 0
+                  }
+                ]
+              },
+              "type_guard": null,
+              "type_is": null,
+              "unpack_kwargs": false,
+              "variables": []
+            },
+            {
+              ".class": "CallableType",
+              "arg_kinds": [0],
+              "arg_names": ["_fn"],
+              "arg_types": [
+                {
+                  ".class": "TypeVarType",
+                  "default": {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 4
+                  },
+                  "fullname": "pulumi._types.C",
+                  "id": -1,
+                  "name": "C",
+                  "namespace": "pulumi._types.getter#1",
+                  "upper_bound": {
+                    ".class": "CallableType",
+                    "arg_kinds": [2, 4],
+                    "arg_names": [null, null],
+                    "arg_types": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": {},
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": true,
+                    "name": null,
+                    "ret_type": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  },
+                  "values": [],
+                  "variance": 0
+                }
+              ],
+              "bound_args": [],
+              "def_extras": { "first_arg": null },
+              "fallback": "builtins.function",
+              "from_concatenate": false,
+              "implicit": false,
+              "imprecise_arg_kinds": false,
+              "is_ellipsis_args": false,
+              "name": "getter",
+              "ret_type": {
+                ".class": "TypeVarType",
+                "default": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 4
+                },
+                "fullname": "pulumi._types.C",
+                "id": -1,
+                "name": "C",
+                "namespace": "pulumi._types.getter#1",
+                "upper_bound": {
+                  ".class": "CallableType",
+                  "arg_kinds": [2, 4],
+                  "arg_names": [null, null],
+                  "arg_types": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    }
+                  ],
+                  "bound_args": [],
+                  "def_extras": {},
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": true,
+                  "name": null,
+                  "ret_type": {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 4
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                },
+                "values": [],
+                "variance": 0
+              },
+              "type_guard": null,
+              "type_is": null,
+              "unpack_kwargs": false,
+              "variables": [
+                {
+                  ".class": "TypeVarType",
+                  "default": {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 4
+                  },
+                  "fullname": "pulumi._types.C",
+                  "id": -1,
+                  "name": "C",
+                  "namespace": "pulumi._types.getter#1",
+                  "upper_bound": {
+                    ".class": "CallableType",
+                    "arg_kinds": [2, 4],
+                    "arg_names": [null, null],
+                    "arg_types": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      }
+                    ],
+                    "bound_args": [],
+                    "def_extras": {},
+                    "fallback": "builtins.function",
+                    "from_concatenate": false,
+                    "implicit": false,
+                    "imprecise_arg_kinds": false,
+                    "is_ellipsis_args": true,
+                    "name": null,
+                    "ret_type": {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    "type_guard": null,
+                    "type_is": null,
+                    "unpack_kwargs": false,
+                    "variables": []
+                  },
+                  "values": [],
+                  "variance": 0
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "input_type": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.input_type",
+        "name": "input_type",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": [
+            {
+              ".class": "TypeType",
+              "item": {
+                ".class": "TypeVarType",
+                "default": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 4
+                },
+                "fullname": "pulumi._types.T",
+                "id": -1,
+                "name": "T",
+                "namespace": "pulumi._types.input_type",
+                "upper_bound": "builtins.object",
+                "values": [],
+                "variance": 0
+              }
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "input_type",
+          "ret_type": {
+            ".class": "TypeType",
+            "item": {
+              ".class": "TypeVarType",
+              "default": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              },
+              "fullname": "pulumi._types.T",
+              "id": -1,
+              "name": "T",
+              "namespace": "pulumi._types.input_type",
+              "upper_bound": "builtins.object",
+              "values": [],
+              "variance": 0
+            }
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": [
+            {
+              ".class": "TypeVarType",
+              "default": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              },
+              "fullname": "pulumi._types.T",
+              "id": -1,
+              "name": "T",
+              "namespace": "pulumi._types.input_type",
+              "upper_bound": "builtins.object",
+              "values": [],
+              "variance": 0
+            }
+          ]
+        }
+      }
+    },
+    "input_type_py_to_pulumi_names": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["input_type_cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.input_type_py_to_pulumi_names",
+        "name": "input_type_py_to_pulumi_names",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["input_type_cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "input_type_py_to_pulumi_names",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.str"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "input_type_to_dict": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["obj"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.input_type_to_dict",
+        "name": "input_type_to_dict",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["obj"],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "input_type_to_dict",
+          "ret_type": {
+            ".class": "Instance",
+            "args": [
+              "builtins.str",
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 2
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "input_type_to_untranslated_dict": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["obj"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.input_type_to_untranslated_dict",
+        "name": "input_type_to_untranslated_dict",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["obj"],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "input_type_to_untranslated_dict",
+          "ret_type": {
+            ".class": "Instance",
+            "args": [
+              "builtins.str",
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 2
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "input_type_types": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["input_type_cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.input_type_types",
+        "name": "input_type_types",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["input_type_cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "input_type_types",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.type"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "inspect": { ".class": "SymbolTableNode", "cross_ref": "inspect", "kind": "Gdef" },
+    "is_input_type": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.is_input_type",
+        "name": "is_input_type",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "is_input_type",
+          "ret_type": "builtins.bool",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "is_output_type": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.is_output_type",
+        "name": "is_output_type",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "is_output_type",
+          "ret_type": "builtins.bool",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "output_type": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.output_type",
+        "name": "output_type",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["cls"],
+          "arg_types": [
+            {
+              ".class": "TypeType",
+              "item": {
+                ".class": "TypeVarType",
+                "default": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 4
+                },
+                "fullname": "pulumi._types.T",
+                "id": -1,
+                "name": "T",
+                "namespace": "pulumi._types.output_type",
+                "upper_bound": "builtins.object",
+                "values": [],
+                "variance": 0
+              }
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "output_type",
+          "ret_type": {
+            ".class": "TypeType",
+            "item": {
+              ".class": "TypeVarType",
+              "default": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              },
+              "fullname": "pulumi._types.T",
+              "id": -1,
+              "name": "T",
+              "namespace": "pulumi._types.output_type",
+              "upper_bound": "builtins.object",
+              "values": [],
+              "variance": 0
+            }
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": [
+            {
+              ".class": "TypeVarType",
+              "default": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              },
+              "fullname": "pulumi._types.T",
+              "id": -1,
+              "name": "T",
+              "namespace": "pulumi._types.output_type",
+              "upper_bound": "builtins.object",
+              "values": [],
+              "variance": 0
+            }
+          ]
+        }
+      }
+    },
+    "output_type_from_dict": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0],
+        "arg_names": ["cls", "output"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.output_type_from_dict",
+        "name": "output_type_from_dict",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0],
+          "arg_names": ["cls", "output"],
+          "arg_types": [
+            {
+              ".class": "TypeType",
+              "item": {
+                ".class": "TypeVarType",
+                "default": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 4
+                },
+                "fullname": "pulumi._types.T",
+                "id": -1,
+                "name": "T",
+                "namespace": "pulumi._types.output_type_from_dict",
+                "upper_bound": "builtins.object",
+                "values": [],
+                "variance": 0
+              }
+            },
+            {
+              ".class": "Instance",
+              "args": [
+                "builtins.str",
+                {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 2
+                }
+              ],
+              "extra_attrs": null,
+              "type_ref": "builtins.dict"
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "output_type_from_dict",
+          "ret_type": {
+            ".class": "TypeVarType",
+            "default": {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 4
+            },
+            "fullname": "pulumi._types.T",
+            "id": -1,
+            "name": "T",
+            "namespace": "pulumi._types.output_type_from_dict",
+            "upper_bound": "builtins.object",
+            "values": [],
+            "variance": 0
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": [
+            {
+              ".class": "TypeVarType",
+              "default": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 4
+              },
+              "fullname": "pulumi._types.T",
+              "id": -1,
+              "name": "T",
+              "namespace": "pulumi._types.output_type_from_dict",
+              "upper_bound": "builtins.object",
+              "values": [],
+              "variance": 0
+            }
+          ]
+        }
+      }
+    },
+    "output_type_types": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["output_type_cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.output_type_types",
+        "name": "output_type_types",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["output_type_cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "output_type_types",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.type"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "overload": { ".class": "SymbolTableNode", "cross_ref": "typing.overload", "kind": "Gdef" },
+    "property": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 5],
+        "arg_names": ["name", "default"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.property",
+        "name": "property",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 5],
+          "arg_names": ["name", "default"],
+          "arg_types": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "property",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 2
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "resource_pulumi_to_py_names": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["resource_cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.resource_pulumi_to_py_names",
+        "name": "resource_pulumi_to_py_names",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["resource_cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "resource_pulumi_to_py_names",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.str"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "resource_py_to_pulumi_names": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["resource_cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.resource_py_to_pulumi_names",
+        "name": "resource_py_to_pulumi_names",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["resource_cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "resource_py_to_pulumi_names",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.str"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "resource_types": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["resource_cls"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.resource_types",
+        "name": "resource_types",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["resource_cls"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "resource_types",
+          "ret_type": {
+            ".class": "Instance",
+            "args": ["builtins.str", "builtins.type"],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "set": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 0],
+        "arg_names": ["self", "name", "value"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.set",
+        "name": "set",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0],
+          "arg_names": ["self", "name", "value"],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 1
+            },
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "set",
+          "ret_type": { ".class": "NoneType" },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "sys": { ".class": "SymbolTableNode", "cross_ref": "sys", "kind": "Gdef" },
+    "types": { ".class": "SymbolTableNode", "cross_ref": "types", "kind": "Gdef" },
+    "typing": { ".class": "SymbolTableNode", "cross_ref": "typing", "kind": "Gdef" },
+    "unwrap_optional_type": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["val"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.unwrap_optional_type",
+        "name": "unwrap_optional_type",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["val"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "unwrap_optional_type",
+          "ret_type": "builtins.type",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "unwrap_type": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["val"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi._types.unwrap_type",
+        "name": "unwrap_type",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["val"],
+          "arg_types": ["builtins.type"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "unwrap_type",
+          "ret_type": "builtins.type",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi\\_types.py"
+}

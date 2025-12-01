@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: codex-cert
+  namespace: codex
+spec:
+  domains:
+    - codexdominion.app

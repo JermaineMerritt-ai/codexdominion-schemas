@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine01
+  namespace: codex
+  labels:
+    app: engine01
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: engine01
+  template:
+    metadata:
+      labels:
+        app: engine01
+    spec:
+      containers:
+        - name: engine01
+          image: ghcr.io/your-org/engine01:v1.0.0
+          ports:
+            - name: http-metrics
+              containerPort: 8080
+          resources:
+            requests:
+              cpu: '10m'
+              memory: '32Mi'
+            limits:
+              cpu: '25m'
+              memory: '64Mi'
+      imagePullSecrets:
+        - name: ghcr-secret

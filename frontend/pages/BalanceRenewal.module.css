@@ -1,0 +1,71 @@
+.dayNightIcon {
+  transition: filter 3s;
+}
+.dayIconActive {
+  filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+}
+.nightIconActive {
+  filter: drop-shadow(0 0 30px rgba(75, 0, 130, 0.8));
+}
+.balanceScale {
+  transition: transform 3s;
+}
+.covenantPulse {
+  transition:
+    transform 2.5s,
+    filter 2.5s;
+}
+.covenantPulseActive {
+  filter: drop-shadow(0 0 40px rgba(34, 197, 94, 1));
+}
+.flameVitality {
+  transition:
+    transform 2s,
+    filter 2s;
+}
+.flameVitalityActive {
+  filter: drop-shadow(0 0 50px rgba(251, 146, 60, 1.2));
+}
+.bloomRadiance {
+  transition:
+    transform 3.5s,
+    filter 3.5s;
+}
+.bloomRadianceActive {
+  filter: drop-shadow(0 0 60px rgba(236, 72, 153, 1));
+}
+.proclamationGlow {
+  transition:
+    box-shadow 4s,
+    transform 4s;
+}
+.proclamationGlowActive {
+  box-shadow: 0 0 50px rgba(52, 211, 153, 1.1);
+}
+.eternalBloomLight {
+  animation: pulse 10s infinite;
+}
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+.renewalParticle {
+  left: var(--particle-left);
+  top: var(--particle-top);
+  width: var(--particle-width);
+  height: var(--particle-height);
+  background-color: var(--particle-bg);
+  box-shadow: var(--particle-shadow);
+  filter: blur(1px);
+  opacity: 0.6;
+  position: absolute;
+  animation: var(--particle-animation);
+  animation-delay: var(--particle-delay);
+}

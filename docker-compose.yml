@@ -1,0 +1,115 @@
+# 🔥 COSMIC DOMINION - DOCKER DEPLOYMENT 🔥
+# Complete containerized deployment solution
+
+version: '3.8'
+
+services:
+  # Main Cosmic Dashboard (Port 8050)
+  cosmic-main:
+    build:
+      context: .
+      dockerfile: Dockerfile.cosmic
+    container_name: cosmic-main
+    ports:
+      - '8050:8050'
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - STREAMLIT_PORT=8050
+      - COSMIC_SERVICE=main
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8050/_stcore/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Sacred Ledger System (Port 8058)
+  cosmic-ledger:
+    build:
+      context: .
+      dockerfile: Dockerfile.cosmic
+    container_name: cosmic-ledger
+    ports:
+      - '8058:8058'
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - STREAMLIT_PORT=8058
+      - COSMIC_SERVICE=ledger
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8058/_stcore/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Cosmic Rhythm System (Port 8057)
+  cosmic-rhythm:
+    build:
+      context: .
+      dockerfile: Dockerfile.cosmic
+    container_name: cosmic-rhythm
+    ports:
+      - '8057:8057'
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - STREAMLIT_PORT=8057
+      - COSMIC_SERVICE=rhythm
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8057/_stcore/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: cosmic-nginx
+    ports:
+      - '8180:80'
+      - '4443:443'
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    depends_on:
+      - cosmic-main
+      - cosmic-ledger
+      - cosmic-rhythm
+    restart: unless-stopped
+
+  # Redis for session management (optional)
+  redis:
+    image: redis:alpine
+    container_name: cosmic-redis
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  # Monitoring with Prometheus (optional)
+  prometheus:
+    image: prom/prometheus
+    container_name: cosmic-prometheus
+    ports:
+      - '9190:9090'
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+  prometheus_data:
+
+networks:
+  default:
+    name: cosmic-network

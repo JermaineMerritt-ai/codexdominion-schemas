@@ -1,0 +1,694 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi.stack_reference",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": { ".class": "SymbolTableNode", "cross_ref": "typing.Any", "kind": "Gdef" },
+    "CustomResource": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.resource.CustomResource",
+      "kind": "Gdef"
+    },
+    "Input": { ".class": "SymbolTableNode", "cross_ref": "pulumi.output.Input", "kind": "Gdef" },
+    "Optional": { ".class": "SymbolTableNode", "cross_ref": "typing.Optional", "kind": "Gdef" },
+    "Output": { ".class": "SymbolTableNode", "cross_ref": "pulumi.output.Output", "kind": "Gdef" },
+    "ResourceOptions": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.resource.ResourceOptions",
+      "kind": "Gdef"
+    },
+    "StackReference": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi.resource.CustomResource"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.stack_reference.StackReference",
+          "name": "StackReference",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.stack_reference.StackReference",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.stack_reference",
+        "mro": [
+          "pulumi.stack_reference.StackReference",
+          "pulumi.resource.CustomResource",
+          "pulumi.resource.Resource",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1, 1],
+              "arg_names": ["self", "name", "stack_name", "opts"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.stack_reference.StackReference.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1, 1],
+                "arg_names": ["self", "name", "stack_name", "opts"],
+                "arg_types": [
+                  "pulumi.stack_reference.StackReference",
+                  "builtins.str",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of StackReference",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__is_secret_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": ["is_coroutine"],
+              "fullname": "pulumi.stack_reference.StackReference.__is_secret_name",
+              "name": "__is_secret_name",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "name"],
+                "arg_types": [
+                  "pulumi.stack_reference.StackReference",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__is_secret_name of StackReference",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    },
+                    "builtins.bool"
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "typing.Coroutine"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "get_output": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.stack_reference.StackReference.get_output",
+              "name": "get_output",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "name"],
+                "arg_types": [
+                  "pulumi.stack_reference.StackReference",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "get_output of StackReference",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 2
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "pulumi.output.Output"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "get_output_details": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": ["is_coroutine"],
+              "fullname": "pulumi.stack_reference.StackReference.get_output_details",
+              "name": "get_output_details",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "name"],
+                "arg_types": ["pulumi.stack_reference.StackReference", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "get_output_details of StackReference",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    },
+                    "pulumi.stack_reference.StackReferenceOutputDetails"
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "typing.Coroutine"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.stack_reference.StackReference.name",
+              "name": "name",
+              "type": {
+                ".class": "Instance",
+                "args": ["builtins.str"],
+                "extra_attrs": null,
+                "type_ref": "pulumi.output.Output"
+              }
+            }
+          },
+          "outputs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.stack_reference.StackReference.outputs",
+              "name": "outputs",
+              "type": {
+                ".class": "Instance",
+                "args": [
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  }
+                ],
+                "extra_attrs": null,
+                "type_ref": "pulumi.output.Output"
+              }
+            }
+          },
+          "require_output": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.stack_reference.StackReference.require_output",
+              "name": "require_output",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "name"],
+                "arg_types": [
+                  "pulumi.stack_reference.StackReference",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": ["builtins.str"],
+                    "type_ref": "pulumi.output.Input"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "require_output of StackReference",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 2
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "pulumi.output.Output"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "secret_output_names": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.stack_reference.StackReference.secret_output_names",
+              "name": "secret_output_names",
+              "type": {
+                ".class": "Instance",
+                "args": [
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.list"
+                  }
+                ],
+                "extra_attrs": null,
+                "type_ref": "pulumi.output.Output"
+              }
+            }
+          },
+          "translate_output_property": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "prop"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.stack_reference.StackReference.translate_output_property",
+              "name": "translate_output_property",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "prop"],
+                "arg_types": ["pulumi.stack_reference.StackReference", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "translate_output_property of StackReference",
+                "ret_type": "builtins.str",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.stack_reference.StackReference.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.stack_reference.StackReference",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "StackReferenceOutputDetails": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.stack_reference.StackReferenceOutputDetails",
+          "name": "StackReferenceOutputDetails",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.stack_reference.StackReferenceOutputDetails",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.stack_reference",
+        "mro": ["pulumi.stack_reference.StackReferenceOutputDetails", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1],
+              "arg_names": ["self", "value", "secret_value"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.stack_reference.StackReferenceOutputDetails.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1],
+                "arg_names": ["self", "value", "secret_value"],
+                "arg_types": [
+                  "pulumi.stack_reference.StackReferenceOutputDetails",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of StackReferenceOutputDetails",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "secret_value": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.stack_reference.StackReferenceOutputDetails.secret_value",
+              "name": "secret_value",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "value": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.stack_reference.StackReferenceOutputDetails.value",
+              "name": "value",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.stack_reference.StackReferenceOutputDetails.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.stack_reference.StackReferenceOutputDetails",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.stack_reference.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.stack_reference.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.stack_reference.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.stack_reference.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.stack_reference.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.stack_reference.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "ensure_future": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "asyncio.tasks.ensure_future",
+      "kind": "Gdef"
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi\\stack_reference.py"
+}

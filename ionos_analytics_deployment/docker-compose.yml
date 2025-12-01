@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  stock-analytics:
+    build:
+      context: .
+      dockerfile: Dockerfile.stock
+    ports:
+      - '8515:8515'
+    environment:
+      - MYSQL_HOST=mysql
+      - REDIS_HOST=redis
+      - ENVIRONMENT=production
+    depends_on:
+      - mysql
+      - redis
+    restart: unless-stopped
+
+  data-analytics:
+    build:
+      context: .
+      dockerfile: Dockerfile.analytics
+    ports:
+      - '8516:8516'
+    environment:
+      - MYSQL_HOST=mysql
+      - REDIS_HOST=redis
+      - ENVIRONMENT=production
+    depends_on:
+      - mysql
+      - redis
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: analytics_platform
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - '6379:6379'
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - /etc/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - stock-analytics
+      - data-analytics
+    restart: unless-stopped
+
+volumes:
+  mysql_data:

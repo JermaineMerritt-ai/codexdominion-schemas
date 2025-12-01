@@ -1,0 +1,44 @@
+capsule:
+  name: 'Storage Capsule'
+  version: '1.0.0'
+  type: 'system'
+  description: >
+    The Storage Capsule — sovereign vault of Dominion. Governs archives,
+    backups, and object storage, ensuring every scroll and capsule is
+    preserved as a lineage-safe artifact.
+
+lineage:
+  ancestry_id: 'system-0003'
+  parent_capsules:
+    - 'health-capsule-system-0001'
+    - 'security-capsule-system-0002'
+  remix_policy: 'read-only-archival'
+  contributor_roles:
+    - name: 'Jermaine Merritt'
+      role: 'Custodian of Archives'
+      seal: '⚜️'
+    - name: 'Future Custodians'
+      role: 'Archivists'
+      seal: '📦'
+
+ethics:
+  consent_required: true
+  attribution: required
+  retention: 'eternal'
+  encryption_required: true
+  transparency: 'archive manifests visible to councils and contributors'
+
+deployment:
+  storage: 'IONOS Object Storage'
+  archive_path: 's3://codex-dominion/system/storage_capsule/'
+  backup_policy:
+    frequency: 'daily'
+    retention: 'eternal'
+    checksum_verification: true
+  broadcast: 'Archive Index Endpoint'
+  checksum: 'to-be-generated'
+
+seals:
+  created_at: '2025-10-27T17:21:00Z'
+  custodian_signature: 'Jermaine Merritt'
+  codex_seal: 'STORAGE-SYSTEM'

@@ -1,0 +1,1204 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi.runtime._callbacks",
+  "future_import_flags": ["annotations"],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Alias": { ".class": "SymbolTableNode", "cross_ref": "pulumi.resource.Alias", "kind": "Gdef" },
+    "Any": { ".class": "SymbolTableNode", "cross_ref": "typing.Any", "kind": "Gdef" },
+    "Awaitable": { ".class": "SymbolTableNode", "cross_ref": "typing.Awaitable", "kind": "Gdef" },
+    "Callable": { ".class": "SymbolTableNode", "cross_ref": "typing.Callable", "kind": "Gdef" },
+    "InvokeOptions": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.invoke.InvokeOptions",
+      "kind": "Gdef"
+    },
+    "InvokeTransform": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.invoke.InvokeTransform",
+      "kind": "Gdef"
+    },
+    "Mapping": { ".class": "SymbolTableNode", "cross_ref": "typing.Mapping", "kind": "Gdef" },
+    "Message": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_suppressed_import", "is_ready", "is_inferred"],
+        "fullname": "pulumi.runtime._callbacks.Message",
+        "name": "Message",
+        "type": {
+          ".class": "AnyType",
+          "missing_import_name": "pulumi.runtime._callbacks.Message",
+          "source_any": null,
+          "type_of_any": 3
+        }
+      }
+    },
+    "Optional": { ".class": "SymbolTableNode", "cross_ref": "typing.Optional", "kind": "Gdef" },
+    "ResourceHook": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.resource_hooks.ResourceHook",
+      "kind": "Gdef"
+    },
+    "ResourceOptions": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.resource.ResourceOptions",
+      "kind": "Gdef"
+    },
+    "ResourceTransform": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.resource.ResourceTransform",
+      "kind": "Gdef"
+    },
+    "TYPE_CHECKING": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TYPE_CHECKING",
+      "kind": "Gdef"
+    },
+    "Union": { ".class": "SymbolTableNode", "cross_ref": "typing.Union", "kind": "Gdef" },
+    "_CallbackFunction": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeAlias",
+        "alias_tvars": [],
+        "column": 0,
+        "fullname": "pulumi.runtime._callbacks._CallbackFunction",
+        "line": 65,
+        "no_args": false,
+        "normalized": false,
+        "python_3_12_type_alias": false,
+        "target": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": [null],
+          "arg_types": ["builtins.bytes"],
+          "bound_args": [],
+          "def_extras": {},
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": null,
+          "ret_type": {
+            ".class": "Instance",
+            "args": [
+              {
+                ".class": "AnyType",
+                "missing_import_name": "pulumi.runtime._callbacks.Message",
+                "source_any": null,
+                "type_of_any": 3
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "typing.Awaitable"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_CallbackServicer": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi.runtime.proto.callback_pb2_grpc.CallbacksServicer"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.runtime._callbacks._CallbackServicer",
+          "name": "_CallbackServicer",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.runtime._callbacks._CallbackServicer",
+        "has_param_spec_type": false,
+        "metaclass_type": "abc.ABCMeta",
+        "metadata": {},
+        "module_name": "pulumi.runtime._callbacks",
+        "mro": [
+          "pulumi.runtime._callbacks._CallbackServicer",
+          "pulumi.runtime.proto.callback_pb2_grpc.CallbacksServicer",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "Invoke": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "request", "context"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": ["is_coroutine"],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer.Invoke",
+              "name": "Invoke",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "request", "context"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  "pulumi.runtime.proto.callback_pb2.CallbackInvokeRequest",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": "pulumi.runtime._callbacks.aio",
+                    "source_any": null,
+                    "type_of_any": 3
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "Invoke of _CallbackServicer",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    },
+                    "pulumi.runtime.proto.callback_pb2.CallbackInvokeResponse"
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "typing.Coroutine"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "monitor"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "monitor"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  "pulumi.runtime.proto.resource_pb2_grpc.ResourceMonitorStub"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of _CallbackServicer",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_alias": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "alias"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer._alias",
+              "name": "_alias",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "alias"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  "pulumi.runtime.proto.alias_pb2.Alias"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_alias of _CallbackServicer",
+                "ret_type": {
+                  ".class": "UnionType",
+                  "items": ["builtins.str", "pulumi.resource.Alias"],
+                  "uses_pep604_syntax": false
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_callbacks": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer._callbacks",
+              "name": "_callbacks",
+              "type": {
+                ".class": "Instance",
+                "args": [
+                  "builtins.str",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": [],
+                    "type_ref": "pulumi.runtime._callbacks._CallbackFunction"
+                  }
+                ],
+                "extra_attrs": null,
+                "type_ref": "builtins.dict"
+              }
+            }
+          },
+          "_invoke_options": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "request"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer._invoke_options",
+              "name": "_invoke_options",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "request"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  "pulumi.runtime.proto.resource_pb2.TransformInvokeRequest"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_invoke_options of _CallbackServicer",
+                "ret_type": "pulumi.invoke.InvokeOptions",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_monitor": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer._monitor",
+              "name": "_monitor",
+              "type": "pulumi.runtime.proto.resource_pb2_grpc.ResourceMonitorStub"
+            }
+          },
+          "_resource_options": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "request"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer._resource_options",
+              "name": "_resource_options",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "request"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  "pulumi.runtime.proto.resource_pb2.TransformRequest"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_resource_options of _CallbackServicer",
+                "ret_type": "pulumi.resource.ResourceOptions",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_server": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer._server",
+              "name": "_server",
+              "type": {
+                ".class": "AnyType",
+                "missing_import_name": "pulumi.runtime._callbacks.aio",
+                "source_any": null,
+                "type_of_any": 3
+              }
+            }
+          },
+          "_servicers": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer._servicers",
+              "name": "_servicers",
+              "type": {
+                ".class": "Instance",
+                "args": ["pulumi.runtime._callbacks._CallbackServicer"],
+                "extra_attrs": null,
+                "type_ref": "builtins.list"
+              }
+            }
+          },
+          "_target": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer._target",
+              "name": "_target",
+              "type": "builtins.str"
+            }
+          },
+          "_transformation_invoke_options": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "opts"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": ["is_coroutine"],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer._transformation_invoke_options",
+              "name": "_transformation_invoke_options",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "opts"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  "pulumi.invoke.InvokeOptions"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_transformation_invoke_options of _CallbackServicer",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    },
+                    "pulumi.runtime.proto.resource_pb2.TransformInvokeOptions"
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "typing.Coroutine"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_transformation_resource_options": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "opts", "resource_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": ["is_coroutine"],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer._transformation_resource_options",
+              "name": "_transformation_resource_options",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "opts", "resource_name"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  "pulumi.resource.ResourceOptions",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_transformation_resource_options of _CallbackServicer",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 6
+                    },
+                    "pulumi.runtime.proto.resource_pb2.TransformResourceOptions"
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "typing.Coroutine"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_transforms": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer._transforms",
+              "name": "_transforms",
+              "type": {
+                ".class": "Instance",
+                "args": [
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.resource.ResourceTransform"
+                      },
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.invoke.InvokeTransform"
+                      }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  "builtins.str"
+                ],
+                "extra_attrs": null,
+                "type_ref": "builtins.dict"
+              }
+            }
+          },
+          "do_register_invoke_transform": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "transform"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer.do_register_invoke_transform",
+              "name": "do_register_invoke_transform",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "transform"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": [],
+                    "type_ref": "pulumi.invoke.InvokeTransform"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "do_register_invoke_transform of _CallbackServicer",
+                "ret_type": "pulumi.runtime.proto.callback_pb2.Callback",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "do_register_resource_hook": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "hook"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer.do_register_resource_hook",
+              "name": "do_register_resource_hook",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "hook"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  "pulumi.resource_hooks.ResourceHook"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "do_register_resource_hook of _CallbackServicer",
+                "ret_type": "pulumi.runtime.proto.resource_pb2.RegisterResourceHookRequest",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "pretty_error": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "e"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer.pretty_error",
+              "name": "pretty_error",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "e"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  "builtins.BaseException"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "pretty_error of _CallbackServicer",
+                "ret_type": "builtins.str",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "register_invoke_transform": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "transform"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer.register_invoke_transform",
+              "name": "register_invoke_transform",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "transform"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": [],
+                    "type_ref": "pulumi.invoke.InvokeTransform"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "register_invoke_transform of _CallbackServicer",
+                "ret_type": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 1
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "register_resource_hook": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "hook"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer.register_resource_hook",
+              "name": "register_resource_hook",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "hook"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  "pulumi.resource_hooks.ResourceHook"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "register_resource_hook of _CallbackServicer",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "register_stack_transform": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "transform"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer.register_stack_transform",
+              "name": "register_stack_transform",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "transform"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": [],
+                    "type_ref": "pulumi.resource.ResourceTransform"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "register_stack_transform of _CallbackServicer",
+                "ret_type": {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 1
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "register_transform": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "transform"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer.register_transform",
+              "name": "register_transform",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "transform"],
+                "arg_types": [
+                  "pulumi.runtime._callbacks._CallbackServicer",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": [],
+                    "type_ref": "pulumi.resource.ResourceTransform"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "register_transform of _CallbackServicer",
+                "ret_type": "pulumi.runtime.proto.callback_pb2.Callback",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "serve": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": ["is_coroutine"],
+              "fullname": "pulumi.runtime._callbacks._CallbackServicer.serve",
+              "name": "serve",
+              "type": null
+            }
+          },
+          "shutdown": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["cls"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_class", "is_coroutine", "is_decorated"],
+                "fullname": "pulumi.runtime._callbacks._CallbackServicer.shutdown",
+                "name": "shutdown",
+                "type": null
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_classmethod", "is_ready", "is_inferred"],
+                "fullname": "pulumi.runtime._callbacks._CallbackServicer.shutdown",
+                "name": "shutdown",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["cls"],
+                  "arg_types": [
+                    { ".class": "TypeType", "item": "pulumi.runtime._callbacks._CallbackServicer" }
+                  ],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "cls" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": true,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "shutdown of _CallbackServicer",
+                  "ret_type": {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 1
+                  },
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.runtime._callbacks._CallbackServicer.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.runtime._callbacks._CallbackServicer",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "_GRPC_CHANNEL_OPTIONS": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime._grpc_settings._GRPC_CHANNEL_OPTIONS",
+      "kind": "Gdef"
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._callbacks.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._callbacks.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._callbacks.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._callbacks.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._callbacks.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.runtime._callbacks.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "aio": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_suppressed_import", "is_ready", "is_inferred"],
+        "fullname": "pulumi.runtime._callbacks.aio",
+        "name": "aio",
+        "type": {
+          ".class": "AnyType",
+          "missing_import_name": "pulumi.runtime._callbacks.aio",
+          "source_any": null,
+          "type_of_any": 3
+        }
+      }
+    },
+    "alias_pb2": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.proto.alias_pb2",
+      "kind": "Gdef"
+    },
+    "annotations": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "__future__.annotations",
+      "kind": "Gdef"
+    },
+    "asyncio": { ".class": "SymbolTableNode", "cross_ref": "asyncio", "kind": "Gdef" },
+    "callback_pb2": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.proto.callback_pb2",
+      "kind": "Gdef"
+    },
+    "callback_pb2_grpc": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.proto.callback_pb2_grpc",
+      "kind": "Gdef"
+    },
+    "cast": { ".class": "SymbolTableNode", "cross_ref": "typing.cast", "kind": "Gdef" },
+    "deserialize_properties": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.rpc.deserialize_properties",
+      "kind": "Gdef"
+    },
+    "grpc": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_suppressed_import", "is_ready", "is_inferred"],
+        "fullname": "pulumi.runtime._callbacks.grpc",
+        "name": "grpc",
+        "type": {
+          ".class": "AnyType",
+          "missing_import_name": "pulumi.runtime._callbacks.grpc",
+          "source_any": null,
+          "type_of_any": 3
+        }
+      }
+    },
+    "init_grpc_aio": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_suppressed_import", "is_ready", "is_inferred"],
+        "fullname": "pulumi.runtime._callbacks.init_grpc_aio",
+        "name": "init_grpc_aio",
+        "type": {
+          ".class": "AnyType",
+          "missing_import_name": "pulumi.runtime._callbacks.init_grpc_aio",
+          "source_any": null,
+          "type_of_any": 3
+        }
+      }
+    },
+    "is_rpc_secret": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.rpc.is_rpc_secret",
+      "kind": "Gdef"
+    },
+    "log": { ".class": "SymbolTableNode", "cross_ref": "pulumi.log", "kind": "Gdef" },
+    "outputtify_secrets": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["props"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.runtime._callbacks.outputtify_secrets",
+        "name": "outputtify_secrets",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["props"],
+          "arg_types": [
+            {
+              ".class": "Instance",
+              "args": [
+                "builtins.str",
+                {
+                  ".class": "AnyType",
+                  "missing_import_name": null,
+                  "source_any": null,
+                  "type_of_any": 2
+                }
+              ],
+              "extra_attrs": null,
+              "type_ref": "builtins.dict"
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "outputtify_secrets",
+          "ret_type": {
+            ".class": "Instance",
+            "args": [
+              "builtins.str",
+              {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 2
+              }
+            ],
+            "extra_attrs": null,
+            "type_ref": "builtins.dict"
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "resource_pb2": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.proto.resource_pb2",
+      "kind": "Gdef"
+    },
+    "resource_pb2_grpc": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.proto.resource_pb2_grpc",
+      "kind": "Gdef"
+    },
+    "serialize_properties": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.rpc.serialize_properties",
+      "kind": "Gdef"
+    },
+    "traceback": { ".class": "SymbolTableNode", "cross_ref": "traceback", "kind": "Gdef" },
+    "unwrap_rpc_secret": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime.rpc.unwrap_rpc_secret",
+      "kind": "Gdef"
+    },
+    "uuid": { ".class": "SymbolTableNode", "cross_ref": "uuid", "kind": "Gdef" }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi\\runtime\\_callbacks.py"
+}

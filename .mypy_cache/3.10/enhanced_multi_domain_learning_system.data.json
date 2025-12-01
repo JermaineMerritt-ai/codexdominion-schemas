@@ -1,0 +1,669 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "enhanced_multi_domain_learning_system",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": { ".class": "SymbolTableNode", "cross_ref": "typing.Any", "kind": "Gdef" },
+    "Dict": { ".class": "SymbolTableNode", "cross_ref": "typing.Dict", "kind": "Gdef" },
+    "EnhancedMultiDomainLearningSystem": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem",
+          "name": "EnhancedMultiDomainLearningSystem",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "enhanced_multi_domain_learning_system",
+        "mro": [
+          "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.__init__",
+              "name": "__init__",
+              "type": null
+            }
+          },
+          "_analyze_structured_data": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "data", "domain"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem._analyze_structured_data",
+              "name": "_analyze_structured_data",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "data", "domain"],
+                "arg_types": [
+                  "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem",
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      },
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 4
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  },
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_analyze_structured_data of EnhancedMultiDomainLearningSystem",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": ["builtins.str"],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.list"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_extract_concepts_from_text": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "text"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem._extract_concepts_from_text",
+              "name": "_extract_concepts_from_text",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "text"],
+                "arg_types": [
+                  "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_extract_concepts_from_text of EnhancedMultiDomainLearningSystem",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": ["builtins.str"],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.list"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "cross_domain_analysis": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "domains"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.cross_domain_analysis",
+              "name": "cross_domain_analysis",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "domains"],
+                "arg_types": [
+                  "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem",
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.list"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "cross_domain_analysis of EnhancedMultiDomainLearningSystem",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.dict"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "domains": {
+            ".class": "SymbolTableNode",
+            "implicit": true,
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_inferred"],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.domains",
+              "name": "domains",
+              "type": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 1
+              }
+            }
+          },
+          "generate_knowledge_report": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.generate_knowledge_report",
+              "name": "generate_knowledge_report",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": [
+                  "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "generate_knowledge_report of EnhancedMultiDomainLearningSystem",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.dict"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "get_domain_expertise": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "domain"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.get_domain_expertise",
+              "name": "get_domain_expertise",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "domain"],
+                "arg_types": [
+                  "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "get_domain_expertise of EnhancedMultiDomainLearningSystem",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.dict"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "initialize_learning_domains": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.initialize_learning_domains",
+              "name": "initialize_learning_domains",
+              "type": null
+            }
+          },
+          "knowledge_base": {
+            ".class": "SymbolTableNode",
+            "implicit": true,
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_inferred"],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.knowledge_base",
+              "name": "knowledge_base",
+              "type": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 1
+              }
+            }
+          },
+          "learn_from_data": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "domain", "data"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.learn_from_data",
+              "name": "learn_from_data",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "domain", "data"],
+                "arg_types": [
+                  "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem",
+                  "builtins.str",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "learn_from_data of EnhancedMultiDomainLearningSystem",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": [
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    },
+                    {
+                      ".class": "AnyType",
+                      "missing_import_name": null,
+                      "source_any": null,
+                      "type_of_any": 4
+                    }
+                  ],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.dict"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "learning_history": {
+            ".class": "SymbolTableNode",
+            "implicit": true,
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_inferred"],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.learning_history",
+              "name": "learning_history",
+              "type": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 1
+              }
+            }
+          },
+          "name": {
+            ".class": "SymbolTableNode",
+            "implicit": true,
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_inferred"],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.name",
+              "name": "name",
+              "type": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 1
+              }
+            }
+          },
+          "version": {
+            ".class": "SymbolTableNode",
+            "implicit": true,
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_inferred"],
+              "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.version",
+              "name": "version",
+              "type": {
+                ".class": "AnyType",
+                "missing_import_name": null,
+                "source_any": null,
+                "type_of_any": 1
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "enhanced_multi_domain_learning_system.EnhancedMultiDomainLearningSystem",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "List": { ".class": "SymbolTableNode", "cross_ref": "typing.List", "kind": "Gdef" },
+    "Optional": { ".class": "SymbolTableNode", "cross_ref": "typing.Optional", "kind": "Gdef" },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "enhanced_multi_domain_learning_system.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "enhanced_multi_domain_learning_system.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "enhanced_multi_domain_learning_system.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "enhanced_multi_domain_learning_system.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "enhanced_multi_domain_learning_system.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "enhanced_multi_domain_learning_system.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "analyze_multi_domain_data": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 1],
+        "arg_names": ["data", "domains"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "enhanced_multi_domain_learning_system.analyze_multi_domain_data",
+        "name": "analyze_multi_domain_data",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 1],
+          "arg_names": ["data", "domains"],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 2
+            },
+            {
+              ".class": "Instance",
+              "args": ["builtins.str"],
+              "extra_attrs": null,
+              "type_ref": "builtins.list"
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "analyze_multi_domain_data",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 1
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "datetime": { ".class": "SymbolTableNode", "cross_ref": "datetime.datetime", "kind": "Gdef" },
+    "get_learning_system": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [],
+        "arg_names": [],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "enhanced_multi_domain_learning_system.get_learning_system",
+        "name": "get_learning_system",
+        "type": null
+      }
+    },
+    "json": { ".class": "SymbolTableNode", "cross_ref": "json", "kind": "Gdef" },
+    "time": { ".class": "SymbolTableNode", "cross_ref": "time", "kind": "Gdef" }
+  },
+  "path": "C:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\enhanced_multi_domain_learning_system.py"
+}

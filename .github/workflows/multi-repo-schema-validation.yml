@@ -1,0 +1,40 @@
+name: Multi-Repo Schema Validation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate-schemas:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo:
+          - jermaine-merritt/codex-dominion
+          - JermaineMerritt1/codedimension-schemas
+          - JeramiaSmith/codedemodominion-schema
+    steps:
+      - name: Checkout ${{ matrix.repo }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.repo }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Display schema dependency secret
+        run: echo "🔐 CODE_DEPEND_ON_SCHEMAS=${{ secrets.CODE_DEPEND_ON_SCHEMAS }}"
+
+      - name: Validate schema
+        run: |
+          echo "🧪 Validating schema for ${{ matrix.repo }}..."
+          if [[ "${{ secrets.CODE_DEPEND_ON_SCHEMAS }}" == "true" ]]; then
+            echo "✅ Schema dependency confirmed for ${{ matrix.repo }}."
+          else
+            echo "⚠️ Schema dependency missing in ${{ matrix.repo }}."
+            exit 1
+          fi
+
+      - name: Notify Slack (optional)
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"✅ Schema validation passed for ${{ matrix.repo }}."}' \
+          "${{ secrets.SLACK_WEBHOOK_URL }}"

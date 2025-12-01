@@ -1,0 +1,33 @@
+groups:
+  - name: prompt-filter-alerts
+    interval: 30s
+    rules:
+      # 🚨 Spike in blocked prompts
+      - alert: BlockedPromptsSpike
+        expr: increase(prompt_filter_decision_total{decision="block"}[5m]) > 10
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'Blocked prompts spike detected'
+          description: 'More than 10 blocked prompts in the last 5 minutes.'
+
+      # ⚠️ Excessive review prompts
+      - alert: ReviewPromptsExcessive
+        expr: increase(prompt_filter_decision_total{decision="review"}[10m]) > 20
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Excessive review prompts'
+          description: 'More than 20 prompts flagged for review in the last 10 minutes.'
+
+      # ✅ Low watermark enforcement
+      - alert: WatermarkFailure
+        expr: prompt_filter_watermark_failures_total > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'Watermarking failure detected'
+          description: 'One or more outputs were generated without watermarking.'

@@ -1,0 +1,68 @@
+{
+  "dispatch_settings": {
+    "auto_proclaim": false,
+    "archive_enabled": true,
+    "timezone": "UTC",
+    "format_template": "detailed",
+    "daily_schedule": "06:00",
+    "auto_schedule": false
+  },
+  "report_sections": {
+    "store_revenue": true,
+    "social_engagement": true,
+    "system_status": true,
+    "proclamations": true,
+    "analytics": true,
+    "weather": false,
+    "market_data": false
+  },
+  "proclamation_settings": {
+    "auto_tweet": false,
+    "auto_buffer": false,
+    "dawn_hashtags": ["#DawnDispatch", "#CodexDominion", "#DigitalSovereignty", "#MerrittMethod"],
+    "include_metrics": true,
+    "short_format": true
+  },
+  "thresholds": {
+    "revenue_alert": 1000,
+    "orders_alert": 10,
+    "engagement_alert": 100,
+    "health_score_alert": 75
+  },
+  "notification_settings": {
+    "email_alerts": false,
+    "discord_webhook": "",
+    "slack_webhook": "",
+    "telegram_bot_token": "",
+    "telegram_chat_id": ""
+  },
+  "archive_settings": {
+    "retention_days": 30,
+    "backup_enabled": true,
+    "compression": false,
+    "export_formats": ["json", "csv"]
+  },
+  "templates": {
+    "dawn_summary": "🌅 Dawn Dispatch: ${revenue} revenue, ${orders} orders, ${social_posts} social posts, ${health_score}% system health",
+    "success_template": "🔥 Digital Sovereignty: All systems operational! Revenue: ${revenue}, Health: ${health_score}%",
+    "alert_template": "⚠️ Dawn Alert: ${alert_type} - ${message}",
+    "celebration_template": "🎉 Milestone Alert: ${achievement} - ${details}"
+  },
+  "integrations": {
+    "google_analytics": {
+      "enabled": false,
+      "property_id": "",
+      "credentials_file": ""
+    },
+    "stripe": {
+      "enabled": false,
+      "api_key": "",
+      "webhook_secret": ""
+    },
+    "mailchimp": {
+      "enabled": false,
+      "api_key": "",
+      "list_id": ""
+    }
+  }
+}

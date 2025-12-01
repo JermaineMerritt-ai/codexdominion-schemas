@@ -1,0 +1,109 @@
+{
+  "affiliate_api_key": "",
+  "analytics_days": 30,
+  "min_commission_threshold": 1.0,
+  "conversion_window_days": 30,
+  "demo_mode": true,
+  "affiliate_networks": {
+    "primary_network": {
+      "name": "ShareASale",
+      "api_endpoint": "https://api.shareasale.com/w.cfm",
+      "merchant_id": "",
+      "affiliate_id": "",
+      "commission_rate": 0.05
+    },
+    "secondary_networks": {
+      "commission_junction": {
+        "name": "Commission Junction",
+        "api_endpoint": "https://api.cj.com/",
+        "website_id": "",
+        "commission_rate": 0.04
+      },
+      "amazon_associates": {
+        "name": "Amazon Associates",
+        "api_endpoint": "https://webservices.amazon.com/paapi5/",
+        "associate_tag": "",
+        "commission_rate": 0.03
+      }
+    }
+  },
+  "tracking_settings": {
+    "enable_click_tracking": true,
+    "enable_conversion_tracking": true,
+    "attribution_window_hours": 720,
+    "track_sub_affiliates": false,
+    "enable_fraud_detection": true
+  },
+  "performance_thresholds": {
+    "excellent_conversion_rate": 3.0,
+    "good_conversion_rate": 2.0,
+    "excellent_epc": 0.5,
+    "good_epc": 0.25,
+    "minimum_monthly_volume": 100.0
+  },
+  "optimization_rules": {
+    "auto_pause_low_performers": false,
+    "min_conversion_rate_threshold": 0.5,
+    "max_cost_per_acquisition": 50.0,
+    "enable_smart_bidding": false
+  },
+  "reporting_preferences": {
+    "daily_reports": true,
+    "weekly_summaries": true,
+    "monthly_deep_dive": true,
+    "real_time_alerts": false,
+    "performance_notifications": true
+  },
+  "commission_settings": {
+    "default_commission_type": "percentage",
+    "backup_commission_rate": 0.02,
+    "minimum_payout_threshold": 50.0,
+    "payment_schedule": "monthly",
+    "tax_reporting_enabled": false
+  },
+  "integration_settings": {
+    "google_analytics_integration": false,
+    "facebook_pixel_integration": false,
+    "email_marketing_integration": false,
+    "crm_integration": false
+  },
+  "api_settings": {
+    "timeout_seconds": 15,
+    "retry_attempts": 3,
+    "retry_delay_seconds": 2,
+    "rate_limit_requests_per_minute": 60,
+    "enable_debug_logging": false
+  },
+  "dashboard_preferences": {
+    "default_date_range": "30_days",
+    "show_revenue_projections": true,
+    "show_network_comparison": true,
+    "currency": "USD",
+    "timezone": "UTC",
+    "decimal_precision": 2
+  },
+  "networks": {
+    "shareasale": {
+      "api_token": "your_shareasale_api_token",
+      "affiliate_id": "your_shareasale_affiliate_id",
+      "secret_key": "your_shareasale_secret_key",
+      "enabled": true
+    },
+    "commission_junction": {
+      "api_key": "your_cj_api_key",
+      "website_id": "your_cj_website_id",
+      "enabled": true
+    },
+    "amazon_associates": {
+      "access_key": "your_amazon_access_key",
+      "secret_key": "your_amazon_secret_key",
+      "associate_tag": "your_amazon_associate_tag",
+      "enabled": true
+    },
+    "clickbank": {
+      "api_key": "your_clickbank_api_key",
+      "developer_key": "your_clickbank_developer_key",
+      "enabled": true
+    }
+  }
+}

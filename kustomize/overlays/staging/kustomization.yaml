@@ -1,0 +1,47 @@
+resources:
+  - ../../base
+  - gateway-deployment.yaml
+patches:
+  - path: patch-orchestrator.yaml
+  - path: patch-core.yaml
+  - path: patch-engines.yaml
+
+nameSuffix: -staging
+
+images:
+  - name: ghcr.io/your-org/codex-orchestrator
+    newTag: staging
+  - name: ghcr.io/your-org/codex-core
+    newTag: staging
+  - name: ghcr.io/your-org/engine01
+    newTag: staging
+  - name: ghcr.io/your-org/engine02
+    newTag: staging
+  - name: ghcr.io/your-org/engine03
+    newTag: staging
+  - name: ghcr.io/your-org/engine04
+    newTag: staging
+  - name: ghcr.io/your-org/engine05
+    newTag: staging
+  - name: ghcr.io/your-org/engine06
+    newTag: staging
+  - name: ghcr.io/your-org/engine07
+    newTag: staging
+  - name: ghcr.io/your-org/engine08
+    newTag: staging
+  - name: ghcr.io/your-org/engine09
+    newTag: staging
+  - name: ghcr.io/your-org/engine10
+    newTag: staging
+  - name: ghcr.io/your-org/engine11
+    newTag: staging
+  - name: ghcr.io/your-org/engine12
+    newTag: staging
+  - name: ghcr.io/your-org/engine13
+    newTag: staging
+  - name: ghcr.io/your-org/engine14
+    newTag: staging
+  - name: ghcr.io/your-org/engine15
+    newTag: staging
+  - name: ghcr.io/your-org/engine16
+    newTag: staging

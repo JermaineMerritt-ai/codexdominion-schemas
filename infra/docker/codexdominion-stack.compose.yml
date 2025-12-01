@@ -1,0 +1,141 @@
+version: '3.9'
+
+services:
+  reverse-proxy:
+    image: nginx:latest
+    container_name: reverse-proxy
+    volumes:
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - ./docker/nginx/certs:/etc/letsencrypt
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - markets
+      - lifestyle
+      - faith
+      - kids
+      - brand
+      - academy
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: codexdominion
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/migrations:/docker-entrypoint-initdb.d
+    ports:
+      - '5432:5432'
+
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    command: server /data
+    environment:
+      MINIO_ROOT_USER: ${MINIO_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+    volumes:
+      - minio_data:/data
+    ports:
+      - '9000:9000'
+
+  markets:
+    build: ./services/markets
+    container_name: markets-service
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=${PG_USER}
+      - DB_PASSWORD=${PG_PASSWORD}
+    depends_on:
+      - postgres
+
+  lifestyle:
+    image: wordpress:latest
+    container_name: lifestyle-service
+    environment:
+      WORDPRESS_DB_HOST: postgres
+      WORDPRESS_DB_USER: ${PG_USER}
+      WORDPRESS_DB_PASSWORD: ${PG_PASSWORD}
+      WORDPRESS_DB_NAME: codexdominion
+    depends_on:
+      - postgres
+
+  faith:
+    image: wordpress:latest
+    container_name: faith-service
+    environment:
+      WORDPRESS_DB_HOST: postgres
+      WORDPRESS_DB_USER: ${PG_USER}
+      WORDPRESS_DB_PASSWORD: ${PG_PASSWORD}
+      WORDPRESS_DB_NAME: codexdominion
+    depends_on:
+      - postgres
+
+  kids:
+    image: wordpress:latest
+    container_name: kids-service
+    environment:
+      WORDPRESS_DB_HOST: postgres
+      WORDPRESS_DB_USER: ${PG_USER}
+      WORDPRESS_DB_PASSWORD: ${PG_PASSWORD}
+      WORDPRESS_DB_NAME: codexdominion
+    depends_on:
+      - postgres
+
+  brand:
+    image: wordpress:latest
+    container_name: brand-service
+    environment:
+      WORDPRESS_DB_HOST: postgres
+      WORDPRESS_DB_USER: ${PG_USER}
+      WORDPRESS_DB_PASSWORD: ${PG_PASSWORD}
+      WORDPRESS_DB_NAME: codexdominion
+    depends_on:
+      - postgres
+
+  academy:
+    build: ./services/academy
+    container_name: academy-service
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=${PG_USER}
+      - DB_PASSWORD=${PG_PASSWORD}
+    depends_on:
+      - postgres
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - '9090:9090'
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+    ports:
+      - '3000:3000'
+    depends_on:
+      - prometheus
+
+  fact-check-exporter:
+    build:
+      context: c:/Users/JMerr/OneDrive/Documents/.vscode/codex-dominion/infra/docker
+      dockerfile: Dockerfile.fact-check
+    container_name: fact-check-exporter
+    ports:
+      - '8000:8000'
+    depends_on:
+      - prometheus
+
+volumes:
+  postgres_data:
+  minio_data:

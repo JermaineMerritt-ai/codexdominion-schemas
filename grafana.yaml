@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  namespace: observability
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      volumes:
+        - name: grafana-datasource
+          configMap:
+            name: grafana-datasource
+        - name: grafana-dashboards
+          configMap:
+            name: grafana-dashboards
+      containers:
+        - name: grafana
+          image: grafana/grafana:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: GF_SECURITY_ADMIN_USER
+              value: 'admin'
+            - name: GF_SECURITY_ADMIN_PASSWORD
+              value: 'admin'
+          volumeMounts:
+            - name: grafana-datasource
+              mountPath: /etc/grafana/provisioning/datasources
+              readOnly: true
+            - name: grafana-dashboards
+              mountPath: /var/lib/grafana/dashboards
+              readOnly: true
+          resources:
+            requests:
+              cpu: '100m'
+              memory: '128Mi'
+            limits:
+              cpu: '500m'
+              memory: '512Mi'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: observability
+spec:
+  selector:
+    app: grafana
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000

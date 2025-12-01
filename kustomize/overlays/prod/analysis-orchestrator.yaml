@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: orchestrator-success-rate
+spec:
+  args:
+    - name: service-name
+    - name: namespace
+  metrics:
+    - name: success-rate
+      interval: 30s
+      successCondition: result >= 0.95
+      failureCondition: result < 0.95
+      provider:
+        prometheus:
+          address: http://prometheus-server
+          query: |
+            sum(rate(http_requests_total{service="{{args.service-name}}",namespace="{{args.namespace}}",status=~"2.."}[5m]))
+            /
+            sum(rate(http_requests_total{service="{{args.service-name}}",namespace="{{args.namespace}}"}[5m]))

@@ -1,0 +1,48 @@
+
+thread 'rustc' panicked at /rustc-dev/1159e78c4747b02ef996e55082b704c09b970588\compiler\rustc_target\src\spec\mod.rs:3742:17:
+invalid enum variant tag while decoding `TargetTuple`, expected 0..2
+stack backtrace:
+   0: std::panicking::begin_panic_handler
+             at /rustc/1159e78c4747b02ef996e55082b704c09b970588/library\std\src\panicking.rs:697
+   1: core::panicking::panic_fmt
+             at /rustc/1159e78c4747b02ef996e55082b704c09b970588/library\core\src\panicking.rs:75
+   2: <rustc_metadata::rmeta::CrateHeader as rustc_serialize::serialize::Decodable<rustc_metadata::rmeta::decoder::DecodeContext>>::decode
+   3: <rustc_metadata::creader::fn_spans::Finder as rustc_ast::visit::Visitor>::visit_item
+   4: rustc_metadata::fs::encode_and_write_metadata
+   5: <rustc_metadata::creader::CStore>::from_tcx_mut
+   6: <rustc_metadata::creader::CStore>::from_tcx_mut
+   7: <rustc_metadata::creader::CStore>::process_path_extern
+   8: <rustc_resolve::effective_visibilities::EffectiveVisibilitiesVisitor as rustc_ast::visit::Visitor>::visit_item
+   9: <rustc_resolve::Resolver>::into_outputs
+  10: <<rustc_resolve::late::LateResolutionVisitor>::find_lifetime_for_self::SelfVisitor as rustc_ast::visit::Visitor>::visit_ty
+  11: <<rustc_resolve::late::LateResolutionVisitor>::find_lifetime_for_self::SelfVisitor as rustc_ast::visit::Visitor>::visit_ty
+  12: <<rustc_resolve::late::LateResolutionVisitor>::find_lifetime_for_self::SelfVisitor as rustc_ast::visit::Visitor>::visit_ty
+  13: <rustc_resolve::late::LateResolutionVisitor as rustc_ast::visit::Visitor>::visit_fn
+  14: <hashbrown::raw::RawTable<(rustc_hir::def::LifetimeRes, ())>>::reserve_rehash::<hashbrown::map::make_hasher<rustc_hir::def::LifetimeRes, (), rustc_hash::FxBuildHasher>::{closure#0}>
+  15: <rustc_resolve::late::LateResolutionVisitor as rustc_ast::visit::Visitor>::visit_item
+  16: <hashbrown::raw::RawTable<(rustc_hir::def::LifetimeRes, ())>>::reserve_rehash::<hashbrown::map::make_hasher<rustc_hir::def::LifetimeRes, (), rustc_hash::FxBuildHasher>::{closure#0}>
+  17: <rustc_resolve::late::LateResolutionVisitor as rustc_ast::visit::Visitor>::visit_item
+  18: <rustc_resolve::Resolver>::into_outputs
+  19: <rustc_resolve::Resolver>::resolve_crate
+  20: rustc_interface::proc_macro_decls::proc_macro_decls_static
+  21: rustc_interface::passes::resolver_for_lowering_raw
+  22: <alloc::sync::Arc<rustc_session::cstore::CrateSource>>::drop_slow
+  23: <alloc::sync::Arc<rustc_session::cstore::CrateSource>>::drop_slow
+  24: RINvNtNtCskYAanemdnmB_18rustc_query_system5query8plumbing17try_execute_queryINtCsbw9TFknRBud_16rustc_query_impl13DynamicConfigINtNtB4_6caches11SingleCacheINtNtNtCs5y5f17YIu3x_12rustc_middle5query5erase6ErasedAhj10_EEKb0_KB3t_KB3t_ENtNtB1f_8plumbing9QueryCt
+  25: rustc_query_impl::query_system
+  26: <rustc_middle::ty::context::TyCtxt>::resolver_for_lowering
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+error: the compiler unexpectedly panicked. this is a bug.
+
+note: we would appreciate a bug report: https://github.com/rust-lang/rust/issues/new?labels=C-bug%2C+I-ICE%2C+T-compiler&template=ice.md
+
+note: rustc 1.90.0 (1159e78c4 2025-09-14) running on x86_64-pc-windows-msvc
+
+note: compiler flags: --crate-type lib -C embed-bitcode=no -C debuginfo=2
+
+note: some of the compiler flags provided by cargo are hidden
+
+query stack during panic:
+#0 [resolver_for_lowering_raw] getting the resolver for lowering
+end of query stack

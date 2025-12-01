@@ -1,0 +1,100 @@
+name: Monthly Compliance Archive
+on:
+  schedule:
+    - cron: '0 0 1 * *' # monthly, 00:00 UTC on day 1
+  workflow_dispatch:
+
+jobs:
+  seal-archive:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install cryptography
+        run: pip install cryptography
+
+      - name: Build archive contents
+        run: |
+          ARCHIVE_DIR="archives/$(date +'%Y-%m')"
+          mkdir -p "$ARCHIVE_DIR/dispatch" "$ARCHIVE_DIR/healing" "$ARCHIVE_DIR/consent" "$ARCHIVE_DIR/releases" "$ARCHIVE_DIR/observability" "$ARCHIVE_DIR/signature"
+          # Dispatch
+          cp data/sovereigns.json "$ARCHIVE_DIR/dispatch/" || true
+          cp data/avatars.json "$ARCHIVE_DIR/dispatch/" || true
+          cp logs/routing-logs.csv "$ARCHIVE_DIR/dispatch/" || true
+          # Healing
+          cp data/system-checks.json "$ARCHIVE_DIR/healing/" || true
+          cp logs/restart-events.log "$ARCHIVE_DIR/healing/" || true
+          cp manifests/patch-manifest.yaml "$ARCHIVE_DIR/healing/" || true
+          # Consent
+          cp data/trails.json "$ARCHIVE_DIR/consent/" || true
+          cp logs/watermark-status.csv "$ARCHIVE_DIR/consent/" || true
+          cp consent/consent-index.md "$ARCHIVE_DIR/consent/" || true
+          # Releases
+          cp releases/notes.md "$ARCHIVE_DIR/releases/" || true
+          cp releases/version-stamps.json "$ARCHIVE_DIR/releases/" || true
+          cp releases/checksum-manifest.txt "$ARCHIVE_DIR/releases/" || true
+          # Observability
+          cp observability/metrics-export.prom "$ARCHIVE_DIR/observability/" || true
+          cp observability/alert-log.json "$ARCHIVE_DIR/observability/" || true
+          cp observability/dashboard-snapshots.png "$ARCHIVE_DIR/observability/" || true
+          # Signature
+          cp signature/signed-by.txt "$ARCHIVE_DIR/signature/" || true
+          cp signature/SHA256.txt "$ARCHIVE_DIR/signature/" || true
+          cp signature/notarization.md "$ARCHIVE_DIR/signature/" || true
+          echo "Archive generated on $(date -u)" > "$ARCHIVE_DIR/README.txt"
+
+      - name: Seal archive (checksums + signature)
+        env:
+          COMPLIANCE_KEY_PASS: ${{ secrets.COMPLIANCE_KEY_PASS }}
+        run: |
+          python scripts/sign_archive.py \
+            --archive-root archives/current \
+            --key .github/keys/compliance_private.pem
+
+      - name: Write provenance note
+        run: |
+          cat > archives/current/PROVENANCE.md << 'EOF'
+          Signer: CodexDominion Compliance Key (CN=codex-compliance)
+          Algorithm: RSA-2048 + SHA256
+          Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          Scope: Detached signature over CHECKSUMS.txt covering all listed files.
+          Run ID: $GITHUB_RUN_ID
+          EOF
+
+      - name: Tar and upload archive
+        run: |
+          ARCHIVE_ID="ARCHIVE-$(date -u +%Y-%m)"
+          tar -czf "${ARCHIVE_ID}.tar.gz" -C archives/current .
+          echo "${ARCHIVE_ID}" > archives/LATEST.txt
+          echo "ARCHIVE_ID=${ARCHIVE_ID}" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Push metrics snapshot to Pushgateway
+        if: always()
+        run: |
+          python scripts/export_metrics_push.py --pushgateway "${{ secrets.PUSHGATEWAY_URL }}" --run-id "${{ github.run_id }}"
+
+      - name: Upload to S3 (IONOS)
+        env:
+          S3_ENDPOINT: ${{ secrets.IONOS_S3_ENDPOINT }}
+          S3_BUCKET: ${{ secrets.IONOS_S3_BUCKET }}
+          S3_KEY_ID: ${{ secrets.IONOS_S3_KEY_ID }}
+          S3_KEY_SECRET: ${{ secrets.IONOS_S3_KEY_SECRET }}
+        run: |
+          pip install awscli
+          aws configure set aws_access_key_id "$S3_KEY_ID"
+          aws configure set aws_secret_access_key "$S3_KEY_SECRET"
+          aws configure set default.s3.signature_version s3v4
+          aws --endpoint-url "$S3_ENDPOINT" s3 cp "${ARCHIVE_ID}.tar.gz" "s3://${S3_BUCKET}/archives/${ARCHIVE_ID}.tar.gz" \
+            --acl private --no-progress
+
+      - name: Record archive index
+        run: |
+          echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) ${ARCHIVE_ID}" >> archives/index.log

@@ -1,0 +1,25 @@
+{
+  "title": "System Health",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "CPU Usage",
+      "targets": [{ "expr": "rate(node_cpu_seconds_total[1m])" }]
+    },
+    {
+      "type": "graph",
+      "title": "Memory Usage",
+      "targets": [{ "expr": "node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes" }]
+    },
+    {
+      "type": "graph",
+      "title": "Disk Usage",
+      "targets": [{ "expr": "node_filesystem_avail_bytes / node_filesystem_size_bytes" }]
+    },
+    {
+      "type": "graph",
+      "title": "Container Uptime",
+      "targets": [{ "expr": "node_boot_time_seconds" }]
+    }
+  ]
+}

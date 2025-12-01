@@ -1,0 +1,20 @@
+{
+  "title": "NGINX Reverse Proxy",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Requests per Second",
+      "targets": [{ "expr": "nginx_http_requests_total" }]
+    },
+    {
+      "type": "graph",
+      "title": "Error Rate",
+      "targets": [{ "expr": "rate(nginx_http_requests_total{status=~\"5..\"}[1m])" }]
+    },
+    {
+      "type": "graph",
+      "title": "SSL Handshakes",
+      "targets": [{ "expr": "nginx_ssl_handshakes_total" }]
+    }
+  ]
+}

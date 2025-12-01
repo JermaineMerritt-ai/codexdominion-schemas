@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  codex-core:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-core
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/app
+    environment:
+      - UVICORN_CMD=uvicorn src.backend.main:app --host 0.0.0.0 --port 8080 --reload
+    command: sh -c "$UVICORN_CMD"
+    depends_on:
+      - codex-rag
+      - codex-replay
+
+  codex-rag:
+    image: codex/rag-engine:latest
+    container_name: codex-rag
+    ports:
+      - '8090:8090'
+    environment:
+      - RAG_INDEX_PATH=/data/index
+    volumes:
+      - ./data/rag:/data
+
+  codex-replay:
+    image: codex/replay-capsule:latest
+    container_name: codex-replay
+    ports:
+      - '8100:8100'
+    environment:
+      - REPLAY_ARCHIVE_PATH=/data/archive
+    volumes:
+      - ./data/replay:/data
+
+networks:
+  default:
+    name: codex-network

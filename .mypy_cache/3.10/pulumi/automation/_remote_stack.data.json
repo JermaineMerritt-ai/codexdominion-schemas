@@ -1,0 +1,737 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi.automation._remote_stack",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Deployment": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._workspace.Deployment",
+      "kind": "Gdef"
+    },
+    "DestroyResult": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._stack.DestroyResult",
+      "kind": "Gdef"
+    },
+    "OnEvent": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._stack.OnEvent",
+      "kind": "Gdef"
+    },
+    "OnOutput": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._cmd.OnOutput",
+      "kind": "Gdef"
+    },
+    "Optional": { ".class": "SymbolTableNode", "cross_ref": "typing.Optional", "kind": "Gdef" },
+    "OutputMap": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._output.OutputMap",
+      "kind": "Gdef"
+    },
+    "PreviewResult": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._stack.PreviewResult",
+      "kind": "Gdef"
+    },
+    "RefreshResult": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._stack.RefreshResult",
+      "kind": "Gdef"
+    },
+    "RemoteStack": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.automation._remote_stack.RemoteStack",
+          "name": "RemoteStack",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._remote_stack.RemoteStack",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.automation._remote_stack",
+        "mro": ["pulumi.automation._remote_stack.RemoteStack", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._remote_stack.RemoteStack.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack"],
+                "arg_types": [
+                  "pulumi.automation._remote_stack.RemoteStack",
+                  "pulumi.automation._stack.Stack"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of RemoteStack",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__stack": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._remote_stack.RemoteStack.__stack",
+              "name": "__stack",
+              "type": "pulumi.automation._stack.Stack"
+            }
+          },
+          "cancel": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._remote_stack.RemoteStack.cancel",
+              "name": "cancel",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.automation._remote_stack.RemoteStack"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "cancel of RemoteStack",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "destroy": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1],
+              "arg_names": ["self", "on_output", "on_event"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._remote_stack.RemoteStack.destroy",
+              "name": "destroy",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1],
+                "arg_names": ["self", "on_output", "on_event"],
+                "arg_types": [
+                  "pulumi.automation._remote_stack.RemoteStack",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._cmd.OnOutput"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._stack.OnEvent"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "destroy of RemoteStack",
+                "ret_type": "pulumi.automation._stack.DestroyResult",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "export_stack": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._remote_stack.RemoteStack.export_stack",
+              "name": "export_stack",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.automation._remote_stack.RemoteStack"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "export_stack of RemoteStack",
+                "ret_type": "pulumi.automation._workspace.Deployment",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "history": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1],
+              "arg_names": ["self", "page_size", "page"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._remote_stack.RemoteStack.history",
+              "name": "history",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1],
+                "arg_names": ["self", "page_size", "page"],
+                "arg_types": [
+                  "pulumi.automation._remote_stack.RemoteStack",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.int", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.int", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "history of RemoteStack",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": ["pulumi.automation._stack.UpdateSummary"],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.list"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "import_stack": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "state"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._remote_stack.RemoteStack.import_stack",
+              "name": "import_stack",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "state"],
+                "arg_types": [
+                  "pulumi.automation._remote_stack.RemoteStack",
+                  "pulumi.automation._workspace.Deployment"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "import_stack of RemoteStack",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi.automation._remote_stack.RemoteStack.name",
+                "name": "name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi.automation._remote_stack.RemoteStack"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "name of RemoteStack",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi.automation._remote_stack.RemoteStack.name",
+                "name": "name",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi.automation._remote_stack.RemoteStack"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "name of RemoteStack",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "outputs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._remote_stack.RemoteStack.outputs",
+              "name": "outputs",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.automation._remote_stack.RemoteStack"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "outputs of RemoteStack",
+                "ret_type": {
+                  ".class": "TypeAliasType",
+                  "args": [],
+                  "type_ref": "pulumi.automation._output.OutputMap"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "preview": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1],
+              "arg_names": ["self", "on_output", "on_event"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._remote_stack.RemoteStack.preview",
+              "name": "preview",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1],
+                "arg_names": ["self", "on_output", "on_event"],
+                "arg_types": [
+                  "pulumi.automation._remote_stack.RemoteStack",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._cmd.OnOutput"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._stack.OnEvent"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "preview of RemoteStack",
+                "ret_type": "pulumi.automation._stack.PreviewResult",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "refresh": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1],
+              "arg_names": ["self", "on_output", "on_event"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._remote_stack.RemoteStack.refresh",
+              "name": "refresh",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1],
+                "arg_names": ["self", "on_output", "on_event"],
+                "arg_types": [
+                  "pulumi.automation._remote_stack.RemoteStack",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._cmd.OnOutput"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._stack.OnEvent"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "refresh of RemoteStack",
+                "ret_type": "pulumi.automation._stack.RefreshResult",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "up": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1],
+              "arg_names": ["self", "on_output", "on_event"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._remote_stack.RemoteStack.up",
+              "name": "up",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1],
+                "arg_names": ["self", "on_output", "on_event"],
+                "arg_types": [
+                  "pulumi.automation._remote_stack.RemoteStack",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._cmd.OnOutput"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._stack.OnEvent"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "up of RemoteStack",
+                "ret_type": "pulumi.automation._stack.UpResult",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.automation._remote_stack.RemoteStack.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.automation._remote_stack.RemoteStack",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "Stack": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._stack.Stack",
+      "kind": "Gdef"
+    },
+    "UpResult": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._stack.UpResult",
+      "kind": "Gdef"
+    },
+    "UpdateSummary": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._stack.UpdateSummary",
+      "kind": "Gdef"
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._remote_stack.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._remote_stack.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._remote_stack.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._remote_stack.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._remote_stack.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._remote_stack.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi\\automation\\_remote_stack.py"
+}

@@ -1,0 +1,166 @@
+name: Docker Build & Push
+on:
+  push:
+    branches: ['main']
+    paths: ['docker/**', 'apps/services/**']
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [amd64, arm64]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: ACR login
+        uses: azure/docker-login@v2
+        with:
+          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build images (multi-arch)
+        run: |
+          docker buildx build --platform linux/${{ matrix.arch }} -f docker/Dockerfiles/chatbot.Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${{ github.sha }} --push . | tee chatbot-build-${{ matrix.arch }}.log
+          docker buildx build --platform linux/${{ matrix.arch }} -f docker/Dockerfiles/crm.Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/crm:${{ github.sha }} --push . | tee crm-build-${{ matrix.arch }}.log
+          docker buildx build --platform linux/${{ matrix.arch }} -f docker/Dockerfiles/markets.Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/markets:${{ github.sha }} --push . | tee markets-build-${{ matrix.arch }}.log
+
+      - name: Upload build logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs-${{ matrix.arch }}
+          path: |
+            chatbot-build-${{ matrix.arch }}.log
+            crm-build-${{ matrix.arch }}.log
+            markets-build-${{ matrix.arch }}.log
+
+      - name: Save image digests
+        run: |
+          docker buildx imagetools inspect ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${{ github.sha }} > chatbot-digest-${{ matrix.arch }}.txt
+          docker buildx imagetools inspect ${{ secrets.ACR_LOGIN_SERVER }}/crm:${{ github.sha }} > crm-digest-${{ matrix.arch }}.txt
+          docker buildx imagetools inspect ${{ secrets.ACR_LOGIN_SERVER }}/markets:${{ github.sha }} > markets-digest-${{ matrix.arch }}.txt
+
+      - name: Upload image digests
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-digests-${{ matrix.arch }}
+          path: |
+            chatbot-digest-${{ matrix.arch }}.txt
+            crm-digest-${{ matrix.arch }}.txt
+            markets-digest-${{ matrix.arch }}.txt
+            - name: Set tags
+              run: |
+                echo "TAG_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+                echo "TAG_DATE=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
+
+            - name: Build images (with cache)
+              run: |
+                docker build -f docker/Dockerfiles/chatbot.Dockerfile \
+                  -t ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_SHA} \
+                  -t ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_DATE} \
+                  -t ghcr.io/${{ github.repository }}/chatbot:${TAG_SHA} \
+                  -t ghcr.io/${{ github.repository }}/chatbot:${TAG_DATE} .
+                docker build -f docker/Dockerfiles/crm.Dockerfile \
+                  -t ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_SHA} \
+                  -t ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_DATE} \
+                  -t ghcr.io/${{ github.repository }}/crm:${TAG_SHA} \
+                  -t ghcr.io/${{ github.repository }}/crm:${TAG_DATE} .
+
+            - name: Push images (ACR)
+              run: |
+                docker push ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_SHA}
+                docker push ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_DATE}
+                docker push ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_SHA}
+                docker push ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_DATE}
+
+            - name: Push images (GHCR)
+              run: |
+                docker push ghcr.io/${{ github.repository }}/chatbot:${TAG_SHA}
+                docker push ghcr.io/${{ github.repository }}/chatbot:${TAG_DATE}
+                docker push ghcr.io/${{ github.repository }}/crm:${TAG_SHA}
+                docker push ghcr.io/${{ github.repository }}/crm:${TAG_DATE}
+
+            - name: Install Cosign
+              uses: sigstore/cosign-installer@v3
+
+            - name: Sign images (ACR)
+              run: |
+                cosign sign --yes ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_SHA}
+                cosign sign --yes ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_DATE}
+                cosign sign --yes ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_SHA}
+                cosign sign --yes ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_DATE}
+
+            - name: Sign images (GHCR)
+              run: |
+                cosign sign --yes ghcr.io/${{ github.repository }}/chatbot:${TAG_SHA}
+                cosign sign --yes ghcr.io/${{ github.repository }}/chatbot:${TAG_DATE}
+                cosign sign --yes ghcr.io/${{ github.repository }}/crm:${TAG_SHA}
+                cosign sign --yes ghcr.io/${{ github.repository }}/crm:${TAG_DATE}
+
+            - name: Show image digests
+              run: |
+                docker images --digests | grep -E 'chatbot|crm'
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set tags
+        run: |
+          echo "TAG_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "TAG_DATE=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
+
+      - name: Build images (with cache)
+        run: |
+          docker build -f docker/Dockerfiles/chatbot.Dockerfile \
+            -t ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_SHA} \
+            -t ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_DATE} \
+            -t ghcr.io/${{ github.repository }}/chatbot:${TAG_SHA} \
+            -t ghcr.io/${{ github.repository }}/chatbot:${TAG_DATE} .
+          docker build -f docker/Dockerfiles/crm.Dockerfile \
+            -t ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_SHA} \
+            -t ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_DATE} \
+            -t ghcr.io/${{ github.repository }}/crm:${TAG_SHA} \
+            -t ghcr.io/${{ github.repository }}/crm:${TAG_DATE} .
+
+      - name: Push images (ACR)
+        run: |
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_SHA}
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_DATE}
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_SHA}
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_DATE}
+
+      - name: Push images (GHCR)
+        run: |
+          docker push ghcr.io/${{ github.repository }}/chatbot:${TAG_SHA}
+          docker push ghcr.io/${{ github.repository }}/chatbot:${TAG_DATE}
+          docker push ghcr.io/${{ github.repository }}/crm:${TAG_SHA}
+          docker push ghcr.io/${{ github.repository }}/crm:${TAG_DATE}
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign images (ACR)
+        run: |
+          cosign sign --yes ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_SHA}
+          cosign sign --yes ${{ secrets.ACR_LOGIN_SERVER }}/chatbot:${TAG_DATE}
+          cosign sign --yes ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_SHA}
+          cosign sign --yes ${{ secrets.ACR_LOGIN_SERVER }}/crm:${TAG_DATE}
+
+      - name: Sign images (GHCR)
+        run: |
+          cosign sign --yes ghcr.io/${{ github.repository }}/chatbot:${TAG_SHA}
+          cosign sign --yes ghcr.io/${{ github.repository }}/chatbot:${TAG_DATE}
+          cosign sign --yes ghcr.io/${{ github.repository }}/crm:${TAG_SHA}
+          cosign sign --yes ghcr.io/${{ github.repository }}/crm:${TAG_DATE}
+
+      - name: Show image digests
+        run: |
+          docker images --digests | grep -E 'chatbot|crm'

@@ -1,0 +1,1821 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi.dynamic.dynamic",
+  "future_import_flags": [],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Any": { ".class": "SymbolTableNode", "cross_ref": "typing.Any", "kind": "Gdef" },
+    "CheckFailure": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.dynamic.dynamic.CheckFailure",
+          "name": "CheckFailure",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.dynamic.dynamic.CheckFailure",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.dynamic.dynamic",
+        "mro": ["pulumi.dynamic.dynamic.CheckFailure", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "property_", "reason"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.CheckFailure.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "property_", "reason"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.CheckFailure",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of CheckFailure",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "property": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.CheckFailure.property",
+              "name": "property",
+              "type": "builtins.str"
+            }
+          },
+          "reason": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.CheckFailure.reason",
+              "name": "reason",
+              "type": "builtins.str"
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.dynamic.dynamic.CheckFailure.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.dynamic.dynamic.CheckFailure",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "CheckResult": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.dynamic.dynamic.CheckResult",
+          "name": "CheckResult",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.dynamic.dynamic.CheckResult",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.dynamic.dynamic",
+        "mro": ["pulumi.dynamic.dynamic.CheckResult", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "inputs", "failures"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.CheckResult.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "inputs", "failures"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.CheckResult",
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": ["pulumi.dynamic.dynamic.CheckFailure"],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.list"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of CheckResult",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "failures": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.CheckResult.failures",
+              "name": "failures",
+              "type": {
+                ".class": "Instance",
+                "args": ["pulumi.dynamic.dynamic.CheckFailure"],
+                "extra_attrs": null,
+                "type_ref": "builtins.list"
+              }
+            }
+          },
+          "inputs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.CheckResult.inputs",
+              "name": "inputs",
+              "type": {
+                ".class": "Instance",
+                "args": [
+                  "builtins.str",
+                  {
+                    ".class": "AnyType",
+                    "missing_import_name": null,
+                    "source_any": null,
+                    "type_of_any": 2
+                  }
+                ],
+                "extra_attrs": null,
+                "type_ref": "builtins.dict"
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.dynamic.dynamic.CheckResult.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.dynamic.dynamic.CheckResult",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "ClassVar": { ".class": "SymbolTableNode", "cross_ref": "typing.ClassVar", "kind": "Gdef" },
+    "Config": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.dynamic.config.Config",
+      "kind": "Gdef"
+    },
+    "ConfigureRequest": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.dynamic.dynamic.ConfigureRequest",
+          "name": "ConfigureRequest",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.dynamic.dynamic.ConfigureRequest",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.dynamic.dynamic",
+        "mro": ["pulumi.dynamic.dynamic.ConfigureRequest", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "config"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.ConfigureRequest.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "config"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.ConfigureRequest",
+                  "pulumi.dynamic.config.Config"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of ConfigureRequest",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "config": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.ConfigureRequest.config",
+              "name": "config",
+              "type": "pulumi.dynamic.config.Config"
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.dynamic.dynamic.ConfigureRequest.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.dynamic.dynamic.ConfigureRequest",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "CreateResult": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.dynamic.dynamic.CreateResult",
+          "name": "CreateResult",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.dynamic.dynamic.CreateResult",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.dynamic.dynamic",
+        "mro": ["pulumi.dynamic.dynamic.CreateResult", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1],
+              "arg_names": ["self", "id_", "outs"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.CreateResult.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1],
+                "arg_names": ["self", "id_", "outs"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.CreateResult",
+                  "builtins.str",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "Instance",
+                        "args": [
+                          "builtins.str",
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 2
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.dict"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of CreateResult",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.CreateResult.id",
+              "name": "id",
+              "type": "builtins.str"
+            }
+          },
+          "outs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.CreateResult.outs",
+              "name": "outs",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.dynamic.dynamic.CreateResult.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.dynamic.dynamic.CreateResult",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "CustomResource": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.resource.CustomResource",
+      "kind": "Gdef"
+    },
+    "DiffResult": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.dynamic.dynamic.DiffResult",
+          "name": "DiffResult",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.dynamic.dynamic.DiffResult",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.dynamic.dynamic",
+        "mro": ["pulumi.dynamic.dynamic.DiffResult", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1, 1, 1],
+              "arg_names": ["self", "changes", "replaces", "stables", "delete_before_replace"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.DiffResult.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1, 1, 1],
+                "arg_names": ["self", "changes", "replaces", "stables", "delete_before_replace"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.DiffResult",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.bool", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "Instance",
+                        "args": ["builtins.str"],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.list"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "Instance",
+                        "args": ["builtins.str"],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.list"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.bool", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of DiffResult",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "changes": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.DiffResult.changes",
+              "name": "changes",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.bool", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "delete_before_replace": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.DiffResult.delete_before_replace",
+              "name": "delete_before_replace",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.bool", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "replaces": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.DiffResult.replaces",
+              "name": "replaces",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.list"
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "stables": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.DiffResult.stables",
+              "name": "stables",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.list"
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.dynamic.dynamic.DiffResult.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.dynamic.dynamic.DiffResult",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "Inputs": { ".class": "SymbolTableNode", "cross_ref": "pulumi.output.Inputs", "kind": "Gdef" },
+    "Optional": { ".class": "SymbolTableNode", "cross_ref": "typing.Optional", "kind": "Gdef" },
+    "PROVIDER_KEY": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready", "is_inferred", "has_explicit_value"],
+        "fullname": "pulumi.dynamic.dynamic.PROVIDER_KEY",
+        "name": "PROVIDER_KEY",
+        "type": "builtins.str"
+      }
+    },
+    "ReadResult": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.dynamic.dynamic.ReadResult",
+          "name": "ReadResult",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.dynamic.dynamic.ReadResult",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.dynamic.dynamic",
+        "mro": ["pulumi.dynamic.dynamic.ReadResult", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1],
+              "arg_names": ["self", "id_", "outs"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.ReadResult.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1],
+                "arg_names": ["self", "id_", "outs"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.ReadResult",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "Instance",
+                        "args": [
+                          "builtins.str",
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 2
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.dict"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of ReadResult",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "id": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.ReadResult.id",
+              "name": "id",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "outs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.ReadResult.outs",
+              "name": "outs",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.dynamic.dynamic.ReadResult.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.dynamic.dynamic.ReadResult",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "Resource": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi.resource.CustomResource"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.dynamic.dynamic.Resource",
+          "name": "Resource",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.dynamic.dynamic.Resource",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.dynamic.dynamic",
+        "mro": [
+          "pulumi.dynamic.dynamic.Resource",
+          "pulumi.resource.CustomResource",
+          "pulumi.resource.Resource",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 0, 1],
+              "arg_names": ["self", "provider", "name", "props", "opts"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.Resource.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 0, 1],
+                "arg_names": ["self", "provider", "name", "props", "opts"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.Resource",
+                  "pulumi.dynamic.dynamic.ResourceProvider",
+                  "builtins.str",
+                  { ".class": "TypeAliasType", "args": [], "type_ref": "pulumi.output.Inputs" },
+                  {
+                    ".class": "UnionType",
+                    "items": ["pulumi.resource.ResourceOptions", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of Resource",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__init_subclass__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1],
+              "arg_names": ["cls", "module", "name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": ["is_class"],
+              "fullname": "pulumi.dynamic.dynamic.Resource.__init_subclass__",
+              "name": "__init_subclass__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1],
+                "arg_names": ["cls", "module", "name"],
+                "arg_types": [
+                  { ".class": "TypeType", "item": "pulumi.dynamic.dynamic.Resource" },
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "cls" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init_subclass__ of Resource",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_resource_type_name": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_classvar", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.Resource._resource_type_name",
+              "name": "_resource_type_name",
+              "type": "builtins.str"
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.dynamic.dynamic.Resource.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.dynamic.dynamic.Resource",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "ResourceOptions": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.resource.ResourceOptions",
+      "kind": "Gdef"
+    },
+    "ResourceProvider": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.dynamic.dynamic.ResourceProvider",
+          "name": "ResourceProvider",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.dynamic.dynamic.ResourceProvider",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.dynamic.dynamic",
+        "mro": ["pulumi.dynamic.dynamic.ResourceProvider", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.ResourceProvider.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.dynamic.dynamic.ResourceProvider"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of ResourceProvider",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "check": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "_olds", "news"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.ResourceProvider.check",
+              "name": "check",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "_olds", "news"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.ResourceProvider",
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "check of ResourceProvider",
+                "ret_type": "pulumi.dynamic.dynamic.CheckResult",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "configure": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "req"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.ResourceProvider.configure",
+              "name": "configure",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "req"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.ResourceProvider",
+                  "pulumi.dynamic.dynamic.ConfigureRequest"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "configure of ResourceProvider",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "create": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "props"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.ResourceProvider.create",
+              "name": "create",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "props"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.ResourceProvider",
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "create of ResourceProvider",
+                "ret_type": "pulumi.dynamic.dynamic.CreateResult",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "delete": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "_id", "_props"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.ResourceProvider.delete",
+              "name": "delete",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "_id", "_props"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.ResourceProvider",
+                  "builtins.str",
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "delete of ResourceProvider",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "diff": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 0],
+              "arg_names": ["self", "_id", "_olds", "_news"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.ResourceProvider.diff",
+              "name": "diff",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 0],
+                "arg_names": ["self", "_id", "_olds", "_news"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.ResourceProvider",
+                  "builtins.str",
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "diff of ResourceProvider",
+                "ret_type": "pulumi.dynamic.dynamic.DiffResult",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "read": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "id_", "props"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.ResourceProvider.read",
+              "name": "read",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "id_", "props"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.ResourceProvider",
+                  "builtins.str",
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "read of ResourceProvider",
+                "ret_type": "pulumi.dynamic.dynamic.ReadResult",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "serialize_as_secret_always": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.dynamic.dynamic.ResourceProvider.serialize_as_secret_always",
+              "name": "serialize_as_secret_always",
+              "type": "builtins.bool"
+            }
+          },
+          "update": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 0],
+              "arg_names": ["self", "_id", "_olds", "_news"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.ResourceProvider.update",
+              "name": "update",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 0],
+                "arg_names": ["self", "_id", "_olds", "_news"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.ResourceProvider",
+                  "builtins.str",
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  },
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "update of ResourceProvider",
+                "ret_type": "pulumi.dynamic.dynamic.UpdateResult",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.dynamic.dynamic.ResourceProvider.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.dynamic.dynamic.ResourceProvider",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "TYPE_CHECKING": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TYPE_CHECKING",
+      "kind": "Gdef"
+    },
+    "UpdateResult": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.dynamic.dynamic.UpdateResult",
+          "name": "UpdateResult",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.dynamic.dynamic.UpdateResult",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.dynamic.dynamic",
+        "mro": ["pulumi.dynamic.dynamic.UpdateResult", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1],
+              "arg_names": ["self", "outs"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.dynamic.dynamic.UpdateResult.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1],
+                "arg_names": ["self", "outs"],
+                "arg_types": [
+                  "pulumi.dynamic.dynamic.UpdateResult",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "Instance",
+                        "args": [
+                          "builtins.str",
+                          {
+                            ".class": "AnyType",
+                            "missing_import_name": null,
+                            "source_any": null,
+                            "type_of_any": 2
+                          }
+                        ],
+                        "extra_attrs": null,
+                        "type_ref": "builtins.dict"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of UpdateResult",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "outs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.dynamic.dynamic.UpdateResult.outs",
+              "name": "outs",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "AnyType",
+                        "missing_import_name": null,
+                        "source_any": null,
+                        "type_of_any": 2
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.dict"
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.dynamic.dynamic.UpdateResult.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.dynamic.dynamic.UpdateResult",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.dynamic.dynamic.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.dynamic.dynamic.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.dynamic.dynamic.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.dynamic.dynamic.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.dynamic.dynamic.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.dynamic.dynamic.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_serialize": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.runtime._serialization._serialize",
+      "kind": "Gdef"
+    },
+    "base64": { ".class": "SymbolTableNode", "cross_ref": "base64", "kind": "Gdef" },
+    "cast": { ".class": "SymbolTableNode", "cross_ref": "typing.cast", "kind": "Gdef" },
+    "dill": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_suppressed_import", "is_ready", "is_inferred"],
+        "fullname": "pulumi.dynamic.dynamic.dill",
+        "name": "dill",
+        "type": {
+          ".class": "AnyType",
+          "missing_import_name": "pulumi.dynamic.dynamic.dill",
+          "source_any": null,
+          "type_of_any": 3
+        }
+      }
+    },
+    "no_type_check": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.no_type_check",
+      "kind": "Gdef"
+    },
+    "pickle": { ".class": "SymbolTableNode", "cross_ref": "pickle", "kind": "Gdef" },
+    "pulumi": { ".class": "SymbolTableNode", "cross_ref": "pulumi", "kind": "Gdef" },
+    "serialize_provider": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Decorator",
+        "func": {
+          ".class": "FuncDef",
+          "abstract_status": 0,
+          "arg_kinds": [0],
+          "arg_names": ["provider"],
+          "dataclass_transform_spec": null,
+          "deprecated": null,
+          "flags": ["is_decorated"],
+          "fullname": "pulumi.dynamic.dynamic.serialize_provider",
+          "name": "serialize_provider",
+          "type": null
+        },
+        "is_overload": false,
+        "var": {
+          ".class": "Var",
+          "flags": ["is_ready", "is_inferred"],
+          "fullname": "pulumi.dynamic.dynamic.serialize_provider",
+          "name": "serialize_provider",
+          "type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 6
+          }
+        }
+      }
+    },
+    "sys": { ".class": "SymbolTableNode", "cross_ref": "sys", "kind": "Gdef" }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi\\dynamic\\dynamic.py"
+}

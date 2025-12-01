@@ -1,0 +1,11 @@
+C:\Users\JMerr\OneDrive\Documents\.vscode\codex-dominion\codex-core\target\debug\deps\cookie-33e453f186135ee2.d: C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\lib.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\builder.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\parse.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\jar.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\delta.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\draft.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\expiration.rs
+
+C:\Users\JMerr\OneDrive\Documents\.vscode\codex-dominion\codex-core\target\debug\deps\libcookie-33e453f186135ee2.rmeta: C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\lib.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\builder.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\parse.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\jar.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\delta.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\draft.rs C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\expiration.rs
+
+C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\lib.rs:
+C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\builder.rs:
+C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\parse.rs:
+C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\jar.rs:
+C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\delta.rs:
+C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\draft.rs:
+C:\Users\JMerr\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cookie-0.16.2\src\expiration.rs:

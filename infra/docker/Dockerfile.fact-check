@@ -1,0 +1,9 @@
+# Dockerfile for fact-check Prometheus exporter
+FROM python:3.11-slim
+WORKDIR /app
+COPY fact_check_exporter.py ./
+COPY fact_check.py ./
+COPY requirements-fact-check.txt ./
+RUN pip install --no-cache-dir -r requirements-fact-check.txt
+EXPOSE 8000
+CMD ["python", "fact_check_exporter.py"]

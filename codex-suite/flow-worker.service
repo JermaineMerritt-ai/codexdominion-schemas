@@ -1,0 +1,13 @@
+# /etc/systemd/system/flow-worker.service
+[Unit]
+Description=Codex Flow Worker
+After=network.target
+
+[Service]
+WorkingDirectory=/srv/codex-suite
+ExecStart=/usr/bin/python3 apps/workers/flow_worker.py
+Restart=always
+User=codex
+
+[Install]
+WantedBy=multi-user.target

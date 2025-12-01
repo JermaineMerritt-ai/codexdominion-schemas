@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: codex-core
+spec:
+  replicas: 2
+  strategy:
+    canary:
+      steps:
+        - setWeight: 25
+        - pause: { duration: 90 }
+        - setWeight: 100
+  selector:
+    matchLabels:
+      app: codex-core
+  template:
+    metadata:
+      labels:
+        app: codex-core
+    spec:
+      containers:
+        - name: codex-core
+          image: ghcr.io/your-org/codex-core:latest
+          ports:
+            - containerPort: 8081
+          env:
+            - name: ENGINE_NAME
+              value: 'codex-core'
+            - name: PORT
+              value: '8081'
+          resources:
+            requests:
+              cpu: '500m'
+              memory: '1Gi'
+            limits:
+              cpu: '2000m'
+              memory: '2Gi'
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8081
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8081
+            initialDelaySeconds: 10

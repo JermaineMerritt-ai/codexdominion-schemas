@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+    scrape_configs:
+      - job_name: 'codex-core'
+        static_configs:
+          - targets: ['codex-core:8081']
+      - job_name: 'orchestrator'
+        static_configs:
+          - targets: ['orchestrator:8000']
+      - job_name: 'engines'
+        static_configs:
+          - targets:
+              - 'engine01:8080'
+              - 'engine02:8082'
+              # … add all engines up to engine16

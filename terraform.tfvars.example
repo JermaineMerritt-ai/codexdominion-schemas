@@ -1,0 +1,49 @@
+gcp_project_id       = "docker-domain-production"
+gcp_region           = "us-central1"
+
+db_tier              = "db-f1-micro"
+db_user              = "dominion_admin"
+db_pass              = "super-secure-password"
+
+signals_image        = "gcr.io/docker-domain-production/signals:latest"
+
+cloudflare_api_token = "cf_api_token_here"
+###############################
+# Example terraform.tfvars for Codex Dominion Multi-Cloud Infrastructure
+###############################
+
+# GCP Settings
+gcp_project_id        = "your-gcp-project-id"
+gcp_region            = "us-central1"
+
+# GKE/Kubernetes Cluster Settings
+k8s_host                   = "https://your-gke-endpoint"
+k8s_client_certificate     = "<base64-encoded-client-cert>"
+k8s_client_key             = "<base64-encoded-client-key>"
+k8s_cluster_ca_certificate = "<base64-encoded-ca-cert>"
+
+# Azure Settings
+azure_subscription_id = "your-azure-subscription-id"
+azure_resource_group  = "your-azure-resource-group"
+azure_location        = "eastus"
+
+# Azure Front Door Profile
+azure_afd_profile_name = "your-azure-afd-profile"
+
+# DNS and Domain Settings
+codexdominion_domain = "codexdominion.app"
+codexdominion_www_domain = "www.codexdominion.app"
+
+# Optional: Other variables for modules
+# gcp_gclb_ip_name = "your-gclb-ip-name"
+# azure_front_door_origin_group = "origin-group-gcp"
+# ...
+# terraform.tfvars.example
+# Copy this to terraform.tfvars and fill in your actual values
+
+project_id     = "your-gcp-project-id"
+region         = "us-central1"
+db_tier        = "db-f1-micro"
+db_user        = "codex_user"
+db_pass        = "your-secure-password"
+signals_image  = "gcr.io/your-gcp-project-id/codex-signals"

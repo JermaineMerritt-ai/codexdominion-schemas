@@ -1,0 +1,3422 @@
+{
+  ".class": "MypyFile",
+  "_fullname": "pulumi.automation._local_workspace",
+  "future_import_flags": ["annotations"],
+  "is_partial_stub_package": false,
+  "is_stub": false,
+  "names": {
+    ".class": "SymbolTable",
+    "Callable": { ".class": "SymbolTableNode", "cross_ref": "typing.Callable", "kind": "Gdef" },
+    "CommandResult": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._cmd.CommandResult",
+      "kind": "Gdef"
+    },
+    "ConfigMap": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._config.ConfigMap",
+      "kind": "Gdef"
+    },
+    "ConfigValue": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._config.ConfigValue",
+      "kind": "Gdef"
+    },
+    "Deployment": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._workspace.Deployment",
+      "kind": "Gdef"
+    },
+    "DockerImageCredentials": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.automation._local_workspace.DockerImageCredentials",
+          "name": "DockerImageCredentials",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace.DockerImageCredentials",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.automation._local_workspace",
+        "mro": ["pulumi.automation._local_workspace.DockerImageCredentials", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "username", "password"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.DockerImageCredentials.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "username", "password"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.DockerImageCredentials",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of DockerImageCredentials",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "password": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.DockerImageCredentials.password",
+              "name": "password",
+              "type": "builtins.str"
+            }
+          },
+          "username": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.DockerImageCredentials.username",
+              "name": "username",
+              "type": "builtins.str"
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.automation._local_workspace.DockerImageCredentials.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.automation._local_workspace.DockerImageCredentials",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "ExecutorImage": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.automation._local_workspace.ExecutorImage",
+          "name": "ExecutorImage",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace.ExecutorImage",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.automation._local_workspace",
+        "mro": ["pulumi.automation._local_workspace.ExecutorImage", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1],
+              "arg_names": ["self", "image", "credentials"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.ExecutorImage.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1],
+                "arg_names": ["self", "image", "credentials"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.ExecutorImage",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi.automation._local_workspace.DockerImageCredentials",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of ExecutorImage",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "credentials": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.ExecutorImage.credentials",
+              "name": "credentials",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  "pulumi.automation._local_workspace.DockerImageCredentials",
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "image": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.ExecutorImage.image",
+              "name": "image",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.automation._local_workspace.ExecutorImage.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.automation._local_workspace.ExecutorImage",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "InvalidVersionError": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation.errors.InvalidVersionError",
+      "kind": "Gdef"
+    },
+    "LocalWorkspace": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["pulumi.automation._workspace.Workspace"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.automation._local_workspace.LocalWorkspace",
+          "name": "LocalWorkspace",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace.LocalWorkspace",
+        "has_param_spec_type": false,
+        "metaclass_type": "abc.ABCMeta",
+        "metadata": {},
+        "module_name": "pulumi.automation._local_workspace",
+        "mro": [
+          "pulumi.automation._local_workspace.LocalWorkspace",
+          "pulumi.automation._workspace.Workspace",
+          "abc.ABC",
+          "builtins.object"
+        ],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1, 1, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "self",
+                "work_dir",
+                "pulumi_home",
+                "program",
+                "env_vars",
+                "secrets_provider",
+                "project_settings",
+                "stack_settings",
+                "pulumi_command"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "self",
+                  "work_dir",
+                  "pulumi_home",
+                  "program",
+                  "env_vars",
+                  "secrets_provider",
+                  "project_settings",
+                  "stack_settings",
+                  "pulumi_command"
+                ],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._workspace.PulumiFn"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "Instance",
+                        "args": ["builtins.str", "builtins.str"],
+                        "extra_attrs": null,
+                        "type_ref": "typing.Mapping"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi.automation._project_settings.ProjectSettings",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "Instance",
+                        "args": ["builtins.str", "pulumi.automation._stack_settings.StackSettings"],
+                        "extra_attrs": null,
+                        "type_ref": "typing.Mapping"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["pulumi.automation._cmd.PulumiCommand", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "__repr__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": [null],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.__repr__",
+              "name": "__repr__",
+              "type": null
+            }
+          },
+          "_remote": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote",
+              "name": "_remote",
+              "type": "builtins.bool"
+            }
+          },
+          "_remote_args": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_args",
+              "name": "_remote_args",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_remote_args of LocalWorkspace",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": ["builtins.str"],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.list"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_remote_env_vars": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_env_vars",
+              "name": "_remote_env_vars",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "Instance",
+                    "args": [
+                      "builtins.str",
+                      {
+                        ".class": "UnionType",
+                        "items": ["builtins.str", "pulumi.automation._local_workspace.Secret"],
+                        "uses_pep604_syntax": false
+                      }
+                    ],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Mapping"
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "_remote_executor_image": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_executor_image",
+              "name": "_remote_executor_image",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  "pulumi.automation._local_workspace.ExecutorImage",
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "_remote_git_auth": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_git_auth",
+              "name": "_remote_git_auth",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  "pulumi.automation._remote_workspace.RemoteGitAuth",
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "_remote_git_branch": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_git_branch",
+              "name": "_remote_git_branch",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "_remote_git_commit_hash": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_git_commit_hash",
+              "name": "_remote_git_commit_hash",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "_remote_git_project_path": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_git_project_path",
+              "name": "_remote_git_project_path",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "_remote_git_url": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_git_url",
+              "name": "_remote_git_url",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "_remote_inherit_settings": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_inherit_settings",
+              "name": "_remote_inherit_settings",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.bool", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "_remote_inherit_settings_supported": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_inherit_settings_supported",
+              "name": "_remote_inherit_settings_supported",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_remote_inherit_settings_supported of LocalWorkspace",
+                "ret_type": "builtins.bool",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_remote_pre_run_commands": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_pre_run_commands",
+              "name": "_remote_pre_run_commands",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.list"
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "_remote_skip_install_dependencies": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_skip_install_dependencies",
+              "name": "_remote_skip_install_dependencies",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.bool", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "_remote_supported": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._remote_supported",
+              "name": "_remote_supported",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_remote_supported of LocalWorkspace",
+                "ret_type": "builtins.bool",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_run_pulumi_cmd_sync": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1, 1],
+              "arg_names": ["self", "args", "on_output", "on_error"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._run_pulumi_cmd_sync",
+              "name": "_run_pulumi_cmd_sync",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1, 1],
+                "arg_names": ["self", "args", "on_output", "on_error"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.list"
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._cmd.OnOutput"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._cmd.OnOutput"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_run_pulumi_cmd_sync of LocalWorkspace",
+                "ret_type": "pulumi.automation._cmd.CommandResult",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "_version_check_opt_out": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace._version_check_opt_out",
+              "name": "_version_check_opt_out",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "_version_check_opt_out of LocalWorkspace",
+                "ret_type": "builtins.bool",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "add_environments": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 2],
+              "arg_names": ["self", "stack_name", "environment_names"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.add_environments",
+              "name": "add_environments",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 2],
+                "arg_names": ["self", "stack_name", "environment_names"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "add_environments of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "create_stack": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.create_stack",
+              "name": "create_stack",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack_name"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "create_stack of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "export_stack": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.export_stack",
+              "name": "export_stack",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack_name"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "export_stack of LocalWorkspace",
+                "ret_type": "pulumi.automation._workspace.Deployment",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "get_all_config": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.get_all_config",
+              "name": "get_all_config",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack_name"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "get_all_config of LocalWorkspace",
+                "ret_type": {
+                  ".class": "TypeAliasType",
+                  "args": [],
+                  "type_ref": "pulumi.automation._config.ConfigMap"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "get_config": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 5],
+              "arg_names": ["self", "stack_name", "key", "path"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.get_config",
+              "name": "get_config",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 5],
+                "arg_names": ["self", "stack_name", "key", "path"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "builtins.str",
+                  "builtins.bool"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "get_config of LocalWorkspace",
+                "ret_type": "pulumi.automation._config.ConfigValue",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "get_tag": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "stack_name", "key"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.get_tag",
+              "name": "get_tag",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "stack_name", "key"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "get_tag of LocalWorkspace",
+                "ret_type": "builtins.str",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "import_stack": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "stack_name", "state"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.import_stack",
+              "name": "import_stack",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "stack_name", "state"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "pulumi.automation._workspace.Deployment"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "import_stack of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "install": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "self",
+                "no_plugins",
+                "no_dependencies",
+                "reinstall",
+                "use_language_version_tools",
+                "on_output"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.install",
+              "name": "install",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "self",
+                  "no_plugins",
+                  "no_dependencies",
+                  "reinstall",
+                  "use_language_version_tools",
+                  "on_output"
+                ],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.bool",
+                  "builtins.bool",
+                  "builtins.bool",
+                  "builtins.bool",
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._cmd.OnOutput"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "install of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "install_plugin": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 1],
+              "arg_names": ["self", "name", "version", "kind"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.install_plugin",
+              "name": "install_plugin",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 1],
+                "arg_names": ["self", "name", "version", "kind"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "install_plugin of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "install_plugin_from_server": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 0],
+              "arg_names": ["self", "name", "version", "server"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.install_plugin_from_server",
+              "name": "install_plugin_from_server",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 0],
+                "arg_names": ["self", "name", "version", "server"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "install_plugin_from_server of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "list_environments": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.list_environments",
+              "name": "list_environments",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack_name"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "list_environments of LocalWorkspace",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": ["builtins.str"],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.list"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "list_plugins": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.list_plugins",
+              "name": "list_plugins",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "list_plugins of LocalWorkspace",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": ["pulumi.automation._workspace.PluginInfo"],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.list"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "list_stacks": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1],
+              "arg_names": ["self", "include_all"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.list_stacks",
+              "name": "list_stacks",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1],
+                "arg_names": ["self", "include_all"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.bool", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "list_stacks of LocalWorkspace",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": ["pulumi.automation._workspace.StackSummary"],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.list"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "list_tags": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.list_tags",
+              "name": "list_tags",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack_name"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "list_tags of LocalWorkspace",
+                "ret_type": {
+                  ".class": "TypeAliasType",
+                  "args": [],
+                  "type_ref": "pulumi.automation._tag.TagMap"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "post_command_callback": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.post_command_callback",
+              "name": "post_command_callback",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack_name"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "post_command_callback of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "project_settings": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.project_settings",
+              "name": "project_settings",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "project_settings of LocalWorkspace",
+                "ret_type": "pulumi.automation._project_settings.ProjectSettings",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "pulumi_version": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Decorator",
+              "func": {
+                ".class": "FuncDef",
+                "abstract_status": 0,
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "dataclass_transform_spec": null,
+                "deprecated": null,
+                "flags": ["is_property", "is_decorated"],
+                "fullname": "pulumi.automation._local_workspace.LocalWorkspace.pulumi_version",
+                "name": "pulumi_version",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "pulumi_version of LocalWorkspace",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              },
+              "is_overload": false,
+              "var": {
+                ".class": "Var",
+                "flags": ["is_initialized_in_class", "is_property", "is_ready", "is_inferred"],
+                "fullname": "pulumi.automation._local_workspace.LocalWorkspace.pulumi_version",
+                "name": "pulumi_version",
+                "type": {
+                  ".class": "CallableType",
+                  "arg_kinds": [0],
+                  "arg_names": ["self"],
+                  "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace"],
+                  "bound_args": [],
+                  "def_extras": { "first_arg": "self" },
+                  "fallback": "builtins.function",
+                  "from_concatenate": false,
+                  "implicit": false,
+                  "imprecise_arg_kinds": false,
+                  "is_ellipsis_args": false,
+                  "name": "pulumi_version of LocalWorkspace",
+                  "ret_type": "builtins.str",
+                  "type_guard": null,
+                  "type_is": null,
+                  "unpack_kwargs": false,
+                  "variables": []
+                }
+              }
+            }
+          },
+          "refresh_config": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.refresh_config",
+              "name": "refresh_config",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack_name"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "refresh_config of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "remove_all_config": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 5],
+              "arg_names": ["self", "stack_name", "keys", "path"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.remove_all_config",
+              "name": "remove_all_config",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 5],
+                "arg_names": ["self", "stack_name", "keys", "path"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "builtins.list"
+                  },
+                  "builtins.bool"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "remove_all_config of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "remove_config": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 5],
+              "arg_names": ["self", "stack_name", "key", "path"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.remove_config",
+              "name": "remove_config",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 5],
+                "arg_names": ["self", "stack_name", "key", "path"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "builtins.str",
+                  "builtins.bool"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "remove_config of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "remove_environment": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "stack_name", "environment_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.remove_environment",
+              "name": "remove_environment",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "stack_name", "environment_name"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "remove_environment of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "remove_plugin": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1, 1],
+              "arg_names": ["self", "name", "version_range", "kind"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.remove_plugin",
+              "name": "remove_plugin",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1, 1],
+                "arg_names": ["self", "name", "version_range", "kind"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "remove_plugin of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "remove_stack": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 1, 1],
+              "arg_names": ["self", "stack_name", "force", "preserve_config"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.remove_stack",
+              "name": "remove_stack",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 1, 1],
+                "arg_names": ["self", "stack_name", "force", "preserve_config"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.bool", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.bool", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "remove_stack of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "remove_tag": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "stack_name", "key"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.remove_tag",
+              "name": "remove_tag",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "stack_name", "key"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "remove_tag of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "save_project_settings": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "settings"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.save_project_settings",
+              "name": "save_project_settings",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "settings"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "pulumi.automation._project_settings.ProjectSettings"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "save_project_settings of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "save_stack_settings": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "stack_name", "settings"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.save_stack_settings",
+              "name": "save_stack_settings",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "stack_name", "settings"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "pulumi.automation._stack_settings.StackSettings"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "save_stack_settings of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "select_stack": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.select_stack",
+              "name": "select_stack",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack_name"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "select_stack of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "serialize_args_for_op": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.serialize_args_for_op",
+              "name": "serialize_args_for_op",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack_name"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "serialize_args_for_op of LocalWorkspace",
+                "ret_type": {
+                  ".class": "Instance",
+                  "args": ["builtins.str"],
+                  "extra_attrs": null,
+                  "type_ref": "builtins.list"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "set_all_config": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 5],
+              "arg_names": ["self", "stack_name", "config", "path"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.set_all_config",
+              "name": "set_all_config",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 5],
+                "arg_names": ["self", "stack_name", "config", "path"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  {
+                    ".class": "TypeAliasType",
+                    "args": [],
+                    "type_ref": "pulumi.automation._config.ConfigMap"
+                  },
+                  "builtins.bool"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "set_all_config of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "set_all_config_json": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0],
+              "arg_names": ["self", "stack_name", "config_json"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.set_all_config_json",
+              "name": "set_all_config_json",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0],
+                "arg_names": ["self", "stack_name", "config_json"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "set_all_config_json of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "set_config": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 0, 5],
+              "arg_names": ["self", "stack_name", "key", "value", "path"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.set_config",
+              "name": "set_config",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 0, 5],
+                "arg_names": ["self", "stack_name", "key", "value", "path"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "builtins.str",
+                  "pulumi.automation._config.ConfigValue",
+                  "builtins.bool"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "set_config of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "set_tag": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0, 0, 0],
+              "arg_names": ["self", "stack_name", "key", "value"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.set_tag",
+              "name": "set_tag",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0, 0, 0],
+                "arg_names": ["self", "stack_name", "key", "value"],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspace",
+                  "builtins.str",
+                  "builtins.str",
+                  "builtins.str"
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "set_tag of LocalWorkspace",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "stack": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.stack",
+              "name": "stack",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "stack of LocalWorkspace",
+                "ret_type": {
+                  ".class": "UnionType",
+                  "items": ["pulumi.automation._workspace.StackSummary", { ".class": "NoneType" }],
+                  "uses_pep604_syntax": false
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "stack_outputs": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.stack_outputs",
+              "name": "stack_outputs",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack_name"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "stack_outputs of LocalWorkspace",
+                "ret_type": {
+                  ".class": "TypeAliasType",
+                  "args": [],
+                  "type_ref": "pulumi.automation._output.OutputMap"
+                },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "stack_settings": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 0],
+              "arg_names": ["self", "stack_name"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.stack_settings",
+              "name": "stack_settings",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 0],
+                "arg_names": ["self", "stack_name"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace", "builtins.str"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "stack_settings of LocalWorkspace",
+                "ret_type": "pulumi.automation._stack_settings.StackSettings",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "who_am_i": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0],
+              "arg_names": ["self"],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspace.who_am_i",
+              "name": "who_am_i",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0],
+                "arg_names": ["self"],
+                "arg_types": ["pulumi.automation._local_workspace.LocalWorkspace"],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "who_am_i of LocalWorkspace",
+                "ret_type": "pulumi.automation._workspace.WhoAmIResult",
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.automation._local_workspace.LocalWorkspace.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.automation._local_workspace.LocalWorkspace",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "LocalWorkspaceOptions": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.object"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions",
+          "name": "LocalWorkspaceOptions",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions",
+        "has_param_spec_type": false,
+        "metaclass_type": null,
+        "metadata": {},
+        "module_name": "pulumi.automation._local_workspace",
+        "mro": ["pulumi.automation._local_workspace.LocalWorkspaceOptions", "builtins.object"],
+        "names": {
+          ".class": "SymbolTable",
+          "__init__": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "FuncDef",
+              "abstract_status": 0,
+              "arg_kinds": [0, 1, 1, 1, 1, 1, 1, 1, 1],
+              "arg_names": [
+                "self",
+                "work_dir",
+                "pulumi_home",
+                "program",
+                "env_vars",
+                "secrets_provider",
+                "project_settings",
+                "stack_settings",
+                "pulumi_command"
+              ],
+              "dataclass_transform_spec": null,
+              "deprecated": null,
+              "flags": [],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions.__init__",
+              "name": "__init__",
+              "type": {
+                ".class": "CallableType",
+                "arg_kinds": [0, 1, 1, 1, 1, 1, 1, 1, 1],
+                "arg_names": [
+                  "self",
+                  "work_dir",
+                  "pulumi_home",
+                  "program",
+                  "env_vars",
+                  "secrets_provider",
+                  "project_settings",
+                  "stack_settings",
+                  "pulumi_command"
+                ],
+                "arg_types": [
+                  "pulumi.automation._local_workspace.LocalWorkspaceOptions",
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "TypeAliasType",
+                        "args": [],
+                        "type_ref": "pulumi.automation._workspace.PulumiFn"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "Instance",
+                        "args": ["builtins.str", "builtins.str"],
+                        "extra_attrs": null,
+                        "type_ref": "typing.Mapping"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["builtins.str", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      "pulumi.automation._project_settings.ProjectSettings",
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": [
+                      {
+                        ".class": "Instance",
+                        "args": ["builtins.str", "pulumi.automation._stack_settings.StackSettings"],
+                        "extra_attrs": null,
+                        "type_ref": "typing.Mapping"
+                      },
+                      { ".class": "NoneType" }
+                    ],
+                    "uses_pep604_syntax": false
+                  },
+                  {
+                    ".class": "UnionType",
+                    "items": ["pulumi.automation._cmd.PulumiCommand", { ".class": "NoneType" }],
+                    "uses_pep604_syntax": false
+                  }
+                ],
+                "bound_args": [],
+                "def_extras": { "first_arg": "self" },
+                "fallback": "builtins.function",
+                "from_concatenate": false,
+                "implicit": false,
+                "imprecise_arg_kinds": false,
+                "is_ellipsis_args": false,
+                "name": "__init__ of LocalWorkspaceOptions",
+                "ret_type": { ".class": "NoneType" },
+                "type_guard": null,
+                "type_is": null,
+                "unpack_kwargs": false,
+                "variables": []
+              }
+            }
+          },
+          "env_vars": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions.env_vars",
+              "name": "env_vars",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.str", "builtins.str"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Mapping"
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "program": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions.program",
+              "name": "program",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "TypeAliasType",
+                    "args": [],
+                    "type_ref": "pulumi.automation._workspace.PulumiFn"
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "project_settings": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions.project_settings",
+              "name": "project_settings",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  "pulumi.automation._project_settings.ProjectSettings",
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "pulumi_command": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions.pulumi_command",
+              "name": "pulumi_command",
+              "type": {
+                ".class": "UnionType",
+                "items": ["pulumi.automation._cmd.PulumiCommand", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "pulumi_home": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions.pulumi_home",
+              "name": "pulumi_home",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "secrets_provider": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions.secrets_provider",
+              "name": "secrets_provider",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "stack_settings": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions.stack_settings",
+              "name": "stack_settings",
+              "type": {
+                ".class": "UnionType",
+                "items": [
+                  {
+                    ".class": "Instance",
+                    "args": ["builtins.str", "pulumi.automation._stack_settings.StackSettings"],
+                    "extra_attrs": null,
+                    "type_ref": "typing.Mapping"
+                  },
+                  { ".class": "NoneType" }
+                ],
+                "uses_pep604_syntax": false
+              }
+            }
+          },
+          "work_dir": {
+            ".class": "SymbolTableNode",
+            "kind": "Mdef",
+            "node": {
+              ".class": "Var",
+              "flags": ["is_initialized_in_class", "is_ready", "has_explicit_value"],
+              "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions.work_dir",
+              "name": "work_dir",
+              "type": {
+                ".class": "UnionType",
+                "items": ["builtins.str", { ".class": "NoneType" }],
+                "uses_pep604_syntax": false
+              }
+            }
+          }
+        },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.automation._local_workspace.LocalWorkspaceOptions.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.automation._local_workspace.LocalWorkspaceOptions",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "Mapping": { ".class": "SymbolTableNode", "cross_ref": "typing.Mapping", "kind": "Gdef" },
+    "OnOutput": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._cmd.OnOutput",
+      "kind": "Gdef"
+    },
+    "Optional": { ".class": "SymbolTableNode", "cross_ref": "typing.Optional", "kind": "Gdef" },
+    "OutputMap": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._output.OutputMap",
+      "kind": "Gdef"
+    },
+    "OutputValue": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._output.OutputValue",
+      "kind": "Gdef"
+    },
+    "PluginInfo": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._workspace.PluginInfo",
+      "kind": "Gdef"
+    },
+    "ProjectSettings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._project_settings.ProjectSettings",
+      "kind": "Gdef"
+    },
+    "PulumiCommand": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._cmd.PulumiCommand",
+      "kind": "Gdef"
+    },
+    "PulumiFn": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._workspace.PulumiFn",
+      "kind": "Gdef"
+    },
+    "RemoteGitAuth": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._remote_workspace.RemoteGitAuth",
+      "kind": "Gdef"
+    },
+    "Secret": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeInfo",
+        "_promote": [],
+        "abstract_attributes": [],
+        "alt_promote": null,
+        "bases": ["builtins.str"],
+        "dataclass_transform_spec": null,
+        "declared_metaclass": null,
+        "defn": {
+          ".class": "ClassDef",
+          "fullname": "pulumi.automation._local_workspace.Secret",
+          "name": "Secret",
+          "type_vars": []
+        },
+        "deletable_attributes": [],
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace.Secret",
+        "has_param_spec_type": false,
+        "metaclass_type": "abc.ABCMeta",
+        "metadata": {},
+        "module_name": "pulumi.automation._local_workspace",
+        "mro": [
+          "pulumi.automation._local_workspace.Secret",
+          "builtins.str",
+          "typing.Sequence",
+          "typing.Reversible",
+          "typing.Collection",
+          "typing.Iterable",
+          "typing.Container",
+          "builtins.object"
+        ],
+        "names": { ".class": "SymbolTable" },
+        "self_type": {
+          ".class": "TypeVarType",
+          "default": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 4
+          },
+          "fullname": "pulumi.automation._local_workspace.Secret.Self",
+          "id": 0,
+          "name": "Self",
+          "namespace": "",
+          "upper_bound": "pulumi.automation._local_workspace.Secret",
+          "values": [],
+          "variance": 0
+        },
+        "slots": null,
+        "tuple_type": null,
+        "type_vars": [],
+        "typeddict_type": null
+      }
+    },
+    "Stack": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._stack.Stack",
+      "kind": "Gdef"
+    },
+    "StackInitializer": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "TypeAlias",
+        "alias_tvars": [],
+        "column": 0,
+        "fullname": "pulumi.automation._local_workspace.StackInitializer",
+        "line": 740,
+        "no_args": false,
+        "normalized": false,
+        "python_3_12_type_alias": false,
+        "target": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0],
+          "arg_names": [null, null],
+          "arg_types": ["builtins.str", "pulumi.automation._workspace.Workspace"],
+          "bound_args": [],
+          "def_extras": {},
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": null,
+          "ret_type": "pulumi.automation._stack.Stack",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "StackSettings": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._stack_settings.StackSettings",
+      "kind": "Gdef"
+    },
+    "StackSummary": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._workspace.StackSummary",
+      "kind": "Gdef"
+    },
+    "TYPE_CHECKING": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "typing.TYPE_CHECKING",
+      "kind": "Gdef"
+    },
+    "TagMap": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._tag.TagMap",
+      "kind": "Gdef"
+    },
+    "TokenInformation": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._workspace.TokenInformation",
+      "kind": "Gdef"
+    },
+    "Union": { ".class": "SymbolTableNode", "cross_ref": "typing.Union", "kind": "Gdef" },
+    "VersionInfo": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "semver.version.VersionInfo",
+      "kind": "Gdef"
+    },
+    "WhoAmIResult": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._workspace.WhoAmIResult",
+      "kind": "Gdef"
+    },
+    "Workspace": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._workspace.Workspace",
+      "kind": "Gdef"
+    },
+    "_DATETIME_FORMAT": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._stack._DATETIME_FORMAT",
+      "kind": "Gdef"
+    },
+    "_SECRET_SENTINEL": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._config._SECRET_SENTINEL",
+      "kind": "Gdef"
+    },
+    "_SKIP_VERSION_CHECK_VAR": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "pulumi.automation._env._SKIP_VERSION_CHECK_VAR",
+      "kind": "Gdef"
+    },
+    "__annotations__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._local_workspace.__annotations__",
+        "name": "__annotations__",
+        "type": {
+          ".class": "Instance",
+          "args": [
+            "builtins.str",
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 6
+            }
+          ],
+          "extra_attrs": null,
+          "type_ref": "builtins.dict"
+        }
+      }
+    },
+    "__doc__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._local_workspace.__doc__",
+        "name": "__doc__",
+        "type": "builtins.str"
+      }
+    },
+    "__file__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._local_workspace.__file__",
+        "name": "__file__",
+        "type": "builtins.str"
+      }
+    },
+    "__name__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._local_workspace.__name__",
+        "name": "__name__",
+        "type": "builtins.str"
+      }
+    },
+    "__package__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._local_workspace.__package__",
+        "name": "__package__",
+        "type": "builtins.str"
+      }
+    },
+    "__spec__": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_ready"],
+        "fullname": "pulumi.automation._local_workspace.__spec__",
+        "name": "__spec__",
+        "type": "_frozen_importlib.ModuleSpec"
+      }
+    },
+    "_inline_source_stack_helper": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 0, 0, 1],
+        "arg_names": ["stack_name", "program", "project_name", "init_fn", "opts"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace._inline_source_stack_helper",
+        "name": "_inline_source_stack_helper",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0, 0, 1],
+          "arg_names": ["stack_name", "program", "project_name", "init_fn", "opts"],
+          "arg_types": [
+            "builtins.str",
+            {
+              ".class": "TypeAliasType",
+              "args": [],
+              "type_ref": "pulumi.automation._workspace.PulumiFn"
+            },
+            "builtins.str",
+            {
+              ".class": "TypeAliasType",
+              "args": [],
+              "type_ref": "pulumi.automation._local_workspace.StackInitializer"
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                "pulumi.automation._local_workspace.LocalWorkspaceOptions",
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_inline_source_stack_helper",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 1
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_is_inline_program": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [4],
+        "arg_names": ["kwargs"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace._is_inline_program",
+        "name": "_is_inline_program",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [4],
+          "arg_names": ["kwargs"],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 1
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_is_inline_program",
+          "ret_type": "builtins.bool",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_is_local_program": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [4],
+        "arg_names": ["kwargs"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace._is_local_program",
+        "name": "_is_local_program",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [4],
+          "arg_names": ["kwargs"],
+          "arg_types": [
+            {
+              ".class": "AnyType",
+              "missing_import_name": null,
+              "source_any": null,
+              "type_of_any": 1
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_is_local_program",
+          "ret_type": "builtins.bool",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_load_project_settings": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["work_dir"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace._load_project_settings",
+        "name": "_load_project_settings",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["work_dir"],
+          "arg_types": ["builtins.str"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_load_project_settings",
+          "ret_type": "pulumi.automation._project_settings.ProjectSettings",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_local_source_stack_helper": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 0, 0, 1],
+        "arg_names": ["stack_name", "work_dir", "init_fn", "opts"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace._local_source_stack_helper",
+        "name": "_local_source_stack_helper",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 0, 0, 1],
+          "arg_names": ["stack_name", "work_dir", "init_fn", "opts"],
+          "arg_types": [
+            "builtins.str",
+            "builtins.str",
+            {
+              ".class": "TypeAliasType",
+              "args": [],
+              "type_ref": "pulumi.automation._local_workspace.StackInitializer"
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                "pulumi.automation._local_workspace.LocalWorkspaceOptions",
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "_local_source_stack_helper",
+          "ret_type": {
+            ".class": "AnyType",
+            "missing_import_name": null,
+            "source_any": null,
+            "type_of_any": 1
+          },
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "_setting_extensions": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "Var",
+        "flags": ["is_inferred", "has_explicit_value"],
+        "fullname": "pulumi.automation._local_workspace._setting_extensions",
+        "name": "_setting_extensions",
+        "type": {
+          ".class": "Instance",
+          "args": ["builtins.str"],
+          "extra_attrs": null,
+          "type_ref": "builtins.list"
+        }
+      }
+    },
+    "annotations": {
+      ".class": "SymbolTableNode",
+      "cross_ref": "__future__.annotations",
+      "kind": "Gdef"
+    },
+    "create_or_select_stack": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 1, 1, 1, 1],
+        "arg_names": ["stack_name", "project_name", "program", "work_dir", "opts"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace.create_or_select_stack",
+        "name": "create_or_select_stack",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 1, 1, 1, 1],
+          "arg_names": ["stack_name", "project_name", "program", "work_dir", "opts"],
+          "arg_types": [
+            "builtins.str",
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [],
+                  "type_ref": "pulumi.automation._workspace.PulumiFn"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                "pulumi.automation._local_workspace.LocalWorkspaceOptions",
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "create_or_select_stack",
+          "ret_type": "pulumi.automation._stack.Stack",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "create_stack": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 1, 1, 1, 1],
+        "arg_names": ["stack_name", "project_name", "program", "work_dir", "opts"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace.create_stack",
+        "name": "create_stack",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 1, 1, 1, 1],
+          "arg_names": ["stack_name", "project_name", "program", "work_dir", "opts"],
+          "arg_types": [
+            "builtins.str",
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [],
+                  "type_ref": "pulumi.automation._workspace.PulumiFn"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                "pulumi.automation._local_workspace.LocalWorkspaceOptions",
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "create_stack",
+          "ret_type": "pulumi.automation._stack.Stack",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "datetime": { ".class": "SymbolTableNode", "cross_ref": "datetime.datetime", "kind": "Gdef" },
+    "default_project": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["project_name"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace.default_project",
+        "name": "default_project",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["project_name"],
+          "arg_types": ["builtins.str"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "default_project",
+          "ret_type": "pulumi.automation._project_settings.ProjectSettings",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "get_stack_settings_name": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0],
+        "arg_names": ["name"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace.get_stack_settings_name",
+        "name": "get_stack_settings_name",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0],
+          "arg_names": ["name"],
+          "arg_types": ["builtins.str"],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "get_stack_settings_name",
+          "ret_type": "builtins.str",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "json": { ".class": "SymbolTableNode", "cross_ref": "json", "kind": "Gdef" },
+    "os": { ".class": "SymbolTableNode", "cross_ref": "os", "kind": "Gdef" },
+    "select_stack": {
+      ".class": "SymbolTableNode",
+      "kind": "Gdef",
+      "node": {
+        ".class": "FuncDef",
+        "abstract_status": 0,
+        "arg_kinds": [0, 1, 1, 1, 1],
+        "arg_names": ["stack_name", "project_name", "program", "work_dir", "opts"],
+        "dataclass_transform_spec": null,
+        "deprecated": null,
+        "flags": [],
+        "fullname": "pulumi.automation._local_workspace.select_stack",
+        "name": "select_stack",
+        "type": {
+          ".class": "CallableType",
+          "arg_kinds": [0, 1, 1, 1, 1],
+          "arg_names": ["stack_name", "project_name", "program", "work_dir", "opts"],
+          "arg_types": [
+            "builtins.str",
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                {
+                  ".class": "TypeAliasType",
+                  "args": [],
+                  "type_ref": "pulumi.automation._workspace.PulumiFn"
+                },
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": ["builtins.str", { ".class": "NoneType" }],
+              "uses_pep604_syntax": false
+            },
+            {
+              ".class": "UnionType",
+              "items": [
+                "pulumi.automation._local_workspace.LocalWorkspaceOptions",
+                { ".class": "NoneType" }
+              ],
+              "uses_pep604_syntax": false
+            }
+          ],
+          "bound_args": [],
+          "def_extras": { "first_arg": null },
+          "fallback": "builtins.function",
+          "from_concatenate": false,
+          "implicit": false,
+          "imprecise_arg_kinds": false,
+          "is_ellipsis_args": false,
+          "name": "select_stack",
+          "ret_type": "pulumi.automation._stack.Stack",
+          "type_guard": null,
+          "type_is": null,
+          "unpack_kwargs": false,
+          "variables": []
+        }
+      }
+    },
+    "tempfile": { ".class": "SymbolTableNode", "cross_ref": "tempfile", "kind": "Gdef" },
+    "yaml": { ".class": "SymbolTableNode", "cross_ref": "yaml", "kind": "Gdef" }
+  },
+  "path": "c:\\Users\\JMerr\\OneDrive\\Documents\\.vscode\\codex-dominion\\.venv\\Lib\\site-packages\\pulumi\\automation\\_local_workspace.py"
+}

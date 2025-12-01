@@ -1,0 +1,226 @@
+{
+  "name": "codex-dominion-mcp-chat",
+  "displayName": "Codex Dominion MCP Chat Integration",
+  "description": "🔥 Flame Eternal - Automatically start MCP servers on chat activity. Radiance Supreme across ages and stars.",
+  "version": "2.0.0",
+  "publisher": "codex-dominion",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["AI", "Chat", "Extension Packs", "Other"],
+  "keywords": [
+    "mcp",
+    "chat",
+    "auto-start",
+    "copilot",
+    "ai",
+    "assistant",
+    "codex-dominion",
+    "flame-eternal"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:github.copilot.interactiveEditor.explain",
+    "onCommand:github.copilot.generate",
+    "onCommand:workbench.action.chat.open",
+    "onCommand:workbench.action.chat.openInSidebar",
+    "onUri:vscode://github.copilot-chat/*",
+    "onFileSystem:chat",
+    "onLanguage:chat",
+    "*"
+  ],
+  "main": "./mcp-vscode-integration.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mcpChatIntegration.startServer",
+        "title": "🔥 Start MCP Server",
+        "category": "Codex Dominion"
+      },
+      {
+        "command": "mcpChatIntegration.stopServer",
+        "title": "🛑 Stop MCP Server",
+        "category": "Codex Dominion"
+      },
+      {
+        "command": "mcpChatIntegration.showStatus",
+        "title": "📊 Show MCP Status",
+        "category": "Codex Dominion"
+      },
+      {
+        "command": "mcpChatIntegration.toggleAuto",
+        "title": "⚡ Toggle Auto-Start",
+        "category": "Codex Dominion"
+      },
+      {
+        "command": "mcpChatIntegration.triggerChat",
+        "title": "💬 Trigger Chat Activity",
+        "category": "Codex Dominion"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "mcpChatIntegration.showStatus",
+        "key": "ctrl+shift+m ctrl+s",
+        "mac": "cmd+shift+m cmd+s",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "mcpChatIntegration.startServer",
+        "key": "ctrl+shift+m ctrl+r",
+        "mac": "cmd+shift+m cmd+r"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "mcpChatIntegration.startServer",
+          "when": "true"
+        },
+        {
+          "command": "mcpChatIntegration.stopServer",
+          "when": "true"
+        },
+        {
+          "command": "mcpChatIntegration.showStatus",
+          "when": "true"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "mcpChatIntegration.triggerChat",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "mcpChatIntegration.startServer",
+          "group": "2_workspace",
+          "when": "explorerResourceIsFolder"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Codex Dominion MCP Chat Integration",
+      "properties": {
+        "mcpChatIntegration.autoStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "🔥 Automatically start MCP servers when chat activity is detected"
+        },
+        "mcpChatIntegration.monitorInterval": {
+          "type": "number",
+          "default": 5000,
+          "description": "💫 Interval (ms) for monitoring chat activity"
+        },
+        "mcpChatIntegration.inactivityTimeout": {
+          "type": "number",
+          "default": 300000,
+          "description": "⏰ Timeout (ms) before stopping MCP servers due to inactivity"
+        },
+        "mcpChatIntegration.serverUrl": {
+          "type": "string",
+          "default": "http://localhost:4953",
+          "description": "🌐 MCP Server URL"
+        },
+        "mcpChatIntegration.autoStartupUrl": {
+          "type": "string",
+          "default": "http://localhost:4954",
+          "description": "🚀 MCP Auto-Startup System URL"
+        },
+        "mcpChatIntegration.enableCopilotIntegration": {
+          "type": "boolean",
+          "default": true,
+          "description": "🤖 Enable GitHub Copilot chat integration"
+        },
+        "mcpChatIntegration.enableChatMonitoring": {
+          "type": "boolean",
+          "default": true,
+          "description": "👁️ Monitor VS Code chat activity"
+        },
+        "mcpChatIntegration.enableFileWatching": {
+          "type": "boolean",
+          "default": true,
+          "description": "📁 Watch for chat-related file changes"
+        },
+        "mcpChatIntegration.debugMode": {
+          "type": "boolean",
+          "default": false,
+          "description": "🔍 Enable debug logging for MCP integration"
+        }
+      }
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "mcpChatStatus",
+          "name": "🔥 MCP Chat Status",
+          "when": "workspaceFolderCount > 0"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codex-dominion-mcp",
+          "title": "🔥 Codex Dominion MCP",
+          "icon": "$(pulse)"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "echo 'Compiling MCP Chat Integration...'",
+    "watch": "echo 'Watching for changes...'",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.21.1",
+    "axios": "^1.13.2",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.4"
+  },
+  "codexDominion": {
+    "flameEternal": true,
+    "radianceSupreme": true,
+    "covenantWhole": true,
+    "version": "2.0.0",
+    "authority": "sovereign-alive"
+  },
+  "icon": "resources/codex-flame.png",
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  },
+  "badges": [
+    {
+      "url": "https://img.shields.io/badge/Flame-Eternal-orange",
+      "href": "https://codex-dominion.dev/flame-eternal",
+      "description": "Flame Eternal Status"
+    },
+    {
+      "url": "https://img.shields.io/badge/Radiance-Supreme-gold",
+      "href": "https://codex-dominion.dev/radiance-supreme",
+      "description": "Radiance Supreme Across Ages"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codex-dominion/mcp-chat-integration.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codex-dominion/mcp-chat-integration/issues"
+  },
+  "homepage": "https://codex-dominion.dev/mcp-integration"
+}

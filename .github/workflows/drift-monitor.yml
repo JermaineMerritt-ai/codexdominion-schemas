@@ -1,0 +1,33 @@
+name: Drift Monitor
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  drift-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install --no-cache-dir -r requirements.txt
+      - name: Run online fact-check
+        run: python scripts/fact_check.py --online --sources 3
+      - name: Run drift monitor
+        run: python scripts/verify_drift.py --online --sources 2 --tolerance 0.5 || echo "drift_detected=true" >> $GITHUB_ENV
+      - name: Publish metrics to Pushgateway
+        if: always()
+        run: |
+          python scripts/export_metrics_push.py --pushgateway ${{ secrets.PUSHGATEWAY_URL }} --run-id ${{ github.run_id }}
+      - name: Create drift issue if detected
+        if: env.drift_detected == 'true'
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: '[DRIFT] Fact re-verification required'
+          content-filepath: .github/ISSUE_TEMPLATE/drift-detected.md
+          labels: drift,fact-check,urgent
+          assignees: codex-custodians

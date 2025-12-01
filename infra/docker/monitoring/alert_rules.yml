@@ -1,0 +1,43 @@
+groups:
+  - name: codexdominion-alerts
+    interval: 30s
+    rules:
+      # 🚨 Drift monitoring
+      - alert: DriftSpike
+        expr: drift_events_detected > 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'Drift detected in verified facts'
+          description: 'One or more facts have drifted beyond tolerance.'
+
+      # 🚨 Fact-check failures
+      - alert: FactCheckFailure
+        expr: fact_check_errors > 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Fact-check validation failed'
+          description: 'Errors detected in fact-check pipeline.'
+
+      # 🚨 NGINX error rate
+      - alert: NginxHighErrorRate
+        expr: rate(nginx_http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'High NGINX error rate'
+          description: '5xx errors exceed 5% of total requests.'
+
+      # 🚨 WordPress PHP errors
+      - alert: WordPressPhpErrors
+        expr: rate(php_errors_total[5m]) > 10
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Excessive PHP errors'
+          description: 'WordPress containers are logging more than 10 PHP errors per 5 minutes.'

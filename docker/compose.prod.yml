@@ -1,0 +1,95 @@
+services:
+  reverse-proxy:
+    image: nginx:stable
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      chatbot:
+        condition: service_healthy
+      crm:
+        condition: service_healthy
+    restart: always
+    labels:
+      environment: 'prod'
+      owner: 'codex-dominion'
+      version: '${TAG_SHA}'
+
+  chatbot:
+    image: IMAGE_CHATBOT
+    env_file: ./envs/prod/chatbot.env
+    restart: always
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -fsS http://localhost:8081/health || exit 1']
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: '512M'
+    labels:
+      environment: 'prod'
+      owner: 'codex-dominion'
+      version: '${TAG_SHA}'
+    depends_on:
+      cosign-verify-chatbot:
+        condition: service_completed_successfully
+
+  cosign-verify-chatbot:
+    image: ghcr.io/sigstore/cosign:v2.2.3
+    entrypoint: ['/cosign']
+    command: ['verify', 'IMAGE_CHATBOT']
+    environment:
+      COSIGN_EXPERIMENTAL: 'true'
+    profiles: ['init']
+
+  crm:
+    image: IMAGE_CRM
+    env_file: ./envs/prod/crm.env
+    restart: always
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -fsS http://localhost:8082/health || exit 1']
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: '512M'
+    labels:
+      environment: 'prod'
+      owner: 'codex-dominion'
+      version: '${TAG_SHA}'
+    depends_on:
+      cosign-verify-crm:
+        condition: service_completed_successfully
+
+  cosign-verify-crm:
+    image: ghcr.io/sigstore/cosign:v2.2.3
+    entrypoint: ['/cosign']
+    command: ['verify', 'IMAGE_CRM']
+    environment:
+      COSIGN_EXPERIMENTAL: 'true'
+    profiles: ['init']
+
+  prometheus-chatbot-exporter:
+    image: prom/prometheus
+    command: ['--web.listen-address=:9101', '--config.file=/etc/prometheus/prometheus.yml']
+    depends_on:
+      chatbot:
+        condition: service_healthy
+    profiles: ['monitoring']
+
+  prometheus-crm-exporter:
+    image: prom/prometheus
+    command: ['--web.listen-address=:9102', '--config.file=/etc/prometheus/prometheus.yml']
+    depends_on:
+      crm:
+        condition: service_healthy
+    profiles: ['monitoring']

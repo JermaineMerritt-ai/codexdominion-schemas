@@ -1,0 +1,40 @@
+capsule:
+  name: 'Replay Shell'
+  version: '1.0.0'
+  type: 'sovereign'
+  description: >
+    The Replay Shell — operational memory capsule that archives scrolls,
+    deployments, and contributor actions as repeatable, lineage-safe artifacts.
+
+lineage:
+  ancestry_id: 'genesis-0003'
+  parent_capsules:
+    - 'treaty-capsule-genesis-0001'
+    - 'consent-capsule-genesis-0002'
+  remix_policy: 'remixable-with-attribution'
+  contributor_roles:
+    - name: 'Jermaine Merritt'
+      role: 'Custodian'
+      seal: '⚜️'
+    - name: 'Future Custodians'
+      role: 'Archivists'
+      seal: '∞'
+
+ethics:
+  consent_required: true
+  attribution: required
+  retention: 'eternal'
+  remix_equity: true
+  broadcast_rights: true
+  audit_trail: 'all actions logged and sealed'
+
+deployment:
+  storage: 'IONOS Object Storage'
+  archive_path: 's3://codex-dominion/genesis/replay_shell/'
+  broadcast: 'OBS + Unity'
+  checksum: 'to-be-generated'
+
+seals:
+  created_at: '2025-10-27T16:41:00Z'
+  custodian_signature: 'Jermaine Merritt'
+  codex_seal: 'REPLAY-GENESIS'

@@ -1,0 +1,20 @@
+{
+  "title": "MySQL Databases",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Query Throughput",
+      "targets": [{ "expr": "rate(mysql_queries_total[1m])" }]
+    },
+    {
+      "type": "graph",
+      "title": "Replication Lag",
+      "targets": [{ "expr": "mysql_replication_lag_seconds" }]
+    },
+    {
+      "type": "graph",
+      "title": "Slow Queries",
+      "targets": [{ "expr": "mysql_slow_queries_total" }]
+    }
+  ]
+}

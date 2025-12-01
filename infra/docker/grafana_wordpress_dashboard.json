@@ -1,0 +1,20 @@
+{
+  "title": "WordPress Stores",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Page Load Times",
+      "targets": [{ "expr": "php_request_duration_seconds" }]
+    },
+    {
+      "type": "graph",
+      "title": "PHP Errors",
+      "targets": [{ "expr": "php_errors_total" }]
+    },
+    {
+      "type": "graph",
+      "title": "DB Queries",
+      "targets": [{ "expr": "mysql_queries_total" }]
+    }
+  ]
+}

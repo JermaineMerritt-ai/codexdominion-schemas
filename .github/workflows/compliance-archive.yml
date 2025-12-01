@@ -1,0 +1,56 @@
+name: Monthly Compliance Archive
+
+on:
+  schedule:
+    - cron: '0 6 1 * *' # Runs at 6:00 UTC on the 1st of every month
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run fact check
+        run: python scripts/fact_check.py || true
+
+      - name: Run drift monitor
+        run: python scripts/verify_drift.py || true
+
+      - name: Prepare archive
+        run: |
+          mkdir -p compliance_archive
+          # Use canonical ledger
+          cp data/ledger.json compliance_archive/ledger.json
+          # Archive all log files
+          for f in logs/*.log; do
+            cp "$f" compliance_archive/$(basename "$f")
+          done
+          echo "Archive generated on $(date -u)" > compliance_archive/README.txt
+          find infra/envs/ -type f -name 'lineage-manifest-*.json' -exec cp {} compliance_archive/ \;
+
+      - name: Install pdfkit and wkhtmltopdf
+        run: |
+          sudo apt-get update && sudo apt-get install -y wkhtmltopdf
+          pip install pdfkit
+
+      - name: Convert JSON manifests to PDF
+        run: |
+          for f in compliance_archive/lineage-manifest-*.json; do
+            bname=$(basename "$f" .json)
+            cat "$f" | jq . | sed 's/\"/"/g' > compliance_archive/${bname}.txt
+            wkhtmltopdf compliance_archive/${bname}.txt compliance_archive/${bname}.pdf
+          done
+
+      - name: Bundle all PDFs
+        run: |
+          zip -j compliance_archive.zip compliance_archive/*.pdf
+
+      - name: Upload compliance archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: monthly-compliance-archive
+          path: compliance_archive.zip

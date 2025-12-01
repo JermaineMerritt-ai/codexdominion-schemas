@@ -1,0 +1,37 @@
+{
+  "title": "Prompt Filter Decisions",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Allowed Prompts",
+      "targets": [
+        { "expr": "count_over_time(prompt_filter_decision_total{decision=\"allow\"}[5m])" }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Blocked Prompts",
+      "targets": [
+        { "expr": "count_over_time(prompt_filter_decision_total{decision=\"block\"}[5m])" }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Reviewed Prompts",
+      "targets": [
+        { "expr": "count_over_time(prompt_filter_decision_total{decision=\"review\"}[5m])" }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Prompt Decisions Over Time",
+      "targets": [{ "expr": "rate(prompt_filter_decision_total[1m])" }]
+    },
+    {
+      "type": "table",
+      "title": "Recent Prompt Logs",
+      "targets": [{ "expr": "prompt_filter_logs" }],
+      "columns": ["timestamp", "consent_id", "subject_id", "prompt", "decision", "reason"]
+    }
+  ]
+}

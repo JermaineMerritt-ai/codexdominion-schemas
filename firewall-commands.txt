@@ -1,0 +1,28 @@
+# Manual Windows Firewall Commands (Run as Administrator)
+
+# Open PowerShell as Administrator and run these commands:
+
+# Allow HTTP (Port 80)
+netsh advfirewall firewall add rule name="Codex HTTP" dir=in action=allow protocol=TCP localport=80
+
+# Allow HTTPS (Port 443)  
+netsh advfirewall firewall add rule name="Codex HTTPS" dir=in action=allow protocol=TCP localport=443
+
+# Allow API (Port 8000)
+netsh advfirewall firewall add rule name="Codex API" dir=in action=allow protocol=TCP localport=8000
+
+# Allow Main Dashboard (Port 8501)
+netsh advfirewall firewall add rule name="Codex Dashboard" dir=in action=allow protocol=TCP localport=8501
+
+# Allow Portfolio Dashboard (Port 8503)
+netsh advfirewall firewall add rule name="Codex Portfolio" dir=in action=allow protocol=TCP localport=8503
+
+# Allow Proxy Server (Port 3000)
+netsh advfirewall firewall add rule name="Codex Proxy" dir=in action=allow protocol=TCP localport=3000
+
+# To check rules:
+netsh advfirewall firewall show rule name=all | findstr "Codex"
+
+# To remove rules (if needed):
+# netsh advfirewall firewall delete rule name="Codex HTTP"
+# netsh advfirewall firewall delete rule name="Codex HTTPS"

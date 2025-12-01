@@ -1,0 +1,25 @@
+# 🔥 IONOS One-Line Emergency Fix
+# Copy and paste this single command into your IONOS server terminal:
+
+sudo bash -c 'echo "🔥 CODEX EMERGENCY FIX"; systemctl stop codex-dashboard codex-staging nginx; pkill -f streamlit; pkill -f python.*codex; sleep 2; cd /var/www/codex && git pull origin main; cd /var/www/codex-staging && git pull origin staging; pip3 install --upgrade streamlit pandas numpy requests; systemctl daemon-reload; systemctl start codex-dashboard; sleep 5; systemctl start codex-staging; sleep 5; systemctl start nginx; echo "✅ RESTORATION COMPLETE"; systemctl status codex-dashboard codex-staging nginx --no-pager'
+
+# Or use these individual commands:
+
+# 1. Stop everything and clean up:
+sudo systemctl stop codex-dashboard codex-staging nginx && sudo pkill -f streamlit && sudo pkill -f "python.*codex"
+
+# 2. Update repositories:
+cd /var/www/codex && sudo git pull origin main && cd /var/www/codex-staging && sudo git pull origin staging
+
+# 3. Update dependencies:
+sudo pip3 install --upgrade streamlit pandas numpy requests
+
+# 4. Restart services:
+sudo systemctl daemon-reload && sudo systemctl start codex-dashboard && sleep 5 && sudo systemctl start codex-staging && sleep 5 && sudo systemctl start nginx
+
+# 5. Check status:
+sudo systemctl status codex-dashboard codex-staging nginx
+
+# 6. Test your sites:
+# https://aistorelab.com
+# https://staging.aistorelab.com

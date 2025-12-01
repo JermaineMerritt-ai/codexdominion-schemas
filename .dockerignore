@@ -1,0 +1,97 @@
+# Codex Dominion - Docker ignore file
+
+# Git files
+.git
+.gitignore
+.gitattributes
+README.md
+*.md
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.pytest_cache/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and data (will be mounted as volumes)
+logs/
+*.log
+data/
+temp/
+tmp/
+
+# Docker files (don't include in image)
+docker-compose*.yml
+.dockerignore
+
+# Deployment scripts
+deploy-*.sh
+deploy-*.ps1
+
+# SSL certificates (will be mounted)
+ssl/
+*.pem
+*.key
+*.crt
+
+# Large files that shouldn't be in container
+*.zip
+*.tar.gz
+*.rar
+
+# Test files
+tests/
+test_*
+*_test.py
+
+# Documentation
+docs/
+*.txt
+!requirements.txt
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.staging
+
+# Node modules (if any)
+node_modules/
+frontend/node_modules/
+
+# Streamlit cache
+.streamlit/
+.git
+.venv
+node_modules
+__pycache__
+*.log
+*.csv
+*.html
+old_versions/
+archive/

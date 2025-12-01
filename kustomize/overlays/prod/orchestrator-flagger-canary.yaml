@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orchestrator
+  namespace: codex
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: orchestrator
+  template:
+    metadata:
+      labels:
+        app: orchestrator
+    spec:
+      containers:
+        - name: orchestrator
+          image: ghcr.io/your-org/codex-orchestrator:v1.0.0
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: '500m'
+              memory: '1Gi'
+            limits:
+              cpu: '2000m'
+              memory: '2Gi'
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8000
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orchestrator
+  namespace: codex
+spec:
+  selector:
+    app: orchestrator
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8000
+---
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: orchestrator
+  namespace: codex
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: orchestrator
+  service:
+    port: 80
+    targetPort: 8000
+  analysis:
+    interval: 1m
+    threshold: 5
+    maxWeight: 50
+    stepWeight: 10
+    metrics:
+      - name: request-success-rate
+        thresholdRange:
+          min: 99
+        interval: 1m
+      - name: request-duration
+        thresholdRange:
+          max: 500
+        interval: 1m
+    webhooks:
+      - name: load-test
+        url: http://flagger-loadtester.codex/
+        timeout: 5s
+        metadata:
+          cmd: 'hey -z 1m -q 10 -c 2 http://orchestrator.codex/'

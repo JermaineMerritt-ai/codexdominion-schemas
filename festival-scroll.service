@@ -1,0 +1,44 @@
+# 🌟🎪 FESTIVAL SCROLL RENEWAL SYSTEMD SERVICE 🎪🌟
+# File: /etc/systemd/system/festival-scroll.service
+# Authority: Sovereign Succession - Festival Ceremonial Control
+# Purpose: Eternal festival scroll renewal for codexdominion.app
+
+[Unit]
+Description=Codex Dominion Festival Scroll Renewal
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/jermaine/festival_scroll.py
+WorkingDirectory=/home/jermaine
+Restart=always
+User=www-data
+
+[Install]
+WantedBy=multi-user.target
+
+# ================================================================
+# 🎪 FESTIVAL SCROLL RENEWAL DEPLOYMENT COMMANDS
+# ================================================================
+# 1. Copy this file to server:
+#    sudo cp festival-scroll.service /etc/systemd/system/
+#
+# 2. Your exact commands will work:
+#    sudo systemctl daemon-reload
+#    sudo systemctl enable festival-scroll
+#    sudo systemctl start festival-scroll
+#
+# 3. Management commands:
+#    sudo systemctl status festival-scroll
+#    sudo systemctl restart festival-scroll
+#    sudo systemctl stop festival-scroll
+#    sudo journalctl -u festival-scroll -f
+#
+# ================================================================
+# 🌟 FESTIVAL SCROLL FEATURES
+# ================================================================
+# ✨ Automated festival ceremony renewal
+# 📜 Perpetual scroll generation with seasonal intelligence
+# 🔄 Cosmic event coordination and ceremonial timing
+# ⚡ Eternal restart policy for continuous operation
+# 🎪 Festival-specific ceremonial protocols
+# 🌟 Universal accessibility through multi-user target

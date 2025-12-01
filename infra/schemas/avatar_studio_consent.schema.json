@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Avatar Studio Consent",
+  "type": "object",
+  "properties": {
+    "consent_id": { "type": "string" },
+    "subject_name": { "type": "string" },
+    "subject_id": { "type": "string" },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "visual_likeness": { "type": "boolean" },
+        "voice_likeness": { "type": "boolean" },
+        "mannerisms": { "type": "boolean" },
+        "allowed_uses": { "type": "array", "items": { "type": "string" } },
+        "prohibited_uses": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": [
+        "visual_likeness",
+        "voice_likeness",
+        "mannerisms",
+        "allowed_uses",
+        "prohibited_uses"
+      ]
+    },
+    "data_sources": {
+      "type": "object",
+      "properties": {
+        "images": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "audio": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["images", "audio"]
+    },
+    "effective_date": { "type": "string" },
+    "expiry_date": { "type": ["string", "null"] },
+    "revocation_rights": { "type": "string" },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "id_type": { "type": "string" },
+        "id_verification": { "type": "string", "enum": ["pass", "fail", "pending"] },
+        "liveness_check": { "type": "string", "enum": ["pass", "fail", "pending"] },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id_type", "id_verification", "liveness_check", "timestamp"]
+    },
+    "watermarking": {
+      "type": "object",
+      "properties": {
+        "visual": { "type": "boolean" },
+        "audio": { "type": "boolean" },
+        "metadata_embed": { "type": "boolean" }
+      },
+      "required": ["visual", "audio", "metadata_embed"]
+    },
+    "signatures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "signed_by": { "type": "string" },
+          "role": { "type": "string" },
+          "signature_type": { "type": "string", "enum": ["digital", "wet"] },
+          "timestamp": { "type": "string" },
+          "verification_log_id": { "type": "string" }
+        },
+        "required": ["signed_by", "role", "signature_type", "timestamp"]
+      }
+    }
+  },
+  "required": [
+    "consent_id",
+    "subject_name",
+    "subject_id",
+    "scope",
+    "data_sources",
+    "effective_date",
+    "revocation_rights",
+    "verification",
+    "watermarking"
+  ]
+}
