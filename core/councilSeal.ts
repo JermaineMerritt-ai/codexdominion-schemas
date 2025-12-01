@@ -5,7 +5,15 @@
  * Manages strategic direction, policy enforcement, and system-wide oversight.
  */
 
-import { CouncilSeal, Policy, AuditLog, Alert, SystemStatus } from '../packages/shared-types/src';
+import { Policy, AuditLog, Alert, SystemStatus } from '../packages/shared-types/src';
+
+export interface CouncilSeal {
+  flame: boolean;
+  infinityKnot: boolean;
+  scrolls: string[];
+  shield: boolean;
+  balanceScales: boolean;
+}
 
 export class CouncilSealAuthority {
   private static instance: CouncilSealAuthority;

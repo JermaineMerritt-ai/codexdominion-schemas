@@ -5,8 +5,14 @@
  * Reports to Council Seal, coordinates with Custodians, commands Industry Agents.
  */
 
-import { Sovereign, Message, Event } from '../packages/shared-types/src';
+import { Message, Event } from '../packages/shared-types/src';
 import { councilSeal } from './councilSeal';
+
+export interface Sovereign {
+  name: string;
+  domain: string; // e.g. "commerce", "observatory"
+  responsibilities: string[];
+}
 
 export class SovereignService {
   private sovereigns: Map<string, Sovereign> = new Map();

@@ -5,8 +5,13 @@
  * Maintains code quality, manages dependencies, ensures consistency across sovereigns.
  */
 
-import { Custodian } from '../packages/shared-types/src';
 import { councilSeal } from './councilSeal';
+
+export interface Custodian {
+  name: string;
+  focus: "finance" | "security" | "innovation" | "community";
+  responsibilities: string[];
+}
 
 export class CustodianService {
   private custodians: Map<string, Custodian> = new Map();
