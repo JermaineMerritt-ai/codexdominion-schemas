@@ -62,7 +62,7 @@ const nextConfig = {
   // Webpack configuration
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // Add WebpackManifestPlugin for manifest.json generation
-    const WebpackManifestPlugin = require('webpack-manifest-plugin').WebpackManifestPlugin;
+    const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
     config.plugins = config.plugins || [];
     config.plugins.push(
       new WebpackManifestPlugin({
@@ -70,6 +70,14 @@ const nextConfig = {
         publicPath: '/assets/',
       })
     );
+
+    // Ensure React is properly externalized for server-side rendering
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+      };
+    }
+
     return config;
   },
 

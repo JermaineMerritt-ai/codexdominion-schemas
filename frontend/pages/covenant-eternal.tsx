@@ -157,8 +157,8 @@ const CovenantEternal: React.FC = () => {
               y={particle.y}
             />
           ))}
-          <style jsx>{particleStyles}</style>
         </div>
+        <style jsx>{particleStyles}</style>
 
         {/* Radial Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-radial from-transparent via-purple-900/20 to-slate-900/60" />

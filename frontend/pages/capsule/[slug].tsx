@@ -1,3 +1,8 @@
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import CapsuleView from '../../components/CapsuleView';
+import styles from './capsule-slug.module.css';
+
 interface Artifact {
   title: string;
   generated_at: string;
@@ -17,33 +22,10 @@ interface Artifact {
     risk_factors?: string[];
   }>;
 }
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
-import CapsuleView from '../../components/CapsuleView';
-import styles from './capsule-slug.module.css';
 
 export default function CapsulePage() {
   const router = useRouter();
   const { slug } = router.query;
-  interface Artifact {
-    title: string;
-    generated_at: string;
-    execution_id?: string;
-    status?: string;
-    tier_counts: {
-      Alpha: number;
-      Beta: number;
-      Gamma: number;
-      Delta: number;
-    };
-    picks: Array<{
-      symbol: string;
-      tier: string;
-      target_weight: number;
-      rationale: string;
-      risk_factors?: string[];
-    }>;
-  }
   const [artifact, setArtifact] = useState<Artifact | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

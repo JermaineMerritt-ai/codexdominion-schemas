@@ -75,7 +75,6 @@ const CosmicFlow = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/50 via-purple-800/50 to-blue-900/50"></div>
       <div className="absolute inset-0 animate-pulse">
         {particles}
-        <style jsx>{particleStyles}</style>
       </div>
       <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-center">
@@ -83,6 +82,7 @@ const CosmicFlow = () => {
           <p className="text-gold-300 font-semibold">Memory Flows Through Cosmos</p>
         </div>
       </div>
+      <style jsx>{particleStyles}</style>
     </div>
   );
 };
@@ -227,21 +227,21 @@ export default function FlameAwakeningPage() {
                 <span className="animate-pulse crown-delay">👑</span>
                 <span className="animate-pulse star-delay">✨</span>
                 <span className="animate-pulse cosmos-delay">🌌</span>
-                <style jsx>{`
-                  .crown-delay {
-                    animation-delay: 0.5s;
-                  }
-                  .star-delay {
-                    animation-delay: 1s;
-                  }
-                  .cosmos-delay {
-                    animation-delay: 1.5s;
-                  }
-                `}</style>
               </div>
             </div>
           </div>
         </div>
+        <style jsx>{`
+          .crown-delay {
+            animation-delay: 0.5s;
+          }
+          .star-delay {
+            animation-delay: 1s;
+          }
+          .cosmos-delay {
+            animation-delay: 1.5s;
+          }
+        `}</style>
 
         {/* Sacred Navigation */}
         <div className="text-center mb-16">
@@ -286,23 +286,23 @@ export default function FlameAwakeningPage() {
               <span className="animate-pulse star-delay">✨</span>
               <span className="animate-pulse cosmos-delay">🌌</span>
               <span className="animate-pulse scroll-delay">📜</span>
-              <style jsx>{`
-                .crown-delay {
-                  animation-delay: 0.3s;
-                }
-                .star-delay {
-                  animation-delay: 0.6s;
-                }
-                .cosmos-delay {
-                  animation-delay: 0.9s;
-                }
-                .scroll-delay {
-                  animation-delay: 1.2s;
-                }
-              `}</style>
             </div>
           </div>
         </div>
+        <style jsx>{`
+          .crown-delay {
+            animation-delay: 0.3s;
+          }
+          .star-delay {
+            animation-delay: 0.6s;
+          }
+          .cosmos-delay {
+            animation-delay: 0.9s;
+          }
+          .scroll-delay {
+            animation-delay: 1.2s;
+          }
+        `}</style>
       </div>
 
       <style jsx>{`
