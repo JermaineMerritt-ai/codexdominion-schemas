@@ -1,14 +1,11 @@
 {
-  "name": "codex-dominion",
-  "version": "2.0.0",
-  "description": "Complete Digital Empire - Codex Dominion Sovereignty Suite",
+  "name": "codexdominion",
+  "version": "1.0.0",
+  "description": "CodexDominion Monorepo Constellation",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "build": "tsc -p tsconfig.json",
-    "start": "node dist/index.js",
-    "analysis": "node scripts/analyze-lineage.js",
-    "test": "jest --coverage"
+    "build": "tsc",
+    "test": "jest"
   },
   "keywords": [
     "digital-sovereignty",
@@ -37,90 +34,13 @@
     "npm": ">=8.0.0",
     "python": ">=3.9.0"
   },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.21.1",
-    "axios": "^1.13.2",
-    "bcryptjs": "^2.4.3",
-    "chalk": "^5.3.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.21.2",
-    "framer-motion": "^12.23.24",
-    "helmet": "^7.1.0",
-    "http-proxy-middleware": "^2.0.9",
-    "inquirer": "^9.2.11",
-    "jsonwebtoken": "^9.0.2",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.4",
-    "morgan": "^1.10.0",
-    "multer": "^2.0.2",
-    "ora": "^8.0.1",
-    "socket.io": "^4.7.4",
-    "styled-components": "^6.1.19",
-    "uuid": "^13.0.0",
-    "ws": "^8.18.3"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.28.5",
-    "@babel/plugin-syntax-jsx": "^7.27.1",
-    "@babel/preset-env": "^7.28.5",
-    "@babel/preset-react": "^7.28.5",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.0",
-    "@types/node": "^20.8.0",
-    "@types/styled-components": "^5.1.36",
-    "@typescript-eslint/eslint-plugin": "^8.48.0",
-    "@typescript-eslint/parser": "^8.48.0",
-    "babel-jest": "^30.2.0",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^16.0.5",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-config-typescript": "^3.0.0",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "form-data": "^4.0.4",
-    "jest": "^30.2.0",
-    "jest-environment-jsdom": "^30.2.0",
-    "js-yaml": "^4.1.1",
-    "jsdom": "^27.2.0",
-    "node-notifier": "^10.0.1",
-    "nodemon": "^3.0.1",
-    "prettier": "^3.7.3",
-    "supertest": "^6.3.3",
-    "tough-cookie": "^6.0.0",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "codexDominion": {
-    "sovereignty_level": "maximum",
-    "flame_status": "eternal",
-    "empire_version": "2.0.0",
-    "digital_independence": true,
-    "council_approved": true,
-    "sacred_seal": "authenticated",
-    "last_updated": "2025-11-09",
-    "status": "operational",
-    "components": {
-      "frontend": "active",
-      "backend": "active",
-      "dashboard": "active",
-      "council": "active",
-      "flame": "eternal",
-      "sovereignty": "supreme"
-    }
-  },
-  "config": {
-    "default_port": 3000,
-    "dashboard_port": 8050,
-    "api_port": 8000,
-    "websocket_port": 8080,
-    "frontend_port": 3001
-  }
+  ]
 }
