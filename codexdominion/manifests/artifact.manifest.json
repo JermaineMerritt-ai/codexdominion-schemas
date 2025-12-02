@@ -1,0 +1,87 @@
+{
+  "manifest_version": "1.0.0",
+  "codex_version": "2.0.0",
+  "generated_at": "2025-12-02T00:00:00Z",
+  "syndication_id": "codex-dominion-artifacts-2025",
+  "artifacts": [
+    {
+      "id": "eternal-ledger",
+      "name": "Eternal Ledger",
+      "type": "financial-dashboard",
+      "capsule_path": "capsules/eternal-ledger",
+      "assets": [
+        {
+          "filename": "eternal-ledger.png",
+          "type": "image/png",
+          "purpose": "constellation-visual",
+          "size_estimate": "2.5MB",
+          "dimensions": "3840x2160"
+        },
+        {
+          "filename": "notes.md",
+          "type": "text/markdown",
+          "purpose": "documentation",
+          "size_estimate": "5KB"
+        }
+      ],
+      "metadata": {
+        "category": "finance",
+        "tags": ["treasury", "ledger", "blockchain", "transactions"],
+        "visibility": "public",
+        "update_frequency": "real-time",
+        "priority": "high"
+      },
+      "syndication_targets": [
+        "codexdominion.app",
+        "treasury-api",
+        "analytics-dashboard"
+      ]
+    },
+    {
+      "id": "commerce-crown",
+      "name": "Commerce Crown",
+      "type": "ecommerce-network",
+      "capsule_path": "capsules/commerce-crown",
+      "assets": [
+        {
+          "filename": "commerce-constellation.png",
+          "type": "image/png",
+          "purpose": "constellation-visual",
+          "size_estimate": "2.8MB",
+          "dimensions": "3840x2160"
+        },
+        {
+          "filename": "notes.md",
+          "type": "text/markdown",
+          "purpose": "documentation",
+          "size_estimate": "6KB"
+        }
+      ],
+      "metadata": {
+        "category": "commerce",
+        "tags": ["affiliate", "ecommerce", "revenue", "marketplace"],
+        "visibility": "public",
+        "update_frequency": "hourly",
+        "priority": "high"
+      },
+      "syndication_targets": [
+        "commerce-dashboard",
+        "affiliate-networks",
+        "marketing-automation"
+      ]
+    }
+  ],
+  "syndication_config": {
+    "s3_bucket": "codex-dominion-artifacts",
+    "cdn_base_url": "https://cdn.codexdominion.app/artifacts",
+    "compression": "gzip",
+    "cache_ttl": 3600,
+    "access_control": "public-read"
+  },
+  "validation": {
+    "schema_version": "1.0",
+    "required_files_present": true,
+    "asset_integrity_checked": true,
+    "documentation_complete": true
+  }
+}

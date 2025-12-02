@@ -1,0 +1,39 @@
+{
+  "codex_dominion_index": {
+    "version": "2.0.0",
+    "last_updated": "2025-12-02T00:00:00Z",
+    "total_capsules": 2,
+    "total_artifacts": 4,
+    "syndication_status": "active"
+  },
+  "capsules": [
+    {
+      "id": "eternal-ledger",
+      "name": "Eternal Ledger",
+      "path": "capsules/eternal-ledger",
+      "manifest": "manifests/artifact.manifest.json#eternal-ledger",
+      "status": "active",
+      "last_sync": "2025-12-02T00:00:00Z"
+    },
+    {
+      "id": "commerce-crown",
+      "name": "Commerce Crown",
+      "path": "capsules/commerce-crown",
+      "manifest": "manifests/artifact.manifest.json#commerce-crown",
+      "status": "active",
+      "last_sync": "2025-12-02T00:00:00Z"
+    }
+  ],
+  "quick_links": {
+    "main_manifest": "manifests/artifact.manifest.json",
+    "github_workflow": ".github/workflows/syndication.yml",
+    "packaging_script": "scripts/package_artifacts.py",
+    "upload_script": "scripts/upload_s3.py"
+  },
+  "api_endpoints": {
+    "capsule_list": "/api/capsules",
+    "artifact_download": "/api/artifacts/{id}",
+    "manifest": "/api/manifest",
+    "health": "/api/health"
+  }
+}

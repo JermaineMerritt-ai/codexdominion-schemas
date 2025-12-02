@@ -1,0 +1,62 @@
+name: Artifact Syndication
+
+on:
+  push:
+    paths:
+      - "capsules/**"
+      - "manifests/**"
+      - "scripts/**"
+      - ".github/workflows/syndication.yml"
+
+jobs:
+  syndicate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install boto3
+
+      - name: Calculate hashes
+        run: |
+          cd codexdominion
+          python scripts/calculate_hashes.py
+
+      - name: Build manifest
+        env:
+          S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          GITHUB_REPO: ${{ github.repository }}
+        run: |
+          cd codexdominion
+          python scripts/package_artifacts.py
+
+      - name: Configure AWS
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Upload to S3
+        run: |
+          cd codexdominion
+          python scripts/upload_s3.py
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}-artifacts
+          name: CodexDominion Artifacts
+          draft: false
+          files: |
+            codexdominion/manifests/artifact.manifest.json
+            codexdominion/manifests/index.json
+            codexdominion/capsules/*/artifact.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
