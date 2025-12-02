@@ -16,3 +16,12 @@ npm run build
 npm test
 ```
 
+## Standards
+- Variables → camelCase
+- Classes → PascalCase
+- Directories → kebab-case
+- Commits → Conventional Commits
+
+## License
+MIT
+
