@@ -1,4 +1,31 @@
-# Contributing to Codex Dominion
+# 🌟 Contributing to CodexDominion
+
+Welcome, Sovereign Steward 👑  
+This guide ensures every contribution honors the CodexDominion rhythm.
+
+---
+
+## 🧭 Standards
+
+- **Variables** → `camelCase`
+- **Classes / Interfaces** → `PascalCase`
+- **Directories / Files** → `kebab-case`
+- **Indentation** → 2 spaces
+- **Line endings** → LF (Unix style)
+- **Commits** → Use Conventional Commits:
+  - `feat:` for new features
+  - `fix:` for bug fixes
+  - `docs:` for documentation
+  - `refactor:` for code improvements
+  - `test:` for testing additions
+
+---
+
+## 🛠️ Setup
+
+```bash
+git clone https://github.com/JermaineMerritt-ai/codexdominion-schemas.git
+npm install
 
 Thank you for your interest in contributing to Codex Dominion! This document provides guidelines and instructions for contributing to this project.
 
