@@ -5,7 +5,6 @@
  * Reports to Council Seal, coordinates with Custodians, commands Industry Agents.
  */
 
-import { Message, Event } from '../packages/shared-types/src';
 import { councilSeal } from './councilSeal';
 
 export interface Sovereign {
@@ -14,8 +13,54 @@ export interface Sovereign {
   responsibilities: string[];
 }
 
+export interface SovereignConfig extends Sovereign {
+  id: string;
+  port?: number;
+  url?: string;
+  type?: string;
+  status: 'RUNNING' | 'STOPPED' | 'DEPLOYING' | 'ERROR' | 'DEGRADED';
+  health: number;
+  version?: string;
+  dependencies?: string[];
+  config: {
+    port?: number;
+    environment: string;
+    maxMemory?: string;
+    autoRestart?: boolean;
+    features?: string[];
+    scaling?: any;
+  };
+  metrics: {
+    requestsPerSecond: number;
+    averageResponseTime: number;
+    errorRate: number;
+    uptime: number;
+  };
+}
+
+export interface Message<T = any> {
+  id: string;
+  type?: string;
+  from: string;
+  to: string;
+  content: T;
+  priority?: 'low' | 'medium' | 'high' | 'critical';
+  timestamp: Date;
+}
+
+export interface Event<T = any> {
+  id: string;
+  type: 'DEPLOYMENT' | 'MESSAGE' | 'HEALTH_CHECK' | 'ERROR' | 'CUSTOM' | 'ALERT' | 'RESOURCE_REQUEST';
+  source: string;
+  target?: string;
+  data?: T;
+  payload?: any;
+  priority?: 'low' | 'medium' | 'high' | 'critical';
+  timestamp: Date;
+}
+
 export class SovereignService {
-  private sovereigns: Map<string, Sovereign> = new Map();
+  private sovereigns: Map<string, SovereignConfig> = new Map();
   private eventBus: Event[] = [];
 
   constructor() {
@@ -26,10 +71,12 @@ export class SovereignService {
    * Initialize all sovereign applications
    */
   private initializeSovereigns(): void {
-    const sovereignApps: Sovereign[] = [
+    const sovereignApps: SovereignConfig[] = [
       {
         id: 'sovereign-chatbot',
         name: 'AI Chatbot Application',
+        domain: 'chat',
+        responsibilities: ['customer-support', 'conversation', 'ai-assistance'],
         type: 'FRONTEND',
         status: 'RUNNING',
         health: 100,
@@ -50,6 +97,8 @@ export class SovereignService {
       {
         id: 'sovereign-commerce',
         name: 'E-Commerce Platform',
+        domain: 'commerce',
+        responsibilities: ['sales', 'inventory', 'payments', 'product-management'],
         type: 'BACKEND',
         status: 'RUNNING',
         health: 98,
@@ -70,6 +119,8 @@ export class SovereignService {
       {
         id: 'sovereign-observatory',
         name: 'Analytics Observatory',
+        domain: 'analytics',
+        responsibilities: ['monitoring', 'reporting', 'metrics', 'insights'],
         type: 'ANALYTICS',
         status: 'RUNNING',
         health: 100,
@@ -90,6 +141,8 @@ export class SovereignService {
       {
         id: 'sovereign-compliance',
         name: 'Compliance & Audit System',
+        domain: 'compliance',
+        responsibilities: ['audit', 'policy-enforcement', 'regulatory-compliance'],
         type: 'BACKEND',
         status: 'RUNNING',
         health: 100,
@@ -119,14 +172,14 @@ export class SovereignService {
   /**
    * Get sovereign by ID
    */
-  public getSovereign(id: string): Sovereign | undefined {
+  public getSovereign(id: string): SovereignConfig | undefined {
     return this.sovereigns.get(id);
   }
 
   /**
    * Get all sovereigns
    */
-  public getAllSovereigns(): Sovereign[] {
+  public getAllSovereigns(): SovereignConfig[] {
     return Array.from(this.sovereigns.values());
   }
 
@@ -216,7 +269,7 @@ export class SovereignService {
       action: 'SEND_MESSAGE',
       resource: message.to,
       status: 'SUCCESS',
-      severity: 'low',
+      severity: 'LOW',
       metadata: { messageType: message.type }
     });
 
@@ -277,7 +330,7 @@ export class SovereignService {
         action: 'ALERT_RECEIVED',
         resource: sovereign.id,
         status: 'SUCCESS',
-        severity: 'critical',
+        severity: 'CRITICAL',
         metadata: event.payload
       });
     }
@@ -286,14 +339,15 @@ export class SovereignService {
   /**
    * Handle health check event
    */
-  private handleHealthCheck(event: Event): void {
+  private handleHealthCheckEvent(event: Event): void {
+    if (!event.target) return;
     const sovereign = this.sovereigns.get(event.target);
     
     if (sovereign) {
       // Update health metrics
       const health = this.calculateHealth(sovereign);
       sovereign.health = health;
-      sovereign.status = health > 80 ? 'RUNNING' : health > 50 ? 'DEGRADED' : 'UNHEALTHY';
+      sovereign.status = health > 80 ? 'RUNNING' : health > 50 ? 'DEGRADED' : 'ERROR';
       this.sovereigns.set(sovereign.id, sovereign);
     }
   }

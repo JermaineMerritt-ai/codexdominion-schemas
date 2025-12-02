@@ -13,8 +13,25 @@ export interface Custodian {
   responsibilities: string[];
 }
 
+export interface CustodianConfig extends Custodian {
+  id: string;
+  type: 'LIBRARY' | 'SERVICE' | 'UTILITY' | 'FRAMEWORK' | 'SCHEMA';
+  version: string;
+  status: 'ACTIVE' | 'DEPRECATED' | 'UPDATING' | 'INACTIVE';
+  dependencies?: string[];
+  exports?: any;
+  metrics: {
+    performance?: number;
+    reliability?: number;
+    coverage?: number;
+    lastUpdated: Date;
+    usageCount: number;
+    issues?: number;
+  };
+}
+
 export class CustodianService {
-  private custodians: Map<string, Custodian> = new Map();
+  private custodians: Map<string, CustodianConfig> = new Map();
 
   constructor() {
     this.initializeCustodians();
@@ -24,10 +41,12 @@ export class CustodianService {
    * Initialize all custodian packages
    */
   private initializeCustodians(): void {
-    const custodianPackages: Custodian[] = [
+    const custodianPackages: CustodianConfig[] = [
       {
         id: 'custodian-ui',
         name: 'UI Component Library',
+        focus: 'innovation',
+        responsibilities: ['ui-components', 'design-system', 'theming'],
         type: 'LIBRARY',
         status: 'ACTIVE',
         version: '2.0.0',
@@ -47,6 +66,8 @@ export class CustodianService {
       {
         id: 'custodian-utils',
         name: 'Common Utilities',
+        focus: 'innovation',
+        responsibilities: ['shared-utilities', 'helper-functions', 'validation'],
         type: 'UTILITY',
         status: 'ACTIVE',
         version: '2.0.0',
@@ -80,6 +101,8 @@ export class CustodianService {
       {
         id: 'custodian-schemas',
         name: 'Data Schemas & Validation',
+        focus: 'security',
+        responsibilities: ['data-validation', 'schema-management', 'type-safety'],
         type: 'SCHEMA',
         status: 'ACTIVE',
         version: '2.0.0',
@@ -114,6 +137,8 @@ export class CustodianService {
       {
         id: 'custodian-healing',
         name: 'Self-Healing Infrastructure',
+        focus: 'security',
+        responsibilities: ['health-monitoring', 'auto-recovery', 'resilience'],
         type: 'SERVICE',
         status: 'ACTIVE',
         version: '2.0.0',
@@ -158,21 +183,21 @@ export class CustodianService {
   /**
    * Get custodian by ID
    */
-  public getCustodian(id: string): Custodian | undefined {
+  public getCustodian(id: string): CustodianConfig | undefined {
     return this.custodians.get(id);
   }
 
   /**
    * Get all custodians
    */
-  public getAllCustodians(): Custodian[] {
+  public getAllCustodians(): CustodianConfig[] {
     return Array.from(this.custodians.values());
   }
 
   /**
    * Get custodians by type
    */
-  public getCustodiansByType(type: 'LIBRARY' | 'UTILITY' | 'SERVICE' | 'SCHEMA'): Custodian[] {
+  public getCustodiansByType(type: 'LIBRARY' | 'UTILITY' | 'SERVICE' | 'FRAMEWORK'): CustodianConfig[] {
     return Array.from(this.custodians.values()).filter(c => c.type === type);
   }
 
@@ -225,7 +250,7 @@ export class CustodianService {
       action: 'UPDATE_PACKAGE',
       resource: custodianId,
       status: 'SUCCESS',
-      severity: isBreaking ? 'high' : 'medium',
+      severity: isBreaking ? 'HIGH' : 'MEDIUM',
       metadata: { oldVersion: custodian.version, newVersion, changelog }
     });
 
@@ -336,8 +361,8 @@ export class CustodianService {
     return {
       mostUsed: sorted[0],
       leastUsed: sorted[sorted.length - 1],
-      averagePerformance: custodians.reduce((sum, c) => sum + c.metrics.performance, 0) / custodians.length,
-      totalIssues: custodians.reduce((sum, c) => sum + c.metrics.issues, 0)
+      averagePerformance: custodians.reduce((sum, c) => sum + (c.metrics.performance || 0), 0) / custodians.length,
+      totalIssues: custodians.reduce((sum, c) => sum + (c.metrics.issues || 0), 0)
     };
   }
 
@@ -366,7 +391,7 @@ export class CustodianService {
       action: 'EXPORT_PACKAGE',
       resource: custodianId,
       status: 'SUCCESS',
-      severity: 'low',
+      severity: 'LOW',
       metadata: {}
     });
 
