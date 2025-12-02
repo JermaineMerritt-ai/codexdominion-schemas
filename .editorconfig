@@ -1,44 +1,20 @@
-# EditorConfig is awesome: https://EditorConfig.org
-
-# Top-most EditorConfig file
+# EditorConfig helps maintain consistent coding styles across editors
 root = true
 
-# All files
 [*]
-charset = utf-8
-end_of_line = lf
-insert_final_newline = true
-trim_trailing_whitespace = true
 indent_style = space
 indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
 
-# TypeScript/JavaScript
-[*.{ts,tsx,js,jsx}]
-indent_size = 2
+[*.ts]
 quote_type = single
+max_line_length = 120
 
-# JSON
 [*.json]
 indent_size = 2
 
-# YAML
-[*.{yml,yaml}]
-indent_size = 2
-
-# Markdown
 [*.md]
 trim_trailing_whitespace = false
-max_line_length = 80
-
-# Python
-[*.py]
-indent_size = 4
-max_line_length = 100
-
-# Shell scripts
-[*.{sh,bash}]
-indent_size = 2
-
-# Config files
-[{package.json,tsconfig.json,.prettierrc,.eslintrc}]
-indent_size = 2
