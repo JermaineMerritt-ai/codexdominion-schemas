@@ -1,14 +1,10 @@
-export default [
-  {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-    languageOptions: {
-      ecmaVersion: 2020,
-      sourceType: 'module',
-    },
-    rules: {
-      'no-unused-vars': 'warn',
-      'no-console': 'off',
-      'prefer-const': 'error',
-    },
-  },
-];
+module.exports = {
+  root: true,
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  rules: {
+    semi: ["error", "always"],
+    quotes: ["error", "single"]
+  }
+};
