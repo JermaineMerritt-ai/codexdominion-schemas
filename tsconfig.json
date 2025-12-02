@@ -1,29 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["dom", "dom.iterable", "es6"],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "module": "commonjs",
+    "rootDir": "./",
+    "outDir": "./dist",
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"],
-      "@/components/*": ["./frontend/components/*"],
-      "@/utils/*": ["./frontend/utils/*"],
-      "@/pages/*": ["./frontend/pages/*"],
-      "@/styles/*": ["./frontend/styles/*"],
-      "@/lib/*": ["./frontend/lib/*"]
-    }
+    "skipLibCheck": true
   },
-  "include": ["frontend/next-env.d.ts", "frontend/**/*.ts", "frontend/**/*.tsx", "frontend/.next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["apps", "packages", "core", "agents", "customers"],
+  "exclude": ["node_modules", "dist"]
 }
