@@ -4,28 +4,27 @@ module.exports = {
       displayName: 'node',
       testEnvironment: "node",
       testMatch: [
+        '<rootDir>/packages/**/__tests__/**/*.[jt]s?(x)',
         '<rootDir>/packages/**/?(*.)+(spec|test).[jt]s',
         '<rootDir>/template/**/?(*.)+(spec|test).[jt]s',
+        '<rootDir>/codexdominion-schemas/templates/tests/**/?(*.)+(spec|test).[jt]s',
       ],
+      testPathIgnorePatterns: ['/node_modules/', '/dist/'],
       moduleFileExtensions: ["ts", "js", "json", "node"],
-      passWithNoTests: true,
-      collectCoverage: false,
-      modulePathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/']
     },
     {
       displayName: 'react',
       testEnvironment: "jsdom",
       testMatch: [
         '<rootDir>/frontend/**/?(*.)+(spec|test).[jt]sx?',
-        '<rootDir>/apps/**/?(*.)+(spec|test).[jt]sx?',
+        '<rootDir>/codexdominion-schemas/frontend/**/?(*.)+(spec|test).[jt]sx?',
       ],
+      testPathIgnorePatterns: ['/node_modules/', '/dist/'],
       moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-      passWithNoTests: true,
-      collectCoverage: false,
-      modulePathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/'],
       setupFilesAfterEnv: ['<rootDir>/jest.setup.js']
     }
   ],
+  watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/\\.git/'],
   collectCoverageFrom: [
     '**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
