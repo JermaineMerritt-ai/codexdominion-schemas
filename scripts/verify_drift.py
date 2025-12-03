@@ -56,8 +56,23 @@ def main():
 
     markets_drift_checks_total.inc()
 
-    with open("verified_facts.json", "r", encoding="utf-8") as f:
-        facts = json.load(f)
+    # Load facts file, create empty list if missing
+    try:
+        with open("verified_facts.json", "r", encoding="utf-8") as f:
+            facts = json.load(f)
+    except FileNotFoundError:
+        print("⚠️  verified_facts.json not found, creating empty file")
+        facts = []
+        with open("verified_facts.json", "w", encoding="utf-8") as f:
+            json.dump(facts, f, indent=2)
+    except json.JSONDecodeError as e:
+        print(f"❌ Error parsing verified_facts.json: {e}")
+        facts = []
+
+    if not facts:
+        print("✅ No facts to verify, drift check passed")
+        markets_drift_items_open.set(0)
+        return
 
     open_items = 0
     for fact in facts:

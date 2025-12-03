@@ -17,19 +17,12 @@ Features:
 ═══════════════════════════════════════════════════════════════════════════════
 """
 
-import json
-from datetime import datetime, timedelta
-from pathlib import Path
-
-import pandas as pd
-import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
-from plotly.subplots import make_subplots
 
 # Import the omega seal system
 try:
-    from omega_seal import load_ledger, save_ledger, seal_cycle
+    from omega_seal import load_ledger, seal_cycle
 
     OMEGA_SEAL_AVAILABLE = True
 except ImportError as e:

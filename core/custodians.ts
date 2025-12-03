@@ -5,6 +5,7 @@
  * Maintains code quality, manages dependencies, ensures consistency across sovereigns.
  */
 
+import { randomUUID } from 'crypto';
 import { councilSeal } from './councilSeal';
 
 export interface Custodian {
@@ -245,6 +246,7 @@ export class CustodianService {
 
     // Log update
     councilSeal.audit({
+      id: randomUUID(),
       timestamp: new Date(),
       actor: 'CustodianService',
       action: 'UPDATE_PACKAGE',
@@ -289,11 +291,11 @@ export class CustodianService {
     }
 
     // Get direct dependencies
-    const direct = custodian.dependencies;
+    const direct = custodian.dependencies || [];
 
     // Get dependents (other custodians that depend on this one)
     const dependents = Array.from(this.custodians.values())
-      .filter(c => c.dependencies.some(dep => dep.startsWith(custodianId)))
+      .filter(c => c.dependencies?.some(dep => dep.startsWith(custodianId)))
       .map(c => c.id);
 
     return { direct, dependents };
@@ -321,12 +323,12 @@ export class CustodianService {
     }
 
     // Check performance
-    if (custodian.metrics.performance < 80) {
+    if ((custodian.metrics.performance ?? 100) < 80) {
       issues.push(`Performance is ${custodian.metrics.performance}%, below threshold`);
     }
 
     // Check for unresolved issues
-    if (custodian.metrics.issues > 0) {
+    if ((custodian.metrics.issues ?? 0) > 0) {
       issues.push(`${custodian.metrics.issues} unresolved issues`);
     }
 
@@ -341,7 +343,7 @@ export class CustodianService {
     return {
       healthy: issues.length === 0,
       issues,
-      performance: custodian.metrics.performance
+      performance: custodian.metrics.performance ?? 100
     };
   }
 
@@ -386,6 +388,7 @@ export class CustodianService {
 
     // Log export
     councilSeal.audit({
+      id: randomUUID(),
       timestamp: new Date(),
       actor: 'CustodianService',
       action: 'EXPORT_PACKAGE',

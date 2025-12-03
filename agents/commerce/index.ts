@@ -17,7 +17,6 @@ export class CommerceAgent {
     this.config = {
       id: 'agent-commerce',
       name: 'E-Commerce Intelligence Agent',
-      industry: 'COMMERCE',
       capabilities: [
         'product-recommendations',
         'inventory-optimization',
@@ -25,15 +24,15 @@ export class CommerceAgent {
         'fraud-detection',
         'customer-segmentation',
         'demand-forecasting'
-      ],
-      status: 'ACTIVE',
+      ] as any,
+      status: 'RUNNING',
       performance: {
         successRate: 94,
         averageResponseTime: 850,
         tasksCompleted: 45290,
         errorRate: 0.06
       }
-    };
+    } as any;
   }
 
   async getProductRecommendations(customerId: string, context?: {

@@ -5,6 +5,8 @@
  * Manages strategic direction, policy enforcement, and system-wide oversight.
  */
 
+import { randomUUID } from 'crypto';
+
 export interface CouncilSeal {
   flame: boolean;
   infinityKnot: boolean;
@@ -93,6 +95,11 @@ export class CouncilSealAuthority {
       id: 'council-seal-supreme',
       name: 'Council Seal Supreme Authority',
       authority: 'SUPREME',
+      flame: true,
+      infinityKnot: true,
+      scrolls: ['governance', 'audit', 'policy'],
+      shield: true,
+      balanceScales: true,
       permissions: [
         'APPROVE_DEPLOYMENT',
         'MODIFY_POLICY',
@@ -193,6 +200,7 @@ export class CouncilSealAuthority {
 
         // Log enforcement action
         this.audit({
+          id: randomUUID(),
           timestamp: new Date(),
           actor: 'CouncilSeal',
           action: `POLICY_ENFORCEMENT: ${rule.action}`,
@@ -302,6 +310,7 @@ export class CouncilSealAuthority {
 
     // Log approval
     this.audit({
+      id: randomUUID(),
       timestamp: new Date(),
       actor: 'CouncilSeal',
       action: 'APPROVE_CHANGE',
@@ -324,6 +333,7 @@ export class CouncilSealAuthority {
     this.emergencyMode = true;
     
     this.audit({
+      id: randomUUID(),
       timestamp: new Date(),
       actor: 'CouncilSeal',
       action: 'EMERGENCY_MODE_ACTIVATED',
@@ -350,6 +360,7 @@ export class CouncilSealAuthority {
     this.emergencyMode = false;
     
     this.audit({
+      id: randomUUID(),
       timestamp: new Date(),
       actor: 'CouncilSeal',
       action: 'EMERGENCY_MODE_DEACTIVATED',
@@ -369,21 +380,17 @@ export class CouncilSealAuthority {
 
     return {
       healthy: !this.emergencyMode && unresolvedAlerts.filter(a => a.severity === 'CRITICAL').length === 0,
-      lastCheck: new Date(),
-      services: {
-        councilSeal: 'OPERATIONAL',
-        sovereigns: 'OPERATIONAL',
-        custodians: 'OPERATIONAL',
-        agents: 'OPERATIONAL'
-      },
+      status: this.emergencyMode ? 'EMERGENCY' : unresolvedAlerts.filter(a => a.severity === 'CRITICAL').length > 0 ? 'DEGRADED' : 'OPERATIONAL',
+      timestamp: new Date(),
       metrics: {
+        activePolicies: this.config.policies.filter(p => p.active).length,
+        auditLogSize: this.auditLogs.length,
         totalAuditLogs: this.auditLogs.length,
         recentErrors: recentLogs.filter(l => l.status === 'FAILURE').length,
         activeAlerts: unresolvedAlerts.length,
-        criticalAlerts: unresolvedAlerts.filter(a => a.severity === 'critical').length,
-        emergencyMode: this.emergencyMode
-      },
-      alerts: unresolvedAlerts.slice(0, 10) // Most recent 10
+        criticalAlerts: unresolvedAlerts.filter(a => a.severity === 'CRITICAL').length,
+        resourceAllocation: {}
+      }
     };
   }
 
@@ -393,7 +400,7 @@ export class CouncilSealAuthority {
   public getAuditLogs(filter?: {
     actor?: string;
     action?: string;
-    severity?: 'low' | 'medium' | 'high' | 'critical';
+    severity?: 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW' | 'INFO';
     limit?: number;
   }): AuditLog[] {
     let logs = [...this.auditLogs];
@@ -401,10 +408,10 @@ export class CouncilSealAuthority {
     if (filter?.actor) {
       logs = logs.filter(l => l.actor === filter.actor);
     }
-    if (filter.action) {
+    if (filter?.action) {
       logs = logs.filter(l => l.action.includes(filter.action!));
     }
-    if (filter.severity) {
+    if (filter?.severity) {
       logs = logs.filter(l => l.severity === filter.severity);
     }
 
@@ -434,6 +441,7 @@ export class CouncilSealAuthority {
     };
 
     this.audit({
+      id: randomUUID(),
       timestamp: new Date(),
       actor: 'CouncilSeal',
       action: 'POLICY_UPDATED',
@@ -457,6 +465,7 @@ export class CouncilSealAuthority {
   }): { approved: boolean; message: string } {
     // In production: check availability, budget, policies
     this.audit({
+      id: randomUUID(),
       timestamp: new Date(),
       actor: 'CouncilSeal',
       action: 'RESOURCE_ALLOCATION',

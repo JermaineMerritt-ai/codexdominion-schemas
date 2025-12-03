@@ -1,0 +1,26 @@
+# Dockerfile for Avatar System
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+RUN pip install --no-cache-dir streamlit psutil requests pyyaml
+
+# Copy application
+COPY avatar_system.py .
+
+# Expose port
+EXPOSE 8502
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8502/_stcore/health || exit 1
+
+# Run streamlit
+CMD ["streamlit", "run", "avatar_system.py", "--server.port=8502", "--server.address=0.0.0.0", "--server.headless=true"]

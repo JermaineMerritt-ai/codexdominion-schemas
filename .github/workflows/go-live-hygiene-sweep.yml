@@ -19,10 +19,15 @@ jobs:
           yamllint .github/workflows || true
 
       - name: Confirm secrets are present
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CODE_DEPEND_ON_SCHEMAS: ${{ secrets.CODE_DEPEND_ON_SCHEMAS }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           echo "🔐 Checking required secrets..."
           for secret in GITHUB_TOKEN CODE_DEPEND_ON_SCHEMAS SLACK_WEBHOOK_URL; do
-            if [ -z "${{ secrets[$secret] }}" ]; then
+            secret_value=$(printenv "$secret")
+            if [ -z "$secret_value" ]; then
               echo "❌ Missing secret: $secret"
               exit 1
             else

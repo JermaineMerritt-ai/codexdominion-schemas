@@ -136,7 +136,7 @@ steps:
 \- name: Checkout Codex
 uses: actions/checkout@v4
 \- name: Monitor Sacred Flames
-run: "echo "\\U0001F525 Monitoring Sacred Flames..."\\npython .github/actions/super-action-ai/flame_monitor.py || true\\necho "Flame monitoring complete""
+run: "echo \"\\U0001F525 Monitoring Sacred Flames...\"\\n# flame_monitor.py not yet implemented\\n# python .github/actions/super-action-ai/flame_monitor.py || true\\necho \"Flame monitoring skipped - script pending implementation\""
 \- name: Upload flame report
 uses: actions/upload-artifact@v3
 if: always()

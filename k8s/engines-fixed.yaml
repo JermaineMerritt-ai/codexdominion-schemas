@@ -1,0 +1,211 @@
+# Fixed Engine Deployments with Working Images
+# Using nginx:alpine as lightweight placeholder until custom images are built
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine01-prod
+  namespace: default
+  labels:
+    app: engine01
+    environment: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine01
+      environment: prod
+  template:
+    metadata:
+      labels:
+        app: engine01
+        environment: prod
+    spec:
+      containers:
+        - name: engine01
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: '50m'
+              memory: '64Mi'
+            limits:
+              cpu: '250m'
+              memory: '256Mi'
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine01-prod
+  namespace: default
+spec:
+  selector:
+    app: engine01
+    environment: prod
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine02-prod
+  namespace: default
+  labels:
+    app: engine02
+    environment: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine02
+      environment: prod
+  template:
+    metadata:
+      labels:
+        app: engine02
+        environment: prod
+    spec:
+      containers:
+        - name: engine02
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: '50m'
+              memory: '64Mi'
+            limits:
+              cpu: '250m'
+              memory: '256Mi'
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine02-prod
+  namespace: default
+spec:
+  selector:
+    app: engine02
+    environment: prod
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine03-prod
+  namespace: default
+  labels:
+    app: engine03
+    environment: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine03
+      environment: prod
+  template:
+    metadata:
+      labels:
+        app: engine03
+        environment: prod
+    spec:
+      containers:
+        - name: engine03
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: '50m'
+              memory: '64Mi'
+            limits:
+              cpu: '250m'
+              memory: '256Mi'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine03-prod
+  namespace: default
+spec:
+  selector:
+    app: engine03
+    environment: prod
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine04-prod
+  namespace: default
+  labels:
+    app: engine04
+    environment: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine04
+      environment: prod
+  template:
+    metadata:
+      labels:
+        app: engine04
+        environment: prod
+    spec:
+      containers:
+        - name: engine04
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: '50m'
+              memory: '64Mi'
+            limits:
+              cpu: '250m'
+              memory: '256Mi'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine04-prod
+  namespace: default
+spec:
+  selector:
+    app: engine04
+    environment: prod
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

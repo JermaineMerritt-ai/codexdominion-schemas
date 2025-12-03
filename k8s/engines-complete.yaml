@@ -1,0 +1,485 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: engines
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine05-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine05
+  template:
+    metadata:
+      labels:
+        app: engine05
+    spec:
+      containers:
+      - name: engine05
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine05-prod
+  namespace: default
+spec:
+  selector:
+    app: engine05
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine06-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine06
+  template:
+    metadata:
+      labels:
+        app: engine06
+    spec:
+      containers:
+      - name: engine06
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine06-prod
+  namespace: default
+spec:
+  selector:
+    app: engine06
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine07-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine07
+  template:
+    metadata:
+      labels:
+        app: engine07
+    spec:
+      containers:
+      - name: engine07
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine07-prod
+  namespace: default
+spec:
+  selector:
+    app: engine07
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine08-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine08
+  template:
+    metadata:
+      labels:
+        app: engine08
+    spec:
+      containers:
+      - name: engine08
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine08-prod
+  namespace: default
+spec:
+  selector:
+    app: engine08
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine09-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine09
+  template:
+    metadata:
+      labels:
+        app: engine09
+    spec:
+      containers:
+      - name: engine09
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine09-prod
+  namespace: default
+spec:
+  selector:
+    app: engine09
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine10-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine10
+  template:
+    metadata:
+      labels:
+        app: engine10
+    spec:
+      containers:
+      - name: engine10
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine10-prod
+  namespace: default
+spec:
+  selector:
+    app: engine10
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine11-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine11
+  template:
+    metadata:
+      labels:
+        app: engine11
+    spec:
+      containers:
+      - name: engine11
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine11-prod
+  namespace: default
+spec:
+  selector:
+    app: engine11
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine12-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine12
+  template:
+    metadata:
+      labels:
+        app: engine12
+    spec:
+      containers:
+      - name: engine12
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine12-prod
+  namespace: default
+spec:
+  selector:
+    app: engine12
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine13-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine13
+  template:
+    metadata:
+      labels:
+        app: engine13
+    spec:
+      containers:
+      - name: engine13
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine13-prod
+  namespace: default
+spec:
+  selector:
+    app: engine13
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine14-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine14
+  template:
+    metadata:
+      labels:
+        app: engine14
+    spec:
+      containers:
+      - name: engine14
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine14-prod
+  namespace: default
+spec:
+  selector:
+    app: engine14
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine15-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine15
+  template:
+    metadata:
+      labels:
+        app: engine15
+    spec:
+      containers:
+      - name: engine15
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine15-prod
+  namespace: default
+spec:
+  selector:
+    app: engine15
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engine16-prod
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: engine16
+  template:
+    metadata:
+      labels:
+        app: engine16
+    spec:
+      containers:
+      - name: engine16
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: engine16-prod
+  namespace: default
+spec:
+  selector:
+    app: engine16
+  ports:
+  - port: 80
+    targetPort: 80
+---

@@ -1,194 +1,162 @@
-# Codex Dominion - Production Docker Compose for aistorelab.com
+# ============================================
+# CodexDominion.app - Multi-Cloud Production
+# IONOS Deployment Configuration
+# ============================================
 version: '3.8'
 
 services:
-  # Nginx Reverse Proxy with SSL
-  nginx:
-    image: nginx:alpine
-    container_name: codex-nginx-prod
+  # ============================================
+  # Main Dashboard
+  # ============================================
+  dashboard:
+    image: jmerritt48/codex-dashboard:latest
+    container_name: codex-dashboard
     restart: unless-stopped
     ports:
-      - '80:80'
-      - '443:443'
-    volumes:
-      - ./nginx-production.conf:/etc/nginx/nginx.conf:ro
-      - /etc/letsencrypt:/etc/letsencrypt:ro
-      - ./ssl-challenge:/var/www/certbot:ro
-      - nginx_logs:/var/log/nginx
-    depends_on:
-      - codex-main
-      - codex-contributions
-      - codex-council
-      - codex-viewer
-    networks:
-      - codex-network
-    labels:
-      - 'traefik.enable=false'
-
-  # Main Dashboard Service (Port 8080)
-  codex-main:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: codex-main-prod
-    restart: unless-stopped
-    command: streamlit run codex_summary.py --server.port=8080 --server.address=0.0.0.0 --server.headless=true
-    expose:
-      - '8080'
-    volumes:
-      - ./codex_ledger.json:/app/codex_ledger.json
-      - ./data:/app/data
-      - ./logs:/app/logs
+      - "3000:3000"
     environment:
-      - STREAMLIT_SERVER_HEADLESS=true
-      - STREAMLIT_SERVER_ENABLE_CORS=false
-      - STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
-      - PYTHONPATH=/app
-    networks:
-      - codex-network
+      - NODE_ENV=production
+      - DOMAIN=codexdominion.app
+      - API_URL=http://api:8080
+      - AZURE_AI_ENDPOINT=https://jermaine-ai.codexdominion.app
+    volumes:
+      - ./data/dashboard:/app/data
+      - ./logs/dashboard:/app/logs
     healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:8080/']
-      interval: 60s
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 30s
-
-  # Community Contributions Service (Port 8083)
-  codex-contributions:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: codex-contributions-prod
-    restart: unless-stopped
-    command: streamlit run contributions.py --server.port=8083 --server.address=0.0.0.0 --server.headless=true
-    expose:
-      - '8083'
-    volumes:
-      - ./codex_ledger.json:/app/codex_ledger.json
-      - ./data:/app/data
-      - ./logs:/app/logs
-    environment:
-      - STREAMLIT_SERVER_HEADLESS=true
-      - PYTHONPATH=/app
     networks:
       - codex-network
+
+  # ============================================
+  # API Gateway
+  # ============================================
+  api-gateway:
+    image: jmerritt48/codex-api:latest
+    container_name: codex-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - API_KEY=${API_KEY}
+      - AZURE_ENDPOINT=https://jermaine-ai.codexdominion.app
+      - IONOS_ENDPOINT=http://localhost
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - ./data/api:/app/data
+      - ./logs/api:/app/logs
     depends_on:
-      codex-main:
-        condition: service_healthy
+      - redis
     healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:8083/']
-      interval: 60s
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 30s
-
-  # Council Oversight Service (Port 8086)
-  codex-council:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: codex-council-prod
-    restart: unless-stopped
-    command: streamlit run enhanced_council_oversight.py --server.port=8086 --server.address=0.0.0.0 --server.headless=true
-    expose:
-      - '8086'
-    volumes:
-      - ./codex_ledger.json:/app/codex_ledger.json
-      - ./data:/app/data
-      - ./logs:/app/logs
-    environment:
-      - STREAMLIT_SERVER_HEADLESS=true
-      - PYTHONPATH=/app
     networks:
       - codex-network
-    depends_on:
-      codex-main:
-        condition: service_healthy
+
+  # ============================================
+  # Stock Analytics Platform
+  # ============================================
+  stockanalytics:
+    image: jmerritt48/stock-analytics:latest
+    container_name: stock-analytics
+    restart: unless-stopped
+    ports:
+      - "8515:8515"
+    environment:
+      - STREAMLIT_SERVER_PORT=8515
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_SERVER_HEADLESS=true
+      - ALPHA_VANTAGE_KEY=${ALPHA_VANTAGE_KEY}
+      - POLYGON_API_KEY=${POLYGON_API_KEY}
+    volumes:
+      - ./data/stocks:/app/data
+      - ./logs/stockanalytics:/app/logs
     healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:8086/']
-      interval: 60s
+      test: ["CMD", "curl", "-f", "http://localhost:8515/_stcore/health"]
+      interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 30s
-
-  # Contributions Viewer Service (Port 8090)
-  codex-viewer:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: codex-viewer-prod
-    restart: unless-stopped
-    command: streamlit run contributions_viewer.py --server.port=8090 --server.address=0.0.0.0 --server.headless=true
-    expose:
-      - '8090'
-    volumes:
-      - ./codex_ledger.json:/app/codex_ledger.json
-      - ./data:/app/data
-      - ./logs:/app/logs
-    environment:
-      - STREAMLIT_SERVER_HEADLESS=true
-      - PYTHONPATH=/app
     networks:
       - codex-network
-    depends_on:
-      codex-main:
-        condition: service_healthy
+
+  # ============================================
+  # Data Analytics Platform
+  # ============================================
+  analytics:
+    image: jmerritt48/data-analytics:latest
+    container_name: data-analytics
+    restart: unless-stopped
+    ports:
+      - "8516:8516"
+    environment:
+      - STREAMLIT_SERVER_PORT=8516
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_SERVER_HEADLESS=true
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - ./data/analytics:/app/data
+      - ./logs/analytics:/app/logs
     healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:8090/']
-      interval: 60s
+      test: ["CMD", "curl", "-f", "http://localhost:8516/_stcore/health"]
+      interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 30s
+    networks:
+      - codex-network
 
-  # SSL Certificate Management (Let's Encrypt)
-  certbot:
-    image: certbot/certbot:latest
-    container_name: codex-certbot
-    restart: 'no'
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
-      - ./ssl-challenge:/var/www/certbot
-    command: >
-      sh -c "
-      while :; do
-        certbot renew --webroot --webroot-path=/var/www/certbot --quiet
-        sleep 12h
-      done
-      "
-    depends_on:
-      - nginx
-
-  # Log Management with Logrotate
-  logrotate:
-    image: blacklabelops/logrotate
-    container_name: codex-logrotate
-    restart: unless-stopped
-    volumes:
-      - nginx_logs:/var/log/nginx
-      - ./logs:/var/log/codex
-      - ./logrotate.conf:/etc/logrotate.d/codex
-    environment:
-      - LOGS_DIRECTORIES=/var/log/nginx /var/log/codex
-      - LOGROTATE_INTERVAL=daily
-      - LOGROTATE_COPIES=7
-
-  # Redis for caching and sessions
+  # ============================================
+  # Redis Cache
+  # ============================================
   redis:
     image: redis:7-alpine
     container_name: codex-redis
     restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
     volumes:
-      - redis_data:/data
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     networks:
       - codex-network
-    command: redis-server --appendonly yes --requirepass "codex_secure_password"
-    healthcheck:
-      test: ['CMD', 'redis-cli', 'ping']
-      interval: 30s
-      timeout: 5s
-      retries: 3
 
+  # ============================================
+  # PostgreSQL Database (Optional)
+  # ============================================
+  database:
+    image: postgres:16-alpine
+    container_name: codex-database
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=codexdominion
+      - POSTGRES_USER=codex
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./backups:/backups
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U codex"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - codex-network
+
+  # ============================================
   # Monitoring with basic health checks
+  # ============================================
   healthcheck:
     image: alpine/curl
     container_name: codex-healthcheck
@@ -198,19 +166,19 @@ services:
     command: >
       sh -c "
       while :; do
-        echo '[HEALTH] Checking Codex Services...'
-        curl -f http://codex-main-prod:8080/ || echo 'Main Dashboard: FAILED'
-        curl -f http://codex-contributions-prod:8083/ || echo 'Contributions: FAILED'
-        curl -f http://codex-council-prod:8086/ || echo 'Council: FAILED'
-        curl -f http://codex-viewer-prod:8090/ || echo 'Viewer: FAILED'
+        echo '[HEALTH] Checking CodexDominion Services...'
+        curl -f http://dashboard:3000/health || echo 'Dashboard: FAILED'
+        curl -f http://api-gateway:8080/health || echo 'API: FAILED'
+        curl -f http://stockanalytics:8515/_stcore/health || echo 'Stock Analytics: FAILED'
+        curl -f http://analytics:8516/_stcore/health || echo 'Analytics: FAILED'
         sleep 300
       done
       "
     depends_on:
-      - codex-main
-      - codex-contributions
-      - codex-council
-      - codex-viewer
+      - dashboard
+      - api-gateway
+      - stockanalytics
+      - analytics
 
 networks:
   codex-network:

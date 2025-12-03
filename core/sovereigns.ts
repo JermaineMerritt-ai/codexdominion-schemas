@@ -5,6 +5,7 @@
  * Reports to Council Seal, coordinates with Custodians, commands Industry Agents.
  */
 
+import { randomUUID } from 'crypto';
 import { councilSeal } from './councilSeal';
 
 export interface Sovereign {
@@ -264,6 +265,7 @@ export class SovereignService {
 
     // Log with Council Seal
     councilSeal.audit({
+      id: randomUUID(),
       timestamp: new Date(),
       actor: message.from,
       action: 'SEND_MESSAGE',
@@ -299,7 +301,7 @@ export class SovereignService {
         this.handleAlert(event);
         break;
       case 'HEALTH_CHECK':
-        this.handleHealthCheck(event);
+        this.handleHealthCheckEvent(event);
         break;
       case 'RESOURCE_REQUEST':
         this.handleResourceRequest(event);
@@ -316,6 +318,7 @@ export class SovereignService {
    * Handle alert event
    */
   private handleAlert(event: Event): void {
+    if (!event.target) return;
     const sovereign = this.sovereigns.get(event.target);
     
     if (sovereign && event.payload.severity === 'critical') {
@@ -325,6 +328,7 @@ export class SovereignService {
 
       // Notify Council Seal
       councilSeal.audit({
+        id: randomUUID(),
         timestamp: new Date(),
         actor: sovereign.id,
         action: 'ALERT_RECEIVED',
@@ -387,7 +391,8 @@ export class SovereignService {
    * Calculate health score
    */
   private calculateHealth(sovereign: Sovereign): number {
-    const { errorRate, uptime, averageResponseTime } = sovereign.metrics;
+    const metrics = (sovereign as any).metrics || { errorRate: 0, uptime: 100, averageResponseTime: 500 };
+    const { errorRate, uptime, averageResponseTime } = metrics;
     
     const errorScore = Math.max(0, 100 - (errorRate * 10000));
     const uptimeScore = uptime;

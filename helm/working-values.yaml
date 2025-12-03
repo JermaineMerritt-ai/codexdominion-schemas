@@ -1,0 +1,78 @@
+replicaCount: 1
+
+nodeCrown:
+  image: nginx:alpine
+  pullPolicy: IfNotPresent
+  port: 80
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  env:
+    - name: NODE_ENV
+      value: "production"
+
+pythonCouncil:
+  image: python:3.11-alpine
+  pullPolicy: IfNotPresent
+  port: 8000
+  resources:
+    limits:
+      cpu: 300m
+      memory: 512Mi
+    requests:
+      cpu: 150m
+      memory: 256Mi
+  env:
+    - name: PYTHONUNBUFFERED
+      value: "1"
+    - name: ENVIRONMENT
+      value: "production"
+
+javaCrown:
+  image: openjdk:21-slim
+  pullPolicy: IfNotPresent
+  port: 8080
+  resources:
+    limits:
+      cpu: 300m
+      memory: 512Mi
+    requests:
+      cpu: 150m
+      memory: 256Mi
+  env:
+    - name: JAVA_OPTS
+      value: "-Xmx384m -Xms256m"
+
+schemas:
+  lineage: preserved
+  version: "1.0"
+
+ingress:
+  enabled: true
+  className: nginx
+  host: codexdominion.app
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  tls:
+    enabled: true
+    secretName: codexdominion-tls
+
+service:
+  type: ClusterIP
+  sessionAffinity: ClientIP
+
+storage:
+  enabled: true
+  size: 10Gi
+  className: managed-csi
+  mountPath: /var/codexdominion/ledger
+
+eternals:
+  archiveReleases: true
+  ceremonialUpgrades: true
+  immortalizeVersions: true

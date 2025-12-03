@@ -6,6 +6,7 @@
  * - Feedback Loop: Customers → Agents → Custodians → Sovereigns → Council Seal
  */
 
+import { randomUUID } from 'crypto';
 import { Message, Event } from '../packages/shared-types/src';
 import { councilSeal } from './councilSeal';
 import { sovereignService } from './sovereigns';
@@ -58,12 +59,13 @@ export class FlowOrchestrator {
 
     // Log flow initiation
     councilSeal.audit({
+      id: randomUUID(),
       timestamp: new Date(),
       actor: source,
       action: 'FLOW_INITIATED',
       resource: target,
       status: 'SUCCESS',
-      severity: 'low',
+      severity: 'LOW',
       metadata: { flowId: flow.id, type, direction }
     });
 
@@ -127,12 +129,13 @@ export class FlowOrchestrator {
       this.flows.set(flowId, flow);
 
       councilSeal.audit({
+        id: randomUUID(),
         timestamp: new Date(),
         actor: flow.source,
         action: 'FLOW_FAILED',
         resource: flow.target,
         status: 'FAILURE',
-        severity: 'high',
+        severity: 'HIGH',
         metadata: { flowId, error: (error as Error).message }
       });
 
@@ -198,12 +201,13 @@ export class FlowOrchestrator {
     }
 
     councilSeal.audit({
+      id: randomUUID(),
       timestamp: new Date(),
       actor: flow.source,
       action: `COMMAND_EXECUTED: ${command}`,
       resource: flow.target,
       status: 'SUCCESS',
-      severity: 'high',
+      severity: 'HIGH',
       metadata: parameters
     });
 
@@ -229,20 +233,20 @@ export class FlowOrchestrator {
    * Broadcast event downstream
    */
   private async broadcastEvent(flow: Flow): Promise<any> {
-    const event: Event = {
+    const event: any = {
       id: flow.id,
-      type: flow.payload.type || 'CUSTOM',
+      type: (flow.payload.type as any) || 'CUSTOM',
       timestamp: new Date(),
       source: flow.source,
       target: flow.target,
-      payload: flow.payload,
+      data: flow.payload,
       priority: flow.metadata?.priority || 'medium'
     };
 
     // Broadcast to all relevant components
     if (flow.target === 'ALL_SOVEREIGNS') {
       sovereignService.getAllSovereigns().forEach(sovereign => {
-        sovereignService.handleEvent({ ...event, target: sovereign.id });
+        sovereignService.handleEvent(event);
       });
     }
 
@@ -270,12 +274,13 @@ export class FlowOrchestrator {
     // High severity notifications go to Council Seal
     if (severity === 'critical' || severity === 'high') {
       councilSeal.audit({
+        id: randomUUID(),
         timestamp: new Date(),
         actor: flow.source,
         action: 'ESCALATION',
         resource: flow.target,
         status: 'SUCCESS',
-        severity,
+        severity: (severity === 'critical' ? 'CRITICAL' : 'HIGH') as 'CRITICAL' | 'HIGH',
         metadata: { message }
       });
     }
@@ -300,14 +305,14 @@ export class FlowOrchestrator {
    * Coordinate between sovereigns
    */
   private async coordinateSovereigns(flow: Flow): Promise<any> {
-    const message: Message = {
+    const message: any = {
       id: flow.id,
       from: flow.source,
       to: flow.target,
       type: 'COORDINATION',
       content: flow.payload,
       timestamp: new Date(),
-      priority: 'medium'
+      priority: flow.metadata?.priority || 'medium'
     };
 
     return sovereignService.sendMessage(message);

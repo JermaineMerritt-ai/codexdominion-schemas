@@ -1,0 +1,42 @@
+[Unit]
+Description=CodexDominion FastAPI Backend Service
+After=network.target postgresql.service
+
+[Service]
+Type=exec
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/codexdominion.app
+Environment="PATH=/var/www/codexdominion.app/.venv/bin"
+Environment="PYTHONPATH=/var/www/codexdominion.app"
+Environment="PYTHON_ENV=production"
+EnvironmentFile=/var/www/codexdominion.app/.env.production
+
+# Start the FastAPI application with uvicorn
+ExecStart=/var/www/codexdominion.app/.venv/bin/uvicorn src.backend.main:app \
+    --host 0.0.0.0 \
+    --port 8000 \
+    --workers 4 \
+    --log-level info \
+    --access-log
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitBurst=5
+StartLimitInterval=60
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/codexdominion.app/data
+ReadWritePaths=/var/www/codexdominion.app/logs
+
+# Logging
+StandardOutput=append:/var/log/codexdominion/api.log
+StandardError=append:/var/log/codexdominion/api-error.log
+
+[Install]
+WantedBy=multi-user.target

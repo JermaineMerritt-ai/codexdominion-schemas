@@ -11,7 +11,7 @@ import asyncio
 import json
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import pandas as pd
 import plotly.express as px
@@ -19,12 +19,14 @@ import plotly.graph_objects as go
 import streamlit as st
 
 # Add codex-integration to path
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "codex-integration"))
+codex_int_path = os.path.join(
+    os.path.dirname(__file__), "..", "codex-integration"
+)
+sys.path.append(codex_int_path)
 
 try:
     from cybersecurity_biotech_extractors import \
         EnhancedIntegratedKnowledgeExtractor
-    from domain_knowledge_extractors import IntegratedKnowledgeExtractor
     from enhanced_multi_domain_learning_system import \
         EnhancedMultiDomainLearningSystem
     from multi_domain_learning_system import MultiDomainLearningSystem
@@ -90,7 +92,7 @@ st.markdown(
 )
 
 
-def main():
+def main() -> None:
     """Main dashboard function"""
 
     # Header
@@ -98,7 +100,8 @@ def main():
         """
     <div class="main-header">
         <h1>🧠 Codex Dominion - Multi-Domain Knowledge Integration</h1>
-        <p>Learning from Medical, Education, Business, Legal, Industry & Specialized Niches</p>
+        <p>Learning from Medical, Education, Business, Legal,
+        Industry & Specialized Niches</p>
     </div>
     """,
         unsafe_allow_html=True,
@@ -142,7 +145,7 @@ def main():
         show_integration_tools()
 
 
-def show_dashboard_overview():
+def show_dashboard_overview() -> None:
     """Show main dashboard overview"""
     st.header("📊 System Overview")
 
@@ -187,7 +190,7 @@ def show_dashboard_overview():
 
     with col4:
         st.markdown(
-            f"""
+            """
         <div class="metric-card">
             <h3>Active</h3>
             <p>System Status</p>
@@ -233,7 +236,8 @@ def show_dashboard_overview():
         fig = go.Figure()
 
         categories = [
-            domain.replace("_", " ").title() for domain in summary["domains"].keys()
+            domain.replace("_", " ").title()
+            for domain in summary["domains"].keys()
         ]
         credibility_scores = [
             info["average_credibility"] for info in summary["domains"].values()
@@ -263,7 +267,8 @@ def show_dashboard_overview():
             f"""
         <div class="domain-card">
             <h4>{domain.replace('_', ' ').title()}</h4>
-            <p>Sources: {info['source_count']} | Avg Credibility: {info['average_credibility']:.1f}</p>
+            <p>Sources: {info['source_count']} |
+            Avg Credibility: {info['average_credibility']:.1f}</p>
         </div>
         """,
             unsafe_allow_html=True,
@@ -272,11 +277,12 @@ def show_dashboard_overview():
         # Show top 3 sources
         for i, source in enumerate(info["top_sources"][:3]):
             st.write(
-                f"  {i+1}. **{source['name']}** - Credibility: {source['credibility']}"
+                f"  {i+1}. **{source['name']}** - "
+                f"Credibility: {source['credibility']}"
             )
 
 
-def show_domain_analysis():
+def show_domain_analysis() -> None:
     """Show detailed domain analysis"""
     st.header("🔍 Domain Analysis")
 
@@ -292,7 +298,8 @@ def show_domain_analysis():
         "specialized_niches",
     ]
     selected_domain = st.selectbox(
-        "Select Domain to Analyze:", [d.replace("_", " ").title() for d in domains]
+        "Select Domain to Analyze:",
+        [d.replace("_", " ").title() for d in domains]
     )
 
     domain_key = selected_domain.lower().replace(" ", "_")
@@ -304,17 +311,21 @@ def show_domain_analysis():
                 if domain_key in ["cybersecurity", "biotech"]:
                     if domain_key == "cybersecurity":
                         results = asyncio.run(
-                            st.session_state.learning_system.learn_from_cybersecurity_domain()
+                            st.session_state.learning_system
+                            .learn_from_cybersecurity_domain()
                         )
                     else:
                         results = asyncio.run(
-                            st.session_state.learning_system.learn_from_biotech_domain()
+                            st.session_state.learning_system
+                            .learn_from_biotech_domain()
                         )
                 else:
                     # Simulate domain analysis for other domains
                     results = {
                         "domain": domain_key,
-                        "sources_processed": [f"Source {i+1}" for i in range(5)],
+                        "sources_processed": [
+                            f"Source {i+1}" for i in range(5)
+                        ],
                         "knowledge_extracted": [
                             f"Knowledge item {i+1}" for i in range(10)
                         ],
@@ -342,16 +353,20 @@ def show_domain_analysis():
                 with col1:
                     st.subheader("📊 Analysis Results")
                     st.write(
-                        f"**Sources Processed:** {len(results['sources_processed'])}"
+                        f"**Sources Processed:** "
+                        f"{len(results['sources_processed'])}"
                     )
                     st.write(
-                        f"**Knowledge Items:** {len(results['knowledge_extracted'])}"
+                        f"**Knowledge Items:** "
+                        f"{len(results['knowledge_extracted'])}"
                     )
                     st.write(
-                        f"**Patterns Found:** {len(results['patterns_identified'])}"
+                        f"**Patterns Found:** "
+                        f"{len(results['patterns_identified'])}"
                     )
                     st.write(
-                        f"**Integration Score:** {results['integration_score']:.2f}"
+                        f"**Integration Score:** "
+                        f"{results['integration_score']:.2f}"
                     )
 
                 with col2:
@@ -386,8 +401,10 @@ def show_domain_analysis():
                     st.markdown(
                         f"""
                     <div class="knowledge-item">
-                        <strong>{pattern['pattern_type'].replace('_', ' ').title()}</strong><br>
-                        Confidence: {pattern['confidence']:.1%} | 
+                        <strong>
+                        {pattern['pattern_type'].replace('_', ' ').title()}
+                        </strong><br>
+                        Confidence: {pattern['confidence']:.1%} |
                         Occurrences: {pattern['occurrences']}
                     </div>
                     """,
@@ -401,7 +418,7 @@ def show_domain_analysis():
                 st.error(f"Analysis failed: {e}")
 
 
-def show_knowledge_extraction():
+def show_knowledge_extraction() -> None:
     """Show knowledge extraction interface"""
     st.header("🧠 Knowledge Extraction")
 
@@ -413,14 +430,14 @@ def show_knowledge_extraction():
 
     if st.button("🔍 Extract Comprehensive Knowledge") and topic:
         with st.spinner(
-            f"Extracting knowledge about '{topic}' from all enhanced domains..."
+            f"Extracting knowledge about '{topic}' from all "
+            f"enhanced domains..."
         ):
             try:
                 # Enhanced comprehensive extraction
                 knowledge = asyncio.run(
-                    st.session_state.extractor.extract_comprehensive_enhanced_knowledge(
-                        topic
-                    )
+                    st.session_state.extractor
+                    .extract_comprehensive_enhanced_knowledge(topic)
                 )
 
                 st.markdown(
@@ -436,7 +453,10 @@ def show_knowledge_extraction():
                 col1, col2, col3 = st.columns(3)
 
                 with col1:
-                    st.metric("Domains Analyzed", len(knowledge["domain_insights"]))
+                    st.metric(
+                        "Domains Analyzed",
+                        len(knowledge["domain_insights"])
+                    )
 
                 with col2:
                     st.metric(
@@ -446,25 +466,36 @@ def show_knowledge_extraction():
 
                 with col3:
                     st.metric(
-                        "Actionable Insights", len(knowledge["actionable_insights"])
+                        "Actionable Insights",
+                        len(knowledge["actionable_insights"])
                     )
 
                 # Detailed results
                 st.subheader("📊 Domain Insights")
 
                 for domain, insights in knowledge["domain_insights"].items():
-                    with st.expander(f"📁 {domain.replace('_', ' ').title()} Domain"):
+                    with st.expander(
+                        f"📁 {domain.replace('_', ' ').title()} Domain"
+                    ):
                         if insights:
-                            for i, insight in enumerate(insights[:3]):  # Show top 3
+                            # Show top 3
+                            for i, insight in enumerate(insights[:3]):
                                 credibility_score = insight.get(
-                                    "credibility_score", insight.get("credibility", 0.0)
+                                    "credibility_score",
+                                    insight.get("credibility", 0.0)
                                 )
                                 st.markdown(
                                     f"""
                                 <div class="knowledge-item">
-                                    <strong>Source:</strong> {insight.get('source', 'Unknown')}<br>
-                                    <strong>Title:</strong> {insight.get('title', insight.get('name', 'N/A'))}<br>
-                                    <strong>Credibility:</strong> {credibility_score:.1f}/10
+                                    <strong>Source:</strong>
+                                    {insight.get('source', 'Unknown')}<br>
+                                    <strong>Title:</strong>
+                                    {insight.get(
+                                        'title',
+                                        insight.get('name', 'N/A')
+                                    )}<br>
+                                    <strong>Credibility:</strong>
+                                    {credibility_score:.1f}/10
                                 </div>
                                 """,
                                     unsafe_allow_html=True,
@@ -479,7 +510,10 @@ def show_knowledge_extraction():
                         st.markdown(
                             f"""
                         <div class="knowledge-item">
-                            <strong>{correlation['correlation_type'].replace('_', ' ').title()}</strong><br>
+                            <strong>
+                            {correlation['correlation_type']
+                                .replace('_', ' ').title()}
+                            </strong><br>
                             Domains: {', '.join(correlation['domains'])}<br>
                             Strength: {correlation['strength']:.1%}<br>
                             Insight: {correlation['insight']}
@@ -505,15 +539,18 @@ def show_knowledge_extraction():
                 st.error(f"Extraction failed: {e}")
 
 
-def show_learning_results():
+def show_learning_results() -> None:
     """Show learning results and history"""
     st.header("📈 Learning Results")
 
     if st.button("🚀 Run Global Learning Session"):
-        with st.spinner("Running comprehensive learning across all domains..."):
+        with st.spinner(
+            "Running comprehensive learning across all domains..."
+        ):
             try:
                 results = asyncio.run(
-                    st.session_state.learning_system.learn_from_all_enhanced_domains()
+                    st.session_state.learning_system
+                    .learn_from_all_enhanced_domains()
                 )
 
                 st.markdown(
@@ -532,7 +569,8 @@ def show_learning_results():
 
                 with col1:
                     st.metric(
-                        "Domains Processed", len(global_session["domains_processed"])
+                        "Domains Processed",
+                        len(global_session["domains_processed"])
                     )
 
                 with col2:
@@ -560,7 +598,9 @@ def show_learning_results():
                             "Domain": domain.replace("_", " ").title(),
                             "Integration Score": result["integration_score"],
                             "Sources": len(result["sources_processed"]),
-                            "Knowledge Items": len(result["knowledge_extracted"]),
+                            "Knowledge Items": len(
+                                result["knowledge_extracted"]
+                            ),
                             "Patterns": len(result["patterns_identified"]),
                         }
                     )
@@ -599,7 +639,9 @@ def show_learning_results():
                     st.markdown(
                         f"""
                     <div class="knowledge-item">
-                        <strong>{pattern['pattern'].replace('_', ' ').title()}</strong><br>
+                        <strong>
+                        {pattern['pattern'].replace('_', ' ').title()}
+                        </strong><br>
                         Domains: {', '.join(pattern['involved_domains'])}<br>
                         Strength: {pattern['strength']:.1%}<br>
                         Description: {pattern['description']}
@@ -615,7 +657,7 @@ def show_learning_results():
                 st.error(f"Global learning failed: {e}")
 
 
-def show_system_status():
+def show_system_status() -> None:
     """Show system status and health"""
     st.header("⚙️ System Status")
 
@@ -680,9 +722,15 @@ def show_system_status():
     performance_data = pd.DataFrame(
         {
             "Date": days,
-            "Knowledge Items": [100 + i * 5 + (i % 3) * 10 for i in range(len(days))],
-            "Integration Score": [0.7 + (i % 10) * 0.03 for i in range(len(days))],
-            "API Calls": [200 + i * 8 + (i % 5) * 20 for i in range(len(days))],
+            "Knowledge Items": [
+                100 + i * 5 + (i % 3) * 10 for i in range(len(days))
+            ],
+            "Integration Score": [
+                0.7 + (i % 10) * 0.03 for i in range(len(days))
+            ],
+            "API Calls": [
+                200 + i * 8 + (i % 5) * 20 for i in range(len(days))
+            ],
         }
     )
 
@@ -695,7 +743,7 @@ def show_system_status():
     st.plotly_chart(fig, use_container_width=True)
 
 
-def show_integration_tools():
+def show_integration_tools() -> None:
     """Show integration tools and utilities"""
     st.header("🚀 Integration Tools")
 
@@ -705,9 +753,12 @@ def show_integration_tools():
         results = st.session_state["global_learning_results"]
 
         if st.button("🚀 Integrate with Codex System"):
-            with st.spinner("Integrating learned knowledge with Codex Dominion..."):
+            with st.spinner(
+                "Integrating learned knowledge with Codex Dominion..."
+            ):
                 integration_result = (
-                    st.session_state.learning_system.integrate_with_codex_system(
+                    st.session_state.learning_system
+                    .integrate_with_codex_system(
                         results
                     )
                 )
@@ -734,8 +785,11 @@ def show_integration_tools():
                         st.markdown(
                             f"""
                         <div class="knowledge-item">
-                            <strong>{fusion['fusion_type'].replace('_', ' ').title()}</strong><br>
-                            Domains: {', '.join(fusion['domains_involved'])}<br>
+                            <strong>
+                            {fusion['fusion_type'].replace('_', ' ').title()}
+                            </strong><br>
+                            Domains:
+                            {', '.join(fusion['domains_involved'])}<br>
                             Benefit: {fusion['system_benefit']}
                         </div>
                         """,
@@ -748,7 +802,10 @@ def show_integration_tools():
 
                 st.session_state["integration_result"] = integration_result
     else:
-        st.info("💡 Run a Global Learning Session first to generate integration data.")
+        st.info(
+            "💡 Run a Global Learning Session first to generate "
+            "integration data."
+        )
 
     # Export tools
     st.subheader("📤 Export Tools")
@@ -762,7 +819,10 @@ def show_integration_tools():
                 st.download_button(
                     label="💾 Download JSON",
                     data=json.dumps(data, indent=2),
-                    file_name=f"learning_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+                    file_name=(
+                        f"learning_results_"
+                        f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+                    ),
                     mime="application/json",
                 )
             else:
@@ -774,7 +834,10 @@ def show_integration_tools():
             st.download_button(
                 label="💾 Download Config",
                 data=json.dumps(summary, indent=2),
-                file_name=f"system_config_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+                file_name=(
+                    f"system_config_"
+                    f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+                ),
                 mime="application/json",
             )
 
@@ -785,7 +848,10 @@ def show_integration_tools():
                 st.download_button(
                     label="💾 Download Integration",
                     data=json.dumps(data, indent=2),
-                    file_name=f"integration_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+                    file_name=(
+                        f"integration_"
+                        f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+                    ),
                     mime="application/json",
                 )
             else:

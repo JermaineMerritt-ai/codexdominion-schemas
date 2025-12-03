@@ -1,0 +1,110 @@
+# CodexDominion Helm Chart Values
+# Eternal Ledger Version: 1.0
+# Lineage: Preserved
+
+replicaCount: 2
+
+# Node Crown - Frontend Service
+nodeCrown:
+  image: codexdominion/node:latest
+  pullPolicy: IfNotPresent
+  port: 3000
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+  env:
+    - name: NODE_ENV
+      value: "production"
+    - name: NEXT_PUBLIC_API_URL
+      value: "https://codexdominion.app/api"
+
+# Python Council - Backend Service
+pythonCouncil:
+  image: codexdominion/python:latest
+  pullPolicy: IfNotPresent
+  port: 8000
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+  env:
+    - name: PYTHONUNBUFFERED
+      value: "1"
+    - name: ENVIRONMENT
+      value: "production"
+
+# Java Crown - Enterprise Service
+javaCrown:
+  image: codexdominion/java:latest
+  pullPolicy: IfNotPresent
+  port: 8080
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+  env:
+    - name: JAVA_OPTS
+      value: "-Xmx768m -Xms512m"
+    - name: SPRING_PROFILES_ACTIVE
+      value: "production"
+
+# Schemas Configuration
+schemas:
+  lineage: preserved
+  version: "1.0"
+  eternals:
+    - artifact
+    - constellation
+    - council
+    - crown
+    - invocation
+    - ledger
+
+# Ingress Configuration
+ingress:
+  enabled: true
+  className: nginx
+  host: codexdominion.app
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  tls:
+    enabled: true
+    secretName: codexdominion-tls
+
+# Service Configuration
+service:
+  type: ClusterIP
+  sessionAffinity: ClientIP
+
+# Storage for Eternal Ledger
+storage:
+  enabled: true
+  size: 10Gi
+  className: standard
+  mountPath: /var/codexdominion/ledger
+
+# Governance & Release Management
+governance:
+  releaseChecklist:
+    enabled: true
+  historyMax: 10  # Preserve last 10 Helm revisions
+  rolloutStrategy:
+    maxUnavailable: 0
+    maxSurge: 1
+
+# Eternal Ledger Principles
+eternals:
+  archiveReleases: true
+  ceremonialUpgrades: true
+  immortalizeVersions: true

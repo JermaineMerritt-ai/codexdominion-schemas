@@ -1,0 +1,263 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="2400" viewBox="0 0 2400 2400">
+  <defs>
+    <!-- Radial glow filters -->
+    <filter id="goldGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="greenGlow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="blueGlow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="pinkGlow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Pulsing animation gradient -->
+    <radialGradient id="pulseGradient">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8">
+        <animate attributeName="stop-opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0">
+        <animate attributeName="stop-opacity" values="0;0.3;0" dur="2s" repeatCount="indefinite"/>
+      </stop>
+    </radialGradient>
+    
+    <!-- Revenue flow animation -->
+    <linearGradient id="revenueFlow">
+      <stop offset="0%" stop-color="#FFD700" stop-opacity="0.8">
+        <animate attributeName="offset" values="0%;100%" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" stop-color="#32CD32" stop-opacity="0.6">
+        <animate attributeName="offset" values="50%;150%" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#4169E1" stop-opacity="0">
+        <animate attributeName="offset" values="100%;200%" dur="3s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="2400" height="2400" fill="#0a0a1a"/>
+  
+  <!-- Revenue stream orbits -->
+  <circle cx="1200" cy="1200" r="900" stroke="#333" stroke-width="1" fill="none" opacity="0.3"/>
+  <circle cx="1200" cy="1200" r="700" stroke="#333" stroke-width="1" fill="none" opacity="0.3"/>
+  <circle cx="1200" cy="1200" r="500" stroke="#333" stroke-width="1" fill="none" opacity="0.3"/>
+  
+  <!-- Connection lines from center to branches -->
+  <g opacity="0.6" stroke-width="3">
+    <!-- To Coupons (top) -->
+    <line x1="1200" y1="1200" x2="1200" y2="300" stroke="#32CD32" stroke-dasharray="10,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="15" dur="1s" repeatCount="indefinite"/>
+    </line>
+    
+    <!-- To SaaS (right) -->
+    <line x1="1200" y1="1200" x2="2100" y2="1200" stroke="#4169E1" stroke-dasharray="10,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="15" dur="1s" repeatCount="indefinite"/>
+    </line>
+    
+    <!-- To Finance (bottom) -->
+    <line x1="1200" y1="1200" x2="1200" y2="2100" stroke="#FFD700" stroke-dasharray="10,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="15" dur="1s" repeatCount="indefinite"/>
+    </line>
+    
+    <!-- To Travel (left) -->
+    <line x1="1200" y1="1200" x2="300" y2="1200" stroke="#FF69B4" stroke-dasharray="10,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="15" dur="1s" repeatCount="indefinite"/>
+    </line>
+  </g>
+  
+  <!-- Branch 1: Coupons & Cashback (Top - 0°) -->
+  <g id="coupons-branch">
+    <!-- Branch hub -->
+    <circle cx="1200" cy="300" r="80" fill="#32CD32" filter="url(#greenGlow)" opacity="0.9"/>
+    <circle cx="1200" cy="300" r="80" fill="url(#pulseGradient)" opacity="0.3"/>
+    <text x="1200" y="315" font-size="60" text-anchor="middle" fill="#0a0a1a">💰</text>
+    <text x="1200" y="400" font-size="22" text-anchor="middle" fill="#32CD32" font-weight="bold">Coupons & Cashback</text>
+    
+    <!-- Partner nodes -->
+    <!-- Rakuten -->
+    <circle cx="1050" cy="180" r="35" fill="#32CD32" opacity="0.7"/>
+    <text x="1050" y="140" font-size="14" text-anchor="middle" fill="#32CD32">Rakuten</text>
+    <line x1="1200" y1="300" x2="1050" y2="180" stroke="#32CD32" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Honey -->
+    <circle cx="1350" cy="180" r="35" fill="#32CD32" opacity="0.7"/>
+    <text x="1350" y="140" font-size="14" text-anchor="middle" fill="#32CD32">Honey</text>
+    <line x1="1200" y1="300" x2="1350" y2="180" stroke="#32CD32" stroke-width="1" opacity="0.5"/>
+    
+    <!-- RetailMeNot -->
+    <circle cx="1000" cy="300" r="30" fill="#32CD32" opacity="0.7"/>
+    <text x="900" y="310" font-size="12" text-anchor="middle" fill="#32CD32">RetailMeNot</text>
+    <line x1="1200" y1="300" x2="1000" y2="300" stroke="#32CD32" stroke-width="1" opacity="0.5"/>
+    
+    <!-- TopCashback -->
+    <circle cx="1400" cy="300" r="30" fill="#32CD32" opacity="0.7"/>
+    <text x="1500" y="310" font-size="12" text-anchor="middle" fill="#32CD32">TopCashback</text>
+    <line x1="1200" y1="300" x2="1400" y2="300" stroke="#32CD32" stroke-width="1" opacity="0.5"/>
+  </g>
+  
+  <!-- Branch 2: SaaS Discounts (Right - 90°) -->
+  <g id="saas-branch">
+    <!-- Branch hub -->
+    <circle cx="2100" cy="1200" r="80" fill="#4169E1" filter="url(#blueGlow)" opacity="0.9"/>
+    <circle cx="2100" cy="1200" r="80" fill="url(#pulseGradient)" opacity="0.3"/>
+    <text x="2100" y="1215" font-size="60" text-anchor="middle" fill="#fff">🛠️</text>
+    <text x="2100" y="1300" font-size="22" text-anchor="middle" fill="#4169E1" font-weight="bold">SaaS Discounts</text>
+    
+    <!-- Partner nodes -->
+    <!-- Shopify -->
+    <circle cx="2220" cy="1080" r="35" fill="#4169E1" opacity="0.7"/>
+    <text x="2300" y="1085" font-size="14" text-anchor="middle" fill="#4169E1">Shopify</text>
+    <line x1="2100" y1="1200" x2="2220" y2="1080" stroke="#4169E1" stroke-width="1" opacity="0.5"/>
+    
+    <!-- SEMrush -->
+    <circle cx="2220" cy="1320" r="35" fill="#4169E1" opacity="0.7"/>
+    <text x="2300" y="1325" font-size="14" text-anchor="middle" fill="#4169E1">SEMrush</text>
+    <line x1="2100" y1="1200" x2="2220" y2="1320" stroke="#4169E1" stroke-width="1" opacity="0.5"/>
+    
+    <!-- HubSpot -->
+    <circle cx="2100" cy="1000" r="30" fill="#4169E1" opacity="0.7"/>
+    <text x="2100" y="970" font-size="12" text-anchor="middle" fill="#4169E1">HubSpot</text>
+    <line x1="2100" y1="1200" x2="2100" y2="1000" stroke="#4169E1" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Canva -->
+    <circle cx="2100" cy="1400" r="30" fill="#4169E1" opacity="0.7"/>
+    <text x="2100" y="1440" font-size="12" text-anchor="middle" fill="#4169E1">Canva</text>
+    <line x1="2100" y1="1200" x2="2100" y2="1400" stroke="#4169E1" stroke-width="1" opacity="0.5"/>
+  </g>
+  
+  <!-- Branch 3: Finance Tools (Bottom - 180°) -->
+  <g id="finance-branch">
+    <!-- Branch hub -->
+    <circle cx="1200" cy="2100" r="80" fill="#FFD700" filter="url(#goldGlow)" opacity="0.9"/>
+    <circle cx="1200" cy="2100" r="80" fill="url(#pulseGradient)" opacity="0.3"/>
+    <text x="1200" y="2115" font-size="60" text-anchor="middle" fill="#0a0a1a">💳</text>
+    <text x="1200" y="2030" font-size="22" text-anchor="middle" fill="#FFD700" font-weight="bold">Finance Tools</text>
+    
+    <!-- Partner nodes -->
+    <!-- LendingTree -->
+    <circle cx="1050" cy="2220" r="32" fill="#FFD700" opacity="0.7"/>
+    <text x="1050" y="2265" font-size="12" text-anchor="middle" fill="#FFD700">LendingTree</text>
+    <line x1="1200" y1="2100" x2="1050" y2="2220" stroke="#FFD700" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Credit Karma -->
+    <circle cx="1350" cy="2220" r="32" fill="#FFD700" opacity="0.7"/>
+    <text x="1350" y="2265" font-size="12" text-anchor="middle" fill="#FFD700">Credit Karma</text>
+    <line x1="1200" y1="2100" x2="1350" y2="2220" stroke="#FFD700" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Coinbase -->
+    <circle cx="1000" cy="2100" r="28" fill="#FFD700" opacity="0.7"/>
+    <text x="920" y="2105" font-size="12" text-anchor="middle" fill="#FFD700">Coinbase</text>
+    <line x1="1200" y1="2100" x2="1000" y2="2100" stroke="#FFD700" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Wise -->
+    <circle cx="1400" cy="2100" r="28" fill="#FFD700" opacity="0.7"/>
+    <text x="1480" y="2105" font-size="12" text-anchor="middle" fill="#FFD700">Wise</text>
+    <line x1="1200" y1="2100" x2="1400" y2="2100" stroke="#FFD700" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Revolut -->
+    <circle cx="1200" cy="2250" r="28" fill="#FFD700" opacity="0.7"/>
+    <text x="1200" y="2290" font-size="12" text-anchor="middle" fill="#FFD700">Revolut</text>
+    <line x1="1200" y1="2100" x2="1200" y2="2250" stroke="#FFD700" stroke-width="1" opacity="0.5"/>
+  </g>
+  
+  <!-- Branch 4: Travel Deals (Left - 270°) -->
+  <g id="travel-branch">
+    <!-- Branch hub -->
+    <circle cx="300" cy="1200" r="80" fill="#FF69B4" filter="url(#pinkGlow)" opacity="0.9"/>
+    <circle cx="300" cy="1200" r="80" fill="url(#pulseGradient)" opacity="0.3"/>
+    <text x="300" y="1215" font-size="60" text-anchor="middle" fill="#fff">✈️</text>
+    <text x="300" y="1300" font-size="22" text-anchor="middle" fill="#FF69B4" font-weight="bold">Travel Deals</text>
+    
+    <!-- Partner nodes -->
+    <!-- Booking.com -->
+    <circle cx="180" cy="1080" r="35" fill="#FF69B4" opacity="0.7"/>
+    <text x="100" y="1085" font-size="12" text-anchor="middle" fill="#FF69B4">Booking.com</text>
+    <line x1="300" y1="1200" x2="180" y2="1080" stroke="#FF69B4" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Expedia -->
+    <circle cx="180" cy="1320" r="35" fill="#FF69B4" opacity="0.7"/>
+    <text x="100" y="1325" font-size="14" text-anchor="middle" fill="#FF69B4">Expedia</text>
+    <line x1="300" y1="1200" x2="180" y2="1320" stroke="#FF69B4" stroke-width="1" opacity="0.5"/>
+    
+    <!-- TripAdvisor -->
+    <circle cx="300" cy="1000" r="30" fill="#FF69B4" opacity="0.7"/>
+    <text x="300" y="970" font-size="12" text-anchor="middle" fill="#FF69B4">TripAdvisor</text>
+    <line x1="300" y1="1200" x2="300" y2="1000" stroke="#FF69B4" stroke-width="1" opacity="0.5"/>
+    
+    <!-- AliExpress -->
+    <circle cx="300" cy="1400" r="30" fill="#FF69B4" opacity="0.7"/>
+    <text x="300" y="1440" font-size="12" text-anchor="middle" fill="#FF69B4">AliExpress</text>
+    <line x1="300" y1="1200" x2="300" y2="1400" stroke="#FF69B4" stroke-width="1" opacity="0.5"/>
+  </g>
+  
+  <!-- Central Hub: Action AI -->
+  <g id="action-ai-hub">
+    <!-- Radiant glow -->
+    <circle cx="1200" cy="1200" r="150" fill="#FFD700" filter="url(#goldGlow)" opacity="0.3"/>
+    <circle cx="1200" cy="1200" r="120" fill="#FFD700" opacity="0.8">
+      <animate attributeName="r" values="120;130;120" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Hub icon -->
+    <text x="1200" y="1230" font-size="100" text-anchor="middle" fill="#0a0a1a" font-weight="bold">⚡</text>
+    <text x="1200" y="1320" font-size="32" text-anchor="middle" fill="#FFD700" font-weight="bold">Action AI</text>
+    <text x="1200" y="1355" font-size="18" text-anchor="middle" fill="#FFD700">Sovereign Operator</text>
+  </g>
+  
+  <!-- Revenue indicators -->
+  <g id="revenue-indicators">
+    <!-- US Revenue -->
+    <rect x="100" y="100" width="280" height="80" fill="#1a1a2e" stroke="#FFD700" stroke-width="2" rx="10"/>
+    <text x="240" y="130" font-size="18" text-anchor="middle" fill="#FFD700" font-weight="bold">US Market</text>
+    <text x="240" y="160" font-size="16" text-anchor="middle" fill="#fff">$10k-20k/month</text>
+    
+    <!-- International Revenue -->
+    <rect x="2020" y="100" width="280" height="80" fill="#1a1a2e" stroke="#32CD32" stroke-width="2" rx="10"/>
+    <text x="2160" y="130" font-size="18" text-anchor="middle" fill="#32CD32" font-weight="bold">International</text>
+    <text x="2160" y="160" font-size="16" text-anchor="middle" fill="#fff">$20k-50k/month</text>
+    
+    <!-- Agency Services -->
+    <rect x="100" y="2220" width="280" height="80" fill="#1a1a2e" stroke="#4169E1" stroke-width="2" rx="10"/>
+    <text x="240" y="2250" font-size="18" text-anchor="middle" fill="#4169E1" font-weight="bold">Agency Services</text>
+    <text x="240" y="2280" font-size="16" text-anchor="middle" fill="#fff">$5k-15k/month</text>
+    
+    <!-- Total Potential -->
+    <rect x="2020" y="2220" width="280" height="80" fill="#1a1a2e" stroke="#FF69B4" stroke-width="2" rx="10"/>
+    <text x="2160" y="2250" font-size="18" text-anchor="middle" fill="#FF69B4" font-weight="bold">Total Potential</text>
+    <text x="2160" y="2280" font-size="16" text-anchor="middle" fill="#fff">$50k+/month</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="1200" y="60" font-size="48" text-anchor="middle" fill="#ffffff" font-weight="bold">
+    Affiliate Constellation Blueprint
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="1200" y="2370" font-size="24" text-anchor="middle" fill="#aaaaaa">
+    Global Profit-Driven Commerce Lattice
+  </text>
+</svg>

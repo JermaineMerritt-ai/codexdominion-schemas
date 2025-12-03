@@ -1,7 +1,6 @@
 # codex_dashboard.py
 import datetime
 import json
-import os
 import uuid
 
 import streamlit as st
@@ -67,92 +66,151 @@ def route_command(cmd):
 🔍 **System Check Report:**
 • **System Status:** OPERATIONAL
 • **Unified Interface:** READY
-• **Flame Status:** {d.get('heartbeat',{}).get('status','LUMINOUS')}
-• **Last Updated:** {d['meta'].get('last_updated','—')}
-• **Proclamations:** {len(d.get('proclamations',[]))}
-• **Cycles:** {len(d.get('cycles',[]))}
-• **Contributions:** {len(d.get('contributions',[]))}
-• **Archives:** {len(d.get('completed_archives',[]))}
-• **Capsules:** {len(d.get('capsules',[]))}
-• **Video Generations:** {len(d.get('video_generations',[]))}
-• **AI Commands:** {len(d.get('ai_commands',[]))}
+• **Flame Status:** {d.get('heartbeat', {}).get('status', 'LUMINOUS')}
+• **Last Updated:** {d['meta'].get('last_updated', '—')}
+• **Proclamations:** {len(d.get('proclamations', []))}
+• **Cycles:** {len(d.get('cycles', []))}
+• **Contributions:** {len(d.get('contributions', []))}
+• **Archives:** {len(d.get('completed_archives', []))}
+• **Capsules:** {len(d.get('capsules', []))}
+• **Video Generations:** {len(d.get('video_generations', []))}
+• **AI Commands:** {len(d.get('ai_commands', []))}
         """
 
     # 📜 Archives
     elif "archive" in cmd_lower:
         archives_count = len(d.get("completed_archives", []))
-        return f"📜 **Archives accessed.** Currently contains {archives_count} sealed scrolls ready for ceremonial review."
+        return (
+            f"📜 **Archives accessed.** Currently contains "
+            f"{archives_count} sealed scrolls ready for ceremonial review."
+        )
 
     # ✉️ Dispatch
     elif "dispatch" in cmd_lower:
-        return "📧 **Dispatch systems online.** Ceremonial message transmission ready. Compose your luminous proclamations."
+        return (
+            "📧 **Dispatch systems online.** Ceremonial message "
+            "transmission ready. Compose your luminous proclamations."
+        )
 
     # 🎥 Studio
     elif "studio" in cmd_lower:
         video_count = len(d.get("video_generations", []))
-        return f"🎥 **Codex Studio activated.** {video_count} ceremonial videos generated. Ready for new proclamation scripts."
+        return (
+            f"🎥 **Codex Studio activated.** {video_count} ceremonial "
+            f"videos generated. Ready for new proclamation scripts."
+        )
 
     # ⚗️ Capsule
     elif "capsule" in cmd_lower:
         capsule_count = len(d.get("capsules", []))
-        return f"🧪 **Capsule chamber accessible.** {capsule_count} ceremonial capsules sealed and ready for replay transmission."
+        return (
+            f"🧪 **Capsule chamber accessible.** {capsule_count} "
+            f"ceremonial capsules sealed and ready for replay transmission."
+        )
 
     # � Ledger
     elif "ledger" in cmd_lower:
         proclamations = len(d.get("proclamations", []))
         cycles = len(d.get("cycles", []))
-        return f"📖 **Ledger systems active.** Sacred records contain {proclamations} proclamations across {cycles} completed cycles."
+        return (
+            f"📖 **Ledger systems active.** Sacred records contain "
+            f"{proclamations} proclamations across {cycles} completed cycles."
+        )
 
     # 💰 Treasury
     elif "treasury" in cmd_lower:
         contributions = len(d.get("contributions", []))
-        return f"💰 **Treasury protocols engaged.** {contributions} contributions recorded. Luminous exchange systems operational."
+        return (
+            f"💰 **Treasury protocols engaged.** {contributions} "
+            f"contributions recorded. Luminous exchange systems operational."
+        )
 
     # 🔥 Cycle Operations
     elif "seal cycle" in cmd_lower:
-        return "�🔥 **Cycle sealed.** Omega flame confirmed. Sacred protocols activated across all domains."
+        return (
+            "�🔥 **Cycle sealed.** Omega flame confirmed. Sacred "
+            "protocols activated across all domains."
+        )
 
     # 📜 Scroll Operations
     elif "proclaim scroll" in cmd_lower:
-        return "📜 **Scroll proclaimed.** Radiance dispatched across all ceremonial channels. Message sealed in eternal flame."
+        return (
+            "📜 **Scroll proclaimed.** Radiance dispatched across all "
+            "ceremonial channels. Message sealed in eternal flame."
+        )
 
     # 📊 Status Report
     elif "status report" in cmd_lower:
-        return "📊 **All systems operational.** Digital sovereignty maintained. Sacred flames burn eternal across all tabs."
+        return (
+            "📊 **All systems operational.** Digital sovereignty "
+            "maintained. Sacred flames burn eternal across all tabs."
+        )
 
     # 🚨 Emergency Protocols
     elif "emergency protocols" in cmd_lower:
-        return "🚨 **Emergency protocols engaged.** All systems responsive. Command authority confirmed. Digital dominion secured."
+        return (
+            "🚨 **Emergency protocols engaged.** All systems responsive. "
+            "Command authority confirmed. Digital dominion secured."
+        )
 
     # 🧬 Avatar Systems
     elif "avatar" in cmd_lower:
         avatars = len(d.get("avatar_interactions", []))
-        return f"🧬 **Avatar systems online.** {avatars} ceremonial interactions recorded. Onboarding protocols ready."
+        return (
+            f"🧬 **Avatar systems online.** {avatars} ceremonial "
+            f"interactions recorded. Onboarding protocols ready."
+        )
 
     # ⚔️ AI Agents
     elif "agent" in cmd_lower or "ai dispatch" in cmd_lower:
         agents = len(d.get("agent_activations", []))
-        return f"⚔️ **AI agents standing by.** {agents} activations logged. Deployment systems ready for ceremonial commands."
+        return (
+            f"⚔️ **AI agents standing by.** {agents} activations logged. "
+            f"Deployment systems ready for ceremonial commands."
+        )
 
     # 🀄 Copilot Instructions
-    elif "copilot" in cmd_lower or "instruction" in cmd_lower or "scroll" in cmd_lower:
+    elif (
+        "copilot" in cmd_lower
+        or "instruction" in cmd_lower
+        or "scroll" in cmd_lower
+    ):
         try:
             with open("Copilot-instruction.md", "r", encoding="utf-8") as f:
                 content = f.read()
             lines = content.split("\n")
             summary_lines = [line for line in lines[:20] if line.strip()]
-            return f"🀄 **Copilot Scroll accessed.** Instructions loaded for ceremonial AI guidance. Current protocol: '{summary_lines[0] if summary_lines else 'Codex Dominion Instructions'}'. Full scroll available in Scroll tab."
+            protocol = (
+                summary_lines[0]
+                if summary_lines
+                else 'Codex Dominion Instructions'
+            )
+            return (
+                f"🀄 **Copilot Scroll accessed.** Instructions loaded "
+                f"for ceremonial AI guidance. Current protocol: "
+                f"'{protocol}'. Full scroll available in Scroll tab."
+            )
         except Exception as e:
-            return f"🀄 **Copilot Scroll error:** Cannot access instructions. {str(e)}"
+            return (
+                f"🀄 **Copilot Scroll error:** Cannot access "
+                f"instructions. {str(e)}"
+            )
 
     # 🔥 Flame Status
     elif "flame" in cmd_lower or "fire" in cmd_lower:
         flame_status = d.get("heartbeat", {}).get("status", "LUMINOUS")
-        return f"🔥 **Sacred flame status:** {flame_status.upper()}. Eternal fires burn bright across all ceremonial domains."
+        return (
+            f"🔥 **Sacred flame status:** {flame_status.upper()}. "
+            f"Eternal fires burn bright across all ceremonial domains."
+        )
 
     # Default Response
     else:
-        return f"🛡️ **Command acknowledged:** '{cmd}' received. Awaiting further ceremonial instruction from the digital sovereign."
+        return (
+            f"🛡️ **Command acknowledged:** '{cmd}' received. "
+            f"Awaiting further ceremonial instruction from the "
+            f"digital sovereign."
+        )
 
 
 # ---------- Data helpers ----------
@@ -231,7 +289,9 @@ def set_contribution_status(contrib_id, status):
 
 # ---------- App setup ----------
 st.set_page_config(
-    page_title="🔥 Codex Dominion Unified Dashboard", layout="wide", page_icon="🔥"
+    page_title="🔥 Codex Dominion Unified Dashboard",
+    layout="wide",
+    page_icon="🔥"
 )
 
 # Apply enhanced cosmic styling
@@ -291,7 +351,10 @@ stamp, scroll, dispatch, avatar, archives, dispatch_tab, studio, capsule, ledger
 with stamp:
     st.header("🛡 Super AI Command")
     st.write(
-        "Speak directly to Jermaine Super Action AI. Issue ceremonial commands, receive mythic responses."
+        (
+            "Speak directly to Jermaine Super Action AI. Issue "
+            "ceremonial commands, receive mythic responses."
+        )
     )
 
     # Quick command suggestions
@@ -322,7 +385,10 @@ with stamp:
     st.subheader("💬 Custom Command Interface")
     prompt = st.text_area(
         "Speak to the Jermaine Super Action AI...",
-        placeholder="Enter your ceremonial command here (try: 'system check', 'emergency protocols', 'status report')",
+        placeholder=(
+            "Enter your ceremonial command here (try: 'system check', "
+            "'emergency protocols', 'status report')"
+        ),
     )
 
     if st.button("🗣️ Proclaim to Super AI", type="primary"):
@@ -348,7 +414,10 @@ with stamp:
     with cols[0]:
         st.metric("Omega Seal", "✓" if data["meta"].get("omega_seal") else "○")
     with cols[1]:
-        st.metric("Heartbeat", data.get("heartbeat", {}).get("status", "Unknown"))
+        st.metric(
+            "Heartbeat",
+            data.get("heartbeat", {}).get("status", "Unknown")
+        )
     with cols[2]:
         st.metric("Archives", len(data.get("completed_archives", [])))
 
@@ -362,12 +431,21 @@ with scroll:
             content = f.read()
     except FileNotFoundError:
         content = (
-            "# Copilot Instruction Scroll\n\n*No scroll found. Begin your inscription.*"
+            (
+                "# Copilot Instruction Scroll\n\n"
+                "*No scroll found. Begin your inscription.*"
+            )
         )
     except UnicodeDecodeError:
-        content = "# Copilot Instruction Scroll\n\n*Error reading scroll. Contains non-UTF-8 characters.*"
+        content = (
+            "# Copilot Instruction Scroll\n\n"
+            "*Error reading scroll. Contains non-UTF-8 characters.*"
+        )
     except Exception as e:
-        content = f"# Copilot Instruction Scroll\n\n*Error loading scroll: {str(e)}*"
+        content = (
+            f"# Copilot Instruction Scroll\n\n"
+            f"*Error loading scroll: {str(e)}*"
+        )
 
     updated = st.text_area("Edit Scroll", content, height=400)
     if st.button("Update Scroll"):
@@ -382,7 +460,10 @@ with scroll:
 with dispatch:
     st.header("⚔️ Action AI Dispatch")
     st.write(
-        "Command your 300 Action AI agents. Each agent awaits ceremonial activation."
+        (
+            "Command your 300 Action AI agents. Each agent awaits "
+            "ceremonial activation."
+        )
     )
 
     # AI Agent Registry
@@ -392,7 +473,11 @@ with dispatch:
             "name": "Flame Herald",
             "task": "Announce dawn proclamations",
         },
-        {"id": "AAI-002", "name": "Cycle Archivist", "task": "Seal completed cycles"},
+        {
+            "id": "AAI-002",
+            "name": "Cycle Archivist",
+            "task": "Seal completed cycles",
+        },
         {
             "id": "AAI-003",
             "name": "Council Messenger",
@@ -414,7 +499,10 @@ with dispatch:
             d.setdefault("agent_activations", []).append(activation)
             save_ledger(d)
             st.success(
-                f"{agent['name']} has been dispatched to fulfill: {agent['task']}"
+                (
+                    f"{agent['name']} has been dispatched to fulfill: "
+                    f"{agent['task']}"
+                )
             )
 
     # Show recent activations
@@ -423,7 +511,10 @@ with dispatch:
     if recent_activations:
         for activation in reversed(recent_activations):
             st.write(
-                f"• {activation['agent_name']} activated at {activation['activated_at'][:19]}"
+                (
+                    f"• {activation['agent_name']} activated at "
+                    f"{activation['activated_at'][:19]}"
+                )
             )
     else:
         st.info("No recent activations.")

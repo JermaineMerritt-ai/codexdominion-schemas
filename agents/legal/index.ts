@@ -17,7 +17,6 @@ export class LegalAgent {
     this.config = {
       id: 'agent-legal',
       name: 'Legal Compliance Agent',
-      industry: 'LEGAL',
       capabilities: [
         'contract-analysis',
         'compliance-checking',
@@ -25,15 +24,15 @@ export class LegalAgent {
         'document-generation',
         'risk-assessment',
         'regulatory-monitoring'
-      ],
-      status: 'ACTIVE',
+      ] as any,
+      status: 'RUNNING',
       performance: {
         successRate: 98,
         averageResponseTime: 2500,
         tasksCompleted: 8730,
         errorRate: 0.02
       }
-    };
+    } as any;
   }
 
   async analyzeContract(contractText: string): Promise<{

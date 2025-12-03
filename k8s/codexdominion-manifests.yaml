@@ -1,0 +1,149 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: codexdominion
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crown-pillars
+  namespace: codexdominion
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: crown-pillars
+  template:
+    metadata:
+      labels:
+        app: crown-pillars
+    spec:
+      containers:
+        - name: crown-service
+          image: codexdominion:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: CROWN_ROLE
+              value: "Efficiency, Knowledge, Commerce, Companion"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: council-rings
+  namespace: codexdominion
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: council-rings
+  template:
+    metadata:
+      labels:
+        app: council-rings
+    spec:
+      containers:
+        - name: council-node
+          image: codexdominion:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: COUNCIL_DOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: council-config
+                  key: domain
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: schema-service
+  namespace: codexdominion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: schema-service
+  template:
+    metadata:
+      labels:
+        app: schema-service
+    spec:
+      containers:
+        - name: schema-node
+          image: codexdominion-schema:latest
+          volumeMounts:
+            - mountPath: /schemas
+              name: schema-volume
+      volumes:
+        - name: schema-volume
+          persistentVolumeClaim:
+            claimName: schema-pvc
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: schema-pvc
+  namespace: codexdominion
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: crown-config
+  namespace: codexdominion
+data:
+  role: "Efficiency, Knowledge, Commerce, Companion"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: council-config
+  namespace: codexdominion
+data:
+  domain: "Law, Healthcare, Commerce, Education, AI, Family"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: codexdominion-service
+  namespace: codexdominion
+spec:
+  selector:
+    app: crown-pillars
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: codexdominion-ingress
+  namespace: codexdominion
+spec:
+  rules:
+    - host: codexdominion.cluster
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: codexdominion-service
+                port:
+                  number: 80

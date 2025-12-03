@@ -580,7 +580,7 @@ def show_governance_control():
         if st.button("🔥 Bless All AI Operations"):
             st.markdown(
                 """
-            <div name="flame-blessing">
+            <div class="flame-blessing">
                 <h4>🔥 CEREMONIAL BLESSING BESTOWED</h4>
                 <p>🌟 All AI systems receive eternal flame blessing! Tasks execute with Avatar-guided precision, communication flows with ceremonial grace, and coordination maintains sovereign authority! 👤✨</p>
             </div>
@@ -691,7 +691,7 @@ def show_copilot_integration():
         if st.button("🤖 Ensure Jermaine Follows Instructions"):
             st.markdown(
                 """
-            <div name="governance-mode">
+            <div class="governance-mode">
                 <h4>🤖 Jermaine AI Instructed</h4>
                 <p>✅ Avatar ensures Jermaine Super Action AI follows all Copilot instructions with conversational excellence and task completion precision!</p>
             </div>

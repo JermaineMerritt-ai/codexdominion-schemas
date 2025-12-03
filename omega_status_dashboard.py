@@ -19,14 +19,10 @@ Features:
 """
 
 import json
-from datetime import datetime, timedelta
-from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 import streamlit as st
-from plotly.subplots import make_subplots
 
 # 🔥 SACRED CONFIGURATION
 st.set_page_config(
@@ -131,7 +127,7 @@ st.markdown(
 )
 
 
-def load_hierarchy_data():
+def load_hierarchy_data() -> dict:
     """Load the complete hierarchy and status data"""
     try:
         with open("codex_hierarchy.json", "r") as f:
@@ -142,7 +138,7 @@ def load_hierarchy_data():
         return None
 
 
-def create_omega_seal_display(meta_data):
+def create_omega_seal_display(meta_data: dict) -> None:
     """Create the Omega Seal status display"""
     col1, col2, col3 = st.columns([1, 2, 1])
 
@@ -161,21 +157,24 @@ def create_omega_seal_display(meta_data):
             st.warning("⚠️ Omega Seal Inactive")
 
 
-def create_heartbeat_display(heartbeat_data):
+def create_heartbeat_display(heartbeat_data: dict) -> None:
     """Create the heartbeat status display"""
     st.markdown(
         f"""
     <div class="heartbeat-status">
-        💓 SYSTEM HEARTBEAT: {heartbeat_data.get('status', 'Unknown').upper()} 💓<br>
-        <small>Last Pulse: {heartbeat_data.get('last_dispatch', 'Unknown')}</small><br>
-        <small>Next Pulse: {heartbeat_data.get('next_dispatch', 'Unknown')}</small>
+        💓 SYSTEM HEARTBEAT:
+        {heartbeat_data.get('status', 'Unknown').upper()} 💓<br>
+        <small>Last Pulse:
+        {heartbeat_data.get('last_dispatch', 'Unknown')}</small><br>
+        <small>Next Pulse:
+        {heartbeat_data.get('next_dispatch', 'Unknown')}</small>
     </div>
     """,
         unsafe_allow_html=True,
     )
 
 
-def create_proclamations_display(proclamations):
+def create_proclamations_display(proclamations: list) -> None:
     """Display proclamations status"""
     st.subheader("📜 Sacred Proclamations")
 
@@ -192,7 +191,7 @@ def create_proclamations_display(proclamations):
         )
 
 
-def create_cycles_display(cycles):
+def create_cycles_display(cycles: list) -> None:
     """Display cycles status"""
     st.subheader("🔄 Sacred Cycles")
 
@@ -209,7 +208,7 @@ def create_cycles_display(cycles):
         )
 
 
-def create_hierarchy_overview(accounts):
+def create_hierarchy_overview(accounts: dict) -> None:
     """Create hierarchy overview with member cards"""
     st.subheader("👑 Sacred Hierarchy")
 
@@ -271,15 +270,17 @@ def create_hierarchy_overview(accounts):
             <div class="member-card">
                 <strong>{member['name']}</strong> ({member['id']})<br>
                 Role: {member['role']} | Status: {member['status'].upper()}<br>
-                Flame Power: {flame_level} ({member.get('flame_power_level', 0)}/10)<br>
-                Digital Sovereignty: {member.get('digital_sovereignty_score', 0)}%
+                Flame Power: {flame_level}
+                ({member.get('flame_power_level', 0)}/10)<br>
+                Digital Sovereignty:
+                {member.get('digital_sovereignty_score', 0)}%
             </div>
             """,
                 unsafe_allow_html=True,
             )
 
 
-def create_metrics_dashboard(data):
+def create_metrics_dashboard(data: dict) -> None:
     """Create comprehensive metrics dashboard"""
     st.subheader("📊 Sacred Metrics")
 
@@ -302,7 +303,9 @@ def create_metrics_dashboard(data):
         st.markdown(
             f"""
         <div class="metrics-box">
-            <h3 class="sacred-text">{metadata.get('completed_proclamations', 0)}</h3>
+            <h3 class="sacred-text">
+            {metadata.get('completed_proclamations', 0)}
+            </h3>
             <p>Proclamations</p>
         </div>
         """,
@@ -324,7 +327,9 @@ def create_metrics_dashboard(data):
         st.markdown(
             f"""
         <div class="metrics-box">
-            <h3 class="sacred-text">{metadata.get('system_completeness', 'Unknown')}</h3>
+            <h3 class="sacred-text">
+            {metadata.get('system_completeness', 'Unknown')}
+            </h3>
             <p>Completeness</p>
         </div>
         """,
@@ -332,7 +337,7 @@ def create_metrics_dashboard(data):
         )
 
 
-def create_flame_power_chart(accounts):
+def create_flame_power_chart(accounts: dict) -> None:
     """Create flame power visualization"""
     st.subheader("🔥 Flame Power Distribution")
 
@@ -404,7 +409,7 @@ def create_flame_power_chart(accounts):
         st.plotly_chart(fig, use_container_width=True)
 
 
-def main():
+def main() -> None:
     """Main dashboard application"""
 
     # Header
@@ -412,7 +417,9 @@ def main():
         """
     <div class="main-header">
         <h1>🔥 CODEX DOMINION - OMEGA STATUS DASHBOARD 🔥</h1>
-        <p class="sacred-text">The Sacred Interface for Complete System Monitoring</p>
+        <p class="sacred-text">
+        The Sacred Interface for Complete System Monitoring
+        </p>
     </div>
     """,
         unsafe_allow_html=True,
@@ -465,12 +472,18 @@ def main():
 
     metadata = data.get("metadata", {})
 
+    omega_status = (
+        'ACTIVE ✅'
+        if data.get('meta', {}).get('omega_seal')
+        else 'INACTIVE ⚠️'
+    )
+    heartbeat = data.get('heartbeat', {}).get('status', 'Unknown').upper()
     st.success(
         f"""
-    **System Health**: {metadata.get('hierarchy_health', 'Unknown')}  
-    **Omega Seal**: {'ACTIVE ✅' if data.get('meta', {}).get('omega_seal') else 'INACTIVE ⚠️'}  
-    **Heartbeat**: {data.get('heartbeat', {}).get('status', 'Unknown').upper()}  
-    **Last Updated**: {metadata.get('last_updated', 'Unknown')}  
+    **System Health**: {metadata.get('hierarchy_health', 'Unknown')}
+    **Omega Seal**: {omega_status}
+    **Heartbeat**: {heartbeat}
+    **Last Updated**: {metadata.get('last_updated', 'Unknown')}
     **Completeness Level**: {metadata.get('system_completeness', 'Unknown')}
     """
     )

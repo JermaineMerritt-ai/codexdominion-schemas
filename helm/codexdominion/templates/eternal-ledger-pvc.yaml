@@ -1,0 +1,56 @@
+{{- if .Values.storage.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Chart.Name }}-ledger
+  labels:
+    app: {{ .Chart.Name }}
+    component: eternal-ledger
+    version: {{ .Chart.Version }}
+    lineage: {{ .Values.schemas.lineage }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.storage.className }}
+  resources:
+    requests:
+      storage: {{ .Values.storage.size }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}-eternal-ledger-config
+  labels:
+    app: {{ .Chart.Name }}
+    component: eternal-ledger
+data:
+  archive-releases: {{ .Values.eternals.archiveReleases | quote }}
+  ceremonial-upgrades: {{ .Values.eternals.ceremonialUpgrades | quote }}
+  immortalize-versions: {{ .Values.eternals.immortalizeVersions | quote }}
+  ledger-path: {{ .Values.storage.mountPath | quote }}
+  
+  init-ledger.sh: |
+    #!/bin/bash
+    set -e
+    
+    LEDGER_PATH="{{ .Values.storage.mountPath }}"
+    
+    echo "Initializing Eternal Ledger at $LEDGER_PATH"
+    
+    # Create directory structure
+    mkdir -p "$LEDGER_PATH"/{releases,ceremonies,versions}
+    
+    # Initialize genesis block
+    cat > "$LEDGER_PATH/genesis.json" <<EOF
+    {
+      "chart": "{{ .Chart.Name }}",
+      "version": "{{ .Chart.Version }}",
+      "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+      "lineage": "{{ .Values.schemas.lineage }}",
+      "seal": "genesis-$(date +%s | sha256sum | head -c 64)"
+    }
+    EOF
+    
+    echo "Eternal Ledger initialized successfully"
+    echo "Genesis seal: $(cat $LEDGER_PATH/genesis.json | jq -r .seal)"
+{{- end }}

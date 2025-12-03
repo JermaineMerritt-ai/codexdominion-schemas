@@ -1,0 +1,47 @@
+stages:
+  - reset
+
+safe_reset:
+  stage: reset
+  script:
+    - echo "=== SAFE RESET & REBUILD START ==="
+    - echo "🧹 Cleaning Node.js environment..."
+    - rm -rf node_modules package-lock.json
+    - npm cache clean --force
+    - npm install
+    - echo "✅ Node.js reset complete"
+    - echo "🧹 Cleaning Python environment..."
+    - find . -type d -name "__pycache__" -exec rm -r {} + || true
+    - find . -name "*.pyc" -delete || true
+    - rm -rf venv .venv
+    - python3 -m venv venv
+    - source venv/bin/activate
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - echo "✅ Python reset complete"
+    - echo "🧹 Cleaning Java build..."
+    - |
+      if [ -f "pom.xml" ]; then
+        mvn clean install
+      elif [ -f "build.gradle" ]; then
+        gradle clean build
+      else
+        echo "⚠️ No Java build files found, skipping"
+      fi
+    - echo "✅ Java reset complete"
+    - echo "🔄 Refreshing CodexDominion schemas..."
+    - mkdir -p schema_backup
+    - cp -r schemas/* schema_backup/ || true
+    - cp -r schema_templates/* schemas/ || true
+    - echo "✅ Schema refresh complete"
+    - echo "=== SAFE RESET & REBUILD COMPLETE ==="
+  artifacts:
+    paths:
+      - node_modules/
+      - venv/
+      - schema_backup/
+    expire_in: 1 week
+  only:
+    - main
+    - develop
+  when: manual

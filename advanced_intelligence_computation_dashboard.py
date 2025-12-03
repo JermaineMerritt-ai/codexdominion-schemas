@@ -3,16 +3,19 @@
 Advanced Intelligence & Computation Learning System
 =================================================
 
-Elite intelligence system for cutting-edge AI, computation, and cognitive technologies.
-Integrates with the AI Trinity for maximum capability expansion.
+Elite intelligence system for cutting-edge AI, computation,
+and cognitive technologies. Integrates with the AI Trinity
+for maximum capability expansion.
 """
 
 import asyncio
-import json
-from datetime import datetime
-from typing import Any, Dict, List
+import logging
+from typing import Dict
 
 import streamlit as st
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 # Page configuration
 st.set_page_config(
@@ -62,14 +65,14 @@ st.markdown(
 class AdvancedIntelligenceSystem:
     """Advanced Intelligence & Computation learning system"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.elite_sources = {
             "cognitive_computing": [
                 "IBM Research Cognitive Computing",
                 "Google DeepMind Cognitive Architecture",
                 "Microsoft Cognitive Services",
                 "Intel Neuromorphic Computing Lab",
-                "MIT Computer Science and Artificial Intelligence Laboratory (CSAIL)",
+                "MIT CSAIL",
             ],
             "advanced_ai": [
                 "OpenAI Advanced AI Research",
@@ -122,13 +125,19 @@ class AdvancedIntelligenceSystem:
                 "cognitive_computing": [
                     {
                         "source": "IBM Watson Research",
-                        "insight": f"Cognitive computing applications for {query} show 89% advancement in reasoning capabilities",
+                        "insight": (
+                            f"Cognitive computing applications for {query} "
+                            "show 89% advancement in reasoning capabilities"
+                        ),
                         "relevance": 0.92,
                         "computational_impact": "HIGH",
                     },
                     {
                         "source": "MIT CSAIL",
-                        "insight": f"Advanced neural architectures demonstrate breakthrough performance in {query}",
+                        "insight": (
+                            f"Advanced neural architectures demonstrate "
+                            f"breakthrough performance in {query}"
+                        ),
                         "relevance": 0.89,
                         "computational_impact": "VERY_HIGH",
                     },
@@ -136,13 +145,19 @@ class AdvancedIntelligenceSystem:
                 "quantum_intelligence": [
                     {
                         "source": "Google Quantum AI",
-                        "insight": f"Quantum machine learning algorithms achieve 10x speedup for {query} optimization",
+                        "insight": (
+                            f"Quantum machine learning algorithms achieve "
+                            f"10x speedup for {query} optimization"
+                        ),
                         "relevance": 0.87,
                         "quantum_advantage": "DEMONSTRATED",
                     },
                     {
                         "source": "IBM Quantum Network",
-                        "insight": f"Quantum neural networks show superior pattern recognition for {query}",
+                        "insight": (
+                            f"Quantum neural networks show superior "
+                            f"pattern recognition for {query}"
+                        ),
                         "relevance": 0.85,
                         "quantum_advantage": "EMERGING",
                     },
@@ -150,7 +165,10 @@ class AdvancedIntelligenceSystem:
                 "neuromorphic_computing": [
                     {
                         "source": "Intel Neuromorphic Lab",
-                        "insight": f"Brain-inspired computing reduces {query} processing energy by 1000x",
+                        "insight": (
+                            f"Brain-inspired computing reduces {query} "
+                            "processing energy by 1000x"
+                        ),
                         "relevance": 0.88,
                         "efficiency_gain": "MASSIVE",
                     }
@@ -166,12 +184,14 @@ class AdvancedIntelligenceSystem:
                 "agi_timeline": "5-10 years for specialized domains",
                 "quantum_supremacy": "Achieved in specific problem spaces",
                 "brain_computer_convergence": "Accelerating rapidly",
-                "computational_creativity": "Emerging human-level capabilities",
+                "computational_creativity": (
+                    "Emerging human-level capabilities"
+                ),
             },
         }
 
 
-def main():
+def main() -> None:
     """Main Advanced Intelligence & Computation interface"""
 
     # Header
@@ -180,7 +200,8 @@ def main():
     <div class="intelligence-header">
         <h1>🧠⚡ ADVANCED INTELLIGENCE & COMPUTATION</h1>
         <h2>Elite AI, Cognitive Computing & Quantum Intelligence</h2>
-        <p>AGI Research • Cognitive Systems • Quantum ML • Neuromorphic Computing</p>
+        <p>AGI Research • Cognitive Systems • Quantum ML •
+        Neuromorphic Computing</p>
     </div>
     """,
         unsafe_allow_html=True,
@@ -197,27 +218,49 @@ def main():
 
         query = st.text_input(
             "🔍 Research Topic:",
-            placeholder="e.g., artificial general intelligence, quantum machine learning, cognitive computing",
+            placeholder=(
+                "e.g., artificial general intelligence, "
+                "quantum machine learning, cognitive computing"
+            ),
         )
 
         if st.button("🚀 Extract Intelligence Insights") and query:
             with st.spinner(
-                f"Analyzing '{query}' across advanced intelligence domains..."
+                f"Analyzing '{query}' across advanced intelligence "
+                f"domains..."
             ):
-                insights = asyncio.run(
-                    st.session_state.intelligence_system.extract_intelligence_insights(
-                        query
+                try:
+                    insights = asyncio.run(
+                        st.session_state.intelligence_system
+                        .extract_intelligence_insights(query)
                     )
-                )
+                except Exception as e:
+                    st.error(
+                        f"Error extracting intelligence insights: "
+                        f"{str(e)}"
+                    )
+                    logger.error(
+                        f"Intelligence extraction failed: {str(e)}"
+                    )
+                    insights = None
+
+                if not insights:
+                    st.warning(
+                        "No insights could be extracted. "
+                        "Please try a different query."
+                    )
+                    return
 
                 st.subheader("🧠 Cognitive Computing Insights")
-                for insight in insights["intelligence_insights"]["cognitive_computing"]:
+                cognitive = insights["intelligence_insights"]
+                for insight in cognitive["cognitive_computing"]:
                     st.markdown(
                         f"""
                     <div class="computation-card">
                         <strong>Source:</strong> {insight['source']}<br>
                         <strong>Insight:</strong> {insight['insight']}<br>
-                        <strong>Impact:</strong> {insight['computational_impact']}
+                        <strong>Impact:</strong>
+                        {insight['computational_impact']}
                     </div>
                     """,
                         unsafe_allow_html=True,
@@ -232,7 +275,8 @@ def main():
                     <div class="computation-card">
                         <strong>Source:</strong> {insight['source']}<br>
                         <strong>Insight:</strong> {insight['insight']}<br>
-                        <strong>Quantum Advantage:</strong> {insight['quantum_advantage']}
+                        <strong>Quantum Advantage:</strong>
+                        {insight['quantum_advantage']}
                     </div>
                     """,
                         unsafe_allow_html=True,

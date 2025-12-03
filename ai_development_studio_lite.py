@@ -6,28 +6,31 @@ Lightweight AI-powered development platform inspired by Lovable
 """
 
 import time
-from datetime import datetime
+from typing import Any, Dict, List
 
 import streamlit as st
 
 
-def main():
+def main() -> None:
     """Main AI Development Studio interface"""
 
     st.set_page_config(
-        page_title="🚀 Codex AI Development Studio", page_icon="🚀", layout="wide"
+        page_title="🚀 Codex AI Development Studio",
+        page_icon="🚀",
+        layout="wide"
     )
 
     # Header
     st.markdown(
         """
-    <div style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    <div style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                 padding: 2rem; border-radius: 15px; margin-bottom: 2rem;'>
         <h1 style='color: white; text-align: center; margin: 0;'>
             🚀 Codex AI Development Studio
         </h1>
-        <p style='color: white; text-align: center; margin: 0.5rem 0 0 0; opacity: 0.9;'>
-            AI-Powered Full-Stack Application Builder (Inspired by Lovable)
+        <p style='color: white; text-align: center;
+                  margin: 0.5rem 0 0 0; opacity: 0.9;'>
+            AI-Powered Full-Stack Application Builder
         </p>
     </div>
     """,
@@ -52,7 +55,7 @@ def main():
         render_deploy()
 
 
-def render_quick_builder():
+def render_quick_builder() -> None:
     """Quick project builder"""
 
     st.header("🎯 AI Project Builder")
@@ -62,7 +65,9 @@ def render_quick_builder():
     with col1:
         st.subheader("Project Configuration")
 
-        project_name = st.text_input("Project Name", placeholder="my-awesome-app")
+        project_name = st.text_input(
+            "Project Name", placeholder="my-awesome-app"
+        )
 
         project_types = {
             "react": "React Application",
@@ -73,7 +78,9 @@ def render_quick_builder():
             "dashboard": "Analytics Dashboard",
         }
 
-        selected_type = st.selectbox("Project Type", list(project_types.values()))
+        selected_type = st.selectbox(
+            "Project Type", list(project_types.values())
+        )
 
         st.subheader("AI Configuration")
         ai_level = st.select_slider(
@@ -96,7 +103,9 @@ def render_quick_builder():
         )
 
         if st.button("🚀 Generate Project", type="primary"):
-            generate_project_demo(project_name, selected_type, ai_level, features)
+            generate_project_demo(
+                project_name, selected_type, ai_level, features
+            )
 
     with col2:
         st.subheader("Live Preview")
@@ -127,7 +136,7 @@ def render_quick_builder():
         )
 
 
-def render_ai_assistant():
+def render_ai_assistant() -> None:
     """AI coding assistant"""
 
     st.header("🧠 AI Development Assistant")
@@ -139,12 +148,24 @@ def render_ai_assistant():
 
         # Initialize chat if not exists
         if "messages" not in st.session_state:
+            welcome_msg = (
+                "Hello! I'm your AI development assistant. "
+                "I can help you:\n\n"
+                "• Generate React/Vue components\n"
+                "• Create API endpoints\n"
+                "• Write database schemas\n"
+                "• Debug code issues\n"
+                "• Optimize performance\n"
+                "• Deploy applications\n\n"
+                "What would you like to build today?"
+            )
             st.session_state.messages = [
-                {
-                    "role": "assistant",
-                    "content": "Hello! I'm your AI development assistant. I can help you:\n\n• Generate React/Vue components\n• Create API endpoints\n• Write database schemas\n• Debug code issues\n• Optimize performance\n• Deploy applications\n\nWhat would you like to build today?",
-                }
+                {"role": "assistant", "content": welcome_msg}
             ]
+
+        # Ensure messages list is valid
+        if not isinstance(st.session_state.messages, list):
+            st.session_state.messages = []
 
         # Display chat messages
         for message in st.session_state.messages:
@@ -154,13 +175,17 @@ def render_ai_assistant():
         # Chat input
         if prompt := st.chat_input("Ask me anything about development..."):
             # Add user message
-            st.session_state.messages.append({"role": "user", "content": prompt})
+            st.session_state.messages.append(
+                {"role": "user", "content": prompt}
+            )
             with st.chat_message("user"):
                 st.write(prompt)
 
             # Generate AI response
             response = get_ai_response(prompt)
-            st.session_state.messages.append({"role": "assistant", "content": response})
+            st.session_state.messages.append(
+                {"role": "assistant", "content": response}
+            )
             with st.chat_message("assistant"):
                 st.write(response)
 
@@ -179,17 +204,17 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary';
 }
 
-export const Button: React.FC<ButtonProps> = ({ 
-  children, 
-  onClick, 
-  variant = 'primary' 
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  onClick,
+  variant = 'primary'
 }) => {
   return (
-    <button 
+    <button
       onClick={onClick}
       className={`px-4 py-2 rounded-lg ${
-        variant === 'primary' 
-          ? 'bg-blue-500 text-white' 
+        variant === 'primary'
+          ? 'bg-blue-500 text-white'
           : 'bg-gray-200 text-gray-800'
       }`}
     >
@@ -242,42 +267,56 @@ CREATE INDEX idx_users_email ON users(email);
             )
 
 
-def render_templates():
+def render_templates() -> None:
     """Template showcase"""
 
     st.header("📦 Project Templates")
 
     # Template grid
-    templates = [
+    templates: List[Dict[str, Any]] = [
         {
             "name": "React Dashboard",
-            "description": "Modern analytics dashboard with charts and real-time data",
+            "description": (
+                "Modern analytics dashboard with charts and real-time data"
+            ),
             "tech": ["React", "TypeScript", "Tailwind", "Chart.js"],
             "preview": "📊 Analytics • 📈 Charts • 👥 Users • ⚙️ Settings",
         },
         {
             "name": "E-commerce Store",
-            "description": "Full-featured online store with cart and payments",
+            "description": (
+                "Full-featured online store with cart and payments"
+            ),
             "tech": ["Next.js", "Stripe", "Prisma", "PostgreSQL"],
             "preview": "🛍️ Products • 🛒 Cart • 💳 Checkout • 📦 Orders",
         },
         {
             "name": "Social Media App",
-            "description": "Social platform with posts, likes, and real-time chat",
+            "description": (
+                "Social platform with posts, likes, and real-time chat"
+            ),
             "tech": ["Vue.js", "Socket.io", "MongoDB", "Redis"],
-            "preview": "📝 Posts • ❤️ Likes • 💬 Comments • 🔔 Notifications",
+            "preview": (
+                "📝 Posts • ❤️ Likes • 💬 Comments • 🔔 Notifications"
+            ),
         },
         {
             "name": "Task Manager",
-            "description": "Productivity app with projects, tasks, and team collaboration",
+            "description": (
+                "Productivity app with projects, tasks, and collaboration"
+            ),
             "tech": ["React", "Node.js", "Express", "MySQL"],
             "preview": "✅ Tasks • 📁 Projects • 👥 Teams • 📅 Calendar",
         },
         {
             "name": "API Gateway",
-            "description": "Microservices API gateway with authentication and rate limiting",
+            "description": (
+                "Microservices API gateway with auth and rate limiting"
+            ),
             "tech": ["FastAPI", "Redis", "PostgreSQL", "Docker"],
-            "preview": "🔐 Auth • 🚦 Rate Limit • 📊 Analytics • 🐳 Docker",
+            "preview": (
+                "🔐 Auth • 🚦 Rate Limit • 📊 Analytics • 🐳 Docker"
+            ),
         },
         {
             "name": "Mobile App",
@@ -310,7 +349,7 @@ def render_templates():
                     st.success(f"Loading {template['name']} template...")
 
 
-def render_deploy():
+def render_deploy() -> None:
     """Deployment interface"""
 
     st.header("🚀 Deploy Your Application")
@@ -321,16 +360,19 @@ def render_deploy():
         st.subheader("Deployment Configuration")
 
         platform = st.selectbox(
-            "Platform", ["Vercel", "Netlify", "Heroku", "AWS", "Google Cloud", "Azure"]
+            "Platform",
+            ["Vercel", "Netlify", "Heroku", "AWS", "Google Cloud", "Azure"]
         )
 
         environment = st.selectbox(
             "Environment", ["Development", "Staging", "Production"]
         )
 
-        auto_deploy = st.checkbox("Auto-deploy on push", value=True)
-
-        domain = st.text_input("Custom Domain (optional)", placeholder="myapp.com")
+        # Store for future use
+        _ = st.checkbox("Auto-deploy on push", value=True)
+        _ = st.text_input(
+            "Custom Domain (optional)", placeholder="myapp.com"
+        )
 
         if st.button("🚀 Deploy Now", type="primary"):
             deploy_demo(platform, environment)
@@ -368,7 +410,9 @@ def render_deploy():
             )
 
 
-def generate_project_demo(name, project_type, ai_level, features):
+def generate_project_demo(
+    name: str, project_type: str, ai_level: str, features: List[str]
+) -> None:
     """Demo project generation"""
 
     with st.spinner("🤖 AI is generating your project..."):
@@ -406,7 +450,7 @@ AI Level: {ai_level}
         )
 
 
-def deploy_demo(platform, environment):
+def deploy_demo(platform: str, environment: str) -> None:
     """Demo deployment"""
 
     with st.spinner(f"🚀 Deploying to {platform}..."):
@@ -430,25 +474,63 @@ def deploy_demo(platform, environment):
     )
 
 
-def get_ai_response(prompt):
+def get_ai_response(prompt: str) -> str:
     """Generate AI response based on prompt"""
 
     prompt_lower = prompt.lower()
 
     if "react" in prompt_lower or "component" in prompt_lower:
-        return "I can help you create React components! Here's a starter component:\n\n```tsx\nconst MyComponent = () => {\n  return <div>Hello World</div>;\n};\n```\n\nWould you like me to create a specific component for you?"
+        return (
+            "I can help you create React components! "
+            "Here's a starter component:\n\n```tsx\n"
+            "const MyComponent = () => {\n"
+            "  return <div>Hello World</div>;\n"
+            "};\n```\n\n"
+            "Would you like me to create a specific component for you?"
+        )
 
     elif "api" in prompt_lower or "backend" in prompt_lower:
-        return "For API development, I recommend FastAPI for Python or Express.js for Node.js. Here's a simple FastAPI example:\n\n```python\nfrom fastapi import FastAPI\napp = FastAPI()\n\n@app.get('/api/hello')\ndef hello():\n    return {'message': 'Hello World'}\n```\n\nWhat kind of API endpoint do you need?"
+        return (
+            "For API development, I recommend FastAPI for Python or "
+            "Express.js for Node.js. Here's a simple FastAPI example:\n\n"
+            "```python\nfrom fastapi import FastAPI\n"
+            "app = FastAPI()\n\n@app.get('/api/hello')\n"
+            "def hello():\n    return {'message': 'Hello World'}\n```\n\n"
+            "What kind of API endpoint do you need?"
+        )
 
     elif "deploy" in prompt_lower or "hosting" in prompt_lower:
-        return "For deployment, I recommend:\n\n• **Vercel** - Great for React/Next.js\n• **Netlify** - Excellent for static sites\n• **Heroku** - Good for full-stack apps\n• **Railway** - Modern alternative to Heroku\n\nWhich platform interests you most?"
+        return (
+            "For deployment, I recommend:\n\n"
+            "• **Vercel** - Great for React/Next.js\n"
+            "• **Netlify** - Excellent for static sites\n"
+            "• **Heroku** - Good for full-stack apps\n"
+            "• **Railway** - Modern alternative to Heroku\n\n"
+            "Which platform interests you most?"
+        )
 
     elif "database" in prompt_lower or "data" in prompt_lower:
-        return "For databases, here are popular options:\n\n• **PostgreSQL** - Robust SQL database\n• **MongoDB** - Flexible NoSQL\n• **Supabase** - Firebase alternative\n• **PlanetScale** - Serverless MySQL\n\nWhat type of data will you be storing?"
+        return (
+            "For databases, here are popular options:\n\n"
+            "• **PostgreSQL** - Robust SQL database\n"
+            "• **MongoDB** - Flexible NoSQL\n"
+            "• **Supabase** - Firebase alternative\n"
+            "• **PlanetScale** - Serverless MySQL\n\n"
+            "What type of data will you be storing?"
+        )
 
     else:
-        return f"I understand you're asking about: '{prompt}'\n\nI can help you with:\n• Code generation (React, Vue, Python, etc.)\n• API development\n• Database design\n• Deployment strategies\n• Performance optimization\n• Testing approaches\n\nWhat specific aspect would you like help with?"
+        return (
+            f"I understand you're asking about: '{prompt}'\n\n"
+            "I can help you with:\n"
+            "• Code generation (React, Vue, Python, etc.)\n"
+            "• API development\n"
+            "• Database design\n"
+            "• Deployment strategies\n"
+            "• Performance optimization\n"
+            "• Testing approaches\n\n"
+            "What specific aspect would you like help with?"
+        )
 
 
 if __name__ == "__main__":

@@ -8,6 +8,16 @@ module.exports = {
   ],
   plugins: ['react', '@typescript-eslint'],
   rules: {
-    'react/react-in-jsx-scope': 'off'
-  }
+    'react/react-in-jsx-scope': 'off',
+    'react/no-inline-styles': 'off', // Disabled for production efficiency
+  },
+  ignorePatterns: [
+    'node_modules/',
+    'dist/',
+    'build/',
+    '*.config.js',
+    '**/test/**',
+    '**/*.test.*',
+    '**/demo/**',
+  ],
 };

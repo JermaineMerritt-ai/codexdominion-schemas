@@ -29,19 +29,25 @@ export class CustomerPortal {
       id: customerId,
       email: data.email,
       name: data.name,
-      company: data.company,
-      tier: 'BASIC',
+      tier: 'FREE',
       status: 'ACTIVE',
       createdAt: new Date(),
+      lastActivity: new Date(),
       preferences: {
         notifications: true,
+        newsletter: false,
         dataSharing: false,
-        theme: 'dark'
+        theme: 'DARK',
+        language: 'en'
       },
       usage: {
-        requestsThisMonth: 0,
-        lastActive: new Date(),
-        totalSpent: 0
+        totalRequests: 0,
+        successfulRequests: 0,
+        failedRequests: 0,
+        averageResponseTime: 0,
+        lastRequest: new Date(),
+        quotaUsed: 0,
+        quotaLimit: 1000
       }
     };
 
@@ -75,10 +81,6 @@ export class CustomerPortal {
       active: true
     });
 
-    // Update customer usage
-    customer.usage.lastActive = new Date();
-    this.customers.set(customerId, customer);
-
     return {
       sessionId,
       message: 'Welcome to Codex Dominion! How can we help you today?'
@@ -103,10 +105,6 @@ export class CustomerPortal {
     if (!customer) {
       throw new Error('Customer not found');
     }
-
-    // Update usage
-    customer.usage.requestsThisMonth++;
-    this.customers.set(customer.id, customer);
 
     // Route to appropriate agent based on message content
     const lowerMessage = message.toLowerCase();
@@ -159,7 +157,7 @@ export class CustomerPortal {
   /**
    * Update customer tier
    */
-  upgradeTier(customerId: string, newTier: 'BASIC' | 'PREMIUM' | 'ENTERPRISE'): {
+  upgradeTier(customerId: string, newTier: 'FREE' | 'PREMIUM' | 'ENTERPRISE'): {
     success: boolean;
     message: string;
   } {
@@ -193,18 +191,18 @@ export class CustomerPortal {
    * Get customer usage statistics
    */
   getUsageStats(customerId: string): {
-    requestsThisMonth: number;
-    lastActive: Date;
-    totalSpent: number;
+    totalRequests: number;
+    successfulRequests: number;
+    lastRequest: Date;
     tier: string;
   } | null {
     const customer = this.customers.get(customerId);
     if (!customer) return null;
 
     return {
-      requestsThisMonth: customer.usage.requestsThisMonth,
-      lastActive: customer.usage.lastActive,
-      totalSpent: customer.usage.totalSpent,
+      totalRequests: customer.usage.totalRequests,
+      successfulRequests: customer.usage.successfulRequests,
+      lastRequest: customer.usage.lastRequest,
       tier: customer.tier
     };
   }

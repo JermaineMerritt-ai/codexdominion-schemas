@@ -71,14 +71,13 @@ resource "ionoscloud_server" "wp" {
   ram           = local.sizes[var.instance_size].ram
   availability_zone = "ZONE_1"
   cpu_family    = "AMD_OPTERON"
-  boot_volume {
+  
+  volume {
     name       = "${var.prefix}-${var.env}-boot"
     size       = 60
-    image_name = var.image
-    image_password = "ChangeMe!"
-    ssh_keys   = [var.ssh_pubkey]
     disk_type  = "SSD"
   }
+  
   nic {
     lan     = ionoscloud_lan.lan.id
     name    = "wan"
@@ -92,23 +91,8 @@ resource "ionoscloud_application_loadbalancer" "alb" {
   datacenter_id = ionoscloud_datacenter.dc.id
   name          = "${var.prefix}-${var.env}-alb"
   ips           = slice(ionoscloud_ipblock.ipb.ips, 1, 2)
-  listener {
-    name        = "https"
-    protocol    = "HTTPS"
-    port        = 443
-    client_timeout = 60
-  }
-  target_group {
-    name = "${var.prefix}-${var.env}-tg"
-    health_check {
-      check_interval = 10
-      retries        = 3
-      timeout        = 5
-      method         = "GET"
-      path           = "/health"
-    }
-  }
-
+  listener_lan  = ionoscloud_lan.lan1.id
+  target_lan    = ionoscloud_lan.lan1.id
 }
 
 output "wp_public_ip" {

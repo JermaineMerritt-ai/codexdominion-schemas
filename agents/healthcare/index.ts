@@ -16,8 +16,7 @@ export class HealthcareAgent {
   constructor() {
     this.config = {
       id: 'agent-healthcare',
-      name: 'Healthcare Assistant Agent',
-      industry: 'HEALTHCARE',
+      name: 'Healthcare AI Agent',
       capabilities: [
         'patient-triage',
         'appointment-scheduling',
@@ -25,15 +24,15 @@ export class HealthcareAgent {
         'health-monitoring',
         'prescription-refills',
         'insurance-verification'
-      ],
-      status: 'ACTIVE',
+      ] as any,
+      status: 'RUNNING',
       performance: {
         successRate: 96,
         averageResponseTime: 1200,
         tasksCompleted: 15420,
         errorRate: 0.04
       }
-    };
+    } as any;
   }
 
   async processPatientQuery(query: string, patientId: string): Promise<{

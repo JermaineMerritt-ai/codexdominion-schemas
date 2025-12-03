@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-java-crown
+  labels:
+    app: {{ .Chart.Name }}
+    component: java-crown
+    version: {{ .Chart.Version }}
+    lineage: preserved
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+      component: java-crown
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+        component: java-crown
+        version: {{ .Chart.Version }}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "{{ .Values.javaCrown.port }}"
+    spec:
+      containers:
+      - name: java-crown
+        image: {{ .Values.javaCrown.image }}
+        imagePullPolicy: {{ .Values.javaCrown.pullPolicy }}
+        ports:
+        - name: http
+          containerPort: {{ .Values.javaCrown.port }}
+          protocol: TCP
+        env:
+        {{- range .Values.javaCrown.env }}
+        - name: {{ .name }}
+          value: {{ .value | quote }}
+        {{- end }}
+        - name: SCHEMAS_VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: {{ .Chart.Name }}-schemas
+              key: version
+        resources:
+          {{- toYaml .Values.javaCrown.resources | nindent 10 }}
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        volumeMounts:
+        - name: schemas
+          mountPath: /app/schemas
+          readOnly: true
+        {{- if .Values.storage.enabled }}
+        - name: eternal-ledger
+          mountPath: {{ .Values.storage.mountPath }}
+        {{- end }}
+      volumes:
+      - name: schemas
+        configMap:
+          name: {{ .Chart.Name }}-schemas
+      {{- if .Values.storage.enabled }}
+      - name: eternal-ledger
+        persistentVolumeClaim:
+          claimName: {{ .Chart.Name }}-ledger
+      {{- end }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}-java-crown
+  labels:
+    app: {{ .Chart.Name }}
+    component: java-crown
+spec:
+  type: {{ .Values.service.type }}
+  sessionAffinity: {{ .Values.service.sessionAffinity }}
+  ports:
+  - port: {{ .Values.javaCrown.port }}
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: {{ .Chart.Name }}
+    component: java-crown

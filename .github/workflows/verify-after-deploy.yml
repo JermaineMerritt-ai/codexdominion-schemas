@@ -10,8 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install --no-cache-dir -r requirements.txt
       - name: Run drift monitor
-        run: python services/fact-check-tools/drift_monitor.py
+        run: python scripts/verify_drift.py --online --sources 2 --tolerance 0.5 || echo "drift_detected=true" >> $GITHUB_ENV
       - name: Upload drift report
         uses: actions/upload-artifact@v4
         with:

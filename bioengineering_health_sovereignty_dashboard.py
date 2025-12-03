@@ -8,9 +8,7 @@ biotechnology innovation, and medical breakthrough tracking.
 """
 
 import asyncio
-import json
-from datetime import datetime
-from typing import Any, Dict, List
+from typing import Dict
 
 import streamlit as st
 
@@ -62,7 +60,7 @@ st.markdown(
 class BioengineeringHealthSystem:
     """Bioengineering and health sovereignty intelligence"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.elite_sources = {
             "synthetic_biology": [
                 "Synthetic Biology Engineering Research Center",
@@ -125,15 +123,25 @@ class BioengineeringHealthSystem:
                 "gene_editing_breakthroughs": [
                     {
                         "technology": "CRISPR-Cas9 Prime Editing",
-                        "advancement": f"95% precision improvement for {application}",
+                        "advancement": (
+                            f"95% precision improvement for {application}"
+                        ),
                         "clinical_stage": "Phase II trials",
-                        "impact": f"Revolutionary treatment for {application}-related conditions",
+                        "impact": (
+                            f"Revolutionary treatment for "
+                            f"{application}-related conditions"
+                        ),
                     },
                     {
                         "technology": "Base Editing Systems",
-                        "advancement": f"Single nucleotide precision for {application}",
+                        "advancement": (
+                            f"Single nucleotide precision for {application}"
+                        ),
                         "clinical_stage": "Phase I trials",
-                        "impact": f"Corrects genetic mutations causing {application} disorders",
+                        "impact": (
+                            f"Corrects genetic mutations causing "
+                            f"{application} disorders"
+                        ),
                     },
                 ],
                 "synthetic_biology": [
@@ -141,33 +149,57 @@ class BioengineeringHealthSystem:
                         "platform": "Engineered Living Materials",
                         "capability": f"Self-healing {application} systems",
                         "maturity": "Prototype stage",
-                        "potential": f"Transforms {application} with biological solutions",
+                        "potential": (
+                            f"Transforms {application} with "
+                            "biological solutions"
+                        ),
                     },
                     {
                         "platform": "Biological Circuit Design",
                         "capability": f"Programmable {application} responses",
                         "maturity": "Research stage",
-                        "potential": f"Creates smart {application} therapeutics",
+                        "potential": (
+                            f"Creates smart {application} therapeutics"
+                        ),
                     },
                 ],
                 "health_sovereignty": {
-                    "domestic_capability": f"85% independence in {application} production",
-                    "strategic_reserves": f"{application} supply secured for 18 months",
-                    "innovation_pipeline": f"12 breakthrough {application} technologies in development",
-                    "regulatory_framework": f"Streamlined approval for {application} innovations",
+                    "domestic_capability": (
+                        f"85% independence in {application} production"
+                    ),
+                    "strategic_reserves": (
+                        f"{application} supply secured for 18 months"
+                    ),
+                    "innovation_pipeline": (
+                        f"12 breakthrough {application} technologies "
+                        "in development"
+                    ),
+                    "regulatory_framework": (
+                        f"Streamlined approval for {application} "
+                        "innovations"
+                    ),
                 },
             },
             "breakthrough_trends": [
                 f"{domain} showing 340% growth in {application} applications",
                 f"Gene therapy for {application} achieving 89% success rates",
-                f"Personalized {application} medicine reducing adverse effects by 70%",
+                f"Personalized {application} medicine reducing adverse "
+                "effects by 70%",
                 f"Bioengineered {application} solutions cutting costs by 60%",
             ],
             "future_medicine": {
-                "timeline_2030": f"Routine gene editing for {application} conditions",
-                "timeline_2035": f"Synthetic organs for {application} replacement",
-                "timeline_2040": f"Personalized {application} prevention protocols",
-                "sovereignty_goal": f"Complete {application} health independence",
+                "timeline_2030": (
+                    f"Routine gene editing for {application} conditions"
+                ),
+                "timeline_2035": (
+                    f"Synthetic organs for {application} replacement"
+                ),
+                "timeline_2040": (
+                    f"Personalized {application} prevention protocols"
+                ),
+                "sovereignty_goal": (
+                    f"Complete {application} health independence"
+                ),
             },
         }
 
@@ -181,7 +213,8 @@ def main():
     <div class="bioeng-header">
         <h1>🧬⚕️ BIOENGINEERING & HEALTH SOVEREIGNTY</h1>
         <h2>Advanced Biotechnology & Medical Breakthrough Intelligence</h2>
-        <p>Gene Editing • Synthetic Biology • Health Independence • Medical Innovation</p>
+        <p>Gene Editing • Synthetic Biology • Health Independence
+        • Medical Innovation</p>
     </div>
     """,
         unsafe_allow_html=True,
@@ -227,9 +260,13 @@ def main():
             )
 
         if st.button("🚀 Analyze Bioengineering Advances"):
-            with st.spinner(f"Analyzing {domain} advances for {application}..."):
+            with st.spinner(
+                f"Analyzing {domain} advances for {application}..."
+            ):
                 analysis = asyncio.run(
-                    st.session_state.bioeng_system.analyze_bioengineering_advances(
+                    analysis = asyncio.run(
+                        st.session_state.bioeng_system
+                        .analyze_bioengineering_advances(
                         domain, application
                     )
                 )
@@ -241,9 +278,12 @@ def main():
                     st.markdown(
                         f"""
                     <div class="health-card">
-                        <strong>Technology:</strong> {breakthrough['technology']}<br>
-                        <strong>Advancement:</strong> {breakthrough['advancement']}<br>
-                        <strong>Clinical Stage:</strong> {breakthrough['clinical_stage']}<br>
+                        <strong>Technology:</strong>
+                        {breakthrough['technology']}<br>
+                        <strong>Advancement:</strong>
+                        {breakthrough['advancement']}<br>
+                        <strong>Clinical Stage:</strong>
+                        {breakthrough['clinical_stage']}<br>
                         <strong>Impact:</strong> {breakthrough['impact']}
                     </div>
                     """,
@@ -258,7 +298,8 @@ def main():
                         f"""
                     <div class="health-card">
                         <strong>Platform:</strong> {platform['platform']}<br>
-                        <strong>Capability:</strong> {platform['capability']}<br>
+                        <strong>Capability:</strong>
+                        {platform['capability']}<br>
                         <strong>Maturity:</strong> {platform['maturity']}<br>
                         <strong>Potential:</strong> {platform['potential']}
                     </div>
@@ -267,12 +308,19 @@ def main():
                     )
 
                 st.subheader("🏛️ Health Sovereignty Status")
-                sovereignty = analysis["bioengineering_insights"]["health_sovereignty"]
+                bioeng_insights = analysis["bioengineering_insights"]
+                sovereignty = bioeng_insights["health_sovereignty"]
 
                 col1_sov, col2_sov = st.columns(2)
                 with col1_sov:
-                    st.metric("Domestic Capability", sovereignty["domestic_capability"])
-                    st.metric("Strategic Reserves", sovereignty["strategic_reserves"])
+                    st.metric(
+                        "Domestic Capability",
+                        sovereignty["domestic_capability"]
+                    )
+                    st.metric(
+                        "Strategic Reserves",
+                        sovereignty["strategic_reserves"]
+                    )
                 with col2_sov:
                     st.metric("Innovation Pipeline", sovereignty["innovation_pipeline"])
                     st.write(f"**Regulatory:** {sovereignty['regulatory_framework']}")

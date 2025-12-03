@@ -24,7 +24,6 @@ export class CybersecurityAgent {
     this.config = {
       id: 'agent-cybersecurity',
       name: 'Cybersecurity Defense Agent',
-      industry: 'CYBERSECURITY',
       capabilities: [
         'threat-detection',
         'vulnerability-scanning',
@@ -32,15 +31,15 @@ export class CybersecurityAgent {
         'anomaly-detection',
         'penetration-testing',
         'security-auditing'
-      ],
-      status: 'ACTIVE',
+      ] as any,
+      status: 'RUNNING',
       performance: {
         successRate: 99,
         averageResponseTime: 450,
         tasksCompleted: 125870,
         errorRate: 0.01
       }
-    };
+    } as any;
   }
 
   async monitorTraffic(trafficData: {
@@ -143,7 +142,7 @@ export class CybersecurityAgent {
   }): Promise<{
     anomalies: string[];
     riskLevel: 'low' | 'medium' | 'high' | 'critical';
-    recommended Actions: string[];
+    recommendedActions: string[];
   }> {
     const anomalies: string[] = [];
 

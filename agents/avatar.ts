@@ -32,7 +32,7 @@ export abstract class BaseAvatar implements Avatar {
    * Validate customer ID
    */
   protected validateCustomer(customerId: string): boolean {
-    return customerId && customerId.length > 0;
+    return Boolean(customerId && customerId.length > 0);
   }
 }
 

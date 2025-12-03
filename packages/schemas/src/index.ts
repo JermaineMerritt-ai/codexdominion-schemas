@@ -63,7 +63,7 @@ export const ConfigSchema = z.object({
   appName: z.string(),
   environment: z.enum(['development', 'staging', 'production']),
   apiUrl: z.string().url(),
-  features: z.record(z.boolean()),
+  features: z.record(z.string(), z.boolean()),
   limits: z.object({
     maxFileSize: z.number(),
     rateLimit: z.number(),

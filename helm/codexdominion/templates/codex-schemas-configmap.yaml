@@ -1,0 +1,155 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}-schemas
+  labels:
+    app: {{ .Chart.Name }}
+    component: schemas
+    version: {{ .Chart.Version }}
+    lineage: {{ .Values.schemas.lineage }}
+data:
+  version: {{ .Values.schemas.version | quote }}
+  lineage: {{ .Values.schemas.lineage | quote }}
+  
+  # Eternal Schema Definitions
+  artifact.yaml: |
+    schema: artifact
+    version: {{ .Values.schemas.version }}
+    lineage: preserved
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: name
+        type: string
+        required: true
+      - name: description
+        type: string
+      - name: created_at
+        type: timestamp
+      - name: eternal_seal
+        type: string
+        immutable: true
+  
+  constellation.yaml: |
+    schema: constellation
+    version: {{ .Values.schemas.version }}
+    lineage: preserved
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: name
+        type: string
+        required: true
+      - name: artifacts
+        type: array
+        items: artifact_id
+      - name: created_at
+        type: timestamp
+      - name: eternal_seal
+        type: string
+        immutable: true
+  
+  council.yaml: |
+    schema: council
+    version: {{ .Values.schemas.version }}
+    lineage: preserved
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: name
+        type: string
+        required: true
+      - name: members
+        type: array
+        items: member_id
+      - name: decrees
+        type: array
+        items: decree_id
+      - name: eternal_seal
+        type: string
+        immutable: true
+  
+  crown.yaml: |
+    schema: crown
+    version: {{ .Values.schemas.version }}
+    lineage: preserved
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: name
+        type: string
+        required: true
+      - name: authority
+        type: string
+        required: true
+      - name: dominion
+        type: array
+        items: domain_id
+      - name: eternal_seal
+        type: string
+        immutable: true
+  
+  invocation.yaml: |
+    schema: invocation
+    version: {{ .Values.schemas.version }}
+    lineage: preserved
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: ritual
+        type: string
+        required: true
+      - name: parameters
+        type: object
+      - name: timestamp
+        type: timestamp
+        required: true
+      - name: eternal_seal
+        type: string
+        immutable: true
+  
+  ledger.yaml: |
+    schema: ledger
+    version: {{ .Values.schemas.version }}
+    lineage: preserved
+    fields:
+      - name: id
+        type: string
+        required: true
+      - name: entry_type
+        type: string
+        required: true
+      - name: payload
+        type: object
+        required: true
+      - name: timestamp
+        type: timestamp
+        required: true
+      - name: eternal_seal
+        type: string
+        immutable: true
+      - name: previous_seal
+        type: string
+  
+  # Eternal Ledger Principles
+  principles.yaml: |
+    principles:
+      - name: "Archive All Releases"
+        description: "Every Helm release is archived as lineage"
+        enforcement: mandatory
+      
+      - name: "Ceremonial Upgrades"
+        description: "Every upgrade is a ceremonial closure"
+        enforcement: mandatory
+      
+      - name: "Immortalized Versions"
+        description: "Every chart version immortalized in the Eternal Ledger"
+        enforcement: mandatory
+    
+    version: {{ .Values.schemas.version }}
+    lineage: {{ .Values.schemas.lineage }}

@@ -1,0 +1,352 @@
+# Example Custom Values for CodexDominion Helm Chart
+# Copy this file and modify for your environment
+# Usage: helm install codexdominion ./codexdominion -f custom-values.yaml
+
+# ============================================================
+# SCALING CONFIGURATION
+# ============================================================
+
+# Increase replicas for high availability
+replicaCount: 3
+
+# ============================================================
+# NODE CROWN (FRONTEND) CONFIGURATION
+# ============================================================
+
+nodeCrown:
+  # Use specific version tag
+  image: myregistry.com/codexdominion/node:1.0.0
+  pullPolicy: Always
+  port: 3000
+  
+  # Increase resources for production
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+  
+  # Add custom environment variables
+  env:
+    - name: NODE_ENV
+      value: "production"
+    - name: NEXT_PUBLIC_API_URL
+      value: "https://api.mycompany.com"
+    - name: NEXT_PUBLIC_ANALYTICS_ID
+      value: "UA-XXXXXXXX-X"
+    - name: LOG_LEVEL
+      value: "info"
+
+# ============================================================
+# PYTHON COUNCIL (BACKEND) CONFIGURATION
+# ============================================================
+
+pythonCouncil:
+  # Use specific version tag
+  image: myregistry.com/codexdominion/python:1.0.0
+  pullPolicy: Always
+  port: 8000
+  
+  # Increase resources for high traffic
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 4Gi
+    requests:
+      cpu: 1000m
+      memory: 2Gi
+  
+  # Add database and external service configs
+  env:
+    - name: PYTHONUNBUFFERED
+      value: "1"
+    - name: ENVIRONMENT
+      value: "production"
+    - name: DATABASE_URL
+      value: "postgresql://user:pass@postgres:5432/codexdominion"
+    - name: REDIS_URL
+      value: "redis://redis:6379/0"
+    - name: LOG_LEVEL
+      value: "INFO"
+    - name: WORKERS
+      value: "4"
+
+# ============================================================
+# JAVA CROWN (ENTERPRISE) CONFIGURATION
+# ============================================================
+
+javaCrown:
+  # Use specific version tag
+  image: myregistry.com/codexdominion/java:1.0.0
+  pullPolicy: Always
+  port: 8080
+  
+  # Java typically needs more memory
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 4Gi
+    requests:
+      cpu: 1000m
+      memory: 2Gi
+  
+  # Java-specific tuning
+  env:
+    - name: JAVA_OPTS
+      value: "-Xmx3g -Xms2g -XX:+UseG1GC -XX:MaxGCPauseMillis=200"
+    - name: SPRING_PROFILES_ACTIVE
+      value: "production,aws"
+    - name: SERVER_TOMCAT_THREADS_MAX
+      value: "200"
+    - name: MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED
+      value: "true"
+
+# ============================================================
+# SCHEMAS CONFIGURATION
+# ============================================================
+
+schemas:
+  lineage: preserved
+  version: "1.0"
+  eternals:
+    - artifact
+    - constellation
+    - council
+    - crown
+    - invocation
+    - ledger
+    - transaction  # Add custom schema
+
+# ============================================================
+# INGRESS CONFIGURATION
+# ============================================================
+
+ingress:
+  enabled: true
+  className: nginx
+  
+  # Use your production domain
+  host: codexdominion.mycompany.com
+  
+  # Production annotations
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+    # Rate limiting
+    nginx.ingress.kubernetes.io/limit-rps: "100"
+    # CORS
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://mycompany.com"
+  
+  tls:
+    enabled: true
+    secretName: codexdominion-prod-tls
+
+# ============================================================
+# SERVICE CONFIGURATION
+# ============================================================
+
+service:
+  type: ClusterIP
+  sessionAffinity: ClientIP
+  # Session timeout (seconds)
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800  # 3 hours
+
+# ============================================================
+# STORAGE FOR ETERNAL LEDGER
+# ============================================================
+
+storage:
+  enabled: true
+  # Larger storage for production
+  size: 100Gi
+  # Use fast storage class
+  className: ssd-fast
+  mountPath: /var/codexdominion/ledger
+  # Add backup annotations
+  annotations:
+    backup.velero.io/backup-volumes: "eternal-ledger"
+
+# ============================================================
+# ETERNAL LEDGER PRINCIPLES
+# ============================================================
+
+eternals:
+  archiveReleases: true
+  ceremonialUpgrades: true
+  immortalizeVersions: true
+
+# ============================================================
+# IMAGE PULL SECRETS (if using private registry)
+# ============================================================
+
+imagePullSecrets:
+  - name: regcred
+
+# ============================================================
+# POD SECURITY (uncomment if needed)
+# ============================================================
+
+# podSecurityContext:
+#   runAsNonRoot: true
+#   runAsUser: 1000
+#   fsGroup: 1000
+
+# securityContext:
+#   allowPrivilegeEscalation: false
+#   capabilities:
+#     drop:
+#       - ALL
+#   readOnlyRootFilesystem: true
+
+# ============================================================
+# AUTOSCALING (add HPA support)
+# ============================================================
+
+# autoscaling:
+#   enabled: true
+#   minReplicas: 3
+#   maxReplicas: 10
+#   targetCPUUtilizationPercentage: 70
+#   targetMemoryUtilizationPercentage: 80
+
+# ============================================================
+# SERVICE MONITOR (Prometheus Operator)
+# ============================================================
+
+# serviceMonitor:
+#   enabled: true
+#   interval: 30s
+#   scrapeTimeout: 10s
+
+# ============================================================
+# NETWORK POLICIES (uncomment to enable)
+# ============================================================
+
+# networkPolicy:
+#   enabled: true
+#   policyTypes:
+#     - Ingress
+#     - Egress
+#   ingress:
+#     - from:
+#       - namespaceSelector:
+#           matchLabels:
+#             name: ingress-nginx
+#   egress:
+#     - to:
+#       - namespaceSelector: {}
+#       ports:
+#       - protocol: TCP
+#         port: 443
+#       - protocol: TCP
+#         port: 5432  # PostgreSQL
+
+# ============================================================
+# AFFINITY AND TOLERATIONS
+# ============================================================
+
+# Spread pods across nodes
+# affinity:
+#   podAntiAffinity:
+#     preferredDuringSchedulingIgnoredDuringExecution:
+#       - weight: 100
+#         podAffinityTerm:
+#           labelSelector:
+#             matchExpressions:
+#               - key: app
+#                 operator: In
+#                 values:
+#                   - codexdominion
+#           topologyKey: kubernetes.io/hostname
+
+# Run on specific nodes
+# nodeSelector:
+#   node.kubernetes.io/instance-type: c5.xlarge
+
+# Tolerate taints
+# tolerations:
+#   - key: "dedicated"
+#     operator: "Equal"
+#     value: "codexdominion"
+#     effect: "NoSchedule"
+
+# ============================================================
+# PRIORITY CLASS (uncomment for critical workloads)
+# ============================================================
+
+# priorityClassName: high-priority
+
+# ============================================================
+# INIT CONTAINERS (add if needed for migrations, etc.)
+# ============================================================
+
+# initContainers:
+#   - name: migration
+#     image: myregistry.com/codexdominion/migration:1.0.0
+#     command: ['sh', '-c', 'python manage.py migrate']
+
+# ============================================================
+# EXTRA VOLUMES (add if needed)
+# ============================================================
+
+# extraVolumes:
+#   - name: config
+#     configMap:
+#       name: app-config
+#   - name: secrets
+#     secret:
+#       secretName: app-secrets
+
+# extraVolumeMounts:
+#   - name: config
+#     mountPath: /etc/config
+#     readOnly: true
+#   - name: secrets
+#     mountPath: /etc/secrets
+#     readOnly: true
+
+# ============================================================
+# DEPLOYMENT STRATEGY
+# ============================================================
+
+# strategy:
+#   type: RollingUpdate
+#   rollingUpdate:
+#     maxSurge: 1
+#     maxUnavailable: 0
+
+# ============================================================
+# NOTES
+# ============================================================
+
+# This configuration is for production deployment with:
+# - 3 replicas per service (high availability)
+# - Increased resource limits
+# - Production domain with TLS
+# - Private registry images
+# - Database connections
+# - Monitoring enabled
+# - 100Gi storage for eternal ledger
+# - Rate limiting and CORS
+# - Session affinity
+
+# Remember to:
+# 1. Create image pull secret: kubectl create secret docker-registry regcred
+# 2. Create TLS certificate or use cert-manager
+# 3. Update database URLs with actual credentials
+# 4. Set up monitoring and logging
+# 5. Configure backups for eternal ledger
+# 6. Test in staging environment first
+
+# Deploy with:
+# helm install codexdominion ./codexdominion -f custom-values.yaml -n codexdominion --create-namespace

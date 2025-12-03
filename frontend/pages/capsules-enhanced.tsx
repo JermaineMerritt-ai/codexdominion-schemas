@@ -74,3 +74,10 @@ export default function CapsulesWithLinks() {
   }
   // ...existing code for rendering capsules and error handling...
 }
+
+// Disable static generation since we fetch data client-side
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}

@@ -1,0 +1,87 @@
+---
+# AI Systems Integration Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ai-systems-ingress
+  namespace: codex-governance
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: jermaine-ai.codex-dominion.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jermaine-super-action-ai
+                port:
+                  number: 80
+    
+    - host: dot300-ai.codex-dominion.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dot300-action-ai
+                port:
+                  number: 8501
+    
+    - host: avatar.codex-dominion.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: avatar-system
+                port:
+                  number: 8502
+  tls:
+    - hosts:
+        - jermaine-ai.codex-dominion.com
+        - dot300-ai.codex-dominion.com
+        - avatar.codex-dominion.com
+      secretName: ai-systems-tls
+---
+# AI Systems Coordination Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-systems-coordinator
+  namespace: codex-governance
+  labels:
+    app: ai-systems-coordinator
+spec:
+  selector:
+    app: avatar-system
+  ports:
+    - name: avatar
+      protocol: TCP
+      port: 80
+      targetPort: 8502
+  type: LoadBalancer
+---
+# Service Monitor for AI Systems
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: ai-systems-monitor
+  namespace: codex-governance
+  labels:
+    app: ai-systems
+spec:
+  selector:
+    matchLabels:
+      tier: ai-systems
+  endpoints:
+    - port: http
+      interval: 30s
+      path: /metrics

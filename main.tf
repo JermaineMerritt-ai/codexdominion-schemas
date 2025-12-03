@@ -1,22 +1,13 @@
-module "gcp_gclb_ingress" {
-  source           = "./modules/gcp-gclb-ingress"
-  gcp_project_id   = var.gcp_project_id
-  domain_apex      = var.domain_apex
-  domain_www       = var.domain_www
-  k8s_namespace    = var.k8s_namespace
-}
-
-module "azure_front_door" {
-  source               = "./modules/azure-front-door"
-  azure_resource_group = var.azure_resource_group
-  azure_location       = "eastus"
-  afd_profile_name     = var.afd_profile_name
-  afd_endpoint_name    = var.afd_endpoint_name
-  origin_host          = var.domain_apex
-}# main.tf
+# Codex Dominion - Simplified Main Terraform Configuration
 
 terraform {
+  required_version = ">= 1.6.0"
+  
   required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 5.30"
+    }
     cloudflare = {
       source  = "cloudflare/cloudflare"
       version = "~> 4.0"
@@ -24,62 +15,69 @@ terraform {
   }
 }
 
+# GCP Provider
 provider "google" {
-  project = var.project_id
-  region  = var.region
+  project     = var.gcp_project_id
+  region      = var.gcp_region
+  credentials = var.gcp_sa_key_file != "" ? file(var.gcp_sa_key_file) : null
 }
 
-# Cloud SQL (Postgres)
-resource "google_sql_database_instance" "codex_ledger" {
-  name             = "codex-ledger"
+# Cloudflare Provider
+provider "cloudflare" {
+  api_token = var.cloudflare_api_token
+}
+
+# Google SQL Database Instance
+resource "google_sql_database_instance" "db" {
+  name             = "codex-dominion-db"
   database_version = "POSTGRES_15"
-  region           = var.region
+  region           = var.gcp_region
 
   settings {
     tier = var.db_tier
+
+    ip_configuration {
+      ipv4_enabled    = true
+      authorized_networks {
+        name  = "deployment-server"
+        value = var.server_ip
+      }
+    }
+
     backup_configuration {
       enabled = true
     }
   }
+
+  deletion_protection = false  # Set to true in production
 }
 
-resource "google_sql_database" "codex" {
-  name     = "codex"
-  instance = google_sql_database_instance.codex_ledger.name
+# Database
+resource "google_sql_database" "database" {
+  name     = "codexdominion"
+  instance = google_sql_database_instance.db.name
 }
 
-resource "google_sql_user" "codex_user" {
+# Database User
+resource "google_sql_user" "user" {
   name     = var.db_user
-  instance = google_sql_database_instance.codex_ledger.name
+  instance = google_sql_database_instance.db.name
   password = var.db_pass
 }
 
-# Cloud Storage bucket for capsule artifacts
-resource "google_storage_bucket" "codex_artifacts" {
-  name          = "codex-artifacts-${var.project_id}"
-  location      = var.region
-  force_destroy = true
-
-  uniform_bucket_level_access = true
-  versioning {
-    enabled = true
-  }
-}
-
-# Cloud Run service for Signals Engine
+# Cloud Run Service
 resource "google_cloud_run_service" "signals" {
   name     = "codex-signals"
-  location = var.region
+  location = var.gcp_region
 
   template {
     spec {
       containers {
         image = var.signals_image
-        resources {
-          limits = {
-            memory = "512Mi"
-            cpu    = "1"
-          }
+        
+        env {
+          name  = "DATABASE_URL"
+          value = "postgresql://${var.db_user}:${var.db_pass}@${google_sql_database_instance.db.connection_name}/codexdominion"
         }
       }
     }
@@ -91,55 +89,51 @@ resource "google_cloud_run_service" "signals" {
   }
 }
 
-# Secret Manager entry for DB password
-resource "google_secret_manager_secret" "db_pass" {
-  secret_id = "codex-db-pass"
-  replication {
-    auto {}
-  }
+# Cloud Run IAM - Allow public access
+resource "google_cloud_run_service_iam_member" "public" {
+  service  = google_cloud_run_service.signals.name
+  location = google_cloud_run_service.signals.location
+  role     = "roles/run.invoker"
+  member   = "allUsers"
 }
 
-resource "google_secret_manager_secret_version" "db_pass_version" {
-  secret      = google_secret_manager_secret.db_pass.id
-  secret_data = var.db_pass
+# Cloudflare Zone (assumes zone already exists)
+data "cloudflare_zone" "codex" {
+  name = var.domain_apex
 }
 
-# Cloud Scheduler job for Dawn Dispatch
-resource "google_cloud_scheduler_job" "dawn_dispatch" {
-  name        = "dawn-dispatch"
-  description = "Daily proclamation capsule"
-  schedule    = "0 6 * * *"
-  time_zone   = "America/New_York"
-
-  http_target {
-    uri         = google_cloud_run_service.signals.status[0].url
-    http_method = "POST"
-    body        = base64encode("{\"capsule\":\"dawn-dispatch\"}")
-    headers = {
-      "Content-Type" = "application/json"
-    }
-  }
-}
-
-# Cloudflare DNS automation for CodexDominion.app
-provider "cloudflare" {
-  api_token = var.cloudflare_api_token
-}
-
-resource "cloudflare_record" "codex_root" {
-  zone_id = var.zone_id
+# Cloudflare DNS Record - Apex
+resource "cloudflare_record" "apex" {
+  zone_id = data.cloudflare_zone.codex.id
   name    = "@"
+  content   = var.server_ip
   type    = "A"
-  value   = var.server_ip
-    ttl     = 1
+  ttl     = 1  # Auto
   proxied = true
 }
 
-resource "cloudflare_record" "codex_www" {
-  zone_id = var.zone_id
+# Cloudflare DNS Record - WWW
+resource "cloudflare_record" "www" {
+  zone_id = data.cloudflare_zone.codex.id
   name    = "www"
+  content   = var.server_ip
   type    = "A"
-  value   = var.server_ip
-    ttl     = 1
+  ttl     = 1  # Auto
   proxied = true
+}
+
+# Outputs
+output "db_connection_name" {
+  description = "Google SQL instance connection name"
+  value       = google_sql_database_instance.db.connection_name
+}
+
+output "signals_url" {
+  description = "Cloud Run signals service URL"
+  value       = google_cloud_run_service.signals.status[0].url
+}
+
+output "cloudflare_zone_id" {
+  description = "Cloudflare zone ID"
+  value       = data.cloudflare_zone.codex.id
 }

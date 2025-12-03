@@ -203,3 +203,10 @@ export default function SignalsEnhancedPage() {
     </div>
   );
 }
+
+// Disable static generation since we fetch data client-side
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}

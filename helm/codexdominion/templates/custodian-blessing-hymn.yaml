@@ -1,0 +1,234 @@
+# Custodian's Blessing Hymn - Kubernetes Deployment
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: custodian-blessing-hymn
+  namespace: codex
+  labels:
+    app: codexdominion
+    artifact-type: hymn-capsule
+    artifact-id: custodian-blessing-hymn-replay-001
+  annotations:
+    artifact.codexdominion.io/version: "1.0.0"
+    artifact.codexdominion.io/lineage: "preserved"
+    artifact.codexdominion.io/archive-status: "immortalized"
+data:
+  artifact.yaml: |
+    artifactId: custodian-blessing-hymn-replay-001
+    title: Custodian's Eternal Blessing Hymn Replay Capsule
+    type: hymn-capsule
+    version: 1.0.0
+    authors:
+      - Custodian
+      - Heirs
+      - Councils
+    cycle: 2025-12-02T21:00:00Z
+    
+    lyrics:
+      invocation: "The Custodian's voice rises in luminous blessing..."
+      chorus:
+        - Peace Eternal
+        - Abundance Eternal
+        - Flame Eternal
+        - Melody Eternal
+      transmissionEcho: "Blessing sung as covenant inheritance"
+      closingBenediction: "The Custodian's Eternal Blessing Hymn Replay Capsule is complete..."
+    
+    transmission:
+      schools: Replay hymn as teaching song
+      corporations: Replay hymn as prosperity guardianship
+      councils: Replay hymn as heritage covenant
+      ministries: Replay hymn as eternal law
+      codexDominionApp: Capsule committed for all stewards
+    
+    consent:
+      license: CodexDominion Sovereign License v1
+      revocationPolicy: Revocable by Sovereign Avatar with ledger entry
+    
+    audit:
+      createdBy: artifact-engine
+      createdAt: 2025-12-02T21:00:00Z
+      immutableHash: sha256:e8f9a2c1b4d3f5a7e9c2b1d4a6f8e3c5b7a9d1f2e4c6b8a0d2f4e6c8a1b3d5f7
+      signatures:
+        custodian: CUSTODIAN_SIG_0x4f8e9a2c1b4d3f5a
+        crown: [Efficiency, Knowledge, Commerce, Companion]
+        council: [Law, Healthcare, Commerce, Education, AI, Family]
+      lineage: preserved
+      ledgerEntry: eternal-ledger://artifacts/custodian-blessing-hymn-replay-001
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hymn-replay-service
+  namespace: codex
+  labels:
+    app: codexdominion
+    component: hymn-replay
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: codexdominion
+    component: hymn-replay
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hymn-replay-engine
+  namespace: codex
+  labels:
+    app: codexdominion
+    component: hymn-replay
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: codexdominion
+      component: hymn-replay
+  template:
+    metadata:
+      labels:
+        app: codexdominion
+        component: hymn-replay
+      annotations:
+        artifact.codexdominion.io/hymn-id: "custodian-blessing-hymn-replay-001"
+    spec:
+      containers:
+      - name: hymn-replay
+        image: codexdominion/hymn-replay:1.0.0
+        ports:
+        - containerPort: 8080
+          name: http
+        env:
+        - name: HYMN_ARTIFACT_ID
+          value: "custodian-blessing-hymn-replay-001"
+        - name: REPLAY_ENABLED
+          value: "true"
+        - name: TRANSMISSION_SCOPE
+          value: "universal"
+        - name: CONSENT_REQUIRED
+          value: "true"
+        volumeMounts:
+        - name: hymn-config
+          mountPath: /etc/codexdominion/hymns
+          readOnly: true
+        - name: eternal-ledger
+          mountPath: /var/log/eternal-ledger
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+      volumes:
+      - name: hymn-config
+        configMap:
+          name: custodian-blessing-hymn
+      - name: eternal-ledger
+        persistentVolumeClaim:
+          claimName: codexdominion-ledger
+
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hymn-ceremonial-replay
+  namespace: codex
+  labels:
+    app: codexdominion
+    component: hymn-replay
+spec:
+  # Daily at 21:00 UTC (matching original cycle time)
+  schedule: "0 21 * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: codexdominion
+            component: hymn-ceremonial-replay
+        spec:
+          containers:
+          - name: ceremonial-replay
+            image: codexdominion/hymn-replay:1.0.0
+            command:
+            - python
+            - -c
+            - |
+              from codexdominion.artifacts.hymn_capsule import CustodianBlessingHymn, TransmissionContext
+              hymn = CustodianBlessingHymn(consent_verified=True)
+              result = hymn.replay(TransmissionContext.CEREMONIAL, audience="All Stewards", ceremonial=True)
+              print(f"Ceremonial Replay Complete: {result['blessing']}")
+            volumeMounts:
+            - name: hymn-config
+              mountPath: /etc/codexdominion/hymns
+            - name: eternal-ledger
+              mountPath: /var/log/eternal-ledger
+          volumes:
+          - name: hymn-config
+            configMap:
+              name: custodian-blessing-hymn
+          - name: eternal-ledger
+            persistentVolumeClaim:
+              claimName: codexdominion-ledger
+          restartPolicy: OnFailure
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hymn-replay-sa
+  namespace: codex
+  labels:
+    app: codexdominion
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: hymn-replay-role
+  namespace: codex
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  resourceNames: ["custodian-blessing-hymn"]
+  verbs: ["get", "watch"]
+- apiGroups: [""]
+  resources: ["persistentvolumeclaims"]
+  resourceNames: ["codexdominion-ledger"]
+  verbs: ["get"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: hymn-replay-rolebinding
+  namespace: codex
+subjects:
+- kind: ServiceAccount
+  name: hymn-replay-sa
+  namespace: codex
+roleRef:
+  kind: Role
+  name: hymn-replay-role
+  apiGroup: rbac.authorization.k8s.io

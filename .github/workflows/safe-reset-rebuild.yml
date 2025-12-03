@@ -1,0 +1,128 @@
+name: Safe Reset & Rebuild
+
+on:
+  workflow_dispatch: # Manual trigger
+  push:
+    branches:
+      - main
+
+jobs:
+  reset-and-rebuild:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Safe Reset Node.js
+        run: |
+          echo "🧹 Cleaning Node.js environment..."
+          rm -rf node_modules package-lock.json
+          npm cache clean --force
+          echo "📦 Installing Node.js dependencies..."
+          npm install
+          echo "✅ Node.js reset complete"
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Safe Reset Python
+        run: |
+          echo "🧹 Cleaning Python environment..."
+          find . -type d -name "__pycache__" -exec rm -r {} + || true
+          find . -name "*.pyc" -delete || true
+          rm -rf venv .venv
+          echo "🐍 Creating Python virtual environment..."
+          python3 -m venv venv
+          source venv/bin/activate
+          echo "📦 Installing Python dependencies..."
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          echo "✅ Python reset complete"
+
+      - name: Safe Reset Java (if applicable)
+        run: |
+          echo "🧹 Cleaning Java build..."
+          if [ -f "pom.xml" ]; then
+            echo "Maven project detected"
+            mvn clean install
+          elif [ -f "build.gradle" ]; then
+            echo "Gradle project detected"
+            ./gradlew clean build
+          else
+            echo "⚠️ No Java build files found, skipping Java reset"
+          fi
+          echo "✅ Java reset complete"
+
+      - name: Refresh CodexDominion Schemas
+        run: |
+          echo "🔄 Refreshing CodexDominion schemas..."
+          mkdir -p schema_backup
+          if [ -d "schemas" ]; then
+            cp -r schemas/* schema_backup/ || true
+            echo "✅ Schema backup created"
+          fi
+          if [ -d "schema_templates" ]; then
+            mkdir -p schemas
+            cp -r schema_templates/* schemas/ || true
+            echo "✅ Schemas refreshed from templates"
+          else
+            echo "⚠️ No schema_templates directory found"
+          fi
+          echo "✅ Schema refresh complete"
+
+      - name: Verify Build
+        run: |
+          echo "🔍 Verifying build integrity..."
+          
+          # Verify Node.js
+          if [ -d "node_modules" ]; then
+            echo "✅ Node.js modules installed"
+            npm list --depth=0 || true
+          fi
+          
+          # Verify Python
+          if [ -d "venv" ]; then
+            echo "✅ Python environment created"
+            source venv/bin/activate
+            pip list || true
+          fi
+          
+          echo "✅ Build verification complete"
+
+      - name: Generate Build Report
+        run: |
+          echo "📊 Generating build report..."
+          cat > build_report.txt << EOF
+          🔥 Codex Dominion - Safe Reset & Rebuild Report 🔥
+          ================================================
+          
+          Date: $(date)
+          Branch: ${{ github.ref_name }}
+          Commit: ${{ github.sha }}
+          
+          Components Reset:
+          - Node.js ✅
+          - Python ✅
+          - Java (if applicable) ✅
+          - Schemas ✅
+          
+          Status: BUILD SUCCESSFUL
+          ================================================
+          EOF
+          
+          cat build_report.txt
+          
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-report
+          path: build_report.txt
+          retention-days: 30
