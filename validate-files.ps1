@@ -101,6 +101,35 @@ if ($gitChoice -eq "Y") {
     git push
 
     Write-Host "✅ Changes pushed successfully!" -ForegroundColor Green
+
+    # Git tag creation
+    Write-Host "`nDo you want to create a Git tag for this version? (Y/N)" -ForegroundColor Cyan
+    $tagChoice = Read-Host
+    if ($tagChoice -eq "Y") {
+        Write-Host "Enter tag name (e.g., v2.0.0):" -ForegroundColor Cyan
+        $tagName = Read-Host
+
+        # Update package.json version
+        if (Test-Path ".\package.json") {
+            Write-Host "Updating version in package.json..." -ForegroundColor Yellow
+            (Get-Content package.json) -replace '"version":\s*".*?"', '"version": "' + $tagName.TrimStart("v") + '"' | Set-Content package.json
+        }
+
+        # Update DEPLOYMENT_STATUS.md version
+        if (Test-Path ".\DEPLOYMENT_STATUS.md") {
+            Write-Host "Updating version in DEPLOYMENT_STATUS.md..." -ForegroundColor Yellow
+            (Get-Content DEPLOYMENT_STATUS.md) -replace 'Version:\s*.*', 'Version: ' + $tagName | Set-Content DEPLOYMENT_STATUS.md
+        }
+
+        # Create and push tag
+        git add .
+        git commit -m "Update version to $tagName"
+        git tag $tagName
+        git push origin $tagName
+        git push
+        Write-Host "✅ Git tag '$tagName' created and pushed!" -ForegroundColor Green
+        Write-Host "✅ Version updated in package.json and DEPLOYMENT_STATUS.md" -ForegroundColor Green
+    }
 }
 
 Write-Host "`nFix YAML errors manually (multi-doc, duplicate keys, indentation)." -ForegroundColor Yellow
