@@ -112,13 +112,17 @@ if ($gitChoice -eq "Y") {
         # Update package.json version
         if (Test-Path ".\package.json") {
             Write-Host "Updating version in package.json..." -ForegroundColor Yellow
-            (Get-Content package.json) -replace '"version":\s*".*?"', '"version": "' + $tagName.TrimStart("v") + '"' | Set-Content package.json
+            $packageContent = Get-Content package.json -Raw
+            $packageContent = $packageContent -replace '"version":\s*"[^"]*"', ('"version": "' + $tagName.TrimStart("v") + '"')
+            $packageContent | Set-Content package.json
         }
 
         # Update DEPLOYMENT_STATUS.md version
         if (Test-Path ".\DEPLOYMENT_STATUS.md") {
             Write-Host "Updating version in DEPLOYMENT_STATUS.md..." -ForegroundColor Yellow
-            (Get-Content DEPLOYMENT_STATUS.md) -replace 'Version:\s*.*', 'Version: ' + $tagName | Set-Content DEPLOYMENT_STATUS.md
+            $deployContent = Get-Content DEPLOYMENT_STATUS.md -Raw
+            $deployContent = $deployContent -replace 'Version:\s*[^\r\n]*', ('Version: ' + $tagName)
+            $deployContent | Set-Content DEPLOYMENT_STATUS.md
         }
 
         # Create and push tag
