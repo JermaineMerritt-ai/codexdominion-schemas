@@ -355,7 +355,7 @@ def role_interface_sidebar(role):
 
     st.sidebar.markdown(
         f"""
-    <div style="background: linear-gradient(45deg, {permissions.get('color', '#666')}33, {permissions.get('color', '#666')}22); 
+    <div style="background: linear-gradient(45deg, {permissions.get('color', '#666')}33, {permissions.get('color', '#666')}22);
                 border: 2px solid {permissions.get('color', '#666')}; border-radius: 15px; padding: 15px; margin: 10px 0;">
         <h2>{permissions.get('icon', '⚡')} {role} Authority</h2>
         <p><em>{permissions.get('description', 'Role description')}</em></p>
@@ -498,8 +498,8 @@ def dual_command_interface():
         permissions = get_role_permissions(selected_role)
         st.markdown(
             f"""
-        **Current Role:** {permissions.get('icon', '⚡')} {selected_role}  
-        **Authority Level:** {permissions.get('authority_level', 0)}/10  
+        **Current Role:** {permissions.get('icon', '⚡')} {selected_role}
+        **Authority Level:** {permissions.get('authority_level', 0)}/10
         **Description:** {permissions.get('description', 'Role description')}
         """
         )

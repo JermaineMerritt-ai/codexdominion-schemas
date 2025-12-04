@@ -5,25 +5,25 @@
 param(
     [Parameter(Mandatory=$false)]
     [string]$Namespace = "codexdominion",
-    
+
     [Parameter(Mandatory=$false)]
     [string]$ReleaseName = "codexdominion",
-    
+
     [Parameter(Mandatory=$false)]
     [string]$ValuesFile = "",
-    
+
     [Parameter(Mandatory=$false)]
     [switch]$DryRun,
-    
+
     [Parameter(Mandatory=$false)]
     [switch]$Upgrade,
-    
+
     [Parameter(Mandatory=$false)]
     [switch]$Uninstall,
-    
+
     [Parameter(Mandatory=$false)]
     [switch]$Validate,
-    
+
     [Parameter(Mandatory=$false)]
     [switch]$WithLedger  # Enable Eternal Ledger logging
 )
@@ -74,16 +74,16 @@ if ($Validate -or $true) {
 # Uninstall if requested
 if ($Uninstall) {
     Write-Host "`n🗑️  Uninstalling release: $ReleaseName" -ForegroundColor Yellow
-    
+
     if ($WithLedger -and (Test-Path $LedgerScript)) {
         Write-Host "📜 Using Eternal Ledger logging..." -ForegroundColor Cyan
         & $LedgerScript uninstall $ReleaseName $Namespace
     } else {
         helm uninstall $ReleaseName --namespace $Namespace --keep-history
     }
-    
+
     Write-Host "✓ Release uninstalled" -ForegroundColor Green
-    
+
     Write-Host "`n⚠️  Note: PersistentVolumeClaim '$ReleaseName-ledger' not deleted" -ForegroundColor Yellow
     Write-Host "   To delete eternal ledger storage, run:" -ForegroundColor Yellow
     Write-Host "   kubectl delete pvc $ReleaseName-ledger -n $Namespace" -ForegroundColor Cyan
@@ -142,30 +142,30 @@ try {
 if (-not $DryRun) {
     # Wait for deployments
     Write-Host "`n⏳ Waiting for deployments to be ready..." -ForegroundColor Yellow
-    
+
     $deployments = @(
         "$ReleaseName-node-crown",
         "$ReleaseName-python-council",
         "$ReleaseName-java-crown"
     )
-    
+
     foreach ($deployment in $deployments) {
         Write-Host "   Waiting for $deployment..." -ForegroundColor Gray
         kubectl rollout status deployment/$deployment -n $Namespace --timeout=300s
     }
-    
+
     Write-Host "`n✓ All deployments ready!" -ForegroundColor Green
-    
+
     # Show status
     Write-Host "`n📊 Deployment Status:" -ForegroundColor Cyan
     kubectl get pods -n $Namespace -l app=$ReleaseName
-    
+
     Write-Host "`n🌐 Services:" -ForegroundColor Cyan
     kubectl get svc -n $Namespace -l app=$ReleaseName
-    
+
     Write-Host "`n🔗 Ingress:" -ForegroundColor Cyan
     kubectl get ingress -n $Namespace $ReleaseName
-    
+
     # Show access instructions
     Write-Host @"
 

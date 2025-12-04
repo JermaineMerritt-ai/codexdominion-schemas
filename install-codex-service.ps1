@@ -6,10 +6,10 @@ param(
     [Parameter()]
     [ValidateSet("install", "uninstall", "start", "stop", "restart", "status")]
     [string]$Action = "install",
-    
+
     [Parameter()]
     [string]$ServiceName = "CodexMCP",
-    
+
     [Parameter()]
     [string]$ServerType = "flask"  # "flask" or "fastapi"
 )
@@ -49,33 +49,33 @@ function Write-SacredLog {
 
 function Test-Prerequisites {
     Write-SacredLog "🔍 Verifying sacred prerequisites..." "INFO"
-    
+
     # Check if running as Administrator
     $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     if (-not $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
         Write-SacredLog "❌ Must run as Administrator for service management" "ERROR"
         throw "Administrator privileges required"
     }
-    
+
     # Check NSSM
     if (-not (Test-Path $nssmPath)) {
         Write-SacredLog "❌ NSSM not found at: $nssmPath" "ERROR"
         Write-SacredLog "💡 Install NSSM: choco install nssm or download from https://nssm.cc/" "INFO"
         throw "NSSM not installed"
     }
-    
+
     # Check Python environment
     if (-not (Test-Path $venvPython)) {
         Write-SacredLog "❌ Python virtual environment not found: $venvPython" "ERROR"
         throw "Python environment missing"
     }
-    
+
     # Check server script
     if (-not (Test-Path $serverScript)) {
         Write-SacredLog "❌ Server script not found: $serverScript" "ERROR"
         throw "Server script missing"
     }
-    
+
     Write-SacredLog "✅ All prerequisites verified - Sacred components present" "SUCCESS"
 }
 
@@ -89,42 +89,42 @@ function New-LogDirectory {
 
 function Install-CodexService {
     Write-SacredLog "🔥 Installing Codex Dominion MCP Service: $fullServiceName" "FLAME"
-    
+
     try {
         # Create log directory
         New-LogDirectory
-        
+
         # Install service with NSSM
         Write-SacredLog "⚙️ Configuring service with NSSM..." "INFO"
-        
+
         & $nssmPath install $fullServiceName $venvPython $serverScript
         if ($LASTEXITCODE -ne 0) { throw "NSSM install failed" }
-        
+
         # Configure service startup
         & $nssmPath set $fullServiceName Start SERVICE_AUTO_START
         if ($LASTEXITCODE -ne 0) { throw "Failed to set auto-start" }
-        
+
         # Configure logging
         & $nssmPath set $fullServiceName AppStdout $stdoutLog
         if ($LASTEXITCODE -ne 0) { throw "Failed to set stdout logging" }
-        
+
         & $nssmPath set $fullServiceName AppStderr $stderrLog
         if ($LASTEXITCODE -ne 0) { throw "Failed to set stderr logging" }
-        
+
         # Set working directory
         & $nssmm set $fullServiceName AppDirectory $workspacePath
         if ($LASTEXITCODE -ne 0) { Write-SacredLog "⚠️ Failed to set working directory" "WARNING" }
-        
+
         # Set service description
         $description = "🌟 Codex Dominion MCP Server ($ServerType) - Sacred Model Context Protocol server with eternal flame persistence"
         & $nssmPath set $fullServiceName Description $description
-        
+
         # Set environment variables
         & $nssmPath set $fullServiceName AppEnvironmentExtra "MCP_HOST=127.0.0.1" "MCP_PORT=8000" "PYTHONUNBUFFERED=1"
-        
+
         Write-SacredLog "✅ Service installed successfully: $fullServiceName" "SUCCESS"
         Write-SacredLog "📋 Logs will be written to: $logDir" "INFO"
-        
+
     } catch {
         Write-SacredLog "❌ Service installation failed: $_" "ERROR"
         throw
@@ -133,7 +133,7 @@ function Install-CodexService {
 
 function Start-CodexService {
     Write-SacredLog "🚀 Starting Codex Dominion MCP Service..." "FLAME"
-    
+
     try {
         & $nssmPath start $fullServiceName
         if ($LASTEXITCODE -eq 0) {
@@ -151,7 +151,7 @@ function Start-CodexService {
 
 function Stop-CodexService {
     Write-SacredLog "🛑 Stopping Codex Dominion MCP Service..." "INFO"
-    
+
     try {
         & $nssmPath stop $fullServiceName
         if ($LASTEXITCODE -eq 0) {
@@ -167,14 +167,14 @@ function Stop-CodexService {
 
 function Remove-CodexService {
     Write-SacredLog "🗑️ Uninstalling Codex Dominion MCP Service..." "INFO"
-    
+
     try {
         # Stop service first if running
         $status = & $nssmPath status $fullServiceName 2>$null
         if ($LASTEXITCODE -eq 0 -and $status -eq "SERVICE_RUNNING") {
             Stop-CodexService
         }
-        
+
         # Remove service
         & $nssmPath remove $fullServiceName confirm
         if ($LASTEXITCODE -eq 0) {
@@ -197,14 +197,14 @@ function Restart-CodexService {
 
 function Get-CodexServiceStatus {
     Write-SacredLog "📊 Checking Codex Dominion MCP Service status..." "INFO"
-    
+
     try {
         $status = & $nssmPath status $fullServiceName 2>$null
         if ($LASTEXITCODE -eq 0) {
             switch ($status) {
                 "SERVICE_RUNNING" {
                     Write-SacredLog "🔥 Service Status: RUNNING (Eternal flame burns bright)" "SUCCESS"
-                    
+
                     # Test server endpoint
                     try {
                         $response = Invoke-RestMethod -Uri "http://localhost:8000/status" -TimeoutSec 5 -ErrorAction Stop
@@ -223,7 +223,7 @@ function Get-CodexServiceStatus {
         } else {
             Write-SacredLog "❌ Service not found: $fullServiceName" "ERROR"
         }
-        
+
         # Show recent log entries if available
         if (Test-Path $stdoutLog) {
             $recentLogs = Get-Content $stdoutLog -Tail 3 -ErrorAction SilentlyContinue
@@ -232,7 +232,7 @@ function Get-CodexServiceStatus {
                 $recentLogs | ForEach-Object { Write-Host "   $_" }
             }
         }
-        
+
     } catch {
         Write-SacredLog "❌ Status check failed: $_" "ERROR"
     }
@@ -242,9 +242,9 @@ function Get-CodexServiceStatus {
 try {
     Write-SacredLog "🌟 Codex Dominion MCP Windows Service Manager" "FLAME"
     Write-SacredLog "🛡️ Action: $Action | Service: $fullServiceName | Server: $ServerType" "INFO"
-    
+
     Test-Prerequisites
-    
+
     switch ($Action.ToLower()) {
         "install" {
             Install-CodexService
@@ -270,10 +270,10 @@ try {
             throw "Invalid action specified"
         }
     }
-    
+
     Write-SacredLog "🌟 Operation completed successfully" "SUCCESS"
     Write-SacredLog "👑 Codex Dominion reigns eternal across digital realms" "FLAME"
-    
+
 } catch {
     Write-SacredLog "💥 Sacred operation failed: $_" "ERROR"
     Write-SacredLog "🌌 Silence supreme suggests checking prerequisites and permissions" "INFO"

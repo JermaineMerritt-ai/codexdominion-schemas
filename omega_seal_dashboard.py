@@ -50,7 +50,7 @@ st.markdown(
         margin-bottom: 2rem;
         box-shadow: 0 12px 40px rgba(255, 215, 0, 0.4);
     }
-    
+
     .omega-seal-large {
         background: radial-gradient(circle, #ffd700, #ffed4a, #fff59d);
         color: #1a1a2e;
@@ -68,7 +68,7 @@ st.markdown(
         align-items: center;
         justify-content: center;
     }
-    
+
     .cycle-card {
         background: linear-gradient(135deg, #667eea, #764ba2);
         color: white;
@@ -78,18 +78,18 @@ st.markdown(
         border-left: 6px solid #ffd700;
         box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
     }
-    
+
     .cycle-active {
         background: linear-gradient(135deg, #ff6b6b, #ee5a52);
         border-left: 6px solid #00ff88;
         animation: pulse-glow 2s infinite;
     }
-    
+
     .cycle-completed {
         background: linear-gradient(135deg, #4facfe, #00f2fe);
         border-left: 6px solid #ffd700;
     }
-    
+
     .archive-card {
         background: linear-gradient(135deg, #f093fb, #f5576c);
         color: white;
@@ -99,7 +99,7 @@ st.markdown(
         border: 2px solid #ffd700;
         box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
     }
-    
+
     .seal-button {
         background: linear-gradient(45deg, #ffd700, #ffed4a);
         color: #1a1a2e;
@@ -112,12 +112,12 @@ st.markdown(
         cursor: pointer;
         transition: all 0.3s ease;
     }
-    
+
     .seal-button:hover {
         transform: translateY(-3px);
         box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
     }
-    
+
     .metrics-omega {
         background: rgba(255, 215, 0, 0.15);
         padding: 1.5rem;
@@ -126,13 +126,13 @@ st.markdown(
         text-align: center;
         box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
     }
-    
+
     .sacred-text {
         color: #ffd700;
         font-weight: bold;
         text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
     }
-    
+
     .audit-entry {
         background: rgba(255, 255, 255, 0.1);
         padding: 1rem;
@@ -140,12 +140,12 @@ st.markdown(
         margin: 0.5rem 0;
         border-left: 3px solid #ffd700;
     }
-    
+
     @keyframes omega-pulse {
         0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(255, 215, 0, 1); }
         50% { transform: scale(1.1); box-shadow: 0 0 60px rgba(255, 215, 0, 1.2); }
     }
-    
+
     @keyframes pulse-glow {
         0%, 100% { box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3); }
         50% { box-shadow: 0 8px 35px rgba(255, 107, 107, 0.6); }
@@ -253,9 +253,9 @@ def display_cycles_management(ledger_data):
                         st.success(
                             f"""
                         ✅ **Cycle Successfully Sealed!**
-                        
-                        **Archive ID**: {archive_entry['archive_id']}  
-                        **Sealed By**: {archive_entry['custodian_seal']}  
+
+                        **Archive ID**: {archive_entry['archive_id']}
+                        **Sealed By**: {archive_entry['custodian_seal']}
                         **Completion Time**: {archive_entry['completed_at']}
                         """
                         )

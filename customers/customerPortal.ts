@@ -1,6 +1,6 @@
 /**
  * 👥 Customer Portal - External Customer Interface
- * 
+ *
  * Main entry point for external customers to interact with Codex Dominion system.
  * Routes customer requests to appropriate agents and sovereigns.
  */

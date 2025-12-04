@@ -21,12 +21,12 @@ from typing import Dict, List, Any, Optional
 
 class CrownBinder:
     """Binds multiple Crown modules into unified governance."""
-    
+
     def __init__(self, binding_path: str = "data/crown-bindings.json"):
         self.binding_path = Path(binding_path)
         self.binding_path.parent.mkdir(parents=True, exist_ok=True)
         self._initialize_bindings()
-        
+
         # Available crown modules
         self.available_crowns = {
             "eternal_ledger": {
@@ -65,7 +65,7 @@ class CrownBinder:
                 "status": "available"
             }
         }
-    
+
     def _initialize_bindings(self) -> None:
         """Initialize crown bindings registry."""
         if not self.binding_path.exists():
@@ -74,17 +74,17 @@ class CrownBinder:
                 "last_updated": datetime.utcnow().isoformat()
             }
             self._write_bindings(initial_data)
-    
+
     def _read_bindings(self) -> Dict[str, Any]:
         """Read bindings registry."""
         with open(self.binding_path, 'r', encoding='utf-8') as f:
             return json.load(f)
-    
+
     def _write_bindings(self, data: Dict[str, Any]) -> None:
         """Write bindings registry."""
         with open(self.binding_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2)
-    
+
     def bind_crowns(
         self,
         crown_names: List[str],
@@ -93,17 +93,17 @@ class CrownBinder:
     ) -> Dict[str, Any]:
         """
         Bind multiple Crown modules into unified governance.
-        
+
         Args:
             crown_names: List of crown module names to bind
             binding_name: Optional name for this binding
             metadata: Optional additional metadata
-        
+
         Returns:
             Dict containing binding record with capabilities and status
         """
         binding_data = self._read_bindings()
-        
+
         # Validate crown names
         invalid_crowns = [
             c for c in crown_names
@@ -115,13 +115,13 @@ class CrownBinder:
                 "error": f"Invalid crowns: {', '.join(invalid_crowns)}",
                 "available_crowns": list(self.available_crowns.keys())
             }
-        
+
         # Create binding
         binding_id = hashlib.sha256(
             f"{'_'.join(sorted(crown_names))}_{datetime.utcnow().isoformat()}"
             .encode('utf-8')
         ).hexdigest()[:16]
-        
+
         # Aggregate capabilities
         combined_capabilities = {}
         for crown in crown_names:
@@ -130,7 +130,7 @@ class CrownBinder:
                 "type": crown_info["type"],
                 "capabilities": crown_info["capabilities"]
             }
-        
+
         binding_record = {
             "binding_id": binding_id,
             "binding_name": binding_name or f"binding_{binding_id}",
@@ -141,11 +141,11 @@ class CrownBinder:
             "status": "active",
             "metadata": metadata or {}
         }
-        
+
         binding_data["bindings"].append(binding_record)
         binding_data["last_updated"] = datetime.utcnow().isoformat()
         self._write_bindings(binding_data)
-        
+
         return {
             "bound": True,
             "binding_id": binding_id,
@@ -153,25 +153,25 @@ class CrownBinder:
             "bound_crowns": crown_names,
             "capabilities": combined_capabilities
         }
-    
+
     def get_binding(self, binding_id: str) -> Optional[Dict[str, Any]]:
         """
         Get details of a specific binding.
-        
+
         Args:
             binding_id: Identifier of the binding
-        
+
         Returns:
             Dict with binding details or None if not found
         """
         binding_data = self._read_bindings()
-        
+
         for binding in binding_data["bindings"]:
             if binding["binding_id"] == binding_id:
                 return binding
-        
+
         return None
-    
+
     def list_active_bindings(self) -> List[Dict[str, Any]]:
         """List all active crown bindings."""
         binding_data = self._read_bindings()
@@ -179,44 +179,44 @@ class CrownBinder:
             b for b in binding_data["bindings"]
             if b["status"] == "active"
         ]
-    
+
     def unbind_crowns(self, binding_id: str) -> Dict[str, Any]:
         """
         Unbind a crown binding.
-        
+
         Args:
             binding_id: Identifier of the binding to unbind
-        
+
         Returns:
             Dict with unbinding status
         """
         binding_data = self._read_bindings()
-        
+
         for binding in binding_data["bindings"]:
             if binding["binding_id"] == binding_id:
                 binding["status"] = "unbound"
                 binding["unbound_at"] = datetime.utcnow().isoformat()
-                
+
                 binding_data["last_updated"] = datetime.utcnow().isoformat()
                 self._write_bindings(binding_data)
-                
+
                 return {
                     "unbound": True,
                     "binding_id": binding_id,
                     "crowns_released": binding["bound_crowns"]
                 }
-        
+
         return {"unbound": False, "error": "Binding not found"}
 
 
 class CouncilIntegrator:
     """Seals integration with sovereign councils."""
-    
+
     def __init__(self, integration_path: str = "data/council-integrations.json"):
         self.integration_path = Path(integration_path)
         self.integration_path.parent.mkdir(parents=True, exist_ok=True)
         self._initialize_integrations()
-        
+
         # Sovereign councils
         self.sovereign_councils = {
             "law": {
@@ -250,7 +250,7 @@ class CouncilIntegrator:
                 "status": "available"
             }
         }
-    
+
     def _initialize_integrations(self) -> None:
         """Initialize council integrations registry."""
         if not self.integration_path.exists():
@@ -259,17 +259,17 @@ class CouncilIntegrator:
                 "last_updated": datetime.utcnow().isoformat()
             }
             self._write_integrations(initial_data)
-    
+
     def _read_integrations(self) -> Dict[str, Any]:
         """Read integrations registry."""
         with open(self.integration_path, 'r', encoding='utf-8') as f:
             return json.load(f)
-    
+
     def _write_integrations(self, data: Dict[str, Any]) -> None:
         """Write integrations registry."""
         with open(self.integration_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2)
-    
+
     def seal_council_integration(
         self,
         council_names: List[str],
@@ -278,17 +278,17 @@ class CouncilIntegrator:
     ) -> Dict[str, Any]:
         """
         Seal integration with sovereign councils.
-        
+
         Args:
             council_names: List of council identifiers to integrate
             integration_type: Type of integration (full, read, advisory)
             metadata: Optional additional metadata
-        
+
         Returns:
             Dict containing integration record with sealed councils
         """
         integration_data = self._read_integrations()
-        
+
         # Validate council names
         invalid_councils = [
             c for c in council_names
@@ -300,16 +300,16 @@ class CouncilIntegrator:
                 "error": f"Invalid councils: {', '.join(invalid_councils)}",
                 "available_councils": list(self.sovereign_councils.keys())
             }
-        
+
         # Normalize council names
         normalized_councils = [c.lower() for c in council_names]
-        
+
         # Create integration seal
         seal_id = hashlib.sha256(
             f"{'_'.join(sorted(normalized_councils))}_{datetime.utcnow().isoformat()}"
             .encode('utf-8')
         ).hexdigest()[:16]
-        
+
         # Gather council details
         integrated_councils = {}
         for council in normalized_councils:
@@ -320,7 +320,7 @@ class CouncilIntegrator:
                 "authority": council_info["authority"],
                 "integration_level": integration_type
             }
-        
+
         integration_record = {
             "seal_id": seal_id,
             "integrated_councils": normalized_councils,
@@ -331,11 +331,11 @@ class CouncilIntegrator:
             "status": "sealed",
             "metadata": metadata or {}
         }
-        
+
         integration_data["integrations"].append(integration_record)
         integration_data["last_updated"] = datetime.utcnow().isoformat()
         self._write_integrations(integration_data)
-        
+
         return {
             "sealed": True,
             "seal_id": seal_id,
@@ -343,25 +343,25 @@ class CouncilIntegrator:
             "council_details": integrated_councils,
             "integration_type": integration_type
         }
-    
+
     def get_integration(self, seal_id: str) -> Optional[Dict[str, Any]]:
         """
         Get details of a specific council integration.
-        
+
         Args:
             seal_id: Identifier of the integration seal
-        
+
         Returns:
             Dict with integration details or None if not found
         """
         integration_data = self._read_integrations()
-        
+
         for integration in integration_data["integrations"]:
             if integration["seal_id"] == seal_id:
                 return integration
-        
+
         return None
-    
+
     def list_sealed_integrations(self) -> List[Dict[str, Any]]:
         """List all sealed council integrations."""
         integration_data = self._read_integrations()
@@ -369,44 +369,44 @@ class CouncilIntegrator:
             i for i in integration_data["integrations"]
             if i["status"] == "sealed"
         ]
-    
+
     def unseal_integration(self, seal_id: str) -> Dict[str, Any]:
         """
         Unseal a council integration.
-        
+
         Args:
             seal_id: Identifier of the seal to unseal
-        
+
         Returns:
             Dict with unsealing status
         """
         integration_data = self._read_integrations()
-        
+
         for integration in integration_data["integrations"]:
             if integration["seal_id"] == seal_id:
                 integration["status"] = "unsealed"
                 integration["unsealed_at"] = datetime.utcnow().isoformat()
-                
+
                 integration_data["last_updated"] = datetime.utcnow().isoformat()
                 self._write_integrations(integration_data)
-                
+
                 return {
                     "unsealed": True,
                     "seal_id": seal_id,
                     "councils_released": integration["integrated_councils"]
                 }
-        
+
         return {"unsealed": False, "error": "Seal not found"}
 
 
 class InfinitySigil:
     """
     Main interface for crown binding and council integration.
-    
+
     Provides unified access to bind Crown modules and seal integration
     with sovereign councils across all domains.
     """
-    
+
     def __init__(
         self,
         binding_path: str = "data/crown-bindings.json",
@@ -414,7 +414,7 @@ class InfinitySigil:
     ):
         self.crown_binder = CrownBinder(binding_path)
         self.council_integrator = CouncilIntegrator(integration_path)
-    
+
     def bind_crowns(
         self,
         crown_names: List[str],
@@ -422,13 +422,13 @@ class InfinitySigil:
     ) -> Dict[str, Any]:
         """
         Bind multiple Crown modules into unified governance.
-        
+
         Args:
             crown_names: List of crown module names
                 Available: ["efficiency", "knowledge", "commerce", "companion",
                            "eternal_ledger", "audit_consent_ring", "eternal_wave"]
             **kwargs: Additional parameters (binding_name, metadata)
-        
+
         Returns:
             Dict containing binding record with capabilities
         """
@@ -436,7 +436,7 @@ class InfinitySigil:
         normalized_names = []
         for name in crown_names:
             name_lower = name.lower()
-            
+
             # Map common names to full module names
             name_map = {
                 "efficiency": "efficiency_crown",
@@ -447,7 +447,7 @@ class InfinitySigil:
                 "audit": "audit_consent_ring",
                 "wave": "eternal_wave"
             }
-            
+
             # Check if it's a short name
             if name_lower in name_map:
                 normalized_names.append(name_map[name_lower])
@@ -456,9 +456,9 @@ class InfinitySigil:
             else:
                 # Try exact match
                 normalized_names.append(name)
-        
+
         return self.crown_binder.bind_crowns(normalized_names, **kwargs)
-    
+
     def seal_council_integration(
         self,
         council_names: List[str],
@@ -466,12 +466,12 @@ class InfinitySigil:
     ) -> Dict[str, Any]:
         """
         Seal integration with sovereign councils.
-        
+
         Args:
             council_names: List of council identifiers
                 Available: ["Law", "Healthcare", "Education", "AI", "Family"]
             **kwargs: Additional parameters (integration_type, metadata)
-        
+
         Returns:
             Dict containing integration seal with council details
         """
@@ -479,39 +479,39 @@ class InfinitySigil:
             council_names,
             **kwargs
         )
-    
+
     def get_binding(self, binding_id: str) -> Optional[Dict[str, Any]]:
         """Get details of a specific crown binding."""
         return self.crown_binder.get_binding(binding_id)
-    
+
     def get_integration(self, seal_id: str) -> Optional[Dict[str, Any]]:
         """Get details of a specific council integration."""
         return self.council_integrator.get_integration(seal_id)
-    
+
     def list_active_bindings(self) -> List[Dict[str, Any]]:
         """List all active crown bindings."""
         return self.crown_binder.list_active_bindings()
-    
+
     def list_sealed_integrations(self) -> List[Dict[str, Any]]:
         """List all sealed council integrations."""
         return self.council_integrator.list_sealed_integrations()
-    
+
     def unbind_crowns(self, binding_id: str) -> Dict[str, Any]:
         """Unbind a crown binding."""
         return self.crown_binder.unbind_crowns(binding_id)
-    
+
     def unseal_integration(self, seal_id: str) -> Dict[str, Any]:
         """Unseal a council integration."""
         return self.council_integrator.unseal_integration(seal_id)
-    
+
     def get_available_crowns(self) -> Dict[str, Any]:
         """Get list of all available crown modules."""
         return self.crown_binder.available_crowns
-    
+
     def get_available_councils(self) -> Dict[str, Any]:
         """Get list of all sovereign councils."""
         return self.council_integrator.sovereign_councils
-    
+
     def create_unified_sigil(
         self,
         crown_names: List[str],
@@ -520,12 +520,12 @@ class InfinitySigil:
     ) -> Dict[str, Any]:
         """
         Create a unified sigil with both crown binding and council integration.
-        
+
         Args:
             crown_names: List of crown modules to bind
             council_names: List of councils to integrate
             sigil_name: Optional name for this unified sigil
-        
+
         Returns:
             Dict containing both binding and integration records
         """
@@ -534,24 +534,24 @@ class InfinitySigil:
             crown_names,
             binding_name=f"{sigil_name}_crowns" if sigil_name else None
         )
-        
+
         if not binding_result.get("bound"):
             return {
                 "created": False,
                 "error": "Crown binding failed",
                 "details": binding_result
             }
-        
+
         # Seal council integration
         integration_result = self.seal_council_integration(council_names)
-        
+
         if not integration_result.get("sealed"):
             return {
                 "created": False,
                 "error": "Council integration failed",
                 "details": integration_result
             }
-        
+
         # Create unified sigil record
         unified_sigil = {
             "sigil_name": sigil_name or f"sigil_{binding_result['binding_id'][:8]}",
@@ -568,7 +568,7 @@ class InfinitySigil:
             },
             "status": "active"
         }
-        
+
         return {
             "created": True,
             "sigil": unified_sigil
@@ -578,10 +578,10 @@ class InfinitySigil:
 def main():
     """Demo: InfinitySigil in action."""
     print("=== InfinitySigil Demo ===\n")
-    
+
     # Initialize the sigil
     sigil = InfinitySigil()
-    
+
     # Bind crowns
     print("1. Binding Crown modules...")
     binding = sigil.bind_crowns(
@@ -595,7 +595,7 @@ def main():
     for crown, caps in binding['capabilities'].items():
         print(f"      - {crown} ({caps['type']}): {', '.join(caps['capabilities'])}")
     print()
-    
+
     # Seal council integration
     print("2. Sealing council integration...")
     integration = sigil.seal_council_integration(
@@ -608,7 +608,7 @@ def main():
     for council, details in integration['council_details'].items():
         print(f"      - {council}: {details['full_name']} ({details['domain']})")
     print()
-    
+
     # Create unified sigil
     print("3. Creating unified sigil...")
     unified = sigil.create_unified_sigil(
@@ -621,7 +621,7 @@ def main():
         print(f"   Bound crowns: {len(unified['sigil']['crown_binding']['bound_crowns'])}")
         print(f"   Integrated councils: {len(unified['sigil']['council_integration']['integrated_councils'])}")
     print()
-    
+
     # List active bindings
     print("4. Active bindings...")
     active_bindings = sigil.list_active_bindings()
@@ -630,7 +630,7 @@ def main():
         print(f"   - {binding['binding_name']}: "
               f"{binding['crown_count']} crowns")
     print()
-    
+
     # List sealed integrations
     print("5. Sealed integrations...")
     sealed = sigil.list_sealed_integrations()
@@ -639,7 +639,7 @@ def main():
         print(f"   - Seal {integration['seal_id'][:8]}: "
               f"{integration['council_count']} councils ({integration['integration_type']})")
     print()
-    
+
     # Get available resources
     print("6. Available resources...")
     crowns = sigil.get_available_crowns()
@@ -647,7 +647,7 @@ def main():
     print(f"   Available crowns: {len(crowns)}")
     print(f"   Available councils: {len(councils)}")
     print()
-    
+
     print("=== Demo Complete ===")
     print("InfinitySigil: Unified binding across crowns and councils.")
 

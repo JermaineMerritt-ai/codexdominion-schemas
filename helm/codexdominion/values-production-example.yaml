@@ -18,7 +18,7 @@ nodeCrown:
   image: myregistry.com/codexdominion/node:1.0.0
   pullPolicy: Always
   port: 3000
-  
+
   # Increase resources for production
   resources:
     limits:
@@ -27,7 +27,7 @@ nodeCrown:
     requests:
       cpu: 500m
       memory: 512Mi
-  
+
   # Add custom environment variables
   env:
     - name: NODE_ENV
@@ -48,7 +48,7 @@ pythonCouncil:
   image: myregistry.com/codexdominion/python:1.0.0
   pullPolicy: Always
   port: 8000
-  
+
   # Increase resources for high traffic
   resources:
     limits:
@@ -57,7 +57,7 @@ pythonCouncil:
     requests:
       cpu: 1000m
       memory: 2Gi
-  
+
   # Add database and external service configs
   env:
     - name: PYTHONUNBUFFERED
@@ -82,7 +82,7 @@ javaCrown:
   image: myregistry.com/codexdominion/java:1.0.0
   pullPolicy: Always
   port: 8080
-  
+
   # Java typically needs more memory
   resources:
     limits:
@@ -91,7 +91,7 @@ javaCrown:
     requests:
       cpu: 1000m
       memory: 2Gi
-  
+
   # Java-specific tuning
   env:
     - name: JAVA_OPTS
@@ -126,10 +126,10 @@ schemas:
 ingress:
   enabled: true
   className: nginx
-  
+
   # Use your production domain
   host: codexdominion.mycompany.com
-  
+
   # Production annotations
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
@@ -144,7 +144,7 @@ ingress:
     # CORS
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-origin: "https://mycompany.com"
-  
+
   tls:
     enabled: true
     secretName: codexdominion-prod-tls

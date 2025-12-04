@@ -39,44 +39,44 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
-      
+
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
-        
+
       - name: 🏷️ Generate Version Tag
         id: version
         run: |
           VERSION="v$(date +%Y%m%d)-${GITHUB_SHA::7}"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "📦 Version: $VERSION"
-          
+
       - name: 🔧 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-          
+
       - name: 🔧 Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
-          
+
       - name: 📦 Install Dependencies
         run: |
           npm ci
           pip install -r requirements.txt || true
-          
+
       - name: 🧪 Run Tests
         run: |
           npm test || echo "⚠️ No tests configured"
           pytest tests/ || echo "⚠️ No Python tests found"
-          
+
       - name: 📊 TypeScript Type Check
         run: |
           npm run type-check || tsc --noEmit || echo "⚠️ Type check skipped"
-          
+
       - name: 🔍 Lint Code
         run: |
           npm run lint || echo "⚠️ Linting skipped"
@@ -103,27 +103,27 @@ jobs:
           - name: codex-dashboard
             dockerfile: Dockerfile
             context: .
-            
+
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
-        
+
       - name: 🔐 Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
           registry: ${{ env.DOCKER_REGISTRY }}
           username: ${{ env.DOCKER_USERNAME }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: 🔐 Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          
+
       - name: 🏗️ Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        
+
       - name: 🐳 Build and Push ${{ matrix.service.name }}
         uses: docker/build-push-action@v5
         with:
@@ -147,22 +147,22 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-and-test, build-docker-images]
     if: |
-      github.event.inputs.target == 'all' || 
-      github.event.inputs.target == 'ionos' || 
+      github.event.inputs.target == 'all' ||
+      github.event.inputs.target == 'ionos' ||
       github.event.inputs.target == '' && github.ref == 'refs/heads/main'
     environment:
       name: ionos-production
       url: https://dashboard.codexdominion.app
-      
+
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
-        
+
       - name: 🔐 Setup SSH Key
         uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.IONOS_SSH_KEY }}
-          
+
       - name: 📦 Create Deployment Package
         run: |
           tar -czf deployment.tar.gz \
@@ -173,13 +173,13 @@ jobs:
             --exclude='*.md' \
             --exclude='node_modules' \
             --exclude='.git'
-            
+
       - name: 📤 Upload to IONOS Server
         run: |
           scp -o StrictHostKeyChecking=no \
             deployment.tar.gz \
             root@${{ env.IONOS_SERVER }}:/tmp/
-            
+
       - name: 🚀 Deploy on IONOS
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -188,38 +188,38 @@ jobs:
           key: ${{ secrets.IONOS_SSH_KEY }}
           script: |
             set -e
-            
+
             echo "🔥 IONOS Deployment Started"
             cd /var/www/codexdominion
-            
+
             # Backup current deployment
             echo "💾 Creating backup..."
             tar -czf backup-$(date +%Y%m%d-%H%M%S).tar.gz ./* || true
-            
+
             # Extract new deployment
             echo "📦 Extracting deployment package..."
             tar -xzf /tmp/deployment.tar.gz
             rm /tmp/deployment.tar.gz
-            
+
             # Pull latest images
             echo "🐳 Pulling Docker images..."
             docker-compose -f docker-compose.production.yml pull
-            
+
             # Restart services
             echo "🔄 Restarting services..."
             docker-compose -f docker-compose.production.yml up -d --remove-orphans
-            
+
             # Cleanup old images
             echo "🧹 Cleanup..."
             docker system prune -af --volumes
-            
+
             # Health check
             echo "🏥 Health check..."
             sleep 10
             curl -f http://localhost/health || echo "⚠️ Health check warning"
-            
+
             echo "✅ IONOS Deployment Complete!"
-            
+
       - name: 🌐 Update Nginx Configuration
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -229,10 +229,10 @@ jobs:
           script: |
             # Test nginx configuration
             nginx -t
-            
+
             # Reload nginx
             systemctl reload nginx
-            
+
             echo "✅ Nginx reloaded"
 
   # ============================================
@@ -243,79 +243,79 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-and-test, build-docker-images]
     if: |
-      github.event.inputs.target == 'all' || 
-      github.event.inputs.target == 'azure' || 
+      github.event.inputs.target == 'all' ||
+      github.event.inputs.target == 'azure' ||
       github.event.inputs.target == '' && github.ref == 'refs/heads/main'
     environment:
       name: azure-production
       url: https://jermaine-ai.codexdominion.app
-      
+
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
-        
+
       - name: 🔐 Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          
+
       - name: 🔧 Setup kubectl
         uses: azure/setup-kubectl@v3
         with:
           version: 'v1.32.0'
-          
+
       - name: 🔗 Get AKS Credentials
         run: |
           az aks get-credentials \
             --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
             --name ${{ env.AZURE_CLUSTER_NAME }} \
             --overwrite-existing
-            
+
       - name: 🏷️ Update Image Tags
         run: |
           VERSION="${{ needs.build-and-test.outputs.version }}"
-          
+
           # Update Kubernetes manifests with new image tags
           sed -i "s|image: jmerritt48/jermaine-super-action-ai:.*|image: jmerritt48/jermaine-super-action-ai:${VERSION}|g" k8s/ai-systems-deployment.yaml
           sed -i "s|image: jmerritt48/dot300-action-ai:.*|image: jmerritt48/dot300-action-ai:${VERSION}|g" k8s/ai-systems-deployment.yaml
           sed -i "s|image: jmerritt48/avatar-system:.*|image: jmerritt48/avatar-system:${VERSION}|g" k8s/ai-systems-deployment.yaml
-          
+
       - name: 🚀 Deploy to AKS
         run: |
           echo "🚀 Deploying to Azure AKS..."
-          
+
           # Apply configurations
           kubectl apply -f k8s/namespaces.yaml || true
           kubectl apply -f k8s/configmaps.yaml || true
           kubectl apply -f k8s/secrets.yaml || true
-          
+
           # Deploy AI systems
           kubectl apply -f k8s/ai-systems-deployment.yaml
           kubectl apply -f k8s/ai-systems-ingress.yaml
-          
+
           # Deploy engines
           kubectl apply -f k8s/engines-complete.yaml
-          
+
           # Wait for rollout
           echo "⏳ Waiting for rollout..."
           kubectl rollout status deployment/jermaine-super-action-ai -n codex-governance --timeout=5m
           kubectl rollout status deployment/dot300-action-ai -n codex-governance --timeout=5m
           kubectl rollout status deployment/avatar-system -n codex-governance --timeout=5m
-          
+
       - name: 🏥 Health Check
         run: |
           echo "🏥 Performing health checks..."
-          
+
           # Check pod status
           kubectl get pods -n codex-governance
           kubectl get pods -n default | grep engine
-          
+
           # Check services
           kubectl get services -n codex-governance
-          
+
           # Check ingress
           kubectl get ingress -n codex-governance
-          
+
           echo "✅ Azure AKS Deployment Complete!"
 
   # ============================================
@@ -326,16 +326,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: [deploy-ionos, deploy-azure]
     if: always() && (needs.deploy-ionos.result == 'success' || needs.deploy-azure.result == 'success')
-    
+
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
-        
+
       - name: 🔐 Setup SSH for IONOS
         uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.IONOS_SSH_KEY }}
-          
+
       - name: 🔒 Renew SSL Certificates (IONOS)
         if: needs.deploy-ionos.result == 'success'
         uses: appleboy/ssh-action@v1.0.0
@@ -347,18 +347,18 @@ jobs:
             echo "🔒 Checking SSL certificates..."
             certbot renew --quiet --nginx
             echo "✅ SSL certificates updated"
-            
+
       - name: 🔒 Check SSL (Azure)
         if: needs.deploy-azure.result == 'success'
         run: |
           echo "🔒 Checking Azure SSL certificates..."
           kubectl get certificate -n codex-governance
           echo "✅ Azure cert-manager handling SSL"
-          
+
       - name: 📊 DNS Propagation Check
         run: |
           echo "📊 Checking DNS propagation..."
-          
+
           nslookup codexdominion.app 8.8.8.8 || echo "⚠️ DNS not propagated"
           nslookup jermaine-ai.codexdominion.app 8.8.8.8 || echo "⚠️ Subdomain DNS not propagated"
 
@@ -370,33 +370,33 @@ jobs:
     runs-on: ubuntu-latest
     needs: [deploy-ionos, deploy-azure]
     if: always() && (needs.deploy-ionos.result == 'success' || needs.deploy-azure.result == 'success')
-    
+
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
-        
+
       - name: 🧪 Test IONOS Endpoints
         if: needs.deploy-ionos.result == 'success'
         run: |
           echo "🧪 Testing IONOS endpoints..."
-          
+
           # Test direct IP
           curl -f http://${{ env.IONOS_SERVER }}/health || echo "⚠️ Direct IP health check failed"
-          
+
           # Test domain (when DNS propagates)
           curl -f https://dashboard.codexdominion.app/health || echo "⚠️ Domain health check pending"
-          
+
       - name: 🧪 Test Azure Endpoints
         if: needs.deploy-azure.result == 'success'
         run: |
           echo "🧪 Testing Azure endpoints..."
-          
+
           # Get LoadBalancer IP
           kubectl get service ai-systems-coordinator -n codex-governance -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
-          
+
           # Test pods
           kubectl get pods -n codex-governance
-          
+
       - name: 📊 Generate Test Report
         if: always()
         run: |
@@ -414,7 +414,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [deploy-ionos, deploy-azure, integration-tests]
     if: always()
-    
+
     steps:
       - name: 📊 Deployment Summary
         run: |

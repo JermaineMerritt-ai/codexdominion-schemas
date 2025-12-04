@@ -973,8 +973,8 @@ def invocation_panel():
                 ):
                     st.markdown(
                         f"""
-                    **Role:** {inv['role']}  
-                    **Invocation:** *{inv['text']}*  
+                    **Role:** {inv['role']}
+                    **Invocation:** *{inv['text']}*
                     **Time:** {inv['timestamp'][:19].replace('T', ' ')}
                     **Type:** Automatic Celestial Trigger
                     """
@@ -990,8 +990,8 @@ def invocation_panel():
                 ):
                     st.markdown(
                         f"""
-                    **Role:** {inv['role']}  
-                    **Invocation:** *{inv['text']}*  
+                    **Role:** {inv['role']}
+                    **Invocation:** *{inv['text']}*
                     **Time:** {inv['timestamp'][:19].replace('T', ' ')}
                     **Type:** Manual Sacred Invocation
                     """
@@ -1183,7 +1183,7 @@ def cosmos_panel():
             role_count = len([inv for inv in invocations if inv.get("role") == role])
             st.markdown(
                 f"""
-            <div style="padding: 8px; margin: 5px 0; background: linear-gradient(45deg, {color}22, {color}11); 
+            <div style="padding: 8px; margin: 5px 0; background: linear-gradient(45deg, {color}22, {color}11);
                         border-left: 4px solid {color}; border-radius: 5px;">
                 <b style="color: {color};">⭐ {role}</b><br>
                 <small>Stars in constellation: {role_count}</small>
@@ -1241,7 +1241,7 @@ def cosmos_panel():
 
                 st.markdown(
                     f"""
-                <div style="padding: 10px; margin: 8px 0; 
+                <div style="padding: 10px; margin: 8px 0;
                            background: linear-gradient(45deg, {color}15, {color}08);
                            border-radius: 10px; border-left: 3px solid {color};">
                     <b>{icon} {inv['role']}</b> • <em>{inv_type}</em><br>
@@ -1391,7 +1391,7 @@ def algorithm_ai_panel():
 
         st.markdown(
             """
-        <div style="padding: 15px; background: linear-gradient(45deg, #667eea, #764ba2); 
+        <div style="padding: 15px; background: linear-gradient(45deg, #667eea, #764ba2);
                     border-radius: 15px; color: white; margin: 10px 0;">
             <h4>🧠 AI Expert Status: ONLINE</h4>
             <p><strong>Specialization:</strong> Cross-platform algorithm optimization</p>
@@ -1418,7 +1418,7 @@ def algorithm_ai_panel():
         for opt in optimizations:
             st.markdown(
                 f"""
-            <div style="padding: 8px; margin: 5px 0; background: rgba(102, 126, 234, 0.1); 
+            <div style="padding: 8px; margin: 5px 0; background: rgba(102, 126, 234, 0.1);
                         border-left: 3px solid #667eea; border-radius: 5px;">
                 <strong>{opt['platform']}</strong><br>
                 <span style="color: #667eea;">{opt['improvement']} {opt['metric']}</span>
@@ -1445,7 +1445,7 @@ def algorithm_ai_panel():
         - **Week 3:** AI enhancement (+23%)
         - **Week 4:** Cross-platform sync (+27%)
         - **Current:** Maximum efficiency (+31%)
-        
+
         **🎯 Key Improvements:**
         - Engagement prediction accuracy: 87% → 95%
         - Revenue conversion rate: +19.8%
@@ -1458,7 +1458,7 @@ def algorithm_ai_panel():
         st.markdown(
             """
         **📊 Channel Performance Analysis:**
-        
+
         | Channel | Engagement | Revenue | Status |
         |---------|------------|---------|---------|
         | YouTube | +31% | +19% | 🟢 Optimized |
@@ -1466,10 +1466,10 @@ def algorithm_ai_panel():
         | TikTok | +18% | +12% | 🟡 Optimizing |
         | JermaineAI.com | +28% | +25% | 🟢 Optimized |
         | AIStoreLab.online | +22% | +21% | 🟢 Optimized |
-        
+
         **🎯 Performance Insights:**
         - YouTube showing strongest engagement gains
-        - JermaineAI.com leading in revenue optimization  
+        - JermaineAI.com leading in revenue optimization
         - TikTok and Instagram in active optimization phase
         - All platforms trending positive
         """
@@ -1479,23 +1479,23 @@ def algorithm_ai_panel():
         st.markdown(
             """
         **🧠 Dr. Kai's AI Recommendations:**
-        
+
         1. **🎯 Focus on Video Content Algorithm:**
            - Increase video content by 40% across platforms
            - Optimize thumbnail AI for +15% click-through
-        
+
         2. **⏰ Timing Optimization:**
            - Deploy content during 3-5 PM and 8-10 PM windows
            - Use AI-predicted viral timing for maximum reach
-        
+
         3. **🔄 Cross-Platform Amplification:**
            - Implement content syndication algorithms
            - Create platform-specific AI adaptations
-        
+
         4. **💰 Revenue Algorithm Enhancement:**
            - Deploy dynamic pricing algorithms
            - Implement predictive sales funnel optimization
-        
+
         5. **🎪 Engagement Maximization:**
            - Use sentiment analysis for content tuning
            - Deploy real-time engagement prediction
@@ -1590,7 +1590,7 @@ def ledger_panel():
     if not entries:
         st.markdown(
             """
-        <div style="padding: 20px; background: linear-gradient(45deg, #1e3c72, #2a5298); 
+        <div style="padding: 20px; background: linear-gradient(45deg, #1e3c72, #2a5298);
                     border-radius: 15px; color: white; text-align: center; margin: 20px 0;">
             <h3>📜 The Sacred Ledger Awaits</h3>
             <p>The chronicle stands ready to record the first proclamation of the Codex Dominion.<br>
@@ -1633,7 +1633,7 @@ def ledger_panel():
                 for entry in sorted_entries:
                     st.markdown(
                         f"""
-                    <div style="padding: 12px; margin: 8px 0; 
+                    <div style="padding: 12px; margin: 8px 0;
                                background: linear-gradient(45deg, {color}15, {color}08);
                                border-radius: 10px; border-left: 4px solid {color};">
                         <strong>📜 {entry['role']}</strong><br>
@@ -1651,7 +1651,7 @@ def ledger_panel():
 
     st.markdown(
         """
-    <div style="padding: 15px; background: rgba(255, 215, 0, 0.1); 
+    <div style="padding: 15px; background: rgba(255, 215, 0, 0.1);
                 border-radius: 10px; border-left: 3px solid #FFD700; margin: 10px 0;">
         <strong>📜 Ledger Guidelines:</strong><br>
         • Proclamations are permanent records in the Codex Chronicle<br>
@@ -1676,7 +1676,7 @@ def ledger_panel():
             f"""
         **Role Authority:**
         - **Custodian:** Guardian declarations and system maintenance announcements
-        - **Heirs:** Legacy proclamations and succession declarations  
+        - **Heirs:** Legacy proclamations and succession declarations
         - **Councils:** Collective decisions and governance pronouncements
         - **Cosmos:** Universal declarations and cosmic announcements
         """
@@ -1704,7 +1704,7 @@ def ledger_panel():
                 # Show confirmation of the inscription
                 st.markdown(
                     f"""
-                <div style="padding: 15px; background: linear-gradient(45deg, #28a745, #20c997); 
+                <div style="padding: 15px; background: linear-gradient(45deg, #28a745, #20c997);
                             border-radius: 10px; color: white; margin: 10px 0;">
                     <h4>✅ Proclamation Successfully Recorded</h4>
                     <p><strong>Role:</strong> {role}<br>
@@ -1988,7 +1988,7 @@ def main():
             if message["role"] == "user":
                 st.markdown(
                     f"""
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                            padding: 1rem; border-radius: 10px; margin: 0.5rem 0; color: white;">
                     <strong>You:</strong> {message["content"]}
                 </div>
@@ -1998,7 +1998,7 @@ def main():
             else:
                 st.markdown(
                     f"""
-                <div style="background: linear-gradient(135deg, #2ed573 0%, #1e90ff 100%); 
+                <div style="background: linear-gradient(135deg, #2ed573 0%, #1e90ff 100%);
                            padding: 1rem; border-radius: 10px; margin: 0.5rem 0; color: white;">
                     <strong>🤖 Council AI:</strong> {message["content"]}
                 </div>

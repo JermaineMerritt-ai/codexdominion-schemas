@@ -19,7 +19,7 @@ function Start-ProxyService {
     Write-Host "Starting AIStoreLab.com Proxy Service..." -ForegroundColor Green
     Write-Host "Port: $($ProxyConfig.Port)" -ForegroundColor Gray
     Write-Host "Configuration: Windows nginx equivalent" -ForegroundColor Gray
-    
+
     # Check if port is available
     $portCheck = netstat -ano | Select-String ":$($ProxyConfig.Port).*LISTENING"
     if ($portCheck) {
@@ -35,7 +35,7 @@ function Start-ProxyService {
                 }
             }
         }
-        
+
         $response = Read-Host "Stop existing process and continue? (y/N)"
         if ($response -eq 'y' -or $response -eq 'Y') {
             Stop-ProxyService
@@ -45,22 +45,22 @@ function Start-ProxyService {
             return
         }
     }
-    
+
     try {
         # Start the proxy server
         $process = Start-Process -FilePath "node" -ArgumentList $ProxyConfig.ScriptPath -WorkingDirectory (Get-Location) -WindowStyle Hidden -PassThru -RedirectStandardOutput $ProxyConfig.LogFile -RedirectStandardError "aistorelab-proxy-error.log"
-        
+
         Write-Host "Proxy service started with PID: $($process.Id)" -ForegroundColor Green
-        
+
         # Wait and verify
         Start-Sleep 3
-        
+
         $portCheck = netstat -ano | Select-String ":$($ProxyConfig.Port).*LISTENING"
         if ($portCheck) {
             Write-Host "SUCCESS: AIStoreLab.com Proxy is running" -ForegroundColor Green
             Write-Host "Access at: http://localhost" -ForegroundColor White
             Write-Host "Health check: http://localhost/health" -ForegroundColor White
-            
+
             # Test health endpoint
             try {
                 $response = Invoke-WebRequest -Uri "http://localhost/health" -TimeoutSec 5 -UseBasicParsing -ErrorAction Stop
@@ -71,7 +71,7 @@ function Start-ProxyService {
         } else {
             Write-Host "WARNING: Service may not have started correctly" -ForegroundColor Yellow
         }
-        
+
     } catch {
         Write-Host "ERROR: Failed to start proxy service" -ForegroundColor Red
         Write-Host $_.Exception.Message -ForegroundColor Red
@@ -81,11 +81,11 @@ function Start-ProxyService {
 function Stop-ProxyService {
     Write-Host ""
     Write-Host "Stopping AIStoreLab.com Proxy Service..." -ForegroundColor Yellow
-    
+
     # Find processes on port 80
     $processes = netstat -ano | Select-String ":$($ProxyConfig.Port).*LISTENING"
     $stopped = $false
-    
+
     foreach ($process in $processes) {
         if ($process -match ":$($ProxyConfig.Port)\s+.*LISTENING\s+(\d+)") {
             $processId = $matches[1]
@@ -103,7 +103,7 @@ function Stop-ProxyService {
             }
         }
     }
-    
+
     if (-not $stopped) {
         Write-Host "No AIStoreLab.com Proxy found running on port $($ProxyConfig.Port)" -ForegroundColor Gray
     }
@@ -112,10 +112,10 @@ function Stop-ProxyService {
 function Get-ProxyStatus {
     Write-Host ""
     Write-Host "AIStoreLab.com Proxy Status:" -ForegroundColor Cyan
-    
+
     # Check port
     $portCheck = netstat -ano | Select-String ":$($ProxyConfig.Port).*LISTENING"
-    
+
     if ($portCheck) {
         $portCheck | ForEach-Object {
             if ($_ -match ":$($ProxyConfig.Port)\s+.*LISTENING\s+(\d+)") {
@@ -138,7 +138,7 @@ function Get-ProxyStatus {
         Write-Host "Status: INACTIVE (NOT RUNNING)" -ForegroundColor Red
         Write-Host "Port $($ProxyConfig.Port): Available" -ForegroundColor Gray
     }
-    
+
     Write-Host ""
     Write-Host "Nginx Equivalent Configuration:" -ForegroundColor Cyan
     Write-Host "Description: $($ProxyConfig.Description)" -ForegroundColor Gray
@@ -159,7 +159,7 @@ function Show-NginxEquivalent {
     Write-Host "sudo nano /etc/nginx/sites-available/aistorelab.com" -ForegroundColor Gray
     Write-Host "  → Edit: nginx-config\aistorelab.com (created)" -ForegroundColor Green
     Write-Host ""
-    Write-Host "sudo nginx -t" -ForegroundColor Gray  
+    Write-Host "sudo nginx -t" -ForegroundColor Gray
     Write-Host "  → .\aistorelab-nginx.ps1 test" -ForegroundColor Green
     Write-Host ""
     Write-Host "sudo systemctl reload nginx" -ForegroundColor Gray
@@ -171,19 +171,19 @@ function Show-NginxEquivalent {
 
 # Execute based on action
 switch ($Action.ToLower()) {
-    "start" { 
-        Start-ProxyService 
+    "start" {
+        Start-ProxyService
     }
-    "stop" { 
-        Stop-ProxyService 
+    "stop" {
+        Stop-ProxyService
     }
     "restart" {
         Stop-ProxyService
         Start-Sleep 2
         Start-ProxyService
     }
-    "status" { 
-        Get-ProxyStatus 
+    "status" {
+        Get-ProxyStatus
     }
     "test" {
         Write-Host ""
@@ -193,13 +193,13 @@ switch ($Action.ToLower()) {
         } else {
             Write-Host "✗ Proxy script missing: $($ProxyConfig.ScriptPath)" -ForegroundColor Red
         }
-        
+
         if (Test-Path "nginx-config\aistorelab.com") {
             Write-Host "✓ Nginx config found: nginx-config\aistorelab.com" -ForegroundColor Green
         } else {
             Write-Host "✗ Nginx config missing: nginx-config\aistorelab.com" -ForegroundColor Red
         }
-        
+
         Write-Host "✓ Configuration test passed" -ForegroundColor Green
     }
     "help" {

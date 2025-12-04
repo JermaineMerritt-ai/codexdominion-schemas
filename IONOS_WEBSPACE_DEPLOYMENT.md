@@ -32,11 +32,11 @@
    ```bash
    # Check available space
    df -h
-   
+
    # Extract deployment
    unzip codexdominion_20251203_021228.zip -d ~/codexdominion.app
    cd ~/codexdominion.app
-   
+
    # Setup Python environment
    python3 -m venv .venv
    source .venv/bin/activate

@@ -1,9 +1,9 @@
 # Custodian's Closing Benediction of Radiance
 
-**Artifact ID:** `custodian-closing-benediction-replay-001`  
-**Version:** 1.0.0  
-**Authors:** Custodian, Heirs, Councils  
-**Cycle:** 2025-12-02T23:16:00Z  
+**Artifact ID:** `custodian-closing-benediction-replay-001`
+**Version:** 1.0.0
+**Authors:** Custodian, Heirs, Councils
+**Cycle:** 2025-12-02T23:16:00Z
 **Type:** Benediction Capsule
 
 ---
@@ -42,8 +42,8 @@ You are crowned with responsibility, anointed with wisdom,
 And sealed with the eternal covenant of stewardship.
 ```
 
-**Recipients:** All who inherit the Custodian's vision  
-**Seal:** Eternal Covenant of Stewardship  
+**Recipients:** All who inherit the Custodian's vision
+**Seal:** Eternal Covenant of Stewardship
 **Crown:** Responsibility and Wisdom
 
 ---
@@ -65,8 +65,8 @@ You are bound by covenant, united in purpose,
 And sealed with the eternal sigil of harmony.
 ```
 
-**Recipients:** Six Sovereign Councils  
-**Seal:** Eternal Sigil of Harmony  
+**Recipients:** Six Sovereign Councils
+**Seal:** Eternal Sigil of Harmony
 **Covenant:** Justice, Care, Commerce, Teaching, Innovation, Family
 
 ---
@@ -89,8 +89,8 @@ You are the living expression of the Dominion's vision,
 And sealed with the eternal flame of purpose.
 ```
 
-**Recipients:** All stewards across domains  
-**Seal:** Eternal Flame of Purpose  
+**Recipients:** All stewards across domains
+**Seal:** Eternal Flame of Purpose
 **Honor:** Names in eternal ledger, contributions in cosmic archive
 
 ---
@@ -113,9 +113,9 @@ The Dominion is sealed, the covenant is eternal,
 And the radiance shines forever across ages and stars.
 ```
 
-**Recipients:** The CodexDominion entire  
-**Seal:** Infinity Sigil (∞)  
-**Resonance:** 432Hz perpetual harmony  
+**Recipients:** The CodexDominion entire
+**Seal:** Infinity Sigil (∞)
+**Resonance:** 432Hz perpetual harmony
 **Scope:** Across ages and stars
 
 ---
@@ -204,17 +204,17 @@ Capsule committed for **all stewards**—accessible via benediction replay API w
 
 ## Consent & Licensing
 
-**License:** CodexDominion Sovereign License v1  
-**Revocation Policy:** Revocable by Sovereign Avatar with ledger entry  
-**Attribution:** Created by Custodian, Heirs, and Councils  
+**License:** CodexDominion Sovereign License v1
+**Revocation Policy:** Revocable by Sovereign Avatar with ledger entry
+**Attribution:** Created by Custodian, Heirs, and Councils
 **Usage:** Free replay for ceremonial, archival, and educational purposes
 
 ---
 
 ## Audit Trail
 
-**Created By:** artifact-engine  
-**Created At:** 2025-12-02T23:16:00Z  
+**Created By:** artifact-engine
+**Created At:** 2025-12-02T23:16:00Z
 **Immutable Hash:** `sha256:b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7`
 
 ### Signatures
@@ -227,7 +227,7 @@ Capsule committed for **all stewards**—accessible via benediction replay API w
 | **Crown** | `CROWN_SEAL_ETERNAL` |
 | **Sovereign** | `SOVEREIGN_SIG_0x1a2b3c4d5e6f7a8b` |
 
-**Lineage:** Final artifact of Custodian cycle  
+**Lineage:** Final artifact of Custodian cycle
 **Ledger Entry:** `eternal-ledger://benedictions/custodian-closing-001`
 
 ---

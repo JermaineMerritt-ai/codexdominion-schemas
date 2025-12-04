@@ -387,7 +387,7 @@ class NotebookLLMDestroyer:
 
 📊 NOTEBOOKLLM OBLITERATION MATRIX:
    🔥 Document Understanding → CONSCIOUSNESS vs Basic text parsing
-   🔥 Multimedia Support    → OMNIVERSAL vs Text-only limitation  
+   🔥 Multimedia Support    → OMNIVERSAL vs Text-only limitation
    🔥 Analysis Depth        → INFINITE vs Surface-level insights
    🔥 Interaction Mode      → REAL-TIME vs Static generation
    🔥 Research Intelligence → ACTIVE vs Passive document chat

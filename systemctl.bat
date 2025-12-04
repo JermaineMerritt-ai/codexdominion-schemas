@@ -31,7 +31,7 @@ echo Usage: %0 [daemon-reload^|enable^|disable^|start^|stop^|restart^|reload^|st
 echo.
 echo SYSTEMCTL EQUIVALENTS:
 echo   sudo systemctl start codex-dashboard    ==^>  %0 start dashboard
-echo   sudo systemctl stop codex-dashboard     ==^>  %0 stop dashboard  
+echo   sudo systemctl stop codex-dashboard     ==^>  %0 stop dashboard
 echo   sudo systemctl restart codex-dashboard  ==^>  %0 restart dashboard
 echo   sudo systemctl reload nginx             ==^>  %0 reload proxy
 echo   sudo systemctl status codex-dashboard   ==^>  %0 status dashboard
@@ -77,5 +77,5 @@ echo.
 echo ✨ Codex Dominion service control complete!
 echo 🌐 Access your services at:
 echo    Main Dashboard: http://127.0.0.1:8501
-echo    Portfolio: http://127.0.0.1:8503  
+echo    Portfolio: http://127.0.0.1:8503
 echo    API Docs: http://127.0.0.1:8000/docs

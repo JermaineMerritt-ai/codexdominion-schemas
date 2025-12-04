@@ -35,7 +35,7 @@ $fixed = @()
 if (-not $SkipGitHubCLI) {
     Write-Host "`n📦 Step 1: GitHub CLI Installation" -ForegroundColor Yellow
     Write-Host "-" * 50
-    
+
     $ghInstalled = Get-Command gh -ErrorAction SilentlyContinue
     if ($ghInstalled) {
         Write-Host "✅ GitHub CLI already installed: $($ghInstalled.Version)" -ForegroundColor Green
@@ -45,10 +45,10 @@ if (-not $SkipGitHubCLI) {
         try {
             # Try winget first
             $result = winget install --id GitHub.cli --exact --accept-source-agreements --accept-package-agreements 2>&1
-            
+
             # Refresh PATH
             $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-            
+
             # Verify installation
             $ghInstalled = Get-Command gh -ErrorAction SilentlyContinue
             if ($ghInstalled) {
@@ -56,7 +56,7 @@ if (-not $SkipGitHubCLI) {
                 Write-Host "   Version: $($ghInstalled.Version)" -ForegroundColor Gray
                 Write-Host "   Path: $($ghInstalled.Source)" -ForegroundColor Gray
                 $fixed += "GitHub CLI"
-                
+
                 # Authenticate
                 Write-Host "`n🔐 Please authenticate with GitHub:" -ForegroundColor Cyan
                 Write-Host "   Run: gh auth login" -ForegroundColor White
@@ -79,10 +79,10 @@ if (-not $SkipGitHubCLI) {
 if (-not $SkipTerraform) {
     Write-Host "`n🔧 Step 2: Terraform PATH Configuration" -ForegroundColor Yellow
     Write-Host "-" * 50
-    
+
     # Check if terraform is in PATH
     $tfInPath = Get-Command terraform -ErrorAction SilentlyContinue
-    
+
     if ($tfInPath) {
         Write-Host "✅ Terraform already in PATH" -ForegroundColor Green
         Write-Host "   Version: $(terraform version -json | ConvertFrom-Json | Select-Object -ExpandProperty terraform_version)" -ForegroundColor Gray
@@ -94,17 +94,17 @@ if (-not $SkipTerraform) {
         if (Test-Path $workspaceTf) {
             Write-Host "⚙️  Found terraform.exe in workspace" -ForegroundColor Cyan
             Write-Host "   Path: $workspaceTf" -ForegroundColor Gray
-            
+
             # Option 1: Add workspace to PATH (temporary)
             Write-Host "`n   Option 1: Add workspace to PATH (current session)" -ForegroundColor White
             $env:Path = "$WorkspaceRoot;$env:Path"
-            
+
             # Verify
             $tfInPath = Get-Command terraform -ErrorAction SilentlyContinue
             if ($tfInPath) {
                 Write-Host "✅ Terraform added to PATH (session only)" -ForegroundColor Green
                 $fixed += "Terraform PATH (temporary)"
-                
+
                 # Offer permanent solution
                 Write-Host "`n   💡 To make permanent, run as Administrator:" -ForegroundColor Cyan
                 Write-Host '   [Environment]::SetEnvironmentVariable("Path", $env:Path + ";' + $WorkspaceRoot + '", "User")' -ForegroundColor White
@@ -127,7 +127,7 @@ if (-not $SkipTerraform) {
 if (-not $SkipGCP) {
     Write-Host "`n☁️  Step 3: GCP Project Configuration" -ForegroundColor Yellow
     Write-Host "-" * 50
-    
+
     $gcloudInstalled = Get-Command gcloud -ErrorAction SilentlyContinue
     if (-not $gcloudInstalled) {
         Write-Host "❌ gcloud CLI not found" -ForegroundColor Red
@@ -135,17 +135,17 @@ if (-not $SkipGCP) {
         $issues += "gcloud CLI not installed"
     } else {
         Write-Host "✅ gcloud CLI found" -ForegroundColor Green
-        
+
         # Get current project
         $currentProject = gcloud config get-value project 2>$null
         Write-Host "   Current project: $currentProject" -ForegroundColor Gray
-        
+
         if ($currentProject -ne "codex-dominion-prod") {
             Write-Host "⚙️  Setting project to codex-dominion-prod..." -ForegroundColor Cyan
             try {
                 gcloud config set project codex-dominion-prod 2>&1 | Out-Null
                 $newProject = gcloud config get-value project 2>$null
-                
+
                 if ($newProject -eq "codex-dominion-prod") {
                     Write-Host "✅ GCP project configured: codex-dominion-prod" -ForegroundColor Green
                     $fixed += "GCP project"
@@ -161,7 +161,7 @@ if (-not $SkipGCP) {
             Write-Host "✅ Already configured: codex-dominion-prod" -ForegroundColor Green
             $fixed += "GCP project"
         }
-        
+
         # Check authentication
         Write-Host "`n   Checking GCP authentication..." -ForegroundColor Cyan
         $authAccount = gcloud auth list --filter=status:ACTIVE --format="value(account)" 2>$null
@@ -262,15 +262,15 @@ if (-not $tfAvailable) {
 if ($tfAvailable) {
     try {
         Write-Host "⚙️  Running: terraform init" -ForegroundColor Cyan
-        
+
         if (Test-Path "./terraform.exe") {
             $initOutput = .\terraform.exe init 2>&1
         } else {
             $initOutput = terraform init 2>&1
         }
-        
+
         Write-Host $initOutput
-        
+
         if ($LASTEXITCODE -eq 0) {
             Write-Host "✅ Terraform initialized successfully" -ForegroundColor Green
             $fixed += "Terraform initialization"
@@ -302,19 +302,19 @@ if (-not $ghAvailable) {
     $issues += "GitHub secrets setup pending (restart required)"
 } else {
     Write-Host "✅ GitHub CLI available" -ForegroundColor Green
-    
+
     # Check if authenticated
     $ghAuth = gh auth status 2>&1
     if ($LASTEXITCODE -eq 0) {
         Write-Host "✅ Already authenticated with GitHub" -ForegroundColor Green
-        
+
         Write-Host "`n   Do you want to run GitHub secrets setup now? (y/n)" -ForegroundColor Cyan
         $runSecretsSetup = Read-Host
-        
+
         if ($runSecretsSetup -eq 'y' -or $runSecretsSetup -eq 'Y') {
             Write-Host "⚙️  Running setup-github-secrets.ps1..." -ForegroundColor Cyan
             $secretsScriptPath = Join-Path $WorkspaceRoot "setup-github-secrets.ps1"
-            
+
             if (Test-Path $secretsScriptPath) {
                 & $secretsScriptPath
                 $fixed += "GitHub secrets"
@@ -352,7 +352,7 @@ if ($issues.Count -gt 0) {
     foreach ($item in $issues) {
         Write-Host "   • $item" -ForegroundColor Yellow
     }
-    
+
     Write-Host "`n❌ DEPLOYMENT NOT READY" -ForegroundColor Red
     Write-Host "   Please resolve remaining issues before deploying." -ForegroundColor Yellow
     exit 1

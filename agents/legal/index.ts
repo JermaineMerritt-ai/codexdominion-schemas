@@ -1,6 +1,6 @@
 /**
  * ⚖️ Legal Agent - Industry-Specific Autonomous Agent
- * 
+ *
  * Specialized AI agent for legal industry:
  * - Contract review and analysis
  * - Compliance checking

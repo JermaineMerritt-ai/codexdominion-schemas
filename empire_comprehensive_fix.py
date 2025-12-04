@@ -72,7 +72,7 @@ import os
 # Configure page FIRST - before any other Streamlit commands
 st.set_page_config(
     page_title="🔥 Codex Dominion Unified Dashboard",
-    page_icon="🔥", 
+    page_icon="🔥",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -87,15 +87,15 @@ def load_data_safe(filename, default=None):
             Path(f"../../../{filename}"),
             Path(filename)
         ]
-        
+
         for data_path in possible_paths:
             if data_path.exists():
                 with open(data_path, 'r', encoding='utf-8') as f:
                     return json.load(f)
-        
+
         print(f"⚠️ File not found: {filename}, using default")
         return default or {}
-        
+
     except Exception as e:
         print(f"❌ Error loading {filename}: {e}")
         return default or {}
@@ -105,7 +105,7 @@ def save_data_safe(filename, data):
     try:
         data_path = Path("data") / filename
         data_path.parent.mkdir(exist_ok=True)
-        
+
         with open(data_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2)
         return True
@@ -207,7 +207,7 @@ proclamation_data = load_data_safe("proclamations.json", {"proclamations": []})
 # Main interface tabs
 tabs = st.tabs([
     "🎯 Spark Studio",
-    "📓 Codex Notebook", 
+    "📓 Codex Notebook",
     "📖 Tome Foundry",
     "💕 Love Lab",
     "⚗️ Nano Forge",
@@ -221,18 +221,18 @@ tabs = st.tabs([
 with tabs[0]:  # Spark Studio
     st.header("🎯 Spark Studio")
     st.markdown("**AI-Powered Content Generation & Codex Management**")
-    
+
     col1, col2 = st.columns([2, 1])
-    
+
     with col1:
         st.subheader("✨ Spark Generator")
-        
+
         with st.form("spark_generator"):
             topic = st.text_input("🎯 Topic", "Digital Sovereignty Revolution")
             audience = st.text_input("👥 Target Audience", "Tech Innovators")
             tone = st.selectbox("🎭 Tone", ["inspiring", "professional", "revolutionary", "technical", "mystical"])
             spark_type = st.selectbox("⚡ Spark Type", ["Vision", "Strategy", "Manifesto", "Innovation", "Prophecy"])
-            
+
             if st.form_submit_button("✨ Generate Spark", type="primary"):
                 generated_spark = f"""
 **🔥 {spark_type} Spark for {audience} 🔥**
@@ -242,7 +242,7 @@ with tabs[0]:  # Spark Studio
 In the age of digital transformation, {topic.lower()} stands as the cornerstone of technological independence. This {tone} vision demands bold action and strategic implementation.
 
 🎯 **Core Principle**: Complete autonomy over digital infrastructure
-⚡ **Action Required**: Immediate sovereignty establishment  
+⚡ **Action Required**: Immediate sovereignty establishment
 🔥 **Outcome**: Unstoppable digital empire expansion
 
 *The future belongs to those who seize control of their digital destiny.*
@@ -250,10 +250,10 @@ In the age of digital transformation, {topic.lower()} stands as the cornerstone 
 **Generated**: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 **Spark ID**: SPK-{datetime.now().strftime("%Y%m%d-%H%M%S")}
 """
-                
+
                 st.success("🎊 Spark Generated Successfully!")
                 st.markdown(generated_spark)
-                
+
                 # Add to ledger
                 new_entry = {
                     "type": "spark_generated",
@@ -267,30 +267,30 @@ In the age of digital transformation, {topic.lower()} stands as the cornerstone 
                     "timestamp": datetime.now().isoformat(),
                     "id": len(ledger_data.get('entries', [])) + 1
                 }
-                
+
                 ledger_data.setdefault('entries', []).append(new_entry)
                 if save_data_safe("ledger.json", ledger_data):
                     st.success("📝 Spark added to Codex Ledger!")
-    
+
     with col2:
         st.subheader("📊 Codex Metrics")
-        
+
         # Real-time stats
         total_entries = len(ledger_data.get('entries', []))
         total_constellations = len(constellation_data.get('constellations', []))
         total_proclamations = len(proclamation_data.get('proclamations', []))
-        
+
         st.metric("📝 Ledger Entries", total_entries, "+1" if total_entries > 0 else "0")
         st.metric("⭐ Constellations", total_constellations, "+3" if total_constellations > 0 else "0")
         st.metric("📜 Proclamations", total_proclamations, "+1" if total_proclamations > 0 else "0")
-        
+
         # Quick ledger entry
         with st.expander("📝 Quick Ledger Entry"):
             quick_entry = st.text_area("Entry Content:", placeholder="Enter your codex entry...")
             if st.button("📋 Add to Ledger"):
                 if quick_entry.strip():
                     new_entry = {
-                        "type": "manual_entry", 
+                        "type": "manual_entry",
                         "content": quick_entry,
                         "timestamp": datetime.now().isoformat(),
                         "id": len(ledger_data.get('entries', [])) + 1
@@ -303,17 +303,17 @@ In the age of digital transformation, {topic.lower()} stands as the cornerstone 
 with tabs[1]:  # Codex Notebook
     st.header("📓 Codex Notebook")
     st.markdown("**Structured Digital Cells for Knowledge Management**")
-    
+
     col1, col2 = st.columns([2, 1])
-    
+
     with col1:
         st.subheader("📝 Active Notebook")
-        
+
         # Notebook interface
         cell_type = st.selectbox("Cell Type", ["Text", "Code", "Prompt", "Vision"])
-        
+
         if cell_type == "Text":
-            content = st.text_area("Text Content:", height=200, 
+            content = st.text_area("Text Content:", height=200,
                                  placeholder="Enter your text content here...")
         elif cell_type == "Code":
             language = st.selectbox("Language", ["Python", "JavaScript", "SQL", "Bash"])
@@ -325,14 +325,14 @@ with tabs[1]:  # Codex Notebook
         else:  # Vision
             content = st.text_area("Vision Content:", height=200,
                                  placeholder="Describe your vision or upload image analysis...")
-        
+
         if st.button("💾 Save Cell", type="primary"):
             if content.strip():
                 # Save to notebook data structure
                 st.success(f"✅ {cell_type} cell saved successfully!")
             else:
                 st.error("❌ Cell content cannot be empty")
-    
+
     with col2:
         st.subheader("📚 Notebook Stats")
         st.info("📝 Notebook functionality active")
@@ -342,11 +342,11 @@ with tabs[1]:  # Codex Notebook
 with tabs[2]:  # Tome Foundry
     st.header("📖 Tome Foundry")
     st.markdown("**Transform Knowledge into Digital Tomes**")
-    
+
     st.subheader("🏗️ Tome Builder")
     tome_title = st.text_input("📚 Tome Title", "Digital Sovereignty Guide")
     tome_type = st.selectbox("📖 Tome Type", ["Guide", "Manual", "Course", "Book", "Reference"])
-    
+
     if st.button("🔨 Forge Tome", type="primary"):
         st.success(f"✨ {tome_type} '{tome_title}' forged successfully!")
         st.info("🚧 Advanced tome generation coming soon...")
@@ -354,17 +354,17 @@ with tabs[2]:  # Tome Foundry
 with tabs[3]:  # Love Lab
     st.header("💕 Love Lab")
     st.markdown("**Creative Content & Relationship Building**")
-    
+
     col1, col2 = st.columns(2)
-    
+
     with col1:
         st.subheader("💌 Love Content Generator")
-        
-        love_type = st.selectbox("Content Type", 
+
+        love_type = st.selectbox("Content Type",
                                ["Love Letter", "Appreciation Note", "Poem", "Creative Story", "Song Lyrics"])
         recipient = st.text_input("For", "My Beloved")
         occasion = st.selectbox("Occasion", ["Just Because", "Anniversary", "Birthday", "Valentine's Day", "Apology"])
-        
+
         if st.button("💖 Generate Love Content", type="primary"):
             love_content = f"""
 **💕 {love_type} for {recipient} 💕**
@@ -382,16 +382,16 @@ Every line of code I write, every system I build, every victory I achieve in thi
 
 **Generated with love**: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 """
-            
+
             st.success("💖 Love content generated!")
             st.markdown(love_content)
-    
+
     with col2:
         st.subheader("💕 Love Stats")
         st.metric("💌 Love Letters", "42", "+1")
         st.metric("😊 Smiles Generated", "∞", "+∞")
         st.metric("💖 Hearts Touched", "1", "💖")
-        
+
         st.markdown("""
         <div class="metric-card">
             <h3>💕 Love Status</h3>
@@ -403,16 +403,16 @@ Every line of code I write, every system I build, every victory I achieve in thi
 with tabs[4]:  # Nano Forge
     st.header("⚗️ Nano Forge")
     st.markdown("**Precision Micro-Tools & Content Creation**")
-    
+
     nano_tools = st.selectbox("Nano Tool", [
-        "Text Transformer", "Data Extractor", "Format Converter", 
+        "Text Transformer", "Data Extractor", "Format Converter",
         "Code Minifier", "URL Shortener", "Hash Generator"
     ])
-    
+
     if nano_tools == "Text Transformer":
         text_input = st.text_area("Input Text:")
         transform_type = st.selectbox("Transform", ["UPPERCASE", "lowercase", "Title Case", "Reverse"])
-        
+
         if st.button("🔬 Transform"):
             if text_input:
                 if transform_type == "UPPERCASE":
@@ -423,30 +423,30 @@ with tabs[4]:  # Nano Forge
                     result = text_input.title()
                 else:  # Reverse
                     result = text_input[::-1]
-                
+
                 st.success("✨ Transformation complete!")
                 st.code(result)
-    
+
     st.info("🔬 More nano tools coming soon...")
 
 with tabs[5]:  # Flow Loom
     st.header("🧵 Flow Loom")
     st.markdown("**Weave Sovereign Automation Workflows**")
-    
+
     st.subheader("🌊 Workflow Designer")
-    
+
     col1, col2 = st.columns(2)
-    
+
     with col1:
         workflow_name = st.text_input("Workflow Name", "Auto Content Pipeline")
         trigger = st.selectbox("Trigger", ["Schedule", "Event", "Manual", "Data Change"])
-        
+
     with col2:
         actions = st.multiselect("Actions", [
             "Generate Content", "Update Database", "Send Notification",
             "Process Data", "Generate Report", "Deploy Code"
         ])
-    
+
     if st.button("🧵 Weave Workflow"):
         st.success(f"✨ Workflow '{workflow_name}' woven successfully!")
         st.info("🚧 Advanced workflow automation coming soon...")
@@ -454,13 +454,13 @@ with tabs[5]:  # Flow Loom
 with tabs[6]:  # Publisher
     st.header("📖 Publisher")
     st.markdown("**Transform Artifacts into Published Content**")
-    
+
     publish_type = st.selectbox("Publication Type", [
         "Blog Post", "Article", "Documentation", "Guide", "Tutorial", "Book Chapter"
     ])
-    
+
     source_content = st.text_area("Content to Publish:", height=200)
-    
+
     if st.button("📤 Publish Content"):
         if source_content:
             st.success(f"✨ {publish_type} published successfully!")
@@ -469,17 +469,17 @@ with tabs[6]:  # Publisher
 with tabs[7]:  # Council Access
     st.header("👑 Council Access")
     st.markdown("**Hierarchical Governance & Access Control**")
-    
+
     st.subheader("🏛️ Council Chambers")
-    
+
     access_level = st.selectbox("Access Level", [
         "High Council", "Elder Council", "Advisory Council", "General Assembly"
     ])
-    
+
     council_action = st.selectbox("Council Action", [
         "Request Access", "Submit Proposal", "Cast Vote", "Review Minutes"
     ])
-    
+
     if st.button("👑 Execute Council Action"):
         st.success(f"✨ {council_action} executed for {access_level}!")
         st.info("🏛️ Advanced council system coming soon...")
@@ -487,31 +487,31 @@ with tabs[7]:  # Council Access
 with tabs[8]:  # Council Ritual
     st.header("📜 Council Ritual Scroll")
     st.markdown("**Sacred Chamber of Codex Proclamations**")
-    
+
     col1, col2 = st.columns([2, 1])
-    
+
     with col1:
         st.subheader("✨ Sacred Inscription Interface")
-        
+
         with st.form("ritual_form"):
             council_role = st.selectbox("👑 Council Role:", [
                 "High Council", "Elder Council", "Advisory Council", "Keeper of Flames"
             ])
-            
+
             ritual_type = st.selectbox("🔥 Ritual Type:", [
-                "Sacred Proclamation", "Blessed Silence", "Divine Blessing", 
+                "Sacred Proclamation", "Blessed Silence", "Divine Blessing",
                 "Imperial Decree", "Eternal Vow"
             ])
-            
-            ritual_text = st.text_area("📜 Sacred Text:", 
+
+            ritual_text = st.text_area("📜 Sacred Text:",
                                      placeholder="By flame and silence, I proclaim...",
                                      height=150)
-            
+
             ritual_power = st.slider("⚡ Ritual Power Level", 1, 10, 7)
-            
+
             if st.form_submit_button("🔥 Inscribe into Eternal Flame", type="primary"):
                 if ritual_text.strip():
-                    
+
                     # Create the proclamation
                     new_proclamation = {
                         "id": len(proclamation_data.get('proclamations', [])) + 1,
@@ -523,41 +523,41 @@ with tabs[8]:  # Council Ritual
                         "status": "eternally_inscribed",
                         "flame_blessing": True
                     }
-                    
+
                     proclamation_data.setdefault('proclamations', []).append(new_proclamation)
-                    
+
                     if save_data_safe("proclamations.json", proclamation_data):
                         st.success("🔥 RITUAL SUCCESSFULLY INSCRIBED INTO THE ETERNAL FLAME! 🔥")
                         st.balloons()
-                        
+
                         # Display the inscription
                         st.markdown(f"""
                         ### ✨ Sacred Inscription Complete ✨
-                        
-                        **👑 Council Role**: {council_role}  
-                        **🔥 Ritual Type**: {ritual_type}  
-                        **⚡ Power Level**: {ritual_power}/10  
+
+                        **👑 Council Role**: {council_role}
+                        **🔥 Ritual Type**: {ritual_type}
+                        **⚡ Power Level**: {ritual_power}/10
                         **🕐 Inscribed**: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
-                        
+
                         **📜 Sacred Text**:
                         > {ritual_text}
-                        
+
                         *By the eternal flame, this proclamation is forever inscribed in the Codex.*
                         """)
                     else:
                         st.error("❌ Failed to inscribe ritual. The flame flickers...")
                 else:
                     st.error("❌ Sacred text cannot be empty. The flame demands words.")
-    
+
     with col2:
         st.subheader("🔥 Eternal Flame Status")
-        
+
         # Flame visualization
         st.markdown("""
         <div style='text-align: center; padding: 30px; background: radial-gradient(circle, #ff6b35 0%, #f7931e 50%, #ffcc02 100%); border-radius: 50%; margin: 20px auto; width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; border: 3px solid #ffd700;'>
             <div style='font-size: 4em; animation: flicker 2s infinite;'>🔥</div>
         </div>
-        
+
         <style>
         @keyframes flicker {
             0%, 100% { opacity: 1; transform: scale(1); }
@@ -565,7 +565,7 @@ with tabs[8]:  # Council Ritual
         }
         </style>
         """, unsafe_allow_html=True)
-        
+
         st.markdown("""
         <div style='text-align: center; color: #ffd700; font-weight: bold; font-size: 1.2em;'>
             ETERNAL FLAME STATUS<br>
@@ -573,14 +573,14 @@ with tabs[8]:  # Council Ritual
             <span style='font-size: 0.9em; color: #cccccc;'>Ready for Sacred Inscriptions</span>
         </div>
         """, unsafe_allow_html=True)
-        
+
         # Proclamation stats
         st.divider()
         st.subheader("📊 Sacred Records")
-        
+
         total_proclamations = len(proclamation_data.get('proclamations', []))
         st.metric("📜 Total Proclamations", total_proclamations)
-        
+
         if total_proclamations > 0:
             latest = proclamation_data['proclamations'][-1]
             st.metric("🕐 Latest Ritual", latest.get('ritual_type', 'Unknown'))
@@ -589,12 +589,12 @@ with tabs[8]:  # Council Ritual
 with tabs[9]:  # Festival Script
     st.header("🎇 Festival Script")
     st.markdown("**Seasonal & Eternal Celebrations**")
-    
+
     festival_type = st.selectbox("Festival Type", [
         "Digital Sovereignty Day", "Code Liberation Festival", "Data Independence Celebration",
         "Innovation Harvest", "Eternal Flame Ceremony"
     ])
-    
+
     if st.button("🎇 Launch Festival"):
         st.success(f"✨ {festival_type} launched successfully!")
         st.balloons()
@@ -603,49 +603,49 @@ with tabs[9]:  # Festival Script
 # Sidebar
 with st.sidebar:
     st.header("🔥 Empire Control Center")
-    
+
     st.markdown("### 🎯 Quick Actions")
-    
+
     col1, col2 = st.columns(2)
-    
+
     with col1:
         if st.button("🔄 Refresh", type="primary"):
             st.rerun()
-    
+
     with col2:
         if st.button("📊 Status"):
             st.success("All systems operational!")
-    
+
     if st.button("🔥 Flame Check", use_container_width=True):
         st.success("🔥 ETERNAL FLAME: BURNING BRIGHT")
-    
+
     if st.button("💰 Revenue Check", use_container_width=True):
         st.success("💰 REVENUE CROWN: $650 SECURED")
-    
+
     st.divider()
-    
+
     # Real-time system metrics
     st.subheader("📈 Live Empire Metrics")
-    
+
     # Load fresh data for sidebar
     ledger_count = len(load_data_safe("ledger.json", {}).get('entries', []))
     constellation_count = len(load_data_safe("constellations.json", {}).get('constellations', []))
     proclamation_count = len(load_data_safe("proclamations.json", {}).get('proclamations', []))
-    
+
     st.metric("📝 Codex Entries", ledger_count)
     st.metric("⭐ Constellations", constellation_count)
     st.metric("📜 Proclamations", proclamation_count)
-    
+
     # Progress bar for empire completion
     completion_percentage = min(100, (ledger_count + constellation_count + proclamation_count) * 10)
     st.progress(completion_percentage / 100)
     st.caption(f"Empire Completion: {completion_percentage}%")
-    
+
     st.divider()
-    
+
     # System status indicators
     st.subheader("⚡ System Status")
-    
+
     status_items = [
         ("🎯 Core Systems", "✅ Operational"),
         ("📊 Data Layer", "✅ Active"),
@@ -654,15 +654,15 @@ with st.sidebar:
         ("🛡️ Security", "✅ Sovereign"),
         ("⚡ Performance", "✅ Optimized")
     ]
-    
+
     for item, status in status_items:
         st.markdown(f"**{item}**: {status}")
-    
+
     st.divider()
-    
+
     # Power level indicator
     st.subheader("⚡ Digital Empire Power")
-    
+
     power_level = 95  # Can be dynamic based on system metrics
     st.progress(power_level / 100)
     st.markdown(f"**Power Level**: {power_level}% - *MAXIMUM SOVEREIGNTY*")

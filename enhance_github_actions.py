@@ -289,7 +289,7 @@ Brief description of the changes made to strengthen the Codex Dominion.
 
 ### Type of Enhancement
 - [ ] 🐛 Bug fix (non-breaking change which fixes an issue)
-- [ ] ✨ New feature (non-breaking change which adds functionality)  
+- [ ] ✨ New feature (non-breaking change which adds functionality)
 - [ ] 💥 Breaking change (fix or feature that would cause existing functionality to change)
 - [ ] 📚 Documentation update
 - [ ] 🔧 Maintenance (refactoring, code cleanup, etc.)
@@ -420,7 +420,7 @@ Any alternative solutions or features you've evaluated.
 ## 🏛️ Sacred Architecture Impact
 **How would this integrate with existing systems?**
 - [ ] Requires new dashboard components
-- [ ] Needs database schema changes  
+- [ ] Needs database schema changes
 - [ ] Impacts API endpoints
 - [ ] Requires new dependencies
 - [ ] Changes authentication/security
@@ -529,7 +529,7 @@ assignees: 'security-team'
 
 ## 🔒 Security Issue Classification
 - [ ] Vulnerability (potential exploit)
-- [ ] Security enhancement suggestion  
+- [ ] Security enhancement suggestion
 - [ ] Compliance requirement
 - [ ] Privacy concern
 - [ ] Authentication issue

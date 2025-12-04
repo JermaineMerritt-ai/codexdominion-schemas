@@ -37,7 +37,7 @@ log_helm_action() {
   local REVISION=${4:-"N/A"}
   local CHART_VERSION=${5:-"N/A"}
   local STATUS=${6:-"unknown"}
-  
+
   local TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
   local ENTRY=$(cat <<EOF
 {
@@ -61,7 +61,7 @@ EOF
 
   # Append to releases array
   initialize_ledger
-  
+
   # Use jq to properly append to JSON array (if available), otherwise append as newline
   if command -v jq &> /dev/null; then
     local TEMP_FILE=$(mktemp)
@@ -71,7 +71,7 @@ EOF
     # Fallback: append as separate JSON objects (newline-delimited JSON)
     echo "$ENTRY" >> "${LEDGER_PATH}.ndjson"
   fi
-  
+
   echo "✓ Logged $ACTION for $RELEASE (revision $REVISION) to Eternal Ledger"
 }
 
@@ -79,7 +79,7 @@ EOF
 get_latest_revision() {
   local RELEASE=$1
   local NAMESPACE=$2
-  
+
   helm history "$RELEASE" --namespace "$NAMESPACE" --max 1 -o json 2>/dev/null | \
     jq -r '.[0].revision // "unknown"' || echo "unknown"
 }
@@ -88,7 +88,7 @@ get_latest_revision() {
 get_chart_version() {
   local RELEASE=$1
   local NAMESPACE=$2
-  
+
   helm list --namespace "$NAMESPACE" -o json 2>/dev/null | \
     jq -r ".[] | select(.name==\"$RELEASE\") | .chart // \"unknown\"" || echo "unknown"
 }
@@ -97,7 +97,7 @@ get_chart_version() {
 get_release_status() {
   local RELEASE=$1
   local NAMESPACE=$2
-  
+
   helm status "$RELEASE" --namespace "$NAMESPACE" -o json 2>/dev/null | \
     jq -r '.info.status // "unknown"' || echo "unknown"
 }
@@ -108,9 +108,9 @@ log_helm_install() {
   local CHART=$2
   local NAMESPACE=$3
   shift 3
-  
+
   echo "⏳ Installing $RELEASE from $CHART..."
-  
+
   if helm install "$RELEASE" "$CHART" --namespace "$NAMESPACE" --create-namespace "$@"; then
     local REVISION=$(get_latest_revision "$RELEASE" "$NAMESPACE")
     local CHART_VERSION=$(get_chart_version "$RELEASE" "$NAMESPACE")
@@ -130,9 +130,9 @@ log_helm_upgrade() {
   local CHART=$2
   local NAMESPACE=$3
   shift 3
-  
+
   echo "⏳ Upgrading $RELEASE from $CHART..."
-  
+
   if helm upgrade "$RELEASE" "$CHART" --namespace "$NAMESPACE" "$@"; then
     local REVISION=$(get_latest_revision "$RELEASE" "$NAMESPACE")
     local CHART_VERSION=$(get_chart_version "$RELEASE" "$NAMESPACE")
@@ -151,9 +151,9 @@ log_helm_rollback() {
   local RELEASE=$1
   local NAMESPACE=$2
   local TARGET_REVISION=${3:-0}
-  
+
   echo "⏳ Rolling back $RELEASE to revision $TARGET_REVISION..."
-  
+
   if helm rollback "$RELEASE" "$TARGET_REVISION" --namespace "$NAMESPACE"; then
     local REVISION=$(get_latest_revision "$RELEASE" "$NAMESPACE")
     local CHART_VERSION=$(get_chart_version "$RELEASE" "$NAMESPACE")
@@ -171,12 +171,12 @@ log_helm_rollback() {
 log_helm_uninstall() {
   local RELEASE=$1
   local NAMESPACE=$2
-  
+
   echo "⏳ Uninstalling $RELEASE (preserving history)..."
-  
+
   local REVISION=$(get_latest_revision "$RELEASE" "$NAMESPACE")
   local CHART_VERSION=$(get_chart_version "$RELEASE" "$NAMESPACE")
-  
+
   if helm uninstall "$RELEASE" --namespace "$NAMESPACE" --keep-history; then
     log_helm_action "uninstall" "$RELEASE" "$NAMESPACE" "$REVISION" "$CHART_VERSION" "uninstalled"
     echo "✓ Uninstall complete and logged (history preserved)"
@@ -194,7 +194,7 @@ view_ledger() {
     echo "✗ No ledger found at $LEDGER_PATH"
     return 1
   fi
-  
+
   if command -v jq &> /dev/null; then
     echo "📜 Eternal Ledger Contents:"
     jq '.' "$LEDGER_PATH"
@@ -207,12 +207,12 @@ view_ledger() {
 # Query ledger by release name
 query_ledger() {
   local RELEASE=$1
-  
+
   if [[ ! -f "$LEDGER_PATH" ]]; then
     echo "✗ No ledger found at $LEDGER_PATH"
     return 1
   fi
-  
+
   if command -v jq &> /dev/null; then
     echo "📜 Ledger entries for release '$RELEASE':"
     jq ".releases[] | select(.release==\"$RELEASE\")" "$LEDGER_PATH"
@@ -225,7 +225,7 @@ query_ledger() {
 # Export ledger to timestamped backup
 backup_ledger() {
   local BACKUP_PATH="${LEDGER_PATH}.backup.$(date +%Y%m%d-%H%M%S)"
-  
+
   if [[ -f "$LEDGER_PATH" ]]; then
     cp "$LEDGER_PATH" "$BACKUP_PATH"
     echo "✓ Ledger backed up to $BACKUP_PATH"
@@ -278,28 +278,28 @@ Usage: $0 <command> [args...]
 Commands:
   install <release> <chart> <namespace> [helm-args...]
       Install a chart and log to ledger
-      
+
   upgrade <release> <chart> <namespace> [helm-args...]
       Upgrade a release and log to ledger
-      
+
   rollback <release> <namespace> [revision]
       Rollback a release and log to ledger
-      
+
   uninstall <release> <namespace>
       Uninstall a release (keep history) and log to ledger
-      
+
   log <action> <release> <namespace> [revision] [chart_version] [status]
       Manually log an action to ledger
-      
+
   view
       View entire ledger contents
-      
+
   query <release>
       Query ledger for specific release
-      
+
   backup
       Create timestamped backup of ledger
-      
+
   init
       Initialize genesis block
 
@@ -309,19 +309,19 @@ Environment Variables:
 Examples:
   # Install with logging
   $0 install codexdominion ./charts/codexdominion codex -f values.yaml
-  
+
   # Upgrade with logging
   $0 upgrade codexdominion ./charts/codexdominion codex -f values.yaml --history-max=10
-  
+
   # Rollback with logging
   $0 rollback codexdominion codex 3
-  
+
   # View all logged actions
   $0 view
-  
+
   # Query specific release
   $0 query codexdominion
-  
+
   # Backup ledger
   $0 backup
 

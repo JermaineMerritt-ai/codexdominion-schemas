@@ -81,20 +81,20 @@ jobs:
       - name: Verify Build
         run: |
           echo "🔍 Verifying build integrity..."
-          
+
           # Verify Node.js
           if [ -d "node_modules" ]; then
             echo "✅ Node.js modules installed"
             npm list --depth=0 || true
           fi
-          
+
           # Verify Python
           if [ -d "venv" ]; then
             echo "✅ Python environment created"
             source venv/bin/activate
             pip list || true
           fi
-          
+
           echo "✅ Build verification complete"
 
       - name: Generate Build Report
@@ -103,23 +103,23 @@ jobs:
           cat > build_report.txt << EOF
           🔥 Codex Dominion - Safe Reset & Rebuild Report 🔥
           ================================================
-          
+
           Date: $(date)
           Branch: ${{ github.ref_name }}
           Commit: ${{ github.sha }}
-          
+
           Components Reset:
           - Node.js ✅
           - Python ✅
           - Java (if applicable) ✅
           - Schemas ✅
-          
+
           Status: BUILD SUCCESSFUL
           ================================================
           EOF
-          
+
           cat build_report.txt
-          
+
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
         with:

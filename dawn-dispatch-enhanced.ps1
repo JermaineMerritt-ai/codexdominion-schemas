@@ -29,28 +29,28 @@ function Invoke-DawnDispatch {
     param(
         [string]$CustomProclamation = $null
     )
-    
+
     try {
         Write-Host "🌅 Initiating Dawn Dispatch..." -ForegroundColor Cyan
-        
+
         # Check current status first
         Write-Host "📊 Checking current status..." -ForegroundColor Yellow
         python dawn_dispatch_simple.py status
-        
+
         Write-Host "`n🔥 Executing dawn ritual..." -ForegroundColor Yellow
-        
+
         if ($CustomProclamation) {
             python dawn_dispatch_simple.py dispatch $CustomProclamation
         } else {
             python dawn_dispatch_simple.py dispatch
         }
-        
+
         Write-Host "`n✅ Dawn Dispatch completed successfully!" -ForegroundColor Green
-        
+
         # Show updated status
         Write-Host "`n📈 Updated status:" -ForegroundColor Cyan
         python dawn_dispatch_simple.py status
-        
+
         return $true
     }
     catch {
@@ -64,13 +64,13 @@ function Show-DawnHistory {
     try {
         Write-Host "📜 Dawn Dispatch History" -ForegroundColor Cyan
         Write-Host "========================" -ForegroundColor Yellow
-        
+
         if (Test-Path "codex_ledger.json") {
             $ledger = Get-Content "codex_ledger.json" | ConvertFrom-Json
-            
+
             if ($ledger.dawn_dispatches) {
                 $recent = $ledger.dawn_dispatches | Select-Object -Last 5
-                
+
                 foreach ($dispatch in $recent) {
                     Write-Host "📅 $($dispatch.date)" -ForegroundColor Green
                     Write-Host "   🕐 $($dispatch.timestamp)" -ForegroundColor Gray
@@ -94,25 +94,25 @@ function Show-DawnHistory {
 function Test-LedgerIntegrity {
     try {
         Write-Host "🔍 Validating ledger integrity..." -ForegroundColor Cyan
-        
+
         if (Test-Path "codex_ledger.json") {
             $ledger = Get-Content "codex_ledger.json" | ConvertFrom-Json
-            
+
             $cycleCount = $ledger.cycles.Count
             $proclamationCount = $ledger.proclamations.Count
             $dawnCount = if ($ledger.dawn_dispatches) { $ledger.dawn_dispatches.Count } else { 0 }
-            
+
             Write-Host "✅ Ledger structure valid" -ForegroundColor Green
             Write-Host "📊 Cycles: $cycleCount" -ForegroundColor White
             Write-Host "📜 Proclamations: $proclamationCount" -ForegroundColor White
             Write-Host "🌅 Dawn Dispatches: $dawnCount" -ForegroundColor White
-            
+
             if ($ledger.meta) {
                 Write-Host "🏷️  Version: $($ledger.meta.version)" -ForegroundColor Gray
                 Write-Host "👑 Custodian: $($ledger.meta.custodian_authority)" -ForegroundColor Gray
                 Write-Host "🔥 Last Updated: $($ledger.meta.last_updated)" -ForegroundColor Gray
             }
-            
+
             return $true
         } else {
             Write-Host "❌ Ledger file not found" -ForegroundColor Red
@@ -140,19 +140,19 @@ $Proclamation = if ($args.Count -gt 1) { $args[1] } else { "" }
 if ($Action) {
     # Command line execution
     switch ($Action.ToLower()) {
-        "dispatch" { 
+        "dispatch" {
             Invoke-DawnDispatch -CustomProclamation $Proclamation
         }
-        "status" { 
-            python dawn_dispatch_simple.py status 
+        "status" {
+            python dawn_dispatch_simple.py status
         }
-        "history" { 
-            Show-DawnHistory 
+        "history" {
+            Show-DawnHistory
         }
-        "validate" { 
-            Test-LedgerIntegrity 
+        "validate" {
+            Test-LedgerIntegrity
         }
-        default { 
+        default {
             Write-Host "❌ Unknown action: $Action" -ForegroundColor Red
             Write-Host "Available actions: dispatch, status, history, validate" -ForegroundColor Yellow
         }
@@ -162,27 +162,27 @@ if ($Action) {
     do {
         Write-Host "`nSelect option (1-5): " -NoNewline -ForegroundColor Yellow
         $choice = Read-Host
-        
+
         switch ($choice) {
-            "1" { 
+            "1" {
                 Invoke-DawnDispatch
             }
-            "2" { 
+            "2" {
                 Write-Host "Enter custom proclamation: " -NoNewline -ForegroundColor Yellow
                 $customProc = Read-Host
                 Invoke-DawnDispatch -CustomProclamation $customProc
             }
-            "3" { 
-                Show-DawnHistory 
+            "3" {
+                Show-DawnHistory
             }
-            "4" { 
-                Test-LedgerIntegrity 
+            "4" {
+                Test-LedgerIntegrity
             }
-            "5" { 
+            "5" {
                 Write-Host "🌅 Dawn Dispatch session ended. May the flame endure eternal." -ForegroundColor Cyan
                 break
             }
-            default { 
+            default {
                 Write-Host "❌ Invalid option. Please select 1-5." -ForegroundColor Red
             }
         }

@@ -97,7 +97,7 @@ CREATE TABLE portfolios (
   owner_id UUID NOT NULL,
   risk_tier TEXT CHECK (risk_tier IN ('conservative','moderate','aggressive')) NOT NULL,
   created_at TIMESTAMPTZ DEFAULT NOW(),
-  
+
   -- Indexes for performance
   CONSTRAINT portfolios_owner_id_idx UNIQUE (owner_id, id)
 );
@@ -152,7 +152,7 @@ CREATE TABLE positions (
   avg_cost NUMERIC(18,8) NOT NULL CHECK (avg_cost > 0),
   last_price NUMERIC(18,8),
   updated_at TIMESTAMPTZ DEFAULT NOW(),
-  
+
   -- Prevent duplicate symbols in same portfolio
   CONSTRAINT unique_portfolio_symbol UNIQUE (portfolio_id, symbol)
 );
@@ -171,7 +171,7 @@ CREATE TABLE daily_picks (
   scores JSONB DEFAULT '{}',               -- {liquidity, volatility, catalyst, technical}
   performance JSONB DEFAULT '{}',          -- PnL simulation result
   created_at TIMESTAMPTZ DEFAULT NOW(),
-  
+
   -- Prevent duplicate picks for same user/date
   CONSTRAINT unique_user_trade_date UNIQUE (user_id, trade_date)
 );
@@ -317,8 +317,8 @@ INSERT INTO positions (portfolio_id, symbol, quantity, avg_cost, last_price) VAL
 
 -- Sample daily picks
 INSERT INTO daily_picks (user_id, trade_date, symbols, scores, performance) VALUES
-  ('550e8400-e29b-41d4-a716-446655440101', CURRENT_DATE, 
-   ARRAY['AAPL', 'MSFT'], 
+  ('550e8400-e29b-41d4-a716-446655440101', CURRENT_DATE,
+   ARRAY['AAPL', 'MSFT'],
    '{"liquidity": 95, "volatility": 75, "catalyst": 80, "technical": 85}',
    '{"expected_return": 5.2, "risk_score": 65, "confidence": 78}'),
   ('550e8400-e29b-41d4-a716-446655440102', CURRENT_DATE - INTERVAL '1 day',
@@ -342,8 +342,8 @@ INSERT INTO amm_pools (pool_symbol, tvl_usd, apr, risk_tier) VALUES
   ('UNI/ETH', 15000000.00, 35.2, 'high');
 
 -- Sample AMM events
-INSERT INTO amm_events (pool_id, event_type, payload, tx_hash) 
-SELECT 
+INSERT INTO amm_events (pool_id, event_type, payload, tx_hash)
+SELECT
   p.id,
   'stake',
   '{"amount": 10000, "token": "USDC", "user": "0x123...abc"}',
@@ -353,7 +353,7 @@ WHERE p.pool_symbol = 'USDC/ETH'
 LIMIT 1;
 
 INSERT INTO amm_events (pool_id, event_type, payload, tx_hash)
-SELECT 
+SELECT
   p.id,
   'swap',
   '{"from_token": "ETH", "to_token": "USDC", "amount_in": 5.5, "amount_out": 18750}',
@@ -377,7 +377,7 @@ INSERT INTO incidents (source, message, severity, created_at) VALUES
 
 -- Portfolio performance view
 CREATE VIEW portfolio_performance AS
-SELECT 
+SELECT
   p.id as portfolio_id,
   p.owner_id,
   p.risk_tier,
@@ -385,11 +385,11 @@ SELECT
   COALESCE(SUM(pos.quantity * pos.avg_cost), 0) as total_cost_basis,
   COALESCE(SUM(pos.quantity * COALESCE(pos.last_price, pos.avg_cost)), 0) as total_market_value,
   COALESCE(SUM(pos.quantity * (COALESCE(pos.last_price, pos.avg_cost) - pos.avg_cost)), 0) as unrealized_pnl,
-  CASE 
+  CASE
     WHEN SUM(pos.quantity * pos.avg_cost) > 0 THEN
-      ROUND((SUM(pos.quantity * (COALESCE(pos.last_price, pos.avg_cost) - pos.avg_cost)) / 
+      ROUND((SUM(pos.quantity * (COALESCE(pos.last_price, pos.avg_cost) - pos.avg_cost)) /
              SUM(pos.quantity * pos.avg_cost) * 100)::numeric, 2)
-    ELSE 0 
+    ELSE 0
   END as return_percentage
 FROM portfolios p
 LEFT JOIN positions pos ON p.id = pos.portfolio_id
@@ -397,14 +397,14 @@ GROUP BY p.id, p.owner_id, p.risk_tier;
 
 -- Top performing symbols view
 CREATE VIEW top_performing_symbols AS
-SELECT 
+SELECT
   symbol,
   COUNT(*) as occurrence_count,
   AVG(quantity) as avg_quantity,
   AVG(avg_cost) as avg_entry_price,
   AVG(last_price) as avg_current_price,
   AVG((last_price - avg_cost) / avg_cost * 100) as avg_return_percentage
-FROM positions 
+FROM positions
 WHERE last_price IS NOT NULL
 GROUP BY symbol
 HAVING COUNT(*) > 1
@@ -412,16 +412,16 @@ ORDER BY avg_return_percentage DESC;
 
 -- Daily affiliate performance view
 CREATE VIEW daily_affiliate_performance AS
-SELECT 
+SELECT
   DATE(captured_at) as date,
   program,
   SUM(clicks) as total_clicks,
   SUM(conversions) as total_conversions,
   SUM(commission) as total_commission,
-  CASE 
-    WHEN SUM(clicks) > 0 THEN 
+  CASE
+    WHEN SUM(clicks) > 0 THEN
       ROUND((SUM(conversions)::numeric / SUM(clicks) * 100), 2)
-    ELSE 0 
+    ELSE 0
   END as conversion_rate
 FROM affiliate_metrics
 GROUP BY DATE(captured_at), program
@@ -431,7 +431,7 @@ ORDER BY date DESC, total_commission DESC;
 
 -- Account portfolio summary
 CREATE VIEW account_portfolio_summary AS
-SELECT 
+SELECT
   a.id as account_id,
   a.role,
   a.name,
@@ -446,7 +446,7 @@ GROUP BY a.id, a.role, a.name;
 
 -- Transaction flow summary
 CREATE VIEW transaction_flow_summary AS
-SELECT 
+SELECT
   t.stream,
   t.currency,
   COUNT(*) as transaction_count,
@@ -461,7 +461,7 @@ ORDER BY total_amount DESC;
 
 -- Signal performance tracking
 CREATE VIEW signal_performance_tracking AS
-SELECT 
+SELECT
   s.id as signal_id,
   s.tier,
   s.rationale,
@@ -475,7 +475,7 @@ ORDER BY s.issued_at DESC;
 
 -- Pool activity summary
 CREATE VIEW pool_activity_summary AS
-SELECT 
+SELECT
   p.id as pool_id,
   p.asset_pair,
   p.weight,
@@ -559,7 +559,7 @@ INSERT INTO capsule_runs (capsule_slug, actor, started_at, completed_at, status,
 
 -- Capsule performance view
 CREATE VIEW capsule_performance AS
-SELECT 
+SELECT
   c.slug,
   c.title,
   c.kind,
@@ -568,10 +568,10 @@ SELECT
   COUNT(cr.id) as total_runs,
   COUNT(CASE WHEN cr.status = 'success' THEN 1 END) as successful_runs,
   COUNT(CASE WHEN cr.status = 'error' THEN 1 END) as failed_runs,
-  CASE 
-    WHEN COUNT(cr.id) > 0 THEN 
+  CASE
+    WHEN COUNT(cr.id) > 0 THEN
       ROUND((COUNT(CASE WHEN cr.status = 'success' THEN 1 END)::numeric / COUNT(cr.id) * 100), 2)
-    ELSE 0 
+    ELSE 0
   END as success_rate,
   MAX(cr.completed_at) as last_successful_run,
   AVG(EXTRACT(EPOCH FROM (cr.completed_at - cr.started_at))) as avg_runtime_seconds
@@ -582,7 +582,7 @@ ORDER BY c.kind, c.slug;
 
 -- Scheduled capsules view
 CREATE VIEW scheduled_capsules AS
-SELECT 
+SELECT
   c.slug,
   c.title,
   c.kind,
@@ -598,42 +598,42 @@ ORDER BY c.schedule;
 
 -- Comprehensive system status view (updated with capsules)
 CREATE VIEW system_status_dashboard AS
-SELECT 
+SELECT
   'accounts' as entity_type,
   COUNT(*) as total_count,
   COUNT(CASE WHEN role = 'Customer' THEN 1 END) as active_customers,
   MAX(created_at) as last_created
 FROM accounts
 UNION ALL
-SELECT 
+SELECT
   'portfolios' as entity_type,
   COUNT(*) as total_count,
   COUNT(CASE WHEN risk_tier = 'aggressive' THEN 1 END) as high_risk_count,
   MAX(created_at) as last_created
 FROM portfolios
 UNION ALL
-SELECT 
+SELECT
   'transactions' as entity_type,
   COUNT(*) as total_count,
   COUNT(CASE WHEN status = 'completed' THEN 1 END) as completed_count,
   MAX(created_at) as last_created
 FROM transactions
 UNION ALL
-SELECT 
+SELECT
   'amm_pools' as entity_type,
   COUNT(*) as total_count,
   COUNT(CASE WHEN risk_tier = 'high' THEN 1 END) as high_risk_count,
   MAX(updated_at) as last_updated
 FROM amm_pools
 UNION ALL
-SELECT 
+SELECT
   'capsules' as entity_type,
   COUNT(*) as total_count,
   COUNT(CASE WHEN status = 'active' THEN 1 END) as active_count,
   MAX(created_at) as last_created
 FROM capsules
 UNION ALL
-SELECT 
+SELECT
   'capsule_runs' as entity_type,
   COUNT(*) as total_count,
   COUNT(CASE WHEN status = 'success' THEN 1 END) as successful_count,

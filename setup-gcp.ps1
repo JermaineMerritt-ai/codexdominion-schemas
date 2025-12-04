@@ -57,7 +57,7 @@ switch ($choice) {
         Write-Host "🆕 Creating new Codex Dominion project..." -ForegroundColor Yellow
         $PROJECT_ID = Read-Host "Enter project ID (e.g., codex-dominion-prod)"
         $PROJECT_NAME = Read-Host "Enter project name (e.g., Codex Dominion Production)"
-        
+
         gcloud projects create $PROJECT_ID --name="$PROJECT_NAME"
         if ($LASTEXITCODE -eq 0) {
             Write-Host "✅ Project created: $PROJECT_ID" -ForegroundColor Green

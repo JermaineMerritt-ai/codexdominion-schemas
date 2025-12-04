@@ -1,7 +1,7 @@
 # 🔥 Codex Dominion Artifact Syndication
 
-**Version:** 2.0.0  
-**Status:** Active  
+**Version:** 2.0.0
+**Status:** Active
 **Last Updated:** December 2, 2025
 
 ## Overview
@@ -34,7 +34,7 @@ codexdominion/
 ## Capsules
 
 ### 🏦 Eternal Ledger
-**Type:** Financial Sovereignty Dashboard  
+**Type:** Financial Sovereignty Dashboard
 **Purpose:** Immutable record of all treasury operations, transactions, and revenue streams
 
 - Real-time treasury tracking
@@ -43,7 +43,7 @@ codexdominion/
 - Audit trail and compliance
 
 ### 👑 Commerce Crown
-**Type:** E-Commerce & Affiliate Network  
+**Type:** E-Commerce & Affiliate Network
 **Purpose:** Sovereign marketplace infrastructure and affiliate integrations
 
 - Multi-platform affiliate tracking

@@ -134,7 +134,7 @@ class DatabaseMigrator:
             try:
                 result = await self.connection.fetchval(
                     """
-                    SELECT COUNT(*) FROM information_schema.tables 
+                    SELECT COUNT(*) FROM information_schema.tables
                     WHERE table_name = $1 AND table_schema = 'public'
                 """,
                     table,
@@ -160,8 +160,8 @@ class DatabaseMigrator:
 
         result = await self.connection.fetch(
             """
-            SELECT schemaname, tablename, indexname 
-            FROM pg_indexes 
+            SELECT schemaname, tablename, indexname
+            FROM pg_indexes
             WHERE schemaname = 'public'
             ORDER BY tablename, indexname
         """
@@ -181,12 +181,12 @@ class DatabaseMigrator:
         # Table sizes
         stats = await self.connection.fetch(
             """
-            SELECT 
+            SELECT
                 schemaname,
                 tablename,
                 pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) as size,
                 pg_total_relation_size(schemaname||'.'||tablename) as size_bytes
-            FROM pg_tables 
+            FROM pg_tables
             WHERE schemaname = 'public'
             ORDER BY pg_total_relation_size(schemaname||'.'||tablename) DESC
         """

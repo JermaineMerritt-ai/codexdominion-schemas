@@ -2,7 +2,7 @@
 
 terraform {
   required_version = ">= 1.6.0"
-  
+
   required_providers {
     google = {
       source  = "hashicorp/google"
@@ -74,7 +74,7 @@ resource "google_cloud_run_service" "signals" {
     spec {
       containers {
         image = var.signals_image
-        
+
         env {
           name  = "DATABASE_URL"
           value = "postgresql://${var.db_user}:${var.db_pass}@${google_sql_database_instance.db.connection_name}/codexdominion"

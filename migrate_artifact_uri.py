@@ -38,10 +38,10 @@ def run_migration():
 
             # Check if column already exists
             check_column_sql = """
-            SELECT column_name 
-            FROM information_schema.columns 
-            WHERE table_name = 'capsule_runs' 
-            AND column_name = 'artifact_uri' 
+            SELECT column_name
+            FROM information_schema.columns
+            WHERE table_name = 'capsule_runs'
+            AND column_name = 'artifact_uri'
             AND table_schema = 'public';
             """
 
@@ -54,7 +54,7 @@ def run_migration():
             else:
                 # Add the column
                 migration_sql = """
-                ALTER TABLE capsule_runs 
+                ALTER TABLE capsule_runs
                 ADD COLUMN artifact_uri TEXT;
                 """
 
@@ -69,7 +69,7 @@ def run_migration():
 
             structure_sql = """
             SELECT column_name, data_type, is_nullable, column_default
-            FROM information_schema.columns 
+            FROM information_schema.columns
             WHERE table_name = 'capsule_runs' AND table_schema = 'public'
             ORDER BY ordinal_position;
             """

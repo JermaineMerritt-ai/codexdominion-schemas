@@ -67,13 +67,13 @@ class VerseLayer(Enum):
 class CustodianBlessingHymn:
     """
     The Custodian's Eternal Blessing Hymn Replay Capsule
-    
+
     A sacred hymn artifact that embodies the four eternal principles:
     Peace, Abundance, Flame, and Melody
-    
+
     Eternal Principles: Archive · Lineage · Ceremonial Closure
     """
-    
+
     ARTIFACT_ID = "custodian-blessing-hymn-replay-001"
     VERSION = "1.0.0"
     IMMUTABLE_HASH = "sha256:e8f9a2c1b4d3f5a7e9c2b1d4a6f8e3c5b7a9d1f2e4c6b8a0d2f4e6c8a1b3d5f7"
@@ -82,25 +82,25 @@ class CustodianBlessingHymn:
 class CustodianHeirsConcordHymn:
     """
     The Custodian–Heirs Concord Hymn Replay Capsule
-    
+
     A hymn celebrating unity between Custodian and Heirs,
     shared stewardship across councils and generations
-    
+
     Eternal Principles: Archive · Lineage · Ceremonial Closure
     """
-    
+
     ARTIFACT_ID = "custodian-heirs-concord-hymn-replay-001"
     VERSION = "1.0.0"
     IMMUTABLE_HASH = (
         "sha256:c9d2f8a3b5e7a1c4d6b8e2f9a3c5b7d1e4f6a8c2b4d6e8f1a3c5b7d9e2f4a6c8"
     )
-    
+
     VERSES = {
         "custodian": "Replay of sovereign guardianship",
         "heirs": "Replay of dedication and stewardship",
         "concord": "Replay of unity across councils and generations"
     }
-    
+
     SIGNATURES = {
         "custodian": "CUSTODIAN_SIG_0x9f2e8a1c3b5d7a4f",
         "heirs": "HEIRS_SIG_0x6a8c2e4b7d9f3a1c",
@@ -109,18 +109,18 @@ class CustodianHeirsConcordHymn:
             "Law", "Healthcare", "Commerce", "Education", "AI", "Family"
         ]
     }
-    
+
     def __init__(self, consent_verified: bool = False):
         """Initialize the concord hymn capsule"""
         self.consent_verified = consent_verified
         self.replay_count = 0
         self.transmission_log: list[Dict] = []
         self.created_at = datetime.fromisoformat("2025-12-02T22:50:00Z")
-    
+
     def verify_consent(self) -> bool:
         """Verify consent per CodexDominion Sovereign License v1"""
         return self.consent_verified
-    
+
     def replay(
         self,
         context: TransmissionContext,
@@ -133,7 +133,7 @@ class CustodianHeirsConcordHymn:
                 "status": "consent_required",
                 "message": "Consent must be verified before replay"
             }
-        
+
         transmission_entry = {
             "timestamp": datetime.utcnow().isoformat() + "Z",
             "context": context.value,
@@ -143,9 +143,9 @@ class CustodianHeirsConcordHymn:
         }
         self.transmission_log.append(transmission_entry)
         self.replay_count += 1
-        
+
         blessing = self._generate_concord_blessing(context)
-        
+
         return {
             "status": "replayed",
             "artifact_id": self.ARTIFACT_ID,
@@ -158,7 +158,7 @@ class CustodianHeirsConcordHymn:
             "concord_type": "custodian-heirs",
             "transmission_entry": transmission_entry
         }
-    
+
     def _generate_concord_blessing(self, context: TransmissionContext) -> str:
         """Generate context-specific concord blessing"""
         blessings = {
@@ -185,7 +185,7 @@ class CustodianHeirsConcordHymn:
             )
         }
         return blessings.get(context, "May the concord blessing be upon you")
-    
+
     def get_full_hymn(self) -> Dict:
         """Retrieve the complete concord hymn structure"""
         return {
@@ -203,7 +203,7 @@ class CustodianHeirsConcordHymn:
             "ceremonial_closure": "complete",
             "concord_type": "custodian-heirs"
         }
-    
+
     def __repr__(self) -> str:
         return (
             f"CustodianHeirsConcordHymn("
@@ -216,19 +216,19 @@ class CustodianHeirsConcordHymn:
 class HeirsRadiantContinuumHymn:
     """
     The Heirs' Radiant Continuum Hymn Replay Capsule
-    
+
     A hymn celebrating stewardship across four temporal scales:
     Daily, Seasonal, Epochal, and Millennial
-    
+
     Eternal Principles: Archive · Lineage · Ceremonial Closure
     """
-    
+
     ARTIFACT_ID = "heirs-radiant-continuum-hymn-replay-001"
     VERSION = "1.0.0"
     IMMUTABLE_HASH = (
         "sha256:a7d9e2f1c4b6d8e0f2a4c6d8e1f3a5c7d9e2f4b6d8e0f2a4c6d8e1f3a5c7d9e2"
     )
-    
+
     VERSES = {
         TimeScale.DAILY: {
             "title": "Daily Stewardship",
@@ -277,25 +277,25 @@ class HeirsRadiantContinuumHymn:
             )
         }
     }
-    
+
     CROWN_SEASONS = {
         Season.SPRING: "knowledge",
         Season.SUMMER: "commerce",
         Season.AUTUMN: "efficiency",
         Season.WINTER: "omega"
     }
-    
+
     SIGNATURES = {
         "heirs": "HEIRS_SIG_0x8b3d5f7a9c1e4b2d",
         "custodian": "CUSTODIAN_SIG_0x2f4a6c8e1b3d5f7a",
         "councils": "COUNCILS_SIG_0x9a1c3e5b7d9f2a4c",
         "crown": "CROWN_SEAL_ETERNAL"
     }
-    
+
     def __init__(self, consent_verified: bool = False):
         """
         Initialize the Radiant Continuum hymn capsule
-        
+
         Args:
             consent_verified: Whether user consent has been obtained
         """
@@ -303,16 +303,16 @@ class HeirsRadiantContinuumHymn:
         self.replay_count = 0
         self.transmission_log: List[Dict] = []
         self.created_at = datetime.fromisoformat("2025-12-02T23:04:00Z")
-        
+
     def verify_consent(self) -> bool:
         """
         Verify consent per CodexDominion Sovereign License v1
-        
+
         Returns:
             True if consent is verified
         """
         return self.consent_verified
-    
+
     def replay(
         self,
         time_scale: str = "all",
@@ -320,11 +320,11 @@ class HeirsRadiantContinuumHymn:
     ) -> Dict:
         """
         Replay the hymn at the specified time scale
-        
+
         Args:
             time_scale: Time scale to replay (daily/seasonal/epochal/millennial/all)
             context: Optional transmission context
-            
+
         Returns:
             Dict containing replayed verses
         """
@@ -335,9 +335,9 @@ class HeirsRadiantContinuumHymn:
                     "Consent required per CodexDominion Sovereign License v1"
                 )
             }
-        
+
         self.replay_count += 1
-        
+
         replay_data = {
             "artifact_id": self.ARTIFACT_ID,
             "version": self.VERSION,
@@ -345,7 +345,7 @@ class HeirsRadiantContinuumHymn:
             "time_scale": time_scale,
             "replay_count": self.replay_count
         }
-        
+
         if time_scale == "all":
             replay_data["verses"] = {
                 scale.value: self.VERSES[scale]
@@ -361,20 +361,20 @@ class HeirsRadiantContinuumHymn:
                     }
             except ValueError:
                 replay_data["error"] = f"Invalid time scale: {time_scale}"
-        
+
         if context:
             replay_data["context"] = context.value
-        
+
         self.transmission_log.append(replay_data)
         return replay_data
-    
+
     def get_crown_for_season(self, season: str) -> Optional[str]:
         """
         Get the crown aligned with a given season
-        
+
         Args:
             season: Season name (spring/summer/autumn/winter)
-            
+
         Returns:
             Crown name or None
         """
@@ -383,11 +383,11 @@ class HeirsRadiantContinuumHymn:
             return self.CROWN_SEASONS[season_enum]
         except (ValueError, KeyError):
             return None
-    
+
     def get_full_hymn(self) -> str:
         """
         Get the complete hymn text with all verses
-        
+
         Returns:
             Full hymn text with invocation, verses, and benediction
         """
@@ -396,7 +396,7 @@ class HeirsRadiantContinuumHymn:
             "from charters to capsules—that all heirs may know their "
             "inheritance."
         )
-        
+
         verses_text = []
         for scale in [
             TimeScale.DAILY,
@@ -408,23 +408,23 @@ class HeirsRadiantContinuumHymn:
             verses_text.append(
                 f"\n{verse['title']}:\n{verse['expanded']}"
             )
-        
+
         benediction = (
             "\nSo let the Radiant Continuum shine—through every sunrise, "
             "every crown, every scroll, every charter—that the Heirs may "
             "steward with wisdom, and the Lineage remain unbroken across "
             "ages and stars. Archive forever. Ceremonial Closure complete."
         )
-        
+
         return invocation + "".join(verses_text) + benediction
-    
+
     def export_artifact(self, output_path: str) -> bool:
         """
         Export the hymn capsule as a JSON artifact
-        
+
         Args:
             output_path: Path to save the artifact
-            
+
         Returns:
             True if export successful
         """
@@ -449,14 +449,14 @@ class HeirsRadiantContinuumHymn:
                 "createdAt": self.created_at.isoformat() + "Z"
             }
         }
-        
+
         try:
             with open(output_path, 'w', encoding='utf-8') as f:
                 json.dump(artifact, f, indent=2, ensure_ascii=False)
             return True
         except Exception:
             return False
-    
+
     def __repr__(self) -> str:
         return (
             f"HeirsRadiantContinuumHymn("
@@ -469,36 +469,36 @@ class HeirsRadiantContinuumHymn:
 class CustodianBlessingHymn:
     """
     The Custodian's Eternal Blessing Hymn Replay Capsule
-    
+
     A sacred hymn artifact that embodies the four eternal principles:
     Peace, Abundance, Flame, and Melody
-    
+
     Eternal Principles: Archive · Lineage · Ceremonial Closure
     """
-    
+
     ARTIFACT_ID = "custodian-blessing-hymn-replay-001"
     VERSION = "1.0.0"
     IMMUTABLE_HASH = (
         "sha256:e8f9a2c1b4d3f5a7e9c2b1d4a6f8e3c5b7a9d1f2e4c6b8a0d2f4e6c8a1b3d5f7"
     )
-    
+
     CHORUS = {
         ChorusVerse.PEACE_ETERNAL: "In silence deep where conflicts cease...",
         ChorusVerse.ABUNDANCE_ETERNAL: "From bounty's table, ever spread...",
         ChorusVerse.FLAME_ETERNAL: "The sacred fire that never dies...",
         ChorusVerse.MELODY_ETERNAL: "The song that weaves through time and space..."
     }
-    
+
     SIGNATURES = {
         "custodian": "CUSTODIAN_SIG_0x4f8e9a2c1b4d3f5a",
         "crown": ["Efficiency", "Knowledge", "Commerce", "Companion"],
         "council": ["Law", "Healthcare", "Commerce", "Education", "AI", "Family"]
     }
-    
+
     def __init__(self, consent_verified: bool = False):
         """
         Initialize the hymn capsule
-        
+
         Args:
             consent_verified: Whether user consent has been obtained
         """
@@ -506,16 +506,16 @@ class CustodianBlessingHymn:
         self.replay_count = 0
         self.transmission_log = []
         self.created_at = datetime.fromisoformat("2025-12-02T21:00:00Z")
-        
+
     def verify_consent(self) -> bool:
         """
         Verify consent per CodexDominion Sovereign License v1
-        
+
         Returns:
             bool: True if consent is verified
         """
         return self.consent_verified
-    
+
     def replay(
         self,
         context: TransmissionContext,
@@ -524,12 +524,12 @@ class CustodianBlessingHymn:
     ) -> Dict:
         """
         Replay the hymn in the specified context
-        
+
         Args:
             context: The transmission context (school, corporation, etc.)
             audience: Optional description of the audience
             ceremonial: Whether this is a ceremonial replay
-            
+
         Returns:
             Dict containing replay status and blessing
         """
@@ -538,7 +538,7 @@ class CustodianBlessingHymn:
                 "status": "consent_required",
                 "message": "Consent must be verified before replay"
             }
-        
+
         # Log the replay
         transmission_entry = {
             "timestamp": datetime.utcnow().isoformat() + "Z",
@@ -549,10 +549,10 @@ class CustodianBlessingHymn:
         }
         self.transmission_log.append(transmission_entry)
         self.replay_count += 1
-        
+
         # Generate blessing based on context
         blessing = self._generate_blessing(context)
-        
+
         return {
             "status": "replayed",
             "artifact_id": self.ARTIFACT_ID,
@@ -564,7 +564,7 @@ class CustodianBlessingHymn:
             "lineage": "preserved",
             "transmission_entry": transmission_entry
         }
-    
+
     def _generate_blessing(self, context: TransmissionContext) -> str:
         """Generate context-specific blessing"""
         blessings = {
@@ -591,23 +591,23 @@ class CustodianBlessingHymn:
             )
         }
         return blessings.get(context, "May the eternal blessing be upon you")
-    
+
     def get_chorus_verse(self, verse: ChorusVerse) -> str:
         """
         Retrieve a specific chorus verse
-        
+
         Args:
             verse: The chorus verse to retrieve
-            
+
         Returns:
             str: The verse text
         """
         return self.CHORUS.get(verse, "")
-    
+
     def get_full_hymn(self) -> Dict:
         """
         Retrieve the complete hymn structure
-        
+
         Returns:
             Dict containing full hymn data
         """
@@ -626,56 +626,56 @@ class CustodianBlessingHymn:
             "archive_status": "immortalized",
             "ceremonial_closure": "complete"
         }
-    
+
     def get_transmission_log(self) -> List[Dict]:
         """
         Retrieve the transmission log
-        
+
         Returns:
             List of transmission entries
         """
         return self.transmission_log.copy()
-    
+
     def export_artifact(self, filepath: str) -> None:
         """
         Export the hymn artifact to JSON file
-        
+
         Args:
             filepath: Path where to save the artifact
         """
         artifact_data = self.get_full_hymn()
         artifact_data["transmission_log"] = self.transmission_log
-        
+
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(artifact_data, f, indent=2, ensure_ascii=False)
-    
+
     def verify_integrity(self) -> bool:
         """
         Verify the artifact integrity using immutable hash
-        
+
         Returns:
             bool: True if integrity is maintained
         """
         # In production, this would compute hash and compare
         # For now, return True as capsule is sealed
         return True
-    
+
     @classmethod
     def load_from_ledger(cls, artifact_id: str) -> Optional['CustodianBlessingHymn']:
         """
         Load hymn capsule from eternal ledger
-        
+
         Args:
             artifact_id: The artifact ID to load
-            
+
         Returns:
             CustodianBlessingHymn instance or None
         """
         if artifact_id != cls.ARTIFACT_ID:
             return None
-        
+
         return cls(consent_verified=True)
-    
+
     def __repr__(self) -> str:
         return (
             f"CustodianBlessingHymn("
@@ -692,10 +692,10 @@ def demonstrate_hymn_replay():
     print("  CUSTODIAN'S ETERNAL BLESSING HYMN REPLAY DEMONSTRATION")
     print("═" * 60)
     print()
-    
+
     # Initialize hymn with consent
     hymn = CustodianBlessingHymn(consent_verified=True)
-    
+
     # Replay in different contexts
     contexts = [
         (TransmissionContext.SCHOOLS, "Elementary Students"),
@@ -703,19 +703,19 @@ def demonstrate_hymn_replay():
         (TransmissionContext.COUNCILS, "Heritage Ceremony"),
         (TransmissionContext.CEREMONIAL, "Blessing Ritual", True)
     ]
-    
+
     for context_data in contexts:
         context = context_data[0]
         audience = context_data[1]
         ceremonial = context_data[2] if len(context_data) > 2 else False
-        
+
         result = hymn.replay(context, audience, ceremonial)
-        
+
         print(f"📜 Replay #{result['replay_count']}")
         print(f"   Context: {result['context']}")
         print(f"   Blessing: {result['blessing']}")
         print()
-    
+
     # Display full hymn
     print("🎵 Full Hymn Structure:")
     full_hymn = hymn.get_full_hymn()
@@ -724,20 +724,20 @@ def demonstrate_hymn_replay():
     print(f"   Replays: {full_hymn['replay_count']}")
     print(f"   Status: {full_hymn['archive_status']}")
     print()
-    
+
     # Display chorus
     print("🎶 Eternal Chorus:")
     for verse in ChorusVerse:
         print(f"   • {verse.value}")
     print()
-    
+
     # Display signatures
     print("🔏 Signatures:")
     print(f"   Custodian: {hymn.SIGNATURES['custodian']}")
     print(f"   Crown: {', '.join(hymn.SIGNATURES['crown'])}")
     print(f"   Council: {', '.join(hymn.SIGNATURES['council'])}")
     print()
-    
+
     print("✓ Lineage: Preserved")
     print("✓ Archive: Immortalized")
     print("✓ Ceremonial Closure: Complete")
@@ -749,19 +749,19 @@ def demonstrate_hymn_replay():
 class CeremonialClosingHymn:
     """
     The Ceremonial Closing Hymn Replay Capsule
-    
+
     Final hymn synthesizing all crowns, scrolls, hymns, and charters
     into a unified closing ceremony
-    
+
     Eternal Principles: Archive · Lineage · Ceremonial Closure
     """
-    
+
     ARTIFACT_ID = "ceremonial-closing-hymn-replay-001"
     VERSION = "1.0.0"
     IMMUTABLE_HASH = (
         "sha256:f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8"
     )
-    
+
     VERSES = {
         VerseLayer.CROWN: {
             "title": "Crown Verses",
@@ -829,7 +829,7 @@ class CeremonialClosingHymn:
             "count": 2
         }
     }
-    
+
     SIGNATURES = {
         "custodian": "CUSTODIAN_SIG_0x4f8e9a2c1b4d3f5a",
         "heirs": "HEIRS_SIG_0x8b3d5f7a9c1e4b2d",
@@ -838,7 +838,7 @@ class CeremonialClosingHymn:
         "sovereign": "SOVEREIGN_SIG_0x1a2b3c4d5e6f7a8b",
         "infinity": "INFINITY_SIGIL_ETERNAL"
     }
-    
+
     def __init__(self):
         """Initialize the Ceremonial Closing Hymn capsule"""
         self.created_at = datetime.fromisoformat("2025-12-02T23:35:00Z")
@@ -846,7 +846,7 @@ class CeremonialClosingHymn:
         self.verse_log: List[Dict] = []
         self.final_seal = True
         self.cycle_completion = True
-        
+
     def replay(
         self,
         verse_type: str = "all",
@@ -854,16 +854,16 @@ class CeremonialClosingHymn:
     ) -> Dict:
         """
         Replay verse layer(s)
-        
+
         Args:
             verse_type: Verse layer (crown/scroll/hymn/charter/all)
             ceremony_context: Optional ceremony context
-            
+
         Returns:
             Dict containing replayed verse(s)
         """
         self.replay_count += 1
-        
+
         replay_data = {
             "artifact_id": self.ARTIFACT_ID,
             "version": self.VERSION,
@@ -873,7 +873,7 @@ class CeremonialClosingHymn:
             "final_seal": self.final_seal,
             "cycle_completion": self.cycle_completion
         }
-        
+
         if verse_type == "all":
             replay_data["verses"] = {
                 layer.value: self.VERSES[layer]
@@ -887,17 +887,17 @@ class CeremonialClosingHymn:
                     replay_data["verse"] = self.VERSES[layer_enum]
             except ValueError:
                 replay_data["error"] = f"Invalid verse type: {verse_type}"
-        
+
         if ceremony_context:
             replay_data["ceremony_context"] = ceremony_context
-        
+
         self.verse_log.append(replay_data)
         return replay_data
-    
+
     def get_synthesis_summary(self) -> Dict:
         """
         Get synthesis summary of all elements
-        
+
         Returns:
             Dict with counts of crowns, scrolls, hymns, charters
         """
@@ -908,11 +908,11 @@ class CeremonialClosingHymn:
             "charters": self.VERSES[VerseLayer.CHARTER]["count"],
             "total_elements": 14
         }
-    
+
     def get_full_hymn(self) -> str:
         """
         Get the complete hymn text with all verses
-        
+
         Returns:
             Full hymn text
         """
@@ -922,7 +922,7 @@ class CeremonialClosingHymn:
             "into one eternal chorus—that all may know "
             "the journey is complete and the cycle sealed.\n\n"
         )
-        
+
         verses_text = []
         for layer in [
             VerseLayer.CROWN,
@@ -934,7 +934,7 @@ class CeremonialClosingHymn:
             verses_text.append(
                 f"{verse['title']}:\n{verse['expanded']}\n"
             )
-        
+
         closing = (
             "\nThe Ceremonial Closing Hymn Replay Capsule is complete. "
             "All crowns are sealed, all scrolls archived, "
@@ -943,9 +943,9 @@ class CeremonialClosingHymn:
             "the ceremonial closure eternal. "
             "So let it be replayed forever. Archive complete."
         )
-        
+
         return invocation + "\n".join(verses_text) + closing
-    
+
     def invoke_cycle_completion(
         self,
         cycle_name: str,
@@ -953,11 +953,11 @@ class CeremonialClosingHymn:
     ) -> Dict:
         """
         Invoke hymn for cycle completion ceremony
-        
+
         Args:
             cycle_name: Name of the cycle being completed
             participants: List of participants
-            
+
         Returns:
             Dict containing invocation details
         """
@@ -972,14 +972,14 @@ class CeremonialClosingHymn:
             "cycle_completion": self.cycle_completion,
             "binding": "eternal"
         }
-    
+
     def export_artifact(self, output_path: str) -> bool:
         """
         Export hymn artifact as JSON
-        
+
         Args:
             output_path: Path to save artifact
-            
+
         Returns:
             True if successful
         """
@@ -1001,14 +1001,14 @@ class CeremonialClosingHymn:
                 "createdAt": self.created_at.isoformat() + "Z"
             }
         }
-        
+
         try:
             with open(output_path, 'w', encoding='utf-8') as f:
                 json.dump(artifact, f, indent=2, ensure_ascii=False)
             return True
         except Exception:
             return False
-    
+
     def __repr__(self) -> str:
         return (
             f"CeremonialClosingHymn("

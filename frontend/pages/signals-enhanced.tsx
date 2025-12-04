@@ -1,5 +1,6 @@
 // pages/signals-enhanced.tsx
 import { useEffect, useState } from 'react';
+import { GetServerSideProps } from 'next';
 import { SignalsCard } from '../components/SignalsCard';
 import { TierSummary } from '../components/TierSummary';
 import { useCodexSignals, SignalsSnapshot } from '../utils/api';
@@ -204,9 +205,7 @@ export default function SignalsEnhancedPage() {
   );
 }
 
-// Disable static generation since we fetch data client-side
-export async function getServerSideProps() {
-  return {
-    props: {},
-  };
-}
+// Force server-side rendering to avoid static generation with React hooks
+export const getServerSideProps: GetServerSideProps = async () => {
+  return { props: {} };
+};

@@ -643,11 +643,11 @@ Examples:
   python codex_unified_launcher.py treasury summary --days 30
   python codex_unified_launcher.py treasury ingest --stream affiliate --order-id A123 --amount 49.99
   python codex_unified_launcher.py treasury list --limit 10
-  
+
   # Dawn dispatch operations
   python codex_unified_launcher.py dawn dispatch --proclamation "Custom message"
   python codex_unified_launcher.py dawn status
-  
+
   # System operations
   python codex_unified_launcher.py status
   python codex_unified_launcher.py report

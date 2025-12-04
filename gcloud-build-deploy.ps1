@@ -34,7 +34,7 @@ $currentProject = gcloud config get-value project 2>$null
 if ($currentProject -and $currentProject -ne "(unset)") {
     Write-Host "📊 Current project: $currentProject" -ForegroundColor Green
     $useCurrentProject = Read-Host "Use current project '$currentProject'? (y/n)"
-    
+
     if ($useCurrentProject -eq "n") {
         $PROJECT_ID = Read-Host "Enter your Google Cloud Project ID"
         gcloud config set project $PROJECT_ID
@@ -89,7 +89,7 @@ if (Test-Path "Dockerfile") {
     Write-Host "✅ Dockerfile found" -ForegroundColor Green
 } else {
     Write-Host "❌ Dockerfile not found! Creating one..." -ForegroundColor Red
-    
+
     # Create a basic Dockerfile
     $dockerfileContent = @"
 FROM python:3.11-slim
@@ -115,7 +115,7 @@ HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 # Run the application
 CMD ["streamlit", "run", "codex_dashboard.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true"]
 "@
-    
+
     $dockerfileContent | Out-File -FilePath "Dockerfile" -Encoding UTF8
     Write-Host "✅ Dockerfile created" -ForegroundColor Green
 }
@@ -143,16 +143,16 @@ gcloud builds submit --config=cloudbuild.yaml --substitutions=_PROJECT_ID=$PROJE
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "✅ Cloud Build completed successfully!" -ForegroundColor Green
-    
+
     # Get the service URL
     Write-Host ""
     Write-Host "🌐 === DEPLOYMENT INFO ===" -ForegroundColor Cyan
-    
+
     try {
         $serviceUrl = gcloud run services describe codex-dashboard --region=us-central1 --format="value(status.url)" 2>$null
         if ($serviceUrl) {
             Write-Host "🔗 Service URL: $serviceUrl" -ForegroundColor Green
-            
+
             # Test the deployment
             Write-Host "🧪 Testing deployment..." -ForegroundColor Yellow
             try {
@@ -169,7 +169,7 @@ if ($LASTEXITCODE -eq 0) {
     } catch {
         Write-Host "ℹ️ Service URL will be available once deployment completes" -ForegroundColor Cyan
     }
-    
+
 } else {
     Write-Host "❌ Cloud Build failed!" -ForegroundColor Red
     Write-Host "🔍 Check the build logs in Google Cloud Console:" -ForegroundColor Yellow

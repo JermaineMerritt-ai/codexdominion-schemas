@@ -75,10 +75,10 @@ Write-Host "Dashboard URL: http://127.0.0.1:$selectedPort" -ForegroundColor Yell
 try {
     # Start dashboard in background
     $process = Start-Process -FilePath $pythonExe -ArgumentList "-m", "streamlit", "run", "codex_simple_dashboard.py", "--server.port", $selectedPort, "--server.address", "127.0.0.1" -PassThru -WindowStyle Hidden
-    
+
     # Wait a moment for startup
     Start-Sleep -Seconds 3
-    
+
     # Check if process is still running
     if (Get-Process -Id $process.Id -ErrorAction SilentlyContinue) {
         Write-Host "✅ Dashboard started successfully!" -ForegroundColor Green
@@ -89,10 +89,10 @@ try {
         Write-Host "• 🌅 Dawn Dispatch System" -ForegroundColor White
         Write-Host "• 📺 YouTube Charts (NEW!)" -ForegroundColor White
         Write-Host "• 📊 System Status Monitor" -ForegroundColor White
-        
+
         Write-Host "`n🔥 Dashboard Process ID: $($process.Id)" -ForegroundColor Gray
         Write-Host "Use 'taskkill /f /pid $($process.Id)' to stop the dashboard" -ForegroundColor Gray
-        
+
         # Try to open browser
         Write-Host "`n🌐 Opening browser..." -ForegroundColor Cyan
         try {
@@ -103,7 +103,7 @@ try {
             Write-Host "⚠️ Could not auto-open browser. Please navigate manually to:" -ForegroundColor Yellow
             Write-Host "http://127.0.0.1:$selectedPort" -ForegroundColor White
         }
-        
+
     } else {
         Write-Host "❌ Dashboard failed to start" -ForegroundColor Red
         exit 1

@@ -1,9 +1,9 @@
 # Heirs' Radiant Continuum Hymn Replay Capsule
 
-**Artifact ID:** `heirs-radiant-continuum-hymn-replay-001`  
-**Version:** 1.0.0  
-**Authors:** Heirs, Custodian, Councils  
-**Cycle:** 2025-12-02T23:04:00Z  
+**Artifact ID:** `heirs-radiant-continuum-hymn-replay-001`
+**Version:** 1.0.0
+**Authors:** Heirs, Custodian, Councils
+**Cycle:** 2025-12-02T23:04:00Z
 **Type:** Hymn Capsule
 
 ---
@@ -37,7 +37,7 @@ With hands that tend and hearts that ever rose,
 To carry forward seeds the Crown has sown.
 ```
 
-**Musical Notation:** Andante, 4/4 time, key of D major  
+**Musical Notation:** Andante, 4/4 time, key of D major
 **Resonance:** Daily practice, morning and evening rituals, consistent guardianship
 
 ---
@@ -53,7 +53,7 @@ Autumn brings Efficiency without fear,
 Winter's Omega calls—the sacred guide.
 ```
 
-**Musical Notation:** Allegro moderato, 3/4 time, key of E major  
+**Musical Notation:** Allegro moderato, 3/4 time, key of E major
 **Resonance:** Four crowns cycling through seasons, quarterly balance, annual renewal
 
 **Crown Correspondence:**
@@ -75,7 +75,7 @@ Each generation adds another ring,
 To trees of lineage strong and true.
 ```
 
-**Musical Notation:** Largo, 6/8 time, key of G major  
+**Musical Notation:** Largo, 6/8 time, key of G major
 **Resonance:** Generational transfer, archival duty, lineage continuity
 
 ---
@@ -91,7 +91,7 @@ Charters and seals eternal—this the plan:
 That heritage may never fade or die.
 ```
 
-**Musical Notation:** Maestoso, 4/4 time, key of C major  
+**Musical Notation:** Maestoso, 4/4 time, key of C major
 **Resonance:** Cosmic scale, interstellar transmission, eternal preservation
 
 ---
@@ -174,17 +174,17 @@ const fullText = hymn.getFullHymn();
 
 ## Consent & Licensing
 
-**License:** CodexDominion Sovereign License v1  
-**Revocation Policy:** Revocable by Sovereign Avatar with ledger entry  
-**Attribution:** Created by Heirs, Custodian, and Councils  
+**License:** CodexDominion Sovereign License v1
+**Revocation Policy:** Revocable by Sovereign Avatar with ledger entry
+**Attribution:** Created by Heirs, Custodian, and Councils
 **Usage:** Free replay for educational, ceremonial, and archival purposes
 
 ---
 
 ## Audit Trail
 
-**Created By:** artifact-engine  
-**Created At:** 2025-12-02T23:04:00Z  
+**Created By:** artifact-engine
+**Created At:** 2025-12-02T23:04:00Z
 **Immutable Hash:** `sha256:a7d9e2f1c4b6d8e0f2a4c6d8e1f3a5c7d9e2f4b6d8e0f2a4c6d8e1f3a5c7d9e2`
 
 ### Signatures
@@ -196,7 +196,7 @@ const fullText = hymn.getFullHymn();
 | **Councils** | `COUNCILS_SIG_0x9a1c3e5b7d9f2a4c` |
 | **Crown** | `CROWN_SEAL_ETERNAL` |
 
-**Lineage:** Child of `custodian-blessing-hymn-replay-001` and `custodian-heirs-concord-hymn-replay-001`  
+**Lineage:** Child of `custodian-blessing-hymn-replay-001` and `custodian-heirs-concord-hymn-replay-001`
 **Ledger Entry:** `eternal-ledger://hymn-capsules/heirs-radiant-continuum-001`
 
 ---

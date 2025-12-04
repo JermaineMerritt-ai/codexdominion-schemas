@@ -73,7 +73,7 @@ class CapsuleDatabase:
             result = conn.execute(
                 sqlalchemy.text(
                     """
-                    INSERT INTO capsule_runs 
+                    INSERT INTO capsule_runs
                     (capsule_slug, actor, artifact_uri, checksum, status, execution_data)
                     VALUES (:capsule_slug, :actor, :artifact_uri, :checksum, :status, :execution_data)
                     RETURNING id
@@ -114,11 +114,11 @@ class CapsuleDatabase:
         with self.get_connection() as conn:
             if capsule_slug:
                 query = """
-                    SELECT id, capsule_slug, actor, status, artifact_uri, checksum, 
+                    SELECT id, capsule_slug, actor, status, artifact_uri, checksum,
                            executed_at, execution_data
-                    FROM capsule_runs 
+                    FROM capsule_runs
                     WHERE capsule_slug = :capsule_slug
-                    ORDER BY executed_at DESC 
+                    ORDER BY executed_at DESC
                     LIMIT :limit
                 """
                 params = {"capsule_slug": capsule_slug, "limit": limit}
@@ -126,8 +126,8 @@ class CapsuleDatabase:
                 query = """
                     SELECT id, capsule_slug, actor, status, artifact_uri, checksum,
                            executed_at, execution_data
-                    FROM capsule_runs 
-                    ORDER BY executed_at DESC 
+                    FROM capsule_runs
+                    ORDER BY executed_at DESC
                     LIMIT :limit
                 """
                 params = {"limit": limit}
@@ -158,13 +158,13 @@ class CapsuleDatabase:
             result = conn.execute(
                 sqlalchemy.text(
                     """
-                SELECT 
+                SELECT
                     capsule_slug,
                     COUNT(*) as total_runs,
                     COUNT(CASE WHEN status = 'success' THEN 1 END) as successful_runs,
                     COUNT(CASE WHEN status = 'error' THEN 1 END) as failed_runs,
                     MAX(executed_at) as last_execution
-                FROM capsule_runs 
+                FROM capsule_runs
                 GROUP BY capsule_slug
                 ORDER BY last_execution DESC
             """
@@ -185,7 +185,7 @@ class CapsuleDatabase:
             overall_result = conn.execute(
                 sqlalchemy.text(
                     """
-                SELECT 
+                SELECT
                     COUNT(*) as total_runs,
                     COUNT(DISTINCT capsule_slug) as active_capsules,
                     COUNT(CASE WHEN status = 'success' THEN 1 END) as successful_runs,

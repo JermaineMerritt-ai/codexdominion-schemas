@@ -1,6 +1,6 @@
 /**
  * 🔒 Cybersecurity Agent - Industry-Specific Autonomous Agent
- * 
+ *
  * Specialized AI agent for cybersecurity:
  * - Threat detection and analysis
  * - Vulnerability scanning
@@ -56,7 +56,7 @@ export class CybersecurityAgent {
   }> {
     // Simulate traffic monitoring
     const suspiciousPatterns = ['DROP TABLE', 'SELECT * FROM', '<script>', 'eval('];
-    const isThreat = suspiciousPatterns.some(pattern => 
+    const isThreat = suspiciousPatterns.some(pattern =>
       trafficData.payload.includes(pattern)
     );
 
@@ -161,7 +161,7 @@ export class CybersecurityAgent {
     return {
       anomalies,
       riskLevel,
-      recommendedActions: anomalies.length > 0 
+      recommendedActions: anomalies.length > 0
         ? ['Enable rate limiting', 'Investigate error sources', 'Scale up resources']
         : []
     };

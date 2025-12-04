@@ -11,29 +11,29 @@ try {
     # Create self-signed certificate
     $domains = @("aistorelab.com", "www.aistorelab.com", "localhost")
     $cert = New-SelfSignedCertificate -DnsName $domains -CertStoreLocation "Cert:\CurrentUser\My" -NotAfter (Get-Date).AddDays(365)
-    
+
     # Export certificate files
     $pfxPath = Join-Path $sslPath "aistorelab.com.pfx"
     $certPath = Join-Path $sslPath "aistorelab.com.crt"
     $password = "aistorelab2025"
-    
+
     # Export PFX
     $securePassword = ConvertTo-SecureString -String $password -Force -AsPlainText
     Export-PfxCertificate -Cert $cert -FilePath $pfxPath -Password $securePassword | Out-Null
-    
+
     # Export CRT
     $certBytes = $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert)
     $certBase64 = [Convert]::ToBase64String($certBytes, 1)
     $certPem = "-----BEGIN CERTIFICATE-----`n$certBase64`n-----END CERTIFICATE-----"
     Set-Content -Path $certPath -Value $certPem
-    
+
     Write-Host ""
     Write-Host "SSL CERTIFICATE CREATED SUCCESSFULLY!" -ForegroundColor Green
     Write-Host "Certificate: $certPath" -ForegroundColor White
-    Write-Host "PFX File: $pfxPath" -ForegroundColor White  
+    Write-Host "PFX File: $pfxPath" -ForegroundColor White
     Write-Host "Password: $password" -ForegroundColor Yellow
     Write-Host "Domains: aistorelab.com, www.aistorelab.com" -ForegroundColor White
-    
+
 } catch {
     Write-Host "Certificate creation failed: $($_.Exception.Message)" -ForegroundColor Red
 }

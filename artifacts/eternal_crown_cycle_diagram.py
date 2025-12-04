@@ -27,14 +27,14 @@ plt.rcParams['font.serif'] = ['Palatino', 'Georgia', 'Times New Roman']
 
 def create_eternal_crown_cycle():
     """Generate the complete Eternal Crown Cycle celestial diagram."""
-    
+
     # Create figure with deep space background
     fig, ax = plt.subplots(figsize=(20, 20))
     ax.set_xlim(-10, 10)
     ax.set_ylim(-10, 10)
     ax.set_aspect('equal')
     ax.axis('off')
-    
+
     # Deep space background with gradient
     background = patches.Rectangle(
         (-10, -10), 20, 20,
@@ -43,16 +43,16 @@ def create_eternal_crown_cycle():
         zorder=0
     )
     ax.add_patch(background)
-    
+
     # Add nebulae effects (multiple color clouds)
     add_nebulae(ax)
-    
+
     # Add distant stars
     add_stars(ax, count=200)
-    
+
     # Central Infinity Sigil (glowing)
     draw_infinity_sigil(ax, center=(0, 0), scale=1.5)
-    
+
     # Crown Pillars orbiting in succession
     crown_pillars = [
         {"name": "Efficiency Crown", "angle": 0, "color": "#FFD700", "symbol": "⚡"},
@@ -61,27 +61,27 @@ def create_eternal_crown_cycle():
         {"name": "Justice Crown", "angle": 216, "color": "#DC143C", "symbol": "⚖️"},
         {"name": "Heritage Crown", "angle": 288, "color": "#9370DB", "symbol": "🏛️"}
     ]
-    
+
     draw_crown_pillars(ax, crown_pillars, orbit_radius=5)
-    
+
     # Council Rings harmonizing in radiant spirals
     council_rings = [
         {"name": "Inner Council", "radius": 3, "color": "#FF69B4", "thickness": 0.15},
         {"name": "Middle Council", "radius": 4, "color": "#00CED1", "thickness": 0.12},
         {"name": "Outer Council", "radius": 6.5, "color": "#FFD700", "thickness": 0.1}
     ]
-    
+
     draw_council_rings(ax, council_rings)
-    
+
     # Cosmic Archive as rebirth node (at top)
     draw_cosmic_archive(ax, position=(0, 8), scale=1.2)
-    
+
     # Add mystical glyphs around the perimeter
     add_mystical_glyphs(ax, radius=9)
-    
+
     # Add energy connections between elements
     draw_energy_connections(ax, crown_pillars, orbit_radius=5)
-    
+
     # Title and metadata
     title = ax.text(
         0, -9.2,
@@ -97,7 +97,7 @@ def create_eternal_crown_cycle():
         path_effects.withStroke(linewidth=3, foreground='#FF4500'),
         path_effects.Normal()
     ])
-    
+
     subtitle = ax.text(
         0, -9.7,
         'Celestial Harmony • Cosmic Sovereignty • Eternal Replay',
@@ -108,7 +108,7 @@ def create_eternal_crown_cycle():
         color='#87CEEB',
         family='serif'
     )
-    
+
     # Add metadata footer
     date_str = datetime.now().strftime("%B %d, %Y")
     footer = ax.text(
@@ -121,7 +121,7 @@ def create_eternal_crown_cycle():
         alpha=0.7,
         family='serif'
     )
-    
+
     return fig
 
 def add_nebulae(ax):
@@ -132,7 +132,7 @@ def add_nebulae(ax):
         {"center": (7, 4), "radius": 2.5, "color": "#191970", "alpha": 0.18},
         {"center": (-5, -4), "radius": 2.8, "color": "#483D8B", "alpha": 0.14},
     ]
-    
+
     for nebula in nebulae_specs:
         circle = Circle(
             nebula["center"],
@@ -151,7 +151,7 @@ def add_stars(ax, count=200):
     y_coords = np.random.uniform(-10, 10, count)
     sizes = np.random.uniform(0.5, 3, count)
     alphas = np.random.uniform(0.3, 1.0, count)
-    
+
     for x, y, size, alpha in zip(x_coords, y_coords, sizes, alphas):
         star = Circle(
             (x, y),
@@ -166,12 +166,12 @@ def add_stars(ax, count=200):
 def draw_infinity_sigil(ax, center, scale=1.0):
     """Draw glowing infinity symbol at center."""
     x_c, y_c = center
-    
+
     # Create infinity symbol using parametric equations
     t = np.linspace(0, 2 * np.pi, 200)
     x = scale * np.sin(t) / (1 + np.cos(t)**2)
     y = scale * np.sin(t) * np.cos(t) / (1 + np.cos(t)**2)
-    
+
     # Multiple layers for glow effect
     for width, alpha, color in [
         (0.4, 0.2, '#FFD700'),
@@ -188,7 +188,7 @@ def draw_infinity_sigil(ax, center, scale=1.0):
             solid_capstyle='round',
             zorder=10
         )
-    
+
     # Add central glow sphere
     for radius, alpha in [(0.3, 0.3), (0.2, 0.5), (0.1, 0.8)]:
         circle = Circle(
@@ -207,7 +207,7 @@ def draw_crown_pillars(ax, pillars, orbit_radius):
         angle_rad = np.radians(pillar["angle"])
         x = orbit_radius * np.cos(angle_rad)
         y = orbit_radius * np.sin(angle_rad)
-        
+
         # Outer glow
         for r, alpha in [(0.6, 0.2), (0.4, 0.4), (0.3, 0.6)]:
             glow = Circle(
@@ -219,7 +219,7 @@ def draw_crown_pillars(ax, pillars, orbit_radius):
                 zorder=15
             )
             ax.add_patch(glow)
-        
+
         # Crown pillar circle
         crown_circle = Circle(
             (x, y),
@@ -231,7 +231,7 @@ def draw_crown_pillars(ax, pillars, orbit_radius):
             zorder=20
         )
         ax.add_patch(crown_circle)
-        
+
         # Symbol
         symbol_text = ax.text(
             x, y,
@@ -242,12 +242,12 @@ def draw_crown_pillars(ax, pillars, orbit_radius):
             color='#FFFFFF',
             zorder=21
         )
-        
+
         # Label (outside the orbit)
         label_radius = orbit_radius + 1.2
         label_x = label_radius * np.cos(angle_rad)
         label_y = label_radius * np.sin(angle_rad)
-        
+
         label = ax.text(
             label_x, label_y,
             pillar["name"],
@@ -281,7 +281,7 @@ def draw_council_rings(ax, rings):
             zorder=8
         )
         ax.add_patch(circle)
-        
+
         # Add glow effect
         glow_circle = Circle(
             (0, 0),
@@ -293,14 +293,14 @@ def draw_council_rings(ax, rings):
             zorder=7
         )
         ax.add_patch(glow_circle)
-        
+
         # Add spiral energy points
         num_points = 12
         angles = np.linspace(0, 2 * np.pi, num_points, endpoint=False)
         for angle in angles:
             x = ring["radius"] * np.cos(angle)
             y = ring["radius"] * np.sin(angle)
-            
+
             energy_point = Circle(
                 (x, y),
                 0.08,
@@ -315,7 +315,7 @@ def draw_council_rings(ax, rings):
 def draw_cosmic_archive(ax, position, scale=1.0):
     """Draw the Cosmic Archive as rebirth node."""
     x, y = position
-    
+
     # Large glowing sphere
     for radius, alpha, color in [
         (0.8 * scale, 0.1, '#9370DB'),
@@ -332,7 +332,7 @@ def draw_cosmic_archive(ax, position, scale=1.0):
             zorder=25
         )
         ax.add_patch(circle)
-    
+
     # Archive symbol
     archive_text = ax.text(
         x, y,
@@ -347,7 +347,7 @@ def draw_cosmic_archive(ax, position, scale=1.0):
     archive_text.set_path_effects([
         path_effects.withStroke(linewidth=2, foreground='#FFD700')
     ])
-    
+
     # Label
     label = ax.text(
         x, y - 1.2,
@@ -372,11 +372,11 @@ def add_mystical_glyphs(ax, radius):
     glyphs = ['◈', '◆', '◇', '◉', '○', '●', '◐', '◑', '◒', '◓', '☆', '★']
     num_glyphs = len(glyphs)
     angles = np.linspace(0, 2 * np.pi, num_glyphs, endpoint=False)
-    
+
     for angle, glyph in zip(angles, glyphs):
         x = radius * np.cos(angle)
         y = radius * np.sin(angle)
-        
+
         glyph_text = ax.text(
             x, y,
             glyph,
@@ -392,17 +392,17 @@ def add_mystical_glyphs(ax, radius):
 def draw_energy_connections(ax, pillars, orbit_radius):
     """Draw energy connections between crown pillars."""
     num_pillars = len(pillars)
-    
+
     for i in range(num_pillars):
         for j in range(i + 1, num_pillars):
             angle1 = np.radians(pillars[i]["angle"])
             angle2 = np.radians(pillars[j]["angle"])
-            
+
             x1 = orbit_radius * np.cos(angle1)
             y1 = orbit_radius * np.sin(angle1)
             x2 = orbit_radius * np.cos(angle2)
             y2 = orbit_radius * np.sin(angle2)
-            
+
             # Draw connection line with fade effect
             ax.plot(
                 [x1, x2],
@@ -418,20 +418,20 @@ def main():
     """Generate and save the Eternal Crown Cycle diagram."""
     print("🔥 Generating Eternal Crown Cycle Celestial Diagram...")
     print("⏳ Rendering high-resolution mystical visualization...")
-    
+
     # Create the diagram
     fig = create_eternal_crown_cycle()
-    
+
     # Save in multiple formats
     output_dir = "artifacts"
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    
+
     formats = {
         "png": {"dpi": 300, "transparent": False},
         "pdf": {"dpi": 300},
         "svg": {}
     }
-    
+
     saved_files = []
     for fmt, kwargs in formats.items():
         filename = f"{output_dir}/eternal_crown_cycle_diagram_{timestamp}.{fmt}"
@@ -444,7 +444,7 @@ def main():
         )
         saved_files.append(filename)
         print(f"✅ Saved: {filename}")
-    
+
     print("\n🎨 Diagram Generation Complete!")
     print("\n📊 Diagram Features:")
     print("   ∞ Infinity Sigil - Glowing at center")
@@ -460,7 +460,7 @@ def main():
     print("\n🖼️ Files saved to:")
     for file in saved_files:
         print(f"   📄 {file}")
-    
+
     # Display the diagram
     plt.show()
 

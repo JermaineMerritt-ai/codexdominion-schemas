@@ -409,7 +409,7 @@ def learning_avatar_sidebar(cosmic_data):
 
     st.sidebar.markdown(
         """
-    <div style="background: linear-gradient(45deg, rgba(255,215,0,0.3), rgba(138,43,226,0.2)); 
+    <div style="background: linear-gradient(45deg, rgba(255,215,0,0.3), rgba(138,43,226,0.2));
                 border: 2px solid #ffd700; border-radius: 15px; padding: 20px; margin: 10px 0;">
         <h2>✨ Codex Learning Avatar</h2>
         <p><em>Your Personal Sovereignty Guide</em></p>
@@ -421,7 +421,7 @@ def learning_avatar_sidebar(cosmic_data):
     # Avatar visualization (placeholder for actual image)
     st.sidebar.markdown(
         """
-    <div style="text-align: center; padding: 20px; background: rgba(255,215,0,0.1); 
+    <div style="text-align: center; padding: 20px; background: rgba(255,215,0,0.1);
                 border-radius: 10px; margin: 10px 0;">
         <div style="font-size: 4em;">🧙‍♂️</div>
         <p><strong>Jermaine Avatar</strong></p>
@@ -457,9 +457,9 @@ def learning_avatar_sidebar(cosmic_data):
     st.sidebar.markdown(
         f"""
     **{greeting}, Custodian Jermaine!**
-    
+
     I am your dedicated learning companion, here to guide you through the sacred mysteries of digital sovereignty.
-    
+
     **🌟 Today's Wisdom:** {time_wisdom}
     """
     )
@@ -548,7 +548,7 @@ def learning_avatar_sidebar(cosmic_data):
             if chat["role"] == "user":
                 st.markdown(
                     f"""
-                <div style="background: rgba(255,255,255,0.1); padding: 8px; margin: 4px 0; 
+                <div style="background: rgba(255,255,255,0.1); padding: 8px; margin: 4px 0;
                             border-radius: 8px; border-left: 3px solid #4169e1;">
                     <strong>You:</strong> {chat['message'][:100]}{'...' if len(chat['message']) > 100 else ''}
                 </div>
@@ -558,7 +558,7 @@ def learning_avatar_sidebar(cosmic_data):
             else:
                 st.markdown(
                     f"""
-                <div style="background: rgba(255,215,0,0.1); padding: 8px; margin: 4px 0; 
+                <div style="background: rgba(255,215,0,0.1); padding: 8px; margin: 4px 0;
                             border-radius: 8px; border-left: 3px solid #ffd700;">
                     <strong>🧙‍♂️ Jermaine:</strong> {chat['message'][:100]}{'...' if len(chat['message']) > 100 else ''}
                 </div>
@@ -701,7 +701,7 @@ def learning_avatar_interface():
                     if chat["role"] == "user":
                         st.markdown(
                             f"""
-                        <div style="background: rgba(65,105,225,0.2); padding: 15px; margin: 10px 0; 
+                        <div style="background: rgba(65,105,225,0.2); padding: 15px; margin: 10px 0;
                                     border-radius: 15px; border-left: 4px solid #4169e1; margin-left: 50px;">
                             <strong>🙋‍♂️ You:</strong><br>
                             {chat['message']}
@@ -712,7 +712,7 @@ def learning_avatar_interface():
                     else:
                         st.markdown(
                             f"""
-                        <div style="background: rgba(255,215,0,0.2); padding: 15px; margin: 10px 0; 
+                        <div style="background: rgba(255,215,0,0.2); padding: 15px; margin: 10px 0;
                                     border-radius: 15px; border-left: 4px solid #ffd700; margin-right: 50px;">
                             <strong>🧙‍♂️ Jermaine:</strong><br>
                             {chat['message']}

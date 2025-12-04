@@ -41,7 +41,7 @@ def custodian_view(cosmic_data):
 
     st.markdown(
         """
-    <div style="background: linear-gradient(45deg, rgba(255,215,0,0.2), rgba(255,107,53,0.15)); 
+    <div style="background: linear-gradient(45deg, rgba(255,215,0,0.2), rgba(255,107,53,0.15));
                 border: 2px solid #ffd700; border-radius: 15px; padding: 20px; margin: 15px 0;">
         <h2>👑 CUSTODIAN SOVEREIGN DASHBOARD</h2>
         <p><strong>🔥 Full Digital Sovereignty Access - All Powers Granted 🔥</strong></p>
@@ -241,7 +241,7 @@ def heir_view(cosmic_data):
 
     st.markdown(
         """
-    <div style="background: linear-gradient(45deg, rgba(147,112,219,0.2), rgba(138,43,226,0.15)); 
+    <div style="background: linear-gradient(45deg, rgba(147,112,219,0.2), rgba(138,43,226,0.15));
                 border: 2px solid #9370db; border-radius: 15px; padding: 20px; margin: 15px 0;">
         <h2>🎭 HEIR INHERITANCE DASHBOARD</h2>
         <p><strong>🌟 Guided Digital Inheritance Journey - Learning & Participating 🌟</strong></p>
@@ -583,13 +583,13 @@ def dual_views_dashboard():
         with col1:
             st.markdown(
                 """
-            <div style="background: rgba(255,215,0,0.1); border: 2px solid #ffd700; 
+            <div style="background: rgba(255,215,0,0.1); border: 2px solid #ffd700;
                         border-radius: 10px; padding: 20px;">
                 <h3>👑 Custodian View</h3>
                 <p><strong>Full sovereign access to all panels.</strong></p>
                 <ul>
                     <li>✅ Create, edit, delete, publish</li>
-                    <li>✅ Crown cycles, seal ceremonies</li> 
+                    <li>✅ Crown cycles, seal ceremonies</li>
                     <li>✅ Configure automation and system settings</li>
                     <li>✅ Override any system restrictions</li>
                     <li>✅ Manage council and heir permissions</li>
@@ -603,7 +603,7 @@ def dual_views_dashboard():
         with col2:
             st.markdown(
                 """
-            <div style="background: rgba(147,112,219,0.1); border: 2px solid #9370db; 
+            <div style="background: rgba(147,112,219,0.1); border: 2px solid #9370db;
                         border-radius: 10px; padding: 20px;">
                 <h3>🎭 Heir View</h3>
                 <p><strong>Guided inheritance and learning journey.</strong></p>

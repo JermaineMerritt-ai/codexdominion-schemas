@@ -1,0 +1,42 @@
+---
+# Yamllint configuration for Codex Dominion
+# Relaxed rules to reduce noise from style preferences
+
+extends: default
+
+rules:
+  # Allow missing document start marker (---)
+  document-start:
+    present: false
+
+  # Increase line length limit from 80 to 120 characters
+  line-length:
+    max: 120
+    level: warning
+
+  # Allow spaces inside braces for Helm templates {{ .Values.foo }}
+  braces:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+
+  # Relax indentation rules slightly
+  indentation:
+    spaces: 2
+    indent-sequences: consistent
+
+  # Allow truthy values (yes/no, on/off, true/false)
+  truthy:
+    allowed-values: ['true', 'false', 'yes', 'no', 'on', 'off']
+
+  # Allow comments without preceding space
+  comments:
+    min-spaces-from-content: 1
+
+# Ignore node_modules and build artifacts
+ignore: |
+  node_modules/
+  .venv/
+  dist/
+  build/
+  .next/
+  codex-core/target/

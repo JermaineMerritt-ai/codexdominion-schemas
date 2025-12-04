@@ -254,7 +254,7 @@ def create_picks(req: PickRequest):
 
         # Store in database
         insert_sql = """
-            INSERT INTO daily_picks (id, user_id, trade_date, symbols, scores, performance, created_at) 
+            INSERT INTO daily_picks (id, user_id, trade_date, symbols, scores, performance, created_at)
             VALUES (gen_random_uuid(), %s, %s, %s, %s, %s, %s)
         """
 
@@ -382,7 +382,7 @@ def affiliate_stats():
 
         # Store metrics in database
         insert_sql = """
-            INSERT INTO affiliate_metrics (id, program, clicks, conversions, commission, conversion_rate, created_at) 
+            INSERT INTO affiliate_metrics (id, program, clicks, conversions, commission, conversion_rate, created_at)
             VALUES (gen_random_uuid(), %s, %s, %s, %s, %s, %s)
         """
 
@@ -495,7 +495,7 @@ def amm_swap(req: SwapRequest):
 
         # Store event in database
         insert_sql = """
-            INSERT INTO amm_events (id, pool_id, event_type, payload, tx_hash, created_at) 
+            INSERT INTO amm_events (id, pool_id, event_type, payload, tx_hash, created_at)
             VALUES (gen_random_uuid(), %s, 'swap', %s, %s, %s)
         """
 

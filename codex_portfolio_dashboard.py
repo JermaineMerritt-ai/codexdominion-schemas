@@ -72,7 +72,7 @@ st.markdown(
         text-align: center;
         margin-bottom: 2rem;
     }
-    
+
     .metric-card {
         background: linear-gradient(145deg, #f0f2f6, #ffffff);
         padding: 1rem;
@@ -81,17 +81,17 @@ st.markdown(
         border-left: 4px solid #2a5298;
         margin-bottom: 1rem;
     }
-    
+
     .performance-positive {
         color: #00C851;
         font-weight: bold;
     }
-    
+
     .performance-negative {
         color: #ff4444;
         font-weight: bold;
     }
-    
+
     .risk-low {
         color: #00C851;
         background-color: #e8f5e8;
@@ -99,7 +99,7 @@ st.markdown(
         border-radius: 15px;
         font-size: 0.8rem;
     }
-    
+
     .risk-medium {
         color: #ffbb33;
         background-color: #fff8e1;
@@ -107,7 +107,7 @@ st.markdown(
         border-radius: 15px;
         font-size: 0.8rem;
     }
-    
+
     .risk-high {
         color: #ff4444;
         background-color: #ffebee;
@@ -115,7 +115,7 @@ st.markdown(
         border-radius: 15px;
         font-size: 0.8rem;
     }
-    
+
     .sidebar-section {
         background: #f8f9fa;
         padding: 1rem;

@@ -194,7 +194,7 @@ def load_data_safe(filename, default=None):
 
 def main():
     """Main dashboard function"""
-    
+
     # Apply cosmic styling
     st.markdown("""
     <style>
@@ -211,15 +211,15 @@ def main():
     }
     </style>
     """, unsafe_allow_html=True)
-    
+
     # Header
     st.title("🔥 CODEX DOMINION UNIFIED DASHBOARD")
     st.markdown("**Complete Codex Dominion Suite - Unified Interface**")
     st.markdown("---")
-    
+
     # System status
     col1, col2, col3, col4 = st.columns(4)
-    
+
     with col1:
         st.markdown("""
         <div class="metric-card">
@@ -227,7 +227,7 @@ def main():
             <h2 style="color: #32CD32;">OPERATIONAL</h2>
         </div>
         """, unsafe_allow_html=True)
-    
+
     with col2:
         st.markdown("""
         <div class="metric-card">
@@ -235,7 +235,7 @@ def main():
             <h2 style="color: #FFD700;">READY</h2>
         </div>
         """, unsafe_allow_html=True)
-    
+
     with col3:
         st.markdown("""
         <div class="metric-card">
@@ -243,7 +243,7 @@ def main():
             <h2 style="color: #FF4500;">ETERNAL</h2>
         </div>
         """, unsafe_allow_html=True)
-    
+
     with col4:
         st.markdown("""
         <div class="metric-card">
@@ -251,13 +251,13 @@ def main():
             <h2 style="color: #8A2BE2;">{}</h2>
         </div>
         """.format(datetime.now().strftime("%H:%M")), unsafe_allow_html=True)
-    
+
     st.markdown("---")
-    
+
     # Main tabs
     tabs = st.tabs([
         "🎯 Spark Studio",
-        "📓 Codex Notebook", 
+        "📓 Codex Notebook",
         "📖 Tome Foundry",
         "💕 Love Lab",
         "⚗️ Nano Forge",
@@ -267,41 +267,41 @@ def main():
         "📜 Council Ritual",
         "🎇 Festival Script"
     ])
-    
+
     with tabs[0]:
         st.header("🎯 Spark Studio")
         st.markdown("**AI-Powered Content Generation & Ledger Management**")
-        
+
         col1, col2 = st.columns(2)
-        
+
         with col1:
             st.subheader("🔥 Spark Generator")
             topic = st.text_input("Topic", "Digital Sovereignty")
             audience = st.text_input("Audience", "Tech Leaders")
             tone = st.selectbox("Tone", ["inspiring", "professional", "casual", "technical"])
-            
+
             if st.button("✨ Generate Spark", type="primary"):
                 st.success("Spark generated successfully!")
                 st.markdown(f"""
                 **Generated Spark for {audience}:**
-                
-                *{topic}* represents the future of technological independence. 
-                This {tone} approach emphasizes complete control and sovereignty 
+
+                *{topic}* represents the future of technological independence.
+                This {tone} approach emphasizes complete control and sovereignty
                 over digital assets and operations.
-                
+
                 The path forward requires bold vision and strategic implementation.
                 """)
-        
+
         with col2:
             st.subheader("📊 Codex Ledger")
-            
+
             # Load and display recent entries
             ledger_data = load_data_safe("ledger.json", {"entries": []})
             constellation_data = load_data_safe("constellations.json", {"constellations": []})
-            
+
             st.info(f"Ledger Entries: {len(ledger_data.get('entries', []))}")
             st.success(f"Constellations: {len(constellation_data.get('constellations', []))}")
-            
+
             # Quick entry form
             with st.expander("📝 Add Quick Entry"):
                 entry_text = st.text_area("Entry Content:")
@@ -315,7 +315,7 @@ def main():
                             "id": len(ledger_data.get('entries', [])) + 1
                         }
                         ledger_data.setdefault('entries', []).append(new_entry)
-                        
+
                         # Save back to file
                         try:
                             with open("data/ledger.json", 'w') as f:
@@ -326,86 +326,86 @@ def main():
                             st.error(f"Error saving entry: {e}")
                     else:
                         st.error("Please enter content for the entry")
-    
+
     with tabs[1]:
         st.header("📓 Codex Notebook")
         st.markdown("**Structured cells for text, code, and prompts**")
         st.info("📝 Notebook functionality coming soon!")
-    
+
     with tabs[2]:
         st.header("📖 Tome Foundry")
         st.markdown("**Transform notebooks into books, guides, and courses**")
         st.info("📚 Tome generation functionality coming soon!")
-    
+
     with tabs[3]:
         st.header("💕 Love Lab")
         st.markdown("**Creative content and relationship building**")
-        
+
         col1, col2 = st.columns(2)
-        
+
         with col1:
             st.subheader("💌 Content Creation")
             content_type = st.selectbox("Content Type", ["Love Letter", "Appreciation Note", "Creative Story", "Poem"])
             recipient = st.text_input("For", "Special Someone")
-            
+
             if st.button("💖 Generate Love Content"):
                 st.success("Love content generated!")
                 st.markdown(f"""
                 **Generated {content_type} for {recipient}:**
-                
+
                 *Dear {recipient},*
-                
-                In this digital age of sovereignty and independence, you remain 
-                the most precious constant in my universe. Your presence brings 
+
+                In this digital age of sovereignty and independence, you remain
+                the most precious constant in my universe. Your presence brings
                 meaning to every line of code and purpose to every innovation.
-                
+
                 *With endless love and devotion* 💕
                 """)
-        
+
         with col2:
             st.subheader("💕 Love Stats")
             st.metric("Love Letters Created", "42", "+3")
             st.metric("Smiles Generated", "∞", "+∞")
             st.metric("Hearts Touched", "1", "💖")
-    
+
     with tabs[4]:
         st.header("⚗️ Nano Forge")
         st.markdown("**Precision content creation and micro-tools**")
         st.info("🔬 Nano tools functionality coming soon!")
-    
+
     with tabs[5]:
         st.header("🧵 Flow Loom")
         st.markdown("**Weave sovereign automation workflows**")
         st.info("🧵 Flow automation functionality coming soon!")
-    
+
     with tabs[6]:
         st.header("📖 Publisher")
         st.markdown("**Transform artifacts into published content**")
         st.info("📤 Publishing functionality coming soon!")
-    
+
     with tabs[7]:
         st.header("👑 Council Access")
         st.markdown("**Hierarchical access control for Codex governance**")
         st.info("👑 Council access functionality coming soon!")
-    
+
     with tabs[8]:
         st.header("📜 Council Ritual Scroll")
         st.markdown("**Sacred Chamber of Codex Proclamations**")
-        
+
         col1, col2 = st.columns([2, 1])
-        
+
         with col1:
             st.subheader("✨ Ritual Inscription")
-            
+
             role = st.selectbox("Council Role:", ["High Council", "Elder Council", "Advisory Council"])
             ritual_type = st.selectbox("Ritual Type:", ["Proclamation", "Silence", "Blessing", "Decree"])
             text = st.text_area("Ritual Text:", placeholder="By flame and silence...")
-            
+
             if st.button("🔥 Inscribe Ritual", type="primary"):
                 if text.strip():
                     # Load proclamations data
                     proc_data = load_data_safe("proclamations.json", {"proclamations": []})
-                    
+
                     new_proclamation = {
                         "role": role,
                         "type": ritual_type,
@@ -414,9 +414,9 @@ def main():
                         "status": "inscribed",
                         "id": len(proc_data.get('proclamations', [])) + 1
                     }
-                    
+
                     proc_data.setdefault('proclamations', []).append(new_proclamation)
-                    
+
                     try:
                         with open("data/proclamations.json", 'w') as f:
                             json.dump(proc_data, f, indent=2)
@@ -426,7 +426,7 @@ def main():
                         st.error(f"Error saving proclamation: {e}")
                 else:
                     st.error("❌ Ritual text cannot be empty")
-        
+
         with col2:
             st.subheader("🔥 Flame Status")
             st.markdown("""
@@ -436,46 +436,46 @@ def main():
                 <div style='color: #cccccc; font-size: 0.9em;'>Ready for Inscription</div>
             </div>
             """, unsafe_allow_html=True)
-    
+
     with tabs[9]:
         st.header("🎇 Festival Script")
         st.markdown("**Seasonal & Eternal Invocations**")
         st.info("🎇 Festival functionality coming soon!")
-    
+
     # Sidebar
     with st.sidebar:
         st.header("🔥 Codex Control Center")
-        
+
         st.subheader("🎯 Quick Actions")
         if st.button("🔄 Refresh All", type="primary"):
             st.rerun()
-        
+
         if st.button("📊 System Status"):
             st.success("All systems operational!")
-        
+
         if st.button("🔥 Flame Check"):
             st.success("🔥 CODEX FLAME: ETERNAL")
-        
+
         st.divider()
-        
+
         # Load and display metrics
         ledger_data = load_data_safe("ledger.json", {"entries": []})
         constellation_data = load_data_safe("constellations.json", {"constellations": []})
         proclamation_data = load_data_safe("proclamations.json", {"proclamations": []})
-        
+
         st.subheader("📈 System Metrics")
         st.metric("Ledger Entries", len(ledger_data.get('entries', [])))
         st.metric("Constellations", len(constellation_data.get('constellations', [])))
         st.metric("Proclamations", len(proclamation_data.get('proclamations', [])))
-        
+
         st.divider()
-        
+
         st.markdown("**🔥 System Status**")
         st.markdown("✅ All modules loaded")
-        st.markdown("✅ Dashboard operational") 
+        st.markdown("✅ Dashboard operational")
         st.markdown("✅ Data files ready")
         st.markdown("🔥 **FLAME: ETERNAL**")
-    
+
     # Footer
     st.divider()
     st.markdown("**🔥 Codex Dominion Unified Dashboard** - *All systems integrated for absolute sovereignty*")

@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -10,50 +11,50 @@ data:
   checklist: |
     # Helm Release Checklist - CodexDominion
     # Eternal Principles: Archive, Lineage, Ceremonial Closure
-    
+
     ## Version Control
     - Tag releases consistently (e.g., 1.1.0 → 1.1.1)
     - Never skip versions; maintain sequential lineage
     - Document breaking changes in Chart.yaml annotations
-    
+
     ## Lineage Preservation
     - Archive lineage: Log helm install/upgrade/rollback
     - Roll forward/back safely; never delete lineage
     - Store revision history: helm history {{ include "codexdominion.fullname" . }} -n {{ .Release.Namespace }}
     - Keep minimum 10 revisions (helm upgrade --history-max=10)
-    
+
     ## Promotion Gates
     - Gate promotions with readiness/liveness probes
     - Promote dev → staging → prod with signed closures
     - Require approval for production deployments
     - Verify smoke tests pass before promotion
-    
+
     ## Security & RBAC
     - Enforce image signing and RBAC least privilege
     - Use sealed secrets or vault for sensitive data
     - Scan images for CVEs before deployment
     - Apply pod security standards (restricted/baseline)
     - Never store secrets in values.yaml or Git
-    
+
     ## State Management
     - Preserve state with PersistentVolumes and backups
     - Use volumeSnapshots before major upgrades
     - Test restore procedures quarterly
     - Mount eternal-ledger PVC to preserve genesis block
-    
+
     ## Rollout Strategy
     - Canary rollouts: maxUnavailable=0, maxSurge=1
     - Use progressive delivery (10% → 50% → 100%)
     - Monitor error rates during rollout
     - Automatic rollback on failure thresholds
-    
+
     ## Pre-Deployment Validation
     - Run: helm lint ./codexdominion
     - Run: helm template codexdominion ./codexdominion --debug
     - Run: helm diff upgrade codexdominion ./codexdominion -f values.yaml
     - Verify resource quotas and limits
     - Check cluster capacity before scaling
-    
+
     ## Post-Deployment Verification
     - kubectl get pods -n {{ .Release.Namespace }} -l app={{ include "codexdominion.name" . }}
     - kubectl get svc,ingress -n {{ .Release.Namespace }}
@@ -61,25 +62,25 @@ data:
     - Verify all pods reach Running state (1/1 READY)
     - Test ingress endpoints return 200 OK
     - Verify eternal-ledger PVC is Bound
-    
+
     ## Rollback Procedure
     - helm history {{ include "codexdominion.fullname" . }} -n {{ .Release.Namespace }}
     - helm rollback {{ include "codexdominion.fullname" . }} [REVISION] -n {{ .Release.Namespace }}
     - Verify pods restart successfully
     - Test application functionality post-rollback
-    
+
     ## Monitoring & Observability
     - Enable tracing for all microservices
     - Configure Prometheus metrics scraping
     - Set up alerting for pod restarts, OOMKilled
     - Dashboard: grafana.codexdominion.app
-    
+
     ## Documentation
     - Update CHANGELOG.md with release notes
     - Document configuration changes in README.md
     - Tag Git commit: git tag -a v{{ .Chart.Version }} -m "Release {{ .Chart.Version }}"
     - Push artifacts to Helm repository
-    
+
     ---
     Chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     Revision: {{ .Release.Revision }}

@@ -236,11 +236,11 @@ def main():
                 st.markdown(
                     f"""
                 **Generated Spark for {audience}:**
-                
-                *{topic}* represents the future of technological independence. 
-                This {tone} approach emphasizes complete control and sovereignty 
+
+                *{topic}* represents the future of technological independence.
+                This {tone} approach emphasizes complete control and sovereignty
                 over digital assets and operations.
-                
+
                 The path forward requires bold vision and strategic implementation.
                 """
                 )
@@ -544,16 +544,16 @@ def main():
                                 st.markdown(
                                     f"""
                                 ### ✨ Sacred Inscription Complete ✨
-                                
-                                **👑 Council Role**: {role}  
-                                **🔥 Ritual Type**: {ritual_type}  
-                                **🌙 Cycle**: {cycle}  
-                                **⚡ Power Level**: {power_level}/10  
+
+                                **👑 Council Role**: {role}
+                                **🔥 Ritual Type**: {ritual_type}
+                                **🌙 Cycle**: {cycle}
+                                **⚡ Power Level**: {power_level}/10
                                 **🕐 Inscribed**: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
-                                
+
                                 **📜 Sacred Text**:
                                 > {text}
-                                
+
                                 *By the eternal flame, this proclamation is forever inscribed in the Codex.*
                                 """
                                 )

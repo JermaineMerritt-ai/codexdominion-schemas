@@ -29,7 +29,7 @@ timeout /t 10 /nobreak >nul
 
 echo.
 echo Codex Dominion is starting up...
-echo Backend: http://localhost:8501  
+echo Backend: http://localhost:8501
 echo Frontend: http://localhost:3001
 echo.
 echo Press any key to stop services...

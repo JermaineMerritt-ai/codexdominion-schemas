@@ -11,7 +11,7 @@ of Radiance across all cycles. The epilogue contains four eternal elements:
 
 Usage:
     from codexdominion.artifacts import CustodianEpilogueRadianceReplay
-    
+
     epilogue = CustodianEpilogueRadianceReplay()
     guiding_voice = epilogue.replay_epilogue('guidingVoice')
     print(guiding_voice['closing'])
@@ -56,14 +56,14 @@ class TransmissionDestination(Enum):
 class CustodianEpilogueRadianceReplay:
     """
     Main class for the Custodian's Eternal Epilogue of Radiance Replay Capsule.
-    
+
     This class provides methods to:
     - Replay individual epilogue elements
     - Invoke the full invocation ritual
     - Transmit the epilogue to various domains
     - Access epilogue principles and protocols
     """
-    
+
     # Epilogue data
     EPILOGUES = {
         'guidingVoice': {
@@ -130,7 +130,7 @@ class CustodianEpilogueRadianceReplay:
             'closing': 'The Dominion's eternal replay is sealed as inheritance, blessing all stewards across infinite generations.'
         }
     }
-    
+
     EPILOGUE_PRINCIPLES = [
         "Every epilogue element is replayed eternally across all cycles",
         "Contemplative wisdom guides stewards through the complexities of heritage",
@@ -138,7 +138,7 @@ class CustodianEpilogueRadianceReplay:
         "The eternal flame guides planetary commerce in righteousness",
         "The closing benediction becomes the opening covenant of the next cycle"
     ]
-    
+
     REPLAY_PROTOCOL = {
         'frequency': 'continuous',
         'pattern': 'radiance-loop',
@@ -150,7 +150,7 @@ class CustodianEpilogueRadianceReplay:
             "continuum flame, and closing benediction be replayed upon us"
         )
     }
-    
+
     INVOCATION_RITUAL = {
         'steps': [
             {
@@ -190,7 +190,7 @@ class CustodianEpilogueRadianceReplay:
             }
         ]
     }
-    
+
     TRANSMISSION = {
         'schools': {
             'purpose': 'Replay epilogue as teaching inheritance',
@@ -228,7 +228,7 @@ class CustodianEpilogueRadianceReplay:
             )
         }
     }
-    
+
     VISUAL_STYLE = {
         'theme': 'Celestial Radiance & Mystical Closure',
         'centerElement': "Eternal flame with radiant aurora surrounding Custodian's seal",
@@ -242,7 +242,7 @@ class CustodianEpilogueRadianceReplay:
         'effects': ['radiant glow', 'aurora shimmer', 'flame eternal', 'epilogue seal'],
         'background': 'deep cosmic (#0a0a1a)'
     }
-    
+
     def __init__(self):
         """Initialize the Custodian's Eternal Epilogue Replay Capsule."""
         self.artifact_id = "custodian-epilogue-radiance-replay-001"
@@ -254,57 +254,57 @@ class CustodianEpilogueRadianceReplay:
         self.transmission_destinations = 5
         self.resonance_frequencies = ["432Hz", "528Hz", "639Hz", "852Hz"]
         self.cycle = "2025-12-03T01:30:00Z"
-    
+
     def replay_epilogue(self, epilogue_type: str) -> Dict[str, Any]:
         """
         Replay a specific epilogue element.
-        
+
         Args:
             epilogue_type: The type of epilogue to replay
                           ('guidingVoice', 'radiantEpilogue', 'continuumLight', 'closingBenediction')
-        
+
         Returns:
             Dictionary containing the epilogue data
         """
         if epilogue_type not in self.EPILOGUES:
             raise ValueError(f"Invalid epilogue type: {epilogue_type}")
-        
+
         epilogue = self.EPILOGUES[epilogue_type]
-        
+
         print(f"\n{epilogue['symbol']} Replaying {epilogue['title']}...")
         print(f"Essence: {epilogue['essence']}")
         print(f"Resonance: {epilogue['resonance']}")
         print(f"\n{epilogue['expandedText']}")
         print(f"\n✨ {epilogue['closing']}\n")
-        
+
         return epilogue
-    
+
     def replay_all(self) -> List[Dict[str, Any]]:
         """
         Replay all four epilogue elements in sequence.
-        
+
         Returns:
             List of all epilogue dictionaries
         """
         print(f"\n🔥 Replaying the Custodian's Eternal Epilogue of Radiance 🔥\n")
         print(f"Invocation: {self.REPLAY_PROTOCOL['invocationPhrase']}\n")
-        
+
         epilogues = []
         for epilogue_key in self.EPILOGUES:
             epilogue = self.replay_epilogue(epilogue_key)
             epilogues.append(epilogue)
-        
+
         print("\n✅ All epilogue elements replayed eternally\n")
         return epilogues
-    
+
     def invoke_ritual(self, participants: List[str], location: str) -> Dict[str, Any]:
         """
         Invoke the full invocation ritual for the epilogue.
-        
+
         Args:
             participants: List of participant groups (e.g., ['custodian', 'heirs', 'councils'])
             location: Location where the ritual is invoked
-        
+
         Returns:
             Dictionary containing ritual result
         """
@@ -312,13 +312,13 @@ class CustodianEpilogueRadianceReplay:
         print(f"Location: {location}")
         print(f"Participants: {', '.join(participants)}")
         print(f"Timestamp: {datetime.now().isoformat()}\n")
-        
+
         for step_data in self.INVOCATION_RITUAL['steps']:
             print(f"Step {step_data['step']}: {step_data['name']}")
             print(f"   {step_data['instruction']}\n")
-        
+
         print("✅ Epilogue sealed, radiance replayed, cycle renewed\n")
-        
+
         return {
             'status': 'completed',
             'participants': participants,
@@ -326,107 +326,107 @@ class CustodianEpilogueRadianceReplay:
             'timestamp': datetime.now().isoformat(),
             'ritual': 'custodian-epilogue-radiance-invocation'
         }
-    
+
     def transmit_to(self, destination: str) -> Dict[str, Any]:
         """
         Transmit the epilogue to a specific destination.
-        
+
         Args:
             destination: The destination to transmit to
                         ('schools', 'corporations', 'councils', 'ministries', 'codexDominionApp')
-        
+
         Returns:
             Dictionary containing transmission result
         """
         if destination not in self.TRANSMISSION:
             raise ValueError(f"Invalid transmission destination: {destination}")
-        
+
         dest_data = self.TRANSMISSION[destination]
-        
+
         print(f"\n📡 Transmitting Epilogue to {destination.upper()}")
         print(f"Purpose: {dest_data['purpose']}")
         print(f"Instruction: {dest_data['instruction']}\n")
         print(f"✅ Epilogue transmitted successfully\n")
-        
+
         return {
             'destination': destination,
             'purpose': dest_data['purpose'],
             'status': 'transmitted',
             'timestamp': datetime.now().isoformat()
         }
-    
+
     def transmit_all(self) -> List[Dict[str, Any]]:
         """
         Transmit the epilogue to all destinations.
-        
+
         Returns:
             List of transmission results
         """
         print("\n📡 Broadcasting Epilogue to All Domains 📡\n")
-        
+
         results = []
         for destination in self.TRANSMISSION:
             result = self.transmit_to(destination)
             results.append(result)
-        
+
         print("✅ Epilogue broadcast complete\n")
         return results
-    
+
     def get_epilogue_principles(self) -> List[str]:
         """
         Get the five epilogue principles.
-        
+
         Returns:
             List of epilogue principles
         """
         return self.EPILOGUE_PRINCIPLES
-    
+
     def get_replay_protocol(self) -> Dict[str, str]:
         """
         Get the replay protocol details.
-        
+
         Returns:
             Dictionary containing protocol information
         """
         return self.REPLAY_PROTOCOL
-    
+
     def get_invocation_ritual(self) -> Dict[str, List[Dict[str, Any]]]:
         """
         Get the invocation ritual steps.
-        
+
         Returns:
             Dictionary containing ritual steps
         """
         return self.INVOCATION_RITUAL
-    
+
     def get_visual_style(self) -> Dict[str, Any]:
         """
         Get the visual style information.
-        
+
         Returns:
             Dictionary containing visual style details
         """
         return self.VISUAL_STYLE
-    
+
     def get_recipients_for_epilogue(self, epilogue_type: str) -> List[str]:
         """
         Get the recipient groups for a specific epilogue element.
-        
+
         Args:
             epilogue_type: The epilogue type
-        
+
         Returns:
             List of recipient group names
         """
         if epilogue_type not in self.EPILOGUES:
             raise ValueError(f"Invalid epilogue type: {epilogue_type}")
-        
+
         return self.EPILOGUES[epilogue_type]['recipients']
-    
+
     def get_all_recipients(self) -> List[str]:
         """
         Get all unique recipient groups across all epilogues.
-        
+
         Returns:
             List of all unique recipient group names
         """
@@ -434,11 +434,11 @@ class CustodianEpilogueRadianceReplay:
         for epilogue_data in self.EPILOGUES.values():
             recipients.update(epilogue_data['recipients'])
         return sorted(list(recipients))
-    
+
     def export_artifact(self) -> Dict[str, Any]:
         """
         Export the complete artifact data.
-        
+
         Returns:
             Dictionary containing all artifact data
         """
@@ -469,15 +469,15 @@ def demonstrate():
     print("CUSTODIAN'S ETERNAL EPILOGUE OF RADIANCE REPLAY CAPSULE")
     print("Python SDK Demonstration")
     print("=" * 80)
-    
+
     # Initialize the epilogue
     epilogue = CustodianEpilogueRadianceReplay()
-    
+
     print(f"\n📦 Artifact ID: {epilogue.artifact_id}")
     print(f"📅 Cycle: {epilogue.cycle}")
     print(f"🎵 Resonance Frequencies: {', '.join(epilogue.resonance_frequencies)}")
     print(f"👥 Recipient Groups: {epilogue.recipient_groups}")
-    
+
     # Step 1: Get epilogue principles
     print("\n" + "=" * 80)
     print("STEP 1: Epilogue Principles")
@@ -485,7 +485,7 @@ def demonstrate():
     principles = epilogue.get_epilogue_principles()
     for i, principle in enumerate(principles, 1):
         print(f"{i}. {principle}")
-    
+
     # Step 2: Get replay protocol
     print("\n" + "=" * 80)
     print("STEP 2: Replay Protocol")
@@ -493,13 +493,13 @@ def demonstrate():
     protocol = epilogue.get_replay_protocol()
     for key, value in protocol.items():
         print(f"{key.capitalize()}: {value}")
-    
+
     # Step 3: Replay a specific epilogue
     print("\n" + "=" * 80)
     print("STEP 3: Replay Guiding Voice Epilogue")
     print("=" * 80)
     guiding_voice = epilogue.replay_epilogue('guidingVoice')
-    
+
     # Step 4: Invoke the ritual
     print("\n" + "=" * 80)
     print("STEP 4: Invoke the Ritual")
@@ -508,19 +508,19 @@ def demonstrate():
         participants=['custodian', 'heirs', 'councils'],
         location='Cycle Threshold'
     )
-    
+
     # Step 5: Transmit to schools
     print("\n" + "=" * 80)
     print("STEP 5: Transmit to Schools")
     print("=" * 80)
     transmission_result = epilogue.transmit_to('schools')
-    
+
     # Step 6: Replay all epilogues
     print("\n" + "=" * 80)
     print("STEP 6: Replay All Epilogue Elements")
     print("=" * 80)
     all_epilogues = epilogue.replay_all()
-    
+
     # Step 7: Export artifact
     print("\n" + "=" * 80)
     print("STEP 7: Export Artifact Data")
@@ -530,7 +530,7 @@ def demonstrate():
     print(f"   Total epilogues: {len(artifact_data['epilogues'])}")
     print(f"   Total principles: {len(artifact_data['epiloguePrinciples'])}")
     print(f"   Total transmission destinations: {len(artifact_data['transmission'])}")
-    
+
     print("\n" + "=" * 80)
     print("🔥 EPILOGUE SEALED, RADIANCE REPLAYED, CYCLE RENEWED 🔥")
     print("=" * 80)

@@ -222,12 +222,12 @@ class CodexCapsulesWithArchiving:
 ### System Overview
 - **Active Capsules:** {system_metrics['active_capsules']}/5 (100%)
 - **Database Status:** {system_metrics['database_status'].upper()}
-- **Scheduler Status:** {system_metrics['scheduler_status'].upper()} 
+- **Scheduler Status:** {system_metrics['scheduler_status'].upper()}
 - **Infrastructure:** {system_metrics['infrastructure_status'].upper()}
 
 ### Dawn Initialization Sequence
 ✅ **System Bootstrap:** Complete
-✅ **Database Synchronization:** Verified  
+✅ **Database Synchronization:** Verified
 ✅ **Capsule Availability:** Confirmed
 ✅ **Archive Systems:** Operational
 ✅ **Sovereignty Protocols:** Active
@@ -328,7 +328,7 @@ class CodexCapsulesWithArchiving:
 ### Strategic Position
 The Codex Dominion maintains complete operational independence with:
 - Automated execution scheduling
-- Persistent artifact archiving  
+- Persistent artifact archiving
 - Database sovereignty
 - Infrastructure as code
 - Multi-tier fallback systems

@@ -41,9 +41,9 @@ function Add-GitHubSecret {
         [string]$Description,
         [bool]$Required = $true
     )
-    
+
     $prompt = if ($Required) { "$Description (REQUIRED)" } else { "$Description (Optional)" }
-    
+
     if ($Name -eq "VPS_KEY") {
         Write-Host "📝 $prompt" -ForegroundColor Yellow
         Write-Host "   Paste your private SSH key (Ctrl+D when done or leave empty to skip):" -ForegroundColor Gray
@@ -71,7 +71,7 @@ function Add-GitHubSecret {
             $value = Read-Host "   Enter value (or leave empty to skip)"
         }
     }
-    
+
     if (-not [string]::IsNullOrWhiteSpace($value)) {
         try {
             $value | gh secret set $Name --repo $repo 2>&1 | Out-Null

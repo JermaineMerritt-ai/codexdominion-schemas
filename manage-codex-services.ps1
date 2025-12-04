@@ -5,10 +5,10 @@ param(
     [Parameter(Mandatory=$false)]
     [ValidateSet("install", "start", "stop", "restart", "status", "remove")]
     [string]$Action = "status",
-    
+
     [Parameter(Mandatory=$false)]
     [string]$CodexPath = "C:\Users\JMerr\OneDrive\Documents\.vscode\codex-dominion",
-    
+
     [Parameter(Mandatory=$false)]
     [string]$PythonPath = "python"
 )
@@ -69,31 +69,31 @@ function Test-NSSM {
 
 function Install-CodexServices {
     Write-Host "🚀 Installing Codex Dominion Services..." -ForegroundColor Green
-    
+
     if (-not (Test-Administrator)) {
         Write-Host "❌ Administrator privileges required for service installation" -ForegroundColor Red
         return
     }
-    
+
     if (-not (Test-NSSM)) {
         Write-Host "❌ NSSM not found. Please install NSSM first:" -ForegroundColor Red
         Write-Host "   Download from: https://nssm.cc/download" -ForegroundColor White
         Write-Host "   Add nssm.exe to your PATH" -ForegroundColor White
         return
     }
-    
+
     # Create logs directory
     $logsPath = Join-Path $CodexPath "logs"
     if (-not (Test-Path $logsPath)) {
         New-Item -ItemType Directory -Path $logsPath -Force | Out-Null
         Write-Host "📂 Created logs directory: $logsPath" -ForegroundColor Blue
     }
-    
+
     foreach ($service in $services) {
         Write-Host "⚡ Installing $($service.DisplayName)..." -ForegroundColor Cyan
-        
+
         $arguments = "-m streamlit run $($service.Script) --server.port=$($service.Port) --server.address=127.0.0.1"
-        
+
         # Install service
         & nssm install $service.Name $PythonPath $arguments
         & nssm set $service.Name AppDirectory $CodexPath
@@ -102,10 +102,10 @@ function Install-CodexServices {
         & nssm set $service.Name Start SERVICE_AUTO_START
         & nssm set $service.Name AppStdout (Join-Path $logsPath "$($service.Name.ToLower()).log")
         & nssm set $service.Name AppStderr (Join-Path $logsPath "$($service.Name.ToLower())-error.log")
-        
+
         Write-Host "   ✅ $($service.Name) installed successfully" -ForegroundColor Green
     }
-    
+
     Write-Host ""
     Write-Host "🔥 All Codex Dominion services installed!" -ForegroundColor Green
     Write-Host "Use 'Start-CodexServices' to begin digital sovereignty" -ForegroundColor White
@@ -113,11 +113,11 @@ function Install-CodexServices {
 
 function Start-CodexServices {
     Write-Host "🚀 Starting Codex Dominion Digital Empire..." -ForegroundColor Green
-    
+
     foreach ($service in $services) {
         Write-Host "⚡ Starting $($service.DisplayName)..." -ForegroundColor Cyan
         Start-Service $service.Name -ErrorAction SilentlyContinue
-        
+
         $status = Get-Service $service.Name -ErrorAction SilentlyContinue
         if ($status -and $status.Status -eq "Running") {
             Write-Host "   ✅ $($service.Name) running on port $($service.Port)" -ForegroundColor Green
@@ -125,20 +125,20 @@ function Start-CodexServices {
             Write-Host "   ❌ Failed to start $($service.Name)" -ForegroundColor Red
         }
     }
-    
+
     Write-Host ""
     Write-Host "🔥 Digital sovereignty activated!" -ForegroundColor Yellow
 }
 
 function Stop-CodexServices {
     Write-Host "🛑 Stopping Codex Dominion services..." -ForegroundColor Yellow
-    
+
     foreach ($service in $services) {
         Write-Host "⏹️ Stopping $($service.DisplayName)..." -ForegroundColor Cyan
         Stop-Service $service.Name -Force -ErrorAction SilentlyContinue
         Write-Host "   ✅ $($service.Name) stopped" -ForegroundColor Green
     }
-    
+
     Write-Host ""
     Write-Host "💤 Services stopped" -ForegroundColor White
 }
@@ -147,19 +147,19 @@ function Get-CodexServiceStatus {
     Write-Host "📊 Codex Dominion Service Status:" -ForegroundColor Blue
     Write-Host "=================================" -ForegroundColor Blue
     Write-Host ""
-    
+
     $allRunning = $true
-    
+
     foreach ($service in $services) {
         $status = Get-Service $service.Name -ErrorAction SilentlyContinue
         if ($status) {
             $statusColor = if ($status.Status -eq "Running") { "Green" } else { "Red" }
             $statusIcon = if ($status.Status -eq "Running") { "✅" } else { "❌" }
-            
+
             Write-Host "$statusIcon $($service.DisplayName): " -NoNewline
             Write-Host "$($status.Status)" -ForegroundColor $statusColor -NoNewline
             Write-Host " (Port $($service.Port))" -ForegroundColor White
-            
+
             if ($status.Status -ne "Running") {
                 $allRunning = $false
             }
@@ -168,7 +168,7 @@ function Get-CodexServiceStatus {
             $allRunning = $false
         }
     }
-    
+
     Write-Host ""
     if ($allRunning) {
         Write-Host "🔥 DIGITAL EMPIRE STATUS: FULLY OPERATIONAL" -ForegroundColor Green
@@ -179,23 +179,23 @@ function Get-CodexServiceStatus {
 
 function Remove-CodexServices {
     Write-Host "🗑️ Removing Codex Dominion services..." -ForegroundColor Red
-    
+
     if (-not (Test-Administrator)) {
         Write-Host "❌ Administrator privileges required for service removal" -ForegroundColor Red
         return
     }
-    
+
     foreach ($service in $services) {
         Write-Host "🗑️ Removing $($service.DisplayName)..." -ForegroundColor Yellow
-        
+
         # Stop service first
         Stop-Service $service.Name -Force -ErrorAction SilentlyContinue
-        
+
         # Remove with NSSM
         & nssm remove $service.Name confirm
         Write-Host "   ✅ $($service.Name) removed" -ForegroundColor Green
     }
-    
+
     Write-Host ""
     Write-Host "🔥 All services removed" -ForegroundColor Red
 }

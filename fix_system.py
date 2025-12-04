@@ -95,18 +95,18 @@ from typing import Dict, Any, Optional
 
 class EnhancedCodexMemory:
     """Enhanced memory system for the Codex"""
-    
+
     def __init__(self):
         self.memory_store = {}
-    
+
     def store(self, key: str, value: Any) -> None:
         """Store a value in memory"""
         self.memory_store[key] = value
-    
+
     def retrieve(self, key: str) -> Optional[Any]:
         """Retrieve a value from memory"""
         return self.memory_store.get(key)
-    
+
     def clear(self) -> None:
         """Clear all memory"""
         self.memory_store.clear()
@@ -124,16 +124,16 @@ import time
 
 class CodexCache:
     """Simple cache implementation"""
-    
+
     def __init__(self):
         self.cache = {}
         self.timestamps = {}
-    
+
     def set(self, key: str, value: Any, ttl: int = 3600) -> None:
         """Set a cached value with TTL"""
         self.cache[key] = value
         self.timestamps[key] = time.time() + ttl
-    
+
     def get(self, key: str) -> Optional[Any]:
         """Get a cached value"""
         if key in self.cache:
@@ -144,7 +144,7 @@ class CodexCache:
                 self.cache.pop(key, None)
                 self.timestamps.pop(key, None)
         return None
-    
+
     def clear(self) -> None:
         """Clear all cache"""
         self.cache.clear()
@@ -162,11 +162,11 @@ from typing import Dict, Any, List
 
 class AIEngine:
     """Core AI processing engine"""
-    
+
     def __init__(self):
         self.models = {}
         self.active = True
-    
+
     def process_signal(self, signal_data: Dict[str, Any]) -> Dict[str, Any]:
         """Process a trading signal"""
         return {
@@ -176,7 +176,7 @@ class AIEngine:
             "timestamp": signal_data.get("timestamp"),
             "symbol": signal_data.get("symbol", "UNKNOWN")
         }
-    
+
     def analyze_market(self, market_data: List[Dict]) -> Dict[str, Any]:
         """Analyze market conditions"""
         return {
@@ -200,11 +200,11 @@ import json
 
 class CodexLedger:
     """Transaction ledger for the Codex system"""
-    
+
     def __init__(self):
         self.transactions = []
         self.balances = {}
-    
+
     def record_transaction(self, transaction: Dict[str, Any]) -> str:
         """Record a new transaction"""
         transaction_id = f"txn_{len(self.transactions) + 1}"
@@ -212,15 +212,15 @@ class CodexLedger:
         transaction["timestamp"] = datetime.now().isoformat()
         self.transactions.append(transaction)
         return transaction_id
-    
+
     def get_balance(self, account: str) -> float:
         """Get account balance"""
         return self.balances.get(account, 0.0)
-    
+
     def update_balance(self, account: str, amount: float) -> None:
         """Update account balance"""
         self.balances[account] = self.balances.get(account, 0.0) + amount
-    
+
     def get_transactions(self, limit: int = 100) -> List[Dict]:
         """Get recent transactions"""
         return self.transactions[-limit:]
@@ -241,10 +241,10 @@ def fix_import_issues():
 
 class SparkStudioEngine:
     """Spark Studio processing engine"""
-    
+
     def __init__(self):
         self.active = True
-    
+
     def process(self, data):
         """Process data through Spark Studio"""
         return {"status": "processed", "data": data}

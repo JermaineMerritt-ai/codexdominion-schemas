@@ -373,20 +373,20 @@ def create_enhanced_data_loader():
     return """
 class EnhancedDataLoader:
     '''Optimized data loading with caching and validation'''
-    
+
     def __init__(self):
         self.cache = {}
         self.cache_ttl = {}
-    
+
     def load_json_cached(self, filepath, default_data=None, ttl=300):
         '''Load JSON with caching and TTL'''
         current_time = time.time()
-        
+
         # Check cache validity
         if filepath in self.cache and filepath in self.cache_ttl:
             if current_time - self.cache_ttl[filepath] < ttl:
                 return self.cache[filepath]
-        
+
         # Load fresh data
         try:
             if os.path.exists(filepath):
@@ -394,30 +394,30 @@ class EnhancedDataLoader:
                     data = json.load(f)
             else:
                 data = default_data or {}
-            
+
             # Update cache
             self.cache[filepath] = data
             self.cache_ttl[filepath] = current_time
-            
+
             return data
         except Exception as e:
             print(f"Error loading {filepath}: {e}")
             return default_data or {}
-    
+
     def save_json_atomic(self, filepath, data):
         '''Atomic JSON saving to prevent corruption'''
         temp_filepath = f"{filepath}.tmp"
         try:
             with open(temp_filepath, 'w') as f:
                 json.dump(data, f, indent=2)
-            
+
             # Atomic rename
             os.rename(temp_filepath, filepath)
-            
+
             # Update cache
             self.cache[filepath] = data
             self.cache_ttl[filepath] = time.time()
-            
+
         except Exception as e:
             if os.path.exists(temp_filepath):
                 os.remove(temp_filepath)
@@ -430,35 +430,35 @@ def create_performance_monitor():
     return """
 class PerformanceMonitor:
     '''Monitor and track system performance metrics'''
-    
+
     def __init__(self):
         self.metrics = {}
         self.start_times = {}
-    
+
     def start_timer(self, operation_name):
         '''Start timing an operation'''
         self.start_times[operation_name] = time.time()
-    
+
     def end_timer(self, operation_name):
         '''End timing and record metric'''
         if operation_name in self.start_times:
             duration = time.time() - self.start_times[operation_name]
-            
+
             if operation_name not in self.metrics:
                 self.metrics[operation_name] = []
-            
+
             self.metrics[operation_name].append(duration)
             del self.start_times[operation_name]
-            
+
             return duration
         return None
-    
+
     def get_average_time(self, operation_name):
         '''Get average execution time for an operation'''
         if operation_name in self.metrics and self.metrics[operation_name]:
             return sum(self.metrics[operation_name]) / len(self.metrics[operation_name])
         return None
-    
+
     def get_performance_report(self):
         '''Generate performance report'''
         report = {}

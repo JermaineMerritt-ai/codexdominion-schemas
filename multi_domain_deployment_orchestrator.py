@@ -218,17 +218,17 @@ server {{
     listen 80;
     listen 443 ssl http2;
     server_name {domain} www.{domain};
-    
+
     # SSL Configuration
     ssl_certificate /etc/letsencrypt/live/{domain}/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/{domain}/privkey.pem;
-    
+
     # Security Headers
     add_header X-Frame-Options DENY;
     add_header X-Content-Type-Options nosniff;
     add_header X-XSS-Protection "1; mode=block";
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
-    
+
     # Main site
     location / {{
         proxy_pass http://localhost:8500;
@@ -237,7 +237,7 @@ server {{
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
     }}
-    
+
     # API Gateway
     location /api/ {{
         proxy_pass http://localhost:8501/;
@@ -256,10 +256,10 @@ server {{
     listen 80;
     listen 443 ssl http2;
     server_name {subdomain}.{domain};
-    
+
     ssl_certificate /etc/letsencrypt/live/{domain}/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/{domain}/privkey.pem;
-    
+
     location / {{
         proxy_pass http://localhost:850{len(subdomain) % 10 + 2};
         proxy_set_header Host $host;
@@ -290,7 +290,7 @@ services:
       - ./ssl:/etc/ssl
       - ./logs:/var/log
     restart: unless-stopped
-    
+
   {domain.replace('.', '-')}-db:
     image: mysql:8.0
     environment:
@@ -299,11 +299,11 @@ services:
     volumes:
       - mysql_data_{domain.replace('.', '_')}:/var/lib/mysql
     restart: unless-stopped
-    
+
   {domain.replace('.', '-')}-redis:
     image: redis:7-alpine
     restart: unless-stopped
-    
+
 volumes:
   mysql_data_{domain.replace('.', '_')}:
 """
@@ -459,7 +459,7 @@ DOMAIN ASSIGNMENTS:
    └── Master Control, Tech Intelligence, Analytics, Verification
    └── Subdomains: dashboard, tech, cyber, analytics, verify, api
 
-2. jermaineai.com (Priority 2) - PERSONAL AI BRAND  
+2. jermaineai.com (Priority 2) - PERSONAL AI BRAND
    └── Jermaine AI, Stock Analytics, Knowledge Hub
    └── Subdomains: ai, stocks, knowledge, chat, blog
 
@@ -483,14 +483,14 @@ DEPLOYMENT INSTRUCTIONS:
 =======================
 
 1. Start with aistorelab.online (main hub)
-2. Deploy jermaineai.com (personal brand) 
+2. Deploy jermaineai.com (personal brand)
 3. Roll out remaining domains progressively
 4. Configure cross-domain integration
 5. Setup monitoring and analytics
 
 Each domain includes:
 ✅ Nginx reverse proxy configuration
-✅ Docker containerization setup  
+✅ Docker containerization setup
 ✅ SSL certificate automation
 ✅ Database configuration
 ✅ Systemd service files

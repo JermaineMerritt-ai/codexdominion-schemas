@@ -1,7 +1,7 @@
 # Google Domains DNS Configuration for CodexDominion.app
 
-**Domain:** CodexDominion.app  
-**Registrar:** Google Domains  
+**Domain:** CodexDominion.app
+**Registrar:** Google Domains
 **Multi-Cloud Strategy:** IONOS Primary + Azure Secondary with Geographic Load Balancing
 
 ## 🌐 DNS Records Configuration
@@ -178,12 +178,12 @@ TXT     _dmarc          "v=DMARC1; p=quarantine; rua=mailto:admin@codexdominion.
    ```bash
    # Enable Cloud DNS API
    gcloud services enable dns.googleapis.com
-   
+
    # Create DNS zone
    gcloud dns managed-zones create codexdominion-app \
        --dns-name="codexdominion.app." \
        --description="CodexDominion Multi-Cloud DNS"
-   
+
    # Update nameservers in Google Domains
    gcloud dns managed-zones describe codexdominion-app
    ```
@@ -216,7 +216,7 @@ TXT     _dmarc          "v=DMARC1; p=quarantine; rua=mailto:admin@codexdominion.
        origins:
          - address: "135.237.24.198"
            weight: 1
-   
+
    load_balancer:
      default_pools: ["ionos-primary", "azure-secondary"]
      fallback_pool: "azure-secondary"
@@ -340,14 +340,14 @@ health_checks:
   - url: "https://codexdominion.app/health"
     interval: 60s
     timeout: 10s
-    
+
   - url: "https://jermaine-ai.codexdominion.app/health"
     interval: 60s
     timeout: 10s
-    
+
   - url: "http://74.208.123.158/health"  # IONOS direct
     interval: 30s
-    
+
   - url: "http://135.237.24.198/health"  # Azure direct
     interval: 30s
 ```
@@ -362,7 +362,7 @@ health_checks:
 
 ---
 
-**Configuration Status:** Ready for implementation  
-**Estimated Propagation Time:** 1-48 hours  
-**TTL:** 1 hour (3600 seconds)  
+**Configuration Status:** Ready for implementation
+**Estimated Propagation Time:** 1-48 hours
+**TTL:** 1 hour (3600 seconds)
 **DNSSEC:** Optional (can enable in Google Domains)

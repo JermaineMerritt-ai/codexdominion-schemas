@@ -29,21 +29,21 @@ class ArtifactPackager:
         manifest_path = (
             self.manifests_dir / "artifact.manifest.json"
         )
-        
+
         if not manifest_path.exists():
             raise FileNotFoundError(f"Manifest not found: {manifest_path}")
-        
+
         with open(manifest_path, "r", encoding="utf-8") as f:
             return json.load(f)
 
     def validate_capsule(self, capsule: Dict) -> bool:
         """Validate that all required capsule files exist"""
         capsule_path = self.root_dir / capsule["capsule_path"]
-        
+
         if not capsule_path.exists():
             print(f"❌ Capsule directory not found: {capsule_path}")
             return False
-        
+
         for asset in capsule["assets"]:
             asset_path = capsule_path / asset["filename"]
             if not asset_path.exists():
@@ -52,7 +52,7 @@ class ArtifactPackager:
                 # (they may be generated)
                 if asset["type"] != "image/png":
                     return False
-        
+
         print(f"✅ Capsule validated: {capsule['name']}")
         return True
 
@@ -62,10 +62,10 @@ class ArtifactPackager:
         """Package a single capsule"""
         capsule_id = capsule["id"]
         capsule_path = self.root_dir / capsule["capsule_path"]
-        
+
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         output_name = f"codex-{capsule_id}-{timestamp}"
-        
+
         if format == "zip":
             output_file = self.output_dir / f"{output_name}.zip"
             with zipfile.ZipFile(
@@ -78,7 +78,7 @@ class ArtifactPackager:
                             asset_path,
                             arcname=f"{capsule_id}/{asset['filename']}"
                         )
-        
+
         elif format == "tar.gz":
             output_file = self.output_dir / f"{output_name}.tar.gz"
             with tarfile.open(output_file, "w:gz") as tar:
@@ -89,10 +89,10 @@ class ArtifactPackager:
                             asset_path,
                             arcname=f"{capsule_id}/{asset['filename']}"
                         )
-        
+
         else:
             raise ValueError(f"Unsupported format: {format}")
-        
+
         print(f"📦 Packaged: {output_file}")
         return output_file
 
@@ -123,51 +123,51 @@ class ArtifactPackager:
         """Package all capsules"""
         print("🔥 CODEX DOMINION ARTIFACT PACKAGER")
         print("=" * 60)
-        
+
         manifest = self.load_manifest()
         print(f"📋 Loaded manifest: {manifest['syndication_id']}")
         print(f"📦 Total capsules: {len(manifest['artifacts'])}")
         print()
-        
+
         packaged_files = []
-        
+
         for capsule in manifest["artifacts"]:
             print(f"\n🔍 Processing capsule: {capsule['name']}")
-            
+
             if self.validate_capsule(capsule):
                 output_file = self.package_capsule(capsule)
                 packaged_files.append(output_file)
             else:
                 print(f"⚠️  Skipping invalid capsule: {capsule['name']}")
-        
+
         # Generate syndication metadata
         metadata = self.generate_syndication_metadata(manifest)
         metadata_file = self.output_dir / "syndication.json"
         with open(metadata_file, "w", encoding="utf-8") as f:
             json.dump(metadata, f, indent=2)
-        
+
         print(f"\n📄 Syndication metadata: {metadata_file}")
         print(f"\n✅ Packaging complete: {len(packaged_files)} capsules")
         print(f"📂 Output directory: {self.output_dir}")
-        
+
         return packaged_files
 
 
 def main() -> None:
     """Main execution"""
     packager = ArtifactPackager()
-    
+
     try:
         packaged_files = packager.package_all()
-        
+
         print("\n🚀 READY FOR SYNDICATION")
         print("-" * 60)
         for file in packaged_files:
             size_mb = file.stat().st_size / (1024 * 1024)
             print(f"  {file.name}: {size_mb:.2f} MB")
-        
+
         print("\n✨ Next step: Run upload_s3.py to syndicate")
-        
+
     except Exception as e:
         print(f"\n❌ Packaging failed: {e}")
         raise

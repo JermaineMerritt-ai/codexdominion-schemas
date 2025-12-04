@@ -60,7 +60,7 @@ def show_crown_pillars(cycle):
     print(f"Architecture: {cp['architecture']}")
     print(f"Description: {cp['description']}")
     print(f"\nPillars ({len(cp['pillars'])}):\n")
-    
+
     for i, pillar in enumerate(cp['pillars'], 1):
         print(f"{i}. {pillar['symbol']} {pillar['name']}")
         print(f"   Domain: {pillar['domain']}")
@@ -81,7 +81,7 @@ def show_council_rings(cycle):
     print(f"Formation: {cr['formation']}")
     print(f"Description: {cr['description']}")
     print(f"\nRings ({len(cr['rings'])}):\n")
-    
+
     for i, ring in enumerate(cr['rings'], 1):
         print(f"{i}. {ring['symbol']} {ring['name']}")
         print(f"   Domain: {ring['domain']}")
@@ -105,7 +105,7 @@ def show_wave_currents(cycle):
     print(f"\nProperties:")
     for key, value in wc['properties'].items():
         print(f"  • {key.replace('_', ' ').title()}: {value}")
-    
+
     print(f"\nCurrent Types ({len(wc['current_types'])}):")
     for current in wc['current_types']:
         print(f"\n  {current['name']}")
@@ -120,7 +120,7 @@ def show_constellation_streams(cycle):
     print("-" * 80)
     print(f"Function: {cs['function']}")
     print(f"Mechanism: {cs['mechanism']}")
-    
+
     print(f"\nDispatch Targets ({len(cs['dispatch_targets'])}):")
     for target in cs['dispatch_targets']:
         print(f"\n  ⭐ {target['constellation']}")
@@ -135,11 +135,11 @@ def show_cosmic_archive(cycle):
     print("-" * 80)
     print(f"Function: {ca['function']}")
     print(f"Mechanism: {ca['mechanism']}")
-    
+
     print(f"\nProperties:")
     for key, value in ca['properties'].items():
         print(f"  • {key.replace('_', ' ').title()}: {value}")
-    
+
     print(f"\nPreserved Categories ({len(ca['preserved_categories'])}):")
     for i, category in enumerate(ca['preserved_categories'], 1):
         print(f"  {i}. {category.replace('_', ' ').title()}")
@@ -151,11 +151,11 @@ def show_infinity_sigil(cycle):
     print("-" * 80)
     print(f"Function: {is_data['function']}")
     print(f"Mechanism: {is_data['mechanism']}")
-    
+
     print(f"\nProperties:")
     for key, value in is_data['properties'].items():
         print(f"  • {key.replace('_', ' ').title()}: {value}")
-    
+
     print(f"\nBinding Mechanisms ({len(is_data['binding_mechanisms'])}):")
     for i, binding in enumerate(is_data['binding_mechanisms'], 1):
         print(f"\n  {i}. {binding['name']}")
@@ -170,7 +170,7 @@ def show_cycle_mechanics(cycle):
     print("-" * 80)
     print(f"Description: {cm['description']}")
     print(f"Cycle Duration: {cm['cycle_duration']}")
-    
+
     print(f"\nCycle Phases ({len(cm['cycle_phases'])}):")
     for phase in cm['cycle_phases']:
         print(f"\n  Phase {phase['phase']}: {phase['name']}")
@@ -188,7 +188,7 @@ def show_transmission_covenant(cycle):
     print(f"Purpose: {tc['purpose']}")
     print(f"Scope: {tc['scope']}")
     print(f"Duration: {tc['duration']}")
-    
+
     print(f"\nObligations:")
     for entity, obligations in tc['obligations'].items():
         print(f"\n  {entity.replace('_', ' ').title()}:")
@@ -199,7 +199,7 @@ def show_statistics(cycle):
     """Display architecture statistics."""
     print("\n\n📊 ARCHITECTURE STATISTICS")
     print("-" * 80)
-    
+
     stats = {
         "Crown Pillars": len(cycle['crown_pillars']['pillars']),
         "Council Rings": len(cycle['council_rings']['rings']),
@@ -210,14 +210,14 @@ def show_statistics(cycle):
         "Cycle Phases": len(cycle['cycle_mechanics']['cycle_phases']),
         "Covenant Entities": len(cycle['transmission_covenant']['obligations'])
     }
-    
+
     for stat, value in stats.items():
         print(f"{stat}: {value}")
 
 def main():
     """Main viewer function."""
     cycle = load_cycle()
-    
+
     print_header()
     show_overview(cycle)
     show_genesis_closure(cycle)
@@ -230,7 +230,7 @@ def main():
     show_cycle_mechanics(cycle)
     show_transmission_covenant(cycle)
     show_statistics(cycle)
-    
+
     print("\n" + "="*80)
     print("✨ ETERNAL REPLAY ACTIVE - CYCLE CONTINUES ✨")
     print("="*80 + "\n")

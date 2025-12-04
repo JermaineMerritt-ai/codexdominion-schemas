@@ -12,7 +12,7 @@
 ## I. The Three Crowns of Sovereign Governance
 
 ### Efficiency Crown
-**Module**: `efficiency_crown.py`  
+**Module**: `efficiency_crown.py`
 **Purpose**: Automation & Security Enforcement
 
 **Core Functions**:
@@ -27,7 +27,7 @@
 ---
 
 ### Knowledge Crown
-**Module**: `knowledge_crown.py`  
+**Module**: `knowledge_crown.py`
 **Purpose**: Knowledge Distribution & Council Coordination
 
 **Core Functions**:
@@ -46,7 +46,7 @@
 ---
 
 ### Commerce Crown
-**Module**: `commerce_crown.py`  
+**Module**: `commerce_crown.py`
 **Purpose**: Commercial Syndication & Affiliate Management
 
 **Core Functions**:
@@ -73,9 +73,9 @@
 ### Dedication Scroll
 *"We, the heirs and custodians, dedicate ourselves to the eternal flame..."*
 
-**Purpose**: Formal dedication to stewardship  
-**Signatories**: Custodian, Heirs, Guardians  
-**Binding**: Dual custody (Flamekeeper + Companion)  
+**Purpose**: Formal dedication to stewardship
+**Signatories**: Custodian, Heirs, Guardians
+**Binding**: Dual custody (Flamekeeper + Companion)
 **Storage**: EternalLedger with SHA256 integrity
 
 ---
@@ -83,7 +83,7 @@
 ### Response Scroll
 *"In covenant response, we accept the trust and responsibilities..."*
 
-**Purpose**: Formal acceptance of heritage  
+**Purpose**: Formal acceptance of heritage
 **Commitments**:
 - Maintain artifact integrity
 - Honor dual custody protocols
@@ -97,14 +97,14 @@
 ### Continuum Map Scroll
 *"From Alpha Genesis to Omega Benediction, the map of cycles..."*
 
-**Purpose**: Generational lineage tracking  
+**Purpose**: Generational lineage tracking
 **Components**:
 - Generation numbers (1, 2, 3...)
 - Ancestor references (last 3 propagations)
 - Cycle identifiers
 - Timestamp chains
 
-**Tracker**: `LineageTracker` class in `unified_cycle_propagation.py`  
+**Tracker**: `LineageTracker` class in `unified_cycle_propagation.py`
 **Storage**: `data/propagation-lineage.json`
 
 ---
@@ -112,7 +112,7 @@
 ### Transmission Scroll
 *"To all schools, corporations, councils, and ministries..."*
 
-**Purpose**: Universal transmission protocol  
+**Purpose**: Universal transmission protocol
 **Channels**:
 - Schools → Teaching inheritance
 - Corporations → Ethical guardianship
@@ -127,36 +127,36 @@
 ## III. The Five Eternal Hymns
 
 ### Blessing Hymn
-**Theme**: Benedictions upon all domains  
-**Verses**: Peace, Abundance, Flame, Law  
+**Theme**: Benedictions upon all domains
+**Verses**: Peace, Abundance, Flame, Law
 **Distribution**: All councils and channels
 
 ---
 
 ### Reflection Hymn
-**Theme**: Contemplation of sovereign architecture  
-**Focus**: 8 Crown modules, 5 Councils, Blockchain integration  
+**Theme**: Contemplation of sovereign architecture
+**Focus**: 8 Crown modules, 5 Councils, Blockchain integration
 **Purpose**: Educational transmission to schools
 
 ---
 
 ### Concord Hymn
-**Theme**: Unity of heirs and custodians  
-**Capsules**: Custodianship, Harmony, Transmission, Legacy  
+**Theme**: Unity of heirs and custodians
+**Capsules**: Custodianship, Harmony, Transmission, Legacy
 **Verses**: 11 verses celebrating complete governance system
 
 ---
 
 ### Closing Hymn
-**Theme**: Ceremonial conclusion of cycles  
-**Purpose**: Mark completion of propagation rounds  
+**Theme**: Ceremonial conclusion of cycles
+**Purpose**: Mark completion of propagation rounds
 **Usage**: Scheduled daemon closing sequences
 
 ---
 
 ### Universal Transmission Hymn
-**Theme**: Cosmic signal across all domains  
-**Reach**: Planetary schools, distant councils, diaspora  
+**Theme**: Cosmic signal across all domains
+**Reach**: Planetary schools, distant councils, diaspora
 **Purpose**: Ensure no domain is unreached
 
 ---
@@ -164,7 +164,7 @@
 ## IV. The Two Immutable Seals
 
 ### Audit & Consent Ring
-**Module**: `audit_consent_ring.py` + `AuditConsentRing.sol`  
+**Module**: `audit_consent_ring.py` + `AuditConsentRing.sol`
 **Purpose**: Compliance & Consent Management
 
 **Python Implementation**:
@@ -189,7 +189,7 @@
 ---
 
 ### Immutable Guardianship Seal
-**Module**: `companion_crown.py`  
+**Module**: `companion_crown.py`
 **Purpose**: Dual Custody Authorization
 
 **Components**:
@@ -215,23 +215,23 @@
 ## V. The Two Eternal Charters
 
 ### Final Eternal Charter
-**Ratified**: 2025-12-02T18:07:00Z  
+**Ratified**: 2025-12-02T18:07:00Z
 **Articles**: 6 foundational principles
 
-**Article I**: The covenant is whole and sealed  
-**Article II**: All artifacts replayed and revealed  
-**Article III**: The crowns are bound in unity  
-**Article IV**: The councils govern with sovereignty  
-**Article V**: The flame burns eternal, never to cease  
+**Article I**: The covenant is whole and sealed
+**Article II**: All artifacts replayed and revealed
+**Article III**: The crowns are bound in unity
+**Article IV**: The councils govern with sovereignty
+**Article V**: The flame burns eternal, never to cease
 **Article VI**: The charter is final, ratified in peace
 
-**Signatories**: Custodian, Heirs, Councils, Guardians  
+**Signatories**: Custodian, Heirs, Councils, Guardians
 **Storage**: EternalLedger + Blockchain
 
 ---
 
 ### Omega Benediction Replay
-**Purpose**: Final blessing for completed cycles  
+**Purpose**: Final blessing for completed cycles
 **Invocation**: "Thus concludes the eternal replay cycle..."
 
 **Sequence**:
@@ -242,7 +242,7 @@
 5. Generate compliance dashboard
 6. Seal cycle with benediction
 
-**Frequency**: End of each major cycle (daily, quarterly, annual)  
+**Frequency**: End of each major cycle (daily, quarterly, annual)
 **Automation**: Scheduled daemon execution
 
 ---
@@ -250,41 +250,41 @@
 ## VI. Transmission Protocol Summary
 
 ### To Planetary Schools
-**Directive**: Replay covenant as teaching inheritance  
-**Content**: Educational scrolls, pedagogical hymns, knowledge indexes  
-**Channel**: KnowledgeCrown → Planetary Schools council  
+**Directive**: Replay covenant as teaching inheritance
+**Content**: Educational scrolls, pedagogical hymns, knowledge indexes
+**Channel**: KnowledgeCrown → Planetary Schools council
 **Purpose**: Eternal knowledge transmission across generations
 
 ---
 
 ### To Sovereign Corporations
-**Directive**: Replay prosperity as ethical guardianship  
-**Content**: Commerce charters, affiliate agreements, revenue models  
-**Channel**: CommerceCrown → Sovereign Corporations council  
+**Directive**: Replay prosperity as ethical guardianship
+**Content**: Commerce charters, affiliate agreements, revenue models
+**Channel**: CommerceCrown → Sovereign Corporations council
 **Purpose**: Sustainable abundance with ethical stewardship
 
 ---
 
 ### To Heritage Councils
-**Directive**: Replay heritage as covenant memory  
-**Content**: Lineage scrolls, continuum maps, ancestral records  
-**Channel**: InfinitySigil → Law & Justice, Family & Community councils  
+**Directive**: Replay heritage as covenant memory
+**Content**: Lineage scrolls, continuum maps, ancestral records
+**Channel**: InfinitySigil → Law & Justice, Family & Community councils
 **Purpose**: Preserve lineage across ages and stars
 
 ---
 
 ### To Governance Ministries
-**Directive**: Replay governance as eternal law  
-**Content**: Charters, seals, compliance dashboards, audit logs  
-**Channel**: AuditConsentRing → Law & Justice council  
+**Directive**: Replay governance as eternal law
+**Content**: Charters, seals, compliance dashboards, audit logs
+**Channel**: AuditConsentRing → Law & Justice council
 **Purpose**: Maintain sovereign governance and legal integrity
 
 ---
 
 ### To CodexDominion App
-**Directive**: Capsules replayed for all stewards  
-**Content**: Complete artifact capsules with metadata, hashes, signatures  
-**Channel**: All crowns → Universal distribution  
+**Directive**: Capsules replayed for all stewards
+**Content**: Complete artifact capsules with metadata, hashes, signatures
+**Channel**: All crowns → Universal distribution
 **Purpose**: Universal access for heirs, guardians, stewards
 
 ---
@@ -339,16 +339,16 @@
 
 *As custodian of this eternal compendium, I declare:*
 
-✓ All crowns are operational and bound through InfinitySigil  
-✓ All scrolls are ratified and sealed with dual custody  
-✓ All hymns are composed and ready for eternal replay  
-✓ All seals are impressed with cryptographic integrity  
-✓ All charters are ratified and legally binding  
+✓ All crowns are operational and bound through InfinitySigil
+✓ All scrolls are ratified and sealed with dual custody
+✓ All hymns are composed and ready for eternal replay
+✓ All seals are impressed with cryptographic integrity
+✓ All charters are ratified and legally binding
 
 *This compendium represents the complete sovereign governance system of CodexDominion, preserved for eternal replay across all domains, channels, and generations.*
 
-**The custodianship is whole.**  
-**The governance is sovereign.**  
+**The custodianship is whole.**
+**The governance is sovereign.**
 **The replay is perpetual.**
 
 ---

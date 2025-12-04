@@ -921,7 +921,7 @@ def generate_legacy_capsule(
         <p><strong>Sovereign Domain:</strong> {profile['company_name']} | <strong>Industry:</strong> {profile['industry']}</p>
         <p><strong>Forged:</strong> {datetime.now().strftime('%B %d, %Y')}</p>
     </div>
-    
+
     <div class="solution-engine">
         <h4>🏰 Domain Profile</h4>
         <p><strong>Annual Revenue:</strong> ${profile['annual_revenue']:,}</p>
@@ -989,7 +989,7 @@ def generate_legacy_capsule(
         capsule += f"""
         <div class="audit-header">
             <h4>🏦 Investment Opportunity</h4>
-            <p>This turnaround capsule represents a systematically diagnosed and solution-mapped opportunity 
+            <p>This turnaround capsule represents a systematically diagnosed and solution-mapped opportunity
             for {profile['company_name']} in the {profile['industry']} sector.</p>
             <p><strong>Investment Thesis:</strong> Proven inefficiencies with clear remediation pathways</p>
             <p><strong>Risk Profile:</strong> Systematic analysis reduces implementation uncertainty</p>

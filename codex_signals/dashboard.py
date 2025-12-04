@@ -426,7 +426,7 @@ class SignalsDashboard:
         st.markdown(
             """
         <div style='text-align: center; color: #666;'>
-            <p>🔥 Codex Signals Dashboard v1.0 | The Merritt Method™ | 
+            <p>🔥 Codex Signals Dashboard v1.0 | The Merritt Method™ |
             Educational and informational use only. Past performance does not guarantee future results.</p>
         </div>
         """,

@@ -20,7 +20,7 @@ server {
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256;
     ssl_prefer_server_ciphers off;
-    
+
     # Security headers
     add_header X-Frame-Options DENY;
     add_header X-Content-Type-Options nosniff;
@@ -41,12 +41,12 @@ server {
         proxy_read_timeout 86400;
         proxy_connect_timeout 60;
         proxy_send_timeout 60;
-        
+
         # Handle Streamlit WebSocket connections
         proxy_buffering off;
         proxy_redirect off;
     }
-    
+
     # Health check endpoint
     location /health {
         access_log off;
@@ -73,7 +73,7 @@ server {
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256;
     ssl_prefer_server_ciphers off;
-    
+
     # Security headers
     add_header X-Frame-Options DENY;
     add_header X-Content-Type-Options nosniff;
@@ -94,12 +94,12 @@ server {
         proxy_read_timeout 86400;
         proxy_connect_timeout 60;
         proxy_send_timeout 60;
-        
+
         # Handle Streamlit WebSocket connections
         proxy_buffering off;
         proxy_redirect off;
     }
-    
+
     # Health check endpoint
     location /health {
         access_log off;

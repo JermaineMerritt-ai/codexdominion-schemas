@@ -166,7 +166,7 @@ from datetime import datetime
 
 class CodexUtils:
     """Enhanced utility class for Codex operations"""
-    
+
     @staticmethod
     def safe_load_json(filepath: str, default: dict = None) -> dict:
         """Safely load JSON with fallback"""
@@ -179,28 +179,28 @@ class CodexUtils:
         except Exception as e:
             print(f"Warning: Could not load {filepath}: {e}")
             return default or {}
-    
+
     @staticmethod
     def safe_save_json(filepath: str, data: dict) -> bool:
         """Safely save JSON with error handling"""
         try:
             path = Path(filepath)
             path.parent.mkdir(parents=True, exist_ok=True)
-            
+
             # Backup existing file
             if path.exists():
                 backup_path = path.with_suffix('.json.backup')
                 path.rename(backup_path)
-            
+
             # Save new data
             with open(path, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
-            
+
             return True
         except Exception as e:
             print(f"Error saving {filepath}: {e}")
             return False
-    
+
     @staticmethod
     def performance_timer(func=None, *, name=None):
         """Performance timing decorator"""
@@ -210,38 +210,38 @@ class CodexUtils:
                 start = time.time()
                 result = f(*args, **kwargs)
                 duration = time.time() - start
-                
+
                 op_name = name or f.__name__
                 if duration > 1.0:
                     print(f"Performance: {op_name} took {duration:.2f}s")
-                
+
                 return result
             return wrapper
-        
+
         if func is None:
             return decorator
         else:
             return decorator(func)
-    
+
     @staticmethod
     def format_currency(amount: float, currency: str = "USD") -> str:
         """Format currency with proper symbols"""
         symbols = {"USD": "$", "EUR": "€", "GBP": "£"}
         symbol = symbols.get(currency, "$")
         return f"{symbol}{amount:,.2f}"
-    
+
     @staticmethod
     def calculate_percentage_change(old_value: float, new_value: float) -> float:
         """Calculate percentage change between values"""
         if old_value == 0:
             return 100.0 if new_value > 0 else 0.0
         return ((new_value - old_value) / old_value) * 100
-    
+
     @staticmethod
     def get_timestamp() -> str:
         """Get current timestamp in ISO format"""
         return datetime.now().isoformat()
-    
+
     @staticmethod
     def validate_data(data: dict, required_fields: list) -> tuple[bool, list]:
         """Validate data against required fields"""
@@ -272,11 +272,11 @@ from typing import Dict, Any
 
 class CodexConfig:
     """Advanced configuration management"""
-    
+
     def __init__(self, config_file="config.json"):
         self.config_file = Path(config_file)
         self.config = self.load_config()
-    
+
     def load_config(self) -> Dict[str, Any]:
         """Load configuration with defaults"""
         defaults = {
@@ -300,7 +300,7 @@ class CodexConfig:
                 "audit_logging": True
             }
         }
-        
+
         if self.config_file.exists():
             try:
                 with open(self.config_file, 'r') as f:
@@ -308,9 +308,9 @@ class CodexConfig:
                     self._merge_configs(defaults, file_config)
             except Exception as e:
                 print(f"Warning: Error loading config: {e}")
-        
+
         return defaults
-    
+
     def _merge_configs(self, base: dict, override: dict):
         """Merge configuration dictionaries"""
         for key, value in override.items():
@@ -318,33 +318,33 @@ class CodexConfig:
                 self._merge_configs(base[key], value)
             else:
                 base[key] = value
-    
+
     def get(self, key: str, default=None):
         """Get configuration value"""
         keys = key.split('.')
         value = self.config
-        
+
         for k in keys:
             if isinstance(value, dict) and k in value:
                 value = value[k]
             else:
                 return default
-        
+
         return value
-    
+
     def set(self, key: str, value: Any):
         """Set configuration value"""
         keys = key.split('.')
         config = self.config
-        
+
         for k in keys[:-1]:
             if k not in config:
                 config[k] = {}
             config = config[k]
-        
+
         config[keys[-1]] = value
         self.save()
-    
+
     def save(self):
         """Save configuration to file"""
         try:

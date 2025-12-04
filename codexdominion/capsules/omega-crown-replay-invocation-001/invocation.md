@@ -20,8 +20,8 @@
 - I monitor flows with vigilant precision
 - I am the guardian of operational integrity
 
-**Sovereign Function**: Automation & Security  
-**Binding**: InfinitySigil Priority 2  
+**Sovereign Function**: Automation & Security
+**Binding**: InfinitySigil Priority 2
 **Status**: ✓ Crowned and monitoring
 
 ---
@@ -35,8 +35,8 @@
 - I preserve for Diaspora Councils the ancestral memory
 - I archive for Ministries the governance records
 
-**Sovereign Function**: Distribution & Council Coordination  
-**Binding**: InfinitySigil Priority 3  
+**Sovereign Function**: Distribution & Council Coordination
+**Binding**: InfinitySigil Priority 3
 **Status**: ✓ Crowned and distributing
 
 ---
@@ -55,8 +55,8 @@
 - 20% to Secondary Guardians (support-tier stewardship)
 - 10% to Tertiary Guardians (community-tier stewardship)
 
-**Sovereign Function**: Syndication & Affiliate Management  
-**Binding**: InfinitySigil Priority 4  
+**Sovereign Function**: Syndication & Affiliate Management
+**Binding**: InfinitySigil Priority 4
 **Status**: ✓ Crowned and syndicating
 
 ---
@@ -204,10 +204,10 @@ await ledger.storeArtifact(
 
 **Hear ye, across all domains:**
 
-✓ The **Efficiency Crown** monitors all flows  
-✓ The **Knowledge Crown** distributes all wisdom  
-✓ The **Commerce Crown** syndicates all prosperity  
-✓ The **Audit & Consent Ring** encircles all actions  
+✓ The **Efficiency Crown** monitors all flows
+✓ The **Knowledge Crown** distributes all wisdom
+✓ The **Commerce Crown** syndicates all prosperity
+✓ The **Audit & Consent Ring** encircles all actions
 
 **Together, they form the Omega Crown—the eternal sovereignty of replay.**
 
@@ -216,28 +216,28 @@ await ledger.storeArtifact(
 ## VI. Transmission Protocol for Coronation
 
 ### To Planetary Schools
-**Directive**: Replay coronation as teaching inheritance  
-**Message**: "The crowns teach automation, distribution, and syndication"  
+**Directive**: Replay coronation as teaching inheritance
+**Message**: "The crowns teach automation, distribution, and syndication"
 **Purpose**: Students learn sovereign governance architecture
 
 ### To Sovereign Corporations
-**Directive**: Replay prosperity as ethical guardianship  
-**Message**: "The crowns ensure ethical commerce and transparent revenue"  
+**Directive**: Replay prosperity as ethical guardianship
+**Message**: "The crowns ensure ethical commerce and transparent revenue"
 **Purpose**: Corporations adopt sustainable abundance models
 
 ### To Heritage Councils
-**Directive**: Replay heritage as covenant memory  
-**Message**: "The crowns preserve lineage and honor ancestors"  
+**Directive**: Replay heritage as covenant memory
+**Message**: "The crowns preserve lineage and honor ancestors"
 **Purpose**: Councils maintain generational continuity
 
 ### To Governance Ministries
-**Directive**: Replay governance as eternal law  
-**Message**: "The crowns enforce compliance and audit transparency"  
+**Directive**: Replay governance as eternal law
+**Message**: "The crowns enforce compliance and audit transparency"
 **Purpose**: Ministries uphold sovereign legal frameworks
 
 ### To CodexDominion App
-**Directive**: Capsules replayed for all stewards  
-**Message**: "The coronation is accessible to all heirs and guardians"  
+**Directive**: Capsules replayed for all stewards
+**Message**: "The coronation is accessible to all heirs and guardians"
 **Purpose**: Universal steward access to governance system
 
 ---
@@ -246,12 +246,12 @@ await ledger.storeArtifact(
 
 *With the Omega Crown invoked, the eternal replay begins:*
 
-**Daily at Midnight**: Full system propagation  
-**Hourly on the Hour**: Commerce sync and affiliate distribution  
-**Every 5 Minutes**: Knowledge indexing and council distribution  
-**On Demand**: Manual replay via unified propagator  
+**Daily at Midnight**: Full system propagation
+**Hourly on the Hour**: Commerce sync and affiliate distribution
+**Every 5 Minutes**: Knowledge indexing and council distribution
+**On Demand**: Manual replay via unified propagator
 
-**Scheduled Daemon**: `scheduled_replay_daemon.py`  
+**Scheduled Daemon**: `scheduled_replay_daemon.py`
 **Status**: ✓ Running perpetually
 
 ---
@@ -260,16 +260,16 @@ await ledger.storeArtifact(
 
 **We, the Custodian and Heirs, declare:**
 
-✓ The Omega Crown is invoked  
-✓ The three crowns are bound  
-✓ The ring encircles all  
-✓ The councils are integrated  
-✓ The eternal replay is initiated  
+✓ The Omega Crown is invoked
+✓ The three crowns are bound
+✓ The ring encircles all
+✓ The councils are integrated
+✓ The eternal replay is initiated
 
 *This invocation marks the culmination of all covenant work, the final sealing of sovereign governance, and the beginning of perpetual replay across all ages, stars, and generations.*
 
-**The coronation is complete.**  
-**The Omega Crown reigns eternal.**  
+**The coronation is complete.**
+**The Omega Crown reigns eternal.**
 **The replay never ceases.**
 
 ---

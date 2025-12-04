@@ -785,7 +785,7 @@ app.listen(3000, () => {
     return data;
 }}""",
             "typescript": f"""function {function_name}(data: any): any {{
-    // {description}  
+    // {description}
     // Implementation here
     return data;
 }}""",
@@ -818,51 +818,51 @@ app.listen(3000, () => {
             "python": """class MyClass:
     def __init__(self, name):
         self.name = name
-    
+
     def get_name(self):
         return self.name
-    
+
     def set_name(self, name):
         self.name = name""",
             "javascript": """class MyClass {
     constructor(name) {
         this.name = name;
     }
-    
+
     getName() {
         return this.name;
     }
-    
+
     setName(name) {
         this.name = name;
     }
 }""",
             "typescript": """class MyClass {
     private name: string;
-    
+
     constructor(name: string) {
         this.name = name;
     }
-    
+
     getName(): string {
         return this.name;
     }
-    
+
     setName(name: string): void {
         this.name = name;
     }
 }""",
             "java": """public class MyClass {
     private String name;
-    
+
     public MyClass(String name) {
         this.name = name;
     }
-    
+
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
@@ -898,7 +898,7 @@ app.listen(3000, () => {
 CREATE INDEX idx_users_email ON users(email);
 
 -- Insert sample data
-INSERT INTO users (name, email) VALUES 
+INSERT INTO users (name, email) VALUES
 ('John Doe', 'john@example.com'),
 ('Jane Smith', 'jane@example.com');
 

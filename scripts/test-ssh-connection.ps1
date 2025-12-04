@@ -50,7 +50,7 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "🔑 Copy private key to clipboard for GitHub?" -ForegroundColor Yellow
     Write-Host "   (y/n): " -NoNewline
     $response = Read-Host
-    
+
     if ($response -eq 'y') {
         Get-Content $SSH_KEY | Set-Clipboard
         Write-Host ""

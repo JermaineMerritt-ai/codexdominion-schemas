@@ -1,7 +1,7 @@
 # Eternal Ledger Capsule
 
-**Capsule Type:** Financial Sovereignty Dashboard  
-**Status:** Active  
+**Capsule Type:** Financial Sovereignty Dashboard
+**Status:** Active
 **Last Updated:** December 2, 2025
 
 ## Overview

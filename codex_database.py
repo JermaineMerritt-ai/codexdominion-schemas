@@ -394,7 +394,7 @@ class CodexDatabase:
         async with self.get_connection() as conn:
             rows = await conn.fetch(
                 """
-                SELECT * FROM daily_picks 
+                SELECT * FROM daily_picks
                 WHERE user_id = $1 AND trade_date >= CURRENT_DATE - INTERVAL '%s days'
                 ORDER BY trade_date DESC
             """,
@@ -439,11 +439,11 @@ class CodexDatabase:
         async with self.get_connection() as conn:
             rows = await conn.fetch(
                 """
-                SELECT program, 
+                SELECT program,
                        SUM(clicks) as total_clicks,
                        SUM(conversions) as total_conversions,
                        SUM(commission) as total_commission
-                FROM affiliate_metrics 
+                FROM affiliate_metrics
                 WHERE captured_at >= CURRENT_TIMESTAMP - INTERVAL '%s days'
                 GROUP BY program
                 ORDER BY total_commission DESC
@@ -552,8 +552,8 @@ class CodexDatabase:
         async with self.get_connection() as conn:
             rows = await conn.fetch(
                 """
-                SELECT * FROM amm_pools 
-                ORDER BY tvl_usd DESC 
+                SELECT * FROM amm_pools
+                ORDER BY tvl_usd DESC
                 LIMIT $1
             """,
                 limit,

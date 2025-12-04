@@ -88,30 +88,30 @@ if ($Action) {
     Write-Host "3. Show History" -ForegroundColor White
     Write-Host "4. Validate Ledger" -ForegroundColor White
     Write-Host "5. Exit" -ForegroundColor White
-    
+
     $choice = Read-Host "`nEnter choice (1-5)"
-    
+
     switch ($choice) {
-        "1" { 
+        "1" {
             Write-Host "🌅 Executing Dawn Dispatch..." -ForegroundColor Cyan
             python dawn_dispatch_simple.py dispatch
         }
-        "2" { 
+        "2" {
             Write-Host "📊 Checking Status..." -ForegroundColor Cyan
-            python dawn_dispatch_simple.py status 
+            python dawn_dispatch_simple.py status
         }
-        "3" { 
+        "3" {
             Write-Host "📜 Loading History..." -ForegroundColor Cyan
             & $PSScriptRoot\dawn-dispatch-simple.ps1 "history"
         }
-        "4" { 
+        "4" {
             Write-Host "🔍 Validating..." -ForegroundColor Cyan
             & $PSScriptRoot\dawn-dispatch-simple.ps1 "validate"
         }
-        "5" { 
+        "5" {
             Write-Host "🌅 Session ended. Flame endures eternal." -ForegroundColor Cyan
         }
-        default { 
+        default {
             Write-Host "❌ Invalid choice" -ForegroundColor Red
         }
     }

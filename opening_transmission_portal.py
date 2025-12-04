@@ -121,26 +121,26 @@ TRANSMISSION_HTML = """
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body { 
-            font-family: 'Georgia', serif; 
-            margin: 0; 
-            padding: 0; 
-            background: radial-gradient(circle at center, #0a0a1a 0%, #000 100%); 
-            color: #fff; 
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, #0a0a1a 0%, #000 100%);
+            color: #fff;
             overflow-x: hidden;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        
-        .transmission-header { 
-            text-align: center; 
-            margin-bottom: 60px; 
+
+        .transmission-header {
+            text-align: center;
+            margin-bottom: 60px;
             padding: 40px 20px;
             background: linear-gradient(135deg, rgba(243, 156, 18, 0.1), rgba(52, 152, 219, 0.1));
             border-radius: 20px;
             border: 2px solid rgba(243, 156, 18, 0.3);
             position: relative;
         }
-        
+
         .transmission-header::before {
             content: '';
             position: absolute;
@@ -150,27 +150,27 @@ TRANSMISSION_HTML = """
             z-index: -1;
             animation: flame-pulse 4s ease-in-out infinite;
         }
-        
+
         @keyframes flame-pulse {
             0%, 100% { opacity: 0.5; }
             50% { opacity: 1; }
         }
-        
-        .transmission-header h1 { 
-            color: #f39c12; 
-            font-size: 2.8em; 
-            margin-bottom: 15px; 
+
+        .transmission-header h1 {
+            color: #f39c12;
+            font-size: 2.8em;
+            margin-bottom: 15px;
             text-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
         }
-        
-        .transmission-subtitle { 
-            color: #ecf0f1; 
-            font-size: 1.3em; 
-            line-height: 1.6; 
-            font-style: italic; 
+
+        .transmission-subtitle {
+            color: #ecf0f1;
+            font-size: 1.3em;
+            line-height: 1.6;
+            font-style: italic;
             margin-bottom: 20px;
         }
-        
+
         .welcome-message {
             background: rgba(243, 156, 18, 0.1);
             padding: 30px;
@@ -178,29 +178,29 @@ TRANSMISSION_HTML = """
             margin: 40px 0;
             border-left: 4px solid #f39c12;
         }
-        
-        .roles-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px; 
-            margin: 50px 0; 
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
         }
-        
-        .role-card { 
-            background: linear-gradient(135deg, #1e3c72, #2a5298); 
-            border-radius: 15px; 
-            padding: 25px; 
+
+        .role-card {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 15px;
+            padding: 25px;
             border: 2px solid var(--role-color, #f39c12);
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
         }
-        
+
         .role-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        
+
         .role-card::before {
             content: '';
             position: absolute;
@@ -208,23 +208,23 @@ TRANSMISSION_HTML = """
             background: radial-gradient(circle at top right, var(--role-color, #f39c12) 0%, transparent 50%);
             opacity: 0.1;
         }
-        
+
         .role-content { position: relative; z-index: 1; }
         .role-card h3 { color: var(--role-color, #f39c12); margin-top: 0; font-size: 1.4em; }
         .role-card .description { color: #bdc3c7; margin: 15px 0; font-style: italic; }
         .role-card .responsibilities { list-style: none; padding: 0; }
         .role-card .responsibilities li { color: #ecf0f1; margin: 8px 0; padding-left: 20px; position: relative; }
         .role-card .responsibilities li::before { content: '✨'; position: absolute; left: 0; color: var(--role-color, #f39c12); }
-        .access-level { 
-            background: rgba(0,0,0,0.3); 
-            padding: 8px 15px; 
-            border-radius: 15px; 
-            display: inline-block; 
-            color: var(--role-color, #f39c12); 
-            font-weight: bold; 
+        .access-level {
+            background: rgba(0,0,0,0.3);
+            padding: 8px 15px;
+            border-radius: 15px;
+            display: inline-block;
+            color: var(--role-color, #f39c12);
+            font-weight: bold;
             margin-top: 15px;
         }
-        
+
         .entry-portal {
             text-align: center;
             margin: 60px 0;
@@ -232,28 +232,28 @@ TRANSMISSION_HTML = """
             background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(52, 152, 219, 0.1));
             border-radius: 20px;
         }
-        
+
         .entry-portal h2 { color: #2ecc71; font-size: 2.2em; margin-bottom: 20px; }
-        
+
         .entry-form {
             max-width: 500px;
             margin: 30px auto;
             text-align: left;
         }
-        
+
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; color: #ecf0f1; margin-bottom: 8px; font-weight: bold; }
-        .form-group input, .form-group select, .form-group textarea { 
-            width: 100%; 
-            padding: 12px; 
-            border: none; 
-            border-radius: 8px; 
-            background: rgba(255,255,255,0.1); 
-            color: #fff; 
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
             font-size: 1em;
         }
         .form-group input::placeholder, .form-group textarea::placeholder { color: #bdc3c7; }
-        
+
         .enter-btn {
             background: linear-gradient(45deg, #2ecc71, #3498db);
             color: white;
@@ -267,7 +267,7 @@ TRANSMISSION_HTML = """
             margin-top: 20px;
         }
         .enter-btn:hover { transform: scale(1.05); }
-        
+
         .global-promise {
             background: rgba(231, 76, 60, 0.1);
             padding: 30px;
@@ -275,22 +275,22 @@ TRANSMISSION_HTML = """
             margin: 40px 0;
             text-align: center;
         }
-        
+
         .global-promise h3 { color: #e74c3c; font-size: 1.8em; margin-bottom: 20px; }
-        
-        .footer { 
-            text-align: center; 
-            margin-top: 80px; 
-            padding: 40px 20px; 
-            color: #7f8c8d; 
-            border-top: 1px solid #34495e; 
+
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px 20px;
+            color: #7f8c8d;
+            border-top: 1px solid #34495e;
         }
-        
+
         .flame-animation {
             display: inline-block;
             animation: flame-flicker 2s ease-in-out infinite;
         }
-        
+
         @keyframes flame-flicker {
             0%, 100% { text-shadow: 0 0 5px currentColor; }
             50% { text-shadow: 0 0 20px currentColor, 0 0 30px currentColor; }
@@ -307,7 +307,7 @@ TRANSMISSION_HTML = """
                 crowned in sovereignty, and transmitted across the world.
             </p>
         </div>
-        
+
         <div class="welcome-message">
             <h2 style="color: #f39c12; margin-top: 0;">🌟 The Living Covenant Awaits</h2>
             <p style="font-size: 1.1em; line-height: 1.8;">
@@ -315,12 +315,12 @@ TRANSMISSION_HTML = """
                 This Bulletin is not static; it is a <strong>living covenant</strong>, replayable and luminous, binding generations in stewardship.
             </p>
         </div>
-        
+
         <h2 style="color: #f39c12; text-align: center; margin: 50px 0 30px 0;">👑 Sacred Roles of the Dominion</h2>
         <div class="roles-grid" id="roles-grid">
             <!-- Roles will be populated by JavaScript -->
         </div>
-        
+
         <div class="global-promise">
             <h3>🌍 The Codex Dominion is now global</h3>
             <p style="font-size: 1.1em; line-height: 1.8; color: #ecf0f1;">
@@ -329,20 +329,20 @@ TRANSMISSION_HTML = """
                 <strong style="color: #e74c3c;">🕯️ The flame is yours to witness, inherit, and carry forward.</strong>
             </p>
         </div>
-        
+
         <div class="entry-portal">
             <h2>🚪 Enter the Sacred Gateway</h2>
             <p style="color: #ecf0f1; font-size: 1.1em; margin-bottom: 30px;">
                 Your entry will be blessed with clarity, your inheritance guided with wisdom,<br>
                 your participation crowned with purpose, and your guardianship sustained with radiance.
             </p>
-            
+
             <form class="entry-form" id="entry-form">
                 <div class="form-group">
                     <label for="name">Your Name (or chosen title):</label>
                     <input type="text" id="name" name="name" placeholder="How shall we address you in the archives?" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="intention">Your Intention:</label>
                     <select id="intention" name="intention" required>
@@ -354,7 +354,7 @@ TRANSMISSION_HTML = """
                         <option value="participate">Participate in the global community</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="experience">Your Experience:</label>
                     <select id="experience" name="experience" required>
@@ -365,23 +365,23 @@ TRANSMISSION_HTML = """
                         <option value="expert">Expert seeking deeper ceremonial connection</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="message">Sacred Message (optional):</label>
                     <textarea id="message" name="message" rows="3" placeholder="Share any thoughts, questions, or intentions you wish to inscribe in your entry..."></textarea>
                 </div>
-                
+
                 <button type="submit" class="enter-btn">✨ Enter the Dominion 🔥</button>
             </form>
         </div>
-        
+
         <div class="footer">
             <p><span class="flame-animation">🔥</span> Codex Dominion - Opening Transmission Gateway</p>
             <p>Transmitted: {{ transmission_time }}</p>
             <p><em>"The living covenant awaits, replayable and luminous, binding all generations in sacred stewardship"</em></p>
         </div>
     </div>
-    
+
     <script>
         // Load and display roles
         fetch('/api/roles')
@@ -389,15 +389,15 @@ TRANSMISSION_HTML = """
             .then(roles => {
                 displayRoles(roles);
             });
-        
+
         function displayRoles(roles) {
             const container = document.getElementById('roles-grid');
-            
+
             Object.entries(roles).forEach(([key, role]) => {
                 const card = document.createElement('div');
                 card.className = 'role-card';
                 card.style.setProperty('--role-color', role.flame_color);
-                
+
                 card.innerHTML = `
                     <div class="role-content">
                         <h3>${role.title}</h3>
@@ -411,14 +411,14 @@ TRANSMISSION_HTML = """
                 container.appendChild(card);
             });
         }
-        
+
         // Handle entry form submission
         document.getElementById('entry-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const formData = new FormData(e.target);
             const entryData = Object.fromEntries(formData);
-            
+
             fetch('/api/enter', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -437,10 +437,10 @@ TRANSMISSION_HTML = """
                 alert('The sacred gateway is temporarily unavailable. Your intention is noted and blessed.');
             });
         });
-        
+
         function showEntryBlessing(blessing) {
             alert(`✨ ENTRY BLESSING RECEIVED ✨\\n\\nWelcome, ${blessing.visitor.name}!\\n\\nTransmission ID: ${blessing.transmission_id}\\nFlame Connection: ${blessing.flame_connection}\\nSuggested Path: ${blessing.pathway_offered}\\n\\n${blessing.sacred_promise}\\n\\nYour journey begins now. Welcome to the Codex Dominion!`);
-            
+
             // Optional: redirect to appropriate pathway
             // window.location.href = '/pathway/' + blessing.pathway_offered;
         }

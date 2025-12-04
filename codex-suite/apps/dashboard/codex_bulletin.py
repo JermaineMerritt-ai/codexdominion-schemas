@@ -71,7 +71,7 @@ def create_role_badge(role):
     color = role_colors.get(role, "#808080")
 
     return f"""
-    <span style="background-color: {color}; color: black; padding: 2px 8px; 
+    <span style="background-color: {color}; color: black; padding: 2px 8px;
                  border-radius: 10px; font-size: 0.8em; font-weight: bold;">
         {role}
     </span>
@@ -94,8 +94,8 @@ def create_type_badge(entry_type):
     color = type_colors.get(entry_type, "#696969")
 
     return f"""
-    <span style="background-color: {color}33; color: {color}; 
-                 border: 1px solid {color}; padding: 1px 6px; 
+    <span style="background-color: {color}33; color: {color};
+                 border: 1px solid {color}; padding: 1px 6px;
                  border-radius: 8px; font-size: 0.75em;">
         {entry_type}
     </span>
@@ -162,7 +162,7 @@ def display_heartbeat_section(beats, time_filter):
 
             st.markdown(
                 f"""
-            <div style="background: rgba(255,255,255,0.05); padding: 10px; margin: 5px 0; 
+            <div style="background: rgba(255,255,255,0.05); padding: 10px; margin: 5px 0;
                         border-left: 3px solid #ff6347; border-radius: 5px;">
                 <div style="display: flex; justify-content: between; align-items: center;">
                     <div>
@@ -255,7 +255,7 @@ def display_proclamations_section(proclamations, time_filter, role_filter, type_
 
             st.markdown(
                 f"""
-            <div style="background: rgba(255,215,0,0.1); padding: 15px; margin: 8px 0; 
+            <div style="background: rgba(255,215,0,0.1); padding: 15px; margin: 8px 0;
                         border-left: 4px solid #ffd700; border-radius: 8px;">
                 <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 8px;">
                     <div>
@@ -268,7 +268,7 @@ def display_proclamations_section(proclamations, time_filter, role_filter, type_
                 <div style="margin-left: 10px; font-style: italic;">
                     <strong>Cycle:</strong> {cycle}
                 </div>
-                <div style="margin: 10px 0 0 10px; padding: 10px; background: rgba(255,255,255,0.05); 
+                <div style="margin: 10px 0 0 10px; padding: 10px; background: rgba(255,255,255,0.05);
                             border-radius: 5px; border-left: 2px solid #ffd700;">
                     📜 {text}
                 </div>
@@ -362,7 +362,7 @@ def display_ledger_section(entries, time_filter, role_filter):
 
             st.markdown(
                 f"""
-            <div style="background: rgba(255,255,255,0.03); padding: 12px; margin: 6px 0; 
+            <div style="background: rgba(255,255,255,0.03); padding: 12px; margin: 6px 0;
                         border-left: 3px solid {border_color}; border-radius: 6px;">
                 <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 6px;">
                     <div>
@@ -372,7 +372,7 @@ def display_ledger_section(entries, time_filter, role_filter):
                         <em style="margin-left: 10px; color: #aaa;">({time_ago})</em>
                     </div>
                 </div>
-                <div style="margin-left: 10px; padding: 8px; background: rgba(255,255,255,0.02); 
+                <div style="margin-left: 10px; padding: 8px; background: rgba(255,255,255,0.02);
                             border-radius: 4px;">
                     📖 {proclamation}
                 </div>
@@ -546,7 +546,7 @@ def codex_bulletin_interface():
 
             st.markdown(
                 f"""
-            <div style="background: rgba(255,255,255,0.02); padding: 10px; margin: 5px 0; 
+            <div style="background: rgba(255,255,255,0.02); padding: 10px; margin: 5px 0;
                         border-left: 3px solid #ffd700; border-radius: 5px;">
                 <div style="display: flex; justify-content: between; align-items: center;">
                     <div>

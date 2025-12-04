@@ -1,6 +1,6 @@
 # 🌟 Contributing to CodexDominion
 
-Welcome, Sovereign Steward 👑  
+Welcome, Sovereign Steward 👑
 This guide ensures every contribution honors the CodexDominion rhythm.
 
 ---
@@ -186,14 +186,14 @@ export async function fetchCapsuleArtifact(slug: string): Promise<Artifact> {
 def execute_capsule(capsule_id: str, config: dict) -> dict:
     """
     Execute a capsule with the given configuration.
-    
+
     Args:
         capsule_id: Unique identifier for the capsule
         config: Configuration dictionary for execution
-        
+
     Returns:
         Dictionary containing execution results and metadata
-        
+
     Raises:
         CapsuleNotFoundError: If capsule_id is invalid
         ExecutionError: If execution fails
@@ -268,18 +268,18 @@ isort --check-only .
    ```markdown
    ## Description
    Brief description of changes
-   
+
    ## Type of Change
    - [ ] Bug fix
    - [ ] New feature
    - [ ] Breaking change
    - [ ] Documentation update
-   
+
    ## Testing
    - [ ] All tests pass
    - [ ] New tests added
    - [ ] Manual testing completed
-   
+
    ## Checklist
    - [ ] Code follows project style guidelines
    - [ ] Self-review completed

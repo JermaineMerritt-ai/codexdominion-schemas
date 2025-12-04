@@ -63,7 +63,7 @@ echo    sudo /tmp/ionos_codex_deploy.sh
 echo.
 echo 🎯 Then run your systemctl commands:
 echo    sudo systemctl daemon-reload
-echo    sudo systemctl enable codex-dashboard  
+echo    sudo systemctl enable codex-dashboard
 echo    sudo systemctl start codex-dashboard
 echo    sudo systemctl status codex-dashboard
 echo.

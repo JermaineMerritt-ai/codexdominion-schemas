@@ -29,7 +29,7 @@ def get_session(
     session.mount('http://', adapter)
     session.mount('https://', adapter)
     return session
-  
+
 def check_market_ticker(
     ticker: str,
     retries: int = 3,
@@ -48,7 +48,7 @@ def check_market_ticker(
     if len(set(prices)) > 1:
         return f"{ticker}: price drift {prices}"
     return None
-  
+
 def check_site_timestamp(
     site_url: str,
     retries: int = 3,

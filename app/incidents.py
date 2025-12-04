@@ -84,8 +84,8 @@ def get_recent_incidents(hours: int = 24, severity: str = None):
         try:
             cur = DB.cursor()
             query = """
-                SELECT source, message, severity, created_at 
-                FROM incidents 
+                SELECT source, message, severity, created_at
+                FROM incidents
                 WHERE created_at >= %s
             """
             params = [cutoff_time]

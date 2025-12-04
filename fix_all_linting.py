@@ -31,13 +31,13 @@ class LintingFixer:
             ".venv", "venv", "node_modules", "__pycache__",
             ".git", "dist", "build", ".pytest_cache"
         }
-        
+
         for py_file in self.root_dir.rglob("*.py"):
             # Skip excluded directories
             if any(excluded in py_file.parts for excluded in exclude_dirs):
                 continue
             python_files.append(py_file)
-        
+
         return python_files
 
     def find_unused_imports(self, file_path: Path) -> Set[str]:
@@ -45,9 +45,9 @@ class LintingFixer:
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
-            
+
             tree = ast.parse(content)
-            
+
             # Find all imports
             imports = set()
             for node in ast.walk(tree):
@@ -59,7 +59,7 @@ class LintingFixer:
                         imports.add(node.module.split(".")[0])
                     for alias in node.names:
                         imports.add(alias.name)
-            
+
             # Find all names used in the file
             used_names = set()
             for node in ast.walk(tree):
@@ -68,11 +68,11 @@ class LintingFixer:
                 elif isinstance(node, ast.Attribute):
                     if isinstance(node.value, ast.Name):
                         used_names.add(node.value.id)
-            
+
             # Return imports that are not used
             unused = imports - used_names
             return unused
-            
+
         except Exception as e:
             print(f"  ⚠️  Could not analyze {file_path.name}: {e}")
             return set()
@@ -81,12 +81,12 @@ class LintingFixer:
         """Fix lines that are too long (> 79 characters)"""
         lines = content.split("\n")
         fixed_lines = []
-        
+
         for line in lines:
             if len(line) <= 79:
                 fixed_lines.append(line)
                 continue
-            
+
             # Try to fix long strings
             if "\"" in line or "'" in line:
                 # Split long strings
@@ -99,30 +99,30 @@ class LintingFixer:
                         fixed_lines.append(" " * indent + ")")
                         self.fixes_applied += 1
                         continue
-            
+
             # If we can't fix it automatically, keep original
             fixed_lines.append(line)
-        
+
         return "\n".join(fixed_lines)
 
     def fix_f_strings(self, content: str) -> str:
         """Remove f-string prefix from strings without placeholders"""
         # Find f-strings without placeholders
         pattern = r'f"([^"]*[^{])"'
-        
+
         def replace_if_no_placeholder(match):
             string_content = match.group(1)
             if "{" not in string_content:
                 self.fixes_applied += 1
                 return f'"{string_content}"'
             return match.group(0)
-        
+
         content = re.sub(pattern, replace_if_no_placeholder, content)
-        
+
         # Same for single quotes
         pattern = r"f'([^']*[^{])'"
         content = re.sub(pattern, replace_if_no_placeholder, content)
-        
+
         return content
 
     def add_return_type_hints(self, content: str) -> str:
@@ -130,7 +130,7 @@ class LintingFixer:
         # This is a simple heuristic-based approach
         lines = content.split("\n")
         fixed_lines = []
-        
+
         for i, line in enumerate(lines):
             # Look for function definitions without return type
             if re.match(r"^\s*def \w+\([^)]*\):", line):
@@ -144,9 +144,9 @@ class LintingFixer:
                     ]:
                         line = line.replace("):", ") -> None:")
                         self.fixes_applied += 1
-            
+
             fixed_lines.append(line)
-        
+
         return "\n".join(fixed_lines)
 
     def fix_file(self, file_path: Path) -> bool:
@@ -154,22 +154,22 @@ class LintingFixer:
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 original_content = f.read()
-            
+
             content = original_content
-            
+
             # Apply fixes
             content = self.fix_f_strings(content)
             content = self.fix_line_length(content)
             # content = self.add_return_type_hints(content)  # Disabled
-            
+
             # Only write if changes were made
             if content != original_content:
                 with open(file_path, "w", encoding="utf-8") as f:
                     f.write(content)
                 return True
-            
+
             return False
-            
+
         except Exception as e:
             print(f"  ❌ Error fixing {file_path.name}: {e}")
             return False
@@ -178,14 +178,14 @@ class LintingFixer:
         """Run linting fixes on all Python files"""
         print("🔥 CODEX DOMINION LINTING FIXER")
         print("=" * 60)
-        
+
         python_files = self.find_python_files()
         print(f"📋 Found {len(python_files)} Python files")
         print()
-        
+
         for file_path in python_files:
             self.files_processed += 1
-            
+
             if self.fix_file(file_path):
                 print(f"✅ Fixed: {file_path.relative_to(self.root_dir)}")
             else:
@@ -193,7 +193,7 @@ class LintingFixer:
                     f"  {file_path.relative_to(self.root_dir)}"
                     " (no changes)"
                 )
-        
+
         print()
         print("=" * 60)
         print(f"✨ LINTING FIX COMPLETE")

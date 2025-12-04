@@ -32,7 +32,7 @@ Write-Host "🔍 Checking Codex services..." -ForegroundColor Cyan
 
 $services = @{
     8501 = "Main Dashboard"
-    8503 = "Portfolio Dashboard"  
+    8503 = "Portfolio Dashboard"
     8000 = "FastAPI Backend"
 }
 
@@ -96,30 +96,30 @@ proxy.on('error', (err, req, res) => {
 // Create main server
 const server = http.createServer((req, res) => {
     const url = req.url;
-    
+
     // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    
+
     console.log(`[`${new Date().toISOString()}`] `${req.method} `${url}`);
-    
+
     // Route requests
     if (url.startsWith('/portfolio')) {
         // Portfolio Dashboard (port 8503)
-        proxy.web(req, res, { 
+        proxy.web(req, res, {
             target: 'http://127.0.0.1:8503',
             changeOrigin: true
         });
     } else if (url.startsWith('/api') || url.startsWith('/docs') || url.startsWith('/openapi.json') || url.startsWith('/health')) {
         // FastAPI Backend (port 8000)
-        proxy.web(req, res, { 
+        proxy.web(req, res, {
             target: 'http://127.0.0.1:8000',
             changeOrigin: true
         });
     } else {
         // Main Dashboard (port 8501)
-        proxy.web(req, res, { 
+        proxy.web(req, res, {
             target: 'http://127.0.0.1:8501',
             changeOrigin: true
         });
@@ -129,7 +129,7 @@ const server = http.createServer((req, res) => {
 // WebSocket proxying
 server.on('upgrade', (req, socket, head) => {
     const url = req.url;
-    
+
     if (url.startsWith('/portfolio')) {
         proxy.ws(req, socket, head, { target: 'http://127.0.0.1:8503' });
     } else {
@@ -141,7 +141,7 @@ const PORT = 80;
 server.listen(PORT, () => {
     console.log('🚀 Codex Dominion Reverse Proxy Server running on port', PORT);
     console.log('📊 Main Dashboard: http://localhost/');
-    console.log('💼 Portfolio Manager: http://localhost/portfolio');  
+    console.log('💼 Portfolio Manager: http://localhost/portfolio');
     console.log('🔗 API Backend: http://localhost/api');
     console.log('📚 API Docs: http://localhost/docs');
 });

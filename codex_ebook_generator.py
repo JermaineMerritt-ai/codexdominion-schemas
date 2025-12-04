@@ -691,7 +691,7 @@ In this age of infinite possibility, digital sovereignty represents the ultimate
 **Digital sovereignty** encompasses three fundamental pillars:
 
 1. **Data Control** - Complete ownership of personal and organizational data
-2. **Platform Independence** - Freedom from vendor lock-in and external dependencies  
+2. **Platform Independence** - Freedom from vendor lock-in and external dependencies
 3. **Technological Mastery** - Deep understanding and control of digital tools
 
 *By flame and by silence, we forge our digital destiny.*
@@ -709,7 +709,7 @@ Technology, when wielded with wisdom and purpose, becomes a sacred flame that il
 ### The Flame of Creation
 The power to build, design, and manifest digital realities from pure intention.
 
-### The Flame of Governance  
+### The Flame of Governance
 The wisdom to manage, organize, and lead digital communities with justice.
 
 ### The Flame of Transformation

@@ -28,37 +28,37 @@ gcloud config set project $ProjectId
 # Setup database if requested
 if ($SetupDatabase) {
     Write-Host "🗄️ Setting up PostgreSQL database with Secret Manager..." -ForegroundColor Green
-    
+
     # Enable APIs
     gcloud services enable sqladmin.googleapis.com
     gcloud services enable sql-component.googleapis.com
     gcloud services enable secretmanager.googleapis.com
-    
+
     # Store password in Secret Manager (your exact command)
     Write-Host "Creating database password secret..." -ForegroundColor White
     Write-Output "codex_pass" | gcloud secrets create codex-db-pass --data-file=-
-    
+
     # Create instance (your exact commands)
     Write-Host "Creating PostgreSQL instance: $InstanceName" -ForegroundColor White
     gcloud sql instances create $InstanceName `
         --database-version=POSTGRES_15 `
         --tier=db-f1-micro `
         --region=$Region
-    
+
     # Create database (your exact command)
     Write-Host "Creating database: $DatabaseName" -ForegroundColor White
     gcloud sql databases create $DatabaseName `
         --instance=$InstanceName
-    
+
     # Get password from Secret Manager
     $SecretPassword = gcloud secrets versions access latest --secret=codex-db-pass
-    
+
     # Create user with secret password
     Write-Host "Creating user: $Username" -ForegroundColor White
     gcloud sql users create $Username `
         --instance=$InstanceName `
         --password=$SecretPassword
-    
+
     Write-Host "✅ Secure database setup complete!" -ForegroundColor Green
 }
 

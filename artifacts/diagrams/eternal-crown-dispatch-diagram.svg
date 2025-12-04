@@ -8,7 +8,7 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    
+
     <filter id="goldGlow">
       <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
       <feMerge>
@@ -16,7 +16,7 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    
+
     <filter id="blueGlow">
       <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
       <feMerge>
@@ -24,7 +24,7 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    
+
     <filter id="greenGlow">
       <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
       <feMerge>
@@ -32,7 +32,7 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    
+
     <filter id="violetGlow">
       <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
       <feMerge>
@@ -40,7 +40,7 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    
+
     <!-- Shimmer pulse animation -->
     <radialGradient id="shimmerGradient">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8">
@@ -50,7 +50,7 @@
         <animate attributeName="stop-opacity" values="0;0.2;0" dur="3s" repeatCount="indefinite"/>
       </stop>
     </radialGradient>
-    
+
     <!-- Resonance ripples from center -->
     <radialGradient id="resonanceRipple">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6">
@@ -62,20 +62,20 @@
       </stop>
     </radialGradient>
   </defs>
-  
+
   <!-- Background -->
   <rect width="2400" height="2400" fill="#0a0a1a"/>
-  
+
   <!-- Resonance ripples emanating from center -->
   <circle cx="1200" cy="1200" r="900" fill="url(#resonanceRipple)" opacity="0.3"/>
-  
+
   <!-- Outer Spiral: Wave Current Spiral (75% radius = 900px) -->
   <g opacity="0.6">
     <!-- Logarithmic spiral outward (Fibonacci-based) -->
-    <path d="M 1200 1200 Q 1350 1050, 1500 1050 T 1650 1200 T 1650 1500 T 1350 1650 T 900 1500 T 900 1050 T 1350 750 T 1800 900 T 1950 1350 T 1800 1800 T 1200 1950 T 600 1800 T 450 1200 T 600 600 T 1200 450" 
-          stroke="#00CED1" 
-          stroke-width="4" 
-          fill="none" 
+    <path d="M 1200 1200 Q 1350 1050, 1500 1050 T 1650 1200 T 1650 1500 T 1350 1650 T 900 1500 T 900 1050 T 1350 750 T 1800 900 T 1950 1350 T 1800 1800 T 1200 1950 T 600 1800 T 450 1200 T 600 600 T 1200 450"
+          stroke="#00CED1"
+          stroke-width="4"
+          fill="none"
           stroke-dasharray="20,10">
       <animateTransform
         attributeName="transform"
@@ -85,12 +85,12 @@
         dur="60s"
         repeatCount="indefinite"/>
     </path>
-    
+
     <!-- Logarithmic spiral inward (mirrored) -->
-    <path d="M 1200 1200 Q 1050 1050, 900 1050 T 750 1200 T 750 1500 T 1050 1650 T 1500 1500 T 1500 1050 T 1050 750 T 600 900 T 450 1350 T 600 1800 T 1200 1950 T 1800 1800 T 1950 1200 T 1800 600 T 1200 450" 
-          stroke="#00CED1" 
-          stroke-width="4" 
-          fill="none" 
+    <path d="M 1200 1200 Q 1050 1050, 900 1050 T 750 1200 T 750 1500 T 1050 1650 T 1500 1500 T 1500 1050 T 1050 750 T 600 900 T 450 1350 T 600 1800 T 1200 1950 T 1800 1800 T 1950 1200 T 1800 600 T 1200 450"
+          stroke="#00CED1"
+          stroke-width="4"
+          fill="none"
           stroke-dasharray="20,10">
       <animateTransform
         attributeName="transform"
@@ -101,7 +101,7 @@
         repeatCount="indefinite"/>
     </path>
   </g>
-  
+
   <!-- Middle Orbit: Council Orbit (50% radius = 600px) -->
   <!-- Council connection lines to center -->
   <g opacity="0.3" stroke="#666" stroke-width="1">
@@ -112,7 +112,7 @@
     <line x1="680.4" y1="1500" x2="1200" y2="1200"/> <!-- AI -->
     <line x1="680.4" y1="900" x2="1200" y2="1200"/> <!-- Family -->
   </g>
-  
+
   <!-- Council nodes (hexagons at 60° intervals) -->
   <!-- Law Council (0°) -->
   <g transform="translate(1200, 600)">
@@ -121,7 +121,7 @@
     <text font-size="40" text-anchor="middle" dy="15" fill="#fff">⬢</text>
     <text font-size="18" text-anchor="middle" dy="75" fill="#DC143C" font-weight="bold">Law</text>
   </g>
-  
+
   <!-- Healthcare Council (60°) -->
   <g transform="translate(1719.6, 900)">
     <circle r="50" fill="#FF69B4" filter="url(#goldGlow)" opacity="0.8"/>
@@ -129,7 +129,7 @@
     <text font-size="40" text-anchor="middle" dy="15" fill="#fff">⬢</text>
     <text font-size="18" text-anchor="middle" dy="75" fill="#FF69B4" font-weight="bold">Healthcare</text>
   </g>
-  
+
   <!-- Commerce Council (120°) -->
   <g transform="translate(1719.6, 1500)">
     <circle r="50" fill="#32CD32" filter="url(#greenGlow)" opacity="0.8"/>
@@ -137,7 +137,7 @@
     <text font-size="40" text-anchor="middle" dy="15" fill="#fff">⬢</text>
     <text font-size="18" text-anchor="middle" dy="75" fill="#32CD32" font-weight="bold">Commerce</text>
   </g>
-  
+
   <!-- Education Council (180°) -->
   <g transform="translate(1200, 1800)">
     <circle r="50" fill="#4169E1" filter="url(#blueGlow)" opacity="0.8"/>
@@ -145,7 +145,7 @@
     <text font-size="40" text-anchor="middle" dy="15" fill="#fff">⬢</text>
     <text font-size="18" text-anchor="middle" dy="75" fill="#4169E1" font-weight="bold">Education</text>
   </g>
-  
+
   <!-- AI Council (240°) -->
   <g transform="translate(680.4, 1500)">
     <circle r="50" fill="#9370DB" filter="url(#violetGlow)" opacity="0.8"/>
@@ -153,7 +153,7 @@
     <text font-size="40" text-anchor="middle" dy="15" fill="#fff">⬢</text>
     <text font-size="18" text-anchor="middle" dy="75" fill="#9370DB" font-weight="bold">AI</text>
   </g>
-  
+
   <!-- Family Council (300°) -->
   <g transform="translate(680.4, 900)">
     <circle r="50" fill="#FF6347" filter="url(#goldGlow)" opacity="0.8"/>
@@ -161,7 +161,7 @@
     <text font-size="40" text-anchor="middle" dy="15" fill="#fff">⬢</text>
     <text font-size="18" text-anchor="middle" dy="75" fill="#FF6347" font-weight="bold">Family</text>
   </g>
-  
+
   <!-- Inner Ring: Crown Ring (25% radius = 300px) -->
   <!-- Crown connection lines to center -->
   <g opacity="0.4" stroke="#888" stroke-width="2">
@@ -171,7 +171,7 @@
     <line x1="1200" y1="1500" x2="1200" y2="1200"/> <!-- Companion -->
     <line x1="914.4" y1="1383.4" x2="1200" y2="1200"/> <!-- Genesis -->
   </g>
-  
+
   <!-- Crown nodes (at 72° intervals) -->
   <!-- Efficiency Crown (0°) -->
   <g transform="translate(1200, 900)">
@@ -180,7 +180,7 @@
     <text font-size="50" text-anchor="middle" dy="20" fill="#0a0a1a">♔</text>
     <text font-size="20" text-anchor="middle" dy="90" fill="#FFD700" font-weight="bold">Efficiency</text>
   </g>
-  
+
   <!-- Knowledge Crown (72°) -->
   <g transform="translate(1485.6, 1016.6)">
     <circle r="60" fill="#4169E1" filter="url(#blueGlow)" opacity="0.9"/>
@@ -188,7 +188,7 @@
     <text font-size="50" text-anchor="middle" dy="20" fill="#fff">♔</text>
     <text font-size="20" text-anchor="middle" dy="90" fill="#4169E1" font-weight="bold">Knowledge</text>
   </g>
-  
+
   <!-- Commerce Crown (144°) -->
   <g transform="translate(1485.6, 1383.4)">
     <circle r="60" fill="#32CD32" filter="url(#greenGlow)" opacity="0.9"/>
@@ -196,7 +196,7 @@
     <text font-size="50" text-anchor="middle" dy="20" fill="#0a0a1a">♔</text>
     <text font-size="20" text-anchor="middle" dy="90" fill="#32CD32" font-weight="bold">Commerce</text>
   </g>
-  
+
   <!-- Companion Crown (216°) -->
   <g transform="translate(1200, 1500)">
     <circle r="60" fill="#8B00FF" filter="url(#violetGlow)" opacity="0.9"/>
@@ -204,7 +204,7 @@
     <text font-size="50" text-anchor="middle" dy="20" fill="#fff">♔</text>
     <text font-size="20" text-anchor="middle" dy="90" fill="#8B00FF" font-weight="bold">Companion</text>
   </g>
-  
+
   <!-- Genesis Crown (288°) -->
   <g transform="translate(914.4, 1383.4)">
     <circle r="60" fill="#00CED1" filter="url(#goldGlow)" opacity="0.9"/>
@@ -212,7 +212,7 @@
     <text font-size="50" text-anchor="middle" dy="20" fill="#0a0a1a">♔</text>
     <text font-size="20" text-anchor="middle" dy="90" fill="#00CED1" font-weight="bold">Genesis</text>
   </g>
-  
+
   <!-- Center: Infinity Sigil -->
   <g transform="translate(1200, 1200)">
     <!-- Radiant white glow -->
@@ -221,23 +221,23 @@
       <animate attributeName="r" values="80;90;80" dur="2s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.6;0.8;0.6" dur="2s" repeatCount="indefinite"/>
     </circle>
-    
+
     <!-- Infinity symbol -->
     <text font-size="100" text-anchor="middle" dy="35" fill="#ffffff" font-weight="bold">∞</text>
     <text font-size="24" text-anchor="middle" dy="130" fill="#ffffff" font-weight="bold">Infinity Sigil</text>
   </g>
-  
+
   <!-- Top Node: Cosmic Archive Crown (apex) -->
   <g transform="translate(1200, 200)">
     <!-- Connection line to center -->
     <line x1="0" y1="0" x2="0" y2="1000" stroke="#FFD700" stroke-width="3" opacity="0.5"/>
-    
+
     <circle r="70" fill="#FFD700" filter="url(#goldGlow)" opacity="0.9"/>
     <circle r="70" fill="url(#shimmerGradient)" opacity="0.4"/>
     <text font-size="60" text-anchor="middle" dy="25" fill="#0a0a1a">📜</text>
     <text font-size="22" text-anchor="middle" dy="110" fill="#FFD700" font-weight="bold">Cosmic Archive Crown</text>
   </g>
-  
+
   <!-- Glyph Accents: Three Dispatch Glyphs (bottom positions) -->
   <!-- Artifact Dispatch (210°, bottom-left) -->
   <g transform="translate(450, 1800)">
@@ -245,26 +245,26 @@
     <text font-size="50" text-anchor="middle" dy="20" fill="#0a0a1a">💎</text>
     <text font-size="18" text-anchor="middle" dy="85" fill="#32CD32" font-weight="bold">Artifact Dispatch</text>
   </g>
-  
+
   <!-- Helm Dispatch (270°, bottom-center) -->
   <g transform="translate(1200, 2100)">
     <circle r="55" fill="#FFD700" filter="url(#goldGlow)" opacity="0.8"/>
     <text font-size="50" text-anchor="middle" dy="20" fill="#0a0a1a">⚓</text>
     <text font-size="18" text-anchor="middle" dy="85" fill="#FFD700" font-weight="bold">Helm Dispatch</text>
   </g>
-  
+
   <!-- Cluster Dispatch (330°, bottom-right) -->
   <g transform="translate(1950, 1800)">
     <circle r="55" fill="#C71585" filter="url(#violetGlow)" opacity="0.8"/>
     <text font-size="50" text-anchor="middle" dy="20" fill="#fff">✦</text>
     <text font-size="18" text-anchor="middle" dy="85" fill="#C71585" font-weight="bold">Cluster Dispatch</text>
   </g>
-  
+
   <!-- Title -->
   <text x="1200" y="100" font-size="48" text-anchor="middle" fill="#ffffff" font-weight="bold">
     Eternal Crown Dispatch Diagram
   </text>
-  
+
   <!-- Subtitle -->
   <text x="1200" y="150" font-size="24" text-anchor="middle" fill="#aaaaaa">
     Cosmic Structure of CodexDominion

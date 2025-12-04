@@ -142,21 +142,21 @@ server {
 server {
     listen 443 ssl http2;
     server_name codexdominion.app www.codexdominion.app;
-    
+
     # SSL certificates (will be added by certbot)
     # ssl_certificate /etc/letsencrypt/live/codexdominion.app/fullchain.pem;
     # ssl_certificate_key /etc/letsencrypt/live/codexdominion.app/privkey.pem;
-    
+
     # Security headers
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
     add_header X-Frame-Options DENY always;
     add_header X-Content-Type-Options nosniff always;
     add_header X-XSS-Protection "1; mode=block" always;
-    
+
     # Logs
     access_log /var/www/codexdominion/logs/nginx/access.log;
     error_log /var/www/codexdominion/logs/nginx/error.log;
-    
+
     location / {
         proxy_pass http://localhost:3000;
         proxy_http_version 1.1;
@@ -174,11 +174,11 @@ server {
 server {
     listen 443 ssl http2;
     server_name dashboard.codexdominion.app;
-    
+
     # SSL certificates
     # ssl_certificate /etc/letsencrypt/live/codexdominion.app/fullchain.pem;
     # ssl_certificate_key /etc/letsencrypt/live/codexdominion.app/privkey.pem;
-    
+
     location / {
         proxy_pass http://localhost:3000;
         proxy_http_version 1.1;
@@ -191,11 +191,11 @@ server {
 server {
     listen 443 ssl http2;
     server_name api.codexdominion.app;
-    
+
     # SSL certificates
     # ssl_certificate /etc/letsencrypt/live/codexdominion.app/fullchain.pem;
     # ssl_certificate_key /etc/letsencrypt/live/codexdominion.app/privkey.pem;
-    
+
     location / {
         proxy_pass http://localhost:8080;
         proxy_set_header Host $host;
@@ -207,11 +207,11 @@ server {
 server {
     listen 443 ssl http2;
     server_name stockanalytics.codexdominion.app;
-    
+
     # SSL certificates
     # ssl_certificate /etc/letsencrypt/live/codexdominion.app/fullchain.pem;
     # ssl_certificate_key /etc/letsencrypt/live/codexdominion.app/privkey.pem;
-    
+
     location / {
         proxy_pass http://localhost:8515;
         proxy_http_version 1.1;

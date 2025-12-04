@@ -68,7 +68,7 @@ class CodexDatabaseSetup:
             # Check if database exists
             cur.execute(
                 """
-                SELECT 1 FROM pg_database 
+                SELECT 1 FROM pg_database
                 WHERE datname = %s
             """,
                 (dbname,),
@@ -87,7 +87,7 @@ class CodexDatabaseSetup:
 
             cur.execute(
                 """
-                SELECT 1 FROM pg_user 
+                SELECT 1 FROM pg_user
                 WHERE usename = %s
             """,
                 (user,),
@@ -306,7 +306,7 @@ class CodexDatabaseSetup:
                 cur.execute(
                     """
                     INSERT INTO positions (
-                        id, portfolio_id, symbol, quantity, avg_price, 
+                        id, portfolio_id, symbol, quantity, avg_price,
                         current_value, pnl, pnl_percent
                     ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                     ON CONFLICT (id) DO NOTHING

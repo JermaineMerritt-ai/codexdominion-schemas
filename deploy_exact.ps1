@@ -20,7 +20,7 @@ Write-Host "🏗️ Building container..." -ForegroundColor Green
 Write-Host "Command: gcloud builds submit --tag gcr.io/$ProjectId/codex-dashboard" -ForegroundColor White
 gcloud builds submit --tag gcr.io/$ProjectId/codex-dashboard
 
-# Deploy to Cloud Run (your exact command)  
+# Deploy to Cloud Run (your exact command)
 Write-Host ""
 Write-Host "🚀 Deploying to Cloud Run..." -ForegroundColor Green
 Write-Host "Command: gcloud run deploy codex-dashboard --image gcr.io/$ProjectId/codex-dashboard --platform managed --region us-central1 --allow-unauthenticated --memory 512Mi --cpu 1" -ForegroundColor White

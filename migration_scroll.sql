@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS capsules (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     is_active BOOLEAN DEFAULT TRUE,
     config JSONB DEFAULT '{}',
-    
+
     -- Indexing for performance
     CONSTRAINT capsules_slug_check CHECK (slug ~ '^[a-z0-9-]+$')
 );
@@ -40,30 +40,30 @@ CREATE TABLE IF NOT EXISTS capsule_runs (
     execution_time_ms INTEGER NOT NULL DEFAULT 0,
     archive_url TEXT,
     timestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    
+
     -- Execution metadata
     execution_id UUID DEFAULT gen_random_uuid(),
     triggered_by VARCHAR(100) DEFAULT 'scheduler',
     error_message TEXT,
     artifact_checksum VARCHAR(64),
-    
+
     -- Performance metrics
     cpu_usage_percent DECIMAL(5,2),
     memory_usage_mb INTEGER,
     network_bytes_in BIGINT,
     network_bytes_out BIGINT,
-    
+
     -- Additional metadata
     metadata JSONB DEFAULT '{}',
-    
+
     -- Constraints
     CONSTRAINT capsule_runs_status_check CHECK (
         status IN ('pending', 'running', 'success', 'failed', 'timeout', 'cancelled')
     ),
     CONSTRAINT capsule_runs_execution_time_check CHECK (execution_time_ms >= 0),
-    
+
     -- Foreign key relationship
-    CONSTRAINT fk_capsule_runs_capsule FOREIGN KEY (capsule_slug) 
+    CONSTRAINT fk_capsule_runs_capsule FOREIGN KEY (capsule_slug)
         REFERENCES capsules(slug) ON DELETE CASCADE
 );
 
@@ -81,7 +81,7 @@ CREATE INDEX IF NOT EXISTS idx_capsule_runs_status_timestamp ON capsule_runs(sta
 -- INSERT OPERATIONAL SOVEREIGNTY CAPSULES
 -- ============================================================================
 
-INSERT INTO capsules (slug, name, description, schedule_cron) VALUES 
+INSERT INTO capsules (slug, name, description, schedule_cron) VALUES
     ('signals-daily', 'Daily Market Signals Analysis', 'Autonomous market analysis and investment signal generation', '0 6 * * *'),
     ('dawn-dispatch', 'Dawn Sovereignty Dispatch', 'Morning operational status and strategic briefings', '0 6 * * *'),
     ('treasury-audit', 'Treasury Sovereignty Audit', 'Monthly financial sovereignty and asset allocation review', '0 0 1 * *'),
@@ -99,7 +99,7 @@ ON CONFLICT (slug) DO UPDATE SET
 
 -- Active capsule summary view
 CREATE OR REPLACE VIEW v_capsule_status AS
-SELECT 
+SELECT
     c.slug,
     c.name,
     c.schedule_cron,
@@ -120,7 +120,7 @@ ORDER BY c.slug;
 
 -- Recent execution history view
 CREATE OR REPLACE VIEW v_recent_executions AS
-SELECT 
+SELECT
     cr.capsule_slug,
     c.name as capsule_name,
     cr.status,
@@ -170,7 +170,7 @@ BEGIN
         p_artifact_checksum,
         CURRENT_TIMESTAMP
     ) RETURNING id INTO run_id;
-    
+
     RETURN run_id;
 END;
 $$ LANGUAGE plpgsql;
@@ -187,7 +187,7 @@ RETURNS TABLE(
 ) AS $$
 BEGIN
     RETURN QUERY
-    SELECT 
+    SELECT
         c.slug,
         COUNT(cr.id) as total_executions,
         ROUND(
@@ -240,11 +240,11 @@ GRANT EXECUTE ON FUNCTION get_capsule_stats TO codex_user;
 -- ============================================================================
 
 -- Verify table creation
-SELECT 
-    table_name, 
-    table_type 
-FROM information_schema.tables 
-WHERE table_schema = 'public' 
+SELECT
+    table_name,
+    table_type
+FROM information_schema.tables
+WHERE table_schema = 'public'
 AND table_name IN ('capsules', 'capsule_runs');
 
 -- Verify capsule insertion

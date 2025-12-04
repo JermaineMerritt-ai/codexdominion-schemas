@@ -25,21 +25,21 @@ def performance_monitor(operation_name=None):
             try:
                 result = func(*args, **kwargs)
                 execution_time = time.time() - start_time
-                
+
                 # Store performance data
                 if 'performance_data' not in st.session_state:
                     st.session_state.performance_data = {}
-                
+
                 op_name = operation_name or func.__name__
                 if op_name not in st.session_state.performance_data:
                     st.session_state.performance_data[op_name] = []
-                
+
                 st.session_state.performance_data[op_name].append(execution_time)
-                
+
                 # Keep only last 100 measurements
                 if len(st.session_state.performance_data[op_name]) > 100:
                     st.session_state.performance_data[op_name] = st.session_state.performance_data[op_name][-100:]
-                
+
                 return result
             except Exception as e:
                 st.error(f"Error in {operation_name or func.__name__}: {str(e)}")
@@ -71,12 +71,12 @@ def show_performance_dashboard():
     if 'performance_data' in st.session_state and st.session_state.performance_data:
         with st.expander("Performance Dashboard"):
             st.subheader("Operation Performance")
-            
+
             for operation, times in st.session_state.performance_data.items():
                 if times:
                     avg_time = sum(times) / len(times)
                     max_time = max(times)
-                    
+
                     col1, col2, col3 = st.columns(3)
                     with col1:
                         st.metric(f"{operation} Avg", f"{avg_time:.3f}s")
@@ -93,7 +93,7 @@ def apply_enhanced_styling():
     .main {
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     }
-    
+
     .enhanced-header {
         text-align: center;
         padding: 30px;
@@ -103,7 +103,7 @@ def apply_enhanced_styling():
         border-radius: 20px;
         box-shadow: 0 8px 32px rgba(138,43,226,0.3);
     }
-    
+
     .enhanced-card {
         background: rgba(255,255,255,0.1);
         padding: 25px;
@@ -113,13 +113,13 @@ def apply_enhanced_styling():
         margin: 15px 0;
         transition: all 0.4s ease;
     }
-    
+
     .enhanced-card:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 15px 40px rgba(138,43,226,0.4);
         border-color: #8B2BE2;
     }
-    
+
     .stButton > button {
         background: linear-gradient(45deg, #8B2BE2, #9370DB);
         border: none;
@@ -128,7 +128,7 @@ def apply_enhanced_styling():
         font-weight: bold;
         transition: all 0.3s ease;
     }
-    
+
     .stButton > button:hover {
         background: linear-gradient(45deg, #9370DB, #8B2BE2);
         transform: scale(1.05);
@@ -258,7 +258,7 @@ st.markdown("""
 
 def main():
     """Main ultimate tech dashboard function"""
-    
+
     # Header
     st.markdown("""
     <div class="ultimate-header">
@@ -267,19 +267,19 @@ def main():
         <p>AI • Quantum Computing • Advanced Connectivity • Clean Energy • Space Tech • Synthetic Biology • Neurotechnology • Digital Identity & Privacy • Robotics & Automation • Edge Computing & IoT</p>
     </div>
     """, unsafe_allow_html=True)
-    
+
     # Sidebar
     st.sidebar.title("🎛️ Ultimate Intelligence Control")
     st.sidebar.markdown("---")
-    
+
     # Navigation
     page = st.sidebar.selectbox(
         "Intelligence Module:",
-        ["🌟 Ultimate Overview", "🤖 AI Intelligence", "⚛️ Quantum Computing", 
+        ["🌟 Ultimate Overview", "🤖 AI Intelligence", "⚛️ Quantum Computing",
          "🛰️ Space & Connectivity", "🧬 Bio & Neurotech", "🔒 Privacy & Robotics",
          "🔗 Convergence Analysis", "📊 Market Intelligence", "🚀 Ultimate Integration"]
     )
-    
+
     if page == "🌟 Ultimate Overview":
         show_ultimate_overview()
     elif page == "🤖 AI Intelligence":
@@ -306,10 +306,10 @@ def show_ultimate_overview():
     apply_enhanced_styling()
 
     st.header("🌟 Ultimate Technology Intelligence Overview")
-    
+
     # Ultimate metrics
     col1, col2, col3, col4, col5 = st.columns(5)
-    
+
     with col1:
         st.markdown("""
         <div class="metric-card-ultimate">
@@ -317,7 +317,7 @@ def show_ultimate_overview():
             <p>Tech Domains</p>
         </div>
         """, unsafe_allow_html=True)
-    
+
     with col2:
         st.markdown("""
         <div class="metric-card-ultimate">
@@ -325,7 +325,7 @@ def show_ultimate_overview():
             <p>Elite Sources</p>
         </div>
         """, unsafe_allow_html=True)
-    
+
     with col3:
         st.markdown("""
         <div class="metric-card-ultimate">
@@ -333,7 +333,7 @@ def show_ultimate_overview():
             <p>Avg Credibility</p>
         </div>
         """, unsafe_allow_html=True)
-    
+
     with col4:
         st.markdown("""
         <div class="metric-card-ultimate">
@@ -341,7 +341,7 @@ def show_ultimate_overview():
             <p>Avg Tech Readiness</p>
         </div>
         """, unsafe_allow_html=True)
-    
+
     with col5:
         st.markdown("""
         <div class="metric-card-ultimate">
@@ -349,12 +349,12 @@ def show_ultimate_overview():
             <p>Market Impact</p>
         </div>
         """, unsafe_allow_html=True)
-    
+
     st.markdown("---")
-    
+
     # Technology domain cards
     col1, col2 = st.columns(2)
-    
+
     with col1:
         # AI Domain
         st.markdown("""
@@ -370,7 +370,7 @@ def show_ultimate_overview():
             </ul>
         </div>
         """, unsafe_allow_html=True)
-        
+
         # Quantum Computing
         st.markdown("""
         <div class="tech-domain-card quantum-card">
@@ -384,7 +384,7 @@ def show_ultimate_overview():
             </ul>
         </div>
         """, unsafe_allow_html=True)
-        
+
         # Advanced Connectivity
         st.markdown("""
         <div class="tech-domain-card connectivity-card">
@@ -398,7 +398,7 @@ def show_ultimate_overview():
             </ul>
         </div>
         """, unsafe_allow_html=True)
-        
+
         # Clean Energy & Climate
         st.markdown("""
         <div class="tech-domain-card bio-card">
@@ -412,7 +412,7 @@ def show_ultimate_overview():
             </ul>
         </div>
         """, unsafe_allow_html=True)
-        
+
         # Space Tech & Satellites
         st.markdown("""
         <div class="tech-domain-card space-card">
@@ -426,17 +426,17 @@ def show_ultimate_overview():
             </ul>
         </div>
         """, unsafe_allow_html=True)
-    
+
     with col2:
         # Technology readiness vs Market impact chart
         tech_data = pd.DataFrame({
-            'Domain': ['AI', 'Quantum', 'Connectivity', 'Clean Energy', 'Space Tech', 
+            'Domain': ['AI', 'Quantum', 'Connectivity', 'Clean Energy', 'Space Tech',
                       'Synthetic Biology', 'Neurotech', 'Digital Identity', 'Robotics', 'Edge/IoT'],
             'Tech_Readiness': [9, 8, 9, 8, 9, 8, 8, 9, 9, 9],
             'Market_Impact': [9.8, 9.7, 9.6, 9.5, 9.4, 9.3, 9.5, 9.3, 9.4, 9.2],
             'Sources': [5, 4, 4, 4, 4, 4, 4, 4, 4, 4]
         })
-        
+
         fig = px.scatter(tech_data, x='Tech_Readiness', y='Market_Impact',
                         size='Sources', color='Domain',
                         title="Technology Readiness vs Market Impact",
@@ -446,7 +446,7 @@ def show_ultimate_overview():
             yaxis_title="Market Impact Score"
         )
         st.plotly_chart(fig, width='stretch')
-        
+
         # Revolutionary capabilities preview
         st.subheader("🌟 Revolutionary Capabilities Preview")
         capabilities = [
@@ -461,7 +461,7 @@ def show_ultimate_overview():
             "🌐 Edge Intelligence Networks",
             "⚛️ Quantum Supremacy Computing"
         ]
-        
+
         for capability in capabilities:
             st.markdown(f"""
             <div class="revolutionary-capability">
@@ -476,9 +476,9 @@ def show_ai_intelligence():
     apply_enhanced_styling()
 
     st.header("🤖 Artificial Intelligence Intelligence")
-    
+
     col1, col2 = st.columns(2)
-    
+
     with col1:
         ai_focus = st.selectbox(
             "AI Focus Area:",
@@ -486,17 +486,17 @@ def show_ai_intelligence():
              "Autonomous Systems", "AI Safety & Alignment", "Multimodal AI",
              "AI Hardware", "General Intelligence Research"]
         )
-        
+
         if st.button("🧠 Generate AI Intelligence"):
             with st.spinner("Analyzing AI landscape..."):
                 intelligence = generate_ai_intelligence(ai_focus)
-                
+
                 st.markdown("""
                 <div class="success-ultimate">
                     ✅ AI Intelligence Generated!
                 </div>
                 """, unsafe_allow_html=True)
-                
+
                 # AI metrics
                 col_a, col_b, col_c = st.columns(3)
                 with col_a:
@@ -505,7 +505,7 @@ def show_ai_intelligence():
                     st.metric("Breakthrough Score", f"{intelligence['breakthrough_score']:.1f}/10")
                 with col_c:
                     st.metric("Commercial Readiness", intelligence["commercial_readiness"])
-                
+
                 # Key insights
                 st.subheader("🔥 Key AI Insights")
                 for insight in intelligence["key_insights"]:
@@ -514,7 +514,7 @@ def show_ai_intelligence():
                         {insight}
                     </div>
                     """, unsafe_allow_html=True)
-    
+
     with col2:
         # AI capability evolution chart
         ai_evolution = pd.DataFrame({
@@ -522,20 +522,20 @@ def show_ai_intelligence():
             'Model_Size_B': [175, 540, 1760, 3200, 5500, 8000],
             'Capabilities': [70, 78, 85, 91, 95, 98]
         })
-        
+
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=ai_evolution['Year'], y=ai_evolution['Model_Size_B'],
                                mode='lines+markers', name='Model Size (Billions)',
                                line=dict(color='#ff6b6b', width=3)))
-        
+
         fig2 = go.Figure()
         fig2.add_trace(go.Scatter(x=ai_evolution['Year'], y=ai_evolution['Capabilities'],
                                 mode='lines+markers', name='Capability Score',
                                 line=dict(color='#4ecdc4', width=3)))
-        
+
         fig.update_layout(title="AI Model Size Evolution", yaxis_title="Parameters (Billions)")
         fig2.update_layout(title="AI Capability Evolution", yaxis_title="Capability Score")
-        
+
         st.plotly_chart(fig, width='stretch')
         st.plotly_chart(fig2, width='stretch')
 
@@ -546,7 +546,7 @@ def show_quantum_intelligence():
     apply_enhanced_styling()
 
     st.header("⚛️ Quantum Computing Intelligence")
-    
+
     if st.button("⚛️ Generate Quantum Intelligence"):
         with st.spinner("Analyzing quantum landscape..."):
             st.markdown("""
@@ -554,21 +554,21 @@ def show_quantum_intelligence():
                 ✅ Quantum Intelligence Generated!
             </div>
             """, unsafe_allow_html=True)
-            
+
             col1, col2, col3 = st.columns(3)
-            
+
             with col1:
                 st.metric("Quantum Volume", "2,048+")
                 st.metric("Error Rate", "0.1%")
-            
+
             with col2:
                 st.metric("Qubit Count", "1,121")
                 st.metric("Gate Fidelity", "99.9%")
-            
+
             with col3:
                 st.metric("Quantum Advantage", "Achieved")
                 st.metric("Commercial Apps", "12+")
-            
+
             # Quantum breakthroughs
             st.subheader("⚡ Quantum Breakthroughs")
             breakthroughs = [
@@ -578,7 +578,7 @@ def show_quantum_intelligence():
                 "🔮 Quantum networking protocols enable secure global communications",
                 "⚛️ Quantum machine learning shows exponential speedup over classical ML"
             ]
-            
+
             for breakthrough in breakthroughs:
                 st.markdown(f"""
                 <div class="intelligence-highlight">
@@ -593,12 +593,12 @@ def show_space_connectivity_intelligence():
     apply_enhanced_styling()
 
     st.header("🛰️ Space Technology & Advanced Connectivity Intelligence")
-    
+
     col1, col2 = st.columns(2)
-    
+
     with col1:
         st.subheader("🚀 Space Technology Developments")
-        
+
         if st.button("🛰️ Analyze Space Tech"):
             space_intel = {
                 "active_satellites": "8,500+",
@@ -606,28 +606,28 @@ def show_space_connectivity_intelligence():
                 "reusability_rate": "95%",
                 "cost_reduction": "90%"
             }
-            
+
             for metric, value in space_intel.items():
                 st.metric(metric.replace('_', ' ').title(), value)
-            
+
             space_developments = [
                 "🚀 SpaceX Starship achieves orbital refueling milestone",
-                "🌙 NASA Artemis program establishes lunar base foundation", 
+                "🌙 NASA Artemis program establishes lunar base foundation",
                 "🛰️ Starlink constellation reaches 12,000+ satellites",
                 "🔴 Mars Sample Return mission launches successfully",
                 "🌌 James Webb Space Telescope discovers exoplanet atmospheres"
             ]
-            
+
             for dev in space_developments:
                 st.markdown(f"""
                 <div class="intelligence-highlight">
                     {dev}
                 </div>
                 """, unsafe_allow_html=True)
-    
+
     with col2:
         st.subheader("📡 Advanced Connectivity Progress")
-        
+
         if st.button("🌐 Analyze Connectivity"):
             connectivity_intel = {
                 "5g_coverage": "85%",
@@ -635,10 +635,10 @@ def show_space_connectivity_intelligence():
                 "satellite_internet": "50M+ users",
                 "latency_improvement": "70%"
             }
-            
+
             for metric, value in connectivity_intel.items():
                 st.metric(metric.replace('_', ' ').title(), value)
-            
+
             connectivity_advances = [
                 "📡 6G standards development accelerates with 1Tbps target speeds",
                 "🛰️ Low Earth Orbit satellites provide global internet coverage",
@@ -646,7 +646,7 @@ def show_space_connectivity_intelligence():
                 "🌐 Mesh networks enable resilient communication infrastructure",
                 "📱 Advanced beamforming enables precision connectivity"
             ]
-            
+
             for advance in connectivity_advances:
                 st.markdown(f"""
                 <div class="intelligence-highlight">
@@ -661,12 +661,12 @@ def show_bio_neurotech_intelligence():
     apply_enhanced_styling()
 
     st.header("🧬 Synthetic Biology & Neurotechnology Intelligence")
-    
+
     col1, col2 = st.columns(2)
-    
+
     with col1:
         st.subheader("🧬 Synthetic Biology Progress")
-        
+
         if st.button("🔬 Analyze Synthetic Biology"):
             bio_intel = [
                 "🧬 CRISPR-Cas systems achieve 99.9% precision in gene editing",
@@ -675,17 +675,17 @@ def show_bio_neurotech_intelligence():
                 "💊 Programmable cells deliver targeted cancer therapies",
                 "🏭 Biomanufacturing scales to industrial production levels"
             ]
-            
+
             for insight in bio_intel:
                 st.markdown(f"""
                 <div class="intelligence-highlight">
                     {insight}
                 </div>
                 """, unsafe_allow_html=True)
-    
+
     with col2:
         st.subheader("🧠 Neurotechnology Advances")
-        
+
         if st.button("🧠 Analyze Neurotechnology"):
             neuro_intel = [
                 "🧠 Neuralink achieves first successful human brain-computer interface",
@@ -694,7 +694,7 @@ def show_bio_neurotech_intelligence():
                 "🤖 Thought-controlled prosthetics match natural limb function",
                 "💭 Memory enhancement protocols improve cognitive performance"
             ]
-            
+
             for insight in neuro_intel:
                 st.markdown(f"""
                 <div class="intelligence-highlight">
@@ -709,12 +709,12 @@ def show_privacy_robotics_intelligence():
     apply_enhanced_styling()
 
     st.header("🔒 Digital Privacy & Robotics Intelligence")
-    
+
     col1, col2 = st.columns(2)
-    
+
     with col1:
         st.subheader("🔒 Digital Identity & Privacy")
-        
+
         if st.button("🛡️ Analyze Privacy Tech"):
             privacy_intel = [
                 "🔐 Zero-knowledge proofs enable private authentication",
@@ -723,26 +723,26 @@ def show_privacy_robotics_intelligence():
                 "🛡️ Privacy-preserving AI protects sensitive information",
                 "🔑 Biometric authentication reaches military-grade security"
             ]
-            
+
             for insight in privacy_intel:
                 st.markdown(f"""
                 <div class="intelligence-highlight">
                     {insight}
                 </div>
                 """, unsafe_allow_html=True)
-    
+
     with col2:
         st.subheader("🤖 Robotics & Automation")
-        
+
         if st.button("🤖 Analyze Robotics"):
             robotics_intel = [
                 "🤖 Humanoid robots achieve human-level dexterity and mobility",
                 "🚗 Autonomous vehicles reach Level 5 full automation",
-                "🏭 Industrial robots adapt in real-time to changing conditions", 
+                "🏭 Industrial robots adapt in real-time to changing conditions",
                 "🏠 Home robots provide comprehensive household assistance",
                 "⚕️ Surgical robots perform complex procedures autonomously"
             ]
-            
+
             for insight in robotics_intel:
                 st.markdown(f"""
                 <div class="intelligence-highlight">
@@ -757,9 +757,9 @@ def show_convergence_analysis():
     apply_enhanced_styling()
 
     st.header("🔗 Technology Convergence Analysis")
-    
+
     st.subheader("🌟 Revolutionary Technology Convergences")
-    
+
     convergences = [
         {
             "name": "AI-Quantum Fusion",
@@ -797,7 +797,7 @@ def show_convergence_analysis():
             "market_value": "$600B+"
         }
     ]
-    
+
     for conv in convergences:
         st.markdown(f"""
         <div class="convergence-pattern">
@@ -815,18 +815,18 @@ def show_market_intelligence():
     apply_enhanced_styling()
 
     st.header("📊 Technology Market Intelligence")
-    
+
     # Market data
     market_data = pd.DataFrame({
-        'Technology': ['AI', 'Quantum', 'Space Tech', 'Clean Energy', 'Biotech', 
+        'Technology': ['AI', 'Quantum', 'Space Tech', 'Clean Energy', 'Biotech',
                       'Neurotechnology', 'Robotics', 'Edge Computing'],
         'Market_Size_2025': [1300, 85, 630, 2800, 850, 45, 740, 280],
         'Projected_2030': [3500, 850, 1800, 8500, 2400, 340, 1950, 1100],
         'CAGR': [22.1, 58.3, 23.4, 24.8, 23.1, 49.2, 21.3, 31.4]
     })
-    
+
     col1, col2 = st.columns(2)
-    
+
     with col1:
         # Market size chart
         fig = px.bar(market_data, x='Technology', y=['Market_Size_2025', 'Projected_2030'],
@@ -834,7 +834,7 @@ def show_market_intelligence():
                     barmode='group')
         fig.update_layout(xaxis_tickangle=-45)
         st.plotly_chart(fig, width='stretch')
-    
+
     with col2:
         # CAGR chart
         fig2 = px.bar(market_data, x='Technology', y='CAGR',
@@ -850,7 +850,7 @@ def show_ultimate_integration():
     apply_enhanced_styling()
 
     st.header("🚀 Ultimate Technology Integration Hub")
-    
+
     if st.button("🌟 Execute Ultimate Integration Protocol"):
         with st.spinner("Integrating all advanced technology domains..."):
             st.markdown("""
@@ -859,10 +859,10 @@ def show_ultimate_integration():
                 All 10 Advanced Technology Domains Successfully Integrated!
             </div>
             """, unsafe_allow_html=True)
-            
+
             # Integration metrics
             col1, col2, col3, col4, col5 = st.columns(5)
-            
+
             with col1:
                 st.metric("Domains Integrated", "10/10")
             with col2:
@@ -873,10 +873,10 @@ def show_ultimate_integration():
                 st.metric("Convergence Patterns", "25")
             with col5:
                 st.metric("Market Opportunities", "$15T+")
-            
+
             # Ultimate capabilities
             st.subheader("🌟 Ultimate Technology Capabilities Unlocked")
-            
+
             ultimate_capabilities = [
                 "🤖⚛️ Quantum-Enhanced Artificial General Intelligence",
                 "🛰️🌐 Global Space-Based Internet Infrastructure",
@@ -889,17 +889,17 @@ def show_ultimate_integration():
                 "🧠🤖 Brain-Computer Controlled Robot Swarms",
                 "🌌🛸 Interplanetary Communication Networks"
             ]
-            
+
             for capability in ultimate_capabilities:
                 st.markdown(f"""
                 <div class="revolutionary-capability">
                     ✨ {capability}
                 </div>
                 """, unsafe_allow_html=True)
-            
+
             # Integration summary
             st.subheader("📈 Ultimate Integration Impact")
-            
+
             impact_areas = [
                 "🌍 **Global Infrastructure**: Space-based internet, orbital manufacturing, planetary-scale networks",
                 "🧠 **Human Enhancement**: Neural interfaces, cognitive augmentation, biological optimization",
@@ -910,7 +910,7 @@ def show_ultimate_integration():
                 "🛡️ **Security & Privacy**: Quantum encryption, neural authentication, autonomous defense",
                 "🌱 **Sustainability**: Carbon-negative technologies, ecosystem restoration, clean manufacturing"
             ]
-            
+
             for area in impact_areas:
                 st.markdown(area)
 

@@ -23,7 +23,7 @@ echo.
 echo Adding HTTP Port 80...
 netsh advfirewall firewall add rule name="Codex HTTP Port 80" dir=in action=allow protocol=TCP localport=80
 
-echo Adding HTTPS Port 443...  
+echo Adding HTTPS Port 443...
 netsh advfirewall firewall add rule name="Codex HTTPS Port 443" dir=in action=allow protocol=TCP localport=443
 
 echo Adding API Port 8000...
@@ -45,7 +45,7 @@ echo ===============================================
 echo.
 echo Your Codex Dominion services are now accessible:
 echo   HTTP: Port 80
-echo   HTTPS: Port 443  
+echo   HTTPS: Port 443
 echo   API: Port 8000
 echo   Dashboard: Port 8501
 echo   Portfolio: Port 8503

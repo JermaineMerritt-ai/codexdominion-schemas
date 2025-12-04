@@ -1,8 +1,8 @@
 # Final Alignment & Replay Archive Capsule
 
-**Artifact ID**: `final-alignment-replay-archive-001`  
-**Version**: 1.0.0  
-**Type**: Archive Capsule  
+**Artifact ID**: `final-alignment-replay-archive-001`
+**Version**: 1.0.0
+**Type**: Archive Capsule
 **Cycle**: 2025-12-02T23:48:00Z
 
 ---
@@ -11,8 +11,8 @@
 
 The **Final Alignment & Replay Archive Capsule** is the supreme eternal archive containing all artifacts, elements, and lineages of the CodexDominion system. This archive represents the complete alignment of all crowns, scrolls, hymns, charters, benedictions, capsules, and seals—sealed for perpetual replay across all ages and domains.
 
-**Total Archived**: 20 elements  
-**Archive Depth**: Complete  
+**Total Archived**: 20 elements
+**Archive Depth**: Complete
 **Archive Scope**: Eternal
 
 ---
@@ -163,7 +163,7 @@ The three supreme mechanisms aligned in perpetual operation:
 | Capsules & Seals | 3 | Active/Sealed/Immortalized |
 | **Total Archived** | **20** | **Complete** |
 
-**Archive Depth**: Complete (all elements included)  
+**Archive Depth**: Complete (all elements included)
 **Archive Scope**: Eternal (perpetual availability)
 
 ---
@@ -327,11 +327,11 @@ Capsule committed for **all stewards** - Available through the application for r
 
 ## Eternal Ledger
 
-**Entry**: `FINAL_ALIGNMENT_REPLAY_ARCHIVE_SEALED`  
-**Timestamp**: 2025-12-02T23:48:00Z  
-**Ledger ID**: 0xFARA001  
-**Perpetuity**: True  
-**Archive Depth**: Supreme  
+**Entry**: `FINAL_ALIGNMENT_REPLAY_ARCHIVE_SEALED`
+**Timestamp**: 2025-12-02T23:48:00Z
+**Ledger ID**: 0xFARA001
+**Perpetuity**: True
+**Archive Depth**: Supreme
 **Archive Scope**: All artifacts across all ages
 
 ---

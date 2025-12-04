@@ -6,19 +6,19 @@ Write-Host "=============================" -ForegroundColor Yellow
 
 function Test-Config {
     Write-Host "Testing nginx configuration..." -ForegroundColor Cyan
-    
+
     $configs = Get-ChildItem -Name "*.conf" | Where-Object { $_ -like "*nginx*" }
-    
+
     if ($configs.Count -eq 0) {
         Write-Host "No nginx config files found" -ForegroundColor Yellow
         return $false
     }
-    
+
     Write-Host "Found nginx configurations:" -ForegroundColor Green
     foreach ($config in $configs) {
         Write-Host "  - $config" -ForegroundColor White
     }
-    
+
     Write-Host "nginx: configuration file syntax is ok" -ForegroundColor Green
     Write-Host "nginx: configuration file test is successful" -ForegroundColor Green
     return $true
@@ -32,7 +32,7 @@ function Reload-Config {
 
 function Show-Status {
     Write-Host "Nginx Status:" -ForegroundColor Cyan
-    
+
     # Check web server ports
     $ports = @(80, 443, 8095)
     foreach ($port in $ports) {
@@ -51,7 +51,7 @@ switch ($Action) {
     default {
         Write-Host "Executing: nginx -t && systemctl reload nginx" -ForegroundColor Yellow
         Write-Host ""
-        
+
         if (Test-Config) {
             Write-Host ""
             Reload-Config

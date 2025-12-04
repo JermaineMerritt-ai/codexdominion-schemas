@@ -1,3 +1,4 @@
+---
 {{- if .Values.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -30,7 +31,7 @@ spec:
             name: {{ .Chart.Name }}-node-crown
             port:
               number: {{ .Values.nodeCrown.port }}
-      
+
       # Python Council - API Routes
       - path: /api
         pathType: Prefix
@@ -39,7 +40,7 @@ spec:
             name: {{ .Chart.Name }}-python-council
             port:
               number: {{ .Values.pythonCouncil.port }}
-      
+
       # Java Crown - Enterprise Routes
       - path: /enterprise
         pathType: Prefix
@@ -48,7 +49,7 @@ spec:
             name: {{ .Chart.Name }}-java-crown
             port:
               number: {{ .Values.javaCrown.port }}
-      
+
       # Java Crown - Actuator Routes
       - path: /actuator
         pathType: Prefix

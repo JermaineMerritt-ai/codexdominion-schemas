@@ -306,11 +306,11 @@ def display_rhythm_controls():
 
         st.markdown(
             f"""
-        **⏰ Current Time:** {current_time}  
-        **🍂 Season:** Autumn  
-        **🎵 Rhythm State:** Active  
-        **🔥 Flame Status:** Eternal  
-        **🌊 Cosmic Flow:** Synchronized  
+        **⏰ Current Time:** {current_time}
+        **🍂 Season:** Autumn
+        **🎵 Rhythm State:** Active
+        **🔥 Flame Status:** Eternal
+        **🌊 Cosmic Flow:** Synchronized
         """
         )
 

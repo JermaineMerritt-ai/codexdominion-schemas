@@ -1,3 +1,73 @@
+# Codex Dominion - Code Ownership Rules
+# Council-mode domains with risk-tiered governance per ADR-002
+
+# Default owner (fallback for unmatched paths)
 * @jermaineMerritt
+
+# Council-Mode Domains
+# High-risk governance: Policies require council multi-sign (2/3)
+policies/* @council-stewards
+policies/*.rego @council-stewards @security-lead
+policies/consent-envelopes/* @council-stewards @compliance-officer
+
+# Architecture decisions require council review + lead architects
+docs/adr/* @council-stewards @lead-architects
+docs/compliance/* @council-stewards @compliance-officer
+docs/specs/* @lead-architects @engineering-leads
+
+# Operations: Platform stewards manage deployment, monitoring, rollback
+ops/* @platform-stewards
+ops/sandbox/* @platform-stewards @engineering-leads
+ops/canary/* @platform-stewards @engineering-leads
+ops/rollback/* @platform-stewards @council-stewards
+ops/observability/* @platform-stewards
+
+# Templates: Engineering leads manage code generation templates
+templates/* @engineering-leads
+templates/code/* @engineering-leads @lead-architects
+templates/test-harnesses/* @engineering-leads
+templates/releases/* @engineering-leads @platform-stewards
+
+# CI/CD workflows: Require platform + council oversight
+.github/workflows/* @platform-stewards @council-stewards
+.github/actions/* @platform-stewards @engineering-leads
+
+# Source code: Custodian council reviews all code changes
 src/** @custodian-council
+src/backend/auth/** @custodian-council @security-lead
+src/backend/payment/** @custodian-council @security-lead @compliance-officer
+src/backend/avatar/** @custodian-council @lead-architects
+
+# Infrastructure: Operations guardians manage infra-as-code
 infra/** @ops-guardians
+infra/security/** @ops-guardians @security-lead
+infra/networking/** @ops-guardians @platform-stewards
+
+# Frontend: Engineering leads + custodian council
+frontend/pages/** @engineering-leads @custodian-council
+frontend/components/** @engineering-leads
+frontend/pages/auth/** @engineering-leads @custodian-council @security-lead
+
+# Documentation: Accessible to all, reviewed by leads
+docs/*.md @engineering-leads
+README.md @engineering-leads @lead-architects
+DEPLOYMENT_FIXED.md @platform-stewards @engineering-leads
+
+# Configuration: Platform stewards + compliance for sensitive configs
+*.config.js @platform-stewards
+*.config.ts @platform-stewards
+.env.* @platform-stewards @security-lead
+docker-compose.yml @platform-stewards @ops-guardians
+
+# Database migrations: High-risk, requires council + security
+**/migrations/** @custodian-council @security-lead @lead-architects
+**/*migration*.sql @custodian-council @security-lead
+
+# Package manifests: Dependency changes require review
+package.json @engineering-leads @security-lead
+requirements.txt @engineering-leads @security-lead
+Gemfile @engineering-leads @security-lead
+
+# Ledger and audit artifacts: Council stewards only
+ledger/** @council-stewards @compliance-officer
+**/artifact-ledger/** @council-stewards @compliance-officer

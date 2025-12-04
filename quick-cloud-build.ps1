@@ -36,7 +36,7 @@ gcloud builds submit --tag "gcr.io/$PROJECT_ID/codex-dashboard"
 if ($LASTEXITCODE -eq 0) {
     Write-Host "✅ Build completed successfully!" -ForegroundColor Green
     Write-Host "📦 Image available: gcr.io/$PROJECT_ID/codex-dashboard" -ForegroundColor Green
-    
+
     Write-Host ""
     Write-Host "🚀 Deploy to Cloud Run with:" -ForegroundColor Cyan
     Write-Host "gcloud run deploy codex-dashboard --image gcr.io/$PROJECT_ID/codex-dashboard --region us-central1 --allow-unauthenticated --port 8501" -ForegroundColor White

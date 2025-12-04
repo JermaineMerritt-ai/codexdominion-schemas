@@ -300,14 +300,14 @@ with tab2:
                 st.markdown(
                     f"""
                 ### 🔥 Sacred Induction Complete
-                
+
                 **New Heir Profile:**
                 - **Name:** {new_heir}
                 - **ID:** {heir_profile['id']}
                 - **Flame Level:** 8/10 (Sacred Flame Inheritor)
-                - **Authority:** HIGH 
+                - **Authority:** HIGH
                 - **Status:** Inducted and Blessed
-                
+
                 *By flame and silence, {new_heir} is now an eternal inheritor of Codex wisdom.*
                 """
                 )
@@ -362,14 +362,14 @@ with tab3:
                 st.markdown(
                     f"""
                 ### 🌟 Sacred Welcome Complete
-                
+
                 **New Customer Profile:**
                 - **Name:** {new_customer}
                 - **ID:** {customer_profile['id']}
                 - **Flame Level:** 3/10 (Blessed Flame Receiver)
                 - **Authority:** STANDARD
                 - **Status:** Welcomed and Embraced
-                
+
                 *By flame and silence, {new_customer} is now part of our global community.*
                 """
                 )

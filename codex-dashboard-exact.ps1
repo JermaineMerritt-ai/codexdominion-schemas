@@ -27,7 +27,7 @@ function Start-CodexDashboardService {
     Write-Host "Starting Codex Dashboard Service..." -ForegroundColor Green
     Write-Host "Working Directory: $($ServiceConfig.WorkingDirectory)" -ForegroundColor Gray
     Write-Host "Port: $($ServiceConfig.Port)" -ForegroundColor Gray
-    
+
     # Kill any existing processes on port 8501
     $existingProcesses = netstat -ano | Select-String ":8501.*LISTENING"
     foreach ($process in $existingProcesses) {
@@ -41,22 +41,22 @@ function Start-CodexDashboardService {
             }
         }
     }
-    
+
     # Start the service with exact parameters from your systemd file
     try {
         $process = Start-Process -FilePath $ServiceConfig.ExecStart -ArgumentList $ServiceConfig.ExecArgs -WorkingDirectory $ServiceConfig.WorkingDirectory -WindowStyle Hidden -PassThru
-        
+
         Write-Host "Service started with PID: $($process.Id)" -ForegroundColor Green
-        
+
         # Wait a moment and verify
         Start-Sleep 3
-        
+
         # Check if service is running
         $portCheck = netstat -ano | Select-String ":8501.*LISTENING"
         if ($portCheck) {
             Write-Host "SUCCESS: Codex Dashboard Service is running" -ForegroundColor Green
             Write-Host "Access at: http://127.0.0.1:8501" -ForegroundColor White
-            
+
             # Test connectivity
             try {
                 Invoke-WebRequest -Uri "http://127.0.0.1:8501" -TimeoutSec 10 -UseBasicParsing -ErrorAction Stop | Out-Null
@@ -67,7 +67,7 @@ function Start-CodexDashboardService {
         } else {
             Write-Host "WARNING: Service may not have started correctly" -ForegroundColor Yellow
         }
-        
+
     } catch {
         Write-Host "ERROR: Failed to start service" -ForegroundColor Red
         Write-Host $_.Exception.Message -ForegroundColor Red
@@ -77,11 +77,11 @@ function Start-CodexDashboardService {
 function Stop-CodexDashboardService {
     Write-Host ""
     Write-Host "Stopping Codex Dashboard Service..." -ForegroundColor Yellow
-    
+
     # Find processes on port 8501
     $processes = netstat -ano | Select-String ":8501.*LISTENING"
     $stopped = $false
-    
+
     foreach ($process in $processes) {
         if ($process -match ":8501\s+.*LISTENING\s+(\d+)") {
             $processId = $matches[1]
@@ -95,7 +95,7 @@ function Stop-CodexDashboardService {
             }
         }
     }
-    
+
     if (-not $stopped) {
         Write-Host "No Codex Dashboard Service found running on port 8501" -ForegroundColor Gray
     }
@@ -104,10 +104,10 @@ function Stop-CodexDashboardService {
 function Get-CodexDashboardStatus {
     Write-Host ""
     Write-Host "Codex Dashboard Service Status:" -ForegroundColor Cyan
-    
+
     # Check port 8501
     $portCheck = netstat -ano | Select-String ":8501.*LISTENING"
-    
+
     if ($portCheck) {
         $portCheck | ForEach-Object {
             if ($_ -match ":8501\s+.*LISTENING\s+(\d+)") {
@@ -129,7 +129,7 @@ function Get-CodexDashboardStatus {
         Write-Host "Status: INACTIVE (NOT RUNNING)" -ForegroundColor Red
         Write-Host "Port 8501: Available" -ForegroundColor Gray
     }
-    
+
     Write-Host ""
     Write-Host "Service Configuration:" -ForegroundColor Cyan
     Write-Host "Description: $($ServiceConfig.Description)" -ForegroundColor Gray
@@ -141,14 +141,14 @@ function Get-CodexDashboardStatus {
 function Install-WindowsService {
     Write-Host ""
     Write-Host "Installing Codex Dashboard as Windows Service..." -ForegroundColor Cyan
-    
+
     $servicePath = "`"powershell.exe`" -ExecutionPolicy Bypass -File `"$($MyInvocation.MyCommand.Path)`" run"
-    
+
     try {
         # Create the Windows service
         sc.exe create $ServiceConfig.ServiceName binPath= $servicePath displayName= $ServiceConfig.Description start= auto
         Write-Host "Windows Service created successfully" -ForegroundColor Green
-        
+
         # Start the service
         sc.exe start $ServiceConfig.ServiceName
         Write-Host "Service installation complete" -ForegroundColor Green
@@ -157,7 +157,7 @@ function Install-WindowsService {
         Write-Host "sc start $($ServiceConfig.ServiceName)" -ForegroundColor Gray
         Write-Host "sc stop $($ServiceConfig.ServiceName)" -ForegroundColor Gray
         Write-Host "sc query $($ServiceConfig.ServiceName)" -ForegroundColor Gray
-        
+
     } catch {
         Write-Host "Failed to install Windows Service" -ForegroundColor Red
         Write-Host $_.Exception.Message -ForegroundColor Red
@@ -169,11 +169,11 @@ switch ($Action.ToLower()) {
     "run" {
         # This is called when running as a Windows Service
         Start-CodexDashboardService
-        
+
         # Keep running (simulate systemd restart=always)
         while ($true) {
             Start-Sleep 10
-            
+
             # Check if process is still running
             $portCheck = netstat -ano | Select-String ":8501.*LISTENING"
             if (-not $portCheck) {
@@ -182,14 +182,14 @@ switch ($Action.ToLower()) {
             }
         }
     }
-    "start" { 
-        Start-CodexDashboardService 
+    "start" {
+        Start-CodexDashboardService
     }
-    "stop" { 
-        Stop-CodexDashboardService 
+    "stop" {
+        Stop-CodexDashboardService
     }
-    "status" { 
-        Get-CodexDashboardStatus 
+    "status" {
+        Get-CodexDashboardStatus
     }
     "restart" {
         Stop-CodexDashboardService

@@ -418,7 +418,7 @@ class CodexFlowEngine:
 🔗 INTEGRATION ANNIHILATION:
    • Codex Flow: {len(self.integrations)} integrations
    • N8N: ~400 integrations (OBLITERATED)
-   • Zapier: ~5000 but BASIC (TRANSCENDED) 
+   • Zapier: ~5000 but BASIC (TRANSCENDED)
    • Make: ~1000 but LINEAR (ATOMIZED)
 
 🧠 CONSCIOUSNESS TRANSCENDENCE:

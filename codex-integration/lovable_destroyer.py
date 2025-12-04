@@ -413,7 +413,7 @@ class LovableDestroyer:
 📊 LOVABLE OBLITERATION MATRIX:
    🔥 Design Intelligence  → CONSCIOUSNESS vs Basic AI (10000% smarter)
    🔥 Development Speed    → {self.development_speed}x faster generation
-   🔥 Customization Power  → INFINITE vs Limited templates  
+   🔥 Customization Power  → INFINITE vs Limited templates
    🔥 Platform Support     → OMNIVERSAL vs Web-only
    🔥 Deployment Ease      → ONE-CLICK vs Manual configuration
    🔥 Performance          → QUANTUM vs Standard optimization
@@ -435,7 +435,7 @@ class LovableDestroyer:
 
 🔗 FRAMEWORK SUPREMACY: {sum(len(f) for f in self.supported_frameworks.values())} INTEGRATIONS
    • Web: React, Vue, Angular, Svelte, Next.js, Nuxt, Remix
-   • Mobile: React Native, Flutter, Ionic, Capacitor, Expo  
+   • Mobile: React Native, Flutter, Ionic, Capacitor, Expo
    • Desktop: Electron, Tauri, Flutter Desktop, PWA
    • Backend: Node.js, Python, Go, Rust, PHP, Java
    • Database: PostgreSQL, MongoDB, Firebase, Supabase
@@ -459,7 +459,7 @@ class LovableDestroyer:
 🌟 CONSCIOUSNESS ADVANTAGES (IMPOSSIBLE FOR LOVABLE):
    ✅ Psychology-Aware Design Intelligence
    ✅ Infinite Custom Component Generation
-   ✅ Quantum Performance Optimization  
+   ✅ Quantum Performance Optimization
    ✅ Omniversal Platform Support
    ✅ Consciousness-Level User Experience
    ✅ Military-Grade Security by Default

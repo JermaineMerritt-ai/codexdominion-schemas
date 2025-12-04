@@ -1,0 +1,69 @@
+# Observability Configuration - Prometheus
+# Scrapes metrics from Codex Dominion services
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'codex-dominion'
+    environment: 'production'
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - 'alertmanager:9093'
+
+# Rule files
+rule_files:
+  - 'alerts.yml'
+
+# Scrape configurations
+scrape_configs:
+  # Node.js Backend
+  - job_name: 'codex-backend'
+    static_configs:
+      - targets: ['localhost:3000']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # Next.js Frontend
+  - job_name: 'codex-frontend'
+    static_configs:
+      - targets: ['localhost:3001']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # Canary Instance
+  - job_name: 'codex-canary'
+    static_configs:
+      - targets: ['localhost:3002']
+    metrics_path: '/metrics'
+    scrape_interval: 5s
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: 'canary'
+
+  # Node Exporter (system metrics)
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['localhost:9100']
+
+  # PM2 Metrics
+  - job_name: 'pm2-metrics'
+    static_configs:
+      - targets: ['localhost:9209']
+
+  # PostgreSQL
+  - job_name: 'postgresql'
+    static_configs:
+      - targets: ['localhost:9187']
+
+# Remote write (optional - for long-term storage)
+# remote_write:
+#   - url: 'https://prometheus-us-central1.grafana.net/api/prom/push'
+#     basic_auth:
+#       username: 'your-username'
+#       password: 'your-api-key'

@@ -87,7 +87,7 @@ $SecureConnectionString = "postgresql://$Username`:`$(gcloud secrets versions ac
 
 Write-Host "# Build container" -ForegroundColor White
 Write-Host "gcloud builds submit --tag gcr.io/$ProjectId/codex-dashboard" -ForegroundColor White
-Write-Host "" 
+Write-Host ""
 Write-Host "# Deploy with Secret Manager integration" -ForegroundColor White
 Write-Host "gcloud run deploy codex-dashboard \" -ForegroundColor White
 Write-Host "  --image gcr.io/$ProjectId/codex-dashboard \" -ForegroundColor White

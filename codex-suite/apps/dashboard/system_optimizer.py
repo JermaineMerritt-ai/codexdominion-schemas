@@ -85,7 +85,7 @@ st.markdown(
 
 **System Performance:**
 - Close unused browser tabs
-- Restart VS Code instances periodically  
+- Restart VS Code instances periodically
 - Monitor background processes
 - Use virtual environments efficiently
 """

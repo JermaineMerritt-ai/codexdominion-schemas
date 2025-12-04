@@ -90,21 +90,21 @@ def performance_monitor(operation_name=None):
             try:
                 result = func(*args, **kwargs)
                 execution_time = time.time() - start_time
-                
+
                 # Store performance data
                 if 'performance_data' not in st.session_state:
                     st.session_state.performance_data = {}
-                
+
                 op_name = operation_name or func.__name__
                 if op_name not in st.session_state.performance_data:
                     st.session_state.performance_data[op_name] = []
-                
+
                 st.session_state.performance_data[op_name].append(execution_time)
-                
+
                 # Keep only last 100 measurements
                 if len(st.session_state.performance_data[op_name]) > 100:
                     st.session_state.performance_data[op_name] = st.session_state.performance_data[op_name][-100:]
-                
+
                 return result
             except Exception as e:
                 st.error(f"Error in {operation_name or func.__name__}: {str(e)}")
@@ -135,12 +135,12 @@ def show_performance_dashboard():
     if 'performance_data' in st.session_state and st.session_state.performance_data:
         with st.expander("Performance Dashboard"):
             st.subheader("Operation Performance")
-            
+
             for operation, times in st.session_state.performance_data.items():
                 if times:
                     avg_time = sum(times) / len(times)
                     max_time = max(times)
-                    
+
                     col1, col2, col3 = st.columns(3)
                     with col1:
                         st.metric(f"{operation} Avg", f"{avg_time:.3f}s")
@@ -157,7 +157,7 @@ def apply_enhanced_styling():
     .main {
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     }
-    
+
     .enhanced-header {
         text-align: center;
         padding: 30px;
@@ -167,7 +167,7 @@ def apply_enhanced_styling():
         border-radius: 20px;
         box-shadow: 0 8px 32px rgba(138,43,226,0.3);
     }
-    
+
     .enhanced-card {
         background: rgba(255,255,255,0.1);
         padding: 25px;
@@ -177,13 +177,13 @@ def apply_enhanced_styling():
         margin: 15px 0;
         transition: all 0.4s ease;
     }
-    
+
     .enhanced-card:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 15px 40px rgba(138,43,226,0.4);
         border-color: #8B2BE2;
     }
-    
+
     .stButton > button {
         background: linear-gradient(45deg, #8B2BE2, #9370DB);
         border: none;
@@ -192,7 +192,7 @@ def apply_enhanced_styling():
         font-weight: bold;
         transition: all 0.3s ease;
     }
-    
+
     .stButton > button:hover {
         background: linear-gradient(45deg, #9370DB, #8B2BE2);
         transform: scale(1.05);

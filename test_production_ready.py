@@ -128,7 +128,7 @@ echo "🎯 Starting Streamlit backend on port 8501..."
 streamlit run app.py --server.port 8501 --server.address 0.0.0.0 &
 STREAMLIT_PID=$!
 
-# Start frontend (Next.js) 
+# Start frontend (Next.js)
 echo "🌐 Starting Next.js frontend on port 3001..."
 cd frontend
 npm run build && npm start &
@@ -141,7 +141,7 @@ if kill -0 $STREAMLIT_PID 2>/dev/null && kill -0 $FRONTEND_PID 2>/dev/null; then
     echo "✅ Codex Dominion is running successfully!"
     echo "🎯 Backend: http://localhost:8501"
     echo "🌐 Frontend: http://localhost:3001"
-    
+
     # Keep script running
     wait
 else

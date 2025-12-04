@@ -76,14 +76,14 @@ echo ✅ CODEX DOMINION SERVICES CREATED SUCCESSFULLY!
 echo.
 echo 🚀 To start services:
 echo    net start "Codex-Main"
-echo    net start "Codex-Contributions"  
+echo    net start "Codex-Contributions"
 echo    net start "Codex-Council"
 echo    net start "Codex-Viewer"
 echo.
 echo 🛑 To stop services:
 echo    net stop "Codex-Main"
 echo    net stop "Codex-Contributions"
-echo    net stop "Codex-Council"  
+echo    net stop "Codex-Council"
 echo    net stop "Codex-Viewer"
 echo.
 echo 🗑️ To remove services:

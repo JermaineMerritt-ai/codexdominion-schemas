@@ -48,7 +48,7 @@ st.markdown(
         margin-bottom: 2rem;
         box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3);
     }
-    
+
     .contribution-card {
         background: linear-gradient(135deg, #667eea, #764ba2);
         padding: 1.5rem;
@@ -58,19 +58,19 @@ st.markdown(
         color: white;
         box-shadow: 0 8px 16px rgba(255, 215, 0, 0.2);
     }
-    
+
     .contribution-proclamation {
         background: linear-gradient(135deg, #f093fb, #f5576c);
     }
-    
+
     .contribution-blessing {
         background: linear-gradient(135deg, #4facfe, #00f2fe);
     }
-    
+
     .contribution-silence {
         background: linear-gradient(135deg, #a8edea, #fed6e3);
     }
-    
+
     .metric-card {
         background: rgba(255, 215, 0, 0.1);
         padding: 1.5rem;
@@ -81,17 +81,17 @@ st.markdown(
         box-shadow: 0 8px 16px rgba(255, 215, 0, 0.3);
         transition: transform 0.3s ease;
     }
-    
+
     .metric-card:hover {
         transform: translateY(-5px);
     }
-    
+
     .sacred-text {
         color: #ffd700;
         font-weight: bold;
         text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
     }
-    
+
     .contribution-text {
         background: rgba(255, 255, 255, 0.1);
         padding: 1rem;
@@ -100,13 +100,13 @@ st.markdown(
         font-style: italic;
         border-left: 3px solid #ffd700;
     }
-    
+
     .council-status-affirmed {
         color: #4ade80;
         font-weight: bold;
         text-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
     }
-    
+
     .council-status-silenced {
         color: #9ca3af;
         font-weight: bold;

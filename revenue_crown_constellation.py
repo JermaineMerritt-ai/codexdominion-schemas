@@ -88,41 +88,41 @@ def apply_revenue_crown_styling():
         background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #16213e 70%, #0f0f23 100%);
         color: #fff;
     }
-    
+
     .revenue-crown-header {
         text-align: center;
         padding: 40px;
         margin-bottom: 30px;
-        background: linear-gradient(45deg, 
-            rgba(255,215,0,0.3) 0%, 
-            rgba(218,165,32,0.2) 25%, 
+        background: linear-gradient(45deg,
+            rgba(255,215,0,0.3) 0%,
+            rgba(218,165,32,0.2) 25%,
             rgba(255,140,0,0.3) 50%,
             rgba(255,215,0,0.2) 75%,
             rgba(184,134,11,0.3) 100%);
         border: 3px solid #FFD700;
         border-radius: 25px;
-        box-shadow: 
+        box-shadow:
             0 0 30px rgba(255,215,0,0.4),
             inset 0 0 30px rgba(255,215,0,0.1);
         backdrop-filter: blur(10px);
         animation: golden-glow 3s ease-in-out infinite;
     }
-    
+
     @keyframes golden-glow {
-        0%, 100% { 
+        0%, 100% {
             box-shadow: 0 0 30px rgba(255,215,0,0.4), inset 0 0 30px rgba(255,215,0,0.1);
             border-color: #FFD700;
         }
-        50% { 
+        50% {
             box-shadow: 0 0 50px rgba(255,215,0,0.6), inset 0 0 50px rgba(255,215,0,0.2);
             border-color: #FFA500;
         }
     }
-    
+
     .constellation-card {
-        background: linear-gradient(135deg, 
-            rgba(255,255,255,0.1) 0%, 
-            rgba(255,215,0,0.1) 50%, 
+        background: linear-gradient(135deg,
+            rgba(255,255,255,0.1) 0%,
+            rgba(255,215,0,0.1) 50%,
             rgba(255,255,255,0.05) 100%);
         padding: 25px;
         border-radius: 20px;
@@ -133,7 +133,7 @@ def apply_revenue_crown_styling():
         position: relative;
         overflow: hidden;
     }
-    
+
     .constellation-card::before {
         content: '';
         position: absolute;
@@ -141,30 +141,30 @@ def apply_revenue_crown_styling():
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, 
-            transparent, 
-            rgba(255,215,0,0.2), 
+        background: linear-gradient(90deg,
+            transparent,
+            rgba(255,215,0,0.2),
             transparent);
         transition: left 0.5s;
     }
-    
+
     .constellation-card:hover::before {
         left: 100%;
     }
-    
+
     .constellation-card:hover {
         transform: translateY(-10px) scale(1.02);
-        box-shadow: 
+        box-shadow:
             0 20px 50px rgba(255,215,0,0.3),
             0 0 30px rgba(255,215,0,0.4);
         border-color: #FFD700;
     }
-    
+
     .metric-crown {
         text-align: center;
         padding: 20px;
-        background: linear-gradient(135deg, 
-            rgba(255,215,0,0.2) 0%, 
+        background: linear-gradient(135deg,
+            rgba(255,215,0,0.2) 0%,
             rgba(255,140,0,0.1) 50%,
             rgba(218,165,32,0.2) 100%);
         border-radius: 15px;
@@ -173,12 +173,12 @@ def apply_revenue_crown_styling():
         box-shadow: 0 5px 15px rgba(255,215,0,0.2);
         transition: all 0.3s ease;
     }
-    
+
     .metric-crown:hover {
         transform: scale(1.05);
         box-shadow: 0 8px 25px rgba(255,215,0,0.4);
     }
-    
+
     .stream-indicator {
         display: inline-block;
         padding: 8px 16px;
@@ -190,25 +190,25 @@ def apply_revenue_crown_styling():
         border: 1px solid;
         transition: all 0.3s ease;
     }
-    
+
     .stream-store {
         background: rgba(50, 205, 50, 0.2);
         border-color: #32CD32;
         color: #32CD32;
     }
-    
+
     .stream-social {
         background: rgba(138, 43, 226, 0.2);
         border-color: #8A2BE2;
         color: #8A2BE2;
     }
-    
+
     .stream-website {
         background: rgba(255, 69, 0, 0.2);
         border-color: #FF4500;
         color: #FF4500;
     }
-    
+
     .stButton > button {
         background: linear-gradient(45deg, #FFD700, #FFA500);
         border: none;
@@ -219,13 +219,13 @@ def apply_revenue_crown_styling():
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(255,215,0,0.3);
     }
-    
+
     .stButton > button:hover {
         background: linear-gradient(45deg, #FFA500, #FFD700);
         transform: translateY(-2px) scale(1.05);
         box-shadow: 0 8px 25px rgba(255,215,0,0.5);
     }
-    
+
     .performance-indicator {
         position: fixed;
         top: 20px;
@@ -239,12 +239,12 @@ def apply_revenue_crown_styling():
         border: 1px solid #FFD700;
         backdrop-filter: blur(10px);
     }
-    
+
     .sidebar-enhancement {
         background: linear-gradient(135deg, rgba(15,15,35,0.9), rgba(26,26,46,0.9));
         border-right: 2px solid rgba(255,215,0,0.3);
     }
-    
+
     /* Chart enhancements */
     .plotly-graph-div {
         border-radius: 15px;
@@ -252,7 +252,7 @@ def apply_revenue_crown_styling():
         border: 2px solid rgba(255,215,0,0.2);
         box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     }
-    
+
     /* Animation for revenue numbers */
     .revenue-number {
         animation: count-up 2s ease-out;
@@ -261,12 +261,12 @@ def apply_revenue_crown_styling():
         color: #FFD700;
         text-shadow: 0 0 20px rgba(255,215,0,0.5);
     }
-    
+
     @keyframes count-up {
         0% { opacity: 0; transform: translateY(20px); }
         100% { opacity: 1; transform: translateY(0); }
     }
-    
+
     /* Responsive design */
     @media (max-width: 768px) {
         .revenue-crown-header {
@@ -396,7 +396,7 @@ def display_constellation_data():
                     {stream['stream']}
                 </span>
             </div>
-            
+
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                 <div>
                     <strong>💫 Star Source:</strong><br>

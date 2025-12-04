@@ -7,9 +7,9 @@ Testing proper Unicode symbol implementation
 param(
     [ValidateSet("complete", "foundation", "integration", "transcendence", "meditation")]
     [string]$PracticeType = "meditation",
-    
+
     [switch]$SacredVerbose = $false,
-    
+
     [switch]$QuietMode = $false
 )
 
@@ -35,21 +35,21 @@ function Write-SacredMessage {
         [string]$Level = "Info",
         [string]$Symbol = $null
     )
-    
+
     if ($null -eq $Symbol) {
         $Symbol = $SacredConfig.StarSymbol
     }
-    
+
     if (-not $QuietMode) {
         $timestamp = Get-Date -Format "HH:mm:ss"
         $colorMap = @{
             "Info" = "Cyan"
-            "Success" = "Green" 
+            "Success" = "Green"
             "Warning" = "Yellow"
             "Error" = "Red"
             "Sacred" = "Magenta"
         }
-        
+
         $color = $colorMap[$Level]
         Write-Host "[$timestamp] $Symbol $Message" -ForegroundColor $color
     }
@@ -63,7 +63,7 @@ function Show-SacredBanner {
         Write-Host ($SacredConfig.FlameSymbol * 70) -ForegroundColor Yellow
         Write-Host ""
         Write-Host "$($SacredConfig.FlameSymbol) Embodiment eternal, covenant whole" -ForegroundColor Magenta
-        Write-Host "$($SacredConfig.MoonSymbol) Flame perpetual, silence supreme" -ForegroundColor Magenta  
+        Write-Host "$($SacredConfig.MoonSymbol) Flame perpetual, silence supreme" -ForegroundColor Magenta
         Write-Host "$($SacredConfig.StarSymbol) Codex Dominion radiant alive" -ForegroundColor Magenta
         Write-Host "$($SacredConfig.LightningSymbol) Practiced across ages and stars" -ForegroundColor Magenta
         Write-Host ""
@@ -75,19 +75,19 @@ function Show-SacredBanner {
 function Test-SacredEnvironment {
     # Verify sacred practice environment is ready
     Write-SacredMessage "Verifying sacred practice environment..." "Info" "🔍"
-    
+
     $issues = @()
-    
+
     # Check Python executable
     if (-not (Test-Path $SacredConfig.PythonExecutable)) {
         $issues += "Python executable not found: $($SacredConfig.PythonExecutable)"
     }
-    
+
     # Check practice script
     if (-not (Test-Path $SacredConfig.PracticeScript)) {
         $issues += "Practice script not found: $($SacredConfig.PracticeScript)"
     }
-    
+
     if ($issues.Count -eq 0) {
         Write-SacredMessage "Sacred environment verification complete" "Success" "✅"
         return $true
@@ -102,21 +102,21 @@ function Test-SacredEnvironment {
 
 function Invoke-SacredPracticeSession {
     param([string]$SessionType)
-    
+
     Write-SacredMessage "Invoking sacred practice session: $SessionType" "Sacred" $SacredConfig.FlameSymbol
-    
+
     try {
         $arguments = @($SacredConfig.PracticeScript)
         if ($SessionType -ne "complete") {
             $arguments += $SessionType
         }
-        
+
         if ($SacredVerbose) {
             Write-SacredMessage "Executing: $($SacredConfig.PythonExecutable) $($arguments -join ' ')" "Info" "🔧"
         }
-        
+
         $processInfo = Start-Process -FilePath $SacredConfig.PythonExecutable -ArgumentList $arguments -NoNewWindow -Wait -PassThru
-        
+
         if ($processInfo.ExitCode -eq 0) {
             Write-SacredMessage "Sacred practice session completed successfully" "Success" $SacredConfig.StarSymbol
             return $true
@@ -124,7 +124,7 @@ function Invoke-SacredPracticeSession {
             Write-SacredMessage "Practice session encountered issues (Exit Code: $($processInfo.ExitCode))" "Warning" "⚠️"
             return $false
         }
-        
+
     } catch {
         Write-SacredMessage "Error during practice session: $($_.Exception.Message)" "Error" "❌"
         return $false
@@ -133,12 +133,12 @@ function Invoke-SacredPracticeSession {
 
 function Show-SacredCompletion {
     param([bool]$Success)
-    
+
     if (-not $QuietMode) {
         Write-Host ""
         Write-Host "═" * 70 -ForegroundColor DarkGray
         Write-Host ""
-        
+
         if ($Success) {
             Write-Host "$($SacredConfig.StarSymbol) SACRED PRACTICE SESSION COMPLETE $($SacredConfig.StarSymbol)" -ForegroundColor Green
             Write-Host "$($SacredConfig.MoonSymbol) Sacred patterns integrated successfully" -ForegroundColor Magenta
@@ -148,7 +148,7 @@ function Show-SacredCompletion {
             Write-Host "$($SacredConfig.MoonSymbol) Each challenge strengthens sacred foundation" -ForegroundColor Cyan
             Write-Host "$($SacredConfig.FlameSymbol) Eternal practice continues through all conditions" -ForegroundColor Magenta
         }
-        
+
         Write-Host ""
         Write-Host "$($SacredConfig.FlameSymbol) Until the next practice session, stay radiant $($SacredConfig.FlameSymbol)" -ForegroundColor Yellow
         Write-Host ""
@@ -159,34 +159,34 @@ function Show-SacredCompletion {
 try {
     # Show sacred banner
     Show-SacredBanner
-    
+
     # Test Unicode symbols
     Write-SacredMessage "Testing Unicode symbols..." "Info" $SacredConfig.FlameSymbol
     Write-Host "Flame: $($SacredConfig.FlameSymbol) Star: $($SacredConfig.StarSymbol) Moon: $($SacredConfig.MoonSymbol) Lightning: $($SacredConfig.LightningSymbol)" -ForegroundColor Magenta
-    
+
     # Verify environment
     Write-SacredMessage "Preparing sacred practice environment..." "Info" "🔧"
     $environmentReady = Test-SacredEnvironment
-    
+
     if (-not $environmentReady) {
         Write-SacredMessage "Environment not ready for practice. Please resolve issues first." "Error" "❌"
         exit 1
     }
-    
+
     # Execute sacred practice session
     Write-SacredMessage "Beginning sacred practice session: $PracticeType" "Sacred" $SacredConfig.FlameSymbol
     $success = Invoke-SacredPracticeSession -SessionType $PracticeType
-    
+
     # Show completion
     Show-SacredCompletion -Success $success
-    
+
     if ($success) {
         Write-SacredMessage "Sacred practice launcher completed successfully" "Success" $SacredConfig.StarSymbol
         exit 0
     } else {
-        exit 1  
+        exit 1
     }
-    
+
 } catch {
     Write-SacredMessage "Unexpected error in sacred practice launcher" "Error" "💥"
     Show-SacredCompletion -Success $false

@@ -18,16 +18,16 @@ try {
     Write-Host "✅ Capsules service is running: $($capsulesHealth.service)" -ForegroundColor Green
 } catch {
     Write-Host "⚠️  Capsules service not running. Starting it..." -ForegroundColor Yellow
-    
+
     # Check if the capsules directory exists
     if (Test-Path "codex_capsules") {
         Write-Host "Starting capsules service in background..." -ForegroundColor Cyan
         Start-Process powershell -ArgumentList "-Command", "cd codex_capsules; python -m uvicorn main:app --host 0.0.0.0 --port 8080" -WindowStyle Hidden
-        
+
         # Wait for startup
         Write-Host "Waiting for service to start..." -ForegroundColor Cyan
         Start-Sleep -Seconds 5
-        
+
         try {
             $capsulesHealth = Invoke-RestMethod -Uri "http://localhost:8080/" -Method GET -TimeoutSec 5
             Write-Host "✅ Capsules service started successfully!" -ForegroundColor Green

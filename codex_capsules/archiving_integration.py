@@ -68,7 +68,7 @@ def generate_dawn_bulletin():
 ## 🎯 System Status: OPERATIONAL SOVEREIGNTY
 
 ### Key Metrics
-- **Active Capsules:** 5/5 (100%)  
+- **Active Capsules:** 5/5 (100%)
 - **Daily Executions:** On Schedule
 - **Storage Health:** Optimal
 - **Database Status:** Synchronized

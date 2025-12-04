@@ -22,7 +22,7 @@ echo ✅ Configuration reloaded
 echo.
 goto :end
 
-:enable_service  
+:enable_service
 echo.
 echo ⚡ Enabling codex-dashboard service...
 echo ✅ Service enabled (will start automatically)
@@ -54,7 +54,7 @@ if %errorlevel%==0 (
     echo    Status: ✅ OPERATIONAL
     echo    Port: %PORT% ^(listening^)
     echo    URL: http://localhost:%PORT%
-    
+
     REM Test if responding
     powershell -Command "try { Invoke-WebRequest -Uri 'http://localhost:%PORT%' -TimeoutSec 3 -UseBasicParsing -ErrorAction Stop | Out-Null; Write-Host '    Health: ✅ RESPONDING' -ForegroundColor Green } catch { Write-Host '    Health: ⚠️ STARTING...' -ForegroundColor Yellow }" 2>nul
 ) else (
@@ -80,7 +80,7 @@ echo.
 echo Available commands:
 echo    daemon-reload    Reload service configuration
 echo    enable          Enable service to start on boot
-echo    start           Start the service  
+echo    start           Start the service
 echo    status          Show service status
 echo.
 echo Example: systemctl start codex-dashboard

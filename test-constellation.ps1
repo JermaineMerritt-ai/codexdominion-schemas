@@ -1,7 +1,7 @@
 $pages = @(
     "http://localhost:3001/",
     "http://localhost:3001/dashboard-selector",
-    "http://localhost:3001/codex-constellation", 
+    "http://localhost:3001/codex-constellation",
     "http://localhost:3001/seven-crowns-transmission",
     "http://localhost:3001/blessed-storefronts"
 )

@@ -54,13 +54,13 @@ export default function CommerceHome() {
       <Head>
         <title>E-Commerce Platform - Codex Dominion</title>
       </Head>
-      <div style={{ 
+      <div style={{
         minHeight: '100vh',
         backgroundColor: '#0f172a',
         color: '#f8fafc',
         fontFamily: 'system-ui, -apple-system, sans-serif'
       }}>
-        <header style={{ 
+        <header style={{
           padding: '1rem 2rem',
           borderBottom: '1px solid #334155',
           backgroundColor: '#1e293b',
@@ -104,7 +104,7 @@ export default function CommerceHome() {
               Loading products...
             </div>
           ) : (
-            <div style={{ 
+            <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
               gap: '1.5rem'
@@ -123,7 +123,7 @@ export default function CommerceHome() {
                   <p style={{ color: '#94a3b8', margin: '0 0 1rem 0', fontSize: '0.875rem' }}>
                     {product.description}
                   </p>
-                  <div style={{ 
+                  <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center'

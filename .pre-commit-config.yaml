@@ -1,0 +1,70 @@
+# Pre-commit hooks for Codex Dominion
+# Install: pip install pre-commit
+# Setup: pre-commit install
+# Run manually: pre-commit run --all-files
+
+repos:
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+        name: Check YAML syntax
+        args: ['--allow-multiple-documents']
+        exclude: |
+          (?x)^(
+            node_modules/.*|
+            \.venv/.*|
+            \.github/workflows/.*\.yml|
+            lineage_manifest\.yaml|
+            codex-constellation-chart/templates/.*\.yaml|
+            codex-engines-chart/templates/.*\.yaml|
+            helm/.*/templates/.*\.yaml
+          )$
+
+      - id: end-of-file-fixer
+        name: Fix end of files
+        exclude: ^(node_modules|\.venv|\.next|dist|build)/
+
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+        exclude: ^(node_modules|\.venv|\.next|dist|build)/
+
+      - id: check-json
+        name: Check JSON syntax
+        exclude: ^(node_modules|\.venv|package-lock\.json)/
+
+      - id: check-added-large-files
+        name: Check for large files
+        args: ['--maxkb=500']
+
+      - id: check-merge-conflict
+        name: Check for merge conflicts
+
+      - id: check-case-conflict
+        name: Check filename case conflicts
+
+      - id: mixed-line-ending
+        name: Fix mixed line endings
+        args: ['--fix=lf']
+
+  # Local hooks for custom validation (disabled for Windows compatibility)
+  # Re-enable these hooks after converting scripts to PowerShell or using WSL
+  # - repo: local
+  #   hooks:
+  #     # Security scanning
+  #     - id: secrets-scan
+  #       name: Secrets Scan
+  #       entry: bash ops/secrets-scan.sh
+  #       language: system
+  #       pass_filenames: false
+  #       always_run: true
+
+# Global configuration
+default_language_version:
+  python: python3.12
+
+# Performance optimization
+default_stages: [pre-commit]
+fail_fast: false
+minimum_pre_commit_version: '3.0.0'

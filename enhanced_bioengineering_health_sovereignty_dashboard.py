@@ -25,21 +25,21 @@ def performance_monitor(operation_name=None):
             try:
                 result = func(*args, **kwargs)
                 execution_time = time.time() - start_time
-                
+
                 # Store performance data
                 if 'performance_data' not in st.session_state:
                     st.session_state.performance_data = {}
-                
+
                 op_name = operation_name or func.__name__
                 if op_name not in st.session_state.performance_data:
                     st.session_state.performance_data[op_name] = []
-                
+
                 st.session_state.performance_data[op_name].append(execution_time)
-                
+
                 # Keep only last 100 measurements
                 if len(st.session_state.performance_data[op_name]) > 100:
                     st.session_state.performance_data[op_name] = st.session_state.performance_data[op_name][-100:]
-                
+
                 return result
             except Exception as e:
                 st.error(f"Error in {operation_name or func.__name__}: {str(e)}")
@@ -71,12 +71,12 @@ def show_performance_dashboard():
     if 'performance_data' in st.session_state and st.session_state.performance_data:
         with st.expander("Performance Dashboard"):
             st.subheader("Operation Performance")
-            
+
             for operation, times in st.session_state.performance_data.items():
                 if times:
                     avg_time = sum(times) / len(times)
                     max_time = max(times)
-                    
+
                     col1, col2, col3 = st.columns(3)
                     with col1:
                         st.metric(f"{operation} Avg", f"{avg_time:.3f}s")
@@ -93,7 +93,7 @@ def apply_enhanced_styling():
     .main {
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     }
-    
+
     .enhanced-header {
         text-align: center;
         padding: 30px;
@@ -103,7 +103,7 @@ def apply_enhanced_styling():
         border-radius: 20px;
         box-shadow: 0 8px 32px rgba(138,43,226,0.3);
     }
-    
+
     .enhanced-card {
         background: rgba(255,255,255,0.1);
         padding: 25px;
@@ -113,13 +113,13 @@ def apply_enhanced_styling():
         margin: 15px 0;
         transition: all 0.4s ease;
     }
-    
+
     .enhanced-card:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 15px 40px rgba(138,43,226,0.4);
         border-color: #8B2BE2;
     }
-    
+
     .stButton > button {
         background: linear-gradient(45deg, #8B2BE2, #9370DB);
         border: none;
@@ -128,7 +128,7 @@ def apply_enhanced_styling():
         font-weight: bold;
         transition: all 0.3s ease;
     }
-    
+
     .stButton > button:hover {
         background: linear-gradient(45deg, #9370DB, #8B2BE2);
         transform: scale(1.05);
@@ -193,7 +193,7 @@ st.markdown("""
 
 class BioengineeringHealthSystem:
     """Bioengineering and health sovereignty intelligence"""
-    
+
     def __init__(self):
         self.elite_sources = {
             "synthetic_biology": [
@@ -232,12 +232,12 @@ class BioengineeringHealthSystem:
                 "WHO Health Emergencies Programme"
             ]
         }
-        
+
         self.bioengineering_domains = [
             "CRISPR Gene Editing",
             "Synthetic Biology Platforms",
             "Regenerative Medicine",
-            "Personalized Genomics", 
+            "Personalized Genomics",
             "Biodefense & Security",
             "Tissue Engineering",
             "Biomanufacturing",
@@ -245,7 +245,7 @@ class BioengineeringHealthSystem:
             "Immunoengineering",
             "Longevity Science"
         ]
-    
+
     async def analyze_bioengineering_advances(self, domain: str, application: str) -> Dict:
         """Analyze bioengineering and health advances"""
         return {
@@ -262,7 +262,7 @@ class BioengineeringHealthSystem:
                     {
                         "technology": "Base Editing Systems",
                         "advancement": f"Single nucleotide precision for {application}",
-                        "clinical_stage": "Phase I trials", 
+                        "clinical_stage": "Phase I trials",
                         "impact": f"Corrects genetic mutations causing {application} disorders"
                     }
                 ],
@@ -303,7 +303,7 @@ class BioengineeringHealthSystem:
 
 def main():
     """Main Bioengineering & Health Sovereignty interface"""
-    
+
     # Header
     st.markdown("""
     <div class="bioeng-header">
@@ -312,19 +312,19 @@ def main():
         <p>Gene Editing • Synthetic Biology • Health Independence • Medical Innovation</p>
     </div>
     """, unsafe_allow_html=True)
-    
+
     # Initialize system
     if 'bioeng_system' not in st.session_state:
         st.session_state.bioeng_system = BioengineeringHealthSystem()
-    
+
     col1, col2 = st.columns([2, 1])
-    
+
     with col1:
     # Apply enhanced styling
     apply_enhanced_styling()
 
         st.header("🧬 Bioengineering Analysis")
-        
+
         col_a, col_b = st.columns(2)
         with col_a:
             domain = st.selectbox(
@@ -332,20 +332,20 @@ def main():
                 ["Gene Editing", "Synthetic Biology", "Regenerative Medicine", "Personalized Medicine",
                  "Biodefense", "Tissue Engineering", "Longevity Science"]
             )
-        
+
         with col_b:
             application = st.selectbox(
                 "🎯 Medical Application:",
                 ["Cancer Treatment", "Neurological Disorders", "Cardiovascular Disease", "Immunotherapy",
                  "Organ Replacement", "Genetic Disorders", "Infectious Diseases", "Aging Prevention"]
             )
-        
+
         if st.button("🚀 Analyze Bioengineering Advances"):
             with st.spinner(f"Analyzing {domain} advances for {application}..."):
                 analysis = asyncio.run(
                     st.session_state.bioeng_system.analyze_bioengineering_advances(domain, application)
                 )
-                
+
                 st.subheader("🧬 Gene Editing Breakthroughs")
                 for breakthrough in analysis['bioengineering_insights']['gene_editing_breakthroughs']:
                     st.markdown(f"""
@@ -356,7 +356,7 @@ def main():
                         <strong>Impact:</strong> {breakthrough['impact']}
                     </div>
                     """, unsafe_allow_html=True)
-                
+
                 st.subheader("🔬 Synthetic Biology Platforms")
                 for platform in analysis['bioengineering_insights']['synthetic_biology']:
                     st.markdown(f"""
@@ -367,10 +367,10 @@ def main():
                         <strong>Potential:</strong> {platform['potential']}
                     </div>
                     """, unsafe_allow_html=True)
-                
+
                 st.subheader("🏛️ Health Sovereignty Status")
                 sovereignty = analysis['bioengineering_insights']['health_sovereignty']
-                
+
                 col1_sov, col2_sov = st.columns(2)
                 with col1_sov:
                     st.metric("Domestic Capability", sovereignty['domestic_capability'])
@@ -378,13 +378,13 @@ def main():
                 with col2_sov:
                     st.metric("Innovation Pipeline", sovereignty['innovation_pipeline'])
                     st.write(f"**Regulatory:** {sovereignty['regulatory_framework']}")
-    
+
     with col2:
     # Apply enhanced styling
     apply_enhanced_styling()
 
         st.header("⚕️ Biotech Capabilities")
-        
+
         capabilities = [
             "🧬 CRISPR Gene Editing",
             "🔬 Synthetic Biology",
@@ -397,7 +397,7 @@ def main():
             "🧠 Immunoengineering",
             "⏰ Longevity Science"
         ]
-        
+
         for capability in capabilities:
             st.markdown(f"""
             <div class="biotech-capability">

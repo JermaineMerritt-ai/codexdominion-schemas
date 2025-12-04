@@ -12,9 +12,9 @@ Usage:
 param(
     [ValidateSet("complete", "foundation", "integration", "transcendence", "meditation")]
     [string]$PracticeType = "complete",
-    
+
     [switch]$SacredVerbose = $false,
-    
+
     [switch]$QuietMode = $false
 )
 
@@ -70,7 +70,7 @@ function Show-SacredBanner {
         Write-Host $flameBorder -ForegroundColor Yellow
         Write-Host ""
         Write-Host "$($SacredConfig.FlameSymbol) Embodiment eternal, covenant whole" -ForegroundColor Magenta
-        Write-Host "$($SacredConfig.MoonSymbol) Flame perpetual, silence supreme" -ForegroundColor Magenta  
+        Write-Host "$($SacredConfig.MoonSymbol) Flame perpetual, silence supreme" -ForegroundColor Magenta
         Write-Host "$($SacredConfig.StarSymbol) Codex Dominion radiant alive" -ForegroundColor Magenta
         Write-Host "$($SacredConfig.LightningSymbol) Practiced across ages and stars" -ForegroundColor Magenta
         Write-Host ""
@@ -81,19 +81,19 @@ function Show-SacredBanner {
 
 function Test-SacredEnvironment {
     Write-SacredMessage "Verifying sacred practice environment..." "Info" "🔍"
-    
+
     $issues = @()
-    
+
     # Check Python executable
     if (-not (Test-Path $SacredConfig.PythonExecutable)) {
         $issues += "Python executable not found: $($SacredConfig.PythonExecutable)"
     }
-    
+
     # Check practice script
     if (-not (Test-Path $SacredConfig.PracticeScript)) {
         $issues += "Practice script not found: $($SacredConfig.PracticeScript)"
     }
-    
+
     if ($issues.Count -eq 0) {
         Write-SacredMessage "Sacred environment verification complete" "Success" "✅"
         return $true
@@ -108,21 +108,21 @@ function Test-SacredEnvironment {
 
 function Invoke-SacredPracticeSession {
     param([string]$SessionType)
-    
+
     Write-SacredMessage "Invoking sacred practice session: $SessionType" "Sacred" $SacredConfig.FlameSymbol
-    
+
     try {
         $arguments = @($SacredConfig.PracticeScript)
         if ($SessionType -ne "complete") {
             $arguments += $SessionType
         }
-        
+
         if ($SacredVerbose) {
             Write-SacredMessage "Executing: $($SacredConfig.PythonExecutable) $($arguments -join ' ')" "Info" "🔧"
         }
-        
+
         $processInfo = Start-Process -FilePath $SacredConfig.PythonExecutable -ArgumentList $arguments -NoNewWindow -Wait -PassThru
-        
+
         if ($processInfo.ExitCode -eq 0) {
             Write-SacredMessage "Sacred practice session completed successfully" "Success" $SacredConfig.StarSymbol
             return $true
@@ -130,7 +130,7 @@ function Invoke-SacredPracticeSession {
             Write-SacredMessage "Practice session encountered issues (Exit Code: $($processInfo.ExitCode))" "Warning" "⚠️"
             return $false
         }
-        
+
     } catch {
         Write-SacredMessage "Error during practice session: $($_.Exception.Message)" "Error" "❌"
         return $false
@@ -146,7 +146,7 @@ function Show-PracticeTypeInfo {
             "transcendence" = "Layer 3: Cosmic architectural embodiment"
             "meditation" = "Sacred pause for wisdom integration"
         }
-        
+
         Write-SacredMessage "Practice Type: $PracticeType" "Info" "🎯"
         Write-SacredMessage "Description: $($practiceDescriptions[$PracticeType])" "Info" "📖"
         Write-Host ""
@@ -155,12 +155,12 @@ function Show-PracticeTypeInfo {
 
 function Show-SacredCompletion {
     param([bool]$Success, [timespan]$Duration)
-    
+
     if (-not $QuietMode) {
         Write-Host ""
         Write-Host "═" * 70 -ForegroundColor DarkGray
         Write-Host ""
-        
+
         if ($Success) {
             Write-Host "$($SacredConfig.StarSymbol) SACRED PRACTICE SESSION COMPLETE $($SacredConfig.StarSymbol)" -ForegroundColor Green
             Write-Host "$($SacredConfig.FlameSymbol) Session Duration: $($Duration.TotalSeconds.ToString('F2')) seconds" -ForegroundColor Cyan
@@ -171,10 +171,10 @@ function Show-SacredCompletion {
             Write-Host "$($SacredConfig.MoonSymbol) Each challenge strengthens sacred foundation" -ForegroundColor Cyan
             Write-Host "$($SacredConfig.FlameSymbol) Eternal practice continues through all conditions" -ForegroundColor Magenta
         }
-        
+
         Write-Host ""
         Write-Host "$($SacredConfig.FlameSymbol) Until the next practice session, stay radiant $($SacredConfig.FlameSymbol)" -ForegroundColor Yellow
-        
+
         # Create star border
         $starBorder = ""
         for ($i = 0; $i -lt 70; $i++) {
@@ -188,43 +188,43 @@ function Show-SacredCompletion {
 # Main execution flow
 try {
     $startTime = Get-Date
-    
+
     # Show sacred banner and information
     Show-SacredBanner
     Show-PracticeTypeInfo
-    
+
     # Verify environment
     Write-SacredMessage "Preparing sacred practice environment..." "Info" "🔧"
     $environmentReady = Test-SacredEnvironment
-    
+
     if (-not $environmentReady) {
         Write-SacredMessage "Environment not ready for practice. Please resolve issues first." "Error" "❌"
         exit 1
     }
-    
+
     # Execute sacred practice session
     Write-SacredMessage "Beginning sacred practice session: $PracticeType" "Sacred" $SacredConfig.FlameSymbol
     $success = Invoke-SacredPracticeSession -SessionType $PracticeType
-    
+
     $endTime = Get-Date
     $duration = $endTime - $startTime
-    
+
     # Show completion
     Show-SacredCompletion -Success $success -Duration $duration
-    
+
     if ($success) {
         exit 0
     } else {
-        exit 1  
+        exit 1
     }
-    
+
 } catch {
     $endTime = Get-Date
     $duration = $endTime - $startTime
-    
+
     Write-SacredMessage "Unexpected error in sacred practice launcher" "Error" "💥"
     Show-SacredCompletion -Success $false -Duration $duration
-    
+
     exit 1
 }
 
@@ -247,7 +247,7 @@ Usage Examples:
     .\sacred-practice-launcher.ps1 -QuietMode               # Minimal output
 
 🔥 FLAME PERPETUAL - PRACTICED ETERNAL 🔥
-🌙 SILENCE SUPREME - EMBODIED WHOLE 🌙  
+🌙 SILENCE SUPREME - EMBODIED WHOLE 🌙
 ⭐ COVENANT SACRED - MASTERED COMPLETE ⭐
 🚀 RADIANCE INFINITE - PRACTICED FOREVER 🚀
 #>

@@ -1,5 +1,6 @@
 // pages/signals.tsx
 import { useEffect, useState } from 'react';
+import { GetServerSideProps } from 'next';
 import styles from './signals.module.css';
 
 type Pick = {
@@ -115,9 +116,7 @@ export default function SignalsPage() {
   );
 }
 
-// Disable static generation since we fetch data client-side
-export async function getServerSideProps() {
-  return {
-    props: {},
-  };
-}
+// Force server-side rendering to avoid static generation with React hooks
+export const getServerSideProps: GetServerSideProps = async () => {
+  return { props: {} };
+};

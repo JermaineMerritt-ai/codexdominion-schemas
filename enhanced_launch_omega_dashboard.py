@@ -102,7 +102,7 @@ def apply_enhanced_styling():
     .main {
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     }
-    
+
     .enhanced-header {
         text-align: center;
         padding: 30px;
@@ -112,7 +112,7 @@ def apply_enhanced_styling():
         border-radius: 20px;
         box-shadow: 0 8px 32px rgba(138,43,226,0.3);
     }
-    
+
     .enhanced-card {
         background: rgba(255,255,255,0.1);
         padding: 25px;
@@ -122,13 +122,13 @@ def apply_enhanced_styling():
         margin: 15px 0;
         transition: all 0.4s ease;
     }
-    
+
     .enhanced-card:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 15px 40px rgba(138,43,226,0.4);
         border-color: #8B2BE2;
     }
-    
+
     .stButton > button {
         background: linear-gradient(45deg, #8B2BE2, #9370DB);
         border: none;
@@ -137,7 +137,7 @@ def apply_enhanced_styling():
         font-weight: bold;
         transition: all 0.3s ease;
     }
-    
+
     .stButton > button:hover {
         background: linear-gradient(45deg, #9370DB, #8B2BE2);
         transform: scale(1.05);

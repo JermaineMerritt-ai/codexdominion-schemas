@@ -25,21 +25,21 @@ def performance_monitor(operation_name=None):
             try:
                 result = func(*args, **kwargs)
                 execution_time = time.time() - start_time
-                
+
                 # Store performance data
                 if 'performance_data' not in st.session_state:
                     st.session_state.performance_data = {}
-                
+
                 op_name = operation_name or func.__name__
                 if op_name not in st.session_state.performance_data:
                     st.session_state.performance_data[op_name] = []
-                
+
                 st.session_state.performance_data[op_name].append(execution_time)
-                
+
                 # Keep only last 100 measurements
                 if len(st.session_state.performance_data[op_name]) > 100:
                     st.session_state.performance_data[op_name] = st.session_state.performance_data[op_name][-100:]
-                
+
                 return result
             except Exception as e:
                 st.error(f"Error in {operation_name or func.__name__}: {str(e)}")
@@ -71,12 +71,12 @@ def show_performance_dashboard():
     if 'performance_data' in st.session_state and st.session_state.performance_data:
         with st.expander("Performance Dashboard"):
             st.subheader("Operation Performance")
-            
+
             for operation, times in st.session_state.performance_data.items():
                 if times:
                     avg_time = sum(times) / len(times)
                     max_time = max(times)
-                    
+
                     col1, col2, col3 = st.columns(3)
                     with col1:
                         st.metric(f"{operation} Avg", f"{avg_time:.3f}s")
@@ -93,7 +93,7 @@ def apply_enhanced_styling():
     .main {
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     }
-    
+
     .enhanced-header {
         text-align: center;
         padding: 30px;
@@ -103,7 +103,7 @@ def apply_enhanced_styling():
         border-radius: 20px;
         box-shadow: 0 8px 32px rgba(138,43,226,0.3);
     }
-    
+
     .enhanced-card {
         background: rgba(255,255,255,0.1);
         padding: 25px;
@@ -113,13 +113,13 @@ def apply_enhanced_styling():
         margin: 15px 0;
         transition: all 0.4s ease;
     }
-    
+
     .enhanced-card:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 15px 40px rgba(138,43,226,0.4);
         border-color: #8B2BE2;
     }
-    
+
     .stButton > button {
         background: linear-gradient(45deg, #8B2BE2, #9370DB);
         border: none;
@@ -128,7 +128,7 @@ def apply_enhanced_styling():
         font-weight: bold;
         transition: all 0.3s ease;
     }
-    
+
     .stButton > button:hover {
         background: linear-gradient(45deg, #9370DB, #8B2BE2);
         transform: scale(1.05);
@@ -193,7 +193,7 @@ st.markdown("""
 
 class CommunicationCultureCommerceSystem:
     """Communication, culture, and commerce intelligence"""
-    
+
     def __init__(self):
         self.elite_sources = {
             "global_communications": [
@@ -205,7 +205,7 @@ class CommunicationCultureCommerceSystem:
             ],
             "cultural_dynamics": [
                 "UNESCO Cultural Observatory",
-                "Pew Global Attitudes Project", 
+                "Pew Global Attitudes Project",
                 "World Values Survey",
                 "Hofstede Cultural Insights",
                 "Global Cultural Intelligence Institute"
@@ -232,7 +232,7 @@ class CommunicationCultureCommerceSystem:
                 "Twitter Public Interest Research"
             ]
         }
-        
+
         self.communication_domains = [
             "5G/6G Network Evolution",
             "Satellite Communication Systems",
@@ -245,7 +245,7 @@ class CommunicationCultureCommerceSystem:
             "Blockchain-Based Commerce",
             "Creator Economy Platforms"
         ]
-    
+
     async def analyze_communication_culture_commerce(self, region: str, sector: str) -> Dict:
         """Analyze communication, culture, and commerce systems"""
         return {
@@ -261,7 +261,7 @@ class CommunicationCultureCommerceSystem:
                 "cultural_dynamics": [
                     {
                         "trend": "Digital-Native Communication",
-                        "impact": f"{region} youth prefer visual/video communication by 87%", 
+                        "impact": f"{region} youth prefer visual/video communication by 87%",
                         "business_implication": f"{sector} must adapt to visual-first strategies",
                         "cultural_shift": "Traditional text losing relevance in younger demographics"
                     },
@@ -301,7 +301,7 @@ class CommunicationCultureCommerceSystem:
 
 def main():
     """Main Communication, Culture & Commerce interface"""
-    
+
     # Header
     st.markdown("""
     <div class="communication-header">
@@ -310,43 +310,43 @@ def main():
         <p>Digital Networks • Cultural Intelligence • Global Commerce • Media Influence</p>
     </div>
     """, unsafe_allow_html=True)
-    
+
     # Initialize system
     if 'comm_culture_system' not in st.session_state:
         st.session_state.comm_culture_system = CommunicationCultureCommerceSystem()
-    
+
     col1, col2 = st.columns([2, 1])
-    
+
     with col1:
     # Apply enhanced styling
     apply_enhanced_styling()
 
         st.header("📡 Communication & Culture Analysis")
-        
+
         col_a, col_b = st.columns(2)
         with col_a:
             region = st.selectbox(
                 "🌍 Global Region:",
-                ["Global", "North America", "Europe", "Asia Pacific", "Latin America", 
+                ["Global", "North America", "Europe", "Asia Pacific", "Latin America",
                  "Africa", "Middle East", "Emerging Markets"]
             )
-        
+
         with col_b:
             sector = st.selectbox(
                 "🏢 Commerce Sector:",
                 ["E-commerce", "Social Commerce", "Digital Media", "Gaming", "Education Technology",
                  "Healthcare Technology", "Financial Services", "Entertainment"]
             )
-        
+
         if st.button("🚀 Analyze Communication & Commerce"):
             with st.spinner(f"Analyzing communication and commerce trends in {region} {sector}..."):
                 analysis = asyncio.run(
                     st.session_state.comm_culture_system.analyze_communication_culture_commerce(region, sector)
                 )
-                
+
                 st.subheader("📡 Network Infrastructure Status")
                 network = analysis['communication_analysis']['network_infrastructure']
-                
+
                 col1_net, col2_net = st.columns(2)
                 with col1_net:
                     st.metric("5G Coverage", network['5g_coverage'])
@@ -354,7 +354,7 @@ def main():
                 with col2_net:
                     st.metric("Satellite Coverage", network['satellite_connectivity'])
                     st.metric("Digital Divide", network['digital_divide'])
-                
+
                 st.subheader("🌍 Cultural Dynamics")
                 for trend in analysis['communication_analysis']['cultural_dynamics']:
                     st.markdown(f"""
@@ -365,10 +365,10 @@ def main():
                         <strong>Cultural Shift:</strong> {trend['cultural_shift']}
                     </div>
                     """, unsafe_allow_html=True)
-                
+
                 st.subheader("💼 Commerce Transformation")
                 commerce = analysis['communication_analysis']['commerce_transformation']
-                
+
                 col1_com, col2_com = st.columns(2)
                 with col1_com:
                     st.metric("Social Commerce Growth", commerce['social_commerce_growth'])
@@ -376,17 +376,17 @@ def main():
                 with col2_com:
                     st.metric("Creator Economy Impact", commerce['creator_economy'])
                     st.metric("Metaverse Commerce", commerce['metaverse_commerce'])
-    
+
     with col2:
     # Apply enhanced styling
     apply_enhanced_styling()
 
         st.header("🌐 Communication Capabilities")
-        
+
         capabilities = [
             "📡 5G/6G Networks",
             "🛰️ Satellite Systems",
-            "🌐 Social Media Networks", 
+            "🌐 Social Media Networks",
             "🌍 Cultural Intelligence",
             "💼 Digital Commerce",
             "📺 Streaming Media",
@@ -395,7 +395,7 @@ def main():
             "⛓️ Blockchain Commerce",
             "🎨 Creator Economy"
         ]
-        
+
         for capability in capabilities:
             st.markdown(f"""
             <div class="commerce-metric">

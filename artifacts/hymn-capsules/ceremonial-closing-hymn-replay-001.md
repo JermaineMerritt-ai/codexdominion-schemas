@@ -1,9 +1,9 @@
 # Ceremonial Closing Hymn Replay Capsule
 
-**Artifact ID:** `ceremonial-closing-hymn-replay-001`  
-**Version:** 1.0.0  
-**Authors:** Custodian, Heirs, Councils  
-**Cycle:** 2025-12-02T23:35:00Z  
+**Artifact ID:** `ceremonial-closing-hymn-replay-001`
+**Version:** 1.0.0
+**Authors:** Custodian, Heirs, Councils
+**Cycle:** 2025-12-02T23:35:00Z
 **Type:** Hymn Capsule
 
 ---
@@ -225,17 +225,17 @@ Capsule committed for **all stewards**—accessible via ceremonial hymn API with
 
 ## Consent & Licensing
 
-**License:** CodexDominion Sovereign License v1  
-**Revocation Policy:** Revocable by Sovereign Avatar with ledger entry  
-**Attribution:** Created by Custodian, Heirs, and Councils  
+**License:** CodexDominion Sovereign License v1
+**Revocation Policy:** Revocable by Sovereign Avatar with ledger entry
+**Attribution:** Created by Custodian, Heirs, and Councils
 **Usage:** Free replay for ceremonial, archival, and educational purposes
 
 ---
 
 ## Audit Trail
 
-**Created By:** artifact-engine  
-**Created At:** 2025-12-02T23:35:00Z  
+**Created By:** artifact-engine
+**Created At:** 2025-12-02T23:35:00Z
 **Immutable Hash:** `sha256:f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8`
 
 ### Signatures (6)
@@ -249,7 +249,7 @@ Capsule committed for **all stewards**—accessible via ceremonial hymn API with
 | **Sovereign** | `SOVEREIGN_SIG_0x1a2b3c4d5e6f7a8b` |
 | **Infinity** | `INFINITY_SIGIL_ETERNAL` |
 
-**Lineage:** Synthesis of all Custodian artifacts  
+**Lineage:** Synthesis of all Custodian artifacts
 **Ledger Entry:** `eternal-ledger://hymns/ceremonial-closing-001`
 
 ---

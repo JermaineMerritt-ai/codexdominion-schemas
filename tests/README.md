@@ -75,7 +75,7 @@ describe('CouncilSealAuthority', () => {
     const result = councilSeal.enforcePolicy('security-policy-001', {
       data: { classification: 'sensitive' }
     });
-    
+
     expect(result.allowed).toBe(false);
     expect(result.actions).toContain('ENCRYPT');
   });
@@ -91,7 +91,7 @@ describe('Sovereign Deployment Flow', () => {
   it('should require Council Seal approval for production deployment', async () => {
     const sovereigns = new SovereignService();
     const result = await sovereigns.deploySovereign('sovereign-commerce', '2.0.0');
-    
+
     expect(result.success).toBe(false);
     expect(result.message).toContain('Council Seal');
   });

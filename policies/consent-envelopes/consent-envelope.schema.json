@@ -1,0 +1,385 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codexdominion.app/schemas/consent-envelope.schema.json",
+  "title": "ConsentEnvelope",
+  "description": "Consent envelope schema for GDPR Article 6/7 and CARICOM data protection compliance",
+  "type": "object",
+  "required": ["inputs_hash", "purpose", "audience", "retention", "revocation", "jurisdiction"],
+  "properties": {
+    "inputs_hash": {
+      "type": "string",
+      "description": "SHA-256 hash of the input data covered by this consent",
+      "pattern": "^[a-f0-9]{64}$",
+      "examples": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"]
+    },
+    "purpose": {
+      "type": "string",
+      "description": "Specific purpose for data processing (GDPR Article 6.1)",
+      "enum": [
+        "analytics",
+        "marketing",
+        "personalization",
+        "service_improvement",
+        "legal_compliance",
+        "security",
+        "research"
+      ],
+      "examples": ["analytics", "marketing"]
+    },
+    "audience": {
+      "type": "string",
+      "description": "Intended audience for data access",
+      "enum": ["internal", "customers", "council", "third_party", "public"],
+      "examples": ["internal", "customers"]
+    },
+    "retention": {
+      "type": "string",
+      "description": "Data retention period (ISO 8601 duration or date)",
+      "pattern": "^(P(\\d+Y)?(\\d+M)?(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+S)?)?|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z)$",
+      "examples": ["P1Y", "P2Y6M", "P7D", "2026-12-03T00:00:00Z"]
+    },
+    "revocation": {
+      "type": "object",
+      "description": "Revocation mechanism for right to erasure (GDPR Article 17)",
+      "required": ["path", "effect"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "API endpoint or process for consent revocation",
+          "format": "uri-reference",
+          "examples": ["/api/v1/consent/revoke", "/privacy/withdraw-consent"]
+        },
+        "effect": {
+          "type": "string",
+          "description": "Effect of revocation on data",
+          "enum": [
+            "immediate_deletion",
+            "anonymization",
+            "quarantine_then_delete",
+            "stop_processing"
+          ],
+          "examples": ["immediate_deletion", "anonymization"]
+        },
+        "grace_period_hours": {
+          "type": "integer",
+          "description": "Hours before revocation takes effect",
+          "minimum": 0,
+          "maximum": 72,
+          "default": 0
+        }
+      }
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "Data protection jurisdiction (Caribbean, GDPR, etc.)",
+      "enum": [
+        "caribbean",
+        "trinidad-tobago",
+        "caricom",
+        "gdpr",
+        "global",
+        "eu",
+        "uk",
+        "canada",
+        "california-ccpa"
+      ],
+      "examples": ["caribbean", "trinidad-tobago"]
+    },
+    "sealed_by": {
+      "type": "string",
+      "description": "Identity of person/system that sealed the consent",
+      "examples": ["council-steward@codexdominion.app", "compliance-officer@codexdominion.app"]
+    },
+    "artifact_id": {
+      "type": "string",
+      "description": "Reference to artifact in ledger",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+      "examples": ["550e8400-e29b-41d4-a716-446655440000"]
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Unique identifier for the user providing consent",
+      "examples": ["user_abc123"]
+    },
+    "consent_type": {
+      "type": "string",
+      "description": "Type of consent granted",
+      "enum": ["explicit", "implicit", "legitimate_interest", "contract", "legal_obligation"],
+      "default": "explicit"
+    },
+    "granted": {
+      "type": "boolean",
+      "description": "Whether consent has been granted",
+      "default": false
+    },
+    "granted_at": {
+      "type": "string",
+      "description": "Timestamp when consent was granted (ISO 8601)",
+      "format": "date-time",
+      "examples": ["2025-12-03T00:00:00Z"]
+    },
+    "expires_at": {
+      "type": "string",
+      "description": "Timestamp when consent expires (ISO 8601)",
+      "format": "date-time",
+      "examples": ["2026-12-03T00:00:00Z"]
+    },
+    "revoked_at": {
+      "type": "string",
+      "description": "Timestamp when consent was revoked (ISO 8601)",
+      "format": "date-time"
+    },
+    "data_categories": {
+      "type": "array",
+      "description": "Categories of personal data covered",
+      "items": {
+        "type": "string",
+        "enum": [
+          "identity",
+          "contact",
+          "financial",
+          "transaction",
+          "usage_metrics",
+          "location",
+          "device",
+          "preferences",
+          "biometric",
+          "health",
+          "behavioral"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "examples": [
+        ["identity", "contact"],
+        ["usage_metrics", "preferences"]
+      ]
+    },
+    "processing_purposes": {
+      "type": "array",
+      "description": "Specific processing activities covered",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "examples": [
+        ["improve_service", "personalized_recommendations"],
+        ["fraud_detection", "security_monitoring"]
+      ]
+    },
+    "cross_border_transfer": {
+      "type": "boolean",
+      "description": "Whether data will be transferred across borders",
+      "default": false
+    },
+    "cross_border_destinations": {
+      "type": "array",
+      "description": "Countries/regions for cross-border transfers",
+      "items": {
+        "type": "string"
+      },
+      "examples": [["EU", "UK", "Canada"], ["USA-adequate"]]
+    },
+    "transfer_mechanism": {
+      "type": "string",
+      "description": "Legal mechanism for cross-border transfer (GDPR Chapter V)",
+      "enum": [
+        "adequacy_decision",
+        "standard_contractual_clauses",
+        "binding_corporate_rules",
+        "consent",
+        "necessity",
+        "none"
+      ]
+    },
+    "retention_period_days": {
+      "type": "integer",
+      "description": "Data retention period in days",
+      "minimum": 1,
+      "maximum": 2555,
+      "examples": [365, 730, 2555]
+    },
+    "automated_decision_making": {
+      "type": "boolean",
+      "description": "Whether automated decision-making is involved (GDPR Article 22)",
+      "default": false
+    },
+    "profiling": {
+      "type": "boolean",
+      "description": "Whether profiling is involved",
+      "default": false
+    },
+    "third_party_sharing": {
+      "type": "boolean",
+      "description": "Whether data will be shared with third parties",
+      "default": false
+    },
+    "third_parties": {
+      "type": "array",
+      "description": "List of third parties data may be shared with",
+      "items": {
+        "type": "object",
+        "required": ["name", "purpose"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "jurisdiction": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "legal_basis": {
+      "type": "string",
+      "description": "Legal basis for processing (GDPR Article 6)",
+      "enum": [
+        "consent",
+        "contract",
+        "legal_obligation",
+        "vital_interests",
+        "public_task",
+        "legitimate_interests"
+      ],
+      "default": "consent"
+    },
+    "dpia_required": {
+      "type": "boolean",
+      "description": "Whether Data Protection Impact Assessment is required (GDPR Article 35)",
+      "default": false
+    },
+    "dpia_completed": {
+      "type": "boolean",
+      "description": "Whether DPIA has been completed",
+      "default": false
+    },
+    "dpia_reference": {
+      "type": "string",
+      "description": "Reference to DPIA document"
+    },
+    "encryption_at_rest": {
+      "type": "boolean",
+      "description": "Whether data is encrypted at rest",
+      "default": true
+    },
+    "encryption_in_transit": {
+      "type": "boolean",
+      "description": "Whether data is encrypted in transit",
+      "default": true
+    },
+    "pseudonymization": {
+      "type": "boolean",
+      "description": "Whether data is pseudonymized (GDPR Article 32)",
+      "default": false
+    },
+    "anonymization": {
+      "type": "boolean",
+      "description": "Whether data is anonymized (irreversible)",
+      "default": false
+    },
+    "contact_dpo": {
+      "type": "string",
+      "description": "Contact information for Data Protection Officer",
+      "format": "email",
+      "examples": ["dpo@codexdominion.app"]
+    },
+    "version": {
+      "type": "string",
+      "description": "Version of consent envelope schema",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "default": "1.0.0"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata for audit trail",
+      "properties": {
+        "ip_address": {
+          "type": "string",
+          "format": "ipv4"
+        },
+        "user_agent": {
+          "type": "string"
+        },
+        "consent_method": {
+          "type": "string",
+          "enum": ["checkbox", "opt_in_form", "api", "implied", "contract"]
+        },
+        "language": {
+          "type": "string",
+          "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "cross_border_transfer": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "required": ["cross_border_destinations", "transfer_mechanism"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "third_party_sharing": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "required": ["third_parties"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "dpia_required": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "required": ["dpia_completed", "dpia_reference"]
+      }
+    }
+  ],
+  "examples": [
+    {
+      "inputs_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "purpose": "analytics",
+      "audience": "internal",
+      "retention": "P1Y",
+      "revocation": {
+        "path": "/api/v1/consent/revoke",
+        "effect": "immediate_deletion",
+        "grace_period_hours": 0
+      },
+      "jurisdiction": "caribbean",
+      "sealed_by": "compliance-officer@codexdominion.app",
+      "artifact_id": "550e8400-e29b-41d4-a716-446655440000",
+      "user_id": "user_abc123",
+      "consent_type": "explicit",
+      "granted": true,
+      "granted_at": "2025-12-03T00:00:00Z",
+      "expires_at": "2026-12-03T00:00:00Z",
+      "data_categories": ["usage_metrics", "preferences"],
+      "processing_purposes": ["improve_service", "personalized_recommendations"],
+      "cross_border_transfer": false,
+      "retention_period_days": 365,
+      "legal_basis": "consent",
+      "encryption_at_rest": true,
+      "encryption_in_transit": true,
+      "contact_dpo": "dpo@codexdominion.app",
+      "version": "1.0.0"
+    }
+  ]
+}

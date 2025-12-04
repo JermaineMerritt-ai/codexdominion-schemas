@@ -457,7 +457,7 @@ async def generate_bulletin(
 
 TIER DISTRIBUTION:
 - Alpha Tier: {signals_snapshot['tier_counts']['Alpha']} positions
-- Beta Tier: {signals_snapshot['tier_counts']['Beta']} positions  
+- Beta Tier: {signals_snapshot['tier_counts']['Beta']} positions
 - Gamma Tier: {signals_snapshot['tier_counts']['Gamma']} positions
 - Delta Tier: {signals_snapshot['tier_counts']['Delta']} positions
 

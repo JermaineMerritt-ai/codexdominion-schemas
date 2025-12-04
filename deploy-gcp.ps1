@@ -122,12 +122,12 @@ $setup_domains = Read-Host "Do you want to set up custom domains? (y/n)"
 if ($setup_domains -eq "y") {
     $PROD_DOMAIN = Read-Host "Enter production domain (e.g., app.codexdominion.com)"
     $STAGING_DOMAIN = Read-Host "Enter staging domain (e.g., staging.codexdominion.com)"
-    
+
     if (![string]::IsNullOrWhiteSpace($PROD_DOMAIN)) {
         Write-Host "🔗 Mapping production domain: $PROD_DOMAIN" -ForegroundColor Yellow
         gcloud run domain-mappings create --service=$env:CODEX_PRODUCTION_SERVICE --domain=$PROD_DOMAIN --region=$env:GCP_REGION
     }
-    
+
     if (![string]::IsNullOrWhiteSpace($STAGING_DOMAIN)) {
         Write-Host "🔗 Mapping staging domain: $STAGING_DOMAIN" -ForegroundColor Yellow
         gcloud run domain-mappings create --service=$env:CODEX_STAGING_SERVICE --domain=$STAGING_DOMAIN --region=$env:GCP_REGION

@@ -338,7 +338,7 @@ def display_stores_tab(stores):
 
             st.markdown(
                 f"""
-            <div style="background: rgba(255,215,0,0.1); padding: 10px; margin: 5px 0; 
+            <div style="background: rgba(255,215,0,0.1); padding: 10px; margin: 5px 0;
                         border-left: 4px solid #FFD700; border-radius: 5px;">
                 <strong>🏬 {item}</strong> - <span style="color: #32CD32;">${amount:,.2f}</span><br>
                 <small>📅 {timestamp} • 📍 {location}</small>
@@ -484,7 +484,7 @@ def display_social_media_tab(social):
 
             st.markdown(
                 f"""
-            <div style="background: rgba(147,112,219,0.1); padding: 10px; margin: 5px 0; 
+            <div style="background: rgba(147,112,219,0.1); padding: 10px; margin: 5px 0;
                         border-left: 4px solid #9370DB; border-radius: 5px;">
                 <strong>📱 {platform}</strong> - {revenue_type} - <span style="color: #32CD32;">${amount:,.2f}</span><br>
                 <small>📅 {timestamp}</small><br>
@@ -671,7 +671,7 @@ def display_websites_tab(websites):
 
             st.markdown(
                 f"""
-            <div style="background: rgba(65,105,225,0.1); padding: 10px; margin: 5px 0; 
+            <div style="background: rgba(65,105,225,0.1); padding: 10px; margin: 5px 0;
                         border-left: 4px solid #4169E1; border-radius: 5px;">
                 <strong>🌐 {source}</strong> - {revenue_type} - <span style="color: #32CD32;">${amount:,.2f}</span><br>
                 <small>📅 {timestamp} • ID: {transaction_id}</small>
@@ -831,8 +831,8 @@ def revenue_crown_interface():
         # Grand total with styling
         st.markdown(
             f"""
-        <div style="text-align: center; padding: 30px; 
-                    background: linear-gradient(45deg, rgba(255,215,0,0.3), rgba(50,205,50,0.2)); 
+        <div style="text-align: center; padding: 30px;
+                    background: linear-gradient(45deg, rgba(255,215,0,0.3), rgba(50,205,50,0.2));
                     border: 3px solid #FFD700; border-radius: 20px; margin: 20px 0;">
             <h1 style="color: #FFD700; margin: 0;">👑 APPROVED SOVEREIGN BALANCE</h1>
             <h2 style="color: #32CD32; margin: 10px 0; font-size: 3em;">${metrics['totals']['grand_total']:,.2f}</h2>
@@ -930,9 +930,9 @@ def revenue_crown_interface():
 
             st.markdown(
                 f"""
-            <div style="background: rgba(255,255,255,0.05); padding: 10px; margin: 5px 0; 
+            <div style="background: rgba(255,255,255,0.05); padding: 10px; margin: 5px 0;
                         border-left: 3px solid #FFD700; border-radius: 5px;">
-                <strong>{transaction['source']}</strong> - {transaction['description']} - 
+                <strong>{transaction['source']}</strong> - {transaction['description']} -
                 <span style="color: #32CD32;">${transaction['amount']:,.2f}</span><br>
                 <small>📅 {formatted_time}</small>
             </div>

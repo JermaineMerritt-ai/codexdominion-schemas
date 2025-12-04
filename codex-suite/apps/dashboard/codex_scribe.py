@@ -1307,23 +1307,23 @@ def generate_full_transcript():
     """Generate a full meeting transcript"""
     return """
     <p><strong>[John - 10:15 AM]:</strong> Good morning everyone. Let's start with our weekly standup. Sarah, can you give us an update on the project timeline?</p>
-    
+
     <p><strong>[Sarah - 10:15 AM]:</strong> Sure! We've completed about 70% of the development phase. The main challenge right now is the integration with the payment system. It's more complex than we initially thought.</p>
-    
+
     <p><strong>[Mike - 10:16 AM]:</strong> I can help with that integration. I have experience with similar implementations from my previous project. Would you like me to take a look at the technical specifications?</p>
-    
+
     <p><strong>[Sarah - 10:17 AM]:</strong> That would be great, Mike. I'll share the documentation with you after this meeting. John, what's our buffer for the timeline if we encounter more delays?</p>
-    
+
     <p><strong>[John - 10:17 AM]:</strong> We have about two weeks of buffer built in, but I'd prefer not to use all of it. Let's aim to resolve this integration issue by Friday. Can we schedule a technical review session?</p>
-    
+
     <p><strong>[Mike - 10:18 AM]:</strong> Absolutely. How about Thursday afternoon? That gives me time to review the specs and come prepared with solutions.</p>
-    
+
     <p><strong>[Sarah - 10:18 AM]:</strong> Perfect. I'll book a conference room for Thursday at 2 PM. Anything else we need to discuss today?</p>
-    
+
     <p><strong>[John - 10:19 AM]:</strong> Just a quick note on the budget. We're tracking well, but the payment integration might require some additional third-party tools. Sarah, can you get quotes for any tools Mike recommends?</p>
-    
+
     <p><strong>[Sarah - 10:19 AM]:</strong> Sure, I'll handle that. I'll have preliminary costs by end of week.</p>
-    
+
     <p><strong>[John - 10:20 AM]:</strong> Great. Let's wrap up here. Thanks everyone for the good progress. See you Thursday for the technical review.</p>
     """
 
@@ -1332,7 +1332,7 @@ def generate_ai_summary():
     """Generate AI meeting summary"""
     return """
     <strong>Meeting Overview:</strong> Weekly project standup focusing on development progress and integration challenges.<br><br>
-    
+
     <strong>Key Points:</strong>
     <ul>
         <li>Project 70% complete in development phase</li>
@@ -1340,14 +1340,14 @@ def generate_ai_summary():
         <li>Mike volunteered to assist with technical integration</li>
         <li>Two-week timeline buffer available but prefer not to use fully</li>
     </ul>
-    
+
     <strong>Decisions Made:</strong>
     <ul>
         <li>Technical review scheduled for Thursday 2 PM</li>
         <li>Target resolution of integration issues by Friday</li>
         <li>Sarah to gather quotes for additional tools as needed</li>
     </ul>
-    
+
     <strong>Next Steps:</strong> Technical documentation sharing, tool research, and Thursday review session.
     """
 

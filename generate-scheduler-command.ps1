@@ -87,7 +87,7 @@ Write-Host ""
 Write-Host "💡 After creating the job, you can register it in the Capsules system:" -ForegroundColor Green
 Write-Host ""
 Write-Host "`$capsule = @{" -ForegroundColor White
-Write-Host "    slug = `"signals-daily-scheduler`"" -ForegroundColor White  
+Write-Host "    slug = `"signals-daily-scheduler`"" -ForegroundColor White
 Write-Host "    title = `"Daily Signals Engine (Automated)`"" -ForegroundColor White
 Write-Host "    kind = `"engine`"" -ForegroundColor White
 Write-Host "    mode = `"automated`"" -ForegroundColor White

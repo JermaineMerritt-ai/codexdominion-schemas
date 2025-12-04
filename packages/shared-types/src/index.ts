@@ -1,6 +1,6 @@
 /**
  * 🏛️ Council Seal - Supreme Governance Authority
- * 
+ *
  * The Council Seal represents the highest authority in the Codex Dominion
  * architecture. It oversees all system operations, enforces policies,
  * and maintains the integrity of the entire digital empire.

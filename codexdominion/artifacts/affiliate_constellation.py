@@ -13,14 +13,14 @@ The constellation includes:
 
 Usage:
     from codexdominion.artifacts.affiliate_constellation import AffiliateConstellationBlueprint
-    
+
     # Initialize the blueprint
     blueprint = AffiliateConstellationBlueprint()
-    
+
     # Access branches and partners
     coupons = blueprint.get_branch(BranchType.COUPONS_CASHBACK)
     partners = blueprint.get_partners(BranchType.SAAS_DISCOUNTS)
-    
+
     # Calculate profit potential
     revenue = blueprint.calculate_revenue_potential(region="US")
 """
@@ -338,10 +338,10 @@ PRINCIPLES = [
 class AffiliateConstellationBlueprint:
     """
     Affiliate Constellation Blueprint
-    
+
     Profit-driven business model with Action AI as central hub orchestrating
     four high-revenue affiliate niches across global markets.
-    
+
     Methods:
         get_hub(): Get Action AI central hub information
         get_branch(branch_type): Get specific branch details
@@ -354,7 +354,7 @@ class AffiliateConstellationBlueprint:
         export_for_visualization(): Export data for SVG/dashboard
         export_artifact(): Export complete blueprint as JSON
     """
-    
+
     def __init__(self):
         """Initialize the Affiliate Constellation Blueprint"""
         self.artifact_id = "affiliate-constellation-blueprint"
@@ -363,25 +363,25 @@ class AffiliateConstellationBlueprint:
         self.lineage = "profit-driven"
         self.branch_count = 4
         self.partner_count = 17
-        self.target_markets = [Region.US, Region.EU, Region.ASIA_PACIFIC, 
+        self.target_markets = [Region.US, Region.EU, Region.ASIA_PACIFIC,
                               Region.LATIN_AMERICA, Region.MIDDLE_EAST]
-    
+
     def get_hub(self) -> Dict[str, Any]:
         """
         Get Action AI central hub information
-        
+
         Returns:
             dict: Central hub details
         """
         return ACTION_AI_HUB.copy()
-    
+
     def get_branch(self, branch_type: BranchType) -> Dict[str, Any]:
         """
         Get specific branch details
-        
+
         Args:
             branch_type: The branch to retrieve
-        
+
         Returns:
             dict: Branch information including partners
         """
@@ -391,16 +391,16 @@ class AffiliateConstellationBlueprint:
             BranchType.FINANCE_TOOLS: FINANCE_BRANCH,
             BranchType.TRAVEL_DEALS: TRAVEL_BRANCH
         }
-        
+
         if branch_type == BranchType.ALL:
             return self.get_all_branches()
-        
+
         return branch_map.get(branch_type, {}).copy()
-    
+
     def get_all_branches(self) -> List[Dict[str, Any]]:
         """
         Get all four branches
-        
+
         Returns:
             list: All branch information
         """
@@ -410,27 +410,27 @@ class AffiliateConstellationBlueprint:
             FINANCE_BRANCH.copy(),
             TRAVEL_BRANCH.copy()
         ]
-    
+
     def get_partners(self, branch_type: BranchType) -> List[Dict[str, Any]]:
         """
         Get partners for a specific branch
-        
+
         Args:
             branch_type: The branch to get partners for
-        
+
         Returns:
             list: Partner information
         """
         if branch_type == BranchType.ALL:
             return self.get_all_partners()
-        
+
         branch = self.get_branch(branch_type)
         return branch.get("partners", [])
-    
+
     def get_all_partners(self) -> List[Dict[str, Any]]:
         """
         Get all 17 partners across all branches
-        
+
         Returns:
             list: All partner information
         """
@@ -438,41 +438,41 @@ class AffiliateConstellationBlueprint:
         for branch in self.get_all_branches():
             all_partners.extend(branch.get("partners", []))
         return all_partners
-    
-    def calculate_revenue_potential(self, 
+
+    def calculate_revenue_potential(self,
                                     region: Optional[str] = "total",
                                     timeframe: str = "monthly") -> Dict[str, Any]:
         """
         Calculate revenue potential for a region
-        
+
         Args:
             region: Region to calculate (US, international, agencyServices, total)
             timeframe: "monthly" or "annual"
-        
+
         Returns:
             dict: Revenue potential with min/max ranges
         """
         revenue_data = REVENUE_POTENTIAL.get(region, REVENUE_POTENTIAL["total"]).copy()
-        
+
         if timeframe == "annual" and "annualMin" not in revenue_data:
             revenue_data["annualMin"] = revenue_data.get("monthlyMin", 0) * 12
             revenue_data["annualMax"] = revenue_data.get("monthlyMax", 0) * 12
-        
+
         return revenue_data
-    
+
     def get_principles(self) -> List[str]:
         """
         Get the five eternal principles
-        
+
         Returns:
             list: Five principles
         """
         return PRINCIPLES.copy()
-    
+
     def get_implementation_phases(self) -> List[Dict[str, Any]]:
         """
         Get 3-phase implementation roadmap
-        
+
         Returns:
             list: Three phases with actions and targets
         """
@@ -517,11 +517,11 @@ class AffiliateConstellationBlueprint:
                 ]
             }
         ]
-    
+
     def export_for_visualization(self) -> Dict[str, Any]:
         """
         Export data for SVG rendering or dashboard display
-        
+
         Returns:
             dict: Visualization data
         """
@@ -542,11 +542,11 @@ class AffiliateConstellationBlueprint:
                 }
             }
         }
-    
+
     def export_artifact(self) -> str:
         """
         Export complete blueprint as JSON
-        
+
         Returns:
             str: JSON string of complete blueprint
         """
@@ -579,7 +579,7 @@ class AffiliateConstellationBlueprint:
 def demonstrate_blueprint():
     """
     Demonstration of the Affiliate Constellation Blueprint
-    
+
     Shows how to:
     1. Initialize the blueprint
     2. Access Action AI hub
@@ -593,14 +593,14 @@ def demonstrate_blueprint():
     print("\n" + "="*80)
     print("AFFILIATE CONSTELLATION BLUEPRINT DEMONSTRATION")
     print("="*80 + "\n")
-    
+
     # Step 1: Initialize
     print("1. Initialize Affiliate Constellation Blueprint")
     blueprint = AffiliateConstellationBlueprint()
     print(f"   ✓ Blueprint initialized: {blueprint.title} v{blueprint.version}")
     print(f"   ✓ Branches: {blueprint.branch_count}")
     print(f"   ✓ Partners: {blueprint.partner_count}\n")
-    
+
     # Step 2: Access Action AI hub
     print("2. Access Central Hub: Action AI")
     hub = blueprint.get_hub()
@@ -609,21 +609,21 @@ def demonstrate_blueprint():
     for func in hub['functions'][:3]:
         print(f"     • {func}")
     print("     ...\n")
-    
+
     # Step 3: Get all branches
     print("3. Get All Four Branches")
     branches = blueprint.get_all_branches()
     for branch in branches:
         print(f"   {branch['symbol']} {branch['name']} - {len(branch['partners'])} partners")
     print()
-    
+
     # Step 4: Get partners by niche
     print("4. Get SaaS Discounts Partners")
     saas_partners = blueprint.get_partners(BranchType.SAAS_DISCOUNTS)
     for partner in saas_partners:
         print(f"   • {partner['name']} - {partner['avgCommission']}")
     print()
-    
+
     # Step 5: Calculate revenue
     print("5. Calculate Revenue Potential")
     us_revenue = blueprint.calculate_revenue_potential(Region.US.value)
@@ -633,28 +633,28 @@ def demonstrate_blueprint():
     print(f"   International: ${intl_revenue['monthlyMin']:,} - ${intl_revenue['monthlyMax']:,}/month")
     print(f"   Total Potential: ${total_revenue['monthlyMin']:,} - ${total_revenue['monthlyMax']:,}/month")
     print(f"   Annual Potential: ${total_revenue['annualMin']:,} - ${total_revenue['annualMax']:,}/year\n")
-    
+
     # Step 6: Get implementation phases
     print("6. Get Implementation Roadmap")
     phases = blueprint.get_implementation_phases()
     for phase in phases:
         print(f"   Phase {phase['phase']}: {phase['name']} ({phase['duration']})")
         print(f"   Target: {phase['targetRevenue']}\n")
-    
+
     # Step 7: Get principles
     print("7. Get Five Eternal Principles")
     principles = blueprint.get_principles()
     for i, principle in enumerate(principles, 1):
         print(f"   {i}. {principle}")
     print()
-    
+
     # Step 8: Export
     print("8. Export for Visualization")
     viz_data = blueprint.export_for_visualization()
     print(f"   ✓ Visualization data exported")
     print(f"   ✓ Total partners: {viz_data['totalPartners']}")
     print(f"   ✓ Revenue potential: ${viz_data['revenuePotential']['monthlyMax']:,}/month")
-    
+
     print("\n" + "="*80)
     print("BLUEPRINT SEALED. CONSTELLATION ACTIVATED. PROFIT STREAMS FLOWING.")
     print("="*80 + "\n")

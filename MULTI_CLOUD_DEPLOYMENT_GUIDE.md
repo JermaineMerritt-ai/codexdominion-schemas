@@ -1,9 +1,9 @@
 # 🌐 Multi-Cloud Deployment Guide
 # CodexDominion.app: IONOS + Azure + GitHub Automation
 
-**Status:** Production-Ready Configuration  
-**Domain:** CodexDominion.app (Google Domains)  
-**Infrastructure:** IONOS Primary + Azure Secondary  
+**Status:** Production-Ready Configuration
+**Domain:** CodexDominion.app (Google Domains)
+**Infrastructure:** IONOS Primary + Azure Secondary
 **Automation:** GitHub Actions Push-Button Deployment
 
 ## 🎯 Architecture Overview
@@ -80,21 +80,21 @@
    # Root domain (multi-cloud)
    @               A       1h      74.208.123.158      # IONOS
    @               A       1h      135.237.24.198      # Azure
-   
+
    # WWW redirect
    www             CNAME   1h      codexdominion.app.
-   
+
    # AI Systems (Azure)
    jermaine-ai     A       1h      135.237.24.198
    dot300-ai       A       1h      135.237.24.198
    avatar          A       1h      135.237.24.198
-   
+
    # Dashboard & Apps (IONOS)
    dashboard       A       1h      74.208.123.158
    api             A       1h      74.208.123.158
    stockanalytics  A       1h      74.208.123.158
    analytics       A       1h      74.208.123.158
-   
+
    # Security
    @               CAA     1h      0 issue "letsencrypt.org"
    ```
@@ -208,15 +208,15 @@ server {
 server {
     listen 443 ssl http2;
     server_name codexdominion.app www.codexdominion.app;
-    
+
     ssl_certificate /etc/letsencrypt/live/codexdominion.app/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/codexdominion.app/privkey.pem;
-    
+
     # Security headers
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
     add_header X-Frame-Options DENY always;
     add_header X-Content-Type-Options nosniff always;
-    
+
     location / {
         proxy_pass http://localhost:3000;
         proxy_set_header Host $host;
@@ -230,10 +230,10 @@ server {
 server {
     listen 443 ssl http2;
     server_name dashboard.codexdominion.app;
-    
+
     ssl_certificate /etc/letsencrypt/live/codexdominion.app/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/codexdominion.app/privkey.pem;
-    
+
     location / {
         proxy_pass http://localhost:3000;
         proxy_http_version 1.1;
@@ -246,10 +246,10 @@ server {
 server {
     listen 443 ssl http2;
     server_name api.codexdominion.app;
-    
+
     ssl_certificate /etc/letsencrypt/live/codexdominion.app/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/codexdominion.app/privkey.pem;
-    
+
     location / {
         proxy_pass http://localhost:8080;
         proxy_set_header Host $host;
@@ -260,10 +260,10 @@ server {
 server {
     listen 443 ssl http2;
     server_name stockanalytics.codexdominion.app;
-    
+
     ssl_certificate /etc/letsencrypt/live/codexdominion.app/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/codexdominion.app/privkey.pem;
-    
+
     location / {
         proxy_pass http://localhost:8515;
         proxy_http_version 1.1;
@@ -737,7 +737,7 @@ Phase 5 - Verification:
 
 ---
 
-**Deployment Status:** Configuration Complete - Ready for Domain Purchase  
-**Next Action:** Purchase CodexDominion.app and configure DNS  
-**Estimated Total Setup Time:** 2-3 hours + DNS propagation  
+**Deployment Status:** Configuration Complete - Ready for Domain Purchase
+**Next Action:** Purchase CodexDominion.app and configure DNS
+**Estimated Total Setup Time:** 2-3 hours + DNS propagation
 **Support Contact:** GitHub Issues or jmerritt48@codexdominion.app

@@ -21,7 +21,7 @@ Write-Host "-" * 40 -ForegroundColor Cyan
 # Install required packages
 $packages = @(
     "google-api-python-client",
-    "google-auth-oauthlib", 
+    "google-auth-oauthlib",
     "google-auth-httplib2"
 )
 
@@ -75,17 +75,17 @@ Write-Host "-" * 30 -ForegroundColor Cyan
 # Check configuration
 if (Test-Path "youtube_config.json") {
     Write-Host "✅ Configuration file exists" -ForegroundColor Green
-    
+
     $config = Get-Content "youtube_config.json" | ConvertFrom-Json
     $apiKey = $config.youtube.api_key
     $channelId = $config.youtube.channel_id
-    
+
     if ($apiKey -eq "YOUR_YOUTUBE_API_KEY_HERE") {
         Write-Host "⚠️ API Key needs to be configured" -ForegroundColor Yellow
     } else {
         Write-Host "✅ API Key configured" -ForegroundColor Green
     }
-    
+
     if ($channelId -eq "YOUR_CHANNEL_ID_HERE") {
         Write-Host "⚠️ Channel ID needs to be configured" -ForegroundColor Yellow
     } else {

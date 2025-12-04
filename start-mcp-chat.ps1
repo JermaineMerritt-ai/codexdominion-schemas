@@ -6,10 +6,10 @@ param(
     [Parameter(Mandatory=$false)]
     [ValidateSet("start", "stop", "status", "restart", "install", "test")]
     [string]$Action = "start",
-    
+
     [Parameter(Mandatory=$false)]
     [switch]$Background = $false,
-    
+
     [Parameter(Mandatory=$false)]
     [switch]$Debug = $false
 )
@@ -17,7 +17,7 @@ param(
 # Sacred flame colors for terminal output
 $FlameColors = @{
     Fire = "Red"
-    Gold = "Yellow" 
+    Gold = "Yellow"
     Radiance = "Cyan"
     Success = "Green"
     Warning = "Magenta"
@@ -30,7 +30,7 @@ function Write-FlameMessage {
         [string]$Color = "White",
         [switch]$NoNewline
     )
-    
+
     $timestamp = Get-Date -Format "HH:mm:ss"
     if ($NoNewline) {
         Write-Host "[$timestamp] $Message" -ForegroundColor $FlameColors[$Color] -NoNewline
@@ -49,7 +49,7 @@ function Show-FlameHeader {
 
 function Test-Prerequisites {
     Write-FlameMessage "🔍 Checking prerequisites..." -Color Info
-    
+
     # Check Node.js
     try {
         $nodeVersion = node --version 2>$null
@@ -62,7 +62,7 @@ function Test-Prerequisites {
         Write-FlameMessage "❌ Node.js not found - please install Node.js" -Color Fire
         return $false
     }
-    
+
     # Check npm
     try {
         $npmVersion = npm --version 2>$null
@@ -72,16 +72,16 @@ function Test-Prerequisites {
     } catch {
         Write-FlameMessage "⚠ npm not found - some features may not work" -Color Warning
     }
-    
+
     # Check required files
     $requiredFiles = @(
         "mcp-chat-autostart.js",
-        "mcp-auto-startup.js", 
+        "mcp-auto-startup.js",
         "mcp-vscode-integration.js",
         "chat-message-hooks.js",
         "package.json"
     )
-    
+
     $missingFiles = @()
     foreach ($file in $requiredFiles) {
         if (Test-Path $file) {
@@ -91,12 +91,12 @@ function Test-Prerequisites {
             $missingFiles += $file
         }
     }
-    
+
     if ($missingFiles.Count -gt 0) {
         Write-FlameMessage "Missing required files: $($missingFiles -join ', ')" -Color Fire
         return $false
     }
-    
+
     # Check VS Code
     try {
         $codeVersion = code --version 2>$null
@@ -106,21 +106,21 @@ function Test-Prerequisites {
     } catch {
         Write-FlameMessage "⚠ VS Code not detected - chat integration may be limited" -Color Warning
     }
-    
+
     Write-FlameMessage "✅ Prerequisites check complete" -Color Success
     return $true
 }
 
 function Start-MCPChatSystem {
     param([bool]$InBackground = $false)
-    
+
     Write-FlameMessage "🚀 Starting MCP Chat Auto-Start System..." -Color Fire
-    
+
     if (-not (Test-Prerequisites)) {
         Write-FlameMessage "❌ Prerequisites check failed - cannot start system" -Color Fire
         return $false
     }
-    
+
     # Install dependencies if needed
     if (-not (Test-Path "node_modules")) {
         Write-FlameMessage "📦 Installing dependencies..." -Color Info
@@ -130,30 +130,30 @@ function Start-MCPChatSystem {
             return $false
         }
     }
-    
+
     # Start the system
     $processArgs = @(
         "mcp-chat-autostart.js"
     )
-    
+
     if ($Debug) {
         $processArgs += "--debug"
     }
-    
+
     if ($InBackground) {
         Write-FlameMessage "🌙 Starting system in background..." -Color Info
         $process = Start-Process -FilePath "node" -ArgumentList $processArgs -WindowStyle Hidden -PassThru
-        
+
         # Save process ID for later management
         $process.Id | Out-File -FilePath ".mcp-system.pid" -Encoding UTF8
-        
+
         Write-FlameMessage "✅ System started in background (PID: $($process.Id))" -Color Success
         Write-FlameMessage "📊 Check status with: .\start-mcp-chat.ps1 -Action status" -Color Info
-        
+
     } else {
         Write-FlameMessage "🖥️ Starting system in foreground..." -Color Info
         Write-FlameMessage "📌 Press Ctrl+C to stop the system" -Color Warning
-        
+
         try {
             & node @processArgs
         } catch {
@@ -161,17 +161,17 @@ function Start-MCPChatSystem {
             return $false
         }
     }
-    
+
     return $true
 }
 
 function Stop-MCPChatSystem {
     Write-FlameMessage "🛑 Stopping MCP Chat Auto-Start System..." -Color Warning
-    
+
     # Check for background process
     if (Test-Path ".mcp-system.pid") {
         $processId = Get-Content ".mcp-system.pid" -ErrorAction SilentlyContinue
-        
+
         if ($processId) {
             try {
                 $process = Get-Process -Id $processId -ErrorAction SilentlyContinue
@@ -186,16 +186,16 @@ function Stop-MCPChatSystem {
                 Write-FlameMessage "❌ Failed to stop background process: $($_.Exception.Message)" -Color Fire
             }
         }
-        
+
         Remove-Item ".mcp-system.pid" -Force -ErrorAction SilentlyContinue
     }
-    
+
     # Stop any MCP-related processes
-    $mcpProcesses = Get-Process | Where-Object { 
-        $_.ProcessName -like "*node*" -and 
-        $_.CommandLine -like "*mcp*" 
+    $mcpProcesses = Get-Process | Where-Object {
+        $_.ProcessName -like "*node*" -and
+        $_.CommandLine -like "*mcp*"
     } -ErrorAction SilentlyContinue
-    
+
     if ($mcpProcesses) {
         Write-FlameMessage "🔄 Stopping MCP processes..." -Color Info
         $mcpProcesses | ForEach-Object {
@@ -210,7 +210,7 @@ function Stop-MCPChatSystem {
 
 function Get-MCPSystemStatus {
     Write-FlameMessage "📊 Checking MCP Chat Auto-Start System status..." -Color Info
-    
+
     # Check background process
     $backgroundRunning = $false
     if (Test-Path ".mcp-system.pid") {
@@ -226,11 +226,11 @@ function Get-MCPSystemStatus {
             }
         }
     }
-    
+
     if (-not $backgroundRunning) {
         Write-FlameMessage "📴 Background system not running" -Color Warning
     }
-    
+
     # Check MCP server status via HTTP
     try {
         $response = Invoke-RestMethod -Uri "http://localhost:4955/status" -TimeoutSec 5 -ErrorAction SilentlyContinue
@@ -242,13 +242,13 @@ function Get-MCPSystemStatus {
     } catch {
         Write-FlameMessage "🌐 MCP Status endpoint not responding" -Color Warning
     }
-    
+
     # Check for MCP processes
-    $mcpProcesses = Get-Process | Where-Object { 
-        $_.ProcessName -like "*node*" -and 
+    $mcpProcesses = Get-Process | Where-Object {
+        $_.ProcessName -like "*node*" -and
         ($_.CommandLine -like "*mcp*" -or $_.CommandLine -like "*chat*")
     } -ErrorAction SilentlyContinue
-    
+
     if ($mcpProcesses) {
         Write-FlameMessage "🔄 MCP-related processes:" -Color Info
         $mcpProcesses | ForEach-Object {
@@ -257,7 +257,7 @@ function Get-MCPSystemStatus {
     } else {
         Write-FlameMessage "📋 No MCP processes detected" -Color Warning
     }
-    
+
     # Check log files
     $logFiles = @("chat-activity.log", ".mcp-system-status.json")
     foreach ($logFile in $logFiles) {
@@ -277,24 +277,24 @@ function Restart-MCPChatSystem {
 
 function Install-MCPChatSystem {
     Write-FlameMessage "📦 Installing MCP Chat Auto-Start System..." -Color Fire
-    
+
     # Install Node.js dependencies
     Write-FlameMessage "📥 Installing Node.js dependencies..." -Color Info
     npm install
-    
+
     if ($LASTEXITCODE -eq 0) {
         Write-FlameMessage "✅ Dependencies installed successfully" -Color Success
     } else {
         Write-FlameMessage "❌ Failed to install dependencies" -Color Fire
         return $false
     }
-    
+
     # Create VS Code settings if they don't exist
     if (-not (Test-Path ".vscode")) {
         New-Item -ItemType Directory -Path ".vscode" -Force | Out-Null
         Write-FlameMessage "📁 Created .vscode directory" -Color Success
     }
-    
+
     # Set up Windows service (optional)
     $createService = Read-Host "Create Windows service for auto-start? (y/N)"
     if ($createService -eq "y" -or $createService -eq "Y") {
@@ -302,14 +302,14 @@ function Install-MCPChatSystem {
         # This would require additional service setup logic
         Write-FlameMessage "⚠ Windows service setup not yet implemented" -Color Warning
     }
-    
+
     Write-FlameMessage "✅ Installation complete!" -Color Success
     Write-FlameMessage "🚀 Start the system with: .\start-mcp-chat.ps1 -Action start" -Color Info
 }
 
 function Test-MCPChatSystem {
     Write-FlameMessage "🧪 Testing MCP Chat Auto-Start System..." -Color Fire
-    
+
     # Test HTTP endpoint
     try {
         Write-FlameMessage "📡 Testing status endpoint..." -Color Info
@@ -318,7 +318,7 @@ function Test-MCPChatSystem {
     } catch {
         Write-FlameMessage "❌ Status endpoint not responding" -Color Fire
     }
-    
+
     # Test chat activity trigger
     try {
         Write-FlameMessage "💬 Testing chat activity trigger..." -Color Info
@@ -329,7 +329,7 @@ function Test-MCPChatSystem {
     } catch {
         Write-FlameMessage "❌ Chat activity trigger failed" -Color Fire
     }
-    
+
     # Check log files for recent activity
     if (Test-Path "chat-activity.log") {
         $recentActivity = Get-Content "chat-activity.log" -Tail 5
@@ -337,7 +337,7 @@ function Test-MCPChatSystem {
             Write-FlameMessage "📋 Recent chat activity detected" -Color Success
         }
     }
-    
+
     Write-FlameMessage "✅ System test complete" -Color Success
 }
 

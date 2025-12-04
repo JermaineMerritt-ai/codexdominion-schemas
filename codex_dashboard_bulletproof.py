@@ -215,7 +215,7 @@ The future of {topic.lower()} belongs to visionary {audience.lower()} who unders
 
 **🔥 Key Principles:**
 • Master your digital domain completely
-• Build systems that scale infinitely  
+• Build systems that scale infinitely
 • Create lasting value for your audience
 • Maintain absolute control over your assets
 
@@ -227,7 +227,7 @@ The future of {topic.lower()} belongs to visionary {audience.lower()} who unders
 
 **💡 Next Steps:**
 - Implement these strategies immediately
-- Document your progress consistently  
+- Document your progress consistently
 - Share your success with the community
 - Build upon your growing empire
 
@@ -481,16 +481,16 @@ def render_council_ritual():
                         st.markdown(
                             f"""
                         ### ✨ Sacred Inscription Complete ✨
-                        
-                        **👑 Council Role**: {role}  
-                        **🔥 Ritual Type**: {ritual_type}  
-                        **🌙 Cycle**: {cycle}  
-                        **⚡ Power Level**: {power_level}/10  
+
+                        **👑 Council Role**: {role}
+                        **🔥 Ritual Type**: {ritual_type}
+                        **🌙 Cycle**: {cycle}
+                        **⚡ Power Level**: {power_level}/10
                         **🕐 Inscribed**: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
-                        
+
                         **📜 Sacred Text**:
                         > {proclamation_text}
-                        
+
                         *By the eternal flame, this proclamation is forever inscribed in the Codex.*
                         """
                         )
@@ -602,7 +602,7 @@ def render_system_overview():
         for system, status, color in health_systems:
             st.markdown(
                 f"""
-            <div style="display: flex; justify-content: space-between; padding: 15px; margin: 8px 0; 
+            <div style="display: flex; justify-content: space-between; padding: 15px; margin: 8px 0;
                         background: rgba(255,255,255,0.05); border-radius: 10px; border-left: 4px solid {color};">
                 <span style="font-weight: bold;">{system}</span>
                 <span style="color: {color}; font-weight: bold;">{status}</span>
@@ -617,23 +617,23 @@ def render_system_overview():
         st.markdown(
             f"""
         ### 🏆 Digital Sovereignty Empire Status: **ACHIEVED**
-        
+
         **🔥 Your empire includes:**
-        
+
         - ✅ **Content Generation**: {total_entries} pieces of sovereign content
-        - ✅ **Financial Control**: ${total_revenue:.2f} in tracked revenue  
+        - ✅ **Financial Control**: ${total_revenue:.2f} in tracked revenue
         - ✅ **Governance System**: {total_proclamations} sacred proclamations
         - ✅ **Data Sovereignty**: Complete control over all information
         - ✅ **System Integration**: All modules operational and unified
-        
+
         **🌟 Achievement Level**: **DIGITAL SOVEREIGN**
-        
+
         **⚡ Power Rating**: **∞ ETERNAL**
-        
+
         **🎯 Next Milestone**: Expand your empire across new digital territories
-        
+
         ---
-        
+
         **🔥 TOTAL DIGITAL SOVEREIGNTY: COMPLETE** 🔥
         """
         )

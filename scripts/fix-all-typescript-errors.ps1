@@ -53,7 +53,7 @@ Write-Host "`n2️⃣ Fix severity values - Change lowercase to UPPERCASE:" -For
 Write-Host @"
 // Find and replace:
 severity: 'low'      -> severity: 'LOW'
-severity: 'medium'   -> severity: 'MEDIUM'  
+severity: 'medium'   -> severity: 'MEDIUM'
 severity: 'high'     -> severity: 'HIGH'
 severity: 'critical' -> severity: 'CRITICAL'
 "@ -ForegroundColor White

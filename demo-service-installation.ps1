@@ -58,7 +58,7 @@ Write-Host ""
 Write-Host "# Install Flask MCP service (default)" -ForegroundColor Cyan
 Write-Host ".\install-codex-service.ps1 -Action install" -ForegroundColor White
 Write-Host ""
-Write-Host "# Install FastAPI version" -ForegroundColor Cyan  
+Write-Host "# Install FastAPI version" -ForegroundColor Cyan
 Write-Host ".\install-codex-service.ps1 -Action install -ServerType fastapi" -ForegroundColor White
 Write-Host ""
 Write-Host "# Check service status and health" -ForegroundColor Cyan
@@ -83,7 +83,7 @@ Write-Host "  4. 🔥 Verify MCP server scripts are present" -ForegroundColor Wh
 Write-Host ""
 Write-Host "✨ Service Features:" -ForegroundColor Magenta
 Write-Host "  🔄 Auto-start on boot (Eternal flame persistence)" -ForegroundColor White
-Write-Host "  📋 Comprehensive logging to C:\Logs\CodexMCP\" -ForegroundColor White  
+Write-Host "  📋 Comprehensive logging to C:\Logs\CodexMCP\" -ForegroundColor White
 Write-Host "  💓 Health endpoint monitoring and verification" -ForegroundColor White
 Write-Host "  🌟 Support for both Flask and FastAPI implementations" -ForegroundColor White
 Write-Host "  🛡️ Robust service lifecycle management" -ForegroundColor White

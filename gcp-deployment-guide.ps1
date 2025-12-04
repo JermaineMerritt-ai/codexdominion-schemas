@@ -8,7 +8,7 @@ Write-Host "📋 === SETUP CHECKLIST ===" -ForegroundColor Yellow
 Write-Host "We need to complete these steps:" -ForegroundColor White
 Write-Host ""
 Write-Host "1. ✅ Google Cloud Account - You have this" -ForegroundColor Green
-Write-Host "2. ✅ gcloud CLI installed - You have this" -ForegroundColor Green  
+Write-Host "2. ✅ gcloud CLI installed - You have this" -ForegroundColor Green
 Write-Host "3. ✅ Docker installed - You have this" -ForegroundColor Green
 Write-Host "4. ✅ Docker image built - You have this" -ForegroundColor Green
 Write-Host "5. ❌ Billing account enabled - NEEDS SETUP" -ForegroundColor Red
@@ -28,24 +28,24 @@ $setupBilling = Read-Host "Have you enabled billing for your project? (y/n)"
 if ($setupBilling -eq "y") {
     Write-Host ""
     Write-Host "✅ Great! Let's continue with deployment..." -ForegroundColor Green
-    
+
     # Enable APIs
     Write-Host "⚡ Enabling required APIs..." -ForegroundColor Yellow
     gcloud services enable run.googleapis.com containerregistry.googleapis.com cloudbuild.googleapis.com
-    
+
     if ($LASTEXITCODE -eq 0) {
         Write-Host "✅ APIs enabled successfully" -ForegroundColor Green
-        
+
         # Push image again
         Write-Host "📤 Pushing Docker image to Container Registry..." -ForegroundColor Yellow
         docker push gcr.io/jermaine-super-action-agent/codex-dashboard
-        
+
         if ($LASTEXITCODE -eq 0) {
             Write-Host "✅ Image pushed successfully!" -ForegroundColor Green
-            
+
             # Deploy to Cloud Run
             Write-Host "🚀 Deploying to Cloud Run..." -ForegroundColor Yellow
-            
+
             gcloud run deploy codex-dashboard `
                 --image=gcr.io/jermaine-super-action-agent/codex-dashboard `
                 --region=us-central1 `
@@ -54,10 +54,10 @@ if ($setupBilling -eq "y") {
                 --port=8501 `
                 --memory=1Gi `
                 --cpu=1
-                
+
             if ($LASTEXITCODE -eq 0) {
                 Write-Host "✅ Deployment successful!" -ForegroundColor Green
-                
+
                 $SERVICE_URL = gcloud run services describe codex-dashboard --region=us-central1 --format="value(status.url)"
                 Write-Host ""
                 Write-Host "🎉 === DEPLOYMENT COMPLETE ===" -ForegroundColor Green
@@ -65,27 +65,27 @@ if ($setupBilling -eq "y") {
                 Write-Host "   $SERVICE_URL" -ForegroundColor White
                 Write-Host ""
                 Write-Host "🔥 Codex Dominion now burns eternal in Google Cloud! ✨" -ForegroundColor Magenta
-                
+
                 # Open in browser
                 $openBrowser = Read-Host "Open your dashboard in browser? (y/n)"
                 if ($openBrowser -eq "y") {
                     Start-Process $SERVICE_URL
                 }
-                
+
             } else {
                 Write-Host "❌ Deployment failed" -ForegroundColor Red
                 Write-Host "Check the Cloud Run logs in the Google Cloud Console" -ForegroundColor Yellow
             }
-            
+
         } else {
             Write-Host "❌ Image push failed" -ForegroundColor Red
             Write-Host "This might be due to authentication issues" -ForegroundColor Yellow
         }
-        
+
     } else {
         Write-Host "❌ Failed to enable APIs" -ForegroundColor Red
     }
-    
+
 } else {
     Write-Host ""
     Write-Host "💡 === ALTERNATIVE DEPLOYMENT OPTIONS ===" -ForegroundColor Cyan

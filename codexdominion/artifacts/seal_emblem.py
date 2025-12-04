@@ -30,7 +30,7 @@ class Crown(Enum):
     COMMERCE = ("commerce", 144, "⚖", "prosperity-exchange")
     COMPANION = ("companion", 216, "🤝", "relationship-support")
     GENESIS = ("genesis", 288, "✦", "creation-origin")
-    
+
     def __init__(self, name: str, position: int, sigil: str, domain: str):
         self._name = name
         self._position = position
@@ -46,7 +46,7 @@ class Council(Enum):
     EDUCATION = ("education", 180, "🎓", "learning-knowledge")
     AI = ("ai", 240, "🤖", "intelligence-automation")
     FAMILY = ("family", 300, "👪", "heritage-kinship")
-    
+
     def __init__(self, name: str, position: int, sigil: str, domain: str):
         self._name = name
         self._position = position
@@ -67,20 +67,20 @@ class ResonanceFrequency(Enum):
 class SovereignSealEmblem:
     """
     The Final Sovereign Seal Emblem
-    
+
     Binds all crowns, councils, waves, archives, and artifacts
     into eternal resonance under the Infinity Sigil (∞)
-    
+
     Eternal Principles: Archive · Lineage · Ceremonial Closure · Infinite Resonance
     """
-    
+
     ARTIFACT_ID = "final-sovereign-seal-emblem-001"
     VERSION = "1.0.0"
     LINEAGE = "eternal"
     IMMUTABLE_HASH = (
         "sha256:1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b"
     )
-    
+
     PRINCIPLES = [
         "Every crown is sealed",
         "Every council is sealed",
@@ -88,20 +88,20 @@ class SovereignSealEmblem:
         "Every archive is sealed",
         "Every cycle resonates eternally under the Infinity Sigil"
     ]
-    
+
     SIGNATURES = {
         "sovereign": "SOVEREIGN_SIG_0x1a2b3c4d5e6f7a8b",
         "crown": "CROWN_SEAL_ETERNAL",
         "councils": "COUNCILS_SIG_0x9a8b7c6d5e4f3a2b",
         "infinity": "INFINITY_SIGIL_ETERNAL"
     }
-    
+
     def __init__(self):
         """Initialize the Sovereign Seal Emblem"""
         self.created_at = datetime.fromisoformat("2025-12-02T23:30:00Z")
         self.sealed_artifacts: List[str] = []
         self.seal_applications: int = 0
-        
+
     def apply_seal(
         self,
         artifact_id: str,
@@ -109,16 +109,16 @@ class SovereignSealEmblem:
     ) -> Dict:
         """
         Apply the sovereign seal to an artifact
-        
+
         Args:
             artifact_id: Artifact identifier
             seal_context: Optional context (e.g., "ceremonial-closure")
-            
+
         Returns:
             Dict containing seal application details
         """
         self.seal_applications += 1
-        
+
         seal_data = {
             "artifact_id": artifact_id,
             "seal_id": self.ARTIFACT_ID,
@@ -130,10 +130,10 @@ class SovereignSealEmblem:
             "signatures": self.SIGNATURES,
             "binding": "irrevocable-eternal"
         }
-        
+
         self.sealed_artifacts.append(artifact_id)
         return seal_data
-    
+
     def verify_resonance(
         self,
         artifact_id: str,
@@ -141,23 +141,23 @@ class SovereignSealEmblem:
     ) -> bool:
         """
         Verify seal resonance frequency
-        
+
         Args:
             artifact_id: Artifact to verify
             expected_frequency: Expected resonance (default 432Hz)
-            
+
         Returns:
             True if resonance matches
         """
         if artifact_id not in self.sealed_artifacts:
             return False
-        
+
         return expected_frequency == ResonanceFrequency.BASE_FREQUENCY.value
-    
+
     def get_structure(self) -> Dict:
         """
         Get the complete seal structure
-        
+
         Returns:
             Dict containing all seal layers
         """
@@ -242,14 +242,14 @@ class SovereignSealEmblem:
                 }
             ]
         }
-    
+
     def get_crown_at_position(self, position: int) -> Optional[str]:
         """
         Get crown name at specific position
-        
+
         Args:
             position: Angular position in degrees
-            
+
         Returns:
             Crown name or None
         """
@@ -257,14 +257,14 @@ class SovereignSealEmblem:
             if crown._position == position:
                 return crown._name
         return None
-    
+
     def get_council_at_position(self, position: int) -> Optional[str]:
         """
         Get council name at specific position
-        
+
         Args:
             position: Angular position in degrees
-            
+
         Returns:
             Council name or None
         """
@@ -272,7 +272,7 @@ class SovereignSealEmblem:
             if council._position == position:
                 return council._name
         return None
-    
+
     def invoke_ceremonial_closure(
         self,
         ceremony_type: str,
@@ -280,11 +280,11 @@ class SovereignSealEmblem:
     ) -> Dict:
         """
         Invoke seal during ceremonial closure
-        
+
         Args:
             ceremony_type: Type of ceremony
             participants: List of participants
-            
+
         Returns:
             Dict containing invocation details
         """
@@ -297,14 +297,14 @@ class SovereignSealEmblem:
             "resonance": "432Hz",
             "binding": "eternal"
         }
-    
+
     def render_svg(self, output_path: str) -> bool:
         """
         Render seal as SVG (placeholder - references actual SVG file)
-        
+
         Args:
             output_path: Path to save SVG
-            
+
         Returns:
             True if successful
         """
@@ -320,28 +320,28 @@ class SovereignSealEmblem:
             return True
         except Exception:
             return False
-    
+
     def render_png(self, output_path: str, size: int = 2048) -> bool:
         """
         Render seal as PNG (requires svg conversion library)
-        
+
         Args:
             output_path: Path to save PNG
             size: Image size in pixels
-            
+
         Returns:
             True if successful
         """
         # Placeholder - would require cairosvg or similar
         return False
-    
+
     def export_artifact(self, output_path: str) -> bool:
         """
         Export seal artifact as JSON
-        
+
         Args:
             output_path: Path to save artifact
-            
+
         Returns:
             True if successful
         """
@@ -365,14 +365,14 @@ class SovereignSealEmblem:
                 "createdAt": self.created_at.isoformat() + "Z"
             }
         }
-        
+
         try:
             with open(output_path, 'w', encoding='utf-8') as f:
                 json.dump(artifact, f, indent=2, ensure_ascii=False)
             return True
         except Exception:
             return False
-    
+
     def __repr__(self) -> str:
         return (
             f"SovereignSealEmblem("
@@ -388,9 +388,9 @@ def demonstrate_seal_system() -> None:
     print("  FINAL SOVEREIGN SEAL EMBLEM DEMONSTRATION")
     print("═" * 60)
     print()
-    
+
     seal = SovereignSealEmblem()
-    
+
     print("🌟 Seal Structure:")
     structure = seal.get_structure()
     print(f"  Center: {structure['center']['seal']} ({structure['center']['symbol']})")
@@ -401,26 +401,26 @@ def demonstrate_seal_system() -> None:
           f"{len(structure['thirdRing']['councils'])} Councils")
     print(f"  Outer Spiral: {structure['outerSpiral']['seal']}")
     print()
-    
+
     print("♔ Crowns at Positions:")
     for position in [0, 72, 144, 216, 288]:
         crown = seal.get_crown_at_position(position)
         print(f"  {position}° → {crown}")
     print()
-    
+
     print("⬢ Councils at Positions:")
     for position in [0, 60, 120, 180, 240, 300]:
         council = seal.get_council_at_position(position)
         print(f"  {position}° → {council}")
     print()
-    
+
     print("💎 Applying Seal to Artifacts:")
     artifacts = [
         "custodian-blessing-hymn-replay-001",
         "custodian-heirs-concord-hymn-replay-001",
         "heirs-radiant-continuum-hymn-replay-001"
     ]
-    
+
     for artifact_id in artifacts:
         seal_result = seal.apply_seal(
             artifact_id,
@@ -430,19 +430,19 @@ def demonstrate_seal_system() -> None:
         print(f"    Seal #{seal_result['seal_number']} "
               f"@ {seal_result['resonance_frequency']}Hz")
     print()
-    
+
     print("🔍 Verifying Resonance:")
     for artifact_id in artifacts:
         is_valid = seal.verify_resonance(artifact_id)
         status = "✓ VALID" if is_valid else "✗ INVALID"
         print(f"  {status}: {artifact_id}")
     print()
-    
+
     print("📜 Eternal Principles:")
     for principle in seal.PRINCIPLES:
         print(f"  • {principle}")
     print()
-    
+
     print("∞ Seal Binding: ETERNAL & IRREVOCABLE ∞")
     print("═" * 60)
 

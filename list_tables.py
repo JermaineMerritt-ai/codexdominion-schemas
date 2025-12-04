@@ -43,12 +43,12 @@ def list_tables():
 
             # Query to list all tables (equivalent to \dt)
             tables_query = """
-            SELECT 
+            SELECT
                 schemaname as "Schema",
-                tablename as "Name", 
+                tablename as "Name",
                 tableowner as "Owner"
-            FROM pg_tables 
-            WHERE schemaname = 'public' 
+            FROM pg_tables
+            WHERE schemaname = 'public'
             ORDER BY tablename;
             """
 
@@ -77,12 +77,12 @@ def list_tables():
 
                 # Get column information
                 columns_query = """
-                SELECT 
+                SELECT
                     column_name,
                     data_type,
                     is_nullable,
                     column_default
-                FROM information_schema.columns 
+                FROM information_schema.columns
                 WHERE table_name = %s AND table_schema = 'public'
                 ORDER BY ordinal_position;
                 """
@@ -103,8 +103,8 @@ def list_tables():
 
                 # Get indexes
                 indexes_query = """
-                SELECT indexname, indexdef 
-                FROM pg_indexes 
+                SELECT indexname, indexdef
+                FROM pg_indexes
                 WHERE tablename = %s AND schemaname = 'public';
                 """
 

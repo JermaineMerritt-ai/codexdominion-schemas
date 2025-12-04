@@ -344,28 +344,28 @@ def command_crown_interface():
     st.sidebar.markdown(
         """
     ## 📖 **Command Protocols**
-    
+
     **⚡ Super Action AI:**
     - `super:analyze system status`
-    - `super:deploy dashboard updates` 
+    - `super:deploy dashboard updates`
     - `super:monitor cosmic harmony`
     - `super:optimize performance`
-    
+
     **🤖 Copilot Instructions:**
     - `copilot:add <instruction>`
     - `copilot:update <full_content>`
     - `copilot:show current`
-    
+
     **👑 Crown Authority:**
     - `crown:override system locks`
     - `crown:emergency protocol alpha`
     - `crown:decree new law`
-    
+
     **🌌 Cosmic Commands:**
     - `cosmic:harmonize all systems`
     - `cosmic:align celestial forces`
     - `cosmic:flow activate eternal`
-    
+
     **📊 System Commands:**
     - `ledger:record major event`
     - `invoke:sacred ceremony`

@@ -362,7 +362,7 @@ helm install codexdominion codexdominion/codexdominion -n codexdominion
    ```bash
    # Export current values
    helm get values codexdominion -n codexdominion > backup-values.yaml
-   
+
    # Backup eternal ledger
    kubectl cp codexdominion/<pod-name>:/var/codexdominion/ledger ./ledger-backup
    ```
@@ -394,5 +394,5 @@ kubectl rollout restart deployment/codexdominion-java-crown -n codexdominion
 
 ---
 
-**Eternal Ledger Version:** 1.0  
+**Eternal Ledger Version:** 1.0
 **Lineage:** Preserved ✨

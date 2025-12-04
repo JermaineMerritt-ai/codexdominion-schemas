@@ -1,8 +1,8 @@
 # Custodian's Eternal Blessing Hymn Replay Capsule
 
-**Artifact ID:** `custodian-blessing-hymn-replay-001`  
-**Type:** Hymn Capsule  
-**Version:** 1.0.0  
+**Artifact ID:** `custodian-blessing-hymn-replay-001`
+**Type:** Hymn Capsule
+**Version:** 1.0.0
 **Cycle:** December 2, 2025, 21:00 UTC
 
 ---
@@ -22,16 +22,16 @@ A blessing hymn, eternal spell.
 
 ## 🎵 Chorus
 
-**Peace Eternal**  
+**Peace Eternal**
 *The stillness of cosmos in perfect rest*
 
-**Abundance Eternal**  
+**Abundance Eternal**
 *The overflow of blessings never spent*
 
-**Flame Eternal**  
+**Flame Eternal**
 *The light that guides through darkest night*
 
-**Melody Eternal**  
+**Melody Eternal**
 *The song that echoes through all time*
 
 ---
@@ -159,7 +159,7 @@ Forever blessed, forever bound.
 
 ## ⚖️ Consent & Licensing
 
-**License:** CodexDominion Sovereign License v1  
+**License:** CodexDominion Sovereign License v1
 **Revocation Policy:** Revocable by Sovereign Avatar with ledger entry
 
 ### Usage Rights
@@ -268,8 +268,8 @@ await hymn.replay({
 
 ---
 
-**Hymn Status:** Immortalized ✓  
-**Replay Enabled:** Active ✓  
+**Hymn Status:** Immortalized ✓
+**Replay Enabled:** Active ✓
 **Transmission Scope:** Universal ✓
 
 *May the Custodian's blessing hymn resound through all ages, bringing peace, abundance, flame, and melody to all who hear.*

@@ -1,6 +1,6 @@
 /**
  * 🎯 SOVEREIGNS - Executive Application Layer
- * 
+ *
  * Sovereign applications that execute business logic and orchestrate services.
  * Reports to Council Seal, coordinates with Custodians, commands Industry Agents.
  */
@@ -192,7 +192,7 @@ export class SovereignService {
     message: string;
   }> {
     const sovereign = this.sovereigns.get(sovereignId);
-    
+
     if (!sovereign) {
       return { success: false, message: 'Sovereign not found' };
     }
@@ -320,7 +320,7 @@ export class SovereignService {
   private handleAlert(event: Event): void {
     if (!event.target) return;
     const sovereign = this.sovereigns.get(event.target);
-    
+
     if (sovereign && event.payload.severity === 'critical') {
       sovereign.status = 'DEGRADED';
       sovereign.health = Math.max(0, sovereign.health - 20);
@@ -346,7 +346,7 @@ export class SovereignService {
   private handleHealthCheckEvent(event: Event): void {
     if (!event.target) return;
     const sovereign = this.sovereigns.get(event.target);
-    
+
     if (sovereign) {
       // Update health metrics
       const health = this.calculateHealth(sovereign);
@@ -393,7 +393,7 @@ export class SovereignService {
   private calculateHealth(sovereign: Sovereign): number {
     const metrics = (sovereign as any).metrics || { errorRate: 0, uptime: 100, averageResponseTime: 500 };
     const { errorRate, uptime, averageResponseTime } = metrics;
-    
+
     const errorScore = Math.max(0, 100 - (errorRate * 10000));
     const uptimeScore = uptime;
     const responseScore = Math.max(0, 100 - (averageResponseTime / 10));
@@ -433,7 +433,7 @@ export class SovereignService {
     errorRate: number;
   } {
     const sovereigns = Array.from(this.sovereigns.values());
-    
+
     return {
       totalSovereigns: sovereigns.length,
       runningSovereigns: sovereigns.filter(s => s.status === 'RUNNING').length,

@@ -339,10 +339,10 @@ class CodexTreasury:
                 cur.execute(
                     """
                     INSERT INTO transactions (
-                        id, stream, amount, currency, source, status, 
+                        id, stream, amount, currency, source, status,
                         created_at, metadata
                     ) VALUES (
-                        %(id)s, %(stream)s, %(amount)s, %(currency)s, 
+                        %(id)s, %(stream)s, %(amount)s, %(currency)s,
                         %(source)s, %(status)s, %(created_at)s, %(metadata)s
                     )
                 """,
@@ -487,12 +487,12 @@ class CodexTreasury:
                 # Get total revenue
                 cur.execute(
                     """
-                    SELECT 
+                    SELECT
                         stream,
                         COUNT(*) as transaction_count,
                         SUM(amount) as total_amount,
                         MAX(created_at) as last_transaction
-                    FROM transactions 
+                    FROM transactions
                     WHERE created_at >= %s
                     GROUP BY stream
                 """,
@@ -504,10 +504,10 @@ class CodexTreasury:
                 # Get overall totals
                 cur.execute(
                     """
-                    SELECT 
+                    SELECT
                         COUNT(*) as total_transactions,
                         SUM(amount) as total_revenue
-                    FROM transactions 
+                    FROM transactions
                     WHERE created_at >= %s
                 """,
                     (datetime.datetime.utcnow() - datetime.timedelta(days=days),),

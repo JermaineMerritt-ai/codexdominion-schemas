@@ -25,7 +25,7 @@ try {
 Write-Host ""
 
 # Test 2: Certbot availability
-Write-Host "2. Testing Certbot renewal command structure:" -ForegroundColor Yellow  
+Write-Host "2. Testing Certbot renewal command structure:" -ForegroundColor Yellow
 Write-Host "   Command: sudo certbot renew --dry-run" -ForegroundColor Gray
 
 # Certbot won't be on Windows, but we can verify the command structure
@@ -54,7 +54,7 @@ Write-Host "   =================================" -ForegroundColor Gray
 Write-Host "   🔒 COSMIC DOMINION SSL STATUS" -ForegroundColor Gray
 Write-Host "   📋 Certificate Information:" -ForegroundColor Gray
 Write-Host "      Certificate Name: aistorelab.com" -ForegroundColor Gray
-Write-Host "      Domains: aistorelab.com www.aistorelab.com" -ForegroundColor Gray  
+Write-Host "      Domains: aistorelab.com www.aistorelab.com" -ForegroundColor Gray
 Write-Host "      Expiry Date: 2026-02-06 12:00:00+00:00 (VALID: 89 days)" -ForegroundColor Gray
 Write-Host "   🔄 Auto-renewal Status:" -ForegroundColor Gray
 Write-Host "      ✅ Certbot timer: ACTIVE" -ForegroundColor Gray
@@ -88,7 +88,7 @@ Write-Host "==================================" -ForegroundColor Blue
 
 $commands = @(
     "sudo openssl x509 -in /etc/letsencrypt/live/aistorelab.com/fullchain.pem -text -noout",
-    "sudo certbot renew --dry-run", 
+    "sudo certbot renew --dry-run",
     "sudo certbot certificates",
     "cosmic-ssl-status"
 )
@@ -103,7 +103,7 @@ foreach ($cmd in $commands) {
 Write-Host ""
 Write-Host "🚀 IONOS Deployment Instructions:" -ForegroundColor Yellow
 Write-Host "1. Upload ionos-ssl-deployment.sh to your IONOS server" -ForegroundColor White
-Write-Host "2. SSH to server: ssh user@your-ionos-server.com" -ForegroundColor White  
+Write-Host "2. SSH to server: ssh user@your-ionos-server.com" -ForegroundColor White
 Write-Host "3. Run deployment: chmod +x ionos-ssl-deployment.sh && sudo ./ionos-ssl-deployment.sh" -ForegroundColor White
 Write-Host "4. Test all SSL commands listed above" -ForegroundColor White
 Write-Host ""

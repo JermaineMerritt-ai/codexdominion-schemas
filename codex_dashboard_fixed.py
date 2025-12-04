@@ -140,12 +140,12 @@ def apply_cosmic_styling():
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
         color: white;
     }
-    
+
     /* Sidebar styling */
     .css-1d391kg {
         background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     }
-    
+
     /* Metric cards */
     .metric-card {
         background: rgba(255,255,255,0.1);
@@ -155,13 +155,13 @@ def apply_cosmic_styling():
         text-align: center;
         margin: 10px 0;
     }
-    
+
     /* Tab styling */
     .stTabs [data-baseweb="tab-list"] {
         background: rgba(255,255,255,0.1);
         border-radius: 10px;
     }
-    
+
     /* Button styling */
     .stButton > button {
         background: linear-gradient(45deg, #ff6b35, #ff8e35);
@@ -170,14 +170,14 @@ def apply_cosmic_styling():
         border-radius: 10px;
         font-weight: bold;
     }
-    
+
     /* Success messages */
     .stSuccess {
         background: rgba(50, 205, 50, 0.2);
         border: 1px solid #32CD32;
         border-radius: 10px;
     }
-    
+
     /* Error messages */
     .stError {
         background: rgba(255, 69, 0, 0.2);
@@ -289,7 +289,7 @@ The future belongs to those who understand {topic.lower()} at its core. This {to
 
 **Key Insights:**
 • Revolutionary thinking drives {topic.lower()} innovation
-• Strategic implementation ensures lasting impact  
+• Strategic implementation ensures lasting impact
 • {audience} are perfectly positioned to lead this transformation
 • The convergence of technology and vision creates unprecedented opportunities
 
@@ -521,16 +521,16 @@ def render_council_ritual():
                         st.markdown(
                             f"""
                         ### ✨ Sacred Inscription Complete ✨
-                        
-                        **👑 Council Role**: {role}  
-                        **🔥 Ritual Type**: {ritual_type}  
-                        **🌙 Cycle**: {cycle}  
-                        **⚡ Power Level**: {power_level}/10  
+
+                        **👑 Council Role**: {role}
+                        **🔥 Ritual Type**: {ritual_type}
+                        **🌙 Cycle**: {cycle}
+                        **⚡ Power Level**: {power_level}/10
                         **🕐 Inscribed**: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
-                        
+
                         **📜 Sacred Text**:
                         > {ritual_text}
-                        
+
                         *By the eternal flame, this proclamation is forever inscribed in the Codex.*
                         """
                         )
@@ -986,24 +986,24 @@ def main():
             st.markdown(
                 """
             ### 🎯 Your Digital Sovereignty Empire is Complete!
-            
+
             **🔥 All systems are operational and under your complete control:**
-            
+
             - ✅ **Spark Studio**: AI-powered content generation at your command
             - ✅ **Revenue Crown**: Complete financial tracking and growth analytics
             - ✅ **Council Ritual**: Sacred proclamation system for empire governance
             - ✅ **AI Dev Studio**: Full-stack application development capabilities
             - ✅ **System Overview**: Real-time monitoring of all empire operations
             - ✅ **Data Sovereignty**: Complete control over all information assets
-            
+
             **🌟 Your empire spans across:**
             - 🎯 Content Creation & AI Generation
-            - 💰 Revenue Optimization & Tracking  
+            - 💰 Revenue Optimization & Tracking
             - 👑 Governance & Decision Making
             - 🤖 Technology Development & Innovation
             - 📊 Analytics & Intelligence Gathering
             - 🔥 Eternal Flame Maintenance & Growth
-            
+
             **Total Digital Sovereignty: ACHIEVED** 🔥
             """
             )

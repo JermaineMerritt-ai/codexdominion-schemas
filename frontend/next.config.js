@@ -50,7 +50,8 @@ const nextConfig = {
     unoptimized: true,
   },
 
-  // Build output
+  // Build output - use 'standalone' for production deployment
+  // This creates a minimal Node.js server that can serve dynamic pages
   output: 'standalone',
 
   // Performance optimizations
@@ -58,6 +59,10 @@ const nextConfig = {
     optimizeCss: false,
     optimizePackageImports: ['react', 'react-dom'],
   },
+
+  // Ensure proper base path for production
+  basePath: '',
+  assetPrefix: '',
 
   // Webpack configuration
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {

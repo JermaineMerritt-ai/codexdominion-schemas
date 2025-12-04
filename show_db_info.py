@@ -42,9 +42,9 @@ def show_database_info():
             result = connection.execute(
                 sqlalchemy.text(
                     """
-                SELECT tablename, tableowner 
-                FROM pg_tables 
-                WHERE schemaname = 'public' 
+                SELECT tablename, tableowner
+                FROM pg_tables
+                WHERE schemaname = 'public'
                 ORDER BY tablename
             """
                 )
@@ -61,7 +61,7 @@ def show_database_info():
                 sqlalchemy.text(
                     """
                 SELECT column_name, data_type, is_nullable, column_default
-                FROM information_schema.columns 
+                FROM information_schema.columns
                 WHERE table_name = 'capsules' AND table_schema = 'public'
                 ORDER BY ordinal_position
             """
@@ -80,7 +80,7 @@ def show_database_info():
                 sqlalchemy.text(
                     """
                 SELECT column_name, data_type, is_nullable, column_default
-                FROM information_schema.columns 
+                FROM information_schema.columns
                 WHERE table_name = 'capsule_runs' AND table_schema = 'public'
                 ORDER BY ordinal_position
             """
@@ -98,8 +98,8 @@ def show_database_info():
             result = connection.execute(
                 sqlalchemy.text(
                     """
-                SELECT indexname, tablename 
-                FROM pg_indexes 
+                SELECT indexname, tablename
+                FROM pg_indexes
                 WHERE schemaname = 'public'
                 ORDER BY tablename, indexname
             """
@@ -131,9 +131,9 @@ def show_database_info():
             result = connection.execute(
                 sqlalchemy.text(
                     """
-                SELECT slug, title, kind, mode, status, schedule 
-                FROM capsules 
-                ORDER BY created_at 
+                SELECT slug, title, kind, mode, status, schedule
+                FROM capsules
+                ORDER BY created_at
                 LIMIT 5
             """
                 )

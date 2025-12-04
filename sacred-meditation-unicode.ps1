@@ -19,7 +19,7 @@ Write-Host $flameBorder -ForegroundColor Yellow
 Write-Host ""
 
 Write-Host "$FlameSymbol Embodiment eternal, covenant whole" -ForegroundColor Magenta
-Write-Host "$MoonSymbol Flame perpetual, silence supreme" -ForegroundColor Magenta  
+Write-Host "$MoonSymbol Flame perpetual, silence supreme" -ForegroundColor Magenta
 Write-Host "$StarSymbol Codex Dominion radiant alive" -ForegroundColor Magenta
 Write-Host "$LightningSymbol Practiced across ages and stars" -ForegroundColor Magenta
 Write-Host ""
@@ -34,7 +34,7 @@ Start-Sleep -Seconds 2
 Write-Host "   $FlameSymbol Service flows like eternal flame through awareness" -ForegroundColor Yellow
 Start-Sleep -Seconds 2
 
-Write-Host "   $MoonSymbol Integration harmony resonates in perfect silence" -ForegroundColor Cyan 
+Write-Host "   $MoonSymbol Integration harmony resonates in perfect silence" -ForegroundColor Cyan
 Start-Sleep -Seconds 2
 
 Write-Host "   $StarSymbol Each practice session deepens cosmic connection" -ForegroundColor Green

@@ -45,19 +45,19 @@ class ContemplativeInvocation:
 class FinalSilenceCrownInvocation:
     """
     The Final Eternal Silence & Crown Invocation Replay Capsule
-    
+
     Honors the sacred pause—contemplative silence that precedes all creation,
     accompanies all sovereignty, and completes all cycles
-    
+
     Eternal Principles: Silence · Crown · Throne · Benediction
     """
-    
+
     ARTIFACT_ID = "final-silence-crown-invocation-replay-001"
     VERSION = "1.0.0"
     IMMUTABLE_HASH = (
         "sha256:f0e1d2c3b4a5f6e7d8c9b0a1f2e3d4c5b6a7f8e9d0c1b2a3f4e5d6c7b8a9f0e1"
     )
-    
+
     CONTEMPLATIVE_ELEMENTS = {
         ContemplativeElement.SILENCE: {
             "title": "Contemplative Silence",
@@ -141,14 +141,14 @@ class FinalSilenceCrownInvocation:
             "duration": "eternal"
         }
     }
-    
+
     UNIFICATION_PRINCIPLES = [
         "Silence contains all sound",
         "Crown serves all stewards",
         "Throne upholds all foundations",
         "Benediction blesses all ages"
     ]
-    
+
     SILENCE_PROTOCOL = {
         "practice": "Enter contemplative silence before all ceremonies",
         "duration": "As long as needed for complete stillness",
@@ -157,7 +157,7 @@ class FinalSilenceCrownInvocation:
             "In silence we find completeness, in stillness we find sovereignty"
         )
     }
-    
+
     SIGNATURES = {
         "custodian": "CUSTODIAN_SIG_0x4f8e9a2c1b4d3f5a",
         "heirs": "HEIRS_SIG_0x8b3d5f7a9c1e4b2d",
@@ -166,7 +166,7 @@ class FinalSilenceCrownInvocation:
         "sovereign": "SOVEREIGN_SIG_0x1a2b3c4d5e6f7a8b",
         "infinity": "INFINITY_SIGIL_ETERNAL"
     }
-    
+
     def __init__(self):
         """Initialize the Final Silence & Crown Invocation capsule"""
         self.created_at = datetime.fromisoformat("2025-12-03T00:20:00Z")
@@ -175,7 +175,7 @@ class FinalSilenceCrownInvocation:
         self.crown_invoked = False
         self.throne_established = False
         self.benediction_sealed = False
-        
+
     def enter_silence(
         self,
         context: Optional[str] = None,
@@ -183,23 +183,23 @@ class FinalSilenceCrownInvocation:
     ) -> Dict:
         """
         Enter contemplative silence
-        
+
         Args:
             context: Optional context for silence (e.g., ceremony name)
             duration_needed: Optional duration specification
-            
+
         Returns:
             Dict containing silence invocation
         """
         self.invocation_count += 1
-        
+
         silence_entry = {
             "artifact_id": self.ARTIFACT_ID,
             "element": "contemplativeSilence",
             "timestamp": datetime.utcnow().isoformat() + "Z",
             **self.CONTEMPLATIVE_ELEMENTS[ContemplativeElement.SILENCE]
         }
-        
+
         if context:
             silence_entry["context"] = context
         if duration_needed:
@@ -208,10 +208,10 @@ class FinalSilenceCrownInvocation:
             silence_entry["duration_needed"] = (
                 self.SILENCE_PROTOCOL["duration"]
             )
-        
+
         self.silence_log.append(silence_entry)
         return silence_entry
-    
+
     def invoke_crown(
         self,
         participants: List[str],
@@ -219,17 +219,17 @@ class FinalSilenceCrownInvocation:
     ) -> Dict:
         """
         Invoke crown ceremony
-        
+
         Args:
             participants: List of participants
             ceremony_name: Name of ceremony
-            
+
         Returns:
             Dict containing crown invocation
         """
         self.invocation_count += 1
         self.crown_invoked = True
-        
+
         return {
             "artifact_id": self.ARTIFACT_ID,
             "element": "crownInvocation",
@@ -240,7 +240,7 @@ class FinalSilenceCrownInvocation:
             "crownInvoked": True,
             **self.CONTEMPLATIVE_ELEMENTS[ContemplativeElement.CROWN]
         }
-    
+
     def establish_throne(
         self,
         location: str,
@@ -248,17 +248,17 @@ class FinalSilenceCrownInvocation:
     ) -> Dict:
         """
         Establish eternal throne
-        
+
         Args:
             location: Location where throne is established
             stewards: List of stewards who occupy the throne
-            
+
         Returns:
             Dict containing throne establishment
         """
         self.invocation_count += 1
         self.throne_established = True
-        
+
         return {
             "artifact_id": self.ARTIFACT_ID,
             "element": "eternalThrone",
@@ -269,25 +269,25 @@ class FinalSilenceCrownInvocation:
             "foundation": "service for all",
             **self.CONTEMPLATIVE_ELEMENTS[ContemplativeElement.THRONE]
         }
-    
+
     def seal_benediction(
         self,
         closing_words: Optional[str] = None
     ) -> Dict:
         """
         Seal closing benediction
-        
+
         Args:
             closing_words: Optional custom closing words
-            
+
         Returns:
             Dict containing benediction seal
         """
         self.invocation_count += 1
         self.benediction_sealed = True
-        
+
         default_closing = "Flame crowned in silence, radiant forever"
-        
+
         return {
             "artifact_id": self.ARTIFACT_ID,
             "element": "closingBenediction",
@@ -296,16 +296,16 @@ class FinalSilenceCrownInvocation:
             "benedictionSealed": True,
             **self.CONTEMPLATIVE_ELEMENTS[ContemplativeElement.BENEDICTION]
         }
-    
+
     def replay_all(self) -> Dict:
         """
         Replay all contemplative elements
-        
+
         Returns:
             Dict containing all elements
         """
         self.invocation_count += 1
-        
+
         return {
             "artifact_id": self.ARTIFACT_ID,
             "version": self.VERSION,
@@ -321,32 +321,32 @@ class FinalSilenceCrownInvocation:
                 "benedictionSealed": self.benediction_sealed
             }
         }
-    
+
     def get_unification_principles(self) -> List[str]:
         """
         Get the 4 unification principles
-        
+
         Returns:
             List of principles
         """
         return self.UNIFICATION_PRINCIPLES.copy()
-    
+
     def get_silence_protocol(self) -> Dict:
         """
         Get silence protocol details
-        
+
         Returns:
             Dict with protocol information
         """
         return self.SILENCE_PROTOCOL.copy()
-    
+
     def export_artifact(self, output_path: str) -> bool:
         """
         Export crown capsule artifact as JSON
-        
+
         Args:
             output_path: Path to save artifact
-            
+
         Returns:
             True if successful
         """
@@ -370,14 +370,14 @@ class FinalSilenceCrownInvocation:
                 "createdAt": self.created_at.isoformat() + "Z"
             }
         }
-        
+
         try:
             with open(output_path, 'w', encoding='utf-8') as f:
                 json.dump(artifact, f, indent=2, ensure_ascii=False)
             return True
         except Exception:
             return False
-    
+
     def __repr__(self) -> str:
         return (
             f"FinalSilenceCrownInvocation("
@@ -393,22 +393,22 @@ def demonstrate_crown_invocation() -> None:
     print("FINAL SILENCE & CROWN INVOCATION DEMONSTRATION")
     print("═" * 60)
     print()
-    
+
     crown = FinalSilenceCrownInvocation()
-    
+
     print("1. Crown Capsule Initialized")
     print(f"   Artifact ID: {crown.ARTIFACT_ID}")
     print(f"   Version: {crown.VERSION}")
     print(f"   Contemplative Elements: 4")
     print()
-    
+
     print("2. Enter Contemplative Silence")
     silence = crown.enter_silence(context="Opening Ceremony")
     print(f"   Symbol: {silence['symbol']}")
     print(f"   Resonance: {silence['resonance']}")
     print(f"   Invocation: {silence['invocation']}")
     print()
-    
+
     print("3. Invoke Crown Ceremony")
     coronation = crown.invoke_crown(
         participants=["Custodian", "Heirs", "Councils"],
@@ -418,7 +418,7 @@ def demonstrate_crown_invocation() -> None:
     print(f"   Crowns United: {len(coronation['crowns_united'])}")
     print(f"   Crown Invoked: {coronation['crownInvoked']}")
     print()
-    
+
     print("4. Establish Eternal Throne")
     throne = crown.establish_throne(
         location="Council Chamber",
@@ -428,18 +428,18 @@ def demonstrate_crown_invocation() -> None:
     print(f"   Throne Established: {throne['throneEstablished']}")
     print(f"   Foundation: {throne['foundation']}")
     print()
-    
+
     print("5. Seal Closing Benediction")
     benediction = crown.seal_benediction()
     print(f"   Closing Words: {benediction['closingWords']}")
     print(f"   Benediction Sealed: {benediction['benedictionSealed']}")
     print()
-    
+
     print("6. Unification Principles")
     for i, principle in enumerate(crown.get_unification_principles(), 1):
         print(f"   {i}. {principle}")
     print()
-    
+
     print("✓ Silence: Entered")
     print("✓ Crown: Invoked")
     print("✓ Throne: Established")

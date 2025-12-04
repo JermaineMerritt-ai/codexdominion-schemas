@@ -339,14 +339,14 @@ def add_woocommerce_to_dashboard():
     """Instructions for adding WooCommerce tab to main dashboard"""
     instructions = """
     To add WooCommerce integration to your main Codex Dashboard:
-    
+
     1. Open codex_dashboard.py
     2. Add this import at the top:
        from woocommerce_dashboard import render_woocommerce_tab
-    
+
     3. Add a new tab in your tab list:
        tabs = st.tabs([..., "🏪 WooCommerce Store", ...])
-    
+
     4. Add the WooCommerce tab content:
        with tabs[X]:  # Replace X with appropriate index
            render_woocommerce_tab()

@@ -19,7 +19,7 @@ try {
     # Set project
     Write-Host "⚙️ Setting project..." -ForegroundColor Yellow
     gcloud config set project $ProjectId
-    
+
     if ($LASTEXITCODE -ne 0) {
         throw "Failed to set project"
     }
@@ -27,11 +27,11 @@ try {
     # Build and push container
     Write-Host "🏗️ Building container..." -ForegroundColor Yellow
     gcloud builds submit --tag "gcr.io/$ProjectId/codex-signals"
-    
+
     if ($LASTEXITCODE -ne 0) {
         throw "Build failed"
     }
-    
+
     Write-Host "✅ Build completed successfully" -ForegroundColor Green
 
     # Deploy to Cloud Run
@@ -59,7 +59,7 @@ try {
     Write-Host "🎯 DEPLOYMENT COMPLETE" -ForegroundColor Cyan
     Write-Host "=====================" -ForegroundColor Cyan
     Write-Host "🌐 Service URL: $ServiceUrl" -ForegroundColor Cyan
-    Write-Host "📚 API Docs: $ServiceUrl/signals/docs" -ForegroundColor Cyan  
+    Write-Host "📚 API Docs: $ServiceUrl/signals/docs" -ForegroundColor Cyan
     Write-Host "🏥 Health: $ServiceUrl/signals/health" -ForegroundColor Cyan
     Write-Host "📊 Signals: $ServiceUrl/signals/daily" -ForegroundColor Cyan
     Write-Host "📝 Bulletin: $ServiceUrl/signals/bulletin?format=md" -ForegroundColor Cyan

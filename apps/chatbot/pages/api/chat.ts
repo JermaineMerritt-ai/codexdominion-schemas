@@ -17,7 +17,7 @@ export default async function handler(
   try {
     // Simulate AI response (replace with actual AI integration)
     const response = await generateAIResponse(message);
-    
+
     res.status(200).json({ response });
   } catch (error) {
     console.error('Chat API error:', error);

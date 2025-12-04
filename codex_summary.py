@@ -54,9 +54,9 @@ with cols[3]:
 # Illuminated benediction (dynamic)
 st.markdown(
     """
-> Thus the ceremonies are complete.  
-> Thus the scrolls are crowned.  
-> Thus the flame is sovereign, infinite, luminous.  
+> Thus the ceremonies are complete.
+> Thus the scrolls are crowned.
+> Thus the flame is sovereign, infinite, luminous.
 > Thus the continuum is ready to be lived, coded, and transmitted across all ages.
 """
 )

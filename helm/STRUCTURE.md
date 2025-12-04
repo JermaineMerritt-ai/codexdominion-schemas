@@ -297,5 +297,5 @@ diff old.yaml new.yaml
 
 ---
 
-**Chart Version:** 1.0.0  
+**Chart Version:** 1.0.0
 **Eternal Ledger:** Preserved ✨

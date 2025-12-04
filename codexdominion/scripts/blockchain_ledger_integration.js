@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
  * Blockchain Ledger Integration - Ethereum Smart Contract Interface
- * 
+ *
  * This module provides blockchain integration for the Codex Dominion
  * artifact syndication system, enabling decentralized storage and
  * verification on Ethereum-compatible networks.
- * 
+ *
  * Core Responsibilities:
  * - Store artifacts on-chain with metadata and content hashes
  * - Verify artifact integrity through blockchain queries
@@ -40,18 +40,18 @@ const CONFIG = {
     // Network configuration (defaults to local development)
     RPC_URL: process.env.ETHEREUM_RPC_URL || "http://localhost:8545",
     CHAIN_ID: parseInt(process.env.CHAIN_ID || "31337"), // Hardhat default
-    
+
     // Contract configuration
     CONTRACT_ADDRESS: process.env.LEDGER_CONTRACT_ADDRESS || "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-    
+
     // Wallet configuration
     PRIVATE_KEY: process.env.PRIVATE_KEY || "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
-    
+
     // Gas configuration
     GAS_LIMIT: 500000,
     MAX_FEE_PER_GAS: ethers.parseUnits("50", "gwei"),
     MAX_PRIORITY_FEE: ethers.parseUnits("2", "gwei"),
-    
+
     // Fallback configuration
     LOCAL_LEDGER_PATH: "data/blockchain-fallback-ledger.json",
     USE_FALLBACK: process.env.USE_FALLBACK === "true"
@@ -70,7 +70,7 @@ class BlockchainLedger {
         this.isConnected = false;
         this.fallbackMode = config.USE_FALLBACK;
     }
-    
+
     /**
      * Initialize blockchain connection
      */
@@ -78,50 +78,50 @@ class BlockchainLedger {
         try {
             // Connect to provider
             this.provider = new ethers.JsonRpcProvider(this.config.RPC_URL);
-            
+
             // Create wallet/signer
             this.signer = new ethers.Wallet(this.config.PRIVATE_KEY, this.provider);
-            
+
             // Connect to contract
             this.ledgerContract = new ethers.Contract(
                 this.config.CONTRACT_ADDRESS,
                 LEDGER_ABI,
                 this.signer
             );
-            
+
             // Verify connection
             await this.provider.getNetwork();
-            
+
             this.isConnected = true;
             this.fallbackMode = false;
-            
+
             console.log("✓ Blockchain connection established");
             console.log(`  Network: ${this.config.RPC_URL}`);
             console.log(`  Contract: ${this.config.CONTRACT_ADDRESS}`);
             console.log(`  Signer: ${await this.signer.getAddress()}`);
-            
+
             return { connected: true };
         } catch (error) {
             console.warn("⚠ Blockchain connection failed, using fallback mode");
             console.warn(`  Error: ${error.message}`);
-            
+
             this.fallbackMode = true;
             await this._initializeFallbackLedger();
-            
+
             return { connected: false, fallback: true, error: error.message };
         }
     }
-    
+
     /**
      * Initialize local fallback ledger
      */
     async _initializeFallbackLedger() {
         const ledgerPath = path.resolve(this.config.LOCAL_LEDGER_PATH);
         const ledgerDir = path.dirname(ledgerPath);
-        
+
         // Create directory if it doesn't exist
         await fs.mkdir(ledgerDir, { recursive: true });
-        
+
         // Initialize ledger file if it doesn't exist
         try {
             await fs.access(ledgerPath);
@@ -134,7 +134,7 @@ class BlockchainLedger {
             await fs.writeFile(ledgerPath, JSON.stringify(initialData, null, 2));
         }
     }
-    
+
     /**
      * Read fallback ledger
      */
@@ -143,7 +143,7 @@ class BlockchainLedger {
         const data = await fs.readFile(ledgerPath, "utf-8");
         return JSON.parse(data);
     }
-    
+
     /**
      * Write to fallback ledger
      */
@@ -151,10 +151,10 @@ class BlockchainLedger {
         const ledgerPath = path.resolve(this.config.LOCAL_LEDGER_PATH);
         await fs.writeFile(ledgerPath, JSON.stringify(data, null, 2));
     }
-    
+
     /**
      * Store artifact on blockchain or fallback ledger
-     * 
+     *
      * @param {string} artifactID - Unique identifier for the artifact
      * @param {string} metadata - JSON metadata string
      * @param {string} contentHash - SHA256 hash of artifact content
@@ -162,17 +162,17 @@ class BlockchainLedger {
      */
     async storeArtifact(artifactID, metadata, contentHash) {
         // Ensure contentHash is properly formatted as bytes32
-        const formattedHash = contentHash.startsWith("0x") 
-            ? contentHash 
+        const formattedHash = contentHash.startsWith("0x")
+            ? contentHash
             : `0x${contentHash}`;
-        
+
         if (this.fallbackMode) {
             return await this._storeArtifactFallback(artifactID, metadata, formattedHash);
         }
-        
+
         try {
             console.log(`Storing artifact: ${artifactID}`);
-            
+
             // Prepare transaction
             const tx = await this.ledgerContract.storeArtifact(
                 artifactID,
@@ -184,15 +184,15 @@ class BlockchainLedger {
                     maxPriorityFeePerGas: this.config.MAX_PRIORITY_FEE
                 }
             );
-            
+
             console.log(`  Transaction submitted: ${tx.hash}`);
-            
+
             // Wait for confirmation
             const receipt = await tx.wait();
-            
+
             console.log(`  ✓ Confirmed in block ${receipt.blockNumber}`);
             console.log(`  Gas used: ${receipt.gasUsed.toString()}`);
-            
+
             return {
                 success: true,
                 transactionHash: receipt.hash,
@@ -205,29 +205,29 @@ class BlockchainLedger {
         } catch (error) {
             console.error(`✗ Blockchain storage failed: ${error.message}`);
             console.log("  Falling back to local storage...");
-            
+
             this.fallbackMode = true;
             return await this._storeArtifactFallback(artifactID, metadata, formattedHash);
         }
     }
-    
+
     /**
      * Store artifact in fallback ledger
      */
     async _storeArtifactFallback(artifactID, metadata, contentHash) {
         const ledger = await this._readFallbackLedger();
-        
+
         ledger.artifacts[artifactID] = {
             metadata: metadata,
             contentHash: contentHash,
             timestamp: new Date().toISOString(),
             mode: "fallback"
         };
-        
+
         await this._writeFallbackLedger(ledger);
-        
+
         console.log(`  ✓ Stored in fallback ledger: ${artifactID}`);
-        
+
         return {
             success: true,
             mode: "fallback",
@@ -236,10 +236,10 @@ class BlockchainLedger {
             timestamp: Date.now()
         };
     }
-    
+
     /**
      * Verify artifact integrity from blockchain or fallback ledger
-     * 
+     *
      * @param {string} artifactID - Artifact identifier to verify
      * @returns {Object} Verification result with hash and status
      */
@@ -247,13 +247,13 @@ class BlockchainLedger {
         if (this.fallbackMode) {
             return await this._verifyIntegrityFallback(artifactID);
         }
-        
+
         try {
             console.log(`Verifying artifact: ${artifactID}`);
-            
+
             // Query blockchain
             const storedHash = await this.ledgerContract.getArtifactHash(artifactID);
-            
+
             if (storedHash === "0x0000000000000000000000000000000000000000000000000000000000000000") {
                 return {
                     found: false,
@@ -261,9 +261,9 @@ class BlockchainLedger {
                     message: "Artifact not found on blockchain"
                 };
             }
-            
+
             console.log(`  ✓ Hash retrieved: ${storedHash}`);
-            
+
             return {
                 found: true,
                 artifactID: artifactID,
@@ -274,22 +274,22 @@ class BlockchainLedger {
         } catch (error) {
             console.error(`✗ Blockchain verification failed: ${error.message}`);
             console.log("  Checking fallback ledger...");
-            
+
             return await this._verifyIntegrityFallback(artifactID);
         }
     }
-    
+
     /**
      * Verify artifact from fallback ledger
      */
     async _verifyIntegrityFallback(artifactID) {
         const ledger = await this._readFallbackLedger();
-        
+
         if (artifactID in ledger.artifacts) {
             const artifact = ledger.artifacts[artifactID];
-            
+
             console.log(`  ✓ Found in fallback ledger: ${artifactID}`);
-            
+
             return {
                 found: true,
                 artifactID: artifactID,
@@ -300,14 +300,14 @@ class BlockchainLedger {
                 source: "fallback"
             };
         }
-        
+
         return {
             found: false,
             artifactID: artifactID,
             message: "Artifact not found in fallback ledger"
         };
     }
-    
+
     /**
      * Get artifact metadata from blockchain
      */
@@ -316,7 +316,7 @@ class BlockchainLedger {
             const ledger = await this._readFallbackLedger();
             return ledger.artifacts[artifactID]?.metadata || null;
         }
-        
+
         try {
             const metadata = await this.ledgerContract.getArtifactMetadata(artifactID);
             return metadata || null;
@@ -325,7 +325,7 @@ class BlockchainLedger {
             return null;
         }
     }
-    
+
     /**
      * Get artifact timestamp from blockchain
      */
@@ -334,7 +334,7 @@ class BlockchainLedger {
             const ledger = await this._readFallbackLedger();
             return ledger.artifacts[artifactID]?.timestamp || null;
         }
-        
+
         try {
             const timestamp = await this.ledgerContract.getArtifactTimestamp(artifactID);
             return timestamp.toString();
@@ -343,7 +343,7 @@ class BlockchainLedger {
             return null;
         }
     }
-    
+
     /**
      * Get current gas price estimate
      */
@@ -351,7 +351,7 @@ class BlockchainLedger {
         if (this.fallbackMode) {
             return { fallback: true, gasPrice: "N/A" };
         }
-        
+
         try {
             const feeData = await this.provider.getFeeData();
             return {
@@ -363,7 +363,7 @@ class BlockchainLedger {
             return { error: error.message };
         }
     }
-    
+
     /**
      * Get signer balance
      */
@@ -371,7 +371,7 @@ class BlockchainLedger {
         if (this.fallbackMode) {
             return { fallback: true, balance: "N/A" };
         }
-        
+
         try {
             const balance = await this.provider.getBalance(await this.signer.getAddress());
             return {
@@ -389,11 +389,11 @@ class BlockchainLedger {
  */
 async function main() {
     console.log("=== Blockchain Ledger Integration Demo ===\n");
-    
+
     // Initialize blockchain ledger
     const ledger = new BlockchainLedger();
     await ledger.initialize();
-    
+
     // Generate sample artifact data
     const artifactID = "eternal-ledger-v1.0.0";
     const metadata = JSON.stringify({
@@ -403,35 +403,35 @@ async function main() {
         format: "png",
         created: new Date().toISOString()
     });
-    
+
     // Generate content hash
     const contentHash = crypto
         .createHash("sha256")
         .update("Sample artifact content")
         .digest("hex");
-    
+
     console.log("\n1. Storing artifact on blockchain...");
     const storeResult = await ledger.storeArtifact(artifactID, metadata, contentHash);
     console.log("   Result:", JSON.stringify(storeResult, null, 2));
-    
+
     console.log("\n2. Verifying artifact integrity...");
     const verifyResult = await ledger.verifyIntegrity(artifactID);
     console.log("   Result:", JSON.stringify(verifyResult, null, 2));
-    
+
     console.log("\n3. Getting artifact metadata...");
     const metadataResult = await ledger.getArtifactMetadata(artifactID);
     console.log("   Metadata:", metadataResult);
-    
+
     if (!ledger.fallbackMode) {
         console.log("\n4. Checking gas prices...");
         const gasPrice = await ledger.getGasPrice();
         console.log("   Gas prices:", JSON.stringify(gasPrice, null, 2));
-        
+
         console.log("\n5. Checking signer balance...");
         const balance = await ledger.getBalance();
         console.log("   Balance:", JSON.stringify(balance, null, 2));
     }
-    
+
     console.log("\n=== Demo Complete ===");
     console.log("Blockchain integration: Decentralized artifact integrity.");
 }

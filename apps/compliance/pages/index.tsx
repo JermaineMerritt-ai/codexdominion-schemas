@@ -46,13 +46,13 @@ export default function ComplianceHome() {
       <Head>
         <title>Compliance & Audit - Codex Dominion</title>
       </Head>
-      <div style={{ 
+      <div style={{
         minHeight: '100vh',
         backgroundColor: '#0f172a',
         color: '#f8fafc',
         fontFamily: 'system-ui, -apple-system, sans-serif'
       }}>
-        <header style={{ 
+        <header style={{
           padding: '1rem 2rem',
           borderBottom: '1px solid #334155',
           backgroundColor: '#1e293b'
@@ -113,13 +113,13 @@ export default function ComplianceHome() {
               Loading audit logs...
             </div>
           ) : (
-            <div style={{ 
+            <div style={{
               backgroundColor: '#1e293b',
               borderRadius: '0.5rem',
               border: '1px solid #334155',
               overflow: 'hidden'
             }}>
-              <div style={{ 
+              <div style={{
                 display: 'grid',
                 gridTemplateColumns: '180px 150px 1fr 150px 100px 100px',
                 padding: '1rem',

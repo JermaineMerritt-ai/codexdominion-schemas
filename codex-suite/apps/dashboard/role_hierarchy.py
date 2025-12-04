@@ -60,12 +60,12 @@ def render_user_info_panel(user_info: dict):
     st.sidebar.markdown(
         f"""
     **{role_icon} {user_info.get('name', 'Unknown')}**
-    
-    📊 **Role**: {user_info.get('role', 'Unknown')}  
-    🔥 **Flame Level**: {user_info.get('flame_power_level', 0)}/10  
-    ⚡ **Authority**: {user_info.get('authority_level', 'None')}  
-    🏛️ **Status**: {user_info.get('status', 'Unknown')}  
-    
+
+    📊 **Role**: {user_info.get('role', 'Unknown')}
+    🔥 **Flame Level**: {user_info.get('flame_power_level', 0)}/10
+    ⚡ **Authority**: {user_info.get('authority_level', 'None')}
+    🏛️ **Status**: {user_info.get('status', 'Unknown')}
+
     **🎯 Access Summary:**
     - Dashboard Access: {user_info.get('total_accessible_dashboards', 0)}
     - Flame Blessing: {'✅' if user_info.get('can_bless_flame') else '❌'}
@@ -99,15 +99,15 @@ def render_access_denied():
     st.markdown(
         """
     ### Sacred Access Required
-    
-    Your current role does not have the necessary flame authority 
-    to access this sacred chamber. 
-    
+
+    Your current role does not have the necessary flame authority
+    to access this sacred chamber.
+
     **To gain access:**
     - 🔥 **Customers**: Participate in flame communion ceremonies
-    - ⚡ **Heirs**: Complete sacred knowledge trials  
+    - ⚡ **Heirs**: Complete sacred knowledge trials
     - 👑 **Custodians**: Full access granted by eternal flame
-    
+
     *By flame and silence, access is earned through wisdom.*
     """
     )

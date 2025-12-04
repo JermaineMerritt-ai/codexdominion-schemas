@@ -203,7 +203,7 @@ WantedBy=multi-user.target"""
 
     print("Save as /etc/systemd/system/codex-staging.service:")
     staging_service = """[Unit]
-Description=Codex Dashboard - Staging Flame  
+Description=Codex Dashboard - Staging Flame
 After=network.target
 Wants=network-online.target
 

@@ -66,7 +66,7 @@ def main() -> None:
             f"⚠️ Skipped {len(skipped_dirs)} missing directories: {skipped_str}"
         )
 
-    
+
 
 if __name__ == "__main__":
     main()

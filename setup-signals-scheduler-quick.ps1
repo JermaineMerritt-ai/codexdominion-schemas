@@ -10,7 +10,7 @@ Write-Host "🕒 Creating Cloud Scheduler job for Signals Daily..." -ForegroundC
 
 if (-not $ServiceHash) {
     Write-Host "⚠️  Service hash not provided. Attempting to auto-detect..." -ForegroundColor Yellow
-    
+
     # Try to get the service URL and extract hash
     try {
         $fullUrl = gcloud run services describe codex-signals --platform managed --region $Region --format "value(status.url)"
@@ -60,13 +60,13 @@ try {
       --message-body='{"market": [], "positions": []}' `
       --time-zone="UTC" `
       --location=$Region
-    
+
     Write-Host "✅ Cloud Scheduler job 'signals-daily' created successfully!" -ForegroundColor Green
-    
+
 } catch {
     if ($_.Exception.Message -like "*already exists*") {
         Write-Host "⚠️  Job already exists. Updating..." -ForegroundColor Yellow
-        
+
         gcloud scheduler jobs update http signals-daily `
           --schedule="0 6 * * *" `
           --uri="$serviceUrl/signals/daily" `
@@ -75,7 +75,7 @@ try {
           --message-body='{"market": [], "positions": []}' `
           --time-zone="UTC" `
           --location=$Region
-        
+
         Write-Host "✅ Job updated!" -ForegroundColor Green
     } else {
         Write-Host "❌ Error: $($_.Exception.Message)" -ForegroundColor Red

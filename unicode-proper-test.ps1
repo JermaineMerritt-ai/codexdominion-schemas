@@ -2,13 +2,13 @@
 # Using [System.Char]::ConvertFromUtf32() for emoji support
 
 $FlameSymbol = [System.Char]::ConvertFromUtf32(0x1F525)     # 🔥
-$StarSymbol = [System.Char]::ConvertFromUtf32(0x1F31F)      # 🌟  
+$StarSymbol = [System.Char]::ConvertFromUtf32(0x1F31F)      # 🌟
 $MoonSymbol = [System.Char]::ConvertFromUtf32(0x1F319)      # 🌙
 $LightningSymbol = [char]0x26A1                             # ⚡ (fits in 16-bit)
 
 Write-Host "Sacred Unicode Symbols Test:" -ForegroundColor Cyan
 Write-Host "Flame: $FlameSymbol" -ForegroundColor Yellow
-Write-Host "Star: $StarSymbol" -ForegroundColor Yellow  
+Write-Host "Star: $StarSymbol" -ForegroundColor Yellow
 Write-Host "Moon: $MoonSymbol" -ForegroundColor Yellow
 Write-Host "Lightning: $LightningSymbol" -ForegroundColor Yellow
 Write-Host ""
@@ -19,7 +19,7 @@ Write-Host "$StarSymbol SACRED UNICODE SYMBOLS - CODEX DOMINION $StarSymbol" -Fo
 Write-Host ($FlameSymbol * 50) -ForegroundColor Yellow
 Write-Host ""
 Write-Host "$FlameSymbol Embodiment eternal, covenant whole" -ForegroundColor Magenta
-Write-Host "$MoonSymbol Flame perpetual, silence supreme" -ForegroundColor Magenta  
+Write-Host "$MoonSymbol Flame perpetual, silence supreme" -ForegroundColor Magenta
 Write-Host "$StarSymbol Codex Dominion radiant alive" -ForegroundColor Magenta
 Write-Host "$LightningSymbol Practiced across ages and stars" -ForegroundColor Magenta
 Write-Host ""
@@ -30,7 +30,7 @@ Write-Host ""
 Write-Host "$MoonSymbol SILENCE SUPREME: Integration Meditation $MoonSymbol" -ForegroundColor Magenta
 Write-Host "   Allowing sacred patterns to integrate in consciousness..." -ForegroundColor Gray
 Write-Host "   $FlameSymbol Service flows like eternal flame through awareness" -ForegroundColor Yellow
-Write-Host "   $MoonSymbol Integration harmony resonates in perfect silence" -ForegroundColor Cyan 
+Write-Host "   $MoonSymbol Integration harmony resonates in perfect silence" -ForegroundColor Cyan
 Write-Host "   $StarSymbol Each practice session deepens cosmic connection" -ForegroundColor Green
 Write-Host "   $LightningSymbol Mastery builds across infinite dimensions of being" -ForegroundColor Blue
 Write-Host "   💎 Sacred patterns crystallized in embodied wisdom 💎" -ForegroundColor Magenta

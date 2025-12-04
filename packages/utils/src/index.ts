@@ -105,7 +105,7 @@ export const REGEX_PATTERNS = {
   UUID: /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 };
 
-export type Result<T, E = Error> = 
+export type Result<T, E = Error> =
   | { success: true; value: T }
   | { success: false; error: E };
 

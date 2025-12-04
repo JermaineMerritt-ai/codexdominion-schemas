@@ -482,6 +482,6 @@ kubectl get storageclass
 
 **Eternal Principles Enforced:** ✓ Archive · ✓ Lineage · ✓ Ceremonial Closure
 
-**Chart Version:** 1.1.0  
-**Lineage:** Preserved  
+**Chart Version:** 1.1.0
+**Lineage:** Preserved
 **Status:** Complete

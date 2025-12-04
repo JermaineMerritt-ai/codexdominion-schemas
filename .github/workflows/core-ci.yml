@@ -1,0 +1,541 @@
+name: core-ci
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      risk_tier:
+        description: 'Override risk tier (LOW/MEDIUM/HIGH)'
+        required: false
+        type: choice
+        options:
+          - AUTO
+          - LOW
+          - MEDIUM
+          - HIGH
+
+env:
+  NODE_VERSION: '18.x'
+  PYTHON_VERSION: '3.12'
+  CARIBBEAN_JURISDICTION: 'trinidad-tobago'
+  ARTIFACT_LEDGER_PATH: './ledger'
+  OPA_VERSION: '0.60.0'
+
+jobs:
+  setup:
+    name: Setup Toolchain
+    runs-on: ubuntu-latest
+    outputs:
+      risk_tier: ${{ steps.risk_assessment.outputs.tier }}
+      commit_sha: ${{ steps.git_info.outputs.sha }}
+      branch: ${{ steps.git_info.outputs.branch }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for lineage tracking
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          pip install -r requirements.txt
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            ~/.cache/pip
+          key: ${{ runner.os }}-deps-${{ hashFiles('**/package-lock.json', '**/requirements.txt') }}
+
+      - name: Git information
+        id: git_info
+        run: |
+          echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+          echo "branch=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Risk tier assessment
+        id: risk_assessment
+        run: |
+          if [ "${{ github.event.inputs.risk_tier }}" != "AUTO" ] && [ -n "${{ github.event.inputs.risk_tier }}" ]; then
+            echo "tier=${{ github.event.inputs.risk_tier }}" >> $GITHUB_OUTPUT
+          else
+            TIER=$(./ops/risk-tier.sh)
+            echo "tier=$TIER" >> $GITHUB_OUTPUT
+          fi
+          echo "Risk Tier: $TIER"
+
+  lint:
+    name: Lint & Static Analysis
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-deps-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Code style check
+        run: npm run lint
+
+      - name: TypeScript type check
+        run: npm run typecheck
+
+      - name: Markdown lint (docs)
+        run: npx markdownlint-cli2 "**/*.md" "#node_modules"
+
+      - name: YAML lint (configs)
+        run: npx yaml-lint .github/**/*.yml policies/**/*.yml
+
+  test:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-deps-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Unit tests
+        run: npm run test:unit
+
+      - name: Integration tests
+        run: npm run test:integration
+
+      - name: E2E tests (headless)
+        run: npm run test:e2e
+
+      - name: Coverage report
+        run: npm run test:coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/lcov.info
+          flags: unittests
+          fail_ci_if_error: true
+
+  security_scan:
+    name: Security Scanning
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-deps-${{ hashFiles('**/package-lock.json') }}
+
+      - name: SAST (Static Application Security Testing)
+        run: npm run scan:sast
+
+      - name: Dependency vulnerability scan (npm audit)
+        run: npm audit --audit-level=moderate
+
+      - name: Snyk security scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+
+      - name: Trivy filesystem scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '1'
+
+      - name: DAST (Dynamic Application Security Testing) - Ephemeral
+        run: |
+          # Start ephemeral server
+          npm run build
+          npm run start:test &
+          SERVER_PID=$!
+          sleep 10
+
+          # Run DAST scan
+          ./ops/dast.sh --target http://localhost:3000
+
+          # Cleanup
+          kill $SERVER_PID
+
+      - name: Secret scanning
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+
+  license_check:
+    name: License Compliance
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-deps-${{ hashFiles('**/package-lock.json') }}
+
+      - name: OSS license audit
+        run: ./ops/license-audit.sh --policy policies/license-allowlist.yml
+
+      - name: Generate SBOM (Software Bill of Materials)
+        run: |
+          npx @cyclonedx/cyclonedx-npm --output-file sbom.json
+          ./ops/sbom-audit.sh sbom.json
+
+      - name: License compatibility check
+        run: ./ops/license-compatibility.sh
+
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.json
+          retention-days: 90
+
+  accessibility_perf:
+    name: Accessibility & Performance
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-deps-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Build for testing
+        run: npm run build
+
+      - name: Accessibility audit (WCAG 2.1 AA)
+        run: ./ops/a11y.sh --standard wcag21aa --budget 0-violations
+
+      - name: Performance budgets (Lighthouse)
+        run: ./ops/perf.sh --budget performance-budget.json
+
+      - name: Bundle size check
+        run: |
+          npm run analyze
+          ./ops/bundle-size-check.sh --threshold 500kb
+
+      - name: Core Web Vitals validation
+        run: ./ops/web-vitals.sh --lcp 2.5s --fid 100ms --cls 0.1
+
+  compliance_matrix:
+    name: Compliance & Policy Validation
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install OPA (Open Policy Agent)
+        run: |
+          wget https://github.com/open-policy-agent/opa/releases/download/v${{ env.OPA_VERSION }}/opa_linux_amd64
+          chmod +x opa_linux_amd64
+          sudo mv opa_linux_amd64 /usr/local/bin/opa
+
+      - name: Generate compliance matrix
+        run: |
+          ./ops/compliance-matrix.sh \
+            --jurisdiction ${{ env.CARIBBEAN_JURISDICTION }} \
+            --standards gdpr,soc2,caricom \
+            --output compliance-matrix.json
+
+      - name: OPA policy validation (security.rego)
+        run: opa test policies/ -v
+
+      - name: OPA policy gate
+        run: ./ops/opa-gate.sh policies/opa --data compliance-matrix.json
+
+      - name: GDPR compliance check
+        run: ./ops/gdpr-check.sh --consent-envelopes policies/consent-envelopes/
+
+      - name: CARICOM data protection validation
+        run: ./ops/caricom-compliance.sh --jurisdiction ${{ env.CARIBBEAN_JURISDICTION }}
+
+      - name: SOC 2 control validation
+        run: ./ops/soc2-controls.sh --controls CC6,CC7,CC8,CC9
+
+      - name: Upload compliance report
+        uses: actions/upload-artifact@v4
+        with:
+          name: compliance-matrix
+          path: compliance-matrix.json
+          retention-days: 2555  # 7 years (compliance retention)
+
+  build:
+    name: Build & Seal Artifacts
+    runs-on: ubuntu-latest
+    needs: [lint, test, security_scan, license_check, accessibility_perf, compliance_matrix]
+    outputs:
+      artifact_hash: ${{ steps.seal.outputs.hash }}
+      artifact_id: ${{ steps.seal.outputs.id }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-deps-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Build frontend (Next.js)
+        run: npm run build
+
+      - name: Build backend (Python)
+        run: |
+          cd src/backend
+          pip install -r requirements.txt
+          python -m compileall .
+
+      - name: Package artifacts
+        run: ./ops/pack.sh --output codex-dominion-${{ needs.setup.outputs.commit_sha }}.tar.gz
+
+      - name: Seal artifacts (cryptographic signature)
+        id: seal
+        run: |
+          ARTIFACT_ID=$(./ops/seal.sh \
+            --ledger ${{ env.ARTIFACT_LEDGER_PATH }} \
+            --artifact codex-dominion-${{ needs.setup.outputs.commit_sha }}.tar.gz \
+            --commit ${{ needs.setup.outputs.commit_sha }} \
+            --branch ${{ needs.setup.outputs.branch }} \
+            --risk-tier ${{ needs.setup.outputs.risk_tier }})
+
+          echo "id=$ARTIFACT_ID" >> $GITHUB_OUTPUT
+
+          ARTIFACT_HASH=$(sha256sum codex-dominion-${{ needs.setup.outputs.commit_sha }}.tar.gz | awk '{print $1}')
+          echo "hash=$ARTIFACT_HASH" >> $GITHUB_OUTPUT
+
+      - name: Upload sealed artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: codex-dominion-sealed
+          path: |
+            codex-dominion-${{ needs.setup.outputs.commit_sha }}.tar.gz
+            ${{ env.ARTIFACT_LEDGER_PATH }}/artifacts/${{ steps.seal.outputs.id }}.json
+          retention-days: 90
+
+      - name: Record artifact lineage
+        run: |
+          ./ops/lineage-record.sh \
+            --artifact-id ${{ steps.seal.outputs.id }} \
+            --intent "${{ github.event.head_commit.message }}" \
+            --author "${{ github.actor }}" \
+            --commit ${{ needs.setup.outputs.commit_sha }} \
+            --ledger ${{ env.ARTIFACT_LEDGER_PATH }}
+
+  sandbox:
+    name: Sandbox Deployment & Canary
+    runs-on: ubuntu-latest
+    needs: [setup, build]
+    if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main'
+    environment:
+      name: sandbox
+      url: https://sandbox.codexdominion.app
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download sealed artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: codex-dominion-sealed
+
+      - name: Deploy ephemeral preview environment
+        run: |
+          ./ops/sandbox-deploy.sh \
+            --artifact codex-dominion-${{ needs.setup.outputs.commit_sha }}.tar.gz \
+            --artifact-id ${{ needs.build.outputs.artifact_id }} \
+            --ports 4000:4001
+
+      - name: Health check validation
+        run: |
+          sleep 30  # Wait for services to start
+          curl -f http://localhost:4000/health || exit 1
+          curl -f http://localhost:4001/health || exit 1
+
+      - name: Smoke tests
+        run: npm run test:smoke -- --baseUrl http://localhost:4000
+
+      - name: Canary traffic routing (5% initial)
+        run: |
+          ./ops/canary.sh \
+            --traffic 5 \
+            --duration 300 \
+            --monitor-interval 30 \
+            --rollback-threshold 1.0
+
+      - name: Canary metrics collection
+        run: |
+          ./ops/canary-metrics.sh \
+            --duration 300 \
+            --output canary-metrics.json
+
+      - name: Rollout risk synthesis
+        id: risk_synthesis
+        run: |
+          RISK_SCORE=$(./ops/risk-report.sh \
+            --metrics canary-metrics.json \
+            --risk-tier ${{ needs.setup.outputs.risk_tier }})
+
+          echo "score=$RISK_SCORE" >> $GITHUB_OUTPUT
+          echo "Rollout Risk Score: $RISK_SCORE"
+
+      - name: Upload canary metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: canary-metrics
+          path: canary-metrics.json
+          retention-days: 30
+
+  gate_release:
+    name: Release Gate & Promotion
+    runs-on: ubuntu-latest
+    needs: [setup, build, sandbox]
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: production
+      url: https://codexdominion.app
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download sealed artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: codex-dominion-sealed
+
+      - name: Download canary metrics
+        uses: actions/download-artifact@v4
+        with:
+          name: canary-metrics
+
+      - name: Sovereign sign-off gate
+        id: signoff
+        run: |
+          APPROVAL_STATUS=$(./ops/signoff-gate.sh \
+            --risk-tier ${{ needs.setup.outputs.risk_tier }} \
+            --artifact-id ${{ needs.build.outputs.artifact_id }} \
+            --metrics canary-metrics.json \
+            --ledger ${{ env.ARTIFACT_LEDGER_PATH }})
+
+          echo "status=$APPROVAL_STATUS" >> $GITHUB_OUTPUT
+
+          if [ "$APPROVAL_STATUS" != "APPROVED" ]; then
+            echo "::error::Sign-off gate failed: $APPROVAL_STATUS"
+            exit 1
+          fi
+
+      - name: Verify artifact integrity
+        run: |
+          EXPECTED_HASH=${{ needs.build.outputs.artifact_hash }}
+          ACTUAL_HASH=$(sha256sum codex-dominion-${{ needs.setup.outputs.commit_sha }}.tar.gz | awk '{print $1}')
+
+          if [ "$EXPECTED_HASH" != "$ACTUAL_HASH" ]; then
+            echo "::error::Artifact hash mismatch! Possible tampering detected."
+            exit 1
+          fi
+
+      - name: Promote staging → production
+        if: success() && steps.signoff.outputs.status == 'APPROVED'
+        run: |
+          ./ops/promote.sh \
+            --artifact codex-dominion-${{ needs.setup.outputs.commit_sha }}.tar.gz \
+            --artifact-id ${{ needs.build.outputs.artifact_id }} \
+            --risk-tier ${{ needs.setup.outputs.risk_tier }} \
+            --strategy gradual \
+            --traffic-steps 5,25,50,100 \
+            --step-duration 600
+
+      - name: Production health check
+        run: |
+          sleep 60  # Wait for production deployment
+          curl -f https://codexdominion.app/health || exit 1
+          curl -f https://api.codexdominion.app/health || exit 1
+
+      - name: Production smoke tests
+        run: npm run test:smoke -- --baseUrl https://codexdominion.app
+
+      - name: Record production deployment
+        run: |
+          ./ops/deployment-record.sh \
+            --artifact-id ${{ needs.build.outputs.artifact_id }} \
+            --environment production \
+            --timestamp $(date -u +"%Y-%m-%dT%H:%M:%SZ") \
+            --ledger ${{ env.ARTIFACT_LEDGER_PATH }}
+
+      - name: Auto-rollback on error budget breach
+        if: failure()
+        run: |
+          echo "::error::Deployment failed. Initiating automatic rollback."
+          ./ops/rollback.sh \
+            --artifact-id ${{ needs.build.outputs.artifact_id }} \
+            --reason "Error budget breach during deployment" \
+            --ledger ${{ env.ARTIFACT_LEDGER_PATH }}
+
+      - name: Notify deployment status
+        if: always()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: |
+            Deployment ${{ job.status }}
+            Risk Tier: ${{ needs.setup.outputs.risk_tier }}
+            Artifact: ${{ needs.build.outputs.artifact_id }}
+            Commit: ${{ needs.setup.outputs.commit_sha }}
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+
+  cleanup:
+    name: Cleanup Ephemeral Resources
+    runs-on: ubuntu-latest
+    needs: [sandbox, gate_release]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cleanup sandbox environment
+        run: ./ops/sandbox-cleanup.sh
+
+      - name: Archive test results
+        run: |
+          tar -czf test-results-${{ needs.setup.outputs.commit_sha }}.tar.gz \
+            coverage/ \
+            test-results/ \
+            canary-metrics.json
+
+      - name: Upload test archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results-${{ needs.setup.outputs.commit_sha }}.tar.gz
+          retention-days: 30

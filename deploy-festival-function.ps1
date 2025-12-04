@@ -48,7 +48,7 @@ gcloud functions deploy "$FUNCTION_NAME-http" `
   --env-vars-file .env.yaml `
   --max-instances 10
 
-# Deploy the Cloud Function for Pub/Sub triggers  
+# Deploy the Cloud Function for Pub/Sub triggers
 Write-Host "🚀 Deploying Festival Transmission Function (Pub/Sub)..." -ForegroundColor Magenta
 gcloud functions deploy "$FUNCTION_NAME-pubsub" `
   --runtime python39 `

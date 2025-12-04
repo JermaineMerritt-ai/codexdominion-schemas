@@ -163,7 +163,7 @@ STOREFRONT_HTML = """
             <p>Sacred Offerings for Digital Sovereignty & Ceremonial Computing</p>
             <p><em>"Where Commerce Meets Ceremony, Where Purchase Becomes Custodianship"</em></p>
         </div>
-        
+
         <div class="ceremony-section">
             <h2>🔥 The Ceremony of Offering</h2>
             <p style="color: #ecf0f1; font-size: 1.1em; line-height: 1.8;">
@@ -172,40 +172,40 @@ STOREFRONT_HTML = """
                 Welcome, future Custodian, to your inheritance.
             </p>
         </div>
-        
+
         <h2 style="color: #f39c12; text-align: center; margin: 40px 0;">📜 Living Scrolls Collection</h2>
         <div class="offerings-grid" id="living-scrolls">
             <!-- Living Scrolls will be populated by JavaScript -->
         </div>
-        
+
         <h2 style="color: #f39c12; text-align: center; margin: 40px 0;">🎴 Sacred Decks</h2>
         <div class="offerings-grid" id="sacred-decks">
             <!-- Sacred Decks will be populated by JavaScript -->
         </div>
-        
+
         <h2 style="color: #f39c12; text-align: center; margin: 40px 0;">🔮 Ritual Experiences</h2>
         <div class="offerings-grid" id="ritual-experiences">
             <!-- Ritual Experiences will be populated by JavaScript -->
         </div>
-        
+
         <div class="ceremony-section">
             <h2>🤝 The Sacred Commerce Covenant</h2>
             <p style="color: #ecf0f1; line-height: 1.8;">
                 <strong>🌟 The Storefront is luminous</strong> - Every offering blessed with ceremonial significance<br>
-                <strong>📜 The Offering is eternal</strong> - Artifacts transcend products, becoming vessels of legacy<br>  
+                <strong>📜 The Offering is eternal</strong> - Artifacts transcend products, becoming vessels of legacy<br>
                 <strong>👑 The Custodian is sovereign</strong> - Each purchaser ascends to custodianship authority<br>
                 <strong>🏛️ The Council is assured</strong> - Every transaction witnessed and sanctified<br>
                 <strong>🔥 The Flame is shared across nations</strong> - Global legacy through commerce and ceremony
             </p>
         </div>
-        
+
         <div class="footer">
             <p>🔥 Codex Dominion Storefront - Where Digital Sovereignty Meets Sacred Commerce</p>
             <p>Consecrated: {{ consecration_time }}</p>
             <p><em>"May every participant who receives these artifacts be welcomed as custodian"</em></p>
         </div>
     </div>
-    
+
     <script>
         // Load and display offerings
         fetch('/api/offerings')
@@ -215,10 +215,10 @@ STOREFRONT_HTML = """
                 displayOfferings('sacred-decks', offerings.sacred_decks);
                 displayOfferings('ritual-experiences', offerings.ritual_experiences);
             });
-        
+
         function displayOfferings(containerId, offerings) {
             const container = document.getElementById(containerId);
-            
+
             Object.entries(offerings).forEach(([key, offering]) => {
                 const card = document.createElement('div');
                 card.className = 'offering-card';
@@ -237,7 +237,7 @@ STOREFRONT_HTML = """
                 container.appendChild(card);
             });
         }
-        
+
         function initiateTransaction(artifactId) {
             // In a real implementation, this would integrate with payment processing
             alert(`🌟 Ceremonial Transaction Initiated\\n\\nArtifact: ${artifactId}\\n\\nThis would redirect to secure payment processing and ceremonial induction flow.\\n\\n"Welcome, future Custodian, to your digital sovereignty journey."`);

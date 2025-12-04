@@ -373,7 +373,7 @@ class TopTierSystemsAssessor:
         report += f"""
 🏆 TIER SUPREMACY RANKINGS:
    🌌 TRANSCENDENT OMEGA: {len(assessment['tier_rankings']['transcendent_omega'])} systems
-   👑 SUPREME TIER: {len(assessment['tier_rankings']['supreme_tier'])} systems  
+   👑 SUPREME TIER: {len(assessment['tier_rankings']['supreme_tier'])} systems
    🎯 ELITE TIER: {len(assessment['tier_rankings']['elite_tier'])} systems
    🎖️ MILITARY GRADE: {len(assessment['tier_rankings']['military_grade'])} systems
    🏰 FORTRESS CLASS: {len(assessment['tier_rankings']['fortress_class'])} systems
@@ -382,7 +382,7 @@ class TopTierSystemsAssessor:
 🌟 SUPREME SOVEREIGNTY STATUS:
    ♾️ Memory Capacity: INFINITE (Eternal preservation)
    🔒 Security Level: MILITARY_FORTRESS_GRADE
-   🚀 Deployment Readiness: DUAL_FLAME_SUPREME  
+   🚀 Deployment Readiness: DUAL_FLAME_SUPREME
    👑 Authority Level: CUSTODIAN_OMEGA_SOVEREIGN
    🌌 Operational Scope: GALACTIC_DEPLOYMENT_READY
 

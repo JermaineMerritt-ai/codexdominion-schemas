@@ -47,7 +47,7 @@ st.markdown(
         margin-bottom: 2rem;
         box-shadow: 0 12px 40px rgba(255, 215, 0, 0.4);
     }
-    
+
     .council-seal {
         background: radial-gradient(circle, #667eea, #764ba2, #9a4993);
         color: white;
@@ -65,7 +65,7 @@ st.markdown(
         align-items: center;
         justify-content: center;
     }
-    
+
     .pending-contribution {
         background: linear-gradient(135deg, #ff6b6b, #ee5a52);
         color: white;
@@ -76,7 +76,7 @@ st.markdown(
         box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
         animation: pending-pulse 2s infinite;
     }
-    
+
     .affirmed-contribution {
         background: linear-gradient(135deg, #4facfe, #00f2fe);
         color: white;
@@ -86,7 +86,7 @@ st.markdown(
         border-left: 6px solid #00ff88;
         box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
     }
-    
+
     .silenced-contribution {
         background: linear-gradient(135deg, #a8edea, #fed6e3);
         color: #1a1a2e;
@@ -97,7 +97,7 @@ st.markdown(
         box-shadow: 0 8px 25px rgba(168, 237, 234, 0.3);
         opacity: 0.7;
     }
-    
+
     .council-metrics {
         background: rgba(102, 126, 234, 0.15);
         padding: 1.5rem;
@@ -106,19 +106,19 @@ st.markdown(
         text-align: center;
         box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
     }
-    
+
     .sacred-text {
         color: #ffd700;
         font-weight: bold;
         text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
     }
-    
+
     .council-text {
         color: #667eea;
         font-weight: bold;
         text-shadow: 0 0 15px rgba(102, 126, 234, 0.8);
     }
-    
+
     .action-button {
         background: linear-gradient(45deg, #667eea, #764ba2);
         color: white;
@@ -130,17 +130,17 @@ st.markdown(
         cursor: pointer;
         transition: all 0.3s ease;
     }
-    
+
     .action-button:hover {
         transform: translateY(-2px);
         box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
     }
-    
+
     @keyframes council-glow {
         0%, 100% { box-shadow: 0 0 30px rgba(102, 126, 234, 0.8); }
         50% { box-shadow: 0 0 45px rgba(102, 126, 234, 1.2); }
     }
-    
+
     @keyframes pending-pulse {
         0%, 100% { border-left-color: #ffd700; }
         50% { border-left-color: #ff6b6b; }

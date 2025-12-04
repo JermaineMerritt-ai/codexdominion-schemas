@@ -51,9 +51,9 @@ Set-Location $WorkingDirectory
 
 function Start-CodexService {
     param($ServiceConfig, $ServiceKey)
-    
+
     Write-Host "🟢 Starting $($ServiceConfig.DisplayName)..." -ForegroundColor Green
-    
+
     # Kill existing processes on this port
     $existingProcesses = Get-Process | Where-Object {
         $_.ProcessName -eq "python" -or $_.ProcessName -eq "node"
@@ -65,15 +65,15 @@ function Start-CodexService {
             }
         }
     }
-    
+
     $existingProcesses | ForEach-Object { Stop-Process -Id $_.Id -Force -ErrorAction SilentlyContinue }
-    
+
     # Start the service
     $process = Start-Process -FilePath $ServiceConfig.Command -ArgumentList $ServiceConfig.Args -WorkingDirectory $WorkingDirectory -WindowStyle Hidden -PassThru
     Write-Host "🚀 Started process ID: $($process.Id)" -ForegroundColor Green
-    
+
     Start-Sleep 3
-    
+
     # Verify startup
     try {
         if ($ServiceConfig.HealthCheck) {
@@ -91,48 +91,48 @@ function Start-CodexService {
 
 function Stop-CodexService {
     param($ServiceConfig, $ServiceKey)
-    
+
     Write-Host "🛑 Stopping $($ServiceConfig.DisplayName)..." -ForegroundColor Yellow
-    
+
     # Find processes using the port
     $portProcesses = netstat -ano | Select-String ":$($ServiceConfig.Port)" | ForEach-Object {
         if ($_ -match ":$($ServiceConfig.Port)\s+.*\s+(\d+)$") {
             Get-Process -Id $matches[1] -ErrorAction SilentlyContinue
         }
     }
-    
+
     $portProcesses | ForEach-Object {
         if ($null -ne $_) {
             Write-Host "🔥 Stopping process $($_.Id)..." -ForegroundColor Red
             Stop-Process -Id $_.Id -Force -ErrorAction SilentlyContinue
         }
     }
-    
+
     Write-Host "✅ $($ServiceConfig.DisplayName) stopped" -ForegroundColor Green
 }
 
 function Get-CodexServiceStatus {
     param($ServiceConfig, $ServiceKey)
-    
+
     Write-Host ""
     Write-Host "📊 $($ServiceConfig.DisplayName):" -ForegroundColor Cyan
-    
+
     # Check port status
     $portCheck = netstat -ano | Select-String ":$($ServiceConfig.Port)"
-    
+
     if ($portCheck) {
         # Extract process ID
         $portCheck | ForEach-Object {
             if ($_ -match ":$($ServiceConfig.Port)\s+.*LISTENING\s+(\d+)") {
                 $processId = $matches[1]
                 $process = Get-Process -Id $processId -ErrorAction SilentlyContinue
-                
+
                 if ($process) {
                     Write-Host "   Status: ✅ RUNNING" -ForegroundColor Green
                     Write-Host "   Process ID: $processId" -ForegroundColor White
                     Write-Host "   Port: $($ServiceConfig.Port)" -ForegroundColor White
                     Write-Host "   Memory: $([math]::Round($process.WorkingSet64/1MB, 2)) MB" -ForegroundColor White
-                    
+
                     # Health check
                     if ($ServiceConfig.HealthCheck) {
                         try {
@@ -171,7 +171,7 @@ switch ($Action.ToLower()) {
             Write-Host "Available services: $($Services.Keys -join ', ')" -ForegroundColor Gray
         }
     }
-    
+
     "stop" {
         if ($Service -eq "all") {
             $Services.GetEnumerator() | ForEach-Object {
@@ -183,17 +183,17 @@ switch ($Action.ToLower()) {
             Write-Host "❌ Unknown service: $Service" -ForegroundColor Red
         }
     }
-    
+
     "restart" {
         Write-Host "🔄 Restarting services..." -ForegroundColor Yellow
         & $MyInvocation.MyCommand.Path -Action "stop" -Service $Service
         Start-Sleep 2
         & $MyInvocation.MyCommand.Path -Action "start" -Service $Service
     }
-    
+
     "status" {
         Write-Host "📋 Codex Dominion Service Status:" -ForegroundColor Cyan
-        
+
         if ($Service -eq "all") {
             $Services.GetEnumerator() | ForEach-Object {
                 Get-CodexServiceStatus $_.Value $_.Key
@@ -201,7 +201,7 @@ switch ($Action.ToLower()) {
         } elseif ($Services.ContainsKey($Service)) {
             Get-CodexServiceStatus $Services[$Service] $Service
         }
-        
+
         Write-Host ""
         Write-Host "🌐 Access URLs:" -ForegroundColor Cyan
         Write-Host "   API Documentation: http://127.0.0.1:8000/docs" -ForegroundColor White
@@ -209,7 +209,7 @@ switch ($Action.ToLower()) {
         Write-Host "   Portfolio Dashboard: http://127.0.0.1:8503" -ForegroundColor White
         Write-Host "   Reverse Proxy: http://127.0.0.1:3000" -ForegroundColor White
     }
-    
+
     default {
         Write-Host "❓ USAGE:" -ForegroundColor Yellow
         Write-Host "  .\codex-service-manager.ps1 -Action start -Service [all|api|dashboard|portfolio|proxy]" -ForegroundColor White

@@ -281,18 +281,18 @@ class DigitalEmpireOrchestrator:
             </ul>
         </nav>
     </header>
-    
+
     <main>
         <section class="{page}-content">
             <h1>{page.title()}</h1>
             {self._generate_page_content(page)}
         </section>
     </main>
-    
+
     <footer>
         <p>&copy; 2025 Professional Website. All rights reserved.</p>
     </footer>
-    
+
     <script src="script.js"></script>
 </body>
 </html>"""
@@ -437,7 +437,7 @@ footer {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     main {
         padding: 1rem;
     }
@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Form submission handling
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
@@ -472,7 +472,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Thank you for your message! We will get back to you soon.');
         });
     });
-    
+
     // Mobile menu toggle (if needed)
     const header = document.querySelector('header');
     if (window.innerWidth <= 768) {

@@ -17,7 +17,7 @@ except ImportError:
         # Final fallback
         def brand_voice():
             return """🌟 CODEX DOMINION BRAND VOICE 🌟
-            
+
 Tone: Authoritative yet accessible, innovative and forward-thinking
 Style: Professional with a touch of technological mystique
 Approach: Solutions-focused, empowering, and comprehensive"""

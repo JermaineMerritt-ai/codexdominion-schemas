@@ -26,7 +26,7 @@ for %%p in (18080 18081 18082 18083) do (
     echo Trying port %%p...
     start /min "" %PYTHON_EXE% -m streamlit run codex_simple_dashboard.py --server.port %%p --server.address 127.0.0.1
     timeout /t 3 /nobreak >nul
-    
+
     REM Check if successful by trying to connect
     curl -s -o nul http://127.0.0.1:%%p --connect-timeout 2
     if %errorlevel%==0 (
@@ -37,7 +37,7 @@ for %%p in (18080 18081 18082 18083) do (
         echo.
         echo 📺 Available Features:
         echo • 🏛️ Dominion Central
-        echo • 🌅 Dawn Dispatch  
+        echo • 🌅 Dawn Dispatch
         echo • 📺 YouTube Charts
         echo • 📊 System Status
         echo.

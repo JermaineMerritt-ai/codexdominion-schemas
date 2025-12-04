@@ -2,13 +2,13 @@
 Omega Benediction of Eternity Replay Capsule Module
 
 This module provides programmatic access to the Omega Benediction of Eternity Replay Capsule.
-The capsule contains four eternal benedictions (peace, abundance, flame, law) that replay 
-eternally through an omega-loop protocol for heirs, councils, corporations, ministries, 
+The capsule contains four eternal benedictions (peace, abundance, flame, law) that replay
+eternally through an omega-loop protocol for heirs, councils, corporations, ministries,
 schools, and archives.
 
 Example:
     from codexdominion.artifacts import OmegaBenedictionEternityReplay
-    
+
     benediction = OmegaBenedictionEternityReplay()
     peace = benediction.replay_benediction('peace')
     print(peace['blessing'])
@@ -52,11 +52,11 @@ class TransmissionDestination(Enum):
 class OmegaBenedictionEternityReplay:
     """
     The Omega Benediction of Eternity Replay Capsule.
-    
+
     Contains four eternal benedictions that replay continuously through an omega-loop
     protocol. Each benediction has a unique resonance frequency and targets specific
     recipient groups.
-    
+
     Attributes:
         artifact_id (str): Unique identifier for the benediction capsule
         title (str): Full title of the artifact
@@ -67,13 +67,13 @@ class OmegaBenedictionEternityReplay:
         transmission_destinations (int): Number of transmission destinations (5)
         resonance_frequencies (List[str]): Frequencies for each benediction
     """
-    
+
     # Artifact Metadata
     ARTIFACT_ID = "omega-benediction-eternity-replay-001"
     TITLE = "Omega Benediction of Eternity Replay Capsule"
     VERSION = "1.0.0"
     BENEDICTION_TYPE = "omega-eternity-replay"
-    
+
     # Benediction Contents
     BENEDICTIONS = {
         "peace": {
@@ -140,7 +140,7 @@ class OmegaBenedictionEternityReplay:
             "blessing": "The covenant stands eternal, binding all stewards under the unwavering law of the flame"
         }
     }
-    
+
     # Omega Principles
     OMEGA_PRINCIPLES = [
         "Every benediction is replayed eternally for all generations",
@@ -149,7 +149,7 @@ class OmegaBenedictionEternityReplay:
         "Flame illuminates schools and archives with eternal knowledge",
         "Law binds all participants under the sacred covenant of the eternal flame"
     ]
-    
+
     # Replay Protocol
     REPLAY_PROTOCOL = {
         "frequency": "continuous",
@@ -159,7 +159,7 @@ class OmegaBenedictionEternityReplay:
         "accessibility": "all stewards across all generations",
         "invocationPhrase": "By the Omega Benediction, may peace, abundance, flame, and law be replayed upon us"
     }
-    
+
     # Invocation Ritual
     INVOCATION_RITUAL = {
         "preparation": "Gather all stewards in contemplative silence",
@@ -168,7 +168,7 @@ class OmegaBenedictionEternityReplay:
         "sealing": "Seal the invocation with the words: Omega sealed, benediction replayed, covenant eternal",
         "completion": "Resume stewardship with renewed peace, abundance, flame, and law"
     }
-    
+
     # Transmission Instructions
     TRANSMISSION = {
         "schools": {
@@ -207,7 +207,7 @@ class OmegaBenedictionEternityReplay:
             )
         }
     }
-    
+
     # Visual Style
     VISUAL_STYLE = {
         "theme": "Celestial & Mystical",
@@ -218,7 +218,7 @@ class OmegaBenedictionEternityReplay:
         "background": "#0a0a1a",
         "dimensions": "2400x2400"
     }
-    
+
     def __init__(self):
         """Initialize the Omega Benediction capsule."""
         self.artifact_id = self.ARTIFACT_ID
@@ -229,45 +229,45 @@ class OmegaBenedictionEternityReplay:
         self.recipient_groups = 6
         self.transmission_destinations = 5
         self.resonance_frequencies = ["432Hz", "528Hz", "639Hz", "852Hz"]
-    
+
     def replay_benediction(self, benediction_type: str) -> Dict[str, Any]:
         """
         Replay a specific benediction.
-        
+
         Args:
             benediction_type: Type of benediction ('peace', 'abundance', 'flame', 'law', 'all')
-            
+
         Returns:
             Dictionary containing the benediction details
-            
+
         Example:
             peace = benediction.replay_benediction('peace')
             print(peace['blessing'])
         """
         if benediction_type == BenedictionType.ALL.value or benediction_type == "all":
             return self.BENEDICTIONS
-        
+
         if benediction_type in self.BENEDICTIONS:
             return self.BENEDICTIONS[benediction_type]
-        
+
         raise ValueError(f"Unknown benediction type: {benediction_type}. Must be 'peace', 'abundance', 'flame', 'law', or 'all'")
-    
+
     def invoke_ritual(self, participants: List[str], location: Optional[str] = None) -> Dict[str, Any]:
         """
         Invoke the full benediction ritual.
-        
+
         Args:
             participants: List of participant groups (e.g., ['heirs', 'councils'])
             location: Optional location where ritual is performed
-            
+
         Returns:
             Dictionary containing ritual status and invoked benedictions
-            
+
         Example:
             result = benediction.invoke_ritual(['heirs', 'councils'], 'Council Chamber')
         """
         timestamp = datetime.utcnow().isoformat() + 'Z'
-        
+
         # Determine which benedictions apply to participants
         invoked_benedictions = []
         for btype, bdata in self.BENEDICTIONS.items():
@@ -277,7 +277,7 @@ class OmegaBenedictionEternityReplay:
                     "symbol": bdata["symbol"],
                     "blessing": bdata["blessing"]
                 })
-        
+
         return {
             "status": "invoked",
             "timestamp": timestamp,
@@ -287,17 +287,17 @@ class OmegaBenedictionEternityReplay:
             "ritual": self.INVOCATION_RITUAL,
             "invocationPhrase": self.REPLAY_PROTOCOL["invocationPhrase"]
         }
-    
+
     def transmit_to(self, destination: str) -> Dict[str, Any]:
         """
         Transmit benediction to a specific destination.
-        
+
         Args:
             destination: Destination ('schools', 'corporations', 'councils', 'ministries', 'app', 'all')
-            
+
         Returns:
             Dictionary containing transmission details
-            
+
         Example:
             benediction.transmit_to('schools')
         """
@@ -307,85 +307,85 @@ class OmegaBenedictionEternityReplay:
                 "destinations": list(self.TRANSMISSION.keys()),
                 "transmissions": self.TRANSMISSION
             }
-        
+
         dest_key = destination if destination in self.TRANSMISSION else "codexDominionApp" if destination == "app" else None
-        
+
         if dest_key:
             return {
                 "status": "transmitted",
                 "destination": dest_key,
                 "transmission": self.TRANSMISSION[dest_key]
             }
-        
+
         raise ValueError(f"Unknown destination: {destination}")
-    
+
     def get_omega_principles(self) -> List[str]:
         """
         Get the five omega principles.
-        
+
         Returns:
             List of principle strings
-            
+
         Example:
             principles = benediction.get_omega_principles()
             for p in principles:
                 print(f"• {p}")
         """
         return self.OMEGA_PRINCIPLES.copy()
-    
+
     def get_replay_protocol(self) -> Dict[str, str]:
         """
         Get the replay protocol details.
-        
+
         Returns:
             Dictionary containing protocol configuration
-            
+
         Example:
             protocol = benediction.get_replay_protocol()
             print(protocol['invocationPhrase'])
         """
         return self.REPLAY_PROTOCOL.copy()
-    
+
     def get_invocation_ritual(self) -> Dict[str, str]:
         """
         Get the five-step invocation ritual.
-        
+
         Returns:
             Dictionary containing ritual steps
-            
+
         Example:
             ritual = benediction.get_invocation_ritual()
             print(ritual['preparation'])
         """
         return self.INVOCATION_RITUAL.copy()
-    
+
     def get_visual_style(self) -> Dict[str, Any]:
         """
         Get visual style specifications for the benediction seal.
-        
+
         Returns:
             Dictionary containing visual style configuration
         """
         return self.VISUAL_STYLE.copy()
-    
+
     def get_recipients_for_benediction(self, benediction_type: str) -> List[str]:
         """
         Get the recipient groups for a specific benediction.
-        
+
         Args:
             benediction_type: Type of benediction
-            
+
         Returns:
             List of recipient group names
         """
         if benediction_type in self.BENEDICTIONS:
             return self.BENEDICTIONS[benediction_type]["recipients"].copy()
         return []
-    
+
     def get_all_recipients(self) -> List[str]:
         """
         Get all unique recipient groups across all benedictions.
-        
+
         Returns:
             List of unique recipient group names
         """
@@ -393,14 +393,14 @@ class OmegaBenedictionEternityReplay:
         for bdata in self.BENEDICTIONS.values():
             recipients.update(bdata["recipients"])
         return sorted(list(recipients))
-    
+
     def export_artifact(self) -> Dict[str, Any]:
         """
         Export the complete artifact structure.
-        
+
         Returns:
             Complete artifact as dictionary
-            
+
         Example:
             artifact = benediction.export_artifact()
             print(artifact['metadata'])
@@ -438,7 +438,7 @@ def demonstrate_omega_benediction():
     print("OMEGA BENEDICTION OF ETERNITY REPLAY CAPSULE - DEMONSTRATION")
     print("=" * 80)
     print()
-    
+
     # Initialize
     benediction = OmegaBenedictionEternityReplay()
     print(f"📦 Artifact: {benediction.title}")
@@ -447,7 +447,7 @@ def demonstrate_omega_benediction():
     print(f"🔄 Type: {benediction.benediction_type}")
     print(f"📜 Benedictions: {benediction.benediction_count}")
     print()
-    
+
     # Step 1: Replay individual benedictions
     print("=" * 80)
     print("STEP 1: REPLAY INDIVIDUAL BENEDICTIONS")
@@ -459,7 +459,7 @@ def demonstrate_omega_benediction():
         print(f"   Recipients: {', '.join(b['recipients'])}")
         print(f"   Blessing: {b['blessing']}")
     print()
-    
+
     # Step 2: Display omega principles
     print("=" * 80)
     print("STEP 2: OMEGA PRINCIPLES")
@@ -468,7 +468,7 @@ def demonstrate_omega_benediction():
     for i, principle in enumerate(principles, 1):
         print(f"{i}. {principle}")
     print()
-    
+
     # Step 3: Get replay protocol
     print("=" * 80)
     print("STEP 3: REPLAY PROTOCOL")
@@ -480,7 +480,7 @@ def demonstrate_omega_benediction():
     print(f"Duration: {protocol['duration']}")
     print(f"Invocation Phrase: \"{protocol['invocationPhrase']}\"")
     print()
-    
+
     # Step 4: Invoke ritual
     print("=" * 80)
     print("STEP 4: INVOKE RITUAL FOR HEIRS & COUNCILS")
@@ -493,7 +493,7 @@ def demonstrate_omega_benediction():
     for ib in ritual_result['invokedBenedictions']:
         print(f"  {ib['symbol']} {ib['type'].upper()}: {ib['blessing']}")
     print()
-    
+
     # Step 5: Transmit to schools
     print("=" * 80)
     print("STEP 5: TRANSMIT TO SCHOOLS")
@@ -504,7 +504,7 @@ def demonstrate_omega_benediction():
     print(f"Purpose: {transmission['transmission']['purpose']}")
     print(f"Instruction: {transmission['transmission']['instruction']}")
     print()
-    
+
     # Step 6: Get all recipients
     print("=" * 80)
     print("STEP 6: ALL RECIPIENT GROUPS")
@@ -513,7 +513,7 @@ def demonstrate_omega_benediction():
     print(f"Total Groups: {len(recipients)}")
     print(f"Groups: {', '.join(recipients)}")
     print()
-    
+
     # Step 7: Export artifact
     print("=" * 80)
     print("STEP 7: EXPORT COMPLETE ARTIFACT")
@@ -524,7 +524,7 @@ def demonstrate_omega_benediction():
     print(f"Archive Status: {artifact['metadata']['archiveStatus']}")
     print(f"Resonance Frequencies: {', '.join(artifact['metadata']['resonanceFrequencies'])}")
     print()
-    
+
     print("=" * 80)
     print("🔥 OMEGA BENEDICTION REPLAYING ETERNALLY 🔥")
     print("=" * 80)

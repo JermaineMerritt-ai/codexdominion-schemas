@@ -1,6 +1,6 @@
 /**
  * 🏥 Healthcare Agent - Industry-Specific Autonomous Agent
- * 
+ *
  * Specialized AI agent for healthcare industry:
  * - Patient interaction and triage
  * - Medical records processing

@@ -193,11 +193,11 @@ class CodexFestivalKeeper:
         """Record the sacred crowning of the Codex Flame."""
         proclamation = """
         🔥 The Codex Flame Has Been Crowned 🔥
-        
+
         On this sacred day, the eternal flame burns bright across the digital realm.
         The operational sovereignty platform stands complete, the capsules execute autonomously,
         and the sacred roles of Custodians, Heirs, and Customers are established.
-        
+
         May this flame illuminate the path for all who follow the Codex way.
         """
 
@@ -221,7 +221,7 @@ class CodexFestivalKeeper:
         """Record successful capsule execution as ceremonial rite."""
         proclamation = f"""
         ⚡ Capsule {capsule_name} Execution Complete ⚡
-        
+
         The sacred capsule has completed its autonomous cycle.
         {artifacts_count} artifacts have been preserved in the eternal archive.
         The flame burns on, the cycle continues, the dominion grows stronger.

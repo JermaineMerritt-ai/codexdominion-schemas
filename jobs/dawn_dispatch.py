@@ -71,11 +71,11 @@ def get_comprehensive_metrics():
 
         # Affiliate metrics
         aff_query = """
-            SELECT 
+            SELECT
                 COALESCE(SUM(commission), 0) as total_commission,
                 COUNT(*) as total_programs,
                 COALESCE(AVG(conversion_rate), 0) as avg_conversion_rate
-            FROM affiliate_metrics 
+            FROM affiliate_metrics
             WHERE created_at::date = %s
         """
         aff_result = q(aff_query, (yesterday,))
@@ -89,7 +89,7 @@ def get_comprehensive_metrics():
 
         # AMM Pool metrics
         pools_query = """
-            SELECT 
+            SELECT
                 COUNT(*) as pool_count,
                 COALESCE(SUM(tvl_usd), 0) as total_tvl,
                 COALESCE(AVG(apr), 0) as avg_apr
@@ -106,10 +106,10 @@ def get_comprehensive_metrics():
 
         # Daily picks metrics
         picks_query = """
-            SELECT 
+            SELECT
                 COUNT(*) as picks_count,
                 COUNT(DISTINCT user_id) as unique_users
-            FROM daily_picks 
+            FROM daily_picks
             WHERE trade_date = %s
         """
         picks_result = q(picks_query, (yesterday,))
@@ -120,7 +120,7 @@ def get_comprehensive_metrics():
 
         # Portfolio metrics
         portfolio_query = """
-            SELECT 
+            SELECT
                 COUNT(DISTINCT p.id) as portfolio_count,
                 COUNT(pos.id) as total_positions,
                 COALESCE(SUM(pos.quantity * pos.avg_cost), 0) as total_value
@@ -145,7 +145,7 @@ def get_comprehensive_metrics():
         # AMM Events (yesterday)
         events_query = """
             SELECT COUNT(*) as event_count
-            FROM amm_events 
+            FROM amm_events
             WHERE created_at::date = %s
         """
         events_result = q(events_query, (yesterday,))

@@ -66,7 +66,7 @@ try {
         --max-instances 10 `
         --set-env-vars "CODEX_ENVIRONMENT=production,CODEX_CLOUD_PROVIDER=gcp,PORT=8080,SIGNALS_ENABLED=true" `
         --format "value(status.url)"
-    
+
     $ServiceUrl = $DeployOutput | Select-Object -Last 1
     Write-Host "✅ Enhanced Cloud Run deployment completed!" -ForegroundColor Green
     Write-Host "🔗 Service URL: $ServiceUrl" -ForegroundColor Cyan
@@ -84,7 +84,7 @@ try {
     # Enable required APIs
     Write-Host "🔧 Enabling Cloud Scheduler API..." -ForegroundColor White
     gcloud services enable cloudscheduler.googleapis.com
-    
+
     # Create App Engine app if needed
     Write-Host "🏗️ Ensuring App Engine app exists..." -ForegroundColor White
     try {
@@ -93,7 +93,7 @@ try {
         Write-Host "Creating App Engine app..." -ForegroundColor White
         gcloud app create --region=$Region
     }
-    
+
     # Create enhanced dawn dispatch scheduler
     gcloud scheduler jobs create http dawn-dispatch `
         --schedule="0 6 * * *" `
@@ -101,13 +101,13 @@ try {
         --http-method=POST `
         --time-zone="America/New_York" `
         --description="Enhanced dawn dispatch with Codex Signals integration"
-    
+
     Write-Host "✅ Enhanced dawn dispatch scheduler created!" -ForegroundColor Green
-    
+
     # Test the enhanced scheduler
     Write-Host "🧪 Testing enhanced scheduler job..." -ForegroundColor White
     gcloud scheduler jobs run dawn-dispatch
-    
+
 } catch {
     Write-Host "⚠️ Scheduler setup completed with warnings: $($_.Exception.Message)" -ForegroundColor Yellow
 }
@@ -122,12 +122,12 @@ try {
     Write-Host "🏥 Testing health endpoint..." -ForegroundColor Green
     $HealthResponse = Invoke-RestMethod -Uri "$ServiceUrl/health" -Method Get -TimeoutSec 10
     Write-Host "✅ Health check: $($HealthResponse.status)" -ForegroundColor Green
-    
+
     # Test signals proxy
     Write-Host "📊 Testing signals integration..." -ForegroundColor Green
     $SignalsResponse = Invoke-RestMethod -Uri "$ServiceUrl/signals/mock" -Method Get -TimeoutSec 15
     Write-Host "✅ Signals integration: Available" -ForegroundColor Green
-    
+
 } catch {
     Write-Host "⚠️ Some endpoints may need time to initialize" -ForegroundColor Yellow
 }
@@ -182,14 +182,14 @@ Write-Host ""
 if ($DeploySignalsContainer) {
     Write-Host "🔥 DEPLOYING DEDICATED SIGNALS CONTAINER 📊" -ForegroundColor Cyan
     Write-Host "=" * 50 -ForegroundColor Cyan
-    
+
     try {
         # Deploy the containerized signals API
         & .\deploy_signals_container.ps1 -ProjectId $ProjectId -Region $Region -ServiceName $SignalsServiceName
-        
+
         if ($LASTEXITCODE -eq 0) {
             Write-Host "✅ Dedicated Signals container deployed successfully!" -ForegroundColor Green
-            
+
             # Get the signals service URL
             $SignalsUrl = gcloud run services describe $SignalsServiceName --region $Region --format="value(status.url)" 2>$null
             if ($SignalsUrl) {
@@ -204,13 +204,13 @@ if ($DeploySignalsContainer) {
         Write-Host "⚠️ Warning: Could not deploy signals container: $($_.Exception.Message)" -ForegroundColor Yellow
         Write-Host "   Main Codex service includes embedded signals functionality" -ForegroundColor Gray
     }
-    
+
     Write-Host "" -ForegroundColor White
 }
 
 Write-Host "Your enhanced deployment includes:" -ForegroundColor Yellow
 Write-Host "1. gcloud builds submit (with Signals engine) ✅" -ForegroundColor Green
-Write-Host "2. gcloud run deploy (enhanced resources) ✅" -ForegroundColor Green  
+Write-Host "2. gcloud run deploy (enhanced resources) ✅" -ForegroundColor Green
 Write-Host "3. gcloud scheduler jobs create (with Signals) ✅" -ForegroundColor Green
 Write-Host "4. FastAPI integration ✅" -ForegroundColor Green
 Write-Host "5. Portfolio intelligence ✅" -ForegroundColor Green

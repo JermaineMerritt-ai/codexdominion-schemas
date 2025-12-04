@@ -1,0 +1,54 @@
+[Unit]
+Description=Codex Dominion FastAPI Backend Service
+Documentation=https://codexdominion.app/docs
+After=network.target postgresql.service redis.service
+Wants=postgresql.service redis.service
+
+[Service]
+Type=notify
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/codexdominion.app
+
+# Environment Configuration
+EnvironmentFile=/var/www/codexdominion.app/.env.production
+Environment="PATH=/var/www/codexdominion.app/.venv/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="PYTHONPATH=/var/www/codexdominion.app/src:/var/www/codexdominion.app"
+
+# Start Command
+ExecStart=/var/www/codexdominion.app/.venv/bin/uvicorn src.backend.main:app \
+    --host 0.0.0.0 \
+    --port 8001 \
+    --workers 4 \
+    --log-config /var/www/codexdominion.app/deployment/logging.conf \
+    --timeout-keep-alive 30 \
+    --limit-concurrency 1000 \
+    --backlog 2048
+
+# Restart Policy
+Restart=always
+RestartSec=5
+StartLimitInterval=60
+StartLimitBurst=3
+
+# Security Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/codexdominion.app/logs /var/www/codexdominion.app/data
+
+# Resource Limits
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# Logging
+StandardOutput=append:/var/log/codexdominion/api.log
+StandardError=append:/var/log/codexdominion/api-error.log
+SyslogIdentifier=codexdominion-api
+
+# Health Check
+WatchdogSec=30
+
+[Install]
+WantedBy=multi-user.target

@@ -1,7 +1,7 @@
 // pages/capsules.tsx
 import React from 'react';
 import styles from './capsules.module.css';
-import { GetServerSideProps } from 'next';
+
 
 interface Capsule {
   slug: string;
@@ -173,94 +173,3 @@ export default function Capsules({ capsules = [], runs = [], error }: CapsulesPr
     </div>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  try {
-    // Try to fetch from the capsules API
-    const capsulesResponse = await fetch('http://localhost:8080/api/capsules', {
-      method: 'GET',
-      headers: { Accept: 'application/json' },
-    });
-
-    const runsResponse = await fetch('http://localhost:8080/api/capsules/runs', {
-      method: 'GET',
-      headers: { Accept: 'application/json' },
-    });
-
-    let capsules: Capsule[] = [];
-    let runs: CapsuleRun[] = [];
-
-    if (capsulesResponse.ok && runsResponse.ok) {
-      capsules = await capsulesResponse.json();
-      runs = await runsResponse.json();
-    } else {
-      // Fallback to mock data
-      capsules = [
-        {
-          slug: 'signals-daily',
-          title: 'Daily Signals Engine',
-          kind: 'engine',
-          mode: 'custodian',
-          version: '2.0.0',
-          status: 'active',
-          entrypoint: 'POST https://codex-signals.run.app/signals/daily',
-          schedule: '0 6 * * *',
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        },
-      ];
-      runs = [
-        {
-          id: 1,
-          capsule_slug: 'signals-daily',
-          actor: 'system-scheduler',
-          status: 'success',
-          started_at: new Date().toISOString(),
-          artifact_uri:
-            'https://storage.googleapis.com/codex-artifacts/signals-daily-20251108.tar.gz',
-        },
-      ];
-    }
-
-    return {
-      props: {
-        capsules,
-        runs,
-      },
-    };
-  } catch (error) {
-    console.error('Error fetching capsules data:', error);
-
-    // Return mock data on error
-    return {
-      props: {
-        capsules: [
-          {
-            slug: 'signals-daily',
-            title: 'Daily Signals Engine (Demo)',
-            kind: 'engine',
-            mode: 'custodian',
-            version: '2.0.0',
-            status: 'active',
-            entrypoint: 'POST https://codex-signals.run.app/signals/daily',
-            schedule: '0 6 * * *',
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-          },
-        ],
-        runs: [
-          {
-            id: 1,
-            capsule_slug: 'signals-daily',
-            actor: 'system-scheduler',
-            status: 'success',
-            started_at: new Date().toISOString(),
-            artifact_uri:
-              'https://storage.googleapis.com/codex-artifacts/signals-daily-demo.tar.gz',
-          },
-        ],
-        error: 'Could not connect to Capsules API - showing demo data',
-      },
-    };
-  }
-};

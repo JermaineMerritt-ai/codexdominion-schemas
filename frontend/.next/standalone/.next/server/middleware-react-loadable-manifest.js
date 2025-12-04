@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST='{"pages\\\\capsules-simple.tsx -> ../components/CapsulesSimple":{"id":4536,"files":["static/chunks/4536.2a6b3a7a6fc43e61.js"]}}';

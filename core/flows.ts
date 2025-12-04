@@ -1,6 +1,6 @@
 /**
  * 🔄 FLOWS - Data & Communication Flow Orchestration
- * 
+ *
  * Manages data flow patterns and communication between layers:
  * - Primary Flow: Council Seal → Sovereigns → Custodians → Agents → Customers
  * - Feedback Loop: Customers → Agents → Custodians → Sovereigns → Council Seal
@@ -397,7 +397,7 @@ export class FlowOrchestrator {
    */
   public clearCompletedFlows(): number {
     const before = this.flows.size;
-    
+
     Array.from(this.flows.entries()).forEach(([id, flow]) => {
       if (flow.status === 'COMPLETED') {
         this.flows.delete(id);

@@ -25,9 +25,9 @@ export default function ChatbotHome() {
       setMessages(prev => [...prev, { role: 'assistant', content: data.response }]);
     } catch (error) {
       console.error('Chat error:', error);
-      setMessages(prev => [...prev, { 
-        role: 'assistant', 
-        content: 'Sorry, I encountered an error. Please try again.' 
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: 'Sorry, I encountered an error. Please try again.'
       }]);
     } finally {
       setLoading(false);
@@ -39,14 +39,14 @@ export default function ChatbotHome() {
       <Head>
         <title>AI Chatbot - Codex Dominion</title>
       </Head>
-      <div style={{ 
-        display: 'flex', 
-        flexDirection: 'column', 
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
         height: '100vh',
         fontFamily: 'system-ui, -apple-system, sans-serif',
         backgroundColor: '#0f172a'
       }}>
-        <header style={{ 
+        <header style={{
           padding: '1rem 2rem',
           borderBottom: '1px solid #334155',
           backgroundColor: '#1e293b'
@@ -59,17 +59,17 @@ export default function ChatbotHome() {
           </p>
         </header>
 
-        <div style={{ 
-          flex: 1, 
-          overflowY: 'auto', 
+        <div style={{
+          flex: 1,
+          overflowY: 'auto',
           padding: '2rem',
           display: 'flex',
           flexDirection: 'column',
           gap: '1rem'
         }}>
           {messages.length === 0 && (
-            <div style={{ 
-              textAlign: 'center', 
+            <div style={{
+              textAlign: 'center',
               color: '#64748b',
               marginTop: '4rem'
             }}>
@@ -77,7 +77,7 @@ export default function ChatbotHome() {
               <p>Start a conversation to see the AI in action!</p>
             </div>
           )}
-          
+
           {messages.map((msg, idx) => (
             <div
               key={idx}
@@ -96,7 +96,7 @@ export default function ChatbotHome() {
           ))}
 
           {loading && (
-            <div style={{ 
+            <div style={{
               alignSelf: 'flex-start',
               color: '#64748b',
               fontStyle: 'italic'
@@ -106,7 +106,7 @@ export default function ChatbotHome() {
           )}
         </div>
 
-        <div style={{ 
+        <div style={{
           padding: '1rem 2rem',
           borderTop: '1px solid #334155',
           backgroundColor: '#1e293b',

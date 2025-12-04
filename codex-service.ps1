@@ -46,14 +46,14 @@ function Test-Administrator {
 # Service status check function
 function Get-ServiceStatus {
     Write-ColorText "`n📊 Checking Windows Service Status..." "Yellow"
-    
+
     $service = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
-    
+
     if ($service) {
         Write-ColorText "✅ Service found: $($service.DisplayName)" "Green"
         Write-ColorText "   Status: $($service.Status)" "Cyan"
         Write-ColorText "   Start Type: $((Get-WmiObject -Class Win32_Service -Filter "Name='$ServiceName'").StartMode)" "Cyan"
-        
+
         # Check if service is set to start automatically (equivalent to is-enabled)
         $startMode = (Get-WmiObject -Class Win32_Service -Filter "Name='$ServiceName'").StartMode
         if ($startMode -eq "Auto") {
@@ -65,7 +65,7 @@ function Get-ServiceStatus {
         Write-ColorText "❌ Service '$ServiceName' not found" "Red"
         Write-ColorText "💡 Use -Action install to create the service" "Yellow"
     }
-    
+
     # Test connectivity
     Write-ColorText "`n🌐 Testing Dashboard Connectivity..." "Yellow"
     try {
@@ -79,11 +79,11 @@ function Get-ServiceStatus {
         Write-ColorText "❌ Dashboard not responding on port $Port" "Red"
         Write-ColorText "   Error: $($_.Exception.Message)" "Red"
     }
-    
+
     # Show process information
     Write-ColorText "`n💻 Process Information..." "Yellow"
     $processes = Get-Process | Where-Object { $_.ProcessName -like "*python*" -and $_.CommandLine -like "*sovereignty_dashboard*" } -ErrorAction SilentlyContinue
-    
+
     if ($processes) {
         foreach ($proc in $processes) {
             Write-ColorText "   🔥 PID: $($proc.Id)" "Cyan"
@@ -98,7 +98,7 @@ function Get-ServiceStatus {
 # Start service function
 function Start-CodexService {
     Write-ColorText "`n🚀 Starting Codex Dashboard Service..." "Yellow"
-    
+
     $service = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
     if ($service) {
         if ($service.Status -eq "Running") {
@@ -107,9 +107,9 @@ function Start-CodexService {
             try {
                 Start-Service -Name $ServiceName
                 Write-ColorText "✅ Service started successfully" "Green"
-                
+
                 Start-Sleep -Seconds 5
-                
+
                 # Verify it's running
                 $updatedService = Get-Service -Name $ServiceName
                 if ($updatedService.Status -eq "Running") {
@@ -129,7 +129,7 @@ function Start-CodexService {
 # Stop service function
 function Stop-CodexService {
     Write-ColorText "`n🛑 Stopping Codex Dashboard Service..." "Yellow"
-    
+
     $service = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
     if ($service -and $service.Status -eq "Running") {
         try {
@@ -157,35 +157,35 @@ function Install-CodexService {
         Write-ColorText "💡 Run PowerShell as Administrator and try again" "Yellow"
         return
     }
-    
+
     Write-ColorText "`n📦 Installing Codex Dashboard Windows Service..." "Yellow"
-    
+
     # Check if service already exists
     $existingService = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
     if ($existingService) {
         Write-ColorText "⚠️ Service already exists. Uninstall first if you want to reinstall." "Yellow"
         return
     }
-    
+
     # Create service using sc.exe (Windows service control)
     $pythonExe = (Get-Command python -ErrorAction SilentlyContinue).Source
     if (-not $pythonExe) {
         Write-ColorText "❌ Python not found in PATH" "Red"
         return
     }
-    
+
     $serviceBinary = "`"$pythonExe`" `"$PythonScript`""
-    
+
     try {
         # Create the service
         $result = sc.exe create $ServiceName binPath= $serviceBinary DisplayName= $DisplayName start= auto
-        
+
         if ($LASTEXITCODE -eq 0) {
             Write-ColorText "✅ Windows service created successfully" "Green"
-            
+
             # Set service description
             sc.exe description $ServiceName "Codex Dashboard - Digital Sovereignty Platform for AI-powered analytics and ceremonial inscriptions"
-            
+
             Write-ColorText "✅ Service '$ServiceName' installed and configured for automatic startup" "Green"
         } else {
             Write-ColorText "❌ Failed to create service. Output: $result" "Red"
@@ -201,16 +201,16 @@ function Uninstall-CodexService {
         Write-ColorText "❌ Administrator privileges required to uninstall service" "Red"
         return
     }
-    
+
     Write-ColorText "`n🗑️ Uninstalling Codex Dashboard Service..." "Yellow"
-    
+
     # Stop service first if running
     $service = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
     if ($service -and $service.Status -eq "Running") {
         Write-ColorText "🛑 Stopping service first..." "Yellow"
         Stop-Service -Name $ServiceName -Force
     }
-    
+
     try {
         $result = sc.exe delete $ServiceName
         if ($LASTEXITCODE -eq 0) {
@@ -226,16 +226,16 @@ function Uninstall-CodexService {
 # Display commands equivalent to Linux systemctl
 function Show-EquivalentCommands {
     Write-Header "LINUX SYSTEMCTL EQUIVALENT COMMANDS"
-    
+
     Write-ColorText "`n🐧 Your Linux Commands (for IONOS server):" "Green"
     Write-ColorText "   systemctl status codex-dashboard.service" "White"
     Write-ColorText "   systemctl is-enabled codex-dashboard.service" "White"
-    
+
     Write-ColorText "`n🪟 Windows PowerShell Equivalents:" "Blue"
     Write-ColorText "   Get-Service -Name CodexDashboard" "White"
     Write-ColorText "   .\codex-service.ps1 -Action status" "White"
     Write-ColorText "   .\codex-service.ps1 -Action enabled" "White"
-    
+
     Write-ColorText "`n🔧 Additional Management Commands:" "Cyan"
     Write-ColorText "   Windows:" "Yellow"
     Write-ColorText "     .\codex-service.ps1 -Action start" "White"
@@ -243,7 +243,7 @@ function Show-EquivalentCommands {
     Write-ColorText "     .\codex-service.ps1 -Action restart" "White"
     Write-ColorText "     .\codex-service.ps1 -Action install" "White"
     Write-ColorText "     .\codex-service.ps1 -Action uninstall" "White"
-    
+
     Write-ColorText "`n   Linux:" "Yellow"
     Write-ColorText "     sudo systemctl start codex-dashboard.service" "White"
     Write-ColorText "     sudo systemctl stop codex-dashboard.service" "White"
@@ -254,7 +254,7 @@ function Show-EquivalentCommands {
 
 # Main execution based on action
 switch ($Action) {
-    "status" { 
+    "status" {
         Get-ServiceStatus
         Show-EquivalentCommands
     }

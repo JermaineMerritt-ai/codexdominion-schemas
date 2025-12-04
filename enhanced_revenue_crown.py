@@ -136,7 +136,7 @@ def apply_enhanced_styling():
     .main {
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     }
-    
+
     .revenue-header {
         text-align: center;
         padding: 30px;
@@ -147,7 +147,7 @@ def apply_enhanced_styling():
         box-shadow: 0 10px 40px rgba(255,215,0,0.3);
         backdrop-filter: blur(10px);
     }
-    
+
     .revenue-card {
         background: rgba(255,255,255,0.1);
         padding: 25px;
@@ -157,13 +157,13 @@ def apply_enhanced_styling():
         margin: 15px 0;
         transition: all 0.4s ease;
     }
-    
+
     .revenue-card:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 15px 40px rgba(255,215,0,0.4);
         border-color: #FFD700;
     }
-    
+
     .metric-display {
         text-align: center;
         padding: 20px;
@@ -172,7 +172,7 @@ def apply_enhanced_styling():
         border: 1px solid rgba(255,215,0,0.4);
         margin: 10px 0;
     }
-    
+
     .performance-indicator {
         position: fixed;
         top: 10px;
@@ -184,7 +184,7 @@ def apply_enhanced_styling():
         font-size: 12px;
         z-index: 1000;
     }
-    
+
     /* Enhanced buttons */
     .stButton > button {
         background: linear-gradient(45deg, #FFD700, #FFA500);
@@ -195,32 +195,32 @@ def apply_enhanced_styling():
         padding: 10px 20px;
         transition: all 0.3s ease;
     }
-    
+
     .stButton > button:hover {
         background: linear-gradient(45deg, #FFA500, #FFD700);
         transform: scale(1.05);
         box-shadow: 0 5px 20px rgba(255,215,0,0.5);
     }
-    
+
     /* Enhanced charts */
     .plotly-graph-div {
         border-radius: 15px;
         overflow: hidden;
         border: 1px solid rgba(255,215,0,0.3);
     }
-    
+
     /* Loading animation */
     .loading-crown {
         text-align: center;
         padding: 40px;
         animation: golden-pulse 2s ease-in-out infinite;
     }
-    
+
     @keyframes golden-pulse {
         0%, 100% { color: #FFD700; transform: scale(1); }
         50% { color: #FFA500; transform: scale(1.1); }
     }
-    
+
     /* Mobile responsiveness */
     @media (max-width: 768px) {
         .revenue-header {

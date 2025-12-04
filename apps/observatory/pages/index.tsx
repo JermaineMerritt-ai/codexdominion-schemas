@@ -34,13 +34,13 @@ export default function ObservatoryHome() {
       <Head>
         <title>Analytics Observatory - Codex Dominion</title>
       </Head>
-      <div style={{ 
+      <div style={{
         minHeight: '100vh',
         backgroundColor: '#0f172a',
         color: '#f8fafc',
         fontFamily: 'system-ui, -apple-system, sans-serif'
       }}>
-        <header style={{ 
+        <header style={{
           padding: '1rem 2rem',
           borderBottom: '1px solid #334155',
           backgroundColor: '#1e293b'
@@ -60,7 +60,7 @@ export default function ObservatoryHome() {
             </div>
           ) : (
             <>
-              <div style={{ 
+              <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
                 gap: '1.5rem',
@@ -82,7 +82,7 @@ export default function ObservatoryHome() {
                     <div style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
                       {metric.value.toFixed(2)}{metric.unit}
                     </div>
-                    <div style={{ 
+                    <div style={{
                       color: metric.change >= 0 ? '#10b981' : '#ef4444',
                       fontSize: '0.875rem'
                     }}>
@@ -120,7 +120,7 @@ function StatusItem({ label, status, health }: { label: string; status: string; 
       <span>{label}</span>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
         <span style={{ color: '#10b981', fontSize: '0.875rem' }}>{status}</span>
-        <div style={{ 
+        <div style={{
           width: '100px',
           height: '8px',
           backgroundColor: '#334155',

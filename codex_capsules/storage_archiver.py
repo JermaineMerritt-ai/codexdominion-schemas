@@ -221,19 +221,19 @@ def example_usage():
 
     # Example bulletin archiving
     sample_bulletin = """# Daily Sovereignty Bulletin
-    
+
 ## Operational Status: SOVEREIGN
-    
+
 ### Key Metrics
 - Capsules Active: 5
 - Daily Executions: 2
 - System Health: 100%
-    
+
 ### Recent Activities
 - Dawn dispatch completed successfully
 - Signals processing optimal
 - Treasury audit scheduled
-    
+
 *Generated on {datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC*
 """
 

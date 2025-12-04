@@ -25,21 +25,21 @@ def performance_monitor(operation_name=None):
             try:
                 result = func(*args, **kwargs)
                 execution_time = time.time() - start_time
-                
+
                 # Store performance data
                 if 'performance_data' not in st.session_state:
                     st.session_state.performance_data = {}
-                
+
                 op_name = operation_name or func.__name__
                 if op_name not in st.session_state.performance_data:
                     st.session_state.performance_data[op_name] = []
-                
+
                 st.session_state.performance_data[op_name].append(execution_time)
-                
+
                 # Keep only last 100 measurements
                 if len(st.session_state.performance_data[op_name]) > 100:
                     st.session_state.performance_data[op_name] = st.session_state.performance_data[op_name][-100:]
-                
+
                 return result
             except Exception as e:
                 st.error(f"Error in {operation_name or func.__name__}: {str(e)}")
@@ -71,12 +71,12 @@ def show_performance_dashboard():
     if 'performance_data' in st.session_state and st.session_state.performance_data:
         with st.expander("Performance Dashboard"):
             st.subheader("Operation Performance")
-            
+
             for operation, times in st.session_state.performance_data.items():
                 if times:
                     avg_time = sum(times) / len(times)
                     max_time = max(times)
-                    
+
                     col1, col2, col3 = st.columns(3)
                     with col1:
                         st.metric(f"{operation} Avg", f"{avg_time:.3f}s")
@@ -93,7 +93,7 @@ def apply_enhanced_styling():
     .main {
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     }
-    
+
     .enhanced-header {
         text-align: center;
         padding: 30px;
@@ -103,7 +103,7 @@ def apply_enhanced_styling():
         border-radius: 20px;
         box-shadow: 0 8px 32px rgba(138,43,226,0.3);
     }
-    
+
     .enhanced-card {
         background: rgba(255,255,255,0.1);
         padding: 25px;
@@ -113,13 +113,13 @@ def apply_enhanced_styling():
         margin: 15px 0;
         transition: all 0.4s ease;
     }
-    
+
     .enhanced-card:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 15px 40px rgba(138,43,226,0.4);
         border-color: #8B2BE2;
     }
-    
+
     .stButton > button {
         background: linear-gradient(45deg, #8B2BE2, #9370DB);
         border: none;
@@ -128,7 +128,7 @@ def apply_enhanced_styling():
         font-weight: bold;
         transition: all 0.3s ease;
     }
-    
+
     .stButton > button:hover {
         background: linear-gradient(45deg, #9370DB, #8B2BE2);
         transform: scale(1.05);
@@ -193,7 +193,7 @@ st.markdown("""
 
 class SecurityGovernanceSystem:
     """Security, identity, and governance intelligence"""
-    
+
     def __init__(self):
         self.elite_sources = {
             "cybersecurity": [
@@ -232,7 +232,7 @@ class SecurityGovernanceSystem:
                 "Council on Foreign Relations Cyber Policy"
             ]
         }
-        
+
         self.security_domains = [
             "Advanced Persistent Threat Detection",
             "Zero Trust Architecture",
@@ -245,7 +245,7 @@ class SecurityGovernanceSystem:
             "Biometric Security Systems",
             "Blockchain Governance"
         ]
-    
+
     async def analyze_security_governance(self, focus_area: str, threat_level: str) -> Dict:
         """Analyze security, identity, and governance systems"""
         return {
@@ -262,7 +262,7 @@ class SecurityGovernanceSystem:
                     },
                     {
                         "threat_type": "Ransomware-as-a-Service",
-                        "severity": "HIGH", 
+                        "severity": "HIGH",
                         "target": f"{focus_area} operations",
                         "mitigation": "Backup isolation and recovery automation",
                         "trend": "Double extortion becoming standard"
@@ -304,7 +304,7 @@ class SecurityGovernanceSystem:
 
 def main():
     """Main Security, Identity & Governance interface"""
-    
+
     # Header
     st.markdown("""
     <div class="security-header">
@@ -313,19 +313,19 @@ def main():
         <p>Cybersecurity • Digital Identity • Governance Tech • Sovereignty Frameworks</p>
     </div>
     """, unsafe_allow_html=True)
-    
+
     # Initialize system
     if 'security_gov_system' not in st.session_state:
         st.session_state.security_gov_system = SecurityGovernanceSystem()
-    
+
     col1, col2 = st.columns([2, 1])
-    
+
     with col1:
     # Apply enhanced styling
     apply_enhanced_styling()
 
         st.header("🔐 Security & Governance Analysis")
-        
+
         col_a, col_b = st.columns(2)
         with col_a:
             focus_area = st.selectbox(
@@ -333,35 +333,35 @@ def main():
                 ["Critical Infrastructure", "Financial Systems", "Healthcare Networks", "Government Systems",
                  "Energy Grid", "Transportation", "Communication Networks", "Space Systems"]
             )
-        
+
         with col_b:
             threat_level = st.selectbox(
                 "⚠️ Threat Assessment Level:",
-                ["DEFCON 1 - Maximum", "DEFCON 2 - High", "DEFCON 3 - Elevated", 
+                ["DEFCON 1 - Maximum", "DEFCON 2 - High", "DEFCON 3 - Elevated",
                  "DEFCON 4 - Moderate", "DEFCON 5 - Low"]
             )
-        
+
         if st.button("🚀 Analyze Security & Governance"):
             with st.spinner(f"Analyzing {focus_area} security and governance..."):
                 analysis = asyncio.run(
                     st.session_state.security_gov_system.analyze_security_governance(focus_area, threat_level)
                 )
-                
+
                 st.subheader("⚠️ Threat Landscape Assessment")
                 for threat in analysis['security_analysis']['threat_landscape']:
                     st.markdown(f"""
                     <div class="governance-card">
-                        <strong>Threat:</strong> {threat['threat_type']} 
+                        <strong>Threat:</strong> {threat['threat_type']}
                         <span style="color: {'#e74c3c' if threat['severity'] == 'CRITICAL' else '#f39c12'};">[{threat['severity']}]</span><br>
                         <strong>Target:</strong> {threat['target']}<br>
                         <strong>Mitigation:</strong> {threat['mitigation']}<br>
                         <strong>Trend:</strong> {threat['trend']}
                     </div>
                     """, unsafe_allow_html=True)
-                
+
                 st.subheader("👤 Identity Governance Status")
                 identity = analysis['security_analysis']['identity_governance']
-                
+
                 col1_id, col2_id = st.columns(2)
                 with col1_id:
                     st.metric("Decentralized Identity", identity['decentralized_identity_adoption'])
@@ -369,10 +369,10 @@ def main():
                 with col2_id:
                     st.write(f"**Privacy Auth:** {identity['privacy_preserving_auth']}")
                     st.write(f"**Identity Wallets:** {identity['identity_wallet_deployment']}")
-                
+
                 st.subheader("🏛️ Digital Sovereignty Metrics")
                 sovereignty = analysis['sovereignty_metrics']
-                
+
                 col1_sov, col2_sov = st.columns(2)
                 with col1_sov:
                     st.metric("Digital Independence", sovereignty['digital_independence'])
@@ -380,16 +380,16 @@ def main():
                 with col2_sov:
                     st.metric("Technology Sovereignty", sovereignty['technology_sovereignty'])
                     st.write(f"**Regulatory:** {sovereignty['regulatory_autonomy']}")
-    
+
     with col2:
     # Apply enhanced styling
     apply_enhanced_styling()
 
         st.header("🛡️ Security Capabilities")
-        
+
         capabilities = [
             "🔍 APT Detection",
-            "🎯 Zero Trust Architecture", 
+            "🎯 Zero Trust Architecture",
             "⚛️ Quantum-Safe Crypto",
             "🆔 Decentralized Identity",
             "🤖 AI Security Operations",
@@ -399,7 +399,7 @@ def main():
             "👁️ Biometric Security",
             "⛓️ Blockchain Governance"
         ]
-        
+
         for capability in capabilities:
             st.markdown(f"""
             <div class="security-metric">

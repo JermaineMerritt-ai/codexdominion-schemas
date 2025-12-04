@@ -317,18 +317,18 @@ class IonosDominionManager:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{page.title()} - {domain}</title>
     <meta name="description" content="Professional {page} page hosted on IONOS">
-    
+
     <!-- IONOS Optimization -->
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://{domain}/{page if page != 'index' else ''}">
-    
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    
+
     <!-- Styles -->
     <link rel="stylesheet" href="/assets/css/style.css">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
@@ -385,7 +385,7 @@ class IonosDominionManager:
 
     <!-- JavaScript -->
     <script src="/assets/js/main.js"></script>
-    
+
     <!-- IONOS Analytics (placeholder) -->
     <script>
         // Add IONOS-compatible analytics tracking
@@ -410,7 +410,7 @@ class IonosDominionManager:
                     </div>
                 </div>
             </section>
-            
+
             <section class="features">
                 <div class="container">
                     <h2>Why Choose Us</h2>
@@ -438,7 +438,7 @@ class IonosDominionManager:
                     <p>Learn more about our professional services</p>
                 </div>
             </section>
-            
+
             <section class="about-content">
                 <div class="container">
                     <div class="about-grid">
@@ -460,7 +460,7 @@ class IonosDominionManager:
                     <p>Professional solutions for your business needs</p>
                 </div>
             </section>
-            
+
             <section class="services-grid">
                 <div class="container">
                     <div class="grid">
@@ -487,7 +487,7 @@ class IonosDominionManager:
                     <p>Get in touch for professional services</p>
                 </div>
             </section>
-            
+
             <section class="contact-content">
                 <div class="container">
                     <div class="contact-grid">
@@ -939,17 +939,17 @@ html {
 // IONOS Optimized JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     console.log('IONOS hosted website loaded successfully');
-    
+
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    
+
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-        
+
         // Close menu when clicking nav links
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
@@ -958,7 +958,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -972,34 +972,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Contact form handling
     const contactForm = document.querySelector('form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             // Basic form validation
             const name = this.querySelector('#name')?.value;
             const email = this.querySelector('#email')?.value;
             const message = this.querySelector('#message')?.value;
-            
+
             if (!name || !email || !message) {
                 alert('Please fill in all fields');
                 return;
             }
-            
+
             if (!isValidEmail(email)) {
                 alert('Please enter a valid email address');
                 return;
             }
-            
+
             // Show success message (in production, submit to server)
             alert('Thank you for your message! We will get back to you soon.');
             this.reset();
         });
     }
-    
+
     // Lazy loading for images
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -1014,12 +1014,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-        
+
         document.querySelectorAll('img[data-src]').forEach(img => {
             imageObserver.observe(img);
         });
     }
-    
+
     // Performance monitoring for IONOS
     if ('performance' in window) {
         window.addEventListener('load', function() {
@@ -1029,28 +1029,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     domReady: Math.round(performance.timing.domContentLoadedEventEnd - performance.timing.navigationStart),
                     firstPaint: 0
                 };
-                
+
                 if ('getEntriesByType' in performance) {
                     const paintEntries = performance.getEntriesByType('paint');
                     if (paintEntries.length > 0) {
                         perfData.firstPaint = Math.round(paintEntries[0].startTime);
                     }
                 }
-                
+
                 console.log('IONOS Performance Metrics:', perfData);
-                
+
                 // Send to analytics (placeholder)
                 trackPerformance(perfData);
             }, 0);
         });
     }
-    
+
     // Scroll animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -1059,7 +1059,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, observerOptions);
-    
+
     // Observe elements for animation
     document.querySelectorAll('.feature-item, .service-card').forEach(el => {
         observer.observe(el);
@@ -1092,7 +1092,7 @@ function preloadCriticalResources() {
         '/assets/css/style.css',
         '/assets/js/main.js'
     ];
-    
+
     criticalResources.forEach(resource => {
         const link = document.createElement('link');
         link.rel = 'preload';

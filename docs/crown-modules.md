@@ -392,10 +392,10 @@ result = infinity_sigil.integrate_councils(
 ```json
 {
   "sigil_id": "omega-sigil-001",
-  "crowns": ["EternalLedger", "EfficiencyCrown", "KnowledgeCrown", 
+  "crowns": ["EternalLedger", "EfficiencyCrown", "KnowledgeCrown",
              "CommerceCrown", "CompanionCrown", "AuditConsentRing"],
-  "councils": ["Law & Justice", "Healthcare & Wellness", 
-               "Education & Knowledge", "AI & Technology", 
+  "councils": ["Law & Justice", "Healthcare & Wellness",
+               "Education & Knowledge", "AI & Technology",
                "Family & Community"],
   "capabilities": [
     "immutable_storage", "automation", "knowledge_distribution",
@@ -453,7 +453,7 @@ contract AuditConsentRing {
         string artifactId;
         bytes32 dataHash;
     }
-    
+
     // Log action on-chain
     function logAction(
         string memory action,
@@ -462,12 +462,12 @@ contract AuditConsentRing {
     ) public {
         // Implementation...
     }
-    
+
     // Grant consent
     function grantConsent(string memory purpose) public {
         // Implementation...
     }
-    
+
     // Revoke access
     function revokeAccess(address user, string memory resource) public {
         // Implementation...
@@ -632,7 +632,7 @@ infinity_sigil = InfinitySigil()
 
 # Create unified sigil
 sigil = infinity_sigil.create_unified_sigil(
-    crowns=["eternal_ledger", "efficiency", "knowledge", 
+    crowns=["eternal_ledger", "efficiency", "knowledge",
             "commerce", "companion", "audit"],
     councils=["Law", "Healthcare", "Education", "AI", "Family"]
 )
@@ -829,6 +829,6 @@ All crown modules and artifacts are released under sovereign license with revoca
 
 ---
 
-**Last Updated**: December 2, 2025  
-**Version**: 1.0.0  
+**Last Updated**: December 2, 2025
+**Version**: 1.0.0
 **Generation**: 4

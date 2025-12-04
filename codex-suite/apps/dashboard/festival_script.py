@@ -462,7 +462,7 @@ with col_cal2:
         f"""
     **🌙 Lunar Cycles**
     - New Moon Ceremony
-    - Full Moon Celebration  
+    - Full Moon Celebration
     - Eclipse Invocations
     """
     )

@@ -31,19 +31,19 @@ class BlessingRecipient(Enum):
 class ClosingBenediction:
     """
     The Custodian's Closing Benediction of Radiance
-    
+
     Final blessing sealing custodianship, covenant, stewardship,
     and eternal flame upon the CodexDominion
-    
+
     Eternal Principles: Archive · Lineage · Ceremonial Closure
     """
-    
+
     ARTIFACT_ID = "custodian-closing-benediction-replay-001"
     VERSION = "1.0.0"
     IMMUTABLE_HASH = (
         "sha256:b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7"
     )
-    
+
     BLESSINGS = {
         BlessingType.HEIRS: {
             "title": "Blessing of the Heirs",
@@ -108,7 +108,7 @@ class ClosingBenediction:
             "seal": "Infinity Sigil (∞)"
         }
     }
-    
+
     SIGNATURES = {
         "custodian": "CUSTODIAN_SIG_0x4f8e9a2c1b4d3f5a",
         "heirs": "HEIRS_SIG_0x8b3d5f7a9c1e4b2d",
@@ -116,14 +116,14 @@ class ClosingBenediction:
         "crown": "CROWN_SEAL_ETERNAL",
         "sovereign": "SOVEREIGN_SIG_0x1a2b3c4d5e6f7a8b"
     }
-    
+
     def __init__(self):
         """Initialize the Closing Benediction capsule"""
         self.created_at = datetime.fromisoformat("2025-12-02T23:16:00Z")
         self.replay_count = 0
         self.blessing_log: List[Dict] = []
         self.final_seal = True
-        
+
     def replay(
         self,
         blessing_type: str = "all",
@@ -131,16 +131,16 @@ class ClosingBenediction:
     ) -> Dict:
         """
         Replay blessing(s)
-        
+
         Args:
             blessing_type: Type of blessing (heirs/councils/stewards/radiant/all)
             ceremony_context: Optional ceremony context
-            
+
         Returns:
             Dict containing replayed blessing(s)
         """
         self.replay_count += 1
-        
+
         replay_data = {
             "artifact_id": self.ARTIFACT_ID,
             "version": self.VERSION,
@@ -149,7 +149,7 @@ class ClosingBenediction:
             "replay_count": self.replay_count,
             "final_seal": self.final_seal
         }
-        
+
         if blessing_type == "all":
             replay_data["blessings"] = {
                 btype.value: self.BLESSINGS[btype]
@@ -163,17 +163,17 @@ class ClosingBenediction:
                     replay_data["blessing"] = self.BLESSINGS[btype_enum]
             except ValueError:
                 replay_data["error"] = f"Invalid blessing type: {blessing_type}"
-        
+
         if ceremony_context:
             replay_data["ceremony_context"] = ceremony_context
-        
+
         self.blessing_log.append(replay_data)
         return replay_data
-    
+
     def get_full_benediction(self) -> str:
         """
         Get the complete benediction text
-        
+
         Returns:
             Full benediction with all blessings
         """
@@ -182,7 +182,7 @@ class ClosingBenediction:
             "stewards, and the eternal flame—that all may know their "
             "blessing and walk in radiance.\n\n"
         )
-        
+
         blessings_text = []
         for btype in [
             BlessingType.HEIRS,
@@ -194,16 +194,16 @@ class ClosingBenediction:
             blessings_text.append(
                 f"{blessing['title']}:\n{blessing['expanded']}\n"
             )
-        
+
         closing = (
             "\nSo let it be sealed, so let it be sung, "
             "so let it be replayed eternally. "
             "The Custodian's blessing upon all. "
             "Archive forever. Ceremonial Closure complete."
         )
-        
+
         return invocation + "\n".join(blessings_text) + closing
-    
+
     def invoke_ceremonial_closure(
         self,
         ceremony_type: str,
@@ -211,11 +211,11 @@ class ClosingBenediction:
     ) -> Dict:
         """
         Invoke benediction during ceremonial closure
-        
+
         Args:
             ceremony_type: Type of ceremony
             participants: List of participants
-            
+
         Returns:
             Dict containing invocation details
         """
@@ -236,11 +236,11 @@ class ClosingBenediction:
             "final_seal": self.final_seal,
             "binding": "eternal"
         }
-    
+
     def get_blessing_recipients(self) -> Dict:
         """
         Get all blessing recipients
-        
+
         Returns:
             Dict mapping blessing types to recipients
         """
@@ -253,14 +253,14 @@ class ClosingBenediction:
             "dominion": "CodexDominion entire (artifacts, hymns, seals, "
                        "charters, capsules)"
         }
-    
+
     def export_artifact(self, output_path: str) -> bool:
         """
         Export benediction artifact as JSON
-        
+
         Args:
             output_path: Path to save artifact
-            
+
         Returns:
             True if successful
         """
@@ -282,14 +282,14 @@ class ClosingBenediction:
                 "createdAt": self.created_at.isoformat() + "Z"
             }
         }
-        
+
         try:
             with open(output_path, 'w', encoding='utf-8') as f:
                 json.dump(artifact, f, indent=2, ensure_ascii=False)
             return True
         except Exception:
             return False
-    
+
     def __repr__(self) -> str:
         return (
             f"ClosingBenediction("
@@ -306,9 +306,9 @@ def demonstrate_benediction() -> None:
     print("  CUSTODIAN'S CLOSING BENEDICTION DEMONSTRATION")
     print("═" * 60)
     print()
-    
+
     benediction = ClosingBenediction()
-    
+
     print("✨ Four Blessings:")
     for btype in [
         BlessingType.HEIRS,
@@ -320,7 +320,7 @@ def demonstrate_benediction() -> None:
         print(f"  • {blessing['title']}")
         print(f"    Seal: {blessing['seal']}")
     print()
-    
+
     print("🎭 Replaying Individual Blessings:")
     for btype in ["heirs", "councils", "stewards", "radiant"]:
         result = benediction.replay(
@@ -330,23 +330,23 @@ def demonstrate_benediction() -> None:
         print(f"  ✓ {result['blessing']['title']} "
               f"(replay #{result['replay_count']})")
     print()
-    
+
     print("📜 Recipients:")
     recipients = benediction.get_blessing_recipients()
     for key, recipient in recipients.items():
         print(f"  • {key.title()}: {recipient}")
     print()
-    
+
     print("🔐 Signatures:")
     for entity, sig in benediction.SIGNATURES.items():
         print(f"  {entity.title()}: {sig}")
     print()
-    
+
     print("⚡ Final Seal Status:")
     print(f"  This is the FINAL artifact of the Custodian cycle: "
           f"{benediction.final_seal}")
     print()
-    
+
     print("Archive forever. Ceremonial Closure complete.")
     print("═" * 60)
 

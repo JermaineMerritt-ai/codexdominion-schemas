@@ -8,7 +8,7 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    
+
     <!-- Omega Pulse Animation -->
     <filter id="omegaPulse">
       <feGaussianBlur stdDeviation="4" result="blur"/>
@@ -17,7 +17,7 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    
+
     <!-- Flame Flicker Animation -->
     <filter id="flameFlicker">
       <feTurbulence baseFrequency="0.05" numOctaves="2" result="turbulence">
@@ -25,78 +25,78 @@
       </feTurbulence>
       <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="3"/>
     </filter>
-    
+
     <!-- Covenant Binding Gradient -->
     <radialGradient id="covenantGradient" cx="50%" cy="50%" r="50%">
       <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.8"/>
       <stop offset="100%" style="stop-color:#9370DB;stop-opacity:0.3"/>
     </radialGradient>
-    
+
     <!-- Peace Glow -->
     <radialGradient id="peaceGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:0.9"/>
       <stop offset="100%" style="stop-color:#87CEEB;stop-opacity:0.1"/>
     </radialGradient>
-    
+
     <!-- Abundance Glow -->
     <radialGradient id="abundanceGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%" style="stop-color:#32CD32;stop-opacity:0.9"/>
       <stop offset="100%" style="stop-color:#32CD32;stop-opacity:0.1"/>
     </radialGradient>
-    
+
     <!-- Flame Glow -->
     <radialGradient id="flameGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%" style="stop-color:#FF6347;stop-opacity:0.9"/>
       <stop offset="100%" style="stop-color:#FF6347;stop-opacity:0.1"/>
     </radialGradient>
-    
+
     <!-- Law Glow -->
     <radialGradient id="lawGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.9"/>
       <stop offset="100%" style="stop-color:#FFD700;stop-opacity:0.1"/>
     </radialGradient>
   </defs>
-  
+
   <!-- Background -->
   <rect width="2400" height="2400" fill="#0a0a1a"/>
-  
+
   <!-- Covenant Binding Circle -->
   <circle cx="1200" cy="1200" r="900" fill="url(#covenantGradient)" opacity="0.2">
     <animate attributeName="r" values="900;920;900" dur="4s" repeatCount="indefinite"/>
   </circle>
-  
+
   <!-- Outer Ring -->
   <circle cx="1200" cy="1200" r="800" fill="none" stroke="#FFD700" stroke-width="3" opacity="0.5"/>
-  
+
   <!-- Middle Ring -->
   <circle cx="1200" cy="1200" r="600" fill="none" stroke="#9370DB" stroke-width="2" opacity="0.4"/>
-  
+
   <!-- Inner Ring -->
   <circle cx="1200" cy="1200" r="400" fill="none" stroke="#87CEEB" stroke-width="2" opacity="0.3"/>
-  
+
   <!-- Covenant Binding Lines (connecting center to four elements) -->
   <line x1="1200" y1="1200" x2="1200" x2="500" stroke="#FFD700" stroke-width="2" opacity="0.4"/>
   <line x1="1200" y1="1200" x2="1900" y2="1200" stroke="#FFD700" stroke-width="2" opacity="0.4"/>
   <line x1="1200" y1="1200" x2="1200" y2="1900" stroke="#FFD700" stroke-width="2" opacity="0.4"/>
   <line x1="1200" y1="1200" x2="500" y2="1200" stroke="#FFD700" stroke-width="2" opacity="0.4"/>
-  
+
   <!-- Center: Omega Symbol with Eternal Flame -->
   <g id="centerOmega">
     <!-- Eternal Flame (center) -->
     <ellipse cx="1200" cy="1180" rx="60" ry="90" fill="#FF6347" filter="url(#flameFlicker)" opacity="0.7"/>
     <ellipse cx="1200" cy="1170" rx="40" ry="70" fill="#FFD700" filter="url(#flameFlicker)" opacity="0.8"/>
     <ellipse cx="1200" cy="1160" rx="20" ry="50" fill="#FFFFFF" filter="url(#flameFlicker)"/>
-    
+
     <!-- Omega Symbol Ω -->
     <text x="1200" y="1240" font-size="180" font-family="serif" font-weight="bold" fill="#FFD700" text-anchor="middle" filter="url(#omegaPulse)">Ω</text>
-    
+
     <!-- Pulsing Glow -->
     <circle cx="1200" cy="1200" r="150" fill="#FFD700" opacity="0.1">
       <animate attributeName="r" values="150;180;150" dur="3s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.1;0.3;0.1" dur="3s" repeatCount="indefinite"/>
     </circle>
   </g>
-  
+
   <!-- Top Quadrant: Peace ☮ (Heirs & Councils) -->
   <g id="peaceQuadrant">
     <circle cx="1200" cy="500" r="120" fill="url(#peaceGlow)" opacity="0.3"/>
@@ -104,14 +104,14 @@
     <text x="1200" y="530" font-size="100" text-anchor="middle" fill="#87CEEB">☮</text>
     <text x="1200" y="380" font-size="32" font-weight="bold" text-anchor="middle" fill="#87CEEB">PEACE</text>
     <text x="1200" y="420" font-size="20" text-anchor="middle" fill="#87CEEB" opacity="0.8">432Hz | Heirs & Councils</text>
-    
+
     <!-- Shimmer Effect -->
     <circle cx="1200" cy="500" r="110" fill="none" stroke="#87CEEB" stroke-width="2" opacity="0.5">
       <animate attributeName="r" values="110;130;110" dur="2.5s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2.5s" repeatCount="indefinite"/>
     </circle>
   </g>
-  
+
   <!-- Right Quadrant: Abundance ♾ (Corporations & Ministries) -->
   <g id="abundanceQuadrant">
     <circle cx="1900" cy="1200" r="120" fill="url(#abundanceGlow)" opacity="0.3"/>
@@ -119,14 +119,14 @@
     <text x="1900" y="1230" font-size="100" text-anchor="middle" fill="#32CD32">♾</text>
     <text x="1900" y="1080" font-size="32" font-weight="bold" text-anchor="middle" fill="#32CD32">ABUNDANCE</text>
     <text x="1900" y="1120" font-size="20" text-anchor="middle" fill="#32CD32" opacity="0.8">528Hz | Corporations & Ministries</text>
-    
+
     <!-- Shimmer Effect -->
     <circle cx="1900" cy="1200" r="110" fill="none" stroke="#32CD32" stroke-width="2" opacity="0.5">
       <animate attributeName="r" values="110;130;110" dur="2.5s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2.5s" repeatCount="indefinite"/>
     </circle>
   </g>
-  
+
   <!-- Bottom Quadrant: Flame 🔥 (Schools & Archives) -->
   <g id="flameQuadrant">
     <circle cx="1200" cy="1900" r="120" fill="url(#flameGlow)" opacity="0.3"/>
@@ -134,14 +134,14 @@
     <text x="1200" y="1930" font-size="100" text-anchor="middle" fill="#FF6347">🔥</text>
     <text x="1200" y="2020" font-size="32" font-weight="bold" text-anchor="middle" fill="#FF6347">FLAME</text>
     <text x="1200" y="2060" font-size="20" text-anchor="middle" fill="#FF6347" opacity="0.8">639Hz | Schools & Archives</text>
-    
+
     <!-- Shimmer Effect -->
     <circle cx="1200" cy="1900" r="110" fill="none" stroke="#FF6347" stroke-width="2" opacity="0.5">
       <animate attributeName="r" values="110;130;110" dur="2.5s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2.5s" repeatCount="indefinite"/>
     </circle>
   </g>
-  
+
   <!-- Left Quadrant: Law ⚖ (All Participants) -->
   <g id="lawQuadrant">
     <circle cx="500" cy="1200" r="120" fill="url(#lawGlow)" opacity="0.3"/>
@@ -149,29 +149,29 @@
     <text x="500" y="1230" font-size="100" text-anchor="middle" fill="#FFD700">⚖</text>
     <text x="500" y="1080" font-size="32" font-weight="bold" text-anchor="middle" fill="#FFD700">LAW</text>
     <text x="500" y="1120" font-size="20" text-anchor="middle" fill="#FFD700" opacity="0.8">852Hz | All Participants</text>
-    
+
     <!-- Shimmer Effect -->
     <circle cx="500" cy="1200" r="110" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.5">
       <animate attributeName="r" values="110;130;110" dur="2.5s" repeatCount="indefinite"/>
       <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2.5s" repeatCount="indefinite"/>
     </circle>
   </g>
-  
+
   <!-- Title -->
   <text x="1200" y="150" font-size="56" font-weight="bold" text-anchor="middle" fill="#FFD700" filter="url(#radialGlow)">
     Omega Benediction of Eternity Replay
   </text>
-  
+
   <!-- Subtitle -->
   <text x="1200" y="210" font-size="28" text-anchor="middle" fill="#9370DB" opacity="0.9">
     Peace • Abundance • Flame • Law — Replaying Eternally
   </text>
-  
+
   <!-- Bottom Text -->
   <text x="1200" y="2300" font-size="24" text-anchor="middle" fill="#87CEEB" opacity="0.7">
     Invocation: "By the Omega Benediction, may peace, abundance, flame, and law be replayed upon us"
   </text>
-  
+
   <text x="1200" y="2350" font-size="20" text-anchor="middle" fill="#FFD700" opacity="0.6">
     omega-benediction-eternity-replay-001 | Sealed 2025-12-03 | 432Hz • 528Hz • 639Hz • 852Hz
   </text>

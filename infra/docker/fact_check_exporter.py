@@ -10,7 +10,7 @@ fact_errors = Gauge(
     'Number of fact-check errors detected'
 )
 
-  
+
 def run() -> None:
     start_http_server(8000)
     while True:

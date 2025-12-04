@@ -26,13 +26,13 @@ function Test-Administrator {
 
 function Install-Service {
     Write-Host "🚀 Installing Codex Dashboard Service..." -ForegroundColor Green
-    
+
     if (-not (Test-Administrator)) {
         Write-Host "❌ Administrator privileges required for service installation!" -ForegroundColor Red
         Write-Host "💡 Run PowerShell as Administrator and try again." -ForegroundColor Yellow
         return
     }
-    
+
     # Check if NSSM is available
     $nssm = Get-Command nssm -ErrorAction SilentlyContinue
     if (-not $nssm) {
@@ -42,16 +42,16 @@ function Install-Service {
         Write-Host "   Extract nssm.exe to your PATH or current directory" -ForegroundColor Cyan
         return
     }
-    
+
     # Install service
     $Arguments = "-m streamlit run `"$StreamlitScript`" --server.port $Port --server.headless true"
-    
+
     & nssm install $ServiceName $PythonPath $Arguments
     & nssm set $ServiceName DisplayName $ServiceDisplayName
     & nssm set $ServiceName Description $ServiceDescription
     & nssm set $ServiceName AppDirectory $WorkingDirectory
     & nssm set $ServiceName Start SERVICE_AUTO_START
-    
+
     Write-Host "✅ Service installed successfully!" -ForegroundColor Green
     Write-Host "🎯 Service Name: $ServiceName" -ForegroundColor Cyan
     Write-Host "🌐 Dashboard URL: http://localhost:$Port" -ForegroundColor Cyan
@@ -90,20 +90,20 @@ function Restart-DashboardService {
 
 function Get-ServiceStatus {
     Write-Host "📊 Codex Dashboard Service Status:" -ForegroundColor Cyan
-    
+
     try {
         $service = Get-Service -Name $ServiceName -ErrorAction Stop
         $status = $service.Status
         $startType = (Get-WmiObject -Query "SELECT StartMode FROM Win32_Service WHERE Name='$ServiceName'").StartMode
-        
+
         Write-Host "   Service Name: $ServiceName" -ForegroundColor White
         Write-Host "   Display Name: $($service.DisplayName)" -ForegroundColor White
         Write-Host "   Status: $status" -ForegroundColor $(if ($status -eq 'Running') { 'Green' } else { 'Red' })
         Write-Host "   Start Type: $startType" -ForegroundColor White
-        
+
         if ($status -eq 'Running') {
             Write-Host "🌐 Dashboard URL: http://localhost:$Port" -ForegroundColor Green
-            
+
             # Test if port is responding
             try {
                 $response = Invoke-WebRequest -Uri "http://localhost:$Port" -TimeoutSec 5 -ErrorAction Stop
@@ -122,12 +122,12 @@ function Get-ServiceStatus {
 
 function Uninstall-Service {
     Write-Host "🗑️  Uninstalling Codex Dashboard Service..." -ForegroundColor Red
-    
+
     if (-not (Test-Administrator)) {
         Write-Host "❌ Administrator privileges required!" -ForegroundColor Red
         return
     }
-    
+
     try {
         Stop-Service -Name $ServiceName -ErrorAction SilentlyContinue
         & nssm remove $ServiceName confirm
@@ -140,12 +140,12 @@ function Uninstall-Service {
 
 function Get-ServiceLogs {
     Write-Host "📋 Recent Codex Dashboard Service Logs:" -ForegroundColor Cyan
-    
+
     # Check Windows Event Log
     try {
-        $events = Get-WinEvent -FilterHashtable @{LogName='System'; ProviderName='Service Control Manager'} -MaxEvents 10 | 
+        $events = Get-WinEvent -FilterHashtable @{LogName='System'; ProviderName='Service Control Manager'} -MaxEvents 10 |
                   Where-Object { $_.Message -like "*$ServiceName*" }
-        
+
         if ($events) {
             $events | ForEach-Object {
                 Write-Host "[$($_.TimeCreated)] $($_.LevelDisplayName): $($_.Message)" -ForegroundColor White
@@ -168,7 +168,7 @@ switch ($Action.ToLower()) {
     "status" { Get-ServiceStatus }
     "uninstall" { Uninstall-Service }
     "logs" { Get-ServiceLogs }
-    default { 
+    default {
         Write-Host "Usage: .\windows-service-management.ps1 [install|start|stop|restart|status|uninstall|logs]" -ForegroundColor Yellow
         Get-ServiceStatus
     }

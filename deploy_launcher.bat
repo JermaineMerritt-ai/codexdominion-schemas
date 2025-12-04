@@ -65,7 +65,7 @@ echo    chmod +x ionos_codex_deploy.sh
 echo    sudo ./ionos_codex_deploy.sh
 echo.
 echo After deployment setup:
-echo    chmod +x ionos_systemctl_commands.sh  
+echo    chmod +x ionos_systemctl_commands.sh
 echo    sudo ./ionos_systemctl_commands.sh
 echo.
 echo 🔥 Your Codex Dominion will be available at:

@@ -283,7 +283,7 @@ class CodexSignalsIntegration:
 
 TIER DISTRIBUTION:
 - Alpha Tier: {snapshot.get('tier_counts', {}).get('Alpha', 0)} positions
-- Beta Tier: {snapshot.get('tier_counts', {}).get('Beta', 0)} positions  
+- Beta Tier: {snapshot.get('tier_counts', {}).get('Beta', 0)} positions
 - Gamma Tier: {snapshot.get('tier_counts', {}).get('Gamma', 0)} positions
 - Delta Tier: {snapshot.get('tier_counts', {}).get('Delta', 0)} positions
 

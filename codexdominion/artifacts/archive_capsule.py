@@ -51,19 +51,19 @@ class ArchiveItem:
 class FinalAlignmentReplayArchive:
     """
     The Final Alignment & Replay Archive Capsule
-    
+
     Supreme eternal archive containing all artifacts, elements,
     and lineages of the CodexDominion system
-    
+
     Eternal Principles: Archive · Alignment · Perpetual Replay
     """
-    
+
     ARTIFACT_ID = "final-alignment-replay-archive-001"
     VERSION = "1.0.0"
     IMMUTABLE_HASH = (
         "sha256:a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2"
     )
-    
+
     ARCHIVE_CONTENTS = {
         ArchiveCategory.CROWNS: {
             "count": 4,
@@ -198,7 +198,7 @@ class FinalAlignmentReplayArchive:
             ]
         }
     }
-    
+
     ALIGNMENT_PRINCIPLES = [
         "All crowns aligned in sovereign authority",
         "All scrolls aligned in eternal preservation",
@@ -206,7 +206,7 @@ class FinalAlignmentReplayArchive:
         "All charters aligned in binding covenant",
         "All capsules aligned in perpetual replay"
     ]
-    
+
     SIGNATURES = {
         "custodian": "CUSTODIAN_SIG_0x4f8e9a2c1b4d3f5a",
         "heirs": "HEIRS_SIG_0x8b3d5f7a9c1e4b2d",
@@ -215,18 +215,18 @@ class FinalAlignmentReplayArchive:
         "sovereign": "SOVEREIGN_SIG_0x1a2b3c4d5e6f7a8b",
         "infinity": "INFINITY_SIGIL_ETERNAL"
     }
-    
+
     def __init__(self):
         """Initialize the Final Alignment & Replay Archive"""
         self.created_at = datetime.fromisoformat("2025-12-02T23:48:00Z")
         self.replay_count = 0
         self.access_log: List[Dict] = []
         self.ceremony_log: List[Dict] = []
-        
+
     def get_archive_summary(self) -> Dict:
         """
         Get archive summary with counts
-        
+
         Returns:
             Dict with category counts and totals
         """
@@ -240,7 +240,7 @@ class FinalAlignmentReplayArchive:
             "archiveDepth": "complete",
             "archiveScope": "eternal"
         }
-    
+
     def replay_category(
         self,
         category: str,
@@ -248,17 +248,17 @@ class FinalAlignmentReplayArchive:
     ) -> Dict:
         """
         Replay specific archive category
-        
+
         Args:
             category: Category name (crowns/scrolls/hymns/
                      chartersAndBenedictions/capsulesAndSeals)
             context: Optional context
-            
+
         Returns:
             Dict containing category items
         """
         self.replay_count += 1
-        
+
         replay_data = {
             "artifact_id": self.ARTIFACT_ID,
             "version": self.VERSION,
@@ -266,29 +266,29 @@ class FinalAlignmentReplayArchive:
             "category": category,
             "replay_count": self.replay_count
         }
-        
+
         try:
             category_enum = ArchiveCategory(category)
             if category_enum != ArchiveCategory.ALL:
                 replay_data.update(self.ARCHIVE_CONTENTS[category_enum])
         except (ValueError, KeyError):
             replay_data["error"] = f"Invalid category: {category}"
-        
+
         if context:
             replay_data["context"] = context
-        
+
         self.access_log.append(replay_data)
         return replay_data
-    
+
     def replay_all(self) -> Dict:
         """
         Replay entire archive with all categories
-        
+
         Returns:
             Dict containing all archive contents
         """
         self.replay_count += 1
-        
+
         return {
             "artifact_id": self.ARTIFACT_ID,
             "version": self.VERSION,
@@ -300,11 +300,11 @@ class FinalAlignmentReplayArchive:
             },
             "summary": self.get_archive_summary()
         }
-    
+
     def verify_alignment(self) -> Dict:
         """
         Verify alignment status of archive
-        
+
         Returns:
             Dict with alignment verification
         """
@@ -316,7 +316,7 @@ class FinalAlignmentReplayArchive:
             "totalItemsAligned": 20,
             "verifiedAt": datetime.utcnow().isoformat() + "Z"
         }
-    
+
     def invoke_for_ceremony(
         self,
         ceremony_name: str,
@@ -324,11 +324,11 @@ class FinalAlignmentReplayArchive:
     ) -> Dict:
         """
         Invoke archive for ceremonial use
-        
+
         Args:
             ceremony_name: Name of ceremony
             participants: List of participants
-            
+
         Returns:
             Dict containing ceremony invocation
         """
@@ -352,26 +352,26 @@ class FinalAlignmentReplayArchive:
             },
             "binding": "eternal"
         }
-        
+
         self.ceremony_log.append(invocation)
         return invocation
-    
+
     def get_alignment_principles(self) -> List[str]:
         """
         Get the 5 alignment principles
-        
+
         Returns:
             List of principles
         """
         return self.ALIGNMENT_PRINCIPLES.copy()
-    
+
     def export_artifact(self, output_path: str) -> bool:
         """
         Export archive artifact as JSON
-        
+
         Args:
             output_path: Path to save artifact
-            
+
         Returns:
             True if successful
         """
@@ -393,14 +393,14 @@ class FinalAlignmentReplayArchive:
                 "createdAt": self.created_at.isoformat() + "Z"
             }
         }
-        
+
         try:
             with open(output_path, 'w', encoding='utf-8') as f:
                 json.dump(artifact, f, indent=2, ensure_ascii=False)
             return True
         except Exception:
             return False
-    
+
     def __repr__(self) -> str:
         return (
             f"FinalAlignmentReplayArchive("
@@ -417,9 +417,9 @@ def demonstrate_archive_replay() -> None:
     print("FINAL ALIGNMENT & REPLAY ARCHIVE DEMONSTRATION")
     print("═" * 60)
     print()
-    
+
     archive = FinalAlignmentReplayArchive()
-    
+
     print("1. Archive Initialized")
     print(f"   Artifact ID: {archive.ARTIFACT_ID}")
     print(f"   Version: {archive.VERSION}")
@@ -427,28 +427,28 @@ def demonstrate_archive_replay() -> None:
     print(f"   Total Archived: {summary['totalArchived']}")
     print(f"   Archive Depth: {summary['archiveDepth']}")
     print()
-    
+
     print("2. Replay Crowns Category")
     crowns = archive.replay_category("crowns")
     print(f"   Count: {crowns['count']}")
     for crown in crowns['items']:
         print(f"   - {crown['name']}: {crown['domain']}")
     print()
-    
+
     print("3. Replay Hymns Category")
     hymns = archive.replay_category("hymns")
     print(f"   Count: {hymns['count']}")
     for hymn in hymns['items']:
         print(f"   - {hymn['name']}: {hymn['theme']}")
     print()
-    
+
     print("4. Verify Alignment")
     alignment = archive.verify_alignment()
     print(f"   Alignment Complete: {alignment['alignmentComplete']}")
     print(f"   Categories Aligned: {alignment['categoriesAligned']}")
     print(f"   Total Items Aligned: {alignment['totalItemsAligned']}")
     print()
-    
+
     print("5. Invoke for Ceremony")
     ceremony = archive.invoke_for_ceremony(
         ceremony_name="Heritage Transmission",
@@ -458,12 +458,12 @@ def demonstrate_archive_replay() -> None:
     print(f"   Total Elements Provided: {ceremony['total_elements']}")
     print(f"   Replay Protocol: {ceremony['replay_protocol']['frequency']}")
     print()
-    
+
     print("6. Alignment Principles")
     for i, principle in enumerate(archive.get_alignment_principles(), 1):
         print(f"   {i}. {principle}")
     print()
-    
+
     print("✓ Archive: Complete")
     print("✓ Alignment: Verified")
     print("✓ Replay: Enabled")

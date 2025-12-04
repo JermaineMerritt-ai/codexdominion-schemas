@@ -102,7 +102,7 @@ def apply_enhanced_styling():
     .main {
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     }
-    
+
     .enhanced-header {
         text-align: center;
         padding: 30px;
@@ -112,7 +112,7 @@ def apply_enhanced_styling():
         border-radius: 20px;
         box-shadow: 0 8px 32px rgba(138,43,226,0.3);
     }
-    
+
     .enhanced-card {
         background: rgba(255,255,255,0.1);
         padding: 25px;
@@ -122,13 +122,13 @@ def apply_enhanced_styling():
         margin: 15px 0;
         transition: all 0.4s ease;
     }
-    
+
     .enhanced-card:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 15px 40px rgba(138,43,226,0.4);
         border-color: #8B2BE2;
     }
-    
+
     .stButton > button {
         background: linear-gradient(45deg, #8B2BE2, #9370DB);
         border: none;
@@ -137,7 +137,7 @@ def apply_enhanced_styling():
         font-weight: bold;
         transition: all 0.3s ease;
     }
-    
+
     .stButton > button:hover {
         background: linear-gradient(45deg, #9370DB, #8B2BE2);
         transform: scale(1.05);
@@ -295,33 +295,33 @@ server {
 server {
     listen 443 ssl http2;
     server_name stockanalytics.aistorelab.com;
-    
+
     ssl_certificate /etc/letsencrypt/live/stockanalytics.aistorelab.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/stockanalytics.aistorelab.com/privkey.pem;
-    
+
     # Security headers
     add_header X-Frame-Options DENY;
     add_header X-Content-Type-Options nosniff;
     add_header X-XSS-Protection "1; mode=block";
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
-    
+
     # Rate limiting
     limit_req_zone $binary_remote_addr zone=api:10m rate=10r/s;
-    
+
     location / {
         proxy_pass http://127.0.0.1:8515;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        
+
         # WebSocket support for Streamlit
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
         proxy_read_timeout 86400;
     }
-    
+
     location /api/ {
         limit_req zone=api burst=20 nodelay;
         proxy_pass http://127.0.0.1:8515;
@@ -341,30 +341,30 @@ server {
 server {
     listen 443 ssl http2;
     server_name analytics.aistorelab.com;
-    
+
     ssl_certificate /etc/letsencrypt/live/analytics.aistorelab.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/analytics.aistorelab.com/privkey.pem;
-    
+
     # Security headers
     add_header X-Frame-Options DENY;
     add_header X-Content-Type-Options nosniff;
     add_header X-XSS-Protection "1; mode=block";
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
-    
+
     location / {
         proxy_pass http://127.0.0.1:8516;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        
+
         # WebSocket support for Streamlit
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
         proxy_read_timeout 86400;
     }
-    
+
     location /api/ {
         limit_req zone=api burst=20 nodelay;
         proxy_pass http://127.0.0.1:8516;
@@ -480,7 +480,7 @@ version: '3.8'
 
 services:
   stock-analytics:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.stock
     ports:
@@ -493,7 +493,7 @@ services:
       - mysql
       - redis
     restart: unless-stopped
-    
+
   data-analytics:
     build:
       context: .
@@ -508,7 +508,7 @@ services:
       - mysql
       - redis
     restart: unless-stopped
-    
+
   mysql:
     image: mysql:8.0
     environment:
@@ -520,13 +520,13 @@ services:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: unless-stopped
-    
+
   redis:
     image: redis:7-alpine
     ports:
       - "6379:6379"
     restart: unless-stopped
-    
+
   nginx:
     image: nginx:alpine
     ports:

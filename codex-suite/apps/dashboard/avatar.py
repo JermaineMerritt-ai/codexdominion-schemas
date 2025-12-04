@@ -256,7 +256,7 @@ def main():
         st.markdown(
             """
         - **Custodian**: System administration and setup guidance
-        - **Heir**: Content creation and proclamation workflows  
+        - **Heir**: Content creation and proclamation workflows
         - **Council**: Oversight and governance capabilities
         - **Developer**: Technical development and deployment
         - **Guest**: Exploration and discovery features

@@ -418,9 +418,9 @@ class AdvancedCodexEbookGenerator:
             --text-color: {theme['text']};
             --font-family: {theme['font']};
         }}
-        
+
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-        
+
         body {{
             font-family: var(--font-family);
             line-height: 1.8;
@@ -428,7 +428,7 @@ class AdvancedCodexEbookGenerator:
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             min-height: 100vh;
         }}
-        
+
         .ebook-container {{
             max-width: 1000px;
             margin: 0 auto;
@@ -438,14 +438,14 @@ class AdvancedCodexEbookGenerator:
             box-shadow: 0 25px 50px rgba(0,0,0,0.4);
             overflow: hidden;
         }}
-        
+
         .header {{
             background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
             padding: 60px 40px;
             text-align: center;
             position: relative;
         }}
-        
+
         .header::before {{
             content: '';
             position: absolute;
@@ -456,7 +456,7 @@ class AdvancedCodexEbookGenerator:
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
             opacity: 0.3;
         }}
-        
+
         .header h1 {{
             font-size: 3em;
             margin: 20px 0;
@@ -464,7 +464,7 @@ class AdvancedCodexEbookGenerator:
             position: relative;
             z-index: 1;
         }}
-        
+
         .header .author {{
             font-size: 1.4em;
             font-style: italic;
@@ -472,7 +472,7 @@ class AdvancedCodexEbookGenerator:
             position: relative;
             z-index: 1;
         }}
-        
+
         .header .meta {{
             font-size: 1em;
             opacity: 0.9;
@@ -480,11 +480,11 @@ class AdvancedCodexEbookGenerator:
             position: relative;
             z-index: 1;
         }}
-        
+
         .content {{
             padding: 40px;
         }}
-        
+
         .toc {{
             background: rgba(0,0,0,0.2);
             border-radius: 15px;
@@ -492,13 +492,13 @@ class AdvancedCodexEbookGenerator:
             margin: 30px 0 50px 0;
             border-left: 5px solid var(--accent-color);
         }}
-        
+
         .toc h2 {{
             color: var(--accent-color);
             margin-bottom: 20px;
             font-size: 1.8em;
         }}
-        
+
         .toc-entry {{
             display: flex;
             justify-content: space-between;
@@ -507,36 +507,36 @@ class AdvancedCodexEbookGenerator:
             border-bottom: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s ease;
         }}
-        
+
         .toc-entry:hover {{
             background: rgba(255,255,255,0.05);
             padding-left: 10px;
             border-left: 3px solid var(--accent-color);
         }}
-        
+
         .toc-entry a {{
             color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
         }}
-        
+
         .chapter-num {{
             color: var(--accent-color);
             font-size: 0.9em;
             opacity: 0.8;
         }}
-        
+
         .chapter {{
             margin: 60px 0;
             page-break-before: always;
         }}
-        
+
         .chapter-header {{
             border-bottom: 3px solid var(--accent-color);
             padding-bottom: 20px;
             margin-bottom: 30px;
         }}
-        
+
         .chapter-number {{
             color: var(--accent-color);
             font-size: 0.9em;
@@ -544,18 +544,18 @@ class AdvancedCodexEbookGenerator:
             letter-spacing: 3px;
             margin-bottom: 10px;
         }}
-        
+
         .chapter-title {{
             font-size: 2.5em;
             color: var(--accent-color);
             margin: 0;
             line-height: 1.2;
         }}
-        
+
         .chapter-content {{
             font-size: 1.1em;
         }}
-        
+
         .chapter-content h1 {{
             color: var(--accent-color);
             font-size: 2.2em;
@@ -563,51 +563,51 @@ class AdvancedCodexEbookGenerator:
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 10px;
         }}
-        
+
         .chapter-content h2 {{
             color: var(--accent-color);
             font-size: 1.8em;
             margin: 35px 0 15px 0;
         }}
-        
+
         .chapter-content h3 {{
             color: var(--accent-color);
             font-size: 1.4em;
             margin: 25px 0 10px 0;
         }}
-        
+
         .chapter-content p {{
             margin: 20px 0;
             text-align: justify;
             text-indent: 2em;
         }}
-        
+
         .chapter-content em {{
             color: var(--accent-color);
             font-style: italic;
         }}
-        
+
         .chapter-content strong {{
             color: var(--accent-color);
             font-weight: bold;
         }}
-        
+
         .chapter-content ul, .chapter-content ol {{
             margin: 20px 0;
             padding-left: 40px;
         }}
-        
+
         .chapter-content li {{
             margin: 10px 0;
         }}
-        
+
         .chapter-content hr {{
             border: none;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
             margin: 40px 0;
         }}
-        
+
         .footer {{
             text-align: center;
             padding: 40px;
@@ -615,14 +615,14 @@ class AdvancedCodexEbookGenerator:
             margin-top: 60px;
             opacity: 0.8;
         }}
-        
+
         @media print {{
             body {{ background: white; color: black; }}
             .ebook-container {{ box-shadow: none; background: white; }}
             .header {{ background: #f5f5f5; color: black; }}
             .chapter {{ page-break-before: always; }}
         }}
-        
+
         @media (max-width: 768px) {{
             .ebook-container {{ margin: 10px; }}
             .header {{ padding: 30px 20px; }}
@@ -641,7 +641,7 @@ class AdvancedCodexEbookGenerator:
                 <div>Theme: {theme['name']}</div>
             </div>
         </div>
-        
+
         <div class="content">
             <div class="toc">
                 <h2>Table of Contents</h2>
@@ -680,7 +680,7 @@ class AdvancedCodexEbookGenerator:
 
         html += f"""
         </div>
-        
+
         <div class="footer">
             <p>Generated by Advanced Codex Ebook Generator</p>
             <p>{metadata.get('description', '')}</p>
@@ -699,9 +699,9 @@ class AdvancedCodexEbookGenerator:
 
         markdown_content = f"""# {metadata['title']}
 
-**Author:** {metadata['author']}  
-**Generated:** {datetime.fromisoformat(metadata['created']).strftime('%B %d, %Y')}  
-**Theme:** {metadata.get('theme', 'default')}  
+**Author:** {metadata['author']}
+**Generated:** {datetime.fromisoformat(metadata['created']).strftime('%B %d, %Y')}
+**Theme:** {metadata.get('theme', 'default')}
 
 ---
 

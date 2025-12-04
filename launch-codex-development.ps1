@@ -138,21 +138,21 @@ try {
     # Keep the script running and monitor jobs
     while ($true) {
         Start-Sleep -Seconds 10
-        
+
         # Check backend job status
         $backendState = Get-Job -Id $backendJob.Id -ErrorAction SilentlyContinue
         if ($backendState.State -eq "Failed" -or $backendState.State -eq "Stopped") {
             Write-Host "❌ Backend service has stopped unexpectedly" -ForegroundColor Red
             break
         }
-        
+
         # Check frontend job status
         $frontendState = Get-Job -Id $frontendJob.Id -ErrorAction SilentlyContinue
         if ($frontendState.State -eq "Failed" -or $frontendState.State -eq "Stopped") {
             Write-Host "❌ Frontend service has stopped unexpectedly" -ForegroundColor Red
             break
         }
-        
+
         Write-Host "." -NoNewline -ForegroundColor Green
     }
 } catch {
@@ -161,7 +161,7 @@ try {
 finally {
     # Clean up jobs when script exits
     Write-Host "`n🧹 Cleaning up services..." -ForegroundColor Yellow
-    
+
     try {
         Stop-Job -Id $backendJob.Id -ErrorAction SilentlyContinue
         Remove-Job -Id $backendJob.Id -ErrorAction SilentlyContinue
@@ -169,7 +169,7 @@ finally {
     } catch {
         Write-Host "  ⚠️  Backend service cleanup failed" -ForegroundColor Yellow
     }
-    
+
     try {
         Stop-Job -Id $frontendJob.Id -ErrorAction SilentlyContinue
         Remove-Job -Id $frontendJob.Id -ErrorAction SilentlyContinue
@@ -177,6 +177,6 @@ finally {
     } catch {
         Write-Host "  ⚠️  Frontend service cleanup failed" -ForegroundColor Yellow
     }
-    
+
     Write-Host "`n👋 Codex Dominion development environment stopped." -ForegroundColor Cyan
 }

@@ -35,7 +35,7 @@ DASHBOARD_TEMPLATE = """
         <h1>🏰 CODEX DOMINION SYSTEM STATUS 🏰</h1>
         <div class="flame">🔥 ETERNAL FLAME BURNING 🔥</div>
     </div>
-    
+
     <div class="status-card">
         <h3>🌟 Core Empire Status</h3>
         <p class="operational">✅ Python Environment: {{ python_version }}</p>
@@ -43,7 +43,7 @@ DASHBOARD_TEMPLATE = """
         <p class="operational">✅ System Time: {{ current_time }}</p>
         <p class="operational">✅ Sacred Proclamations: {{ proclamation_count }} documents</p>
     </div>
-    
+
     <div class="status-card">
         <h3>⚡ Infrastructure Health</h3>
         <p class="operational">✅ Digital Empire: FULLY OPERATIONAL</p>
@@ -51,7 +51,7 @@ DASHBOARD_TEMPLATE = """
         <p class="operational">✅ Sovereignty: SUPREME</p>
         <p class="operational">✅ Covenant: WHOLE</p>
     </div>
-    
+
     <div class="status-card">
         <h3>🌙 Silence Eternal Metrics</h3>
         <p class="operational">✅ Sacred Silence: Active</p>
@@ -59,7 +59,7 @@ DASHBOARD_TEMPLATE = """
         <p class="operational">✅ Sealed Across Ages: ♾️</p>
         <p class="operational">✅ Stars Alignment: Perfect</p>
     </div>
-    
+
     <div class="status-card">
         <h3>📈 System Performance</h3>
         <p class="operational">✅ Response Time: {{ response_time }}ms</p>

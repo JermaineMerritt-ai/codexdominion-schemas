@@ -100,7 +100,7 @@ def render_ai_development_studio():
 
     st.markdown(
         """
-    <div style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    <div style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                 padding: 2rem; border-radius: 15px; margin-bottom: 2rem;'>
         <h1 style='color: white; text-align: center; margin: 0;'>
             🚀 Codex AI Development Studio

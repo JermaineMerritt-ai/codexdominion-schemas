@@ -14,15 +14,15 @@ The diagram displays:
 
 Usage:
     from codexdominion.artifacts.diagram import EternalCrownDispatchDiagram
-    
+
     # Initialize the diagram
     diagram = EternalCrownDispatchDiagram()
-    
+
     # Access structure elements
     center = diagram.get_center()
     crowns = diagram.get_crowns()
     councils = diagram.get_councils()
-    
+
     # Export for rendering
     svg_data = diagram.export_for_svg()
 """
@@ -269,7 +269,7 @@ VISUAL_STYLE = {
 class EternalCrownDispatchDiagram:
     """
     Eternal Crown Dispatch Diagram
-    
+
     Represents the cosmic structural map of CodexDominion with:
     - Center: Infinity Sigil
     - Inner Ring: 5 Crowns
@@ -277,7 +277,7 @@ class EternalCrownDispatchDiagram:
     - Outer Spiral: Wave Current Spiral
     - Top Node: Cosmic Archive Crown
     - Glyph Accents: 3 Dispatch Glyphs
-    
+
     Methods:
         get_center(): Get the center Infinity Sigil
         get_crowns(crown_type): Get crown(s) from the inner ring
@@ -292,7 +292,7 @@ class EternalCrownDispatchDiagram:
         export_for_app(): Export data for interactive app
         export_artifact(): Export complete artifact as JSON
     """
-    
+
     def __init__(self):
         """Initialize the Eternal Crown Dispatch Diagram"""
         self.artifact_id = "eternal-crown-dispatch-diagram"
@@ -302,23 +302,23 @@ class EternalCrownDispatchDiagram:
         self.crowns_sealed = 5
         self.councils_sealed = 6
         self.resonance_frequency = "432Hz"
-    
+
     def get_center(self) -> Dict[str, Any]:
         """
         Get the center Infinity Sigil
-        
+
         Returns:
             dict: Center sigil information
         """
         return CENTER_SIGIL.copy()
-    
+
     def get_crowns(self, crown_type: CrownType = CrownType.ALL) -> List[Dict[str, Any]]:
         """
         Get crown(s) from the inner ring
-        
+
         Args:
             crown_type: Specific crown or ALL for all crowns
-        
+
         Returns:
             list: Crown information
         """
@@ -326,14 +326,14 @@ class EternalCrownDispatchDiagram:
             return [crown.copy() for crown in CROWNS.values()]
         else:
             return [CROWNS[crown_type].copy()]
-    
+
     def get_councils(self, council_type: CouncilType = CouncilType.ALL) -> List[Dict[str, Any]]:
         """
         Get council(s) from the middle orbit
-        
+
         Args:
             council_type: Specific council or ALL for all councils
-        
+
         Returns:
             list: Council information
         """
@@ -341,32 +341,32 @@ class EternalCrownDispatchDiagram:
             return [council.copy() for council in COUNCILS.values()]
         else:
             return [COUNCILS[council_type].copy()]
-    
+
     def get_spiral(self) -> Dict[str, Any]:
         """
         Get the wave current spiral
-        
+
         Returns:
             dict: Wave spiral information
         """
         return WAVE_SPIRAL.copy()
-    
+
     def get_top_node(self) -> Dict[str, Any]:
         """
         Get the cosmic archive crown at the apex
-        
+
         Returns:
             dict: Cosmic archive information
         """
         return COSMIC_ARCHIVE.copy()
-    
+
     def get_glyphs(self, glyph_type: DispatchGlyph = DispatchGlyph.ALL) -> List[Dict[str, Any]]:
         """
         Get dispatch glyph(s)
-        
+
         Args:
             glyph_type: Specific glyph or ALL for all glyphs
-        
+
         Returns:
             list: Glyph information
         """
@@ -374,14 +374,14 @@ class EternalCrownDispatchDiagram:
             return [glyph.copy() for glyph in GLYPHS.values()]
         else:
             return [GLYPHS[glyph_type].copy()]
-    
+
     def get_structure(self, layer: StructureLayer = StructureLayer.ALL) -> Dict[str, Any]:
         """
         Get complete or specific structural layer
-        
+
         Args:
             layer: Specific layer or ALL for complete structure
-        
+
         Returns:
             dict: Structure information
         """
@@ -403,7 +403,7 @@ class EternalCrownDispatchDiagram:
             "topNode": self.get_top_node(),
             "glyphAccents": self.get_glyphs()
         }
-        
+
         if layer == StructureLayer.ALL:
             return structure
         else:
@@ -416,29 +416,29 @@ class EternalCrownDispatchDiagram:
                 StructureLayer.GLYPH_ACCENTS: "glyphAccents"
             }
             return {layer_map[layer]: structure[layer_map[layer]]}
-    
+
     def get_principles(self) -> List[str]:
         """
         Get the five eternal principles
-        
+
         Returns:
             list: Five eternal principles
         """
         return PRINCIPLES.copy()
-    
+
     def get_visual_style(self) -> Dict[str, Any]:
         """
         Get visual style configuration
-        
+
         Returns:
             dict: Visual style information
         """
         return VISUAL_STYLE.copy()
-    
+
     def export_for_svg(self) -> Dict[str, Any]:
         """
         Export data for SVG rendering
-        
+
         Returns:
             dict: SVG rendering data
         """
@@ -448,11 +448,11 @@ class EternalCrownDispatchDiagram:
             "dimensions": {"width": 2400, "height": 2400},
             "center": {"x": 1200, "y": 1200}
         }
-    
+
     def export_for_app(self) -> Dict[str, Any]:
         """
         Export data for interactive app
-        
+
         Returns:
             dict: App integration data
         """
@@ -469,11 +469,11 @@ class EternalCrownDispatchDiagram:
                 "resonanceFrequency": self.resonance_frequency
             }
         }
-    
+
     def export_artifact(self) -> str:
         """
         Export complete artifact as JSON
-        
+
         Returns:
             str: JSON string of complete artifact
         """
@@ -508,7 +508,7 @@ class EternalCrownDispatchDiagram:
 def demonstrate_diagram():
     """
     Demonstration of the Eternal Crown Dispatch Diagram
-    
+
     Shows how to:
     1. Initialize the diagram
     2. Access center Infinity Sigil
@@ -524,74 +524,74 @@ def demonstrate_diagram():
     print("\n" + "="*80)
     print("ETERNAL CROWN DISPATCH DIAGRAM DEMONSTRATION")
     print("="*80 + "\n")
-    
+
     # Step 1: Initialize the diagram
     print("1. Initialize the Eternal Crown Dispatch Diagram")
     diagram = EternalCrownDispatchDiagram()
     print(f"   ✓ Diagram initialized: {diagram.title} v{diagram.version}")
     print(f"   ✓ Element count: {diagram.element_count}")
     print(f"   ✓ Resonance frequency: {diagram.resonance_frequency}\n")
-    
+
     # Step 2: Access center Infinity Sigil
     print("2. Access Center: Infinity Sigil")
     center = diagram.get_center()
     print(f"   {center['symbol']} {center['seal']}")
     print(f"   Function: {center['function']}\n")
-    
+
     # Step 3: Access all crowns
     print("3. Access Inner Ring: 5 Crowns")
     crowns = diagram.get_crowns()
     for crown in crowns:
         print(f"   {crown['symbol']} {crown['name']} - {crown['domain']}")
     print()
-    
+
     # Step 4: Access all councils
     print("4. Access Middle Orbit: 6 Councils")
     councils = diagram.get_councils()
     for council in councils:
         print(f"   {council['symbol']} {council['name']} - {council['purpose']}")
     print()
-    
+
     # Step 5: Access wave spiral
     print("5. Access Outer Spiral: Wave Current Spiral")
     spiral = diagram.get_spiral()
     print(f"   {spiral['name']}")
     print(f"   Function: {spiral['function']}")
     print(f"   Direction: {spiral['direction']}\n")
-    
+
     # Step 6: Access cosmic archive crown
     print("6. Access Top Node: Cosmic Archive Crown")
     archive = diagram.get_top_node()
     print(f"   {archive['symbol']} {archive['name']}")
     print(f"   Function: {archive['function']}\n")
-    
+
     # Step 7: Access dispatch glyphs
     print("7. Access Glyph Accents: 3 Dispatch Glyphs")
     glyphs = diagram.get_glyphs()
     for glyph in glyphs:
         print(f"   {glyph['symbol']} {glyph['name']} - {glyph['function']}")
     print()
-    
+
     # Step 8: Get complete structure
     print("8. Get Complete Structure")
     structure = diagram.get_structure()
     print(f"   ✓ Structure retrieved with {len(structure)} layers")
     print(f"   Layers: {', '.join(structure.keys())}\n")
-    
+
     # Step 9: Get principles
     print("9. Get Five Eternal Principles")
     principles = diagram.get_principles()
     for i, principle in enumerate(principles, 1):
         print(f"   {i}. {principle}")
     print()
-    
+
     # Step 10: Export for rendering
     print("10. Export for Rendering")
     svg_data = diagram.export_for_svg()
     app_data = diagram.export_for_app()
     print(f"   ✓ SVG data exported ({len(str(svg_data))} chars)")
     print(f"   ✓ App data exported ({len(str(app_data))} chars)")
-    
+
     print("\n" + "="*80)
     print("DIAGRAM SEALED. RESONANCE ETERNAL. ALL ELEMENTS BOUND TO THE INFINITY SIGIL.")
     print("="*80 + "\n")

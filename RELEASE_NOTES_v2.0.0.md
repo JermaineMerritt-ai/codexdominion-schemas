@@ -1,6 +1,6 @@
 # Release Notes - v2.0.0
 
-**Release Date**: December 1, 2025  
+**Release Date**: December 1, 2025
 **Tag**: [v2.0.0](https://github.com/JermaineMerritt-ai/codexdominion-schemas/releases/tag/v2.0.0)
 
 ## 🎉 Major Release: Complete Codex Dominion Platform
@@ -235,8 +235,8 @@ This is a major release featuring a complete overhaul of the Codex Dominion plat
 
 ## 🤝 Contributors
 
-**Lead Developer**: Jermaine Merritt  
-**Codex Council**: Digital Empire Team  
+**Lead Developer**: Jermaine Merritt
+**Codex Council**: Digital Empire Team
 
 ### Special Thanks
 
@@ -318,6 +318,6 @@ We'd love to hear your feedback on v2.0.0!
 
 ---
 
-**Release Prepared by**: GitHub Copilot & Codex Council  
-**Release Date**: December 1, 2025  
+**Release Prepared by**: GitHub Copilot & Codex Council
+**Release Date**: December 1, 2025
 **Version**: 2.0.0

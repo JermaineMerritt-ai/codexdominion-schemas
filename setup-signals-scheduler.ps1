@@ -53,7 +53,7 @@ try {
 } catch {
     if ($_.Exception.Message -like "*already exists*") {
         Write-Host "⚠️  Job already exists, updating..." -ForegroundColor Yellow
-        
+
         # Update existing job
         $updateCommand = @"
 gcloud scheduler jobs update http $JobName `
@@ -66,7 +66,7 @@ gcloud scheduler jobs update http $JobName `
   --location=$Region `
   --project=$ProjectId
 "@
-        
+
         Invoke-Expression $updateCommand
         Write-Host "✅ Cloud Scheduler job updated!" -ForegroundColor Green
     } else {
@@ -94,7 +94,7 @@ try {
     # Check if capsules service is running
     $capsulesUrl = "http://localhost:8080"
     $health = Invoke-RestMethod -Uri "$capsulesUrl/" -Method GET -ErrorAction SilentlyContinue
-    
+
     if ($health) {
         $result = Invoke-RestMethod -Uri "$capsulesUrl/api/capsules" -Method POST -ContentType "application/json" -Body $capsuleData
         Write-Host "✅ Capsule registered in tracking system!" -ForegroundColor Green

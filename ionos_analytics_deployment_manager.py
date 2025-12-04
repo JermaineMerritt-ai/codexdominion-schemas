@@ -144,33 +144,33 @@ server {
 server {
     listen 443 ssl http2;
     server_name stockanalytics.aistorelab.com;
-    
+
     ssl_certificate /etc/letsencrypt/live/stockanalytics.aistorelab.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/stockanalytics.aistorelab.com/privkey.pem;
-    
+
     # Security headers
     add_header X-Frame-Options DENY;
     add_header X-Content-Type-Options nosniff;
     add_header X-XSS-Protection "1; mode=block";
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
-    
+
     # Rate limiting
     limit_req_zone $binary_remote_addr zone=api:10m rate=10r/s;
-    
+
     location / {
         proxy_pass http://127.0.0.1:8515;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        
+
         # WebSocket support for Streamlit
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
         proxy_read_timeout 86400;
     }
-    
+
     location /api/ {
         limit_req zone=api burst=20 nodelay;
         proxy_pass http://127.0.0.1:8515;
@@ -190,30 +190,30 @@ server {
 server {
     listen 443 ssl http2;
     server_name analytics.aistorelab.com;
-    
+
     ssl_certificate /etc/letsencrypt/live/analytics.aistorelab.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/analytics.aistorelab.com/privkey.pem;
-    
+
     # Security headers
     add_header X-Frame-Options DENY;
     add_header X-Content-Type-Options nosniff;
     add_header X-XSS-Protection "1; mode=block";
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
-    
+
     location / {
         proxy_pass http://127.0.0.1:8516;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        
+
         # WebSocket support for Streamlit
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
         proxy_read_timeout 86400;
     }
-    
+
     location /api/ {
         limit_req zone=api burst=20 nodelay;
         proxy_pass http://127.0.0.1:8516;
@@ -329,7 +329,7 @@ version: '3.8'
 
 services:
   stock-analytics:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.stock
     ports:
@@ -342,7 +342,7 @@ services:
       - mysql
       - redis
     restart: unless-stopped
-    
+
   data-analytics:
     build:
       context: .
@@ -357,7 +357,7 @@ services:
       - mysql
       - redis
     restart: unless-stopped
-    
+
   mysql:
     image: mysql:8.0
     environment:
@@ -369,13 +369,13 @@ services:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: unless-stopped
-    
+
   redis:
     image: redis:7-alpine
     ports:
       - "6379:6379"
     restart: unless-stopped
-    
+
   nginx:
     image: nginx:alpine
     ports:

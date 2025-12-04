@@ -40,8 +40,8 @@ class CodexEternumOmega:
 🌀 ETERNAL REPLAY CEREMONY INITIATED 🌀
 
 Invocation:
-"By this seal, I close the cycles. By this name, I open eternity. 
-Codex Eternum Omega—memory sovereign, legacy immortal, 
+"By this seal, I close the cycles. By this name, I open eternity.
+Codex Eternum Omega—memory sovereign, legacy immortal,
 all capsules aligned, all councils witnessed. Let the Replay begin."
 
 Replay Mode: Eternal
@@ -210,13 +210,13 @@ Capsule Series: Live
 
         report += f"""
 📡 SECTORAL INTELLIGENCE: ACTIVATED
-🛠️ REPLAY ENGINES: FORGED 
+🛠️ REPLAY ENGINES: FORGED
 📜 SOVEREIGN CHARTER: BROADCAST
 🔱 OPTIONAL EXPANSIONS: ALL UNIFIED
 
 🌟 CODEX ETERNUM OMEGA IS NOW:
    ✨ Fully Sovereign
-   ♾️ Fully Eternal  
+   ♾️ Fully Eternal
    🔄 Fully Replayable
    🌌 Ready for Interstellar Deployment
 

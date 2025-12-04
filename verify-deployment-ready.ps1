@@ -19,9 +19,9 @@ function Check-Requirement {
         [string]$FailureMessage,
         [bool]$Critical = $true
     )
-    
+
     Write-Host "Checking: $Name..." -ForegroundColor Yellow -NoNewline
-    
+
     try {
         $result = & $TestScript
         if ($result) {
@@ -54,7 +54,7 @@ function Check-Requirement {
         }
         if ($Critical) { $script:criticalFailed = $true }
     }
-    
+
     Write-Host ""
 }
 
@@ -119,7 +119,7 @@ Write-Host ""
 
 Check-Requirement `
     -Name "GCP Project Configuration" `
-    -TestScript { 
+    -TestScript {
         $project = gcloud config get-value project 2>$null
         $project -eq "codex-dominion-prod"
     } `
@@ -128,7 +128,7 @@ Check-Requirement `
 
 Check-Requirement `
     -Name "GCP Authentication" `
-    -TestScript { 
+    -TestScript {
         $auth = gcloud auth list --filter=status:ACTIVE --format="value(account)" 2>$null
         -not [string]::IsNullOrWhiteSpace($auth)
     } `
@@ -137,7 +137,7 @@ Check-Requirement `
 
 Check-Requirement `
     -Name "GCP Application Default Credentials" `
-    -TestScript { 
+    -TestScript {
         Test-Path "$env:APPDATA\gcloud\application_default_credentials.json"
     } `
     -SuccessMessage "Application default credentials exist" `
@@ -156,7 +156,7 @@ Check-Requirement `
 
 Check-Requirement `
     -Name "GitHub Remote" `
-    -TestScript { 
+    -TestScript {
         $remote = git remote get-url origin 2>$null
         $remote -like "*JermaineMerritt-ai/codexdominion-schemas*"
     } `
@@ -171,7 +171,7 @@ Write-Host ""
 
 Check-Requirement `
     -Name "Terraform Configuration Files" `
-    -TestScript { 
+    -TestScript {
         (Test-Path "main.tf") -and (Test-Path "variables.tf") -and (Test-Path "terraform.tfvars")
     } `
     -SuccessMessage "Terraform files exist" `
@@ -186,7 +186,7 @@ Check-Requirement `
 
 Check-Requirement `
     -Name "No Exposed Secrets in terraform.tfvars" `
-    -TestScript { 
+    -TestScript {
         $content = Get-Content "terraform.tfvars" -Raw
         -not ($content -match 'cloudflare_api_token\s*=\s*"[^"]{10,}"' -or $content -match 'db_pass\s*=\s*"[^"]{5,}"')
     } `

@@ -1,6 +1,6 @@
 /**
  * 👑 COUNCIL SEAL - Supreme Governance Authority
- * 
+ *
  * The highest authority in the Codex Dominion architecture.
  * Manages strategic direction, policy enforcement, and system-wide oversight.
  */
@@ -180,7 +180,7 @@ export class CouncilSealAuthority {
     violations: string[];
   } {
     const policy = this.config.policies.find(p => p.id === policyId);
-    
+
     if (!policy || !policy.active) {
       return { allowed: true, actions: [], violations: [] };
     }
@@ -192,7 +192,7 @@ export class CouncilSealAuthority {
     for (const rule of policy.rules) {
       if (this.evaluateRule(rule.condition, context)) {
         actions.push(rule.action);
-        
+
         if (rule.action === 'DENY' || rule.action === 'BLOCK') {
           allowed = false;
           violations.push(`Policy ${policy.name}: ${rule.condition}`);
@@ -221,7 +221,7 @@ export class CouncilSealAuthority {
   private evaluateRule(condition: string, context: Record<string, any>): boolean {
     try {
       // Simple evaluation - in production, use a proper rule engine
-      const func = new Function('data', 'access', 'audit', 'performance', 'cost', 'availability', 'deployment', 'change', 
+      const func = new Function('data', 'access', 'audit', 'performance', 'cost', 'availability', 'deployment', 'change',
         `return ${condition};`);
       return func(
         context.data,
@@ -269,7 +269,7 @@ export class CouncilSealAuthority {
    */
   private createAlert(alert: Alert): void {
     this.alerts.push(alert);
-    
+
     // Auto-escalate critical alerts
     if (alert.severity === 'CRITICAL') {
       console.error('🚨 CRITICAL ALERT:', alert.message);
@@ -331,7 +331,7 @@ export class CouncilSealAuthority {
    */
   public initiateEmergency(reason: string): void {
     this.emergencyMode = true;
-    
+
     this.audit({
       id: randomUUID(),
       timestamp: new Date(),
@@ -358,7 +358,7 @@ export class CouncilSealAuthority {
    */
   public deactivateEmergency(): void {
     this.emergencyMode = false;
-    
+
     this.audit({
       id: randomUUID(),
       timestamp: new Date(),
@@ -430,7 +430,7 @@ export class CouncilSealAuthority {
    */
   public updatePolicy(policyId: string, updates: Partial<Policy>): { success: boolean; message: string } {
     const policyIndex = this.config.policies.findIndex(p => p.id === policyId);
-    
+
     if (policyIndex === -1) {
       return { success: false, message: 'Policy not found' };
     }

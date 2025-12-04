@@ -64,8 +64,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
   ];
 
-  const filteredLogs = filter === 'all' 
-    ? allLogs 
+  const filteredLogs = filter === 'all'
+    ? allLogs
     : allLogs.filter(log => log.severity === filter);
 
   res.status(200).json({ logs: filteredLogs });

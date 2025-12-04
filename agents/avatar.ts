@@ -1,6 +1,6 @@
 /**
  * 🤖 AVATAR - Industry-Specific Agent Interface
- * 
+ *
  * Core interface for all industry avatars that interact with customers.
  */
 
@@ -55,7 +55,7 @@ export class HealthcareAvatar extends BaseAvatar {
     }
 
     this.logInteraction(customerId, 'healthcare-consultation');
-    
+
     // Healthcare-specific interaction logic
     console.log(`Initiating healthcare consultation for customer ${customerId}`);
     console.log(`Available capabilities: ${this.capabilities.join(', ')}`);
@@ -81,7 +81,7 @@ export class LegalAvatar extends BaseAvatar {
     }
 
     this.logInteraction(customerId, 'legal-consultation');
-    
+
     // Legal-specific interaction logic
     console.log(`Initiating legal consultation for customer ${customerId}`);
     console.log(`Available capabilities: ${this.capabilities.join(', ')}`);
@@ -107,7 +107,7 @@ export class CommerceAvatar extends BaseAvatar {
     }
 
     this.logInteraction(customerId, 'commerce-assistance');
-    
+
     // Commerce-specific interaction logic
     console.log(`Initiating commerce assistance for customer ${customerId}`);
     console.log(`Available capabilities: ${this.capabilities.join(', ')}`);
@@ -133,7 +133,7 @@ export class CybersecurityAvatar extends BaseAvatar {
     }
 
     this.logInteraction(customerId, 'security-consultation');
-    
+
     // Cybersecurity-specific interaction logic
     console.log(`Initiating security consultation for customer ${customerId}`);
     console.log(`Available capabilities: ${this.capabilities.join(', ')}`);

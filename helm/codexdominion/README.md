@@ -1,6 +1,6 @@
 # CodexDominion Helm Chart
 
-**Eternal Ledger Version:** 1.0  
+**Eternal Ledger Version:** 1.0
 **Lineage:** Preserved
 
 ## Overview

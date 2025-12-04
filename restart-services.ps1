@@ -59,7 +59,7 @@ $port3001 = Test-NetConnection -ComputerName localhost -Port 3001 -InformationLe
 
 if ($port8080) {
     Write-Host "✅ Port 8080 (Capsules API): Accessible" -ForegroundColor Green
-    
+
     # Test API endpoint
     try {
         $apiTest = Invoke-RestMethod -Uri "http://localhost:8080/api/capsules" -Method GET -TimeoutSec 5

@@ -201,7 +201,7 @@ def create_status_summary():
 🔥 CODEX DOMINION SYSTEM STATUS
 
 💾 MEMORY: {status['memory']['available_gb']:.1f}GB available ({100-status['memory']['usage_percent']:.1f}% free) - {status['memory']['status']}
-💿 STORAGE: {status['disk']['free_gb']:.1f}GB free ({100-status['disk']['usage_percent']:.1f}% free) - {status['disk']['status']}  
+💿 STORAGE: {status['disk']['free_gb']:.1f}GB free ({100-status['disk']['usage_percent']:.1f}% free) - {status['disk']['status']}
 🖥️ CPU: {status['cpu']['usage_percent']:.1f}% usage - {status['cpu']['status']}
 ⚡ PROCESSES: {status['processes']['high_memory_count']} high-memory processes
 🔧 WSL: {status['wsl_status']['status']}

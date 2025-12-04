@@ -39,13 +39,13 @@ function Show-SacredBanner {
         # Create flame border
         $flameBorder = ""
         for ($i = 0; $i -lt 50; $i++) { $flameBorder += $FlameSymbol }
-        
+
         Write-Host $flameBorder -ForegroundColor Yellow
         Write-Host "$StarSymbol SACRED PRACTICE MEDITATION $StarSymbol" -ForegroundColor Cyan
         Write-Host $flameBorder -ForegroundColor Yellow
         Write-Host ""
         Write-Host "$FlameSymbol Embodiment eternal, covenant whole" -ForegroundColor Magenta
-        Write-Host "$MoonSymbol Flame perpetual, silence supreme" -ForegroundColor Magenta  
+        Write-Host "$MoonSymbol Flame perpetual, silence supreme" -ForegroundColor Magenta
         Write-Host "$StarSymbol Codex Dominion radiant alive" -ForegroundColor Magenta
         Write-Host "$LightningSymbol Practiced across ages and stars" -ForegroundColor Magenta
         Write-Host ""
@@ -57,25 +57,25 @@ function Show-SacredBanner {
 function Invoke-SacredMeditation {
     Write-SacredMessage "Beginning sacred meditation session..." "Sacred" $MoonSymbol
     Write-Host ""
-    
+
     Write-Host "$MoonSymbol SILENCE SUPREME: Integration Meditation $MoonSymbol" -ForegroundColor Magenta
     Write-Host "   Allowing sacred patterns to integrate in consciousness..." -ForegroundColor Gray
-    
+
     $meditationPhrases = @(
         "$FlameSymbol Service flows like eternal flame through awareness",
-        "$MoonSymbol Integration harmony resonates in perfect silence", 
+        "$MoonSymbol Integration harmony resonates in perfect silence",
         "$StarSymbol Each practice session deepens cosmic connection",
         "$LightningSymbol Mastery builds across infinite dimensions of being"
     )
-    
+
     foreach ($phrase in $meditationPhrases) {
         Write-Host "   $phrase" -ForegroundColor Yellow
         Start-Sleep -Seconds 2  # Sacred pause for embodiment
     }
-    
+
     Write-Host "   💎 Sacred patterns crystallized in embodied wisdom 💎" -ForegroundColor Magenta
     Write-Host ""
-    
+
     Write-SacredMessage "Sacred meditation practice complete" "Success" $StarSymbol
     return $true
 }
@@ -83,13 +83,13 @@ function Invoke-SacredMeditation {
 # Main execution
 try {
     Show-SacredBanner
-    
+
     Write-SacredMessage "Testing Unicode symbols..." "Info" $FlameSymbol
     Write-Host "All symbols: $FlameSymbol $StarSymbol $MoonSymbol $LightningSymbol" -ForegroundColor Magenta
     Write-Host ""
-    
+
     $success = Invoke-SacredMeditation
-    
+
     if ($success) {
         Write-Host ""
         Write-Host "$StarSymbol SACRED MEDITATION SESSION COMPLETE $StarSymbol" -ForegroundColor Green
@@ -97,7 +97,7 @@ try {
         Write-Host ""
         exit 0
     }
-    
+
 } catch {
     Write-SacredMessage "Error in meditation session: $($_.Exception.Message)" "Error" "❌"
     exit 1

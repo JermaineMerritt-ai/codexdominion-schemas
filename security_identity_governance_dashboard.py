@@ -238,7 +238,7 @@ def main():
                     st.markdown(
                         f"""
                     <div class="governance-card">
-                        <strong>Threat:</strong> {threat['threat_type']} 
+                        <strong>Threat:</strong> {threat['threat_type']}
                         <span style="color: {'#e74c3c' if threat['severity'] == 'CRITICAL' else '#f39c12'};">[{threat['severity']}]</span><br>
                         <strong>Target:</strong> {threat['target']}<br>
                         <strong>Mitigation:</strong> {threat['mitigation']}<br>

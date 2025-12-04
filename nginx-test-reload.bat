@@ -30,7 +30,7 @@ if %errorlevel%==0 (
     echo    Port 80: Available
 )
 
-netstat -an | findstr ":443 " > nul 2>&1  
+netstat -an | findstr ":443 " > nul 2>&1
 if %errorlevel%==0 (
     echo    Port 443: LISTENING
 ) else (

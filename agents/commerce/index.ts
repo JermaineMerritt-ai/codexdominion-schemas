@@ -1,6 +1,6 @@
 /**
  * 🛍️ Commerce Agent - Industry-Specific Autonomous Agent
- * 
+ *
  * Specialized AI agent for e-commerce:
  * - Product recommendations
  * - Inventory management

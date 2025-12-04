@@ -115,17 +115,17 @@ def render_quick_builder() -> None:
         <div style='border: 2px dashed #ccc; border-radius: 10px; padding: 2rem; text-align: center; min-height: 400px;'>
             <h3>📱 Live Preview</h3>
             <p>Your application preview will appear here as you configure options</p>
-            
+
             <div style='background: #f8f9fa; border-radius: 8px; padding: 1rem; margin: 1rem 0; border-left: 4px solid #007bff;'>
                 <h4>🎨 Modern UI Components</h4>
                 <p>Header • Navigation • Hero Section • Features Grid • Footer</p>
             </div>
-            
+
             <div style='background: #f8f9fa; border-radius: 8px; padding: 1rem; margin: 1rem 0; border-left: 4px solid #28a745;'>
                 <h4>⚙️ Functionality</h4>
                 <p>State Management • API Integration • Form Handling</p>
             </div>
-            
+
             <div style='background: #f8f9fa; border-radius: 8px; padding: 1rem; margin: 1rem 0; border-left: 4px solid #ffc107;'>
                 <h4>📱 Responsive Design</h4>
                 <p>Mobile-First • Tablet Optimized • Desktop Enhanced</p>

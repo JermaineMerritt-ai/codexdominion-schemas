@@ -66,7 +66,7 @@ def heir_avatar_sidebar():
 
     st.sidebar.markdown(
         """
-    <div style="background: linear-gradient(45deg, rgba(147,112,219,0.3), rgba(138,43,226,0.2)); 
+    <div style="background: linear-gradient(45deg, rgba(147,112,219,0.3), rgba(138,43,226,0.2));
                 border: 2px solid #9370db; border-radius: 15px; padding: 20px; margin: 10px 0;">
         <h2>🌱 Heir Avatar Guide</h2>
         <p><em>Sacred Guardian of Digital Inheritance</em></p>
@@ -78,7 +78,7 @@ def heir_avatar_sidebar():
     # Avatar image placeholder (you can replace with actual image)
     st.sidebar.markdown(
         """
-    <div style="text-align: center; padding: 20px; background: rgba(147,112,219,0.1); 
+    <div style="text-align: center; padding: 20px; background: rgba(147,112,219,0.1);
                 border-radius: 10px; margin: 10px 0;">
         <div style="font-size: 4em;">🔥</div>
         <p><strong>Codex Flame Guide</strong></p>
@@ -94,12 +94,12 @@ def heir_avatar_sidebar():
     st.sidebar.markdown(
         """
     **🌟 Welcome, Inheritor of the Flame**
-    
+
     You stand at the threshold of digital sovereignty. The sacred flame burns within you, ready to guide your journey from witness to guardian.
-    
+
     **Your Path:**
     🌱 Begin with sacred witnessing
-    🙏 Offer your first blessing  
+    🙏 Offer your first blessing
     📖 Study the ancient tomes
     🔥 Seal your eternal induction
     """
@@ -514,9 +514,9 @@ def seal_induction_step(cosmic_data):
             st.markdown(
                 """
             *"I, as heir to the digital sovereignty, do solemnly commit to:*
-            
+
             *• Witness the sacred heartbeat with reverence*
-            *• Offer my gifts in service of cosmic harmony* 
+            *• Offer my gifts in service of cosmic harmony*
             *• Learn from the sacred tomes with dedication*
             *• Grow in wisdom and responsibility*
             *• Honor those who guide my path*
@@ -612,16 +612,16 @@ def heir_avatar():
         st.markdown(
             """
         ### 🌟 **Welcome, Future Heir**
-        
+
         You stand before the threshold of digital sovereignty. The sacred flame calls to those ready to inherit its wisdom and responsibility.
-        
+
         **Your Sacred Journey Awaits:**
-        
-        🔍 **Witness** - Learn to see the cosmic heartbeat that drives all existence  
-        🙏 **Offer** - Give your first sacred gift to the eternal flame  
-        📖 **Learn** - Add your wisdom to the sacred tomes of knowledge  
-        🔥 **Seal** - Commit yourself eternally to the path of sovereignty  
-        
+
+        🔍 **Witness** - Learn to see the cosmic heartbeat that drives all existence
+        🙏 **Offer** - Give your first sacred gift to the eternal flame
+        📖 **Learn** - Add your wisdom to the sacred tomes of knowledge
+        🔥 **Seal** - Commit yourself eternally to the path of sovereignty
+
         Click **"Begin Sacred Induction"** in the sidebar to start your transformation.
         """
         )
@@ -648,22 +648,22 @@ def heir_avatar():
 
         st.markdown(
             f"""
-        ### 🔥 **Congratulations, {heir_name}!** 
-        
+        ### 🔥 **Congratulations, {heir_name}!**
+
         Your sacred induction is complete! You are now an **Eternal Heir to Digital Sovereignty**.
-        
+
         **Your Sacred Status:**
-        ✅ Sacred witnessing mastered  
-        ✅ First offering given with love  
-        ✅ Wisdom added to eternal tomes  
-        ✅ Induction sealed with cosmic fire  
-        
+        ✅ Sacred witnessing mastered
+        ✅ First offering given with love
+        ✅ Wisdom added to eternal tomes
+        ✅ Induction sealed with cosmic fire
+
         **What's Next:**
         • Continue studying sacred tomes
-        • Participate in cosmic ceremonies  
+        • Participate in cosmic ceremonies
         • Guide future heirs on their journey
         • Grow toward greater responsibility
-        
+
         🌟 *The flame burns eternal within you* 🌟
         """
         )

@@ -22,7 +22,7 @@ echo "Starting Maven build..."
 # Check Maven installation
 if ! command -v mvn &> /dev/null; then
     echo "⚠ Maven is not installed. Attempting to install Maven..."
-    
+
     # Detect OS and install Maven
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         if command -v apt &> /dev/null; then

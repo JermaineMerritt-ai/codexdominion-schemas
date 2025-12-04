@@ -62,19 +62,19 @@ if ($install_gcloud -eq "y") {
     Write-Host ""
     Write-Host "🔧 === INSTALLING GOOGLE CLOUD CLI ===" -ForegroundColor Cyan
     Write-Host "Installing Google Cloud CLI..." -ForegroundColor Yellow
-    
+
     # Download and install gcloud CLI
     $gcloud_url = "https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe"
     $installer_path = "$env:TEMP\GoogleCloudSDKInstaller.exe"
-    
+
     Write-Host "📥 Downloading installer..." -ForegroundColor Yellow
     try {
         Invoke-WebRequest -Uri $gcloud_url -OutFile $installer_path
         Write-Host "✅ Downloaded successfully!" -ForegroundColor Green
-        
+
         Write-Host "🚀 Starting installer..." -ForegroundColor Yellow
         Start-Process -FilePath $installer_path -Wait
-        
+
         Write-Host "✅ Installation complete!" -ForegroundColor Green
         Write-Host ""
         Write-Host "Next steps:" -ForegroundColor Cyan
@@ -82,7 +82,7 @@ if ($install_gcloud -eq "y") {
         Write-Host "2. Run: gcloud auth login" -ForegroundColor White
         Write-Host "3. Run: .\setup-gcp.ps1" -ForegroundColor White
         Write-Host "4. Run: .\deploy-gcp.ps1" -ForegroundColor White
-        
+
     } catch {
         Write-Host "❌ Download failed. Please install manually from:" -ForegroundColor Red
         Write-Host "https://cloud.google.com/sdk/docs/install" -ForegroundColor Yellow

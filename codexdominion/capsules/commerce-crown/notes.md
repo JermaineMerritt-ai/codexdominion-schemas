@@ -1,7 +1,7 @@
 # Commerce Crown Capsule
 
-**Capsule Type:** E-Commerce & Affiliate Network  
-**Status:** Active  
+**Capsule Type:** E-Commerce & Affiliate Network
+**Status:** Active
 **Last Updated:** December 2, 2025
 
 ## Overview

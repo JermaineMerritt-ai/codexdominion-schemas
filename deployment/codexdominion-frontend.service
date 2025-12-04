@@ -1,0 +1,37 @@
+[Unit]
+Description=Codex Dominion Frontend (Next.js Standalone)
+Documentation=https://github.com/yourusername/codex-dominion
+After=network.target
+Wants=codexdominion-api.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/codexdominion.app/frontend
+ExecStart=/usr/bin/node /var/www/codexdominion.app/frontend/server.js
+Restart=always
+RestartSec=10
+StandardOutput=append:/var/log/codexdominion-frontend/access.log
+StandardError=append:/var/log/codexdominion-frontend/error.log
+
+# Environment
+Environment="NODE_ENV=production"
+Environment="PORT=3000"
+Environment="HOSTNAME=0.0.0.0"
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/codexdominion-frontend
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=512
+MemoryLimit=512M
+CPUQuota=50%
+
+[Install]
+WantedBy=multi-user.target

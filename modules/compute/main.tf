@@ -71,13 +71,13 @@ resource "ionoscloud_server" "wp" {
   ram           = local.sizes[var.instance_size].ram
   availability_zone = "ZONE_1"
   cpu_family    = "AMD_OPTERON"
-  
+
   volume {
     name       = "${var.prefix}-${var.env}-boot"
     size       = 60
     disk_type  = "SSD"
   }
-  
+
   nic {
     lan     = ionoscloud_lan.lan.id
     name    = "wan"

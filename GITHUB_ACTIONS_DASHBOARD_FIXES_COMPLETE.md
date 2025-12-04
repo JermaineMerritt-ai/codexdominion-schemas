@@ -8,7 +8,7 @@ Fixed all dashboard-related GitHub Actions workflow failures (exit code 1 issues
 ### 1. ✅ fact-check.yml - Missing Script Paths
 **Problem:** Workflow referenced non-existent directories:
 - `services/fact-check-tools/` (doesn't exist)
-- `.tools/factcheck/` (doesn't exist)  
+- `.tools/factcheck/` (doesn't exist)
 - `markets/tools/` (doesn't exist)
 
 **Solution:**
@@ -163,7 +163,7 @@ docker build -f Dockerfile.avatar -t avatar-system:test .
 ## Success Metrics
 
 ✅ fact-check.yml - No more exit code 1 from missing scripts
-✅ drift-monitor.yml - Already fixed, continues working  
+✅ drift-monitor.yml - Already fixed, continues working
 ✅ Dockerfile.jermaine - Created for multi-cloud deployment
 ✅ scripts/sign_archive.py - Compliance archives can now be signed
 ✅ All critical dashboard workflows can run without code 1 failures

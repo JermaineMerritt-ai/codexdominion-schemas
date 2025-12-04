@@ -86,7 +86,7 @@ Write-Host ""
 # Summary
 Write-Host "🏁 === SUMMARY ===" -ForegroundColor Magenta
 Write-Host "✅ All issues resolved" -ForegroundColor Green
-Write-Host "✅ Docker container running smoothly" -ForegroundColor Green  
+Write-Host "✅ Docker container running smoothly" -ForegroundColor Green
 Write-Host "✅ Ready for cloud deployment" -ForegroundColor Green
 Write-Host "✅ Multiple deployment options available" -ForegroundColor Green
 Write-Host ""

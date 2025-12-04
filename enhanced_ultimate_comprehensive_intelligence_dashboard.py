@@ -25,21 +25,21 @@ def performance_monitor(operation_name=None):
             try:
                 result = func(*args, **kwargs)
                 execution_time = time.time() - start_time
-                
+
                 # Store performance data
                 if 'performance_data' not in st.session_state:
                     st.session_state.performance_data = {}
-                
+
                 op_name = operation_name or func.__name__
                 if op_name not in st.session_state.performance_data:
                     st.session_state.performance_data[op_name] = []
-                
+
                 st.session_state.performance_data[op_name].append(execution_time)
-                
+
                 # Keep only last 100 measurements
                 if len(st.session_state.performance_data[op_name]) > 100:
                     st.session_state.performance_data[op_name] = st.session_state.performance_data[op_name][-100:]
-                
+
                 return result
             except Exception as e:
                 st.error(f"Error in {operation_name or func.__name__}: {str(e)}")
@@ -71,12 +71,12 @@ def show_performance_dashboard():
     if 'performance_data' in st.session_state and st.session_state.performance_data:
         with st.expander("Performance Dashboard"):
             st.subheader("Operation Performance")
-            
+
             for operation, times in st.session_state.performance_data.items():
                 if times:
                     avg_time = sum(times) / len(times)
                     max_time = max(times)
-                    
+
                     col1, col2, col3 = st.columns(3)
                     with col1:
                         st.metric(f"{operation} Avg", f"{avg_time:.3f}s")
@@ -93,7 +93,7 @@ def apply_enhanced_styling():
     .main {
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
     }
-    
+
     .enhanced-header {
         text-align: center;
         padding: 30px;
@@ -103,7 +103,7 @@ def apply_enhanced_styling():
         border-radius: 20px;
         box-shadow: 0 8px 32px rgba(138,43,226,0.3);
     }
-    
+
     .enhanced-card {
         background: rgba(255,255,255,0.1);
         padding: 25px;
@@ -113,13 +113,13 @@ def apply_enhanced_styling():
         margin: 15px 0;
         transition: all 0.4s ease;
     }
-    
+
     .enhanced-card:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 15px 40px rgba(138,43,226,0.4);
         border-color: #8B2BE2;
     }
-    
+
     .stButton > button {
         background: linear-gradient(45deg, #8B2BE2, #9370DB);
         border: none;
@@ -128,7 +128,7 @@ def apply_enhanced_styling():
         font-weight: bold;
         transition: all 0.3s ease;
     }
-    
+
     .stButton > button:hover {
         background: linear-gradient(45deg, #9370DB, #8B2BE2);
         transform: scale(1.05);
@@ -215,12 +215,12 @@ st.markdown("""
 
 class UltimateIntelligenceSystem:
     """Ultimate comprehensive intelligence across all domains"""
-    
+
     def __init__(self):
         self.all_domains = {
             "Advanced Technology": [
                 "Artificial Intelligence & Machine Learning",
-                "Quantum Computing & Physics", 
+                "Quantum Computing & Physics",
                 "Advanced Connectivity (5G/6G/Satellite)",
                 "Clean Energy & Climate Technology",
                 "Space Technology & Satellite Systems"
@@ -253,19 +253,19 @@ class UltimateIntelligenceSystem:
                 "Industry & Manufacturing Intelligence"
             ]
         }
-        
+
         self.total_domains = 24
         self.elite_sources = "60+"
         self.market_coverage = "$25T+"
-        
+
         self.convergence_patterns = [
             "AI-Bioengineering Convergence",
-            "Quantum-Communication Fusion", 
+            "Quantum-Communication Fusion",
             "Space-Planetary Infrastructure Integration",
             "Security-Governance Harmonization",
             "Culture-Commerce-Technology Synthesis"
         ]
-    
+
     async def generate_ultimate_intelligence_report(self, focus_query: str) -> Dict:
         """Generate ultimate comprehensive intelligence report"""
         return {
@@ -320,7 +320,7 @@ class UltimateIntelligenceSystem:
 
 def main():
     """Main Ultimate Comprehensive Intelligence interface"""
-    
+
     # Header
     st.markdown("""
     <div class="ultimate-header">
@@ -329,7 +329,7 @@ def main():
         <p>AI Trinity Enhanced • 60+ Elite Sources • $25T+ Market Coverage • Global Intelligence Convergence</p>
     </div>
     """, unsafe_allow_html=True)
-    
+
     # Sovereignty banner
     st.markdown("""
     <div class="sovereignty-banner">
@@ -337,32 +337,32 @@ def main():
         🔥 All Systems Operational • AI Trinity Active • 24 Domains Integrated 🔥
     </div>
     """, unsafe_allow_html=True)
-    
+
     # Initialize system
     if 'ultimate_intelligence' not in st.session_state:
         st.session_state.ultimate_intelligence = UltimateIntelligenceSystem()
-    
+
     # Main interface
     col1, col2 = st.columns([2, 1])
-    
+
     with col1:
     # Apply enhanced styling
     apply_enhanced_styling()
 
         st.header("🌟 Ultimate Intelligence Query")
-        
+
         query = st.text_area(
             "🚀 Query Across All 24 Domains:",
             placeholder="Ask about any topic across technology, bioengineering, security, infrastructure, culture, and commerce...",
             height=120
         )
-        
+
         if st.button("🌟 Generate Ultimate Intelligence Report") and query:
             with st.spinner(f"Analyzing '{query}' across all 24 elite knowledge domains..."):
                 report = asyncio.run(
                     st.session_state.ultimate_intelligence.generate_ultimate_intelligence_report(query)
                 )
-                
+
                 # Display comprehensive analysis
                 st.subheader("🔬 Advanced Technology Intelligence")
                 for insight in report['comprehensive_analysis']['advanced_technology_insights']:
@@ -371,7 +371,7 @@ def main():
                         {insight}
                     </div>
                     """, unsafe_allow_html=True)
-                
+
                 st.subheader("🧬 Biological & Health Intelligence")
                 for insight in report['comprehensive_analysis']['biological_health_insights']:
                     st.markdown(f"""
@@ -379,15 +379,15 @@ def main():
                         {insight}
                     </div>
                     """, unsafe_allow_html=True)
-                
-                st.subheader("🔐 Security & Governance Intelligence") 
+
+                st.subheader("🔐 Security & Governance Intelligence")
                 for insight in report['comprehensive_analysis']['security_governance_insights']:
                     st.markdown(f"""
                     <div class="intelligence-card">
                         {insight}
                     </div>
                     """, unsafe_allow_html=True)
-                
+
                 st.subheader("🌍 Infrastructure & Society Intelligence")
                 for insight in report['comprehensive_analysis']['infrastructure_insights']:
                     st.markdown(f"""
@@ -395,36 +395,36 @@ def main():
                         {insight}
                     </div>
                     """, unsafe_allow_html=True)
-                
+
                 for insight in report['comprehensive_analysis']['society_commerce_insights']:
                     st.markdown(f"""
                     <div class="intelligence-card">
                         {insight}
                     </div>
                     """, unsafe_allow_html=True)
-                
+
                 # Strategic recommendations
                 st.subheader("📋 Strategic Recommendations")
                 for recommendation in report['strategic_recommendations']:
                     st.write(f"• **{recommendation}**")
-    
+
     with col2:
     # Apply enhanced styling
     apply_enhanced_styling()
 
         st.header("🏛️ Domain Overview")
-        
+
         # Show all domain clusters
         for cluster, domains in st.session_state.ultimate_intelligence.all_domains.items():
             with st.expander(f"🔬 {cluster}"):
                 for domain in domains:
                     st.write(f"• {domain}")
-        
+
     # Apply enhanced styling
     apply_enhanced_styling()
 
         st.header("⚡ System Capabilities")
-        
+
         capabilities = [
             "🌟 24 Knowledge Domains",
             "🤖 AI Trinity Integration",
@@ -437,7 +437,7 @@ def main():
             "🌍 Global Scope",
             "🚀 Ultimate Capability"
         ]
-        
+
         for capability in capabilities:
             st.markdown(f"""
             <div class="convergence-metric">

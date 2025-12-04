@@ -24,14 +24,14 @@ function Test-Administrator {
 
 function Start-DashboardProcess {
     Write-Host "🚀 Starting Codex Dashboard directly..." -ForegroundColor Green
-    
+
     $processArgs = @(
         "-m", "streamlit", "run", $StreamlitScript,
         "--server.port", $Port,
         "--server.headless", "true",
         "--server.address", "localhost"
     )
-    
+
     try {
         $process = Start-Process -FilePath "python" -ArgumentList $processArgs -NoNewWindow -PassThru
         Write-Host "✅ Dashboard started with PID: $($process.Id)" -ForegroundColor Green
@@ -47,13 +47,13 @@ function Start-DashboardProcess {
 
 function Stop-DashboardProcess {
     Write-Host "🛑 Stopping Codex Dashboard processes..." -ForegroundColor Yellow
-    
-    $processes = Get-Process | Where-Object { 
-        $_.ProcessName -eq "python" -and 
-        $_.CommandLine -like "*streamlit*" -and 
-        $_.CommandLine -like "*$StreamlitScript*" 
+
+    $processes = Get-Process | Where-Object {
+        $_.ProcessName -eq "python" -and
+        $_.CommandLine -like "*streamlit*" -and
+        $_.CommandLine -like "*$StreamlitScript*"
     }
-    
+
     if ($processes) {
         $processes | ForEach-Object {
             Write-Host "Stopping process PID: $($_.Id)" -ForegroundColor White
@@ -67,18 +67,18 @@ function Stop-DashboardProcess {
 
 function Get-DashboardStatus {
     Write-Host "📊 Codex Dashboard Status:" -ForegroundColor Cyan
-    
+
     # Check for running processes
-    $processes = Get-Process -Name "python" -ErrorAction SilentlyContinue | Where-Object { 
-        $_.CommandLine -like "*streamlit*" -and $_.CommandLine -like "*$StreamlitScript*" 
+    $processes = Get-Process -Name "python" -ErrorAction SilentlyContinue | Where-Object {
+        $_.CommandLine -like "*streamlit*" -and $_.CommandLine -like "*$StreamlitScript*"
     }
-    
+
     if ($processes) {
         Write-Host "   Status: RUNNING" -ForegroundColor Green
         $processes | ForEach-Object {
             Write-Host "   PID: $($_.Id) | Started: $($_.StartTime)" -ForegroundColor White
         }
-        
+
         # Test if port is responding
         try {
             $response = Invoke-WebRequest -Uri "http://localhost:$Port" -TimeoutSec 5 -UseBasicParsing -ErrorAction Stop
@@ -93,7 +93,7 @@ function Get-DashboardStatus {
         Write-Host "   Status: STOPPED" -ForegroundColor Red
         Write-Host "💡 Use 'start' to launch the dashboard" -ForegroundColor Yellow
     }
-    
+
     # Show port usage
     $portCheck = netstat -an | Select-String ":$Port "
     if ($portCheck) {
@@ -116,34 +116,34 @@ function Install-WindowsService {
 
 # Main execution
 switch ($Action.ToLower()) {
-    "install" { 
+    "install" {
         Install-WindowsService
         Get-DashboardStatus
     }
-    "start" { 
+    "start" {
         Start-DashboardProcess
         Start-Sleep 2
         Get-DashboardStatus
     }
-    "stop" { 
+    "stop" {
         Stop-DashboardProcess
         Get-DashboardStatus
     }
-    "restart" { 
+    "restart" {
         Stop-DashboardProcess
         Start-Sleep 2
         Start-DashboardProcess
         Start-Sleep 2
         Get-DashboardStatus
     }
-    "status" { 
+    "status" {
         Get-DashboardStatus
     }
-    "uninstall" { 
+    "uninstall" {
         Stop-DashboardProcess
         Write-Host "✅ Dashboard processes stopped (uninstalled)" -ForegroundColor Green
     }
-    default { 
+    default {
         Write-Host "Usage: .\service-manager.ps1 [install|start|stop|restart|status|uninstall]" -ForegroundColor Yellow
         Get-DashboardStatus
     }

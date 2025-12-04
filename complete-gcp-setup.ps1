@@ -37,7 +37,7 @@ Write-Host "⚡ === ENABLING REQUIRED APIS ===" -ForegroundColor Yellow
 
 $apis = @(
     "cloudbuild.googleapis.com",
-    "run.googleapis.com", 
+    "run.googleapis.com",
     "containerregistry.googleapis.com",
     "serviceusage.googleapis.com"
 )
@@ -91,17 +91,17 @@ docker build -t $IMAGE_NAME .
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "✅ Image built successfully" -ForegroundColor Green
-    
+
     Write-Host "📤 Pushing to Google Container Registry..." -ForegroundColor White
     docker push $IMAGE_NAME
-    
+
     if ($LASTEXITCODE -eq 0) {
         Write-Host "✅ Image pushed successfully!" -ForegroundColor Green
-        
+
         # Deploy to Cloud Run
         Write-Host ""
         Write-Host "🚀 === DEPLOYING TO CLOUD RUN ===" -ForegroundColor Yellow
-        
+
         gcloud run deploy codex-dashboard `
             --image=$IMAGE_NAME `
             --region=us-central1 `
@@ -111,31 +111,31 @@ if ($LASTEXITCODE -eq 0) {
             --memory=1Gi `
             --cpu=1 `
             --project=$PROJECT_ID
-            
+
         if ($LASTEXITCODE -eq 0) {
             Write-Host "✅ Deployment successful!" -ForegroundColor Green
-            
+
             $SERVICE_URL = gcloud run services describe codex-dashboard --region=us-central1 --format="value(status.url)" --project=$PROJECT_ID
             Write-Host ""
             Write-Host "🔗 Your Codex Dashboard is live at:" -ForegroundColor Green
             Write-Host "   $SERVICE_URL" -ForegroundColor White
-            
+
             # Test the deployment
             Write-Host ""
             Write-Host "🧪 Testing deployment..." -ForegroundColor Yellow
             Start-Sleep 10
-            
+
             try {
                 $response = Invoke-RestMethod -Uri $SERVICE_URL -Method GET -TimeoutSec 30
                 Write-Host "✅ Dashboard is responding!" -ForegroundColor Green
             } catch {
                 Write-Host "⚠️ Dashboard may still be starting up. Please wait a moment and try the URL." -ForegroundColor Yellow
             }
-            
+
         } else {
             Write-Host "❌ Cloud Run deployment failed" -ForegroundColor Red
         }
-        
+
     } else {
         Write-Host "❌ Push failed" -ForegroundColor Red
     }

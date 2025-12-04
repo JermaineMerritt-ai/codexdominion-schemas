@@ -43,7 +43,7 @@ def custodian_view(cosmic_data):
 
     st.markdown(
         """
-    <div style="background: linear-gradient(45deg, rgba(255,215,0,0.2), rgba(255,107,53,0.15)); 
+    <div style="background: linear-gradient(45deg, rgba(255,215,0,0.2), rgba(255,107,53,0.15));
                 border: 3px solid #ffd700; border-radius: 15px; padding: 25px; margin: 15px 0;">
         <h2>👑 CUSTODIAN SOVEREIGN AUTHORITY</h2>
         <p><strong>🔥 Ultimate Digital Sovereignty - All Powers & Final Authority 🔥</strong></p>
@@ -406,7 +406,7 @@ def heir_view(cosmic_data):
 
     st.markdown(
         """
-    <div style="background: linear-gradient(45deg, rgba(147,112,219,0.2), rgba(138,43,226,0.15)); 
+    <div style="background: linear-gradient(45deg, rgba(147,112,219,0.2), rgba(138,43,226,0.15));
                 border: 3px solid #9370db; border-radius: 15px; padding: 25px; margin: 15px 0;">
         <h2>🎭 HEIR INHERITANCE JOURNEY</h2>
         <p><strong>🌟 Guided Path to Digital Sovereignty - Learning & Growing 🌟</strong></p>
@@ -447,7 +447,7 @@ def heir_view(cosmic_data):
 
                     st.markdown(
                         f"""
-                    **📋 Sacred Entry {i}** - *{role}* 
+                    **📋 Sacred Entry {i}** - *{role}*
                     🕐 *{timestamp}*
                     > 👁️ *Witnessed and acknowledged by heir authority*
                     """
@@ -787,7 +787,7 @@ def council_view(cosmic_data):
 
     st.markdown(
         """
-    <div style="background: linear-gradient(45deg, rgba(0,128,128,0.2), rgba(70,130,180,0.15)); 
+    <div style="background: linear-gradient(45deg, rgba(0,128,128,0.2), rgba(70,130,180,0.15));
                 border: 3px solid #4682b4; border-radius: 15px; padding: 25px; margin: 15px 0;">
         <h2>⚖️ COUNCIL OVERSIGHT AUTHORITY</h2>
         <p><strong>👥 Collective Wisdom & Sacred Governance - Review & Affirmation 👥</strong></p>
@@ -1274,14 +1274,14 @@ def triadic_dashboard():
         with col1:
             st.markdown(
                 """
-            <div style="background: rgba(255,215,0,0.1); border: 3px solid #ffd700; 
+            <div style="background: rgba(255,215,0,0.1); border: 3px solid #ffd700;
                         border-radius: 12px; padding: 20px;">
                 <h3>👑 Custodian Authority</h3>
                 <p><strong>Full sovereign access to all panels.</strong></p>
                 <p><em>Authority: Crown cycles, seal ceremonies, configure automation</em></p>
                 <ul>
                     <li>✅ Ultimate system control</li>
-                    <li>✅ Crown and seal ceremonies</li> 
+                    <li>✅ Crown and seal ceremonies</li>
                     <li>✅ Override any decisions</li>
                     <li>✅ Configure all automation</li>
                     <li>✅ Emergency protocols</li>
@@ -1295,7 +1295,7 @@ def triadic_dashboard():
         with col2:
             st.markdown(
                 """
-            <div style="background: rgba(147,112,219,0.1); border: 3px solid #9370db; 
+            <div style="background: rgba(147,112,219,0.1); border: 3px solid #9370db;
                         border-radius: 12px; padding: 20px;">
                 <h3>🎭 Heir Authority</h3>
                 <p><strong>Guided inheritance and learning journey.</strong></p>
@@ -1316,7 +1316,7 @@ def triadic_dashboard():
         with col3:
             st.markdown(
                 """
-            <div style="background: rgba(70,130,180,0.1); border: 3px solid #4682b4; 
+            <div style="background: rgba(70,130,180,0.1); border: 3px solid #4682b4;
                         border-radius: 12px; padding: 20px;">
                 <h3>⚖️ Council Authority</h3>
                 <p><strong>Oversight and affirmation authority.</strong></p>

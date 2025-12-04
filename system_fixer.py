@@ -203,19 +203,19 @@ try:
 except ImportError:
     # Create fallback functions
     import json
-    
+
     def load_json(filename, default=None):
         try:
             with open(f"data/{filename}", 'r') as f:
                 return json.load(f)
         except:
             return default or {}
-    
+
     def save_json(filename, data):
         os.makedirs("data", exist_ok=True)
         with open(f"data/{filename}", 'w') as f:
             json.dump(data, f, indent=2)
-    
+
     def append_entry(filename, key, entry):
         data = load_json(filename, {})
         if key not in data:
@@ -313,7 +313,7 @@ def load_data_safe(filename, default=None):
 
 def main():
     """Main dashboard function"""
-    
+
     # Apply basic styling
     st.markdown("""
     <style>
@@ -323,56 +323,56 @@ def main():
     }
     </style>
     """, unsafe_allow_html=True)
-    
+
     # Header
     st.title("⚡ Codex Dominion Unified Dashboard")
     st.markdown("---")
-    
+
     # System status
     col1, col2, col3 = st.columns(3)
-    
+
     with col1:
         st.metric("System Status", "OPERATIONAL", "✅")
-    
+
     with col2:
         st.metric("Data Files", "READY", "📊")
-    
+
     with col3:
         st.metric("Last Updated", datetime.now().strftime("%H:%M:%S"), "🕐")
-    
+
     # Data overview
     st.subheader("📊 Data Overview")
-    
+
     # Load and display data
     ledger_data = load_data_safe("ledger.json", {"entries": []})
     constellation_data = load_data_safe("constellations.json", {"constellations": []})
-    
+
     col1, col2 = st.columns(2)
-    
+
     with col1:
         st.info(f"Ledger Entries: {len(ledger_data.get('entries', []))}")
         if ledger_data.get('entries'):
             st.json(ledger_data['entries'][-1])  # Show latest entry
-    
+
     with col2:
         st.success(f"Constellations: {len(constellation_data.get('constellations', []))}")
         if constellation_data.get('constellations'):
             st.json(constellation_data['constellations'][-1])  # Show latest constellation
-    
+
     # Quick actions
     st.subheader("⚡ Quick Actions")
-    
+
     col1, col2, col3 = st.columns(3)
-    
+
     with col1:
         if st.button("📊 Revenue Crown"):
             st.info("Revenue Crown dashboard available at port 8066")
-    
+
     with col2:
         if st.button("🔄 Refresh Data"):
             st.cache_data.clear()
             st.success("Data refreshed!")
-    
+
     with col3:
         if st.button("📈 System Analytics"):
             st.info("System analytics coming soon")

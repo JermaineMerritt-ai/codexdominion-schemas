@@ -6,7 +6,7 @@ param(
     [Parameter(Position=0)]
     [ValidateSet('install', 'upgrade', 'rollback', 'uninstall', 'log', 'view', 'query', 'backup', 'init', 'help')]
     [string]$Command = 'help',
-    
+
     [Parameter(Position=1, ValueFromRemainingArguments=$true)]
     [string[]]$Arguments
 )
@@ -19,7 +19,7 @@ $LedgerDir = Split-Path -Parent $LedgerPath
 function Initialize-Ledger {
     if (-not (Test-Path $LedgerPath)) {
         New-Item -ItemType Directory -Path $LedgerDir -Force | Out-Null
-        
+
         $genesisBlock = @{
             genesis_block = @{
                 timestamp = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
@@ -31,7 +31,7 @@ function Initialize-Ledger {
             }
             releases = @()
         } | ConvertTo-Json -Depth 10
-        
+
         Set-Content -Path $LedgerPath -Value $genesisBlock -Encoding UTF8
         Write-Host "✓ Eternal Ledger genesis block created at $LedgerPath" -ForegroundColor Green
     }
@@ -47,11 +47,11 @@ function Add-LedgerEntry {
         [string]$ChartVersion = "N/A",
         [string]$Status = "unknown"
     )
-    
+
     Initialize-Ledger
-    
+
     $timestamp = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
-    
+
     $entry = @{
         action = $Action
         release = $Release
@@ -68,23 +68,23 @@ function Add-LedgerEntry {
         }
         lineage_preserved = $true
     }
-    
+
     # Read existing ledger
     $ledger = Get-Content -Path $LedgerPath -Raw | ConvertFrom-Json
-    
+
     # Append entry
     $ledger.releases += $entry
-    
+
     # Write back
     $ledger | ConvertTo-Json -Depth 10 | Set-Content -Path $LedgerPath -Encoding UTF8
-    
+
     Write-Host "✓ Logged $Action for $Release (revision $Revision) to Eternal Ledger" -ForegroundColor Green
 }
 
 # Get latest revision for a release
 function Get-LatestRevision {
     param([string]$Release, [string]$Namespace)
-    
+
     try {
         $history = helm history $Release --namespace $Namespace --max 1 -o json 2>$null | ConvertFrom-Json
         return $history[0].revision
@@ -96,7 +96,7 @@ function Get-LatestRevision {
 # Get chart version from release
 function Get-ChartVersion {
     param([string]$Release, [string]$Namespace)
-    
+
     try {
         $list = helm list --namespace $Namespace -o json 2>$null | ConvertFrom-Json
         $release = $list | Where-Object { $_.name -eq $Release }
@@ -109,7 +109,7 @@ function Get-ChartVersion {
 # Get release status
 function Get-ReleaseStatus {
     param([string]$Release, [string]$Namespace)
-    
+
     try {
         $status = helm status $Release --namespace $Namespace -o json 2>$null | ConvertFrom-Json
         return $status.info.status
@@ -121,24 +121,24 @@ function Get-ReleaseStatus {
 # Helm install with logging
 function Invoke-HelmInstall {
     param([string[]]$Args)
-    
+
     $Release = $Args[0]
     $Chart = $Args[1]
     $Namespace = $Args[2]
     $HelmArgs = $Args[3..($Args.Length-1)]
-    
+
     Write-Host "⏳ Installing $Release from $Chart..." -ForegroundColor Cyan
-    
+
     try {
         helm install $Release $Chart --namespace $Namespace --create-namespace @HelmArgs
-        
+
         $Revision = Get-LatestRevision -Release $Release -Namespace $Namespace
         $ChartVersion = Get-ChartVersion -Release $Release -Namespace $Namespace
         $Status = Get-ReleaseStatus -Release $Release -Namespace $Namespace
-        
+
         Add-LedgerEntry -Action "install" -Release $Release -Namespace $Namespace `
             -Revision $Revision -ChartVersion $ChartVersion -Status $Status
-        
+
         Write-Host "✓ Installation complete and logged" -ForegroundColor Green
     } catch {
         Add-LedgerEntry -Action "install_failed" -Release $Release -Namespace $Namespace `
@@ -151,24 +151,24 @@ function Invoke-HelmInstall {
 # Helm upgrade with logging
 function Invoke-HelmUpgrade {
     param([string[]]$Args)
-    
+
     $Release = $Args[0]
     $Chart = $Args[1]
     $Namespace = $Args[2]
     $HelmArgs = $Args[3..($Args.Length-1)]
-    
+
     Write-Host "⏳ Upgrading $Release from $Chart..." -ForegroundColor Cyan
-    
+
     try {
         helm upgrade $Release $Chart --namespace $Namespace @HelmArgs
-        
+
         $Revision = Get-LatestRevision -Release $Release -Namespace $Namespace
         $ChartVersion = Get-ChartVersion -Release $Release -Namespace $Namespace
         $Status = Get-ReleaseStatus -Release $Release -Namespace $Namespace
-        
+
         Add-LedgerEntry -Action "upgrade" -Release $Release -Namespace $Namespace `
             -Revision $Revision -ChartVersion $ChartVersion -Status $Status
-        
+
         Write-Host "✓ Upgrade complete and logged" -ForegroundColor Green
     } catch {
         Add-LedgerEntry -Action "upgrade_failed" -Release $Release -Namespace $Namespace `
@@ -181,23 +181,23 @@ function Invoke-HelmUpgrade {
 # Helm rollback with logging
 function Invoke-HelmRollback {
     param([string[]]$Args)
-    
+
     $Release = $Args[0]
     $Namespace = $Args[1]
     $TargetRevision = if ($Args[2]) { $Args[2] } else { "0" }
-    
+
     Write-Host "⏳ Rolling back $Release to revision $TargetRevision..." -ForegroundColor Cyan
-    
+
     try {
         helm rollback $Release $TargetRevision --namespace $Namespace
-        
+
         $Revision = Get-LatestRevision -Release $Release -Namespace $Namespace
         $ChartVersion = Get-ChartVersion -Release $Release -Namespace $Namespace
         $Status = Get-ReleaseStatus -Release $Release -Namespace $Namespace
-        
+
         Add-LedgerEntry -Action "rollback" -Release $Release -Namespace $Namespace `
             -Revision $Revision -ChartVersion $ChartVersion -Status $Status
-        
+
         Write-Host "✓ Rollback complete and logged" -ForegroundColor Green
     } catch {
         Add-LedgerEntry -Action "rollback_failed" -Release $Release -Namespace $Namespace `
@@ -210,21 +210,21 @@ function Invoke-HelmRollback {
 # Helm uninstall with logging
 function Invoke-HelmUninstall {
     param([string[]]$Args)
-    
+
     $Release = $Args[0]
     $Namespace = $Args[1]
-    
+
     Write-Host "⏳ Uninstalling $Release (preserving history)..." -ForegroundColor Cyan
-    
+
     $Revision = Get-LatestRevision -Release $Release -Namespace $Namespace
     $ChartVersion = Get-ChartVersion -Release $Release -Namespace $Namespace
-    
+
     try {
         helm uninstall $Release --namespace $Namespace --keep-history
-        
+
         Add-LedgerEntry -Action "uninstall" -Release $Release -Namespace $Namespace `
             -Revision $Revision -ChartVersion $ChartVersion -Status "uninstalled"
-        
+
         Write-Host "✓ Uninstall complete and logged (history preserved)" -ForegroundColor Green
     } catch {
         Add-LedgerEntry -Action "uninstall_failed" -Release $Release -Namespace $Namespace `
@@ -240,7 +240,7 @@ function Show-Ledger {
         Write-Host "✗ No ledger found at $LedgerPath" -ForegroundColor Red
         return
     }
-    
+
     Write-Host "📜 Eternal Ledger Contents:" -ForegroundColor Cyan
     Get-Content -Path $LedgerPath -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 10 | Write-Host
 }
@@ -248,17 +248,17 @@ function Show-Ledger {
 # Query ledger by release name
 function Find-LedgerEntries {
     param([string]$Release)
-    
+
     if (-not (Test-Path $LedgerPath)) {
         Write-Host "✗ No ledger found at $LedgerPath" -ForegroundColor Red
         return
     }
-    
+
     Write-Host "📜 Ledger entries for release '$Release':" -ForegroundColor Cyan
-    
+
     $ledger = Get-Content -Path $LedgerPath -Raw | ConvertFrom-Json
     $entries = $ledger.releases | Where-Object { $_.release -eq $Release }
-    
+
     if ($entries) {
         $entries | ConvertTo-Json -Depth 10 | Write-Host
     } else {
@@ -272,10 +272,10 @@ function Backup-Ledger {
         Write-Host "✗ No ledger to backup" -ForegroundColor Red
         return
     }
-    
+
     $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
     $backupPath = "$LedgerPath.backup.$timestamp"
-    
+
     Copy-Item -Path $LedgerPath -Destination $backupPath
     Write-Host "✓ Ledger backed up to $backupPath" -ForegroundColor Green
 }
@@ -289,28 +289,28 @@ Usage: .\eternal-ledger.ps1 <command> [args...]
 Commands:
   install <release> <chart> <namespace> [helm-args...]
       Install a chart and log to ledger
-      
+
   upgrade <release> <chart> <namespace> [helm-args...]
       Upgrade a release and log to ledger
-      
+
   rollback <release> <namespace> [revision]
       Rollback a release and log to ledger
-      
+
   uninstall <release> <namespace>
       Uninstall a release (keep history) and log to ledger
-      
+
   log <action> <release> <namespace> [revision] [chart_version] [status]
       Manually log an action to ledger
-      
+
   view
       View entire ledger contents
-      
+
   query <release>
       Query ledger for specific release
-      
+
   backup
       Create timestamped backup of ledger
-      
+
   init
       Initialize genesis block
 
@@ -320,19 +320,19 @@ Environment Variables:
 Examples:
   # Install with logging
   .\eternal-ledger.ps1 install codexdominion ./codexdominion codexdominion -f working-values.yaml
-  
+
   # Upgrade with logging
   .\eternal-ledger.ps1 upgrade codexdominion ./codexdominion codexdominion -f working-values.yaml --history-max 10
-  
+
   # Rollback with logging
   .\eternal-ledger.ps1 rollback codexdominion codexdominion 3
-  
+
   # View all logged actions
   .\eternal-ledger.ps1 view
-  
+
   # Query specific release
   .\eternal-ledger.ps1 query codexdominion
-  
+
   # Backup ledger
   .\eternal-ledger.ps1 backup
 

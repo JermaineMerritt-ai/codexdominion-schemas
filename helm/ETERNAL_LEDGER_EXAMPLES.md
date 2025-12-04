@@ -158,17 +158,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Setup Helm
         uses: azure/setup-helm@v3
         with:
           version: '3.13.3'
-      
+
       - name: Configure kubectl
         uses: azure/k8s-set-context@v3
         with:
           kubeconfig: ${{ secrets.KUBECONFIG }}
-      
+
       - name: Deploy with Eternal Ledger
         run: |
           chmod +x ./scripts/eternal-ledger.sh
@@ -177,10 +177,10 @@ jobs:
             --history-max=10 \
             --wait \
             --timeout 10m
-      
+
       - name: Backup Ledger
         run: ./scripts/eternal-ledger.sh backup
-      
+
       - name: Upload Ledger Artifact
         uses: actions/upload-artifact@v3
         with:
@@ -202,7 +202,7 @@ steps:
   - task: HelmInstaller@1
     inputs:
       helmVersionToInstall: '3.13.3'
-  
+
   - task: Kubernetes@1
     inputs:
       connectionType: 'Azure Resource Manager'
@@ -210,7 +210,7 @@ steps:
       azureResourceGroup: '$(resourceGroup)'
       kubernetesCluster: '$(clusterName)'
       command: 'login'
-  
+
   - bash: |
       chmod +x ./scripts/eternal-ledger.sh
       ./scripts/eternal-ledger.sh upgrade codexdominion ./charts/codexdominion codex \
@@ -219,10 +219,10 @@ steps:
         --wait \
         --timeout 10m
     displayName: 'Deploy with Eternal Ledger'
-  
+
   - bash: ./scripts/eternal-ledger.sh view
     displayName: 'Show Ledger Contents'
-  
+
   - task: PublishBuildArtifacts@1
     inputs:
       pathToPublish: '/var/log/eternal-ledger.json'

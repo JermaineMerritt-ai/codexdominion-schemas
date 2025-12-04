@@ -45,7 +45,7 @@ st.markdown(
         margin-bottom: 2rem;
         box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3);
     }
-    
+
     .omega-seal {
         background: radial-gradient(circle, #ffd700, #ffed4a, #fff59d);
         color: #1a1a2e;
@@ -57,7 +57,7 @@ st.markdown(
         box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
         animation: pulse 2s infinite;
     }
-    
+
     .heartbeat-status {
         background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffa8a8);
         color: white;
@@ -66,7 +66,7 @@ st.markdown(
         text-align: center;
         animation: heartbeat 1.5s ease-in-out infinite;
     }
-    
+
     .proclamation-card {
         background: linear-gradient(135deg, #667eea, #764ba2);
         color: white;
@@ -75,7 +75,7 @@ st.markdown(
         margin: 0.5rem 0;
         border-left: 4px solid #ffd700;
     }
-    
+
     .cycle-card {
         background: linear-gradient(135deg, #f093fb, #f5576c);
         color: white;
@@ -84,7 +84,7 @@ st.markdown(
         margin: 0.5rem 0;
         border-left: 4px solid #00ff88;
     }
-    
+
     .member-card {
         background: linear-gradient(135deg, #4facfe, #00f2fe);
         color: white;
@@ -93,7 +93,7 @@ st.markdown(
         margin: 0.5rem 0;
         border: 2px solid #ffd700;
     }
-    
+
     .metrics-box {
         background: rgba(255, 215, 0, 0.1);
         padding: 1rem;
@@ -101,19 +101,19 @@ st.markdown(
         border: 1px solid #ffd700;
         text-align: center;
     }
-    
+
     .sacred-text {
         color: #ffd700;
         font-weight: bold;
         text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
-    
+
     @keyframes pulse {
         0% { transform: scale(1); }
         50% { transform: scale(1.05); }
         100% { transform: scale(1); }
     }
-    
+
     @keyframes heartbeat {
         0%, 100% { transform: scale(1); }
         14% { transform: scale(1.1); }

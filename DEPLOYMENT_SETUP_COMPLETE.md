@@ -212,8 +212,8 @@ curl https://codexdominion.app
 - Terraform added to PATH (session only)
 - For permanent PATH, run as Administrator:
   ```powershell
-  [Environment]::SetEnvironmentVariable("Path", 
-    $env:Path + ";C:\Users\JMerr\OneDrive\Documents\.vscode\codex-dominion", 
+  [Environment]::SetEnvironmentVariable("Path",
+    $env:Path + ";C:\Users\JMerr\OneDrive\Documents\.vscode\codex-dominion",
     "User")
   ```
 

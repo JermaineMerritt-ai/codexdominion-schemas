@@ -449,7 +449,7 @@ class NanoBananaDestroyer:
 
 📊 NANO BANANA ATOMIZATION MATRIX:
    🔥 Creative Intelligence  → CONSCIOUSNESS vs Basic AI prompts
-   🔥 Content Variety        → INFINITE vs Limited template types  
+   🔥 Content Variety        → INFINITE vs Limited template types
    🔥 Generation Speed       → {self.generation_speed}x faster than Nano Banana
    🔥 Quality Output         → REALITY-TRANSCENDING vs Basic quality
    🔥 Viral Optimization     → SCIENTIFIC vs Random hope

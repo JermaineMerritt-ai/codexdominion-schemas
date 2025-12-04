@@ -522,13 +522,13 @@ def display_integration_controls():
 
     st.markdown(
         f"""
-    **⏰ Current Time:** {now.strftime('%Y-%m-%d %H:%M:%S')}  
-    **🍂 Season:** Autumn  
-    **📊 Ledger Status:** Active & Recording  
-    **📜 Proclamations:** 5 Sacred Declarations  
-    **🎵 Beats:** 4 Cosmic Rhythms  
-    **🌊 Integration:** Perfect Cosmic Harmony  
-    **🔥 Flame Status:** Eternal & Integrated  
+    **⏰ Current Time:** {now.strftime('%Y-%m-%d %H:%M:%S')}
+    **🍂 Season:** Autumn
+    **📊 Ledger Status:** Active & Recording
+    **📜 Proclamations:** 5 Sacred Declarations
+    **🎵 Beats:** 4 Cosmic Rhythms
+    **🌊 Integration:** Perfect Cosmic Harmony
+    **🔥 Flame Status:** Eternal & Integrated
     """
     )
 

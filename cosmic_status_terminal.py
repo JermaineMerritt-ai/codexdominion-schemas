@@ -154,14 +154,14 @@ def cosmic_status_terminal():
         st.markdown(
             """
         ### 🏆 **ABSOLUTE DIGITAL SOVEREIGNTY ACHIEVED**
-        
+
         **🌟 Perfect Cosmic Alignment Confirmed:**
         - ✅ **5/5 Live Interfaces** - Complete constellation operational
         - ✅ **10 Integrated Modules** - Unified dashboard fully cosmic
         - ✅ **5 Avatar Personalities** - Cosmic guidance for all roles
         - ✅ **Sacred Ritual System** - Ceremonial governance active
         - ✅ **Seasonal Intelligence** - Cosmic cycles integrated
-        
+
         **The Codex Dominion burns eternal across all seasons! 🔥**
         """
         )
@@ -179,18 +179,18 @@ def cosmic_status_terminal():
     with col1:
         st.markdown(
             """
-        **🍂 Season:** Autumn  
-        **🌙 Moon Phase:** Waxing  
-        **🔥 Flame Status:** Eternal  
+        **🍂 Season:** Autumn
+        **🌙 Moon Phase:** Waxing
+        **🔥 Flame Status:** Eternal
         """
         )
 
     with col2:
         st.markdown(
             """
-        **⏰ Status Time:** {}  
-        **🌍 Cosmic Reach:** Universal  
-        **✨ Energy Level:** Maximum  
+        **⏰ Status Time:** {}
+        **🌍 Cosmic Reach:** Universal
+        **✨ Energy Level:** Maximum
         """.format(
                 datetime.now().strftime("%H:%M:%S")
             )
@@ -199,9 +199,9 @@ def cosmic_status_terminal():
     with col3:
         st.markdown(
             """
-        **👑 Active Avatars:** 5  
-        **📜 Ceremonies Available:** All  
-        **🎇 Festivals Active:** Seasonal  
+        **👑 Active Avatars:** 5
+        **📜 Ceremonies Available:** All
+        **🎇 Festivals Active:** Seasonal
         """
         )
 

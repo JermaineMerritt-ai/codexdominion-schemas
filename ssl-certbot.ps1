@@ -17,13 +17,13 @@ function New-SelfSignedCertificate {
     Write-Host ""
     Write-Host "Creating SSL certificates for aistorelab.com..." -ForegroundColor Green
     Write-Host "Domains: $($SSLConfig.Domains -join ', ')" -ForegroundColor Gray
-    
+
     # Create SSL directory
     if (-not (Test-Path $SSLConfig.CertPath)) {
         New-Item -ItemType Directory -Path $SSLConfig.CertPath -Force | Out-Null
         Write-Host "Created SSL directory: $($SSLConfig.CertPath)" -ForegroundColor Green
     }
-    
+
     try {
         # Generate self-signed certificate for development
         $certParams = @{
@@ -34,31 +34,31 @@ function New-SelfSignedCertificate {
             KeyLength = 2048
             Subject = "CN=aistorelab.com"
         }
-        
+
         $cert = New-SelfSignedCertificate @certParams
-        
+
         # Export certificate and private key
         $certPath = Join-Path $SSLConfig.CertPath "aistorelab.com.crt"
         $keyPath = Join-Path $SSLConfig.CertPath "aistorelab.com.key"
         $pfxPath = Join-Path $SSLConfig.CertPath "aistorelab.com.pfx"
-        
+
         # Export as PFX first
         $pfxPassword = ConvertTo-SecureString -String "aistorelab2025" -Force -AsPlainText
         Export-PfxCertificate -Cert $cert -FilePath $pfxPath -Password $pfxPassword | Out-Null
-        
+
         # Create PEM format files (nginx equivalent)
         $certBase64 = [Convert]::ToBase64String($cert.RawData, [Base64FormattingOptions]::InsertLineBreaks)
         $certPem = "-----BEGIN CERTIFICATE-----`n$certBase64`n-----END CERTIFICATE-----"
         Set-Content -Path $certPath -Value $certPem
-        
+
         Write-Host "✅ SSL certificate created successfully" -ForegroundColor Green
         Write-Host "Certificate: $certPath" -ForegroundColor White
         Write-Host "Private Key: (embedded in PFX)" -ForegroundColor White
         Write-Host "PFX File: $pfxPath" -ForegroundColor White
         Write-Host "Password: aistorelab2025" -ForegroundColor Yellow
-        
+
         return $cert.Thumbprint
-        
+
     } catch {
         Write-Host "❌ Failed to create SSL certificate" -ForegroundColor Red
         Write-Host $_.Exception.Message -ForegroundColor Red
@@ -68,14 +68,14 @@ function New-SelfSignedCertificate {
 
 function Update-ProxySSLConfig {
     param([string]$CertThumbprint)
-    
+
     Write-Host ""
     Write-Host "Updating proxy configuration for HTTPS..." -ForegroundColor Yellow
-    
+
     # Read current proxy script
     if (Test-Path $SSLConfig.ProxyScript) {
         $proxyContent = Get-Content $SSLConfig.ProxyScript -Raw
-        
+
         # Add HTTPS configuration
         $httpsConfig = @"
 
@@ -86,11 +86,11 @@ const path = require('path');
 
 // SSL Certificate paths (equivalent to certbot generated files)
 const sslOptions = {
-    key: fs.existsSync(path.join('$($SSLConfig.CertPath)', 'aistorelab.com.key')) ? 
+    key: fs.existsSync(path.join('$($SSLConfig.CertPath)', 'aistorelab.com.key')) ?
          fs.readFileSync(path.join('$($SSLConfig.CertPath)', 'aistorelab.com.key')) : null,
-    cert: fs.existsSync(path.join('$($SSLConfig.CertPath)', 'aistorelab.com.crt')) ? 
+    cert: fs.existsSync(path.join('$($SSLConfig.CertPath)', 'aistorelab.com.crt')) ?
           fs.readFileSync(path.join('$($SSLConfig.CertPath)', 'aistorelab.com.crt')) : null,
-    pfx: fs.existsSync(path.join('$($SSLConfig.CertPath)', 'aistorelab.com.pfx')) ? 
+    pfx: fs.existsSync(path.join('$($SSLConfig.CertPath)', 'aistorelab.com.pfx')) ?
          fs.readFileSync(path.join('$($SSLConfig.CertPath)', 'aistorelab.com.pfx')) : null,
     passphrase: 'aistorelab2025'
 };
@@ -129,10 +129,10 @@ if (sslOptions.pfx || (sslOptions.key && sslOptions.cert)) {
 function Update-NginxSSLConfig {
     Write-Host ""
     Write-Host "Updating nginx configuration with SSL..." -ForegroundColor Yellow
-    
+
     if (Test-Path $SSLConfig.NginxConfig) {
         $nginxContent = Get-Content $SSLConfig.NginxConfig -Raw
-        
+
         # Update SSL configuration section
         $sslConfig = @"
     # SSL Configuration (certbot equivalent)
@@ -156,20 +156,20 @@ function Update-NginxSSLConfig {
 function Test-SSLConfiguration {
     Write-Host ""
     Write-Host "Testing SSL configuration..." -ForegroundColor Cyan
-    
+
     # Check certificate files
     $certExists = Test-Path (Join-Path $SSLConfig.CertPath "aistorelab.com.crt")
     $pfxExists = Test-Path (Join-Path $SSLConfig.CertPath "aistorelab.com.pfx")
-    
+
     Write-Host "Certificate Status:" -ForegroundColor White
     Write-Host "  SSL Certificate (.crt): $(if($certExists) {'✅ Found'} else {'❌ Missing'})" -ForegroundColor $(if($certExists) {'Green'} else {'Red'})
     Write-Host "  PFX Certificate (.pfx): $(if($pfxExists) {'✅ Found'} else {'❌ Missing'})" -ForegroundColor $(if($pfxExists) {'Green'} else {'Red'})
-    
+
     if ($certExists -or $pfxExists) {
         Write-Host ""
         Write-Host "SSL Configuration ready for:" -ForegroundColor Green
         $SSLConfig.Domains | ForEach-Object { Write-Host "  - $_" -ForegroundColor White }
-        
+
         # Check if proxy is running
         $proxyRunning = Get-Process -Name "node" -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -eq "" }
         if ($proxyRunning) {
@@ -190,7 +190,7 @@ function Install-ProductionSSL {
     Write-Host "  1. Use win-acme: https://www.win-acme.com/" -ForegroundColor Gray
     Write-Host "  2. Or Certify The Web: https://certifytheweb.com/" -ForegroundColor Gray
     Write-Host ""
-    Write-Host "Option 2 - Cloud SSL:" -ForegroundColor Cyan  
+    Write-Host "Option 2 - Cloud SSL:" -ForegroundColor Cyan
     Write-Host "  1. CloudFlare SSL (Free)" -ForegroundColor Gray
     Write-Host "  2. AWS Certificate Manager" -ForegroundColor Gray
     Write-Host "  3. Azure App Service Certificates" -ForegroundColor Gray
@@ -237,7 +237,7 @@ switch ($Action.ToLower()) {
         Write-Host "    → .\ssl-certbot.ps1 create" -ForegroundColor Green
         Write-Host "  sudo certbot renew" -ForegroundColor Gray
         Write-Host "    → .\ssl-certbot.ps1 renew" -ForegroundColor Green
-        
+
         Test-SSLConfiguration
     }
 }

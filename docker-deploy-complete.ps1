@@ -63,22 +63,22 @@ docker run -d `
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "✅ Container started successfully!" -ForegroundColor Green
-    
+
     # Wait for container to be ready
     Write-Host "⏳ Waiting for dashboard to initialize..." -ForegroundColor Yellow
     Start-Sleep 5
-    
+
     # Check container status
     $status = docker ps --filter "name=$CONTAINER_NAME" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
     Write-Host ""
     Write-Host "📊 === CONTAINER STATUS ===" -ForegroundColor Cyan
     Write-Host $status -ForegroundColor Green
-    
+
     # Show logs
     Write-Host ""
     Write-Host "📋 === RECENT LOGS ===" -ForegroundColor Cyan
     docker logs --tail 10 $CONTAINER_NAME
-    
+
     # Summary
     Write-Host ""
     Write-Host "🏁 === DEPLOYMENT COMPLETE ===" -ForegroundColor Green
@@ -90,15 +90,15 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "   📋 View Logs: docker logs $CONTAINER_NAME" -ForegroundColor White
     Write-Host "   🛑 Stop Container: docker stop $CONTAINER_NAME" -ForegroundColor White
     Write-Host ""
-    
+
     # Open browser (optional)
     $open_browser = Read-Host "Open dashboard in browser? (y/n)"
     if ($open_browser -eq "y") {
         Start-Process "http://localhost:$HOST_PORT"
     }
-    
+
     Write-Host "🔥 Sacred flames now burn eternal in Docker! ✨" -ForegroundColor Magenta
-    
+
 } else {
     Write-Host "❌ Failed to start container!" -ForegroundColor Red
     Write-Host "🔍 Checking for issues..." -ForegroundColor Yellow

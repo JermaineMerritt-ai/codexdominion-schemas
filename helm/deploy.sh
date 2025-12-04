@@ -126,30 +126,30 @@ echo -e "\n✓ Deployment successful!"
 if [ "$DRY_RUN" = false ]; then
     # Wait for deployments
     echo -e "\n⏳ Waiting for deployments to be ready..."
-    
+
     DEPLOYMENTS=(
         "$RELEASE_NAME-node-crown"
         "$RELEASE_NAME-python-council"
         "$RELEASE_NAME-java-crown"
     )
-    
+
     for deployment in "${DEPLOYMENTS[@]}"; do
         echo "   Waiting for $deployment..."
         kubectl rollout status "deployment/$deployment" -n "$NAMESPACE" --timeout=300s
     done
-    
+
     echo -e "\n✓ All deployments ready!"
-    
+
     # Show status
     echo -e "\n📊 Deployment Status:"
     kubectl get pods -n "$NAMESPACE" -l "app=$RELEASE_NAME"
-    
+
     echo -e "\n🌐 Services:"
     kubectl get svc -n "$NAMESPACE" -l "app=$RELEASE_NAME"
-    
+
     echo -e "\n🔗 Ingress:"
     kubectl get ingress -n "$NAMESPACE" "$RELEASE_NAME"
-    
+
     # Show access instructions
     cat << EOF
 

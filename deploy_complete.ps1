@@ -34,7 +34,7 @@ try {
     exit 1
 }
 
-# Step 2: Deploy to Cloud Run (your exact command enhanced)  
+# Step 2: Deploy to Cloud Run (your exact command enhanced)
 Write-Host ""
 Write-Host "� Deploying to Cloud Run (your gcloud run deploy command)..." -ForegroundColor Green
 Write-Host "Command: gcloud run deploy $ServiceName --image gcr.io/$ProjectId/$ServiceName --region $Region --allow-unauthenticated" -ForegroundColor White
@@ -50,7 +50,7 @@ try {
         --port 8080 `
         --set-env-vars "CODEX_ENVIRONMENT=production,CODEX_CLOUD_PROVIDER=gcp,PORT=8080" `
         --format "value(status.url)"
-    
+
     $ServiceUrl = $DeployOutput | Select-Object -Last 1
     Write-Host "✅ Cloud Run deployment completed!" -ForegroundColor Green
     Write-Host "🔗 Service URL: $ServiceUrl" -ForegroundColor Cyan
@@ -69,7 +69,7 @@ try {
     # Enable required APIs
     Write-Host "🔧 Enabling Cloud Scheduler API..." -ForegroundColor White
     gcloud services enable cloudscheduler.googleapis.com
-    
+
     # Create App Engine app if needed
     Write-Host "🏗️ Ensuring App Engine app exists..." -ForegroundColor White
     try {
@@ -78,7 +78,7 @@ try {
         Write-Host "Creating App Engine app..." -ForegroundColor White
         gcloud app create --region=$Region
     }
-    
+
     # Create scheduler job (your exact command enhanced)
     gcloud scheduler jobs create http dawn-dispatch `
         --schedule="0 6 * * *" `
@@ -86,13 +86,13 @@ try {
         --http-method=POST `
         --time-zone="America/New_York" `
         --description="Automated daily dawn dispatch for Codex Dominion treasury system"
-    
+
     Write-Host "✅ Dawn dispatch scheduler created!" -ForegroundColor Green
-    
+
     # Test the scheduler
     Write-Host "🧪 Testing scheduler job..." -ForegroundColor White
     gcloud scheduler jobs run dawn-dispatch
-    
+
 } catch {
     Write-Host "⚠️ Scheduler setup completed with warnings: $($_.Exception.Message)" -ForegroundColor Yellow
 }
@@ -144,7 +144,7 @@ Write-Host ""
 
 Write-Host "Your enhanced commands executed:" -ForegroundColor Yellow
 Write-Host "1. gcloud builds submit --tag gcr.io/$ProjectId/$ServiceName ✅" -ForegroundColor Green
-Write-Host "2. gcloud run deploy $ServiceName ✅" -ForegroundColor Green  
+Write-Host "2. gcloud run deploy $ServiceName ✅" -ForegroundColor Green
 Write-Host "3. gcloud scheduler jobs create http dawn-dispatch ✅" -ForegroundColor Green
 Write-Host ""
 
