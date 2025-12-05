@@ -1,15 +1,16 @@
-metadata:
-  name: cloudbuild-placeholder
-  _DEPLOY_REGION: 'us-central1'
-  _SERVICE_NAME: 'codex-dominion'
 # Cloud Build configuration for Codex Dominion Treasury System
 # Enhanced build process for complete treasury & dawn dispatch integration
 
+substitutions:
+  _DEPLOY_REGION: 'us-central1'
+  _SERVICE_NAME: 'codex-dominion'
+
 steps:
-  # Step 1: Build the Docker image matching your commands
+  # Step 1: Build the Docker image using Cloud Run optimized Dockerfile
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
+      - '--file=Dockerfile.cloudrun'
       - '--cache-from=gcr.io/$PROJECT_ID/codex-dashboard:latest'
       - '-t'
       - 'gcr.io/$PROJECT_ID/codex-dashboard:latest'

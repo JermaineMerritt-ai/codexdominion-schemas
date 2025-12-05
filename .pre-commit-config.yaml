@@ -63,8 +63,12 @@ repos:
 # Global configuration
 default_language_version:
   python: python3.12
+  node: '18.0.0'
 
 # Performance optimization
 default_stages: [pre-commit]
 fail_fast: false
 minimum_pre_commit_version: '3.0.0'
+
+# Enable parallel execution for faster hook runs
+parallel: true
