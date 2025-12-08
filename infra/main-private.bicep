@@ -96,7 +96,7 @@ resource redis 'Microsoft.Cache/Redis@2023-08-01' = {
     sku: {
       name: redisSku
       family: 'C'
-      capacity: int(redisSize[1])
+      capacity: 0
     }
     enableNonSslPort: false
     minimumTlsVersion: '1.2'
