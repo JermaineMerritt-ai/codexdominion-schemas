@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "eastus"
+    },
+    "baseName": {
+      "value": "codex"
+    },
+    "environment": {
+      "value": "prod"
+    },
+    "pgAdminPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/{subscription-id}/resourceGroups/{rg-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
+        },
+        "secretName": "postgres-admin-password"
+      }
+    },
+    "swaSku": {
+      "value": "Free"
+    },
+    "appServiceSku": {
+      "value": "B1"
+    },
+    "redisSku": {
+      "value": "Basic"
+    },
+    "redisCapacity": {
+      "value": 0
+    },
+    "pgStorageGb": {
+      "value": 32
+    },
+    "pgVersion": {
+      "value": "16"
+    },
+    "backendPort": {
+      "value": 8001
+    },
+    "pgDbName": {
+      "value": "codexdb"
+    },
+    "enableAppInsights": {
+      "value": true
+    },
+    "enableKeyVault": {
+      "value": false
+    },
+    "tags": {
+      "value": {
+        "application": "codex-dominion",
+        "environment": "production",
+        "managedBy": "bicep",
+        "costCenter": "engineering",
+        "owner": "devops"
+      }
+    }
+  }
+}

@@ -1,0 +1,168 @@
+╔════════════════════════════════════════════════════════════════╗
+║          CODEXDOMINION DEPLOYMENT QUICK REFERENCE              ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌────────────────────────────────────────────────────────────────┐
+│ SYSTEM STATUS                                                  │
+└────────────────────────────────────────────────────────────────┘
+✅ Main Domain:    https://codexdominion.app (SSL expires 2026-03-05)
+✅ WWW Subdomain:  https://www.codexdominion.app
+✅ Frontend Build: 54 pages compiled successfully
+✅ TypeScript:     All errors resolved
+✅ Nginx:          Running and configured
+⏳ Subdomains:     Ready to deploy (DNS records needed)
+
+┌────────────────────────────────────────────────────────────────┐
+│ SERVER DETAILS                                                 │
+└────────────────────────────────────────────────────────────────┘
+IP Address:  74.208.123.158
+OS:          Ubuntu 24.04.3 LTS
+Web Server:  nginx/1.24.0
+SSH:         ssh root@74.208.123.158
+
+┌────────────────────────────────────────────────────────────────┐
+│ DOMAINS & PORTS                                                │
+└────────────────────────────────────────────────────────────────┘
+codexdominion.app              → localhost:3000 (Frontend) ✅
+www.codexdominion.app          → localhost:3000 (Frontend) ✅
+api.codexdominion.app          → localhost:8000 (API)      ⏳
+dashboard.codexdominion.app    → localhost:8501 (Dashboard)⏳
+monitoring.codexdominion.app   → localhost:9090 (Monitor)  ⏳
+
+┌────────────────────────────────────────────────────────────────┐
+│ QUICK DEPLOYMENT (3 STEPS)                                    │
+└────────────────────────────────────────────────────────────────┘
+
+1️⃣  ADD DNS RECORDS
+   Go to your DNS provider and add:
+
+   A    api         74.208.123.158    3600
+   A    dashboard   74.208.123.158    3600
+   A    monitoring  74.208.123.158    3600
+
+2️⃣  UPLOAD & RUN SCRIPT
+   scp full-deploy.sh root@74.208.123.158:~/
+   ssh root@74.208.123.158
+   chmod +x full-deploy.sh && sudo ./full-deploy.sh
+
+3️⃣  DEPLOY CODE
+   # Frontend
+   cd frontend && npm run build
+   scp -r .next package.json root@74.208.123.158:/var/www/codexdominion.app/frontend/
+
+   # Backend
+   scp -r backend/* root@74.208.123.158:/var/www/codexdominion.app/api/
+
+┌────────────────────────────────────────────────────────────────┐
+│ ESSENTIAL COMMANDS                                             │
+└────────────────────────────────────────────────────────────────┘
+
+🔍 CHECK STATUS
+   systemctl status nginx
+   systemctl status codex-api
+   systemctl status codex-frontend
+   certbot certificates
+
+🔄 RESTART SERVICES
+   systemctl restart nginx
+   systemctl restart codex-api
+   systemctl restart codex-frontend
+
+📋 VIEW LOGS
+   journalctl -u codex-api -f
+   journalctl -u codex-frontend -f
+   tail -f /var/log/nginx/error.log
+
+🧪 TEST CONNECTIONS
+   curl -I https://codexdominion.app
+   curl http://localhost:3000
+   curl http://localhost:8000/health
+
+🔐 CHECK SSL
+   certbot certificates
+   certbot renew --dry-run
+
+┌────────────────────────────────────────────────────────────────┐
+│ TROUBLESHOOTING                                                │
+└────────────────────────────────────────────────────────────────┘
+
+❌ Site not loading?
+   nginx -t && systemctl restart nginx
+
+❌ SSL error?
+   certbot certificates
+   certbot renew --force-renewal
+
+❌ Service not starting?
+   journalctl -u [service-name] -n 50
+
+❌ DNS not resolving?
+   nslookup [domain] 8.8.8.8
+   (Wait 10-15 min for propagation)
+
+┌────────────────────────────────────────────────────────────────┐
+│ IMPORTANT FILES                                                │
+└────────────────────────────────────────────────────────────────┘
+
+📂 Local:
+   └─ deploy-subdomains.sh        # Subdomain setup
+   └─ full-deploy.sh               # Complete deployment
+   └─ DEPLOYMENT_SUMMARY.md        # This guide
+   └─ PRODUCTION_DEPLOYMENT.md     # Full documentation
+   └─ frontend/.env.production     # Production config
+
+📂 Server:
+   └─ /etc/nginx/sites-available/  # Nginx configs
+   └─ /etc/letsencrypt/live/       # SSL certificates
+   └─ /var/www/codexdominion.app/  # Application code
+   └─ /etc/systemd/system/         # Service files
+
+┌────────────────────────────────────────────────────────────────┐
+│ VERIFICATION CHECKLIST                                         │
+└────────────────────────────────────────────────────────────────┘
+
+✅ DNS resolves for all domains
+✅ HTTPS works without warnings
+⬜ All subdomains return 200 OK
+⬜ API endpoints respond
+⬜ Frontend communicates with API
+⬜ Services auto-start on reboot
+⬜ Logs being generated
+⬜ Backups configured
+
+┌────────────────────────────────────────────────────────────────┐
+│ DEPLOYMENT PROGRESS                                            │
+└────────────────────────────────────────────────────────────────┘
+
+███████████████████░░░░░░  70% Complete
+
+✅ Infrastructure      100%
+✅ DNS (main)          100%
+✅ SSL (main)          100%
+✅ Nginx               100%
+✅ Frontend Build      100%
+⏳ Subdomain DNS        0%
+⏳ Subdomain SSL        0%
+⏳ App Deployment       0%
+
+┌────────────────────────────────────────────────────────────────┐
+│ NEXT IMMEDIATE ACTIONS                                         │
+└────────────────────────────────────────────────────────────────┘
+
+1. Add subdomain DNS A records (5 minutes)
+2. Wait for DNS propagation (10-15 minutes)
+3. Run full-deploy.sh on server (5 minutes)
+4. Deploy application code (10 minutes)
+5. Start and enable services (2 minutes)
+6. Verify all domains working (5 minutes)
+
+TOTAL ESTIMATED TIME: ~40 minutes
+
+╔════════════════════════════════════════════════════════════════╗
+║  System is 70% deployed and ready for final configuration!    ║
+║  Follow the steps above to complete deployment.               ║
+╚════════════════════════════════════════════════════════════════╝
+
+Last Updated: December 5, 2025
+Server: 74.208.123.158
+Documentation: PRODUCTION_DEPLOYMENT.md

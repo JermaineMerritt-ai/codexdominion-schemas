@@ -1,0 +1,153 @@
+# grafana-dashboard-ecommerce.json
+{
+  "dashboard": {
+    "title": "CodexDominion E-commerce Analytics",
+    "tags": ["ecommerce", "woocommerce", "sales"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Revenue Today",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "sum(woocommerce_order_total{status='completed',time_range='today'})"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyUSD",
+            "thresholds": {
+              "steps": [
+                { "value": 0, "color": "red" },
+                { "value": 100, "color": "yellow" },
+                { "value": 500, "color": "green" }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Sales by Niche (Last 30 Days)",
+        "type": "pie",
+        "targets": [
+          {
+            "expr": "sum by (category) (woocommerce_order_total{time_range='30d',status='completed'})"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Revenue Trend (Last 90 Days)",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "sum(rate(woocommerce_order_total[1d]))"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Customer Lifetime Value (LTV)",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "avg(woocommerce_customer_ltv)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "currencyUSD"
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Subscription Churn Rate",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "(woocommerce_subscriptions_cancelled / woocommerce_subscriptions_active) * 100"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "max": 100,
+            "thresholds": {
+              "steps": [
+                { "value": 0, "color": "green" },
+                { "value": 5, "color": "yellow" },
+                { "value": 10, "color": "red" }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Conversion Funnel",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "funnel_step_count"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "columns": ["step", "count", "conversion_rate"]
+            }
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Top Products (Revenue)",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "topk(10, sum by (product_name) (woocommerce_product_revenue{time_range='30d'}))"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Active Subscriptions by Plan",
+        "type": "bargauge",
+        "targets": [
+          {
+            "expr": "sum by (plan) (woocommerce_subscriptions_active)"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Lead Magnet Downloads",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "sum by (magnet_id) (rate(lead_magnet_downloads[1h]))"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Cart Abandonment Rate",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "(woocommerce_carts_abandoned / woocommerce_carts_created) * 100"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent"
+          }
+        }
+      }
+    ]
+  }
+}

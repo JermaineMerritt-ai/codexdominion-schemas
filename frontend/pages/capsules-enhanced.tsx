@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
+import Link from 'next/link';
+import styles from '../styles/components.module.css';
+
 interface Capsule {
   slug: string;
   name: string;
@@ -7,8 +10,6 @@ interface Capsule {
   schedule: string;
   archive_type: string;
 }
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
 
 export default function CapsulesWithLinks() {
   const [capsules, setCapsules] = useState<Capsule[]>([]);
@@ -58,7 +59,7 @@ export default function CapsulesWithLinks() {
 
   if (loading) {
     return (
-      <div style={{ padding: 24 }}>
+      <div className={styles.loadingContainerFlex}>
         <div className="loading-container">
           <div className="spinner"></div>
           <p>Loading capsules...</p>

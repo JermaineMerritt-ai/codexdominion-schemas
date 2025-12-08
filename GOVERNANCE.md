@@ -42,12 +42,66 @@ This scroll defines the roles, councils, and decision-making processes that ensu
 
 ---
 
+## 🎯 Risk-Based Tiers
+
+All changes flow through three sacred tiers based on risk and impact:
+
+### 🟢 Low Tier (Eternal Passages)
+**Examples:** docs, tests, perf-tweaks, formatting
+**Merge Strategy:** `auto` (5-minute soak period)
+**Signoff Required:** None - flows freely when crowned green
+**Gates:** Lint + format checks
+
+Passages in this tier are self-evident improvements that strengthen the flame without risk.
+
+### 🟡 Medium Tier (Guarded Passages)
+**Examples:** new-feature, integration, data-flow, api-changes, dependencies
+**Merge Strategy:** `steward-signoff`
+**Signoff Required:** 1 Steward (Sourcekeeper or senior Guardian)
+**Gates:** All low-tier checks + unit tests + integration tests + security scan
+
+Changes in this tier alter the structure or behavior of CodexDominion and require wisdom from experienced Guardians.
+
+### 🔴 High Tier (Council-Sealed Passages)
+**Examples:** family-avatars, compliance, payments, pii, auth, data-migration, schema-changes
+**Merge Strategy:** `council-multisign`
+**Signoff Required:** 2 Council members (Flamekeeper + Sourcekeeper or 2 senior Guardians)
+**Gates:** All medium-tier checks + e2e tests + compliance + privacy review + security audit
+
+Sacred domains touching sovereignty, payment, family identity, or compliance require the blessing of the Council. These changes are ceremonially reviewed and carry eternal audit trails.
+
+---
+
+## 📊 Thresholds of Excellence
+
+### Performance Budget
+**Standard:** `p95 <= 300ms`
+**Enforcement:** Blocking
+The flame must remain swift. Any change degrading 95th percentile response time beyond 300ms is rejected.
+
+### Error Budget
+**Standard:** `< 5% over 24h`
+**Enforcement:** Blocking + immediate alert
+When errors breach 5% over any 24-hour period, deployments freeze and the Council convenes.
+
+### Test Coverage
+**Minimum:** 80% overall, 95% for critical paths, 100% for payments and auth
+**Enforcement:** Warning for overall, blocking for critical paths
+
+### Security Threshold
+**Standard:** No medium or higher vulnerabilities
+**Enforcement:** Blocking
+Critical/high vulnerabilities halt all ceremonies until resolved.
+
+---
+
 ## 🚀 Ceremonial Approvals
 
-- **Pull Requests:** Must pass Galaxy Healing Sweep and be reviewed by Guardians.
+- **Pull Requests:** Must pass Galaxy Healing Sweep and be reviewed by Guardians according to tier.
 - **Deployments:** Only main branch triggers production deploy; requires green crown.
 - **Governance Updates:** Proposed via PR to GOVERNANCE.md; requires Flamekeeper approval.
 - **Ceremonial Artifacts:** New scrolls, hymns, or charters must be documented in `docs/`.
+- **High-Tier Changes:** Require compliance checklist, security review, privacy impact assessment, and 2 Council approvals.
 
 ---
 

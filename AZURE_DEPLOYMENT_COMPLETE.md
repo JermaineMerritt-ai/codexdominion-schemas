@@ -179,6 +179,8 @@ Configured in Container Instance:
 - `PYTHONUNBUFFERED`: `1`
 - `ALLOWED_ORIGINS`: `https://happy-flower-0e39c5c0f.3.azurestaticapps.net`
 - `CORS_ENABLED`: `true`
+- `REDIS_URL`: `redis://:<password>@codex-redis.redis.cache.windows.net:6380?ssl=True` (optional)
+- `DATABASE_URL`: `postgresql://user:pass@host:5432/db` (when PostgreSQL is provisioned)
 
 To update backend environment variables, edit `update-container-env.ps1` and run it.
 
@@ -279,13 +281,39 @@ Monitor deployments at:
 
 3. **Redis Cache**
    ```powershell
-   # Add Azure Cache for Redis
+   # Add Azure Cache for Redis (Basic tier: ~$15/month)
    az redis create \
      --name codex-redis \
      --resource-group codex-rg \
      --location eastus \
      --sku Basic \
      --vm-size c0
+
+   # Get connection string
+   az redis show-access-keys \
+     --name codex-redis \
+     --resource-group codex-rg \
+     --query "primaryKey" -o tsv
+
+   # Add REDIS_URL to backend container
+   # Format: redis://:<password>@codex-redis.redis.cache.windows.net:6380?ssl=True
+   ```
+
+   **Backend Redis Integration:**
+   - ✅ Redis client configured in `src/backend/main.py`
+   - ✅ Helper utilities in `src/backend/redis_client.py`
+   - ✅ Automatic connection on startup
+   - ✅ Graceful shutdown handling
+
+   **Usage Example:**
+   ```python
+   from redis_client import cache_set, cache_get
+
+   # Cache API response
+   await cache_set("user:123", user_data, expire=3600)
+
+   # Retrieve from cache
+   cached_data = await cache_get("user:123")
    ```
 
 4. **Application Insights**

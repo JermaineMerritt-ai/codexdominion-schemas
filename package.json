@@ -6,7 +6,13 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "build:fast": "tsc --incremental",
+    "test": "jest --maxWorkers=50%",
+    "test:watch": "jest --watch --maxWorkers=25%",
+    "validate": "pwsh -File validate-and-release.ps1",
+    "precommit": "pre-commit run --all-files",
+    "clean": "rm -rf node_modules/.cache dist .next coverage",
+    "optimize": "node scripts/optimize-system.js"
   },
   "keywords": [
     "digital-sovereignty",

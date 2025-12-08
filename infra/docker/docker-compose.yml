@@ -1,0 +1,436 @@
+# 🔥 CODEXDOMINION - COMPLETE OPTIMIZED DEPLOYMENT 🔥
+# Unified containerized deployment with all services optimized
+
+version: '3.9'
+
+services:
+  # ============================================
+  # FRONTEND & WEB SERVICES
+  # ============================================
+
+  # Next.js Frontend (Port 3000)
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: codex-web
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://api:4000
+      - NEXT_PUBLIC_DOMAIN=https://codexdominion.app
+    env_file: .env
+    depends_on:
+      - api
+      - redis
+    restart: unless-stopped
+    networks:
+      - codex-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3000/api/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Backend API (Port 4000)
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: codex-api
+    ports:
+      - '4000:4000'
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=mysql://wp:wp_pass@db:3306/wp_db
+      - REDIS_URL=redis://redis:6379
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    restart: unless-stopped
+    networks:
+      - codex-network
+    volumes:
+      - ./api/uploads:/app/uploads
+      - ./logs/api:/app/logs
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:4000/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # ============================================
+  # COSMIC DASHBOARDS
+  # ============================================
+
+  # Main Cosmic Dashboard (Port 8050)
+  cosmic-main:
+    build:
+      context: .
+      dockerfile: Dockerfile.cosmic
+    container_name: cosmic-main
+    ports:
+      - '8050:8050'
+    volumes:
+      - ./data:/app/data
+      - ./logs/cosmic:/app/logs
+    environment:
+      - STREAMLIT_PORT=8050
+      - COSMIC_SERVICE=main
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - codex-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 768M
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8050/_stcore/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Sacred Ledger System (Port 8058)
+  cosmic-ledger:
+    build:
+      context: .
+      dockerfile: Dockerfile.cosmic
+    container_name: cosmic-ledger
+    ports:
+      - '8058:8058'
+    volumes:
+      - ./data:/app/data
+      - ./logs/cosmic:/app/logs
+    environment:
+      - STREAMLIT_PORT=8058
+      - COSMIC_SERVICE=ledger
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - codex-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 768M
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8058/_stcore/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Cosmic Rhythm System (Port 8057)
+  cosmic-rhythm:
+    build:
+      context: .
+      dockerfile: Dockerfile.cosmic
+    container_name: cosmic-rhythm
+    ports:
+      - '8057:8057'
+    volumes:
+      - ./data:/app/data
+      - ./logs/cosmic:/app/logs
+    environment:
+      - STREAMLIT_PORT=8057
+      - COSMIC_SERVICE=rhythm
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - codex-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 768M
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8057/_stcore/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ============================================
+  # WORDPRESS CMS
+  # ============================================
+
+  wordpress:
+    image: wordpress:6.6-php8.2-apache
+    container_name: codex-wordpress
+    ports:
+      - '8080:80'
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wp
+      WORDPRESS_DB_PASSWORD: wp_pass
+      WORDPRESS_DB_NAME: wp_db
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_REDIS_HOST', 'redis');
+        define('WP_CACHE', true);
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+      - ./php-uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    restart: unless-stopped
+    networks:
+      - codex-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost/wp-admin/install.php']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # ============================================
+  # DATABASE
+  # ============================================
+
+  db:
+    image: mariadb:11
+    container_name: codex-db
+    environment:
+      MARIADB_DATABASE: wp_db
+      MARIADB_USER: wp
+      MARIADB_PASSWORD: wp_pass
+      MARIADB_ROOT_PASSWORD: root_pass
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./mysql-config:/etc/mysql/conf.d
+    restart: unless-stopped
+    networks:
+      - codex-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    command: >
+      --max-connections=200
+      --query-cache-size=32M
+      --query-cache-type=1
+      --innodb-buffer-pool-size=512M
+      --innodb-log-file-size=128M
+    healthcheck:
+      test: ['CMD', 'mariadb', '-u', 'root', '-proot_pass', '-e', 'SELECT 1']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ============================================
+  # CACHING & SESSION MANAGEMENT
+  # ============================================
+
+  redis:
+    image: redis:7-alpine
+    container_name: codex-redis
+    command: >
+      redis-server
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+      --appendonly yes
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - codex-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ============================================
+  # MONITORING & ANALYTICS
+  # ============================================
+
+  # Grafana Dashboard (Port 3001)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: codex-grafana
+    ports:
+      - '3001:3000'
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin_pass}
+      GF_INSTALL_PLUGINS: redis-datasource
+      GF_SERVER_ROOT_URL: https://monitoring.codexdominion.app
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+    networks:
+      - codex-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3000/api/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Prometheus Monitoring (Port 9090)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: codex-prometheus
+    ports:
+      - '9090:9090'
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+    restart: unless-stopped
+    networks:
+      - codex-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: ['CMD', 'wget', '--quiet', '--tries=1', '--spider', 'http://localhost:9090/-/healthy']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Node Exporter for system metrics
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: codex-node-exporter
+    ports:
+      - '9100:9100'
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    restart: unless-stopped
+    networks:
+      - codex-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+
+  # ============================================
+  # REVERSE PROXY & SSL
+  # ============================================
+
+  nginx:
+    image: nginx:alpine
+    container_name: codex-nginx
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./nginx/cache:/var/cache/nginx
+    depends_on:
+      - web
+      - api
+      - wordpress
+      - grafana
+      - cosmic-main
+      - cosmic-ledger
+      - cosmic-rhythm
+    restart: unless-stopped
+    networks:
+      - codex-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+    healthcheck:
+      test: ['CMD', 'wget', '--quiet', '--tries=1', '--spider', 'http://localhost/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+# ============================================
+# VOLUMES
+# ============================================
+
+volumes:
+  db_data:
+    driver: local
+  redis_data:
+    driver: local
+  grafana_data:
+    driver: local
+  prometheus_data:
+    driver: local
+
+# ============================================
+# NETWORKS
+# ============================================
+
+networks:
+  codex-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

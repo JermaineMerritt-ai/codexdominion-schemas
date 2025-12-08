@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from '../styles/components.module.css';
 import CodexNavigation from '../components/CodexNavigation';
 
 // Source Symbol Component
@@ -89,7 +90,7 @@ const CrownConstellation = () => {
       {/* Surrounding Crowns */}
       {crowns.map((crown, index) => (
         <div key={crown.name} className={`absolute ${crown.position}`}>
-          <div className="text-2xl animate-pulse" style={{ animationDelay: `${index * 300}ms` }}>
+          <div className={`text-2xl animate-pulse ${styles[`animationDelay${index * 300}`]}`}>
             {crown.symbol}
           </div>
           <div className="text-xs text-center text-gray-300 mt-1">{crown.name}</div>

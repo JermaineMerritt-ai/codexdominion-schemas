@@ -2,10 +2,17 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  output: 'export',  // Enable static HTML export for IONOS
+  images: {
+    unoptimized: true  // Required for static export
+  },
 
   // API configuration
   env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8001',
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL ||
+      (process.env.NODE_ENV === 'production'
+        ? 'https://codex-backend-app.azurewebsites.net'
+        : 'http://127.0.0.1:8001'),
     NEXT_PUBLIC_APP_NAME: 'Codex Dominion',
     NEXT_PUBLIC_APP_VERSION: '2.0.0',
     NEXT_PUBLIC_EMPIRE_STATUS: 'Operational',
@@ -56,8 +63,15 @@ const nextConfig = {
 
   // Performance optimizations
   experimental: {
-    optimizeCss: false,
-    optimizePackageImports: ['react', 'react-dom'],
+    optimizePackageImports: ['react', 'react-dom', 'lucide-react', 'framer-motion'],
+  },
+
+  // SWC minification (faster than Terser)
+  swcMinify: true,
+
+  // Compiler optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
   },
 
   // Ensure proper base path for production

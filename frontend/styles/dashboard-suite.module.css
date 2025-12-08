@@ -1,0 +1,467 @@
+/* Companion Dashboard Suite Unified Styling */
+
+.companion-dashboard-suite {
+  padding: 2rem;
+  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+  min-height: 100vh;
+  color: #e0e0e0;
+}
+
+.suite-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #3a3a5a;
+}
+
+.suite-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.suite-tagline {
+  color: #9a9aaa;
+  font-style: italic;
+}
+
+.suite-overview {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  color: #9a9aaa;
+  margin-bottom: 0.25rem;
+}
+
+.metric-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.suite-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.suite-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.suite-col {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #3a3a5a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.suite-col:hover {
+  border-color: #ffd700;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
+}
+
+.suite-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 2px solid #3a3a5a;
+}
+
+.integration-status {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.875rem;
+  color: #9a9aaa;
+}
+
+.status-item {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+/* HymnArchive Styling */
+.hymn-archive {
+  height: 100%;
+}
+
+.archive-header,
+.grid-header,
+.composer-header,
+.engine-header,
+.registry-header,
+.index-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #3a3a5a;
+}
+
+.archive-header h2,
+.grid-header h2,
+.composer-header h2,
+.engine-header h2,
+.registry-header h2,
+.index-header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.sync-badge,
+.hymn-badge,
+.echo-status,
+.seal-count,
+.capsule-count {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  color: #ffd700;
+}
+
+.loading,
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #9a9aaa;
+  font-style: italic;
+}
+
+.hymn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.hymn-card {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hymn-card:hover {
+  border-color: #ffd700;
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.hymn-card.selected {
+  border-color: #ffd700;
+  background: rgba(255, 215, 0, 0.15);
+}
+
+.hymn-title {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.hymn-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: #9a9aaa;
+}
+
+/* BroadcastGrid Styling */
+.broadcast-grid {
+  height: 100%;
+}
+
+.channel-selector {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #3a3a5a;
+  border-radius: 4px;
+  color: #e0e0e0;
+}
+
+.btn-create-broadcast,
+.btn-create,
+.btn-compose,
+.btn-start,
+.btn-stop {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #0f0f1e;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-create-broadcast:hover,
+.btn-create:hover,
+.btn-compose:hover,
+.btn-start:hover {
+  background: linear-gradient(135deg, #ffed4e, #ffd700);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.btn-cancel {
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+  border: 1px solid #3a3a5a;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.broadcast-list,
+.replay-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.broadcast-card,
+.replay-card {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #3a3a5a;
+  border-radius: 4px;
+}
+
+.broadcast-header,
+.replay-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.broadcast-meta,
+.replay-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: #9a9aaa;
+}
+
+/* ProfitEngine Styling */
+.profit-engine {
+  height: 100%;
+}
+
+.profit-overview {
+  margin-bottom: 1.5rem;
+}
+
+.total-profit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.total-profit .label {
+  font-size: 0.875rem;
+  color: #9a9aaa;
+  margin-bottom: 0.5rem;
+}
+
+.total-profit .amount {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.tracking-control {
+  text-align: center;
+}
+
+.profit-table,
+.capsule-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.profit-table th,
+.profit-table td,
+.capsule-table th,
+.capsule-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #3a3a5a;
+}
+
+.profit-table th,
+.capsule-table th {
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: bold;
+}
+
+.profit-table .amount {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+/* SealRegistry Styling */
+.seal-registry {
+  height: 100%;
+}
+
+.seal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.seal-card {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.seal-card:hover {
+  border-color: #ffd700;
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.seal-card.selected {
+  border-color: #ffd700;
+  background: rgba(255, 215, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.seal-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.seal-content h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.lineage-tag {
+  font-size: 0.875rem;
+  color: #ffd700;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.seal-details {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 4px;
+}
+
+.seal-details dl {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0.5rem;
+}
+
+.seal-details dt {
+  font-weight: bold;
+  color: #9a9aaa;
+}
+
+.seal-details dd {
+  margin: 0;
+}
+
+/* CapsuleIndex Styling */
+.capsule-index {
+  height: 100%;
+}
+
+.search-panel {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.field-selector {
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #3a3a5a;
+  border-radius: 4px;
+  color: #e0e0e0;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #3a3a5a;
+  border-radius: 4px;
+  color: #e0e0e0;
+}
+
+.search-input::placeholder {
+  color: #9a9aaa;
+}
+
+.capsule-row {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.capsule-row:hover {
+  background: rgba(255, 215, 0, 0.1);
+}
+
+/* Scrollbar Styling */
+.hymn-list::-webkit-scrollbar,
+.broadcast-list::-webkit-scrollbar,
+.replay-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.hymn-list::-webkit-scrollbar-track,
+.broadcast-list::-webkit-scrollbar-track,
+.replay-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.hymn-list::-webkit-scrollbar-thumb,
+.broadcast-list::-webkit-scrollbar-thumb,
+.replay-list::-webkit-scrollbar-thumb {
+  background: #ffd700;
+  border-radius: 4px;
+}

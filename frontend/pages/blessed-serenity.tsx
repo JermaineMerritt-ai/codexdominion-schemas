@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import CodexNavigation from '../components/CodexNavigation';
+import animations from '../styles/animations.module.css';
+import serenityStyles from '../styles/themes/serenity.module.css';
+import particles from '../styles/components/particles.module.css';
+import rings from '../styles/components/rings.module.css';
 
 /**
  * @param {{delay: any, duration: any, x: any, y: any, size: any, color: any}} props
@@ -9,15 +13,14 @@ const SereneParticle = (props: any) => {
   const { delay, duration, x, y, size, color } = props;
   return (
     <div
-      className={`absolute ${color} rounded-full opacity-60`}
+      className={`${particles.floatAndPulse} ${color}`}
       style={{
-        left: `${x}%`,
-        top: `${y}%`,
-        width: `${size}px`,
-        height: `${size}px`,
-        animation: `sereneFloat ${duration}s infinite ${delay}s ease-in-out,
-                    blessedPulse ${duration * 1.4}s infinite ${delay}s ease-in-out`,
-      }}
+        '--x': `${x}%`,
+        '--y': `${y}%`,
+        '--size': `${size}px`,
+        '--duration': `${duration}s`,
+        '--delay': `${delay}s`,
+      } as React.CSSProperties}
     />
   );
 };
@@ -51,10 +54,9 @@ const BlessedSanctuary: React.FC = () => {
     <div className="relative mx-auto w-80 h-80 mb-24">
       {/* Outermost Blessed Ring - Radiance */}
       <div
-        className="absolute inset-0 border-16 border-white/40 rounded-full bg-gradient-to-br from-white/30 via-gold-100/40 to-cyan-50/30 shadow-2xl"
+        className={serenityStyles.ring}
         style={{
           transform: `scale(${blessing}) rotate(${sanctuaryRotation}deg)`,
-          boxShadow: '0 0 200px rgba(255, 255, 255, 0.9), inset 0 0 100px rgba(251, 191, 36, 0.3)',
         }}
       >
         {/* Radiance Crown Points */}
@@ -88,10 +90,9 @@ const BlessedSanctuary: React.FC = () => {
 
       {/* Middle Serenity Ring - Covenant */}
       <div
-        className="absolute inset-16 border-10 border-cyan-200/50 rounded-full bg-gradient-to-br from-cyan-50/40 to-blue-50/40"
+        className={serenityStyles.ringSecondary}
         style={{
           transform: `scale(${serenity})`,
-          boxShadow: '0 0 120px rgba(6, 182, 212, 0.4)',
         }}
       >
         {/* Covenant Symbols */}
@@ -113,8 +114,7 @@ const BlessedSanctuary: React.FC = () => {
       <div className="absolute inset-32 rounded-full bg-gradient-to-br from-white via-cyan-25 to-gold-25 flex items-center justify-center shadow-2xl border-4 border-white/60">
         <div className="text-center">
           <div
-            className="text-8xl font-bold text-slate-500 mb-3 animate-pulse"
-            style={{ animationDuration: '5s' }}
+            className={`text-8xl font-bold text-slate-500 mb-3 animate-pulse ${animations.animate5s}`}
           >
             📿
           </div>
@@ -128,14 +128,14 @@ const BlessedSanctuary: React.FC = () => {
         {Array.from({ length: 20 }).map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 bg-gradient-to-t from-transparent via-white/30 to-transparent opacity-50"
+            className={`absolute w-2 bg-gradient-to-t from-transparent via-white/30 to-transparent opacity-50 ${animations.animate8s}`}
             style={{
               height: '160px',
               left: '50%',
               top: '-80px',
               transformOrigin: '0 160px',
               transform: `translateX(-50%) rotate(${i * 18}deg)`,
-              animation: `gentlePulse 8s infinite ${i * 0.4}s ease-in-out`,
+              animationDelay: `${i * 0.4}s`,
             }}
           />
         ))}
@@ -146,10 +146,9 @@ const BlessedSanctuary: React.FC = () => {
         {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={i}
-            className="absolute inset-0 border-4 border-white/8 rounded-full animate-ping"
+            className={`absolute inset-0 border-4 border-white/8 rounded-full animate-ping ${animations.animate10s}`}
             style={{
               animationDelay: `${i * 1.2}s`,
-              animationDuration: '9.6s',
               transform: `scale(${1.6 + i * 0.6})`,
             }}
           />
@@ -208,8 +207,8 @@ const BlessedVerse: React.FC<BlessedVerseProps> = ({
         className={`mr-14 p-14 rounded-full bg-gradient-to-br ${gradient} shadow-2xl border-4 border-white/50 backdrop-blur-sm`}
       >
         <span
-          className="text-9xl animate-pulse"
-          style={{ animationDelay: `${delay + 0.5}s`, animationDuration: '6s' }}
+          className={`text-9xl animate-pulse ${animations.animate6s}`}
+          style={{ animationDelay: `${delay + 0.5}s` }}
         >
           {icon}
         </span>
@@ -302,15 +301,13 @@ const RadianceElements: React.FC = () => {
       {elements.map((element, index) => (
         <div
           key={index}
-          className={`bg-gradient-to-br ${element.gradient} rounded-3xl p-12 border-2 ${element.border} backdrop-blur-sm shadow-2xl hover:scale-105 transition-all duration-1500 relative overflow-hidden`}
+          className={`bg-gradient-to-br ${element.gradient} rounded-3xl p-12 border-2 ${element.border} backdrop-blur-sm shadow-2xl hover:scale-105 transition-all duration-1500 relative overflow-hidden ${animations.fadeInUp}`}
           style={{
             animationDelay: `${index * 0.3}s`,
-            opacity: 0,
-            animation: `sereneRise 2.5s ease-out ${index * 0.3}s forwards`,
           }}
         >
           <div className="text-center mb-8">
-            <div className="text-8xl mb-6 animate-pulse" style={{ animationDuration: '6s' }}>
+            <div className={`text-8xl mb-6 animate-pulse ${animations.animate6s}`}>
               {element.icon}
             </div>
             <h3 className="text-2xl font-bold text-slate-600 mb-4">{element.title}</h3>
@@ -322,8 +319,7 @@ const RadianceElements: React.FC = () => {
           {/* Blessed Glow */}
           <div className="absolute top-4 right-4 w-4 h-4 bg-white rounded-full animate-pulse opacity-60" />
           <div
-            className="absolute bottom-4 left-4 w-3 h-3 bg-cyan-100 rounded-full animate-pulse opacity-50"
-            style={{ animationDelay: '2s' }}
+            className={`absolute bottom-4 left-4 w-3 h-3 bg-cyan-100 rounded-full animate-pulse opacity-50 ${animations.delay2s}`}
           />
         </div>
       ))}
@@ -355,8 +351,7 @@ const EternalSereneSeal: React.FC = () => {
           <div className="absolute inset-12 bg-gradient-to-br from-white via-cyan-10 to-gold-10 rounded-full flex items-center justify-center">
             <div className="text-center">
               <div
-                className="text-8xl font-bold text-slate-500 mb-4 animate-pulse"
-                style={{ animationDuration: '8s' }}
+                className={`text-8xl font-bold text-slate-500 mb-4 animate-pulse ${animations.animate8s}`}
               >
                 📿
               </div>
@@ -372,10 +367,9 @@ const EternalSereneSeal: React.FC = () => {
         {Array.from({ length: 10 }).map((_, i) => (
           <div
             key={i}
-            className="absolute inset-0 border-6 border-white/5 rounded-full animate-ping"
+            className={`absolute inset-0 border-6 border-white/5 rounded-full animate-ping ${animations.animate10s}`}
             style={{
               animationDelay: `${i * 1}s`,
-              animationDuration: '10s',
               transform: `scale(${2 + i * 0.7})`,
             }}
           />
@@ -521,64 +515,12 @@ const BlessedSerenity: React.FC = () => {
               tranquility.
             </p>
             <div
-              className="text-10xl animate-pulse text-slate-400"
-              style={{ animationDuration: '10s' }}
+              className={`text-10xl animate-pulse text-slate-400 ${animations.animate10s}`}
             >
               📿
             </div>
           </div>
         </main>
-
-        <style jsx>{`
-          @keyframes sereneFloat {
-            0%,
-            100% {
-              transform: translateY(0px) rotate(0deg);
-              opacity: 0.6;
-            }
-            50% {
-              transform: translateY(-15px) rotate(180deg);
-              opacity: 1;
-            }
-          }
-
-          @keyframes blessedPulse {
-            0%,
-            100% {
-              opacity: 0.6;
-              filter: brightness(1);
-            }
-            50% {
-              opacity: 1;
-              filter: brightness(1.3);
-            }
-          }
-
-          @keyframes gentlePulse {
-            0%,
-            100% {
-              opacity: 0.5;
-            }
-            50% {
-              opacity: 0.8;
-            }
-          }
-
-          @keyframes sereneRise {
-            from {
-              opacity: 0;
-              transform: scale(0.97) translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: scale(1) translateY(0);
-            }
-          }
-
-          .bg-gradient-radial {
-            background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
-          }
-        `}</style>
       </div>
     </>
   );

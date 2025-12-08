@@ -1,15 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
+import styles from './index.module.css';
+
+interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp?: Date;
+}
 
 export default function ChatbotHome() {
-  const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
 
-    const userMessage = { role: 'user', content: input };
+    const userMessage: Message = {
+      role: 'user',
+      content: input,
+      timestamp: new Date()
+    };
+
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setLoading(true);
@@ -21,16 +39,34 @@ export default function ChatbotHome() {
         body: JSON.stringify({ message: input })
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
-      setMessages(prev => [...prev, { role: 'assistant', content: data.response }]);
+      const assistantMessage: Message = {
+        role: 'assistant',
+        content: data.response || 'No response received.',
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
       console.error('Chat error:', error);
-      setMessages(prev => [...prev, {
+      const errorMessage: Message = {
         role: 'assistant',
-        content: 'Sorry, I encountered an error. Please try again.'
-      }]);
+        content: 'Sorry, I encountered an error. Please check your connection and try again.',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && !loading) {
+      sendMessage();
     }
   };
 
@@ -38,41 +74,21 @@ export default function ChatbotHome() {
     <>
       <Head>
         <title>AI Chatbot - Codex Dominion</title>
+        <meta name="description" content="Sovereign AI Chatbot powered by Codex Dominion" />
       </Head>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh',
-        fontFamily: 'system-ui, -apple-system, sans-serif',
-        backgroundColor: '#0f172a'
-      }}>
-        <header style={{
-          padding: '1rem 2rem',
-          borderBottom: '1px solid #334155',
-          backgroundColor: '#1e293b'
-        }}>
-          <h1 style={{ margin: 0, color: '#f8fafc', fontSize: '1.5rem' }}>
+      <div className={styles.container}>
+        <header className={styles.header}>
+          <h1 className={styles.title}>
             🤖 AI Chatbot - Codex Dominion
           </h1>
-          <p style={{ margin: '0.25rem 0 0 0', color: '#94a3b8', fontSize: '0.875rem' }}>
+          <p className={styles.subtitle}>
             Sovereign Chatbot Service
           </p>
         </header>
 
-        <div style={{
-          flex: 1,
-          overflowY: 'auto',
-          padding: '2rem',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem'
-        }}>
+        <div className={styles.messagesContainer}>
           {messages.length === 0 && (
-            <div style={{
-              textAlign: 'center',
-              color: '#64748b',
-              marginTop: '4rem'
-            }}>
+            <div className={styles.emptyState}>
               <h2>Welcome to Codex Dominion AI Chatbot</h2>
               <p>Start a conversation to see the AI in action!</p>
             </div>
@@ -81,70 +97,44 @@ export default function ChatbotHome() {
           {messages.map((msg, idx) => (
             <div
               key={idx}
-              style={{
-                alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
-                backgroundColor: msg.role === 'user' ? '#3b82f6' : '#374151',
-                color: '#ffffff',
-                padding: '0.75rem 1rem',
-                borderRadius: '0.5rem',
-                maxWidth: '70%',
-                wordWrap: 'break-word'
-              }}
+              className={`${styles.message} ${
+                msg.role === 'user' ? styles.userMessage : styles.assistantMessage
+              }`}
             >
-              <strong>{msg.role === 'user' ? 'You' : 'AI'}:</strong> {msg.content}
+              <span className={styles.messageLabel}>
+                {msg.role === 'user' ? 'You' : 'AI'}:
+              </span>
+              <span className={styles.messageContent}>{msg.content}</span>
             </div>
           ))}
 
           {loading && (
-            <div style={{
-              alignSelf: 'flex-start',
-              color: '#64748b',
-              fontStyle: 'italic'
-            }}>
-              AI is typing...
+            <div className={styles.loadingIndicator}>
+              AI is thinking...
             </div>
           )}
+
+          <div ref={messagesEndRef} />
         </div>
 
-        <div style={{
-          padding: '1rem 2rem',
-          borderTop: '1px solid #334155',
-          backgroundColor: '#1e293b',
-          display: 'flex',
-          gap: '1rem'
-        }}>
+        <div className={styles.inputContainer}>
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+            onKeyPress={handleKeyPress}
             placeholder="Type your message..."
             disabled={loading}
-            style={{
-              flex: 1,
-              padding: '0.75rem',
-              borderRadius: '0.375rem',
-              border: '1px solid #475569',
-              backgroundColor: '#0f172a',
-              color: '#f8fafc',
-              fontSize: '1rem'
-            }}
+            className={styles.input}
+            aria-label="Chat message input"
           />
           <button
             onClick={sendMessage}
             disabled={loading || !input.trim()}
-            style={{
-              padding: '0.75rem 2rem',
-              borderRadius: '0.375rem',
-              border: 'none',
-              backgroundColor: loading || !input.trim() ? '#475569' : '#3b82f6',
-              color: '#ffffff',
-              fontSize: '1rem',
-              cursor: loading || !input.trim() ? 'not-allowed' : 'pointer',
-              fontWeight: 600
-            }}
+            className={styles.sendButton}
+            aria-label="Send message"
           >
-            Send
+            {loading ? 'Sending...' : 'Send'}
           </button>
         </div>
       </div>

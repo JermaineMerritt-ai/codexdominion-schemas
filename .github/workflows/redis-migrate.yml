@@ -1,0 +1,81 @@
+name: Redis Cache Configuration
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: 'Redis operation'
+        required: true
+        type: choice
+        options:
+          - test-connection
+          - flush-cache
+          - load-initial-data
+
+env:
+  RESOURCE_GROUP: codex-rg
+  APP_NAME: codex-backend-app
+  REDIS_NAME: codex-redis
+
+jobs:
+  configure:
+    name: Configure Redis Cache
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Get Redis connection details
+        id: redis
+        run: |
+          REDIS_HOST=$(az redis show \
+            --name ${{ env.REDIS_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query hostName -o tsv)
+
+          REDIS_KEY=$(az redis list-keys \
+            --name ${{ env.REDIS_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query primaryKey -o tsv)
+
+          echo "redis_host=$REDIS_HOST" >> $GITHUB_OUTPUT
+          echo "::add-mask::$REDIS_KEY"
+
+      - name: Test Redis connection
+        if: github.event.inputs.operation == 'test-connection'
+        run: |
+          # Test via App Service (VNet-integrated with private endpoint access)
+          az webapp ssh \
+            --name ${{ env.APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --command "python -c 'import redis; r = redis.Redis(host=\"${{ steps.redis.outputs.redis_host }}\", port=6380, ssl=True); print(r.ping())'"
+
+      - name: Flush Redis cache
+        if: github.event.inputs.operation == 'flush-cache'
+        run: |
+          az webapp ssh \
+            --name ${{ env.APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --command "python -c 'import redis; r = redis.Redis(host=\"${{ steps.redis.outputs.redis_host }}\", port=6380, ssl=True); r.flushdb(); print(\"Cache flushed\")'"
+
+      - name: Load initial data
+        if: github.event.inputs.operation == 'load-initial-data'
+        run: |
+          az webapp ssh \
+            --name ${{ env.APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --command "cd /app && python scripts/load_redis_data.py"
+
+      - name: Update App Service Redis settings
+        run: |
+          REDIS_CONNECTION="${{ steps.redis.outputs.redis_host }}:6380,password=***,ssl=True,abortConnect=False"
+
+          az webapp config appsettings set \
+            --name ${{ env.APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --settings REDIS_URL="$REDIS_CONNECTION"

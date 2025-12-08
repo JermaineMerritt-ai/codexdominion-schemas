@@ -1,0 +1,140 @@
+# =============================================================================
+# Codex Dominion - Production Deployment
+# Frontend + Backend API
+# =============================================================================
+version: '3.8'
+
+services:
+  # =============================================================================
+  # Frontend - Next.js Application
+  # =============================================================================
+  frontend:
+    image: codex-dominion-frontend:latest
+    container_name: codex-frontend
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://api.codexdominion.app}
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-https://codexdominion.app}
+      - NEXT_PUBLIC_APP_NAME=Codex Dominion
+      - NEXT_PUBLIC_APP_VERSION=2.0.0
+      - NEXT_PUBLIC_EMPIRE_STATUS=sovereign
+      - NEXT_PUBLIC_SOVEREIGNTY_LEVEL=eternal
+      - NEXT_PUBLIC_ENABLE_ANALYTICS=true
+      - NEXT_PUBLIC_ENABLE_SIGNALS=true
+      - NEXT_PUBLIC_ENABLE_CAPSULES=true
+    volumes:
+      - ./logs/frontend:/app/.next/logs
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3001/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - codex-network
+    labels:
+      - "com.codexdominion.service=frontend"
+      - "com.codexdominion.version=2.0.0"
+
+  # =============================================================================
+  # Backend API (Python FastAPI)
+  # =============================================================================
+  backend:
+    build:
+      context: ./src/backend
+      dockerfile: Dockerfile
+    image: codex-dominion-backend:latest
+    container_name: codex-backend
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    environment:
+      - PYTHON_ENV=production
+      - API_HOST=0.0.0.0
+      - API_PORT=8001
+      - DATABASE_URL=sqlite:///./codex_dominion.db
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379}
+      - CORS_ORIGINS=https://codexdominion.app,https://www.codexdominion.app
+    volumes:
+      - ./data/backend:/app/data
+      - ./logs/backend:/app/logs
+      - ./artifacts:/app/artifacts:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - codex-network
+    labels:
+      - "com.codexdominion.service=backend"
+      - "com.codexdominion.version=2.0.0"
+
+  # =============================================================================
+  # Redis Cache
+  # =============================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: codex-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-codex_redis_2025}
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - codex-network
+
+  # =============================================================================
+  # Nginx Reverse Proxy
+  # =============================================================================
+  nginx:
+    image: nginx:alpine
+    container_name: codex-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - nginx-logs:/var/log/nginx
+    depends_on:
+      - frontend
+      - backend
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - codex-network
+    labels:
+      - "com.codexdominion.service=nginx"
+
+networks:
+  codex-network:
+    name: codex-live-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.26.0.0/16
+
+volumes:
+  redis-data:
+    driver: local
+  nginx-logs:
+    driver: local

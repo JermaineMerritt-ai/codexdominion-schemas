@@ -12,13 +12,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
-          
+
       - name: Install dependencies
         run: |
           pip install --upgrade pip
@@ -27,7 +27,7 @@ jobs:
           fi
           # Install minimal required packages
           pip install requests pyyaml || true
-          
+
       - name: Run online fact-check
         continue-on-error: true
         run: |
@@ -36,7 +36,7 @@ jobs:
           else
             echo "Fact check script not found, skipping..."
           fi
-          
+
       - name: Run drift monitor
         continue-on-error: true
         run: |
@@ -54,7 +54,7 @@ jobs:
           else
             echo "Metrics export skipped (missing script or Pushgateway URL)"
           fi
-          
+
       - name: Create drift issue if detected
         if: env.drift_detected == 'true'
         continue-on-error: true

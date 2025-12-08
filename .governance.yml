@@ -1,0 +1,324 @@
+# Codex Dominion - Governance Configuration
+# Defines approval tiers, merge requirements, and quality thresholds
+
+version: "1.0"
+project: "codex-dominion"
+
+# Change Tiers - Risk-based categorization
+tiers:
+  low:
+    description: "Low-risk changes that can be auto-merged"
+    examples:
+      - "docs"
+      - "tests"
+      - "perf-tweaks"
+      - "typos"
+      - "formatting"
+      - "comments"
+    merge_strategy: "auto"
+    signoff: null
+    required_checks:
+      - "lint"
+      - "format"
+    auto_merge_delay: "5m"  # Wait 5 minutes before auto-merging
+
+  medium:
+    description: "Medium-risk changes requiring steward review"
+    examples:
+      - "new-feature"
+      - "integration"
+      - "data-flow"
+      - "api-changes"
+      - "dependencies"
+      - "configuration"
+    merge_strategy: "steward-signoff"
+    signoff: "steward"
+    required_checks:
+      - "lint"
+      - "format"
+      - "unit-tests"
+      - "integration-tests"
+      - "security-scan"
+    required_approvals: 1
+
+  high:
+    description: "High-risk changes requiring council multi-signature"
+    examples:
+      - "family-avatars"
+      - "compliance"
+      - "payments"
+      - "pii"
+      - "authentication"
+      - "authorization"
+      - "data-migration"
+      - "schema-changes"
+    merge_strategy: "council-multisign"
+    signoff: "council:2"
+    required_checks:
+      - "lint"
+      - "format"
+      - "unit-tests"
+      - "integration-tests"
+      - "e2e-tests"
+      - "security-scan"
+      - "compliance-check"
+      - "data-privacy-review"
+    required_approvals: 2
+    required_roles:
+      - "council-member"
+    compliance_checks:
+      - "gdpr"
+      - "ccpa"
+      - "pci-dss"
+
+# Quality Thresholds
+thresholds:
+  performance:
+    budget: "p95<=300ms"
+    description: "95th percentile response time must be under 300ms"
+    enforcement: "blocking"
+
+  error_rate:
+    budget_breach: ">=5% over 24h"
+    description: "Error rate breach if 5% or more errors over 24 hours"
+    enforcement: "blocking"
+    alert_channels:
+      - "slack:#alerts"
+      - "email:ops@codexdominion.app"
+
+  test_coverage:
+    minimum: "80%"
+    critical_paths: "95%"
+    enforcement: "warning"
+
+  security:
+    vulnerability_threshold: "medium"
+    description: "No medium or higher vulnerabilities allowed"
+    enforcement: "blocking"
+
+  code_quality:
+    sonarqube_gate: "pass"
+    complexity_threshold: "15"
+    duplication_threshold: "3%"
+    enforcement: "warning"
+
+# Roles and Permissions
+roles:
+  steward:
+    description: "Technical steward with merge permissions"
+    permissions:
+      - "review"
+      - "approve-medium"
+      - "merge-low"
+      - "merge-medium"
+    members:
+      - "@senior-dev-1"
+      - "@senior-dev-2"
+
+  council-member:
+    description: "Council member with high-tier approval authority"
+    permissions:
+      - "review"
+      - "approve-high"
+      - "merge-high"
+      - "compliance-override"
+    members:
+      - "@tech-lead"
+      - "@security-lead"
+      - "@compliance-officer"
+
+  contributor:
+    description: "Standard contributor"
+    permissions:
+      - "create-pr"
+      - "comment"
+      - "suggest-changes"
+
+# Branch Protection Rules
+branches:
+  main:
+    protection:
+      required_status_checks:
+        - "build"
+        - "test"
+        - "security-scan"
+      required_approvals: 1
+      dismiss_stale_reviews: true
+      require_code_owner_reviews: true
+      restrict_pushes: true
+      allowed_push_roles:
+        - "council-member"
+
+  develop:
+    protection:
+      required_status_checks:
+        - "build"
+        - "test"
+      required_approvals: 1
+
+  feature/*:
+    protection:
+      required_status_checks:
+        - "lint"
+        - "test"
+
+# Automated Actions
+automation:
+  low_tier_auto_merge:
+    enabled: true
+    delay: "5m"
+    conditions:
+      - "all_checks_pass"
+      - "no_conflicts"
+      - "tier_classification==low"
+
+  stale_pr_cleanup:
+    enabled: true
+    stale_after: "14d"
+    close_after: "21d"
+    exempt_labels:
+      - "keep-open"
+      - "in-progress"
+
+  auto_label_by_path:
+    enabled: true
+    rules:
+      - path: "docs/**"
+        labels: ["documentation", "tier:low"]
+      - path: "tests/**"
+        labels: ["testing", "tier:low"]
+      - path: "**/payments/**"
+        labels: ["tier:high", "requires-council"]
+      - path: "**/auth/**"
+        labels: ["tier:high", "security"]
+      - path: "**/*.test.*"
+        labels: ["testing", "tier:low"]
+
+# Compliance and Audit
+compliance:
+  audit_trail:
+    enabled: true
+    retention: "7y"
+    immutable: true
+
+  required_for_high_tier:
+    - "security-review"
+    - "privacy-impact-assessment"
+    - "compliance-checklist"
+
+  data_classification:
+    pii:
+      - "user.email"
+      - "user.phone"
+      - "payment.card_number"
+    sensitive:
+      - "api_keys"
+      - "credentials"
+      - "session_tokens"
+
+# Monitoring and Alerts
+monitoring:
+  performance_tracking:
+    enabled: true
+    metrics:
+      - "response_time_p50"
+      - "response_time_p95"
+      - "response_time_p99"
+      - "error_rate"
+      - "throughput"
+    dashboards:
+      - "grafana:codex-dominion-performance"
+
+  slo_alerts:
+    - name: "High Error Rate"
+      condition: "error_rate >= 5%"
+      duration: "5m"
+      severity: "critical"
+
+    - name: "Performance Degradation"
+      condition: "p95_response_time > 300ms"
+      duration: "10m"
+      severity: "warning"
+
+    - name: "Low Test Coverage"
+      condition: "coverage < 80%"
+      severity: "warning"
+
+# Release Gates
+release:
+  production:
+    required_tier: "council-multisign"
+    required_checks:
+      - "all-tests-pass"
+      - "security-scan-pass"
+      - "performance-benchmark-pass"
+      - "compliance-approved"
+    smoke_tests: true
+    canary_deployment: true
+    rollback_on_failure: true
+
+  staging:
+    required_tier: "steward-signoff"
+    required_checks:
+      - "all-tests-pass"
+      - "security-scan-pass"
+
+# Incident Response
+incident_response:
+  emergency_override:
+    enabled: true
+    roles: ["council-member"]
+    requires_justification: true
+    post_incident_review: true
+
+  hotfix_process:
+    bypass_tier: "medium"  # Hotfixes can bypass medium tier approval
+    required_approvals: 1
+    required_roles: ["steward"]
+    immediate_review_required: true
+    time_limit: "4h"  # Must be reviewed within 4 hours
+
+# Integration Points
+integrations:
+  github:
+    enabled: true
+    webhook_secret: "${GITHUB_WEBHOOK_SECRET}"
+
+  slack:
+    enabled: true
+    channels:
+      alerts: "#codex-alerts"
+      releases: "#codex-releases"
+      governance: "#codex-governance"
+
+  sonarqube:
+    enabled: true
+    url: "${SONARQUBE_URL}"
+
+  vault:
+    enabled: true
+    url: "${VAULT_URL}"
+    secrets_path: "codex-dominion"
+
+# Custom Rules
+custom_rules:
+  - name: "Avatar Changes Require Extra Review"
+    condition: "path.includes('avatar') && tier == 'high'"
+    actions:
+      - "add-label:avatar-changes"
+      - "request-review:@avatar-team"
+      - "require-council-approval"
+
+  - name: "Database Migrations Need DBA Review"
+    condition: "path.includes('migrations')"
+    actions:
+      - "add-label:database"
+      - "request-review:@dba-team"
+      - "require-rollback-plan"
+
+  - name: "Payment Code Requires Security Review"
+    condition: "path.includes('payment') || path.includes('billing')"
+    actions:
+      - "add-label:tier:high"
+      - "request-review:@security-team"
+      - "require-pci-compliance-check"

@@ -1,0 +1,61 @@
+name: Finalize Private DNS Records
+
+on:
+  workflow_dispatch:   # manual trigger after Bicep deployment
+
+jobs:
+  finalize-dns:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Fetch Private Endpoint IPs
+        id: fetch
+        run: |
+          PG_IP=$(az network private-endpoint show -n codex-pg-pe -g codex-rg --query 'customDnsConfigs[0].ipAddresses[0]' -o tsv)
+          REDIS_IP=$(az network private-endpoint show -n codex-redis-pe -g codex-rg --query 'customDnsConfigs[0].ipAddresses[0]' -o tsv)
+          KV_IP=$(az network private-endpoint show -n codex-kv-pe -g codex-rg --query 'customDnsConfigs[0].ipAddresses[0]' -o tsv)
+
+          echo "PG_IP=$PG_IP" >> $GITHUB_ENV
+          echo "REDIS_IP=$REDIS_IP" >> $GITHUB_ENV
+          echo "KV_IP=$KV_IP" >> $GITHUB_ENV
+
+      - name: Update Private DNS Records
+        run: |
+          az network private-dns record-set a add-record \
+            -g codex-rg \
+            -z privatelink.postgres.database.azure.com \
+            -n codex-pg \
+            --ipv4-address $PG_IP
+
+          az network private-dns record-set a add-record \
+            -g codex-rg \
+            -z privatelink.redis.cache.windows.net \
+            -n codex-redis \
+            --ipv4-address $REDIS_IP
+
+          az network private-dns record-set a add-record \
+            -g codex-rg \
+            -z privatelink.vaultcore.azure.net \
+            -n codex-kv \
+            --ipv4-address $KV_IP
+
+      - name: Verify DNS Records
+        run: |
+          echo "PostgreSQL DNS Record:"
+          az network private-dns record-set a show -g codex-rg \
+            -z privatelink.postgres.database.azure.com -n codex-pg \
+            --query 'aRecords[0].ipv4Address' -o tsv
+
+          echo "Redis DNS Record:"
+          az network private-dns record-set a show -g codex-rg \
+            -z privatelink.redis.cache.windows.net -n codex-redis \
+            --query 'aRecords[0].ipv4Address' -o tsv
+
+          echo "Key Vault DNS Record:"
+          az network private-dns record-set a show -g codex-rg \
+            -z privatelink.vaultcore.azure.net -n codex-kv \
+            --query 'aRecords[0].ipv4Address' -o tsv

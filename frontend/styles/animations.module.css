@@ -1,0 +1,178 @@
+/* ========================================
+   Animation Duration Classes
+   ======================================== */
+
+.animateSlow { animation-duration: 6s; }
+.animateMedium { animation-duration: 4s; }
+.animateFast { animation-duration: 2s; }
+.animateXSlow { animation-duration: 10s; }
+.animateXXSlow { animation-duration: 15s; }
+
+/* Fine-grained durations */
+.animate2s { animation-duration: 2s; }
+.animate3s { animation-duration: 3s; }
+.animate4s { animation-duration: 4s; }
+.animate5s { animation-duration: 5s; }
+.animate6s { animation-duration: 6s; }
+.animate8s { animation-duration: 8s; }
+.animate10s { animation-duration: 10s; }
+.animate12s { animation-duration: 12s; }
+.animate15s { animation-duration: 15s; }
+.animate18s { animation-duration: 18s; }
+.animate20s { animation-duration: 20s; }
+
+/* ========================================
+   Animation Delay Classes
+   ======================================== */
+
+.delayShort { animation-delay: 1s; }
+.delayMedium { animation-delay: 2s; }
+.delayLong { animation-delay: 3s; }
+.delayXLong { animation-delay: 5s; }
+
+/* Fine-grained delays */
+.delay1s { animation-delay: 1s; }
+.delay2s { animation-delay: 2s; }
+.delay3s { animation-delay: 3s; }
+.delay5s { animation-delay: 5s; }
+.delay8s { animation-delay: 8s; }
+.delay12s { animation-delay: 12s; }
+
+/* ========================================
+   Keyframe Animations
+   ======================================== */
+
+@keyframes sereneFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes blessedPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.1); }
+}
+
+@keyframes gentleGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.6); }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes radiantPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes flameFlicker {
+  0%, 100% { opacity: 0.8; transform: scale(1) rotate(0deg); }
+  25% { opacity: 1; transform: scale(1.05) rotate(2deg); }
+  50% { opacity: 0.9; transform: scale(0.98) rotate(-1deg); }
+  75% { opacity: 1; transform: scale(1.03) rotate(1deg); }
+}
+
+@keyframes stillnessBreath {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes cosmicSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   Animation Utility Classes
+   ======================================== */
+
+.sereneFloat {
+  animation: sereneFloat 6s infinite ease-in-out;
+}
+
+.blessedPulse {
+  animation: blessedPulse 8s infinite ease-in-out;
+}
+
+.gentleGlow {
+  animation: gentleGlow 4s infinite ease-in-out;
+}
+
+.radiantPulse {
+  animation: radiantPulse 5s infinite ease-in-out;
+}
+
+.flameFlicker {
+  animation: flameFlicker 3s infinite ease-in-out;
+}
+
+.stillnessBreath {
+  animation: stillnessBreath 7s infinite ease-in-out;
+}
+
+.cosmicSpin {
+  animation: cosmicSpin 20s linear infinite;
+}
+
+.slowSpin {
+  animation: slowSpin 30s linear infinite;
+}
+
+.fadeInUp {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.scaleIn {
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+/* ========================================
+   Combined Animations (Multi-animation)
+   ======================================== */
+
+.floatAndPulse {
+  animation:
+    sereneFloat 6s infinite ease-in-out,
+    blessedPulse 8s infinite ease-in-out;
+}
+
+.spinAndGlow {
+  animation:
+    slowSpin 30s linear infinite,
+    gentleGlow 4s infinite ease-in-out;
+}
+
+.flickerAndFloat {
+  animation:
+    flameFlicker 3s infinite ease-in-out,
+    sereneFloat 5s infinite ease-in-out;
+}

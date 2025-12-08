@@ -1,0 +1,47 @@
+# =============================================================================
+# Dockerfile for FastAPI Backend - Production
+# =============================================================================
+
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    curl \
+    postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir uvicorn[standard] gunicorn
+
+# Copy application code
+COPY backend/ /app/backend/
+
+# Create necessary directories
+RUN mkdir -p /app/keys /app/uploads /var/log/codexdominion
+
+# Create non-root user
+RUN useradd -m -u 1000 codex && \
+    chown -R codex:codex /app /var/log/codexdominion
+
+USER codex
+
+# Expose port
+EXPOSE 8000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# Run application
+WORKDIR /app/backend
+CMD ["gunicorn", "main:app", "--bind", "0.0.0.0:8000", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--timeout", "120", "--access-logfile", "/var/log/codexdominion/access.log", "--error-logfile", "/var/log/codexdominion/error.log"]

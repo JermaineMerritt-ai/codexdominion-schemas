@@ -1,0 +1,17 @@
+[Unit]
+Description=Codex Dominion Frontend
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/codexdominion
+ExecStart=/usr/bin/node /var/www/codexdominion/server.js
+Restart=always
+RestartSec=10
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOSTNAME=0.0.0.0
+
+[Install]
+WantedBy=multi-user.target

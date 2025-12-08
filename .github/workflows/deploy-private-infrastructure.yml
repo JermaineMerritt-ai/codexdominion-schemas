@@ -1,0 +1,130 @@
+name: Provision Infra and Finalize Private DNS
+
+on:
+  workflow_dispatch:  # manual trigger for controlled rollouts
+
+env:
+  RESOURCE_GROUP: codex-rg
+  LOCATION: eastus
+  BASE_NAME: codex
+  ACR_NAME: codexdominionacr
+  DOCKER_IMAGE: codexdominionacr.azurecr.io/codex-backend:prod
+
+jobs:
+  deploy-bicep:
+    name: Deploy Hardened Infra (Bicep)
+    runs-on: ubuntu-latest
+    outputs:
+      keyvault-name: ${{ steps.deploy.outputs.keyvault-name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Ensure resource group
+        run: |
+          az group create --name "${{ env.RESOURCE_GROUP }}" --location "${{ env.LOCATION }}"
+
+      - name: Generate Key Vault Name
+        id: keyvault
+        run: |
+          KV_NAME="codexkv$(date +%s)"
+          echo "KV_NAME=$KV_NAME" >> $GITHUB_ENV
+          echo "keyvault-name=$KV_NAME" >> $GITHUB_OUTPUT
+
+      - name: Deploy Bicep
+        id: deploy
+        run: |
+          az deployment group create \
+            --resource-group "${{ env.RESOURCE_GROUP }}" \
+            --template-file infra/main-private.bicep \
+            --parameters \
+              location="${{ env.LOCATION }}" \
+              baseName="${{ env.BASE_NAME }}" \
+              acrName="${{ env.ACR_NAME }}" \
+              dockerImage="${{ env.DOCKER_IMAGE }}" \
+              pgAdminPassword="${{ secrets.PG_ADMIN_PASSWORD }}" \
+              keyVaultName="${{ env.KV_NAME }}"
+
+  finalize-private-dns:
+    name: Finalize Private DNS Records
+    runs-on: ubuntu-latest
+    needs: deploy-bicep
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Fetch Private Endpoint IPs
+        id: fetch
+        run: |
+          PG_IP=$(az network private-endpoint show \
+            -n ${{ env.BASE_NAME }}-pg-pe \
+            -g ${{ env.RESOURCE_GROUP }} \
+            --query 'customDnsConfigs[0].ipAddresses[0]' -o tsv)
+
+          REDIS_IP=$(az network private-endpoint show \
+            -n ${{ env.BASE_NAME }}-redis-pe \
+            -g ${{ env.RESOURCE_GROUP }} \
+            --query 'customDnsConfigs[0].ipAddresses[0]' -o tsv)
+
+          KV_IP=$(az network private-endpoint show \
+            -n ${{ env.BASE_NAME }}-kv-pe \
+            -g ${{ env.RESOURCE_GROUP }} \
+            --query 'customDnsConfigs[0].ipAddresses[0]' -o tsv)
+
+          echo "PG_IP=$PG_IP" >> $GITHUB_ENV
+          echo "REDIS_IP=$REDIS_IP" >> $GITHUB_ENV
+          echo "KV_IP=$KV_IP" >> $GITHUB_ENV
+
+      - name: Bind A records for PostgreSQL
+        run: |
+          az network private-dns record-set a add-record \
+            -g ${{ env.RESOURCE_GROUP }} \
+            -z privatelink.postgres.database.azure.com \
+            -n ${{ env.BASE_NAME }}-pg \
+            --ipv4-address ${{ env.PG_IP }}
+
+      - name: Bind A records for Redis
+        run: |
+          az network private-dns record-set a add-record \
+            -g ${{ env.RESOURCE_GROUP }} \
+            -z privatelink.redis.cache.windows.net \
+            -n ${{ env.BASE_NAME }}-redis \
+            --ipv4-address ${{ env.REDIS_IP }}
+
+      - name: Bind A records for Key Vault
+        run: |
+          az network private-dns record-set a add-record \
+            -g ${{ env.RESOURCE_GROUP }} \
+            -z privatelink.vaultcore.azure.net \
+            -n ${{ env.BASE_NAME }}-kv \
+            --ipv4-address ${{ env.KV_IP }}
+
+      - name: Verify DNS Records
+        run: |
+          echo "=== PostgreSQL DNS Record ==="
+          az network private-dns record-set a show \
+            -g ${{ env.RESOURCE_GROUP }} \
+            -z privatelink.postgres.database.azure.com \
+            -n ${{ env.BASE_NAME }}-pg \
+            --query 'aRecords[0].ipv4Address' -o tsv
+
+          echo "=== Redis DNS Record ==="
+          az network private-dns record-set a show \
+            -g ${{ env.RESOURCE_GROUP }} \
+            -z privatelink.redis.cache.windows.net \
+            -n ${{ env.BASE_NAME }}-redis \
+            --query 'aRecords[0].ipv4Address' -o tsv
+
+          echo "=== Key Vault DNS Record ==="
+          az network private-dns record-set a show \
+            -g ${{ env.RESOURCE_GROUP }} \
+            -z privatelink.vaultcore.azure.net \
+            -n ${{ env.BASE_NAME }}-kv \
+            --query 'aRecords[0].ipv4Address' -o tsv

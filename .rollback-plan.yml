@@ -1,0 +1,610 @@
+# Codex Dominion - Rollback Plan
+# Automated rollback with OPA enforcement, error budget monitoring, and council oversight
+
+version: "1.0"
+project: "codex-dominion"
+
+# Rollback Triggers
+triggers:
+  opa_policy:
+    enabled: true
+    description: "Open Policy Agent denial triggers immediate rollback"
+    policies:
+      - name: "deployment-authorization"
+        path: "policies/deployment.rego"
+        deny_conditions:
+          - "unauthorized_deployer"
+          - "missing_approvals"
+          - "tier_violation"
+          - "compliance_breach"
+        action: "immediate_halt_and_rollback"
+
+      - name: "consent-envelope-violation"
+        path: "policies/consent-envelopes/deployment-consent.rego"
+        deny_conditions:
+          - "gdpr_consent_missing"
+          - "data_processing_unauthorized"
+          - "pii_exposure_risk"
+        action: "immediate_halt_and_rollback"
+        alert_compliance: true
+
+      - name: "performance-policy"
+        path: "policies/performance.rego"
+        deny_conditions:
+          - "p95_latency_exceeded"  # > 300ms
+          - "error_rate_breach"     # >= 5%
+          - "resource_exhaustion"
+        action: "immediate_halt_and_rollback"
+
+      - name: "security-policy"
+        path: "policies/security.rego"
+        deny_conditions:
+          - "vulnerability_detected"
+          - "unauthorized_access_pattern"
+          - "credential_exposure"
+        action: "immediate_halt_and_rollback"
+        alert_security: true
+
+  error_budget:
+    enabled: true
+    description: "Error budget breach triggers rollback"
+    thresholds:
+      critical:
+        error_rate: ">=5% over 24h"  # Governance threshold
+        action: "immediate_rollback"
+        freeze_deployments: true
+        duration: "until_resolved"
+
+      warning:
+        error_rate: ">=3% over 12h"
+        action: "pause_canary"
+        notify: ["@platform-stewards", "@oncall"]
+
+    measurement:
+      window: "24h"
+      check_interval: "5m"
+      consecutive_breaches: 2  # Require 2 consecutive checks to avoid false positives
+
+    performance_degradation:
+      p95_latency: ">300ms for 15m"
+      p99_latency: ">500ms for 10m"
+      action: "immediate_rollback"
+
+  council_revoke:
+    enabled: true
+    description: "Council can revoke deployment at any time"
+    authorized_roles:
+      - "council-member"
+      - "flamekeeper"
+      - "compliance-officer"
+
+    revocation_procedure:
+      endpoint: "/ops/deployment/revoke"
+      method: "POST"
+      requires_reason: true
+      requires_confirmation: true
+      audit_trail: true
+
+    revocation_reasons:
+      - "compliance_violation"
+      - "security_incident"
+      - "data_breach_risk"
+      - "customer_impact_severe"
+      - "business_risk_unacceptable"
+      - "governance_breach"
+
+    immediate_actions:
+      - "halt_deployment"
+      - "initiate_rollback"
+      - "notify_all_stakeholders"
+      - "create_incident_report"
+      - "freeze_similar_deployments"
+
+  manual_triggers:
+    kill_switch:
+      enabled: true
+      endpoint: "/ops/rollback/emergency"
+      authorized_roles: ["council-member", "platform-steward", "ops-guardian"]
+      requires_justification: true
+
+    business_triggers:
+      - condition: "revenue_drop >= 10%"
+        duration: "30m"
+        action: "immediate_rollback"
+
+      - condition: "customer_complaints > 50"
+        duration: "1h"
+        action: "pause_and_investigate"
+
+      - condition: "payment_failures > 5%"
+        duration: "15m"
+        action: "immediate_rollback"
+
+# Rollback Steps
+steps:
+  halt:
+    description: "Immediately halt ongoing deployment"
+    sequence:
+      - name: "Stop traffic shifting"
+        action: "freeze_canary_traffic_at_current_percentage"
+        timeout: "10s"
+
+      - name: "Pause automation"
+        action: "disable_auto_promotion"
+        timeout: "5s"
+
+      - name: "Lock deployment"
+        action: "set_deployment_state_to_halted"
+        timeout: "5s"
+
+      - name: "Alert on-call"
+        action: "notify_oncall_team"
+        channels: ["pagerduty", "slack"]
+        priority: "critical"
+
+      - name: "Broadcast halt"
+        action: "update_status_page"
+        message: "Deployment halted - investigating"
+
+    verification:
+      - check: "no_new_traffic_to_canary"
+      - check: "automation_disabled"
+      - check: "oncall_notified"
+
+  revert:
+    description: "Revert to last known good state"
+    sequence:
+      - name: "Identify stable version"
+        action: "query_artifact_ledger_for_last_green_deployment"
+        source: "ledger/deployment-history.json"
+
+      - name: "Route traffic to stable"
+        action: "set_traffic_percentage"
+        stable: 100
+        canary: 0
+        timeout: "30s"
+
+      - name: "Stop canary services"
+        action: "systemctl_stop_canary_services"
+        services:
+          - "codexdominion-frontend-canary"
+          - "codexdominion-api-canary"
+        timeout: "1m"
+
+      - name: "Rollback database migrations"
+        condition: "migrations_applied"
+        action: "execute_migration_reversal"
+        script: "./scripts/rollback-migrations.sh"
+        backup_required: true
+
+      - name: "Restore configuration"
+        action: "restore_config_from_backup"
+        source: "/var/backups/codexdominion/config"
+        files:
+          - ".env.production"
+          - "nginx.conf"
+          - "systemd-services"
+
+      - name: "Clear caches"
+        action: "clear_application_caches"
+        caches:
+          - "redis"
+          - "cdn"
+          - "browser_cache_bust"
+
+      - name: "Restart stable services"
+        action: "systemctl_restart_stable_services"
+        services:
+          - "codexdominion-frontend"
+          - "codexdominion-api"
+        health_check_after: true
+
+    verification:
+      - check: "all_traffic_on_stable"
+      - check: "canary_services_stopped"
+      - check: "stable_services_healthy"
+      - check: "health_endpoints_responding"
+      - check: "error_rate < 1%"
+      - check: "p95_latency < 250ms"
+
+  reseal:
+    description: "Re-seal the eternal covenant and restore governance"
+    sequence:
+      - name: "Update artifact ledger"
+        action: "record_rollback_in_ledger"
+        ledger_path: "ledger/artifact-ledger/deployments.json"
+        fields:
+          - timestamp
+          - trigger_reason
+          - reverted_version
+          - stable_version
+          - operator
+          - approval_status
+        immutable: true
+
+      - name: "Restore OPA policies"
+        action: "reload_opa_policies"
+        policy_bundle: "/etc/opa/policies/stable"
+        verify_load: true
+
+      - name: "Re-run compliance checks"
+        action: "execute_compliance_validation"
+        checks:
+          - "gdpr_compliance"
+          - "ccpa_compliance"
+          - "pci_dss_compliance"
+          - "data_retention_policy"
+
+      - name: "Restore governance state"
+        action: "update_governance_status"
+        state: "sealed"
+        approvals: "reset_required"
+        next_deployment_requires: "council_approval"
+
+      - name: "Archive canary artifacts"
+        action: "move_to_failed_deployments"
+        source: "/var/lib/codexdominion/canary"
+        destination: "/var/lib/codexdominion/failed-deployments/{timestamp}"
+        retention: "90d"
+
+      - name: "Update changelog"
+        action: "append_to_changelog"
+        file: "CHANGELOG.md"
+        entry: "Rollback executed - {reason}"
+
+    verification:
+      - check: "ledger_updated_immutably"
+      - check: "opa_policies_loaded"
+      - check: "compliance_checks_passed"
+      - check: "governance_sealed"
+
+  postmortem:
+    description: "Document incident and create action items"
+    timeline: "within 24h"
+
+    immediate_actions:
+      - name: "Create incident ticket"
+        action: "create_incident_in_tracking_system"
+        template: "rollback-incident"
+        fields:
+          - trigger_type
+          - affected_services
+          - duration
+          - customer_impact
+          - revenue_impact
+
+      - name: "Notify stakeholders"
+        action: "send_rollback_notification"
+        recipients:
+          - "@council-stewards"
+          - "@engineering-leads"
+          - "@customer-success"
+          - "@finance-team"
+        include:
+          - timeline
+          - root_cause_summary
+          - impact_assessment
+          - next_steps
+
+      - name: "Update status page"
+        action: "post_incident_update"
+        status: "resolved"
+        message: "Issue identified and rolled back. Services restored."
+
+    required_documentation:
+      - document: "Root Cause Analysis"
+        owner: "platform-steward"
+        deadline: "24h"
+        template: "docs/templates/rca-template.md"
+
+      - document: "Incident Postmortem"
+        owner: "council-member"
+        deadline: "48h"
+        template: "docs/templates/postmortem-template.md"
+        includes:
+          - timeline
+          - root_cause
+          - impact_analysis
+          - action_items
+          - preventive_measures
+
+      - document: "Governance Review"
+        owner: "compliance-officer"
+        deadline: "72h"
+        includes:
+          - policy_violations
+          - approval_gaps
+          - threshold_adjustments
+
+    action_items:
+      - category: "immediate"
+        tasks:
+          - "Fix root cause"
+          - "Update tests to catch issue"
+          - "Document failure mode"
+
+      - category: "short_term"
+        timeline: "1 week"
+        tasks:
+          - "Improve monitoring"
+          - "Update runbooks"
+          - "Enhance rollback automation"
+
+      - category: "long_term"
+        timeline: "1 month"
+        tasks:
+          - "Review governance thresholds"
+          - "Improve canary strategy"
+          - "Team training on lessons learned"
+
+# Data Integrity Protection
+data_integrity:
+  migrations_reversal:
+    enabled: true
+    description: "Automatic database migration rollback"
+
+    pre_rollback_backup:
+      required: true
+      location: "/var/backups/codexdominion/db"
+      retention: "30d"
+      verification: "checksum"
+
+    reversal_strategy:
+      method: "transaction_log_replay"
+      steps:
+        - "identify_applied_migrations"
+        - "generate_down_migrations"
+        - "execute_in_reverse_order"
+        - "verify_schema_state"
+
+    rollback_scripts:
+      location: "src/backend/migrations/down"
+      naming: "{timestamp}_down_{migration_name}.sql"
+      test_required: true
+      dry_run_first: true
+
+    verification:
+      - check: "schema_matches_stable_version"
+      - check: "no_orphaned_tables"
+      - check: "foreign_keys_valid"
+      - check: "indexes_intact"
+      - check: "data_integrity_constraints_pass"
+
+  backups:
+    strategy: "continuous_point_in_time"
+
+    before_deployment:
+      database:
+        action: "pg_dump_full_backup"
+        location: "/var/backups/codexdominion/db/pre-deploy-{timestamp}.sql"
+        compression: "gzip"
+        verification: "test_restore"
+
+      configuration:
+        action: "tar_config_files"
+        location: "/var/backups/codexdominion/config/pre-deploy-{timestamp}.tar.gz"
+        files:
+          - "/var/www/codexdominion.app/.env.production"
+          - "/etc/nginx/sites-available/codexdominion.app"
+          - "/etc/systemd/system/codexdominion-*.service"
+
+      artifacts:
+        action: "snapshot_artifact_registry"
+        location: "/var/backups/codexdominion/artifacts/pre-deploy-{timestamp}"
+        include:
+          - "docker_images"
+          - "npm_packages"
+          - "python_packages"
+
+    during_rollback:
+      restore_order:
+        - "configuration_files"
+        - "database_state"
+        - "application_artifacts"
+        - "cache_invalidation"
+
+      validation:
+        - "backup_integrity_check"
+        - "version_compatibility_check"
+        - "dependency_resolution"
+
+  ledger_updates:
+    enabled: true
+    description: "Maintain immutable audit ledger"
+
+    deployment_record:
+      file: "ledger/artifact-ledger/deployments.json"
+      immutable: true
+      fields:
+        - deployment_id: "uuid"
+        - timestamp: "iso8601"
+        - version: "semver"
+        - tier: "low|medium|high"
+        - approvers: "array<string>"
+        - trigger: "string"
+        - status: "success|rolled_back|failed"
+        - duration: "seconds"
+        - error_details: "object"
+
+    rollback_record:
+      file: "ledger/artifact-ledger/rollbacks.json"
+      immutable: true
+      fields:
+        - rollback_id: "uuid"
+        - deployment_id: "uuid (original)"
+        - timestamp: "iso8601"
+        - trigger_type: "opa|error_budget|council_revoke|manual"
+        - trigger_reason: "string"
+        - operator: "string"
+        - reverted_from_version: "semver"
+        - reverted_to_version: "semver"
+        - data_migrations_reversed: "boolean"
+        - backups_used: "array<string>"
+        - verification_status: "object"
+        - postmortem_ticket: "string"
+
+    opa_decision_log:
+      file: "ledger/opa-decisions/deployment-decisions.json"
+      immutable: true
+      retention: "7y"  # Compliance requirement
+      fields:
+        - decision_id: "uuid"
+        - timestamp: "iso8601"
+        - policy_path: "string"
+        - input: "object"
+        - result: "allow|deny"
+        - reason: "string"
+        - metadata: "object"
+
+    compliance_audit:
+      file: "ledger/compliance/audit-trail.json"
+      immutable: true
+      retention: "7y"
+      encrypted: true
+      fields:
+        - audit_id: "uuid"
+        - timestamp: "iso8601"
+        - event_type: "deployment|rollback|policy_change|approval"
+        - actor: "string"
+        - action: "string"
+        - result: "success|failure"
+        - compliance_tags: "array<string>"
+        - sensitive_data_accessed: "boolean"
+
+# Rollback Validation
+validation:
+  automated_checks:
+    - name: "Services health"
+      checks:
+        - "frontend_responding"
+        - "backend_responding"
+        - "database_connected"
+        - "cache_available"
+      timeout: "5m"
+
+    - name: "Performance metrics"
+      checks:
+        - "p95_latency < 250ms"
+        - "error_rate < 0.5%"
+        - "throughput >= baseline"
+      duration: "15m"
+
+    - name: "Data integrity"
+      checks:
+        - "no_missing_tables"
+        - "foreign_keys_valid"
+        - "record_counts_match"
+        - "checksums_valid"
+
+    - name: "Security posture"
+      checks:
+        - "ssl_certificates_valid"
+        - "authentication_working"
+        - "authorization_enforced"
+        - "no_exposed_secrets"
+
+  manual_verification:
+    required_for:
+      - "high_tier_rollbacks"
+      - "data_migration_reversals"
+      - "compliance_related_changes"
+
+    checklist:
+      - "Critical user flows tested"
+      - "Payment processing verified"
+      - "Authentication flows confirmed"
+      - "Data access permissions correct"
+      - "Compliance requirements met"
+
+    sign_off_required:
+      - role: "platform-steward"
+        scope: "all_rollbacks"
+      - role: "council-member"
+        scope: "high_tier_rollbacks"
+      - role: "compliance-officer"
+        scope: "compliance_related"
+
+# Communication Plan
+communications:
+  internal:
+    immediate:
+      - channel: "slack:#codex-alerts"
+        message: "🚨 ROLLBACK INITIATED: {trigger_reason}"
+
+      - channel: "pagerduty"
+        severity: "critical"
+
+    post_rollback:
+      - channel: "slack:#codex-governance"
+        message: "Rollback complete. Postmortem required within 24h."
+
+      - channel: "email"
+        recipients: ["@council-stewards", "@engineering-leads"]
+        subject: "Deployment Rollback - Action Required"
+
+  external:
+    customer_notice:
+      required_if:
+        - "service_degradation_occurred"
+        - "data_integrity_risk"
+        - "customer_visible_changes_reverted"
+
+      template:
+        title: "Service Update"
+        message: |
+          We detected an issue and quickly reverted to ensure stability.
+          All systems are now operating normally.
+          Your data remains secure and intact.
+        channels: ["status_page", "email"]
+
+    status_page:
+      url: "https://status.codexdominion.app"
+      updates:
+        - status: "investigating"
+          when: "trigger_detected"
+        - status: "implementing_fix"
+          when: "rollback_in_progress"
+        - status: "resolved"
+          when: "rollback_complete"
+
+# Automation Scripts
+scripts:
+  rollback_executor:
+    path: "./ops/rollback/execute-rollback.sh"
+    description: "Main rollback orchestration script"
+    usage: "./execute-rollback.sh --trigger opa|error_budget|council --reason 'description'"
+
+  migration_reversal:
+    path: "./ops/rollback/rollback-migrations.sh"
+    description: "Database migration reversal"
+    usage: "./rollback-migrations.sh --target-version v1.2.3"
+
+  ledger_update:
+    path: "./ops/rollback/update-ledger.sh"
+    description: "Record rollback in immutable ledger"
+    usage: "./update-ledger.sh --rollback-id uuid --reason 'description'"
+
+  opa_check:
+    path: "./ops/rollback/check-opa-policies.sh"
+    description: "Verify OPA policies allow rollback"
+    usage: "./check-opa-policies.sh --deployment-id uuid"
+
+# Testing and Validation
+testing:
+  rollback_drills:
+    frequency: "monthly"
+    scope: "full_rollback_procedure"
+    environment: "staging"
+    success_criteria:
+      - "rollback_completes_under_5m"
+      - "all_services_healthy"
+      - "data_integrity_maintained"
+      - "ledger_correctly_updated"
+
+  chaos_engineering:
+    enabled: true
+    scenarios:
+      - "simulate_opa_deny"
+      - "simulate_error_budget_breach"
+      - "simulate_database_corruption"
+      - "simulate_council_revoke"

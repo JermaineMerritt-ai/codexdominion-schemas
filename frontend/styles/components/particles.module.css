@@ -1,0 +1,142 @@
+/* ========================================
+   Particle System Components
+   Reusable particle effects across themes
+   ======================================== */
+
+/* Base Particle */
+.particle {
+  position: absolute;
+  border-radius: 9999px;
+  opacity: 0.6;
+}
+
+/* Particle with dynamic positioning via CSS variables */
+.particleDynamic {
+  composes: particle;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: var(--size, 8px);
+  height: var(--size, 8px);
+  animation-duration: var(--duration, 6s);
+  animation-delay: var(--delay, 0s);
+}
+
+/* Particle Animation Variants */
+.floatingParticle {
+  composes: particleDynamic;
+  animation-name: sereneFloat;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.pulsingParticle {
+  composes: particleDynamic;
+  animation-name: blessedPulse;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.floatAndPulse {
+  composes: particleDynamic;
+  animation-name: sereneFloat, blessedPulse;
+  animation-duration: var(--duration, 6s), calc(var(--duration, 6s) * 1.4);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* Particle Size Variants */
+.particleSmall {
+  width: 8px;
+  height: 8px;
+}
+
+.particleMedium {
+  width: 12px;
+  height: 12px;
+}
+
+.particleLarge {
+  width: 16px;
+  height: 16px;
+}
+
+.particleXLarge {
+  width: 20px;
+  height: 20px;
+}
+
+/* Particle Glow Effects */
+.particleGlow {
+  composes: particle;
+  box-shadow: 0 0 20px currentColor;
+}
+
+.particleGlowStrong {
+  composes: particle;
+  box-shadow: 0 0 30px currentColor, 0 0 50px currentColor;
+}
+
+/* Particle Opacity Variants */
+.particleSubtle {
+  opacity: 0.3;
+}
+
+.particleModerate {
+  opacity: 0.6;
+}
+
+.particleVivid {
+  opacity: 0.9;
+}
+
+/* Particle Color Helpers (combine with theme classes) */
+.particleLight {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.particleDark {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Constellation/Star Particles */
+.starParticle {
+  composes: particle;
+  background: radial-gradient(circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 70%);
+  animation: radiantPulse 3s infinite ease-in-out;
+}
+
+/* Ember Particles (for flame theme) */
+.emberParticle {
+  composes: particle;
+  background: radial-gradient(circle,
+    rgba(251, 146, 60, 1) 0%,
+    rgba(251, 146, 60, 0) 70%);
+  animation: flameFlicker 2s infinite ease-in-out;
+}
+
+/* Serenity Droplet Particles */
+.dropletParticle {
+  composes: particle;
+  background: radial-gradient(circle,
+    rgba(103, 232, 249, 0.9) 0%,
+    rgba(103, 232, 249, 0) 70%);
+  animation: sereneFloat 5s infinite ease-in-out;
+}
+
+/* Particle Container */
+.particleContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Particle Field (for grouped particles) */
+.particleField {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}

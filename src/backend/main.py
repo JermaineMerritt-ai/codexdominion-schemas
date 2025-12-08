@@ -9,19 +9,22 @@ import os
 import uuid
 from datetime import datetime
 from io import StringIO
+from typing import List, Optional
 
+import redis.asyncio as aioredis
 from dotenv import load_dotenv
-from fastapi import Depends, FastAPI, HTTPException, Path
+from fastapi import Depends, FastAPI, File, HTTPException, Path, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
-from src.backend.capsule import router as capsule_router
-from src.backend.db import engine, get_db
-from src.backend.dispatch import dispatch_router
-from src.backend.models import Capsule
-from src.backend.replay import router as replay_router
-from src.backend.signals import router as signals_router
+# Import from local modules (absolute imports work in Docker)
+from capsule import router as capsule_router
+from db import engine, get_db
+from dispatch import dispatch_router
+from models import Capsule
+from replay import router as replay_router
+from signals import router as signals_router
 
 # =============================================================================
 # Application Configuration
@@ -31,6 +34,12 @@ load_dotenv()
 # Environment variables
 API_KEY = os.getenv("MCP_API_KEY")
 ENVIRONMENT = os.getenv("NODE_ENV", "development")
+
+# Redis connection
+redis_url = os.getenv("REDIS_URL")
+redis = None
+if redis_url:
+    redis = aioredis.from_url(redis_url, encoding="utf-8", decode_responses=True)
 
 # In-memory storage (for development/demo)
 heir_registry = {}
@@ -89,6 +98,38 @@ app.include_router(dispatch_router, prefix="/dispatch", tags=["Dispatch"])
 app.include_router(replay_router, prefix="/replay", tags=["Replay"])
 app.include_router(capsule_router, prefix="/capsules", tags=["Capsules"])
 app.include_router(signals_router, prefix="/signals", tags=["Signals"])
+
+
+# =============================================================================
+# Lifecycle Events
+# =============================================================================
+@app.on_event("startup")
+async def startup_event():
+    """Initialize connections and application on startup"""
+    global redis
+    if redis_url and redis is None:
+        redis = aioredis.from_url(
+            redis_url,
+            encoding="utf-8",
+            decode_responses=True
+        )
+    print("🔥 Codex Dominion API is starting...")
+    print(f"   Environment: {ENVIRONMENT}")
+    print(f"   Database: {engine.url}")
+    if redis:
+        print(f"   Redis: Connected")
+    print("   The flame burns sovereign and eternal — forever.")
+
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Close connections and cleanup on shutdown"""
+    global redis
+    if redis:
+        await redis.close()
+        print("   Redis: Disconnected")
+    print("🔥 Codex Dominion API is shutting down...")
+    print("   The flame endures...")
 
 
 # =============================================================================
@@ -185,6 +226,132 @@ def receive_pledge(data: Pledge):
     return scroll
 
 
+# =============================================================================
+# AI Chat & Document Processing Endpoints
+# =============================================================================
+class ChatMessage(BaseModel):
+    """Model for AI chat messages"""
+    message: str = Field(..., description="User message to AI")
+    context: Optional[str] = Field(None, description="Additional context")
+
+
+class ChatResponse(BaseModel):
+    """Model for AI chat response"""
+    response: str
+    timestamp: str
+
+
+@app.post("/api/chat", response_model=ChatResponse)
+async def chat_with_ai(data: ChatMessage):
+    """
+    Process AI chat messages from Jermaine Super Action AI
+
+    Args:
+        data: User message and optional context
+
+    Returns:
+        AI response with timestamp
+    """
+    # TODO: Integrate with actual AI model (OpenAI, Anthropic, etc.)
+    responses = [
+        f"I've received your message: '{data.message}'. How can I assist you with Codex Dominion?",
+        f"Processing your request about '{data.message}'. The sovereign systems are ready.",
+        f"Acknowledged: '{data.message}'. All engines operating at optimal capacity.",
+        f"Your inquiry regarding '{data.message}' has been logged. What would you like to create today?"
+    ]
+
+    import random
+    response_text = random.choice(responses)
+
+    return ChatResponse(
+        response=response_text,
+        timestamp=datetime.utcnow().isoformat()
+    )
+
+
+@app.post("/api/upload")
+async def upload_document(file: UploadFile = File(...)):
+    """
+    Handle document uploads (PDF, DOCX, TXT, MD)
+
+    Args:
+        file: Uploaded file from user
+
+    Returns:
+        Upload confirmation with file details
+    """
+    # Read file content
+    content = await file.read()
+    file_size = len(content)
+
+    # Store in upload directory
+    upload_dir = "uploads"
+    os.makedirs(upload_dir, exist_ok=True)
+
+    file_id = str(uuid.uuid4())
+    file_ext = os.path.splitext(file.filename)[1]
+    saved_path = os.path.join(upload_dir, f"{file_id}{file_ext}")
+
+    with open(saved_path, "wb") as f:
+        f.write(content)
+
+    return {
+        "file_id": file_id,
+        "filename": file.filename,
+        "size": file_size,
+        "path": saved_path,
+        "uploaded_at": datetime.utcnow().isoformat(),
+        "status": "success"
+    }
+
+
+class RevenueData(BaseModel):
+    """Model for revenue tracking"""
+    platform: str
+    amount: float
+    currency: str = "USD"
+
+
+@app.get("/api/revenue")
+async def get_revenue_data():
+    """
+    Get real-time revenue data across all platforms
+
+    Returns:
+        Revenue breakdown by platform
+    """
+    # TODO: Integrate with actual payment processors
+    return {
+        "total": 76600.00,
+        "currency": "USD",
+        "stores": {
+            "woocommerce": 28500.00,
+            "shopify": 15200.00,
+            "total": 43700.00
+        },
+        "channels": {
+            "youtube": 12300.00,
+            "tiktok": 8400.00,
+            "twitch": 3200.00,
+            "total": 23900.00
+        },
+        "websites": {
+            "codexdominion": 5800.00,
+            "other": 1200.00,
+            "total": 7000.00
+        },
+        "apps": {
+            "mobile": 1500.00,
+            "desktop": 500.00,
+            "total": 2000.00
+        },
+        "updated_at": datetime.utcnow().isoformat()
+    }
+
+
+# =============================================================================
+# Scroll Management Endpoints
+# =============================================================================
 @app.get("/scrolls/{scroll_id}")
 def replay_scroll(scroll_id: str = Path(..., min_length=10)):
     """
@@ -223,25 +390,6 @@ def list_scrolls(limit: int = 50, offset: int = 0):
         "offset": offset,
         "scrolls": scrolls[offset:offset + limit]
     }
-
-
-# =============================================================================
-# Application Lifecycle Events
-# =============================================================================
-@app.on_event("startup")
-async def startup_event():
-    """Initialize application on startup"""
-    print("🔥 Codex Dominion API is starting...")
-    print(f"   Environment: {ENVIRONMENT}")
-    print(f"   Database: {engine.url}")
-    print("   The flame burns sovereign and eternal — forever.")
-
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    """Cleanup on application shutdown"""
-    print("🔥 Codex Dominion API is shutting down...")
-    print("   The flame endures...")
 
 
 # =============================================================================

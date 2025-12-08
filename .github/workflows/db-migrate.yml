@@ -1,0 +1,78 @@
+name: PostgreSQL Database Migration
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: 'Migration operation'
+        required: true
+        type: choice
+        options:
+          - migrate-up
+          - migrate-down
+          - seed-data
+          - backup
+
+env:
+  RESOURCE_GROUP: codex-rg
+  APP_NAME: codex-backend-app
+  PG_SERVER: codex-pg.postgres.database.azure.com
+  PG_DATABASE: codexdb
+
+jobs:
+  migrate:
+    name: Run Database Migration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Get App Service outbound IPs
+        id: ips
+        run: |
+          OUTBOUND_IPS=$(az webapp show \
+            --name ${{ env.APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query possibleOutboundIpAddresses -o tsv)
+          echo "outbound_ips=$OUTBOUND_IPS" >> $GITHUB_OUTPUT
+
+      - name: Run migration via App Service SSH
+        if: github.event.inputs.operation == 'migrate-up'
+        run: |
+          # Execute migration commands via App Service console
+          # This runs inside VNet with private endpoint access
+          az webapp ssh \
+            --name ${{ env.APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --command "cd /app && python -m alembic upgrade head"
+
+      - name: Seed initial data
+        if: github.event.inputs.operation == 'seed-data'
+        run: |
+          az webapp ssh \
+            --name ${{ env.APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --command "cd /app && python scripts/seed_data.py"
+
+      - name: Backup database
+        if: github.event.inputs.operation == 'backup'
+        run: |
+          BACKUP_FILE="backup-$(date +%Y%m%d-%H%M%S).sql"
+
+          # Run pg_dump via App Service (VNet-integrated access)
+          az webapp ssh \
+            --name ${{ env.APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --command "pg_dump -h ${{ env.PG_SERVER }} -U codex_admin -d ${{ env.PG_DATABASE }} > /tmp/$BACKUP_FILE"
+
+          echo "Backup created: $BACKUP_FILE"

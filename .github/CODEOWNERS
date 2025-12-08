@@ -1,8 +1,28 @@
 # Codex Dominion - Code Ownership Rules
-# Council-mode domains with risk-tiered governance per ADR-002
+# Risk-tiered governance: Low (auto), Medium (steward), High (council:2)
+# Performance budget: p95<=300ms | Error budget: <5% over 24h
 
 # Default owner (fallback for unmatched paths)
 * @jermaineMerritt
+
+# === LOW TIER (Auto-merge) ===
+# Changes that flow freely after checks pass
+docs/*.md @engineering-leads
+**/tests/** @engineering-leads
+**/*.test.* @engineering-leads
+**/*.spec.* @engineering-leads
+README.md @engineering-leads
+
+# === MEDIUM TIER (Steward sign-off) ===
+# Requires 1 steward approval
+frontend/components/** @engineering-leads
+frontend/pages/** @engineering-leads @custodian-council
+templates/* @engineering-leads
+templates/code/* @engineering-leads @lead-architects
+src/** @custodian-council
+
+# === HIGH TIER (Council multi-sign) ===
+# Requires 2 council approvals + compliance checks
 
 # Council-Mode Domains
 # High-risk governance: Policies require council multi-sign (2/3)

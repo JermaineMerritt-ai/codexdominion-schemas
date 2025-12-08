@@ -1,0 +1,207 @@
+/* ========================================
+   Ring/Circle Components
+   Sacred geometry rings for sanctuary layouts
+   ======================================== */
+
+/* Base Ring Container */
+.ringContainer {
+  position: relative;
+  width: 20rem;
+  height: 20rem;
+  margin: 0 auto;
+}
+
+.ringContainerLarge {
+  composes: ringContainer;
+  width: 30rem;
+  height: 30rem;
+}
+
+.ringContainerXLarge {
+  composes: ringContainer;
+  width: 40rem;
+  height: 40rem;
+}
+
+/* Dynamic Ring with CSS Variables */
+.ringDynamic {
+  position: absolute;
+  border-radius: 9999px;
+  transform: scale(var(--scale, 1)) rotate(var(--rotation, 0deg));
+  transition: transform var(--transition-duration, 0.3s) ease;
+}
+
+/* Ring Layers */
+.ringOuter {
+  position: absolute;
+  inset: 0;
+  border-width: 16px;
+  border-radius: 9999px;
+  box-shadow: 0 0 200px rgba(255, 255, 255, 0.5);
+}
+
+.ringMiddle {
+  position: absolute;
+  inset: 4rem;
+  border-width: 12px;
+  border-radius: 9999px;
+  box-shadow: 0 0 120px rgba(255, 255, 255, 0.4);
+}
+
+.ringInner {
+  position: absolute;
+  inset: 8rem;
+  border-width: 8px;
+  border-radius: 9999px;
+  box-shadow: 0 0 80px rgba(255, 255, 255, 0.3);
+}
+
+.ringCore {
+  position: absolute;
+  inset: 12rem;
+  border-width: 6px;
+  border-radius: 9999px;
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.2);
+}
+
+/* Ring with Symbols/Decorations */
+.ringWithSymbols {
+  position: relative;
+}
+
+.ringSymbol {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.7;
+  animation: gentleGlow 4s infinite ease-in-out;
+}
+
+/* Cardinal Direction Symbols */
+.symbolTop {
+  composes: ringSymbol;
+  top: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.symbolBottom {
+  composes: ringSymbol;
+  bottom: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.symbolLeft {
+  composes: ringSymbol;
+  top: 50%;
+  left: -4rem;
+  transform: translateY(-50%);
+}
+
+.symbolRight {
+  composes: ringSymbol;
+  top: 50%;
+  right: -4rem;
+  transform: translateY(-50%);
+}
+
+/* Intercardinal Direction Symbols */
+.symbolTopRight {
+  composes: ringSymbol;
+  top: 25%;
+  right: -3rem;
+  transform: translateY(-50%);
+}
+
+.symbolBottomLeft {
+  composes: ringSymbol;
+  bottom: 25%;
+  left: -3rem;
+  transform: translateY(50%);
+}
+
+.symbolTopLeft {
+  composes: ringSymbol;
+  top: 25%;
+  left: -3rem;
+  transform: translateY(-50%);
+}
+
+.symbolBottomRight {
+  composes: ringSymbol;
+  bottom: 25%;
+  right: -3rem;
+  transform: translateY(50%);
+}
+
+/* Ring Animations */
+.ringRotating {
+  animation: cosmicSpin 20s linear infinite;
+}
+
+.ringRotatingSlow {
+  animation: slowSpin 30s linear infinite;
+}
+
+.ringPulsing {
+  animation: blessedPulse 8s infinite ease-in-out;
+}
+
+.ringBreathing {
+  animation: stillnessBreath 7s infinite ease-in-out;
+}
+
+/* Ring Glow Effects */
+.ringGlow {
+  box-shadow: 0 0 200px currentColor,
+              inset 0 0 100px currentColor;
+}
+
+.ringGlowSubtle {
+  box-shadow: 0 0 100px rgba(255, 255, 255, 0.3),
+              inset 0 0 50px rgba(255, 255, 255, 0.2);
+}
+
+.ringGlowIntense {
+  box-shadow: 0 0 300px currentColor,
+              inset 0 0 150px currentColor;
+}
+
+/* Ring Background Patterns */
+.ringGradientRadial {
+  background: radial-gradient(circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%);
+}
+
+.ringGradientConic {
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.3)
+  );
+}
+
+/* Multi-Ring Stack */
+.ringStack {
+  position: relative;
+}
+
+.ringStack > * + * {
+  margin-top: -100%;
+}
+
+/* Sanctuary-specific ring (combines multiple effects) */
+.sanctuaryRing {
+  composes: ringOuter ringRotating ringGlow;
+}
+
+.covenantRing {
+  composes: ringMiddle ringPulsing ringGlowSubtle;
+}
+
+.heartRing {
+  composes: ringInner ringBreathing;
+}
