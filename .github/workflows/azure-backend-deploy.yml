@@ -1,0 +1,78 @@
+name: Deploy Backend to Azure Container Instances
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/backend/**'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: ACR Login
+        run: az acr login --name codexdominionacr
+
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t codexdominionacr.azurecr.io/codex-backend:${{ github.sha }} \
+            -t codexdominionacr.azurecr.io/codex-backend:latest \
+            -f src/backend/Dockerfile src/backend/
+          docker push codexdominionacr.azurecr.io/codex-backend:${{ github.sha }}
+          docker push codexdominionacr.azurecr.io/codex-backend:latest
+
+      - name: Get ACR Credentials
+        id: acr-creds
+        run: |
+          ACR_PASSWORD=$(az acr credential show --name codexdominionacr --query "passwords[0].value" -o tsv)
+          echo "::add-mask::$ACR_PASSWORD"
+          echo "password=$ACR_PASSWORD" >> $GITHUB_OUTPUT
+
+      - name: Delete Existing Container Instance
+        run: |
+          az container delete \
+            --resource-group codex-rg \
+            --name codex-backend \
+            --yes \
+            || true
+
+      - name: Deploy to Azure Container Instances
+        run: |
+          az container create \
+            --resource-group codex-rg \
+            --name codex-backend \
+            --image codexdominionacr.azurecr.io/codex-backend:${{ github.sha }} \
+            --os-type Linux \
+            --cpu 1 \
+            --memory 1 \
+            --registry-login-server codexdominionacr.azurecr.io \
+            --registry-username codexdominionacr \
+            --registry-password ${{ steps.acr-creds.outputs.password }} \
+            --dns-name-label codex-api \
+            --ports 8001 \
+            --protocol TCP \
+            --environment-variables \
+              PORT=8001 \
+              ENVIRONMENT=production \
+              PYTHONUNBUFFERED=1 \
+              ALLOWED_ORIGINS=https://happy-flower-0e39c5c0f.3.azurestaticapps.net \
+              CORS_ENABLED=true
+
+      - name: Verify Deployment
+        run: |
+          echo "Waiting for container to start..."
+          sleep 30
+          CONTAINER_IP=$(az container show --resource-group codex-rg --name codex-backend --query ipAddress.ip -o tsv)
+          echo "Container IP: $CONTAINER_IP"
+          curl -f http://$CONTAINER_IP:8001/health || exit 1
+          echo "✅ Backend deployed successfully!"
