@@ -11,6 +11,7 @@ targetScope = 'resourceGroup'
 
 param baseName string = 'codex'
 param location string = 'eastus'
+param swaLocation string = 'eastus2'
 
 param pgAdminUser string = 'pgadmin'
 @secure()
@@ -56,10 +57,19 @@ resource webapp 'Microsoft.Web/sites@2022-03-01' = {
   properties: {
     serverFarmId: plan.id
     siteConfig: {
+      linuxFxVersion: 'DOCKER|${dockerImage}'
       appSettings: [
         {
           name: 'DATABASE_URL'
           value: 'Server=${pgName}.postgres.database.azure.com;Database=${pgDbName};User Id=${pgAdminUser};Password=${pgAdminPassword};'
+        }
+        {
+          name: 'ALLOWED_ORIGINS'
+          value: allowedOrigins
+        }
+        {
+          name: 'PORT'
+          value: string(backendPort)
         }
       ]
     }
@@ -82,10 +92,14 @@ resource postgres 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
 resource redis 'Microsoft.Cache/Redis@2023-08-01' = {
   name: redisName
   location: location
-  sku: {
-    name: redisSku
-    family: 'C'
-    capacity: 0
+  properties: {
+    sku: {
+      name: redisSku
+      family: 'C'
+      capacity: int(redisSize[1])
+    }
+    enableNonSslPort: false
+    minimumTlsVersion: '1.2'
   }
 }
 
@@ -113,7 +127,7 @@ resource insights 'Microsoft.Insights/components@2020-02-02' = {
 
 resource swa 'Microsoft.Web/staticSites@2022-03-01' = {
   name: swaName
-  location: location
+  location: swaLocation
   sku: {
     name: swaSku
     tier: 'Free'
