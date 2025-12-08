@@ -6,9 +6,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      PG_ADMIN_PASSWORD: ${{ secrets.PG_ADMIN_PASSWORD }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -18,18 +15,24 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy Bicep Infrastructure
-        uses: azure/arm-deploy@v1
-        with:
-          scope: resourcegroup
-          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          resourceGroupName: codex-rg
-          template: ./infra/main-private.bicep
-          parameters: adminPassword=${{ secrets.PG_ADMIN_PASSWORD }}
+      - name: Install Bicep
+        run: az bicep install
 
-      - name: Verify DNS Resolution
+      - name: Upgrade Bicep
+        run: az bicep upgrade
+
+      - name: What-If Analysis
         run: |
-          pwsh ./infra/verify-private-dns.ps1
+          az deployment group what-if \
+            --resource-group codex-rg \
+            --template-file infra/main-private.bicep \
+            --parameters @infra/main-private.parameters.json \
+            --parameters pgAdminPassword=${{ secrets.PG_ADMIN_PASSWORD }}
 
-      - name: Output Completion Message
-        run: echo "✅ Codex Dominion infrastructure deployed and DNS finalized."
+      - name: Deploy Infra
+        run: |
+          az deployment group create \
+            --resource-group codex-rg \
+            --template-file infra/main-private.bicep \
+            --parameters @infra/main-private.parameters.json \
+            --parameters pgAdminPassword=${{ secrets.PG_ADMIN_PASSWORD }}

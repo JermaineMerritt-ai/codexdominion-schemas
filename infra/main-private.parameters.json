@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "baseName": {
+      "value": "codex"
+    },
+    "location": {
+      "value": "eastus"
+    },
+    "pgAdminUser": {
+      "value": "pgadmin"
+    },
+    "pgDbName": {
+      "value": "codexdb"
+    },
+    "pgName": {
+      "value": "codex-pg"
+    },
+    "pgVersion": {
+      "value": "14"
+    },
+    "appServicePlanName": {
+      "value": "codex-plan"
+    },
+    "appServiceSku": {
+      "value": "B1"
+    },
+    "webAppName": {
+      "value": "codex-backend-app"
+    },
+    "swaName": {
+      "value": "codex-frontend"
+    },
+    "swaSku": {
+      "value": "Free"
+    },
+    "redisName": {
+      "value": "codex-redis"
+    },
+    "redisSku": {
+      "value": "Basic"
+    },
+    "redisSize": {
+      "value": "c0"
+    },
+    "keyVaultName": {
+      "value": "codex-kv"
+    },
+    "appInsightsName": {
+      "value": "codex-insights"
+    },
+    "acrName": {
+      "value": "codexacr"
+    },
+    "dockerImage": {
+      "value": "codexacr.azurecr.io/backend:latest"
+    },
+    "allowedOrigins": {
+      "value": "https://CodexDominion.app"
+    },
+    "backendPort": {
+      "value": 8080
+    }
+  }
+}
