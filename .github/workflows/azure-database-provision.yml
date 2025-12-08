@@ -1,0 +1,183 @@
+name: Provision Azure PostgreSQL Database
+
+on:
+  workflow_dispatch:   # Manual trigger only for safety
+
+env:
+  RESOURCE_GROUP: codex-rg
+  LOCATION: eastus
+  DB_SERVER_NAME: codex-db-server
+  DB_NAME: codex
+  DB_ADMIN_USER: codexadmin
+
+jobs:
+  provision-database:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Check if Database Server Exists
+        id: check-server
+        run: |
+          EXISTS=$(az postgres flexible-server list \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query "[?name=='${{ env.DB_SERVER_NAME }}'].name" \
+            -o tsv)
+          if [ -z "$EXISTS" ]; then
+            echo "exists=false" >> $GITHUB_OUTPUT
+          else
+            echo "exists=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create PostgreSQL Flexible Server
+        if: steps.check-server.outputs.exists == 'false'
+        run: |
+          az postgres flexible-server create \
+            --name ${{ env.DB_SERVER_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --location ${{ env.LOCATION }} \
+            --admin-user ${{ env.DB_ADMIN_USER }} \
+            --admin-password '${{ secrets.DB_ADMIN_PASSWORD }}' \
+            --sku-name Standard_B1ms \
+            --tier Burstable \
+            --storage-size 32 \
+            --version 16 \
+            --public-access 0.0.0.0-255.255.255.255
+
+      - name: Create Database
+        if: steps.check-server.outputs.exists == 'false'
+        run: |
+          az postgres flexible-server db create \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --server-name ${{ env.DB_SERVER_NAME }} \
+            --database-name ${{ env.DB_NAME }}
+
+      - name: Configure Firewall - Allow Azure Services
+        run: |
+          az postgres flexible-server firewall-rule create \
+            --name ${{ env.DB_SERVER_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --rule-name AllowAzureServices \
+            --start-ip-address 0.0.0.0 \
+            --end-ip-address 0.0.0.0 \
+            || echo "Firewall rule already exists"
+
+      - name: Get Database Connection String
+        id: get-connection
+        run: |
+          DB_HOST="${{ env.DB_SERVER_NAME }}.postgres.database.azure.com"
+          CONNECTION_STRING="postgresql://${{ env.DB_ADMIN_USER }}:${{ secrets.DB_ADMIN_PASSWORD }}@${DB_HOST}:5432/${{ env.DB_NAME }}?sslmode=require"
+          echo "::add-mask::$CONNECTION_STRING"
+          echo "connection_string=$CONNECTION_STRING" >> $GITHUB_OUTPUT
+          echo "db_host=$DB_HOST" >> $GITHUB_OUTPUT
+
+      - name: Install PostgreSQL Client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
+      - name: Initialize Database Schema
+        run: |
+          # Create a simple schema file if needed
+          cat > schema.sql << 'EOF'
+          -- Codex Dominion Database Schema
+          CREATE TABLE IF NOT EXISTS capsules (
+            id SERIAL PRIMARY KEY,
+            title VARCHAR(255) NOT NULL,
+            content TEXT,
+            author VARCHAR(100),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          );
+
+          CREATE TABLE IF NOT EXISTS signals (
+            id SERIAL PRIMARY KEY,
+            signal_type VARCHAR(50) NOT NULL,
+            payload JSONB,
+            source VARCHAR(100),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          );
+
+          CREATE TABLE IF NOT EXISTS replays (
+            id SERIAL PRIMARY KEY,
+            event_type VARCHAR(100) NOT NULL,
+            event_data JSONB,
+            timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          );
+
+          -- Create indexes
+          CREATE INDEX IF NOT EXISTS idx_capsules_created ON capsules(created_at);
+          CREATE INDEX IF NOT EXISTS idx_signals_type ON signals(signal_type);
+          CREATE INDEX IF NOT EXISTS idx_replays_timestamp ON replays(timestamp);
+          EOF
+
+          # Apply schema
+          PGPASSWORD='${{ secrets.DB_ADMIN_PASSWORD }}' psql \
+            -h ${{ steps.get-connection.outputs.db_host }} \
+            -U ${{ env.DB_ADMIN_USER }} \
+            -d ${{ env.DB_NAME }} \
+            -f schema.sql
+
+      - name: Update Backend Container with Database URL
+        run: |
+          echo "🔄 Updating backend container with database connection..."
+
+          # Get ACR password
+          ACR_PASSWORD=$(az acr credential show --name codexdominionacr --query "passwords[0].value" -o tsv)
+
+          # Delete existing container
+          az container delete \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --name codex-backend \
+            --yes
+
+          # Recreate with database URL
+          az container create \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --name codex-backend \
+            --image codexdominionacr.azurecr.io/codex-backend:latest \
+            --os-type Linux \
+            --cpu 1 \
+            --memory 1 \
+            --registry-login-server codexdominionacr.azurecr.io \
+            --registry-username codexdominionacr \
+            --registry-password "$ACR_PASSWORD" \
+            --dns-name-label codex-api \
+            --ports 8001 \
+            --protocol TCP \
+            --environment-variables \
+              PORT=8001 \
+              ENVIRONMENT=production \
+              PYTHONUNBUFFERED=1 \
+              ALLOWED_ORIGINS=https://happy-flower-0e39c5c0f.3.azurestaticapps.net \
+              CORS_ENABLED=true \
+              DATABASE_URL='${{ steps.get-connection.outputs.connection_string }}'
+
+      - name: Verify Database Connection
+        run: |
+          echo "⏳ Waiting for container to start..."
+          sleep 30
+
+          CONTAINER_IP=$(az container show \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --name codex-backend \
+            --query ipAddress.ip -o tsv)
+
+          echo "🧪 Testing backend health..."
+          curl -f http://$CONTAINER_IP:8001/health || exit 1
+
+          echo "✅ Database provisioned and backend connected successfully!"
+
+      - name: Display Connection Information
+        run: |
+          echo "📋 Database Connection Details:"
+          echo "Server: ${{ steps.get-connection.outputs.db_host }}"
+          echo "Database: ${{ env.DB_NAME }}"
+          echo "Admin User: ${{ env.DB_ADMIN_USER }}"
+          echo ""
+          echo "⚠️ Connection string has been set in backend container"
+          echo "✅ Backend is now using PostgreSQL instead of SQLite"
