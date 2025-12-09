@@ -10,7 +10,7 @@ targetScope = 'resourceGroup'
 // =============================================================================
 
 param baseName string = 'codex'
-param location string = 'eastus'
+param location string = 'westus'
 
 param pgAdminUser string = 'pgadmin'
 @secure()
