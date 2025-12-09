@@ -33,6 +33,10 @@ param acrName string = '${baseName}acr'
 resource postgres 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: pgName
   location: location
+  sku: {
+    name: 'Standard_B1ms'
+    tier: 'Burstable'
+  }
   properties: {
     administratorLogin: pgAdminUser
     administratorLoginPassword: pgAdminPassword
