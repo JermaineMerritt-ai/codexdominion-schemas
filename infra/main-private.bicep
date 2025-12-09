@@ -21,7 +21,7 @@ param pgName string = '${baseName}-pg'
 param pgVersion string = '14'
 
 param appServicePlanName string = '${baseName}-plan'
-param appServiceSku string = 'F1'
+param appServiceSku string = 'Y1'
 param webAppName string = '${baseName}-backend-app'
 
 param swaName string = '${baseName}-frontend'
@@ -45,19 +45,20 @@ param backendPort int = 8080
 resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: appServicePlanName
   location: location
+  kind: 'functionapp'
   sku: {
-    name: appServiceSku
-    tier: 'Free'
+    name: 'Y1'
+    tier: 'Dynamic'
   }
 }
 
 resource webapp 'Microsoft.Web/sites@2022-03-01' = {
   name: webAppName
   location: location
+  kind: 'functionapp'
   properties: {
     serverFarmId: plan.id
     siteConfig: {
-      linuxFxVersion: 'DOCKER|${dockerImage}'
       appSettings: [
         {
           name: 'DATABASE_URL'
@@ -70,6 +71,14 @@ resource webapp 'Microsoft.Web/sites@2022-03-01' = {
         {
           name: 'PORT'
           value: string(backendPort)
+        }
+        {
+          name: 'FUNCTIONS_WORKER_RUNTIME'
+          value: 'python'
+        }
+        {
+          name: 'AzureWebJobsStorage'
+          value: ''
         }
       ]
     }
