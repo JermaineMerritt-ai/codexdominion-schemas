@@ -1,0 +1,234 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.39.26.7824",
+      "templateHash": "18010803106662741399"
+    }
+  },
+  "parameters": {
+    "baseName": {
+      "type": "string",
+      "defaultValue": "codex"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "eastus"
+    },
+    "swaLocation": {
+      "type": "string",
+      "defaultValue": "eastus2"
+    },
+    "pgAdminUser": {
+      "type": "string",
+      "defaultValue": "pgadmin"
+    },
+    "pgAdminPassword": {
+      "type": "securestring"
+    },
+    "pgDbName": {
+      "type": "string",
+      "defaultValue": "codexdb"
+    },
+    "pgName": {
+      "type": "string",
+      "defaultValue": "[format('{0}-pg', parameters('baseName'))]"
+    },
+    "pgVersion": {
+      "type": "string",
+      "defaultValue": "14"
+    },
+    "appServicePlanName": {
+      "type": "string",
+      "defaultValue": "[format('{0}-plan', parameters('baseName'))]"
+    },
+    "appServiceSku": {
+      "type": "string",
+      "defaultValue": "B1"
+    },
+    "webAppName": {
+      "type": "string",
+      "defaultValue": "[format('{0}-backend-app', parameters('baseName'))]"
+    },
+    "swaName": {
+      "type": "string",
+      "defaultValue": "[format('{0}-frontend', parameters('baseName'))]"
+    },
+    "swaSku": {
+      "type": "string",
+      "defaultValue": "Free"
+    },
+    "redisName": {
+      "type": "string",
+      "defaultValue": "[format('{0}-redis', parameters('baseName'))]"
+    },
+    "redisSku": {
+      "type": "string",
+      "defaultValue": "Basic"
+    },
+    "redisSize": {
+      "type": "string",
+      "defaultValue": "c0"
+    },
+    "keyVaultName": {
+      "type": "string",
+      "defaultValue": "[format('{0}-kv', parameters('baseName'))]"
+    },
+    "appInsightsName": {
+      "type": "string",
+      "defaultValue": "[format('{0}-insights', parameters('baseName'))]"
+    },
+    "acrName": {
+      "type": "string",
+      "defaultValue": "[format('{0}acr', parameters('baseName'))]"
+    },
+    "dockerImage": {
+      "type": "string"
+    },
+    "allowedOrigins": {
+      "type": "string",
+      "defaultValue": "https://CodexDominion.app"
+    },
+    "backendPort": {
+      "type": "int",
+      "defaultValue": 8080
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2022-03-01",
+      "name": "[parameters('appServicePlanName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('appServiceSku')]",
+        "tier": "Basic"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2022-03-01",
+      "name": "[parameters('webAppName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
+        "siteConfig": {
+          "linuxFxVersion": "[format('DOCKER|{0}', parameters('dockerImage'))]",
+          "appSettings": [
+            {
+              "name": "DATABASE_URL",
+              "value": "[format('Server={0}.postgres.database.azure.com;Database={1};User Id={2};Password={3};', parameters('pgName'), parameters('pgDbName'), parameters('pgAdminUser'), parameters('pgAdminPassword'))]"
+            },
+            {
+              "name": "ALLOWED_ORIGINS",
+              "value": "[parameters('allowedOrigins')]"
+            },
+            {
+              "name": "PORT",
+              "value": "[string(parameters('backendPort'))]"
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.DBforPostgreSQL/flexibleServers",
+      "apiVersion": "2022-12-01",
+      "name": "[parameters('pgName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "administratorLogin": "[parameters('pgAdminUser')]",
+        "administratorLoginPassword": "[parameters('pgAdminPassword')]",
+        "version": "[parameters('pgVersion')]",
+        "storage": {
+          "storageSizeGB": 32
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Cache/redis",
+      "apiVersion": "2023-08-01",
+      "name": "[parameters('redisName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "name": "[parameters('redisSku')]",
+          "family": "C",
+          "capacity": 0
+        },
+        "enableNonSslPort": false,
+        "minimumTlsVersion": "1.2"
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2022-07-01",
+      "name": "[parameters('keyVaultName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "tenantId": "[subscription().tenantId]",
+        "sku": {
+          "name": "standard",
+          "family": "A"
+        },
+        "accessPolicies": []
+      }
+    },
+    {
+      "type": "Microsoft.Insights/components",
+      "apiVersion": "2020-02-02",
+      "name": "[parameters('appInsightsName')]",
+      "location": "[parameters('location')]",
+      "kind": "web",
+      "properties": {
+        "Application_Type": "web"
+      }
+    },
+    {
+      "type": "Microsoft.Web/staticSites",
+      "apiVersion": "2022-03-01",
+      "name": "[parameters('swaName')]",
+      "location": "[parameters('swaLocation')]",
+      "sku": {
+        "name": "[parameters('swaSku')]",
+        "tier": "Free"
+      },
+      "properties": {
+        "repositoryUrl": "https://github.com/JermaineMerritt-ai/Codex-Dominion",
+        "branch": "main",
+        "buildProperties": {
+          "appLocation": "/",
+          "apiLocation": "api",
+          "outputLocation": "build"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.ContainerRegistry/registries",
+      "apiVersion": "2023-01-01-preview",
+      "name": "[parameters('acrName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Basic"
+      },
+      "properties": {
+        "adminUserEnabled": true
+      }
+    }
+  ],
+  "outputs": {
+    "webAppUrl": {
+      "type": "string",
+      "value": "[format('https://{0}.azurewebsites.net', parameters('webAppName'))]"
+    },
+    "staticWebAppUrl": {
+      "type": "string",
+      "value": "[format('https://{0}.azurestaticapps.net', parameters('swaName'))]"
+    }
+  }
+}
