@@ -21,6 +21,15 @@ jobs:
       - name: Upgrade Bicep
         run: az bicep upgrade
 
+      - name: Register Azure Resource Providers
+        run: |
+          az provider register --namespace Microsoft.DBforPostgreSQL --wait
+          az provider register --namespace Microsoft.Cache --wait
+          az provider register --namespace Microsoft.KeyVault --wait
+          az provider register --namespace Microsoft.Insights --wait
+          az provider register --namespace Microsoft.ContainerRegistry --wait
+          echo "Resource providers registered successfully"
+
       - name: What-If Analysis
         run: |
           az deployment group what-if \
