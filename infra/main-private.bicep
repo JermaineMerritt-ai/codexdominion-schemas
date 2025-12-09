@@ -21,7 +21,7 @@ param pgName string = '${baseName}-pg'
 param pgVersion string = '14'
 
 param appServicePlanName string = '${baseName}-plan'
-param appServiceSku string = 'B1'
+param appServiceSku string = 'F1'
 param webAppName string = '${baseName}-backend-app'
 
 param swaName string = '${baseName}-frontend'
@@ -47,7 +47,7 @@ resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
   location: location
   sku: {
     name: appServiceSku
-    tier: 'Basic'
+    tier: 'Free'
   }
 }
 
