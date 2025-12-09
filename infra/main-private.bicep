@@ -1,7 +1,7 @@
 // =============================================================================
 // Codex Dominion - Azure Infrastructure as Code (Bicep)
 // =============================================================================
-// Simplified deployment for development/testing
+// Minimal deployment - only data services (no compute quota needed)
 
 targetScope = 'resourceGroup'
 
@@ -11,7 +11,6 @@ targetScope = 'resourceGroup'
 
 param baseName string = 'codex'
 param location string = 'eastus'
-param swaLocation string = 'eastus2'
 
 param pgAdminUser string = 'pgadmin'
 @secure()
@@ -20,70 +19,16 @@ param pgDbName string = 'codexdb'
 param pgName string = '${baseName}-pg'
 param pgVersion string = '14'
 
-param appServicePlanName string = '${baseName}-plan'
-param appServiceSku string = 'Y1'
-param webAppName string = '${baseName}-backend-app'
-
-param swaName string = '${baseName}-frontend'
-param swaSku string = 'Free'
-
 param redisName string = '${baseName}-redis'
 param redisSku string = 'Basic'
-param redisSize string = 'c0'
 
 param keyVaultName string = '${baseName}-kv'
 param appInsightsName string = '${baseName}-insights'
 param acrName string = '${baseName}acr'
-param dockerImage string
-param allowedOrigins string = 'https://CodexDominion.app'
-param backendPort int = 8080
 
 // =============================================================================
-// Resources
+// Resources - Data Services Only (No Compute Quota Required)
 // =============================================================================
-
-resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
-  name: appServicePlanName
-  location: location
-  kind: 'functionapp'
-  sku: {
-    name: 'Y1'
-    tier: 'Dynamic'
-  }
-}
-
-resource webapp 'Microsoft.Web/sites@2022-03-01' = {
-  name: webAppName
-  location: location
-  kind: 'functionapp'
-  properties: {
-    serverFarmId: plan.id
-    siteConfig: {
-      appSettings: [
-        {
-          name: 'DATABASE_URL'
-          value: 'Server=${pgName}.postgres.database.azure.com;Database=${pgDbName};User Id=${pgAdminUser};Password=${pgAdminPassword};'
-        }
-        {
-          name: 'ALLOWED_ORIGINS'
-          value: allowedOrigins
-        }
-        {
-          name: 'PORT'
-          value: string(backendPort)
-        }
-        {
-          name: 'FUNCTIONS_WORKER_RUNTIME'
-          value: 'python'
-        }
-        {
-          name: 'AzureWebJobsStorage'
-          value: ''
-        }
-      ]
-    }
-  }
-}
 
 resource postgres 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: pgName
@@ -134,24 +79,6 @@ resource insights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
-resource swa 'Microsoft.Web/staticSites@2022-03-01' = {
-  name: swaName
-  location: swaLocation
-  sku: {
-    name: swaSku
-    tier: 'Free'
-  }
-  properties: {
-    repositoryUrl: 'https://github.com/JermaineMerritt-ai/Codex-Dominion'
-    branch: 'main'
-    buildProperties: {
-      appLocation: '/'
-      apiLocation: 'api'
-      outputLocation: 'build'
-    }
-  }
-}
-
 resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
   name: acrName
   location: location
@@ -167,5 +94,7 @@ resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
 // Outputs
 // =============================================================================
 
-output webAppUrl string = 'https://${webAppName}.azurewebsites.net'
-output staticWebAppUrl string = 'https://${swaName}.azurestaticapps.net'
+output postgresHost string = '${pgName}.postgres.database.azure.com'
+output redisHost string = '${redisName}.redis.cache.windows.net'
+output keyVaultUri string = kv.properties.vaultUri
+output acrLoginServer string = acr.properties.loginServer
