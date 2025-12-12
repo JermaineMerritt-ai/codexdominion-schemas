@@ -513,7 +513,8 @@ jobs:
             Risk Tier: ${{ needs.setup.outputs.risk_tier }}
             Artifact: ${{ needs.build.outputs.artifact_id }}
             Commit: ${{ needs.setup.outputs.commit_sha }}
-          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
   cleanup:
     name: Cleanup Ephemeral Resources

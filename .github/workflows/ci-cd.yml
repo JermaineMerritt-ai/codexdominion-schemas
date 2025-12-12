@@ -76,7 +76,8 @@ jobs:
           output: 'trivy-results.sarif'
 
       - name: Upload Trivy Results
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
+        continue-on-error: true
         with:
           sarif_file: 'trivy-results.sarif'
 
@@ -228,10 +229,12 @@ jobs:
 
       - name: Notify Deployment
         uses: 8398a7/action-slack@v3
+        if: always() && secrets.SLACK_WEBHOOK != ''
         with:
           status: ${{ job.status }}
           text: 'Sandbox deployment complete'
-          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
 
   deploy-canary:
     name: Deploy to Canary
@@ -276,7 +279,9 @@ jobs:
     steps:
       - name: Slack Notification
         uses: 8398a7/action-slack@v3
+        if: always() && secrets.SLACK_WEBHOOK != ''
         with:
           status: ${{ job.status }}
           fields: repo,message,commit,author,action,eventName,ref,workflow
-          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
