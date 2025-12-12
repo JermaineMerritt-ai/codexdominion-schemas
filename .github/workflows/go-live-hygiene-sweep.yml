@@ -25,11 +25,21 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           echo "🔐 Checking required secrets..."
-          for secret in GITHUB_TOKEN CODE_DEPEND_ON_SCHEMAS SLACK_WEBHOOK_URL; do
+          for secret in GITHUB_TOKEN; do
             secret_value=$(printenv "$secret")
             if [ -z "$secret_value" ]; then
               echo "❌ Missing secret: $secret"
               exit 1
+            else
+              echo "✅ Secret $secret is set"
+            fi
+          done
+
+          # Optional secrets - just warn
+          for secret in CODE_DEPEND_ON_SCHEMAS SLACK_WEBHOOK_URL; do
+            secret_value=$(printenv "$secret")
+            if [ -z "$secret_value" ]; then
+              echo "⚠️  Optional secret not set: $secret"
             else
               echo "✅ Secret $secret is set"
             fi
