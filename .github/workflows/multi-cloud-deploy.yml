@@ -131,9 +131,11 @@ jobs:
           file: ${{ matrix.service.dockerfile }}
           push: true
           tags: |
-            ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ matrix.service.name }}:${{ needs.build-and-test.outputs.version }}
+            ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ matrix.service.name }}:${{
+              needs.build-and-test.outputs.version }}
             ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}/${{ matrix.service.name }}:latest
-            jmerritt48/${{ matrix.service.name }}:${{ needs.build-and-test.outputs.version }}
+            jmerritt48/${{ matrix.service.name }}:${{
+              needs.build-and-test.outputs.version }}
             jmerritt48/${{ matrix.service.name }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -276,9 +278,15 @@ jobs:
           VERSION="${{ needs.build-and-test.outputs.version }}"
 
           # Update Kubernetes manifests with new image tags
-          sed -i "s|image: jmerritt48/jermaine-super-action-ai:.*|image: jmerritt48/jermaine-super-action-ai:${VERSION}|g" k8s/ai-systems-deployment.yaml
-          sed -i "s|image: jmerritt48/dot300-action-ai:.*|image: jmerritt48/dot300-action-ai:${VERSION}|g" k8s/ai-systems-deployment.yaml
-          sed -i "s|image: jmerritt48/avatar-system:.*|image: jmerritt48/avatar-system:${VERSION}|g" k8s/ai-systems-deployment.yaml
+          sed -i "s|image: jmerritt48/jermaine-super-action-ai:.*|image: \
+            jmerritt48/jermaine-super-action-ai:${VERSION}|g" \
+            k8s/ai-systems-deployment.yaml
+          sed -i "s|image: jmerritt48/dot300-action-ai:.*|image: \
+            jmerritt48/dot300-action-ai:${VERSION}|g" \
+            k8s/ai-systems-deployment.yaml
+          sed -i "s|image: jmerritt48/avatar-system:.*|image: \
+            jmerritt48/avatar-system:${VERSION}|g" \
+            k8s/ai-systems-deployment.yaml
 
       - name: 🚀 Deploy to AKS
         run: |

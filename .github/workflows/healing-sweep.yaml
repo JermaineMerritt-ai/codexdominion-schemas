@@ -29,7 +29,13 @@ jobs:
             {
               "text": "Sweep {{ job.status }} — ${{ github.ref }} @ ${{ github.sha }}",
               "blocks": [
-                { "type": "section", "text": { "type": "mrkdwn", "text": "*Realm:* ${{ github.ref }}\n*Commit:* ${{ github.sha }}\n*Status:* {{ job.status }}" } }
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Realm:* ${{ github.ref }}\n*Commit:* ${{ github.sha }}\n*Status:* {{ job.status }}"
+                  }
+                }
               ]
             }
         env:

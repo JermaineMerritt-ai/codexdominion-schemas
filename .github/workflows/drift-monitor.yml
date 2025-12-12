@@ -41,7 +41,8 @@ jobs:
         continue-on-error: true
         run: |
           if [ -f scripts/verify_drift.py ]; then
-            python scripts/verify_drift.py --online --sources 2 --tolerance 0.5 || echo "drift_detected=true" >> $GITHUB_ENV
+            python scripts/verify_drift.py --online --sources 2 \
+              --tolerance 0.5 || echo "drift_detected=true" >> $GITHUB_ENV
           else
             echo "Drift monitor script not found, skipping..."
           fi
@@ -49,8 +50,11 @@ jobs:
         if: always()
         continue-on-error: true
         run: |
-          if [ -f scripts/export_metrics_push.py ] && [ -n "${{ secrets.PUSHGATEWAY_URL }}" ]; then
-            python scripts/export_metrics_push.py --pushgateway ${{ secrets.PUSHGATEWAY_URL }} --run-id ${{ github.run_id }} || echo "Metrics export failed"
+          if [ -f scripts/export_metrics_push.py ] && \
+             [ -n "${{ secrets.PUSHGATEWAY_URL }}" ]; then
+            python scripts/export_metrics_push.py \
+              --pushgateway ${{ secrets.PUSHGATEWAY_URL }} \
+              --run-id ${{ github.run_id }} || echo "Metrics export failed"
           else
             echo "Metrics export skipped (missing script or Pushgateway URL)"
           fi

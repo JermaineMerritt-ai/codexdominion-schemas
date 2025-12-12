@@ -71,5 +71,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           if [ -n "$SLACK_WEBHOOK_URL" ] && [ -s .reports/drift.md ]; then
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"Fact drift detected. See .reports/drift.md and GitHub issue for details."}' "$SLACK_WEBHOOK_URL"
+            curl -X POST -H 'Content-type: application/json' \
+              --data '{"text":"Fact drift detected. See .reports/drift.md and GitHub issue for details."}' \
+              "$SLACK_WEBHOOK_URL"
           fi

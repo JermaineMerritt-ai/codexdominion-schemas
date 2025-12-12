@@ -1,0 +1,68 @@
+name: Deploy Complete Azure Infrastructure
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'infra/main-complete.bicep'
+      - 'infra/main-complete.parameters.json'
+      - '.github/workflows/deploy-complete-infrastructure.yml'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Install Bicep CLI
+        run: |
+          curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
+          chmod +x ./bicep
+          sudo mv ./bicep /usr/local/bin/bicep
+          bicep --version
+
+      - name: Validate Bicep Template
+        run: |
+          az deployment group validate \
+            --resource-group codex-rg \
+            --template-file infra/main-complete.bicep \
+            --parameters @infra/main-complete.parameters.json \
+            --parameters pgAdminPassword=${{ secrets.PG_ADMIN_PASSWORD }}
+
+      - name: What-If Analysis
+        run: |
+          az deployment group what-if \
+            --resource-group codex-rg \
+            --template-file infra/main-complete.bicep \
+            --parameters @infra/main-complete.parameters.json \
+            --parameters pgAdminPassword=${{ secrets.PG_ADMIN_PASSWORD }}
+
+      - name: Deploy Infrastructure
+        run: |
+          az deployment group create \
+            --resource-group codex-rg \
+            --template-file infra/main-complete.bicep \
+            --parameters @infra/main-complete.parameters.json \
+            --parameters pgAdminPassword=${{ secrets.PG_ADMIN_PASSWORD }} \
+            --verbose
+
+      - name: Display Outputs
+        run: |
+          az deployment group show \
+            --resource-group codex-rg \
+            --name main-complete \
+            --query properties.outputs

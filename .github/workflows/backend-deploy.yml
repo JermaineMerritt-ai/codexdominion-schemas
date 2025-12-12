@@ -1,4 +1,4 @@
-name: Deploy Backend to App Service
+name: Deploy Backend to Azure Container Instances
 
 on:
   push:
@@ -6,12 +6,13 @@ on:
       - main
     paths:
       - 'backend/**'
+      - '.github/workflows/backend-deploy.yml'
   workflow_dispatch:
 
 env:
-  RESOURCE_GROUP: codex-rg
+  RESOURCE_GROUP: codex-dominion
   ACR_NAME: codexdominionacr
-  APP_NAME: codex-backend-app
+  CONTAINER_NAME: codex-backend-api
   IMAGE_NAME: codex-backend
 
 jobs:

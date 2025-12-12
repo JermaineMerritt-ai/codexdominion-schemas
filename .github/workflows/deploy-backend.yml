@@ -1,0 +1,46 @@
+name: Deploy Backend to Azure
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-backend.yml'
+  workflow_dispatch:
+
+env:
+  ACR_NAME: codexdominionacr
+  IMAGE_NAME: codex-backend
+  CONTAINER_GROUP: codex-backend-api
+  RESOURCE_GROUP: codex-dominion
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Login to ACR
+        run: az acr login --name ${{ env.ACR_NAME }}
+
+      - name: Build and Push Docker Image
+        run: |
+          cd backend
+          docker build -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+                       -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:latest .
+          docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:latest
+
+      - name: Restart Container Instance
+        run: |
+          az container restart --name ${{ env.CONTAINER_GROUP }} --resource-group ${{ env.RESOURCE_GROUP }}
+
+      - name: Check Deployment Health
+        run: |
+          sleep 30
+          curl -f http://codex-api-eastus.eastus.azurecontainer.io:8000/health || exit 1
