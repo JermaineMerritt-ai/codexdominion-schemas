@@ -27,9 +27,7 @@ jobs:
         working-directory: frontend
 
       - name: Build Next.js (Static Export)
-        run: |
-          npm run build
-          npm run export
+        run: npm run build
         working-directory: frontend
         env:
           NODE_ENV: production

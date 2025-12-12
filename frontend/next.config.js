@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   poweredByHeader: false,
-  output: 'export',  // Enable static HTML export for IONOS
+  output: 'export',  // Enable static HTML export
+  trailingSlash: true,  // Required for Azure Static Web Apps
   images: {
-    unoptimized: true  // Required for static export
+    unoptimized: true
   },
 
   // API configuration
