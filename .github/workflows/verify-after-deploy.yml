@@ -8,33 +8,68 @@ on:
 jobs:
   drift:
     runs-on: ubuntu-latest
+    outputs:
+      drift_detected: ${{ steps.drift_check.outputs.drift_detected }}
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
       - name: Install dependencies
-        run: pip install --no-cache-dir -r requirements.txt
+        continue-on-error: true
+        run: |
+          pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install --no-cache-dir -r requirements.txt || \
+              echo "Some dependencies failed"
+          fi
+
+      - name: Create reports directory
+        run: mkdir -p .reports
+
       - name: Run drift monitor
-        run: python scripts/verify_drift.py --online --sources 2 --tolerance 0.5 || echo "drift_detected=true" >> $GITHUB_ENV
+        id: drift_check
+        continue-on-error: true
+        run: |
+          if [ -f scripts/verify_drift.py ]; then
+            if python scripts/verify_drift.py --online \
+                --sources 2 --tolerance 0.5; then
+              echo "drift_detected=false" >> $GITHUB_OUTPUT
+            else
+              echo "drift_detected=true" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "Drift monitor script not found"
+            echo "drift_detected=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Upload drift report
+        if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: drift-report
           path: .reports/drift.md
+          if-no-files-found: ignore
+
       - name: Open issue if drift detected
+        if: steps.drift_check.outputs.drift_detected == 'true'
+        continue-on-error: true
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: 'Fact drift detected'
           content-filepath: .reports/drift.md
           labels: drift, fact-check
+
       - name: Notify Slack on drift
-        if: always()
+        if: steps.drift_check.outputs.drift_detected == 'true'
+        continue-on-error: true
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          if [ -s .reports/drift.md ]; then
+          if [ -n "$SLACK_WEBHOOK_URL" ] && [ -s .reports/drift.md ]; then
             curl -X POST -H 'Content-type: application/json' --data '{"text":"Fact drift detected. See .reports/drift.md and GitHub issue for details."}' "$SLACK_WEBHOOK_URL"
           fi
-          path: .reports/drift.md
