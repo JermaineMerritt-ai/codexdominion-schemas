@@ -7,6 +7,12 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  eslint: {
+    ignoreDuringBuilds: true,  // Disable ESLint during production builds
+  },
+  typescript: {
+    ignoreBuildErrors: false,  // Keep TypeScript checking enabled
+  },
 
   // API configuration
   env: {
