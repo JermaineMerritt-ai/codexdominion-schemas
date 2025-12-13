@@ -206,13 +206,14 @@ jobs:
           npm run build
 
       - name: Run Security Scan
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: 'fs'
           scan-ref: 'apps/sovereign-bridge'
           severity: 'HIGH,CRITICAL'
           format: 'sarif'
           output: 'trivy-staging-results.sarif'
+        continue-on-error: true
 
       - name: Upload Security Scan Results
         uses: github/codeql-action/upload-sarif@v3

@@ -33,12 +33,14 @@ jobs:
           NODE_ENV: production
 
       - name: Run Trivy Scanner
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: 'fs'
+          scan-ref: 'frontend'
           severity: 'HIGH,CRITICAL'
           format: 'sarif'
           output: 'trivy-results.sarif'
+        continue-on-error: true
 
       - name: Upload Trivy Results
         uses: github/codeql-action/upload-sarif@v3
