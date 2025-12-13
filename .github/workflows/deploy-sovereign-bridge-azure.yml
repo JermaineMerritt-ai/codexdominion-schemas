@@ -23,16 +23,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install root dependencies (resolves workspace references)
-        run: npm install --include-workspace-root
-
-      - name: Build shared packages
-        run: npm run build --if-present
-        working-directory: packages/shared-types
-
       - name: Install Sovereign Bridge dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
         working-directory: apps/sovereign-bridge
+
+      - name: Install API dependencies
+        run: npm install
+        working-directory: apps/sovereign-bridge/api
 
       - name: Build Sovereign Bridge
         run: npm run build
