@@ -6,6 +6,7 @@ const { app } = require('@azure/functions');
 app.http('agent-commands', {
     methods: ['GET', 'POST', 'OPTIONS'],
     authLevel: 'anonymous',
+    route: 'agent-commands',
     handler: async (request, context) => {
         context.log('Agent Commands API invoked');
 
@@ -34,7 +35,10 @@ app.http('agent-commands', {
                             success: false,
                             message: 'taskId parameter is required'
                         },
-                        headers: { 'Content-Type': 'application/json' }
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': '*'
+                        }
                     };
                 }
 
@@ -48,7 +52,8 @@ app.http('agent-commands', {
                             status: 'pending',
                             agent: 'super_action_ai',
                             createdAt: new Date().toISOString(),
-                            message: 'Task status retrieved (mock data)'
+                            updatedAt: new Date().toISOString(),
+                            progress: 0
                         }
                     },
                     headers: {
@@ -61,48 +66,48 @@ app.http('agent-commands', {
             // POST: Create agent task
             if (request.method === 'POST') {
                 const body = await request.json();
-                const { agent, mode, prompt, targets, context } = body;
 
-                // Validation
-                if (!agent || !mode || !prompt) {
+                // Validate required fields
+                if (!body.agent || !body.mode || !body.prompt) {
                     return {
                         status: 400,
                         jsonBody: {
                             success: false,
-                            message: 'Missing required fields: agent, mode, prompt'
+                            message: 'Required fields: agent, mode, prompt'
                         },
-                        headers: { 'Content-Type': 'application/json' }
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': '*'
+                        }
                     };
                 }
 
                 // Generate IDs
-                const projectId = `project_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+                const projectId = `proj_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
                 const taskId = `task_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
-                // Mock task creation (replace with actual database insert)
-                const taskData = {
-                    projectId,
-                    taskId,
-                    agent,
-                    mode,
-                    prompt,
-                    targets: targets || [],
-                    context: context || {},
-                    status: 'queued',
-                    createdAt: new Date().toISOString()
-                };
-
-                context.log('Task created:', taskData);
-
-                return {
-                    status: 200,
-                    jsonBody: {
-                        success: true,
+                // Create task response
+                const taskResponse = {
+                    success: true,
+                    message: 'Agent task created successfully',
+                    data: {
                         projectId,
                         taskId,
-                        message: `Agent command created successfully for ${agent}`,
-                        data: taskData
-                    },
+                        agent: body.agent,
+                        mode: body.mode,
+                        prompt: body.prompt,
+                        targets: body.targets || [],
+                        context: body.context || {},
+                        status: 'pending',
+                        createdAt: new Date().toISOString()
+                    }
+                };
+
+                context.log('Created task:', taskId);
+
+                return {
+                    status: 201,
+                    jsonBody: taskResponse,
                     headers: {
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Origin': '*'
@@ -110,18 +115,8 @@ app.http('agent-commands', {
                 };
             }
 
-            // Unsupported method
-            return {
-                status: 405,
-                jsonBody: {
-                    success: false,
-                    message: 'Method not allowed'
-                },
-                headers: { 'Content-Type': 'application/json' }
-            };
-
         } catch (error) {
-            context.log.error('Error in agent-commands API:', error);
+            context.error('Error processing request:', error);
             return {
                 status: 500,
                 jsonBody: {
@@ -129,8 +124,24 @@ app.http('agent-commands', {
                     message: 'Internal server error',
                     error: error.message
                 },
-                headers: { 'Content-Type': 'application/json' }
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                }
             };
         }
+
+        // Method not allowed
+        return {
+            status: 405,
+            jsonBody: {
+                success: false,
+                message: 'Method not allowed'
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        };
     }
 });

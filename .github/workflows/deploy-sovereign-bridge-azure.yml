@@ -33,7 +33,16 @@ jobs:
 
       - name: Install API dependencies
         run: npm install --no-package-lock --no-save
-        working-directory: apps/sovereign-bridge/api
+        working-directory: apps/sovereign-bridge/api/src
+
+      - name: Verify build output
+        run: |
+          echo "=== Verifying build structure ==="
+          ls -la apps/sovereign-bridge/
+          echo "=== Checking .next directory ==="
+          ls -la apps/sovereign-bridge/.next/ || echo ".next not found"
+          echo "=== Checking API directory ==="
+          ls -la apps/sovereign-bridge/api/src/
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
@@ -42,7 +51,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "apps/sovereign-bridge"
-          api_location: "apps/sovereign-bridge/api"
+          api_location: "apps/sovereign-bridge/api/src"
           output_location: ".next"
           skip_app_build: true
           skip_api_build: false
