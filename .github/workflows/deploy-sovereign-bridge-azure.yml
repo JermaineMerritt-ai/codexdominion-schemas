@@ -24,18 +24,16 @@ jobs:
           node-version: '20'
 
       - name: Install Sovereign Bridge dependencies
-        run: npm install --legacy-peer-deps
-        working-directory: apps/sovereign-bridge
-
-      - name: Install API dependencies
-        run: npm install
-        working-directory: apps/sovereign-bridge/api
-
-      - name: Build Sovereign Bridge
-        run: npm run build
+        run: |
+          npm install --legacy-peer-deps --no-package-lock --no-save
+          npm run build
         working-directory: apps/sovereign-bridge
         env:
           NODE_ENV: production
+
+      - name: Install API dependencies
+        run: npm install --no-package-lock --no-save
+        working-directory: apps/sovereign-bridge/api
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
@@ -46,4 +44,5 @@ jobs:
           app_location: "apps/sovereign-bridge"
           api_location: "apps/sovereign-bridge/api"
           output_location: ".next"
+          skip_app_build: true
           skip_api_build: false
