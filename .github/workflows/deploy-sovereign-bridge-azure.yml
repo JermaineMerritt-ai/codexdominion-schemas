@@ -23,18 +23,16 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-
-      - name: Install root dependencies
-        run: npm ci
+          cache-dependency-path: 'apps/sovereign-bridge/package-lock.json'
 
       - name: Build shared packages
         run: |
           cd packages/shared-types
-          npm ci
+          npm install
           npm run build
 
       - name: Install Sovereign Bridge dependencies
-        run: npm ci
+        run: npm install
         working-directory: apps/sovereign-bridge
 
       - name: Build Sovereign Bridge
