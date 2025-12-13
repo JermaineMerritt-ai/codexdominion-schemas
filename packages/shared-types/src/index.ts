@@ -6,6 +6,9 @@
  * and maintains the integrity of the entire digital empire.
  */
 
+// Export AI Orchestration types
+export * from './ai-orchestration'
+
 export interface CouncilSeal {
   id: string;
   authority: 'SUPREME';
