@@ -1,0 +1,135 @@
+{
+  "systemName": "CodexDominion Top-Tier Studio",
+  "version": "2.0.0",
+  "tiles": [
+    {
+      "id": "audio",
+      "label": "Audio Studio",
+      "route": "/studio/audio",
+      "fullRoute": "/ai-audio-studio",
+      "description": "Professional audio creation, editing, and mastering with AI",
+      "icon": "🎵",
+      "color": "from-purple-600 to-pink-600"
+    },
+    {
+      "id": "video",
+      "label": "Video Studio",
+      "route": "/studio/video",
+      "fullRoute": "/ai-graphic-video-studio",
+      "description": "Video production, graphics, and animation platform",
+      "icon": "🎬",
+      "color": "from-blue-600 to-cyan-600"
+    },
+    {
+      "id": "automation",
+      "label": "Automation Studio",
+      "route": "/studio/automation",
+      "fullRoute": "/automation-studio",
+      "description": "Workflow automation and integration platform",
+      "icon": "⚙️",
+      "color": "from-green-600 to-emerald-600"
+    },
+    {
+      "id": "notebook",
+      "label": "Notebook Studio",
+      "route": "/studio/notebook",
+      "fullRoute": "/notebook-studio",
+      "description": "Interactive research, analysis, and documentation environment",
+      "icon": "📓",
+      "color": "from-amber-600 to-orange-600"
+    },
+    {
+      "id": "publishing",
+      "label": "Publishing Studio",
+      "route": "/studio/publishing",
+      "fullRoute": "/publishing-studio",
+      "description": "Content transformation and distribution platform",
+      "icon": "📚",
+      "color": "from-indigo-600 to-purple-600"
+    },
+    {
+      "id": "builder",
+      "label": "App & Site Builder",
+      "route": "/studio/builder",
+      "fullRoute": "/website-builder",
+      "description": "Professional website and application development platform",
+      "icon": "🏗️",
+      "color": "from-cyan-600 to-blue-600"
+    },
+    {
+      "id": "intelligence",
+      "label": "Intelligence Counsel",
+      "route": "/studio/intelligence",
+      "fullRoute": "/action-ai-council",
+      "description": "AI-powered strategic guidance and decision support",
+      "icon": "🧠",
+      "color": "from-pink-600 to-rose-600"
+    }
+  ],
+  "aiAssistants": {
+    "claude": {
+      "roles": ["architecture", "specs", "flow-design"],
+      "description": "Strategic architecture and design guidance",
+      "provider": "Anthropic",
+      "model": "claude-sonnet-4.5"
+    },
+    "copilot": {
+      "roles": ["code-completion", "tests", "refactor"],
+      "instructionFile": "Copilot-Instruction.md",
+      "description": "Code generation and development assistance",
+      "provider": "GitHub",
+      "model": "gpt-4"
+    }
+  },
+  "intelligenceEngines": {
+    "count": 48,
+    "categories": [
+      {
+        "name": "Creative Intelligence",
+        "engines": ["Audio Synthesis", "Video Generation", "Graphic Design", "Content Creation", "Voice Synthesis", "Music Composition"],
+        "count": 6
+      },
+      {
+        "name": "Analytical Intelligence",
+        "engines": ["Data Analysis", "Pattern Recognition", "Trend Forecasting", "Performance Analytics", "Market Research", "Sentiment Analysis"],
+        "count": 6
+      },
+      {
+        "name": "Strategic Intelligence",
+        "engines": ["Decision Support", "Risk Assessment", "Strategic Planning", "Competitive Analysis", "Resource Optimization", "Goal Alignment"],
+        "count": 6
+      },
+      {
+        "name": "Operational Intelligence",
+        "engines": ["Workflow Automation", "Process Optimization", "Task Management", "Resource Allocation", "Quality Control", "System Monitoring"],
+        "count": 6
+      },
+      {
+        "name": "Communication Intelligence",
+        "engines": ["Natural Language Processing", "Translation", "Summarization", "Communication Optimization", "Audience Analysis", "Message Crafting"],
+        "count": 6
+      },
+      {
+        "name": "Research Intelligence",
+        "engines": ["Information Retrieval", "Knowledge Synthesis", "Fact Checking", "Citation Management", "Literature Review", "Research Planning"],
+        "count": 6
+      },
+      {
+        "name": "Technical Intelligence",
+        "engines": ["Code Generation", "System Architecture", "Security Analysis", "Performance Tuning", "Error Detection", "Technology Assessment"],
+        "count": 6
+      },
+      {
+        "name": "Business Intelligence",
+        "engines": ["Revenue Optimization", "Customer Insights", "Market Analysis", "Financial Planning", "Growth Strategy", "Competitive Intelligence"],
+        "count": 6
+      }
+    ],
+    "integration": {
+      "allStudios": true,
+      "realtime": true,
+      "contextAware": true,
+      "multiModal": true
+    }
+  }
+}

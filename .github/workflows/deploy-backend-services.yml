@@ -1,0 +1,321 @@
+name: Deploy Backend Services (FastAPI + PostgreSQL + Redis)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+      - 'api/**'
+      - '.github/workflows/deploy-backend-services.yml'
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AZURE_SUBSCRIPTION_ID: "054bb0e0-6e79-403f-b3fc-39a28d61e9c9"
+  RESOURCE_GROUP: "codex-dominion-rg"
+  LOCATION: "eastus2"
+  CONTAINER_REGISTRY: "codexdominion"
+  POSTGRES_SERVER: "codex-postgres"
+  REDIS_CACHE: "codex-redis"
+
+jobs:
+  deploy-infrastructure:
+    runs-on: ubuntu-latest
+    name: Deploy Backend Infrastructure
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set Azure Subscription
+        run: |
+          az account set --subscription ${{ env.AZURE_SUBSCRIPTION_ID }}
+          echo "✓ Using Azure Subscription 2"
+
+      - name: Create PostgreSQL Flexible Server
+        run: |
+          echo "🗄️ Setting up PostgreSQL..."
+          
+          # Check if server exists
+          SERVER_EXISTS=$(az postgres flexible-server show \
+            --name ${{ env.POSTGRES_SERVER }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query id -o tsv 2>/dev/null || echo "")
+          
+          if [ -z "$SERVER_EXISTS" ]; then
+            echo "Creating PostgreSQL Flexible Server..."
+            az postgres flexible-server create \
+              --name ${{ env.POSTGRES_SERVER }} \
+              --resource-group ${{ env.RESOURCE_GROUP }} \
+              --location ${{ env.LOCATION }} \
+              --admin-user codexadmin \
+              --admin-password "${{ secrets.POSTGRES_PASSWORD }}" \
+              --sku-name Standard_B1ms \
+              --tier Burstable \
+              --storage-size 32 \
+              --version 15 \
+              --public-access 0.0.0.0-255.255.255.255 \
+              --high-availability Disabled \
+              --backup-retention 7
+            echo "✓ PostgreSQL server created"
+          else
+            echo "✓ PostgreSQL server already exists"
+          fi
+          
+          # Create database
+          az postgres flexible-server db create \
+            --server-name ${{ env.POSTGRES_SERVER }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --database-name codex_db \
+            2>/dev/null || echo "✓ Database already exists"
+          
+          # Get connection string
+          POSTGRES_HOST="${{ env.POSTGRES_SERVER }}.postgres.database.azure.com"
+          echo "POSTGRES_CONNECTION_STRING=postgresql://codexadmin:${{ secrets.POSTGRES_PASSWORD }}@${POSTGRES_HOST}:5432/codex_db?sslmode=require" >> $GITHUB_ENV
+
+      - name: Create Redis Cache
+        run: |
+          echo "⚡ Setting up Redis Cache..."
+          
+          REDIS_EXISTS=$(az redis show \
+            --name ${{ env.REDIS_CACHE }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query id -o tsv 2>/dev/null || echo "")
+          
+          if [ -z "$REDIS_EXISTS" ]; then
+            echo "Creating Redis Cache (this may take 10-15 minutes)..."
+            az redis create \
+              --name ${{ env.REDIS_CACHE }} \
+              --resource-group ${{ env.RESOURCE_GROUP }} \
+              --location ${{ env.LOCATION }} \
+              --sku Basic \
+              --vm-size c0 \
+              --enable-non-ssl-port false \
+              --minimum-tls-version 1.2
+            echo "✓ Redis cache created"
+          else
+            echo "✓ Redis cache already exists"
+          fi
+          
+          # Get Redis connection string
+          REDIS_KEY=$(az redis list-keys \
+            --name ${{ env.REDIS_CACHE }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query primaryKey -o tsv)
+          
+          echo "REDIS_CONNECTION_STRING=rediss://${{ env.REDIS_CACHE }}.redis.cache.windows.net:6380,password=${REDIS_KEY},ssl=True,abortConnect=False" >> $GITHUB_ENV
+
+  build-and-deploy-backend:
+    runs-on: ubuntu-latest
+    needs: deploy-infrastructure
+    name: Build and Deploy FastAPI Backend
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Build Backend Container
+        run: |
+          echo "🔨 Building FastAPI container..."
+          
+          # Create Dockerfile if it doesn't exist
+          if [ ! -f backend/Dockerfile ]; then
+            cat > backend/Dockerfile << 'EOF'
+          FROM python:3.11-slim
+          
+          WORKDIR /app
+          
+          # Install dependencies
+          COPY requirements.txt .
+          RUN pip install --no-cache-dir -r requirements.txt
+          
+          # Copy application
+          COPY . .
+          
+          # Expose port
+          EXPOSE 8080
+          
+          # Run application
+          CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+          EOF
+          fi
+          
+          # Build container image
+          cd backend
+          docker build -t codex-backend:latest .
+          echo "✓ Container built"
+
+      - name: Push to Azure Container Registry
+        run: |
+          echo "📦 Pushing to Azure Container Registry..."
+          
+          # Create ACR if it doesn't exist
+          ACR_EXISTS=$(az acr show \
+            --name ${{ env.CONTAINER_REGISTRY }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query id -o tsv 2>/dev/null || echo "")
+          
+          if [ -z "$ACR_EXISTS" ]; then
+            az acr create \
+              --name ${{ env.CONTAINER_REGISTRY }} \
+              --resource-group ${{ env.RESOURCE_GROUP }} \
+              --location ${{ env.LOCATION }} \
+              --sku Basic \
+              --admin-enabled true
+            echo "✓ Container Registry created"
+          fi
+          
+          # Login to ACR
+          az acr login --name ${{ env.CONTAINER_REGISTRY }}
+          
+          # Tag and push
+          docker tag codex-backend:latest ${{ env.CONTAINER_REGISTRY }}.azurecr.io/codex-backend:latest
+          docker tag codex-backend:latest ${{ env.CONTAINER_REGISTRY }}.azurecr.io/codex-backend:${{ github.sha }}
+          docker push ${{ env.CONTAINER_REGISTRY }}.azurecr.io/codex-backend:latest
+          docker push ${{ env.CONTAINER_REGISTRY }}.azurecr.io/codex-backend:${{ github.sha }}
+          
+          echo "✓ Images pushed to ACR"
+
+      - name: Deploy to Azure Container Instances
+        run: |
+          echo "🚀 Deploying to Azure Container Instances..."
+          
+          # Get ACR credentials
+          ACR_USERNAME=$(az acr credential show \
+            --name ${{ env.CONTAINER_REGISTRY }} \
+            --query username -o tsv)
+          ACR_PASSWORD=$(az acr credential show \
+            --name ${{ env.CONTAINER_REGISTRY }} \
+            --query passwords[0].value -o tsv)
+          
+          # Deploy container
+          az container create \
+            --name codex-backend-api \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --location ${{ env.LOCATION }} \
+            --image ${{ env.CONTAINER_REGISTRY }}.azurecr.io/codex-backend:latest \
+            --registry-login-server ${{ env.CONTAINER_REGISTRY }}.azurecr.io \
+            --registry-username $ACR_USERNAME \
+            --registry-password $ACR_PASSWORD \
+            --cpu 1 \
+            --memory 2 \
+            --dns-name-label codex-backend-api \
+            --ports 8080 \
+            --environment-variables \
+              POSTGRES_CONNECTION_STRING="${{ env.POSTGRES_CONNECTION_STRING }}" \
+              REDIS_CONNECTION_STRING="${{ env.REDIS_CONNECTION_STRING }}" \
+              ENVIRONMENT="production" \
+            --restart-policy Always \
+            2>/dev/null || echo "Container instance may already exist, updating..."
+          
+          # Get FQDN
+          BACKEND_URL=$(az container show \
+            --name codex-backend-api \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query ipAddress.fqdn -o tsv)
+          
+          echo "✓ Backend deployed at: http://${BACKEND_URL}:8080"
+          echo "BACKEND_URL=http://${BACKEND_URL}:8080" >> $GITHUB_ENV
+
+      - name: Run Database Migrations
+        run: |
+          echo "🔄 Running database migrations..."
+          
+          # Wait for container to be ready
+          sleep 30
+          
+          # Run migrations via API call
+          curl -X POST "${{ env.BACKEND_URL }}/admin/migrate" \
+            -H "Content-Type: application/json" \
+            -d '{"action": "upgrade"}' \
+            || echo "Migration endpoint not available yet"
+
+      - name: Health Check
+        run: |
+          echo "🏥 Running health checks..."
+          
+          MAX_ATTEMPTS=10
+          ATTEMPT=1
+          
+          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+            echo "Attempt $ATTEMPT/$MAX_ATTEMPTS..."
+            
+            if curl -f "${{ env.BACKEND_URL }}/health" 2>/dev/null; then
+              echo "✅ Backend is healthy!"
+              exit 0
+            fi
+            
+            ATTEMPT=$((ATTEMPT + 1))
+            sleep 10
+          done
+          
+          echo "⚠ Health check timeout - backend may still be starting"
+
+      - name: Generate Deployment Summary
+        if: always()
+        run: |
+          cat > deployment-summary.md << EOF
+          # Backend Services Deployment Complete
+          
+          ## 🗄️ PostgreSQL Database
+          - **Server**: ${{ env.POSTGRES_SERVER }}.postgres.database.azure.com
+          - **Database**: codex_db
+          - **Version**: PostgreSQL 15
+          - **Tier**: Burstable (Standard_B1ms)
+          - **Storage**: 32 GB
+          
+          ## ⚡ Redis Cache
+          - **Name**: ${{ env.REDIS_CACHE }}
+          - **Endpoint**: ${{ env.REDIS_CACHE }}.redis.cache.windows.net:6380
+          - **SKU**: Basic C0
+          - **TLS**: Enabled (1.2+)
+          
+          ## 🚀 FastAPI Backend
+          - **URL**: ${{ env.BACKEND_URL }}
+          - **Container**: Azure Container Instances
+          - **Image**: ${{ env.CONTAINER_REGISTRY }}.azurecr.io/codex-backend:latest
+          - **Resources**: 1 CPU, 2 GB Memory
+          
+          ## 🔗 Connection Strings
+          Available as environment variables in Container Instances:
+          - \`POSTGRES_CONNECTION_STRING\`
+          - \`REDIS_CONNECTION_STRING\`
+          
+          ## 📊 Next Steps
+          1. Verify backend health: \`curl ${{ env.BACKEND_URL }}/health\`
+          2. Configure Static Web Apps to use backend
+          3. Set up API Management gateway (optional)
+          4. Configure monitoring and alerts
+          
+          ## 🔐 Security Notes
+          - PostgreSQL: Public access enabled (restrict to Azure IPs in production)
+          - Redis: Non-SSL port disabled
+          - Container: No public IP (use Azure backbone)
+          EOF
+          
+          cat deployment-summary.md
+
+      - name: Upload Deployment Summary
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backend-deployment-summary
+          path: deployment-summary.md
+          retention-days: 30

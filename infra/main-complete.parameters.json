@@ -1,0 +1,72 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "baseName": {
+      "value": "codex"
+    },
+    "location": {
+      "value": "centralus"
+    },
+    "swaLocation": {
+      "value": "eastus2"
+    },
+    "pgAdminUser": {
+      "value": "pgadmin"
+    },
+    "pgDbName": {
+      "value": "codexdb"
+    },
+    "pgName": {
+      "value": "codex-pg-centralus"
+    },
+    "pgVersion": {
+      "value": "14"
+    },
+    "appServicePlanName": {
+      "value": "codex-plan-centralus"
+    },
+    "appServiceSku": {
+      "value": "B1"
+    },
+    "webAppName": {
+      "value": "codex-backend-centralus"
+    },
+    "functionAppName": {
+      "value": "codex-functions-centralus"
+    },
+    "storageAccountName": {
+      "value": "codexfuncstore"
+    },
+    "swaName": {
+      "value": "codex-frontend-centralus"
+    },
+    "swaSku": {
+      "value": "Free"
+    },
+    "redisName": {
+      "value": "codex-redis-centralus"
+    },
+    "redisSku": {
+      "value": "Basic"
+    },
+    "keyVaultName": {
+      "value": "codex-kv-centralus"
+    },
+    "appInsightsName": {
+      "value": "codex-insights-centralus"
+    },
+    "acrName": {
+      "value": "codexacrwestus"
+    },
+    "dockerImage": {
+      "value": "codexacrwestus.azurecr.io/codex-backend:prod"
+    },
+    "allowedOrigins": {
+      "value": "https://CodexDominion.app"
+    },
+    "backendPort": {
+      "value": 8080
+    }
+  }
+}

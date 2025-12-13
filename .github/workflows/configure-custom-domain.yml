@@ -1,0 +1,379 @@
+name: Configure Custom Domain (codexdominion.app)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/configure-custom-domain.yml'
+
+permissions:
+  contents: read
+
+env:
+  AZURE_SUBSCRIPTION_ID: "054bb0e0-6e79-403f-b3fc-39a28d61e9c9"
+  RESOURCE_GROUP: "codex-dominion-rg"
+  STATIC_WEB_APP: "codex-sovereign-bridge"
+  CUSTOM_DOMAIN: "codexdominion.app"
+
+jobs:
+  configure-dns:
+    runs-on: ubuntu-latest
+    name: Configure DNS and Custom Domain
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set Azure Subscription
+        run: |
+          az account set --subscription ${{ env.AZURE_SUBSCRIPTION_ID }}
+          echo "✓ Using Azure Subscription 2"
+
+      - name: Get Static Web App Details
+        run: |
+          echo "📋 Getting Static Web App details..."
+          
+          # Get default hostname
+          DEFAULT_HOSTNAME=$(az staticwebapp show \
+            --name ${{ env.STATIC_WEB_APP }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query defaultHostname -o tsv)
+          
+          echo "DEFAULT_HOSTNAME=$DEFAULT_HOSTNAME" >> $GITHUB_ENV
+          echo "✓ Default hostname: $DEFAULT_HOSTNAME"
+
+      - name: Generate DNS Configuration
+        run: |
+          cat > dns-configuration.md << 'EOF'
+          # DNS Configuration for codexdominion.app
+          
+          ## Required DNS Records
+          
+          Add these records to your DNS provider (Google Domains, Cloudflare, etc.):
+          
+          ### 1. Apex Domain (@)
+          ```
+          Type: ALIAS or ANAME
+          Name: @
+          Value: ${{ env.DEFAULT_HOSTNAME }}
+          TTL: 3600
+          ```
+          
+          **If ALIAS/ANAME not supported, use A records:**
+          ```
+          Type: A
+          Name: @
+          Value: [Get from: dig ${{ env.DEFAULT_HOSTNAME }} +short]
+          TTL: 3600
+          ```
+          
+          ### 2. WWW Subdomain
+          ```
+          Type: CNAME
+          Name: www
+          Value: ${{ env.DEFAULT_HOSTNAME }}
+          TTL: 3600
+          ```
+          
+          ### 3. API Subdomain (for backend)
+          ```
+          Type: CNAME
+          Name: api
+          Value: codex-backend-api.eastus2.azurecontainer.io
+          TTL: 3600
+          ```
+          
+          ### 4. TXT Record for Verification
+          ```
+          Type: TXT
+          Name: @
+          Value: [Will be provided by Azure after validation attempt]
+          TTL: 3600
+          ```
+          
+          ## Automated Commands
+          
+          ### For Cloudflare DNS (if using Cloudflare API):
+          ```bash
+          # Install cloudflare CLI: npm install -g cloudflare-cli
+          
+          cf dns create codexdominion.app @ CNAME ${{ env.DEFAULT_HOSTNAME }} --proxied
+          cf dns create codexdominion.app www CNAME ${{ env.DEFAULT_HOSTNAME }} --proxied
+          cf dns create codexdominion.app api CNAME codex-backend-api.eastus2.azurecontainer.io
+          ```
+          
+          ### For Azure DNS Zone (if managing DNS in Azure):
+          ```bash
+          az network dns zone create \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --name codexdominion.app
+          
+          az network dns record-set cname set-record \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --zone-name codexdominion.app \
+            --record-set-name www \
+            --cname ${{ env.DEFAULT_HOSTNAME }}
+          
+          az network dns record-set cname set-record \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --zone-name codexdominion.app \
+            --record-set-name api \
+            --cname codex-backend-api.eastus2.azurecontainer.io
+          ```
+          
+          ## Verification Steps
+          
+          1. Add DNS records to your provider
+          2. Wait for DNS propagation (5-30 minutes)
+          3. Check propagation: `nslookup codexdominion.app`
+          4. Run domain validation in Azure portal or via CLI
+          5. Azure will automatically provision SSL certificate via Let's Encrypt
+          
+          ## SSL Certificate
+          
+          Azure Static Web Apps automatically manages SSL certificates:
+          - **Issuer**: Let's Encrypt
+          - **Type**: DV (Domain Validated)
+          - **Auto-renewal**: Yes (30 days before expiration)
+          - **Protocols**: TLS 1.2, TLS 1.3
+          
+          EOF
+          
+          cat dns-configuration.md
+
+      - name: Add Custom Domain to Static Web App
+        continue-on-error: true
+        run: |
+          echo "🌐 Adding custom domain to Static Web App..."
+          
+          # Add apex domain
+          az staticwebapp hostname set \
+            --name ${{ env.STATIC_WEB_APP }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --hostname ${{ env.CUSTOM_DOMAIN }} \
+            2>&1 | tee domain-add.log || echo "Domain may already be added or DNS not configured yet"
+          
+          # Add www subdomain
+          az staticwebapp hostname set \
+            --name ${{ env.STATIC_WEB_APP }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --hostname www.${{ env.CUSTOM_DOMAIN }} \
+            2>&1 | tee -a domain-add.log || echo "WWW domain may already be added or DNS not configured yet"
+          
+          echo "✓ Custom domain configuration initiated"
+
+      - name: Check Domain Validation Status
+        continue-on-error: true
+        run: |
+          echo "🔍 Checking domain validation status..."
+          
+          az staticwebapp hostname show \
+            --name ${{ env.STATIC_WEB_APP }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --hostname ${{ env.CUSTOM_DOMAIN }} \
+            --query "{Domain:hostname, Status:status, ValidationToken:validationToken}" \
+            -o json 2>/dev/null | tee domain-status.json || echo "Domain not yet configured"
+
+      - name: Configure SSL/TLS Settings
+        run: |
+          echo "🔐 Configuring SSL/TLS settings..."
+          
+          # Static Web Apps automatically provisions SSL
+          # These settings are informational
+          
+          cat > ssl-info.md << 'EOF'
+          # SSL/TLS Configuration
+          
+          ## Automatic SSL Provisioning
+          
+          Azure Static Web Apps automatically provisions and manages SSL certificates:
+          
+          - **Certificate Authority**: Let's Encrypt
+          - **Validation Type**: HTTP-01 Challenge
+          - **Renewal**: Automatic (every 60 days)
+          - **Protocols Supported**: TLS 1.2, TLS 1.3
+          - **Cipher Suites**: Strong ciphers only
+          
+          ## Forced HTTPS
+          
+          HTTPS redirection is enabled by default:
+          - All HTTP requests (port 80) → HTTPS (port 443)
+          - HSTS header included (max-age=31536000)
+          
+          ## Certificate Details (after provisioning)
+          
+          Check certificate:
+          ```bash
+          echo | openssl s_client -servername codexdominion.app -connect codexdominion.app:443 2>/dev/null | openssl x509 -text -noout
+          ```
+          
+          ## Security Headers
+          
+          Configured in staticwebapp.config.json:
+          - Strict-Transport-Security: max-age=31536000
+          - X-Content-Type-Options: nosniff
+          - X-Frame-Options: DENY
+          - Content-Security-Policy: (customizable)
+          
+          EOF
+          
+          cat ssl-info.md
+
+      - name: Test DNS Propagation
+        run: |
+          echo "🧪 Testing DNS configuration..."
+          
+          # Test if DNS records exist
+          echo "Checking apex domain..."
+          dig +short ${{ env.CUSTOM_DOMAIN }} @8.8.8.8 || echo "Apex domain not yet configured"
+          
+          echo "Checking www subdomain..."
+          dig +short www.${{ env.CUSTOM_DOMAIN }} @8.8.8.8 || echo "WWW subdomain not yet configured"
+          
+          echo "Checking API subdomain..."
+          dig +short api.${{ env.CUSTOM_DOMAIN }} @8.8.8.8 || echo "API subdomain not yet configured"
+
+      - name: Generate Setup Instructions
+        if: always()
+        run: |
+          cat > custom-domain-setup.md << 'EOF'
+          # Custom Domain Setup Instructions
+          
+          ## 🎯 Quick Start
+          
+          ### Step 1: Configure DNS
+          
+          Go to your DNS provider (Google Domains, Cloudflare, etc.) and add:
+          
+          1. **Root domain (codexdominion.app)**
+             - Type: ALIAS or ANAME (preferred)
+             - OR Type: A record pointing to Static Web App IP
+             - Value: ${{ env.DEFAULT_HOSTNAME }}
+          
+          2. **WWW subdomain (www.codexdominion.app)**
+             - Type: CNAME
+             - Value: ${{ env.DEFAULT_HOSTNAME }}
+          
+          3. **API subdomain (api.codexdominion.app)**
+             - Type: CNAME
+             - Value: codex-backend-api.eastus2.azurecontainer.io
+          
+          ### Step 2: Wait for DNS Propagation
+          
+          DNS changes can take 5-30 minutes to propagate globally.
+          
+          Check status:
+          ```bash
+          # Check if DNS is propagated
+          nslookup codexdominion.app 8.8.8.8
+          nslookup www.codexdominion.app 8.8.8.8
+          nslookup api.codexdominion.app 8.8.8.8
+          ```
+          
+          ### Step 3: Verify in Azure Portal
+          
+          1. Go to: https://portal.azure.com
+          2. Navigate to: Static Web Apps → codex-sovereign-bridge
+          3. Click "Custom domains" in left menu
+          4. Click "Add" and enter: codexdominion.app
+          5. Follow validation instructions
+          6. Repeat for www.codexdominion.app
+          
+          ### Step 4: Wait for SSL Provisioning
+          
+          Azure automatically provisions SSL certificates (5-10 minutes after domain validation).
+          
+          Check certificate:
+          ```bash
+          curl -I https://codexdominion.app
+          ```
+          
+          ## 🔧 Alternative: Use Azure CLI
+          
+          If DNS is already configured:
+          
+          ```bash
+          # Add domains
+          az staticwebapp hostname set \
+            --name codex-sovereign-bridge \
+            --resource-group codex-dominion-rg \
+            --hostname codexdominion.app
+          
+          az staticwebapp hostname set \
+            --name codex-sovereign-bridge \
+            --resource-group codex-dominion-rg \
+            --hostname www.codexdominion.app
+          ```
+          
+          ## 📊 Verification Checklist
+          
+          - [ ] DNS records added to provider
+          - [ ] DNS propagation complete (use nslookup)
+          - [ ] Domain added in Azure Static Web Apps
+          - [ ] Domain validation successful
+          - [ ] SSL certificate provisioned
+          - [ ] HTTPS redirection working
+          - [ ] WWW redirect to apex (or vice versa)
+          - [ ] API subdomain resolves correctly
+          
+          ## 🆘 Troubleshooting
+          
+          **DNS not propagating:**
+          - Wait longer (can take up to 48 hours in rare cases)
+          - Clear DNS cache: `ipconfig /flushdns` (Windows) or `sudo dscacheutil -flushcache` (Mac)
+          - Try different DNS server: `nslookup codexdominion.app 1.1.1.1`
+          
+          **Domain validation failing:**
+          - Ensure DNS records are correct
+          - Try removing and re-adding the domain
+          - Check for conflicting DNS records
+          
+          **SSL not provisioning:**
+          - Ensure domain validation is complete
+          - Wait 10-15 minutes after validation
+          - Contact Azure support if still failing after 24 hours
+          
+          ## 🔗 Useful Links
+          
+          - [Azure Portal - Static Web Apps](https://portal.azure.com/#resource/subscriptions/${{ env.AZURE_SUBSCRIPTION_ID }}/resourceGroups/${{ env.RESOURCE_GROUP }}/providers/Microsoft.Web/staticSites/${{ env.STATIC_WEB_APP }})
+          - [DNS Propagation Checker](https://dnschecker.org)
+          - [SSL Labs Server Test](https://www.ssllabs.com/ssltest/)
+          
+          EOF
+          
+          cat custom-domain-setup.md
+
+      - name: Upload Configuration Files
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: custom-domain-configuration
+          path: |
+            dns-configuration.md
+            ssl-info.md
+            custom-domain-setup.md
+            domain-add.log
+            domain-status.json
+          retention-days: 90
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "### 🌐 Custom Domain Configuration" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Domain**: ${{ env.CUSTOM_DOMAIN }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Static Web App**: ${{ env.STATIC_WEB_APP }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "#### Next Steps:" >> $GITHUB_STEP_SUMMARY
+          echo "1. Configure DNS records at your provider" >> $GITHUB_STEP_SUMMARY
+          echo "2. Wait for DNS propagation (5-30 minutes)" >> $GITHUB_STEP_SUMMARY
+          echo "3. Validate domain in Azure portal" >> $GITHUB_STEP_SUMMARY
+          echo "4. SSL certificate will auto-provision" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📥 Download the configuration artifacts for detailed instructions" >> $GITHUB_STEP_SUMMARY

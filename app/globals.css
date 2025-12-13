@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --codex-navy: #0f2b4a;
+  --codex-parchment: #f7f1e3;
+  --codex-gold: #d4af37;
+  --codex-bronze: #cd7f32;
+  --codex-crimson: #8b0000;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Ceremonial Styling */
+.codex-card {
+  @apply bg-gradient-to-br from-codex-navy to-slate-900 border border-codex-gold/30 rounded-lg p-6 shadow-lg;
+}
+
+.codex-button {
+  @apply bg-codex-gold/20 hover:bg-codex-gold/30 text-codex-parchment border border-codex-gold/50 rounded-md px-4 py-2 transition-all duration-200 hover:scale-105;
+}
+
+.codex-panel {
+  @apply backdrop-blur-sm bg-codex-navy/80 border border-codex-gold/20 rounded-lg p-4;
+}
+
+.codex-badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+}
+
+.codex-badge-success {
+  @apply codex-badge bg-green-500/20 text-green-400 border border-green-500/30;
+}
+
+.codex-badge-warning {
+  @apply codex-badge bg-yellow-500/20 text-yellow-400 border border-yellow-500/30;
+}
+
+.codex-badge-error {
+  @apply codex-badge bg-red-500/20 text-red-400 border border-red-500/30;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--codex-navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--codex-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--codex-bronze);
+}
+
+/* Animation Classes */
+@keyframes pulse-flame {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-flame {
+  animation: pulse-flame 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background: linear-gradient(to right, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);
+  background-size: 1000px 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.2s ease-out;
+}
+
+/* Ceremonial Text Effects */
+.text-ceremonial {
+  @apply font-serif text-codex-gold;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.text-proclamation {
+  @apply text-lg font-serif italic text-codex-parchment/90;
+  letter-spacing: 0.05em;
+}

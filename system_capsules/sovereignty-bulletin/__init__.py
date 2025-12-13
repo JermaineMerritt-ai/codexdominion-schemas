@@ -1,0 +1,1 @@
+"""Sovereignty status bulletin generator"""

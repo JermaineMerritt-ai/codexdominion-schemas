@@ -1,0 +1,130 @@
+DNS TROUBLESHOOTING - NXDOMAIN ERROR
+================================================================================
+
+❌ PROBLEM DETECTED:
+   Domain: codexdominion.app
+   Error: DNS_PROBE_FINISHED_NXDOMAIN
+   Meaning: DNS servers cannot find this domain at all
+
+   This is NOT a propagation delay - the domain doesn't exist in DNS yet.
+
+================================================================================
+🔍 ROOT CAUSE:
+================================================================================
+
+The A records are likely NOT saved in Google Domains, or:
+   1. Domain is not fully registered/active
+   2. Name servers are incorrectly configured
+   3. Records were created but not saved
+   4. CNAME conflict preventing A record creation
+
+================================================================================
+✅ IMMEDIATE ACTION REQUIRED - CHECK GOOGLE DOMAINS:
+================================================================================
+
+1. Go to: https://domains.google.com
+2. Click: codexdominion.app
+3. Navigate to: DNS tab → Manage custom records
+4. VERIFY these records exist and are SAVED:
+
+   Host name    Type    TTL    Data
+   ---------    ----    ---    ---------------
+   @            A       3600   20.36.155.75
+   www          A       3600   20.36.155.75
+
+5. Check the "Name servers" tab:
+   ✅ Should say: "Use Google Domains name servers"
+   ❌ NOT: "Use custom name servers"
+
+6. If records exist, check for:
+   • Any CNAME records on @ or www (DELETE these - they conflict)
+   • Any error messages or warnings
+   • Whether domain is in "pending" or "suspended" status
+
+================================================================================
+⚠️  COMMON MISTAKES:
+================================================================================
+
+1. Created records but didn't click "SAVE" button
+2. Left CNAME records that conflict with A records
+3. Changed to custom name servers accidentally
+4. Domain registration incomplete or expired
+5. Using wrong DNS management panel (some registrars have multiple)
+
+================================================================================
+🔧 TESTING COMMANDS:
+================================================================================
+
+After making changes in Google Domains, wait 5-10 minutes, then test:
+
+PowerShell:
+   nslookup codexdominion.app
+   nslookup www.codexdominion.app
+   Resolve-DnsName codexdominion.app -Type A
+
+Online tools:
+   https://dnschecker.org
+   https://www.whatsmydns.net
+
+Expected result:
+   Address: 20.36.155.75
+
+================================================================================
+🚀 ALTERNATIVE: MIGRATE TO AZURE DNS
+================================================================================
+
+If Google Domains issues persist, we can use Azure DNS instead:
+
+1. Create DNS Zone:
+   az network dns zone create --resource-group codex-dominion --name codexdominion.app
+
+2. Get Azure name servers:
+   az network dns zone show --resource-group codex-dominion --name codexdominion.app --query nameServers
+
+3. In Google Domains:
+   - Go to: Name servers → Use custom name servers
+   - Enter all 4 Azure name servers
+   - Save
+
+4. Create DNS records in Azure:
+   az network dns record-set a add-record --resource-group codex-dominion --zone-name codexdominion.app --record-set-name @ --ipv4-address 20.36.155.75
+   az network dns record-set a add-record --resource-group codex-dominion --zone-name codexdominion.app --record-set-name www --ipv4-address 20.36.155.75
+
+This gives you full DNS control in Azure.
+
+================================================================================
+📊 CURRENT WORKING URLs (Use These Now):
+================================================================================
+
+While DNS is being fixed, your application is FULLY OPERATIONAL at:
+
+✅ Frontend (Primary):
+   https://orange-sky-099bc5a0f.3.azurestaticapps.net
+
+✅ Frontend (Alternate):
+   https://yellow-tree-0ed102210.3.azurestaticapps.net
+
+✅ Backend API:
+   https://codex-backend-centralus.azurewebsites.net
+
+✅ API Docs:
+   https://codex-backend-centralus.azurewebsites.net/docs
+
+All services are operational with:
+   - 8 capsules in database
+   - Redis caching enabled
+   - Auto-scaling configured
+   - Monitoring alerts active
+   - HTTPS/SSL working
+
+================================================================================
+💡 NEXT STEPS:
+================================================================================
+
+1. Verify Google Domains DNS settings (most likely issue)
+2. Ensure A records are properly saved
+3. Wait 5-10 minutes after saving
+4. Test with: nslookup codexdominion.app
+5. If still not working after 30 minutes, consider Azure DNS migration
+
+🔥 The system is fully operational - just the custom domain needs DNS fix.
