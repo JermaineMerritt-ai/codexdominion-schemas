@@ -49,6 +49,13 @@ tmp/
 docker-compose*.yml
 .dockerignore
 
+# Node modules
+node_modules/
+.next/
+build/
+dist/
+out/
+
 # Deployment scripts
 deploy-*.sh
 deploy-*.ps1
@@ -83,6 +90,23 @@ docs/
 # Node modules (if any)
 node_modules/
 frontend/node_modules/
+frontend-vite/node_modules/
+web/node_modules/
+apps/*/node_modules/
+
+# Large duplicate directories
+codexdominion-clean/
+codexdominion-schemas/
+recent_uploads/
+infra/
+k8s/
+helm/
+backend-logs/
+backend-logs2/
+dashboard-logs/
+dashboard-logs2/
+dashboard-logs3/
+*.zip
 
 # Streamlit cache
 .streamlit/
@@ -95,3 +119,22 @@ __pycache__
 *.html
 old_versions/
 archive/
+
+# Frontend directories (not needed for dashboard)
+frontend/
+frontend-vite/
+web/
+apps/
+packages/
+api/
+codex_capsules/
+system_capsules/
+cloud-function/
+backend/
+
+# Config and data files
+*.json
+!requirements.txt
+*.backup_*
+*.sqlite
+*.db

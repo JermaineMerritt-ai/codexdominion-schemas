@@ -1,0 +1,134 @@
+2025-12-14T00:53:02  Fetching changes.
+2025-12-14T00:53:02    Starting  LocalZipHandler
+2025-12-14T00:53:02    Cleaning up temp folders from previous zip deployments and extracting pushed zip file /tmp/zipdeploy/ae79e5b6-badb-4f86-8729-9dfbe7e0597d.zip (0.06 MB) to /tmp/zipdeploy/extracted
+2025-12-14T00:53:05  Updating submodules.
+2025-12-14T00:53:05  Preparing deployment for commit id '63e8bb71-7'.
+2025-12-14T00:53:06  PreDeployment: context.CleanOutputPath False
+2025-12-14T00:53:06  PreDeployment: context.OutputPath /home/site/wwwroot
+2025-12-14T00:53:06  Repository path is /tmp/zipdeploy/extracted
+2025-12-14T00:53:06  Running oryx build...
+2025-12-14T00:53:06    Command: oryx build /tmp/zipdeploy/extracted -o /home/site/wwwroot --platform python --platform-version 3.11 -p virtualenv_name=antenv --log-file /tmp/build-debug.log  -i /tmp/8de3aab24823cbe --compress-destination-dir | tee /tmp/oryx-build.log
+2025-12-14T00:53:09    Operation performed by Microsoft Oryx, https://github.com/Microsoft/Oryx
+2025-12-14T00:53:09    You can report issues at https://github.com/Microsoft/Oryx/issues
+2025-12-14T00:53:09
+2025-12-14T00:53:09    Oryx Version: 0.2.20251022.1+bef98bc7139feefaa74be16de9d835e2c85385d4, Commit: bef98bc7139feefaa74be16de9d835e2c85385d4, ReleaseTagName: 20251022.1
+2025-12-14T00:53:09
+2025-12-14T00:53:09    Build Operation ID: efc439f07721d054
+2025-12-14T00:53:09    Repository Commit : 63e8bb71-7bb8-421b-ab2a-cacf6805b9ba
+2025-12-14T00:53:09    OS Type           : bullseye
+2025-12-14T00:53:09    Image Type        : githubactions
+2025-12-14T00:53:09
+2025-12-14T00:53:09    Primary SDK Storage URL: https://oryx-cdn.microsoft.io
+2025-12-14T00:53:09    Backup SDK Storage URL:
+2025-12-14T00:53:09    Detecting platforms...
+2025-12-14T00:53:09    External SDK provider is enabled.
+2025-12-14T00:53:09    Requesting metadata for platform python from external SDK provider
+2025-12-14T00:53:12    Requesting metadata for platform python from external SDK provider
+2025-12-14T00:53:13    Detected following platforms:
+2025-12-14T00:53:13      python: 3.11.14
+2025-12-14T00:53:13    Requesting metadata for platform python from external SDK provider
+2025-12-14T00:53:15    Version '3.11.14' of platform 'python' is not installed. Generating script to install it...
+2025-12-14T00:53:16
+2025-12-14T00:53:16    Using intermediate directory '/tmp/8de3aab24823cbe'.
+2025-12-14T00:53:16
+2025-12-14T00:53:16    Copying files to the intermediate directory...
+2025-12-14T00:53:16    Done in 0 sec(s).
+2025-12-14T00:53:16
+2025-12-14T00:53:17    Source directory     : /tmp/8de3aab24823cbe
+2025-12-14T00:53:17    Destination directory: /home/site/wwwroot
+2025-12-14T00:53:17
+2025-12-14T00:53:17
+2025-12-14T00:53:17    Downloading and extracting 'python' version '3.11.14' to '/tmp/oryx/platforms/python/3.11.14'...
+2025-12-14T00:53:17    Detected image debian flavor: bullseye.
+2025-12-14T00:53:17    Skipping download of python version 3.11.14 as it is available in external sdk provider cache...
+2025-12-14T00:53:17    Extracting contents...
+2025-12-14T00:53:40    Successfully extracted python version 3.11.14 from external sdk provider cache...
+2025-12-14T00:53:40    Done in 23 sec(s).
+2025-12-14T00:53:40
+2025-12-14T00:53:40    image detector file exists, platform is python..
+2025-12-14T00:53:40    OS detector file exists, OS is bullseye..
+2025-12-14T00:53:40    Python Version: /tmp/oryx/platforms/python/3.11.14/bin/python3.11
+2025-12-14T00:53:40    Creating directory for command manifest file if it does not exist
+2025-12-14T00:53:40    Removing existing manifest file
+2025-12-14T00:53:41    Python Virtual Environment: antenv
+2025-12-14T00:53:41    Creating virtual environment...
+2025-12-14T00:53:41    Executing: /tmp/oryx/platforms/python/3.11.14/bin/python3.11 -m venv antenv --copies --system-site-packages
+2025-12-14T00:54:01    Activating virtual environment...
+2025-12-14T00:54:01    Running pip install...
+2025-12-14T00:54:10    [00:54:05+0000] Collecting fastapi>=0.104.0 (from -r requirements.txt (line 1))
+2025-12-14T00:54:10    [00:54:05+0000]   Downloading fastapi-0.124.4-py3-none-any.whl.metadata (30 kB)
+2025-12-14T00:54:10    [00:54:06+0000] Collecting uvicorn>=0.24.0 (from -r requirements.txt (line 2))
+2025-12-14T00:54:10    [00:54:06+0000]   Downloading uvicorn-0.38.0-py3-none-any.whl.metadata (6.8 kB)
+2025-12-14T00:54:10    [00:54:06+0000] Collecting pyyaml>=6.0.1 (from -r requirements.txt (line 3))
+2025-12-14T00:54:10    [00:54:06+0000]   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2025-12-14T00:54:10    [00:54:06+0000] Collecting python-multipart>=0.0.6 (from -r requirements.txt (line 4))
+2025-12-14T00:54:10    [00:54:06+0000]   Downloading python_multipart-0.0.20-py3-none-any.whl.metadata (1.8 kB)
+2025-12-14T00:54:10    [00:54:07+0000] Collecting cryptography>=41.0.0 (from -r requirements.txt (line 5))
+2025-12-14T00:54:10    [00:54:07+0000]   Downloading cryptography-46.0.3-cp311-abi3-manylinux_2_28_x86_64.whl.metadata (5.7 kB)
+2025-12-14T00:54:10    [00:54:08+0000] Collecting pydantic>=2.0.0 (from -r requirements.txt (line 6))
+2025-12-14T00:54:10    [00:54:08+0000]   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+2025-12-14T00:54:10    [00:54:08+0000]      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 1.7 MB/s eta 0:00:00
+2025-12-14T00:54:10    [00:54:08+0000] Collecting opencensus-ext-azure>=1.1.9 (from -r requirements.txt (line 7))
+2025-12-14T00:54:11    [00:54:08+0000]   Downloading opencensus_ext_azure-1.1.15-py2.py3-none-any.whl.metadata (17 kB)
+2025-12-14T00:54:11    ERROR: Could not find a version that satisfies the requirement opencensus-ext-fastapi>=0.1.1 (from versions: 0.1.0)
+2025-12-14T00:54:11    ERROR: No matching distribution found for opencensus-ext-fastapi>=0.1.1
+2025-12-14T00:54:11
+2025-12-14T00:54:11    [notice] A new release of pip is available: 24.0 -> 25.3
+2025-12-14T00:54:11    [notice] To update, run: pip install --upgrade pip
+2025-12-14T00:54:11    "2025-12-14 00:54:10"|ERROR|[00:54:05+0000] Collecting fastapi>=0.104.0 (from -r requirements.txt (line 1))
+2025-12-14T00:54:11    [00:54:05+0000]   Downloading fastapi-0.124.4-py3-none-any.whl.metadata (30 kB)
+2025-12-14T00:54:11    [00:54:06+0000] Collecting uvicorn>=0.24.0 (from -r requirements.txt (line 2))
+2025-12-14T00:54:11    [00:54:06+0000]   Downloading uvicorn-0.38.0-py3-none-any.whl.metadata (6.8 kB)
+2025-12-14T00:54:11    [00:54:06+0000] Collecting pyyaml>=6.0.1 (from -r requirements.txt (line 3))
+2025-12-14T00:54:11    [00:54:06+0000]   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2025-12-14T00:54:11    [00:54:06+0000] Collecting python-multipart>=0.0.6 (from -r requirements.txt (line 4))
+2025-12-14T00:54:11    [00:54:06+0000]   Downloading python_multipart-0.0.20-py3-none-any.whl.metadata (1.8 kB)
+2025-12-14T00:54:11    [00:54:07+0000] Collecting cryptography>=41.0.0 (from -r requirements.txt (line 5))
+2025-12-14T00:54:11    [00:54:07+0000]   Downloading cryptography-46.0.3-cp311-abi3-manylinux_2_28_x86_64.whl.metadata (5.7 kB)
+2025-12-14T00:54:11    [00:54:08+0000] Collecting pydantic>=2.0.0 (from -r requirements.txt (line 6))
+2025-12-14T00:54:11    [00:54:08+0000]   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+2025-12-14T00:54:11    [00:54:08+0000]      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 1.7 MB/s eta 0:00:00
+2025-12-14T00:54:11    [00:54:08+0000] Collecting opencensus-ext-azure>=1.1.9 (from -r requirements.txt (line 7))
+2025-12-14T00:54:11    [00:54:08+0000]   Downloading opencensus_ext_azure-1.1.15-py2.py3-none-any.whl.metadata (17 kB)
+2025-12-14T00:54:11    ERROR: Could not find a version that satisfies the requirement opencensus-ext-fastapi>=0.1.1 (from versions: 0.1.0)
+2025-12-14T00:54:11    ERROR: No matching distribution found for opencensus-ext-fastapi>=0.1.1
+2025-12-14T00:54:11
+2025-12-14T00:54:11    [notice] A new release of pip is available: 24.0 -> 25.3
+2025-12-14T00:54:11    [notice] To update, run: pip install --upgrade pip | Exit code: 1 | Please review your requirements.txt | More information: https://aka.ms/troubleshoot-python
+2025-12-14T00:54:11
+/bin/bash -c "oryx build /tmp/zipdeploy/extracted -o /home/site/wwwroot --platform python --platform-version 3.11 -p virtualenv_name=antenv --log-file /tmp/build-debug.log  -i /tmp/8de3aab24823cbe --compress-destination-dir | tee /tmp/oryx-build.log ; exit $PIPESTATUS "
+2025-12-14T00:54:12
+2025-12-14T00:54:12
+2025-12-14T00:54:12  Generating summary of Oryx build
+2025-12-14T00:54:12  Parsing the build logs
+2025-12-14T00:54:12  Found 1 issue(s)
+2025-12-14T00:54:12
+2025-12-14T00:54:12  Build Summary :
+2025-12-14T00:54:13  ===============
+2025-12-14T00:54:13  Errors (1)
+2025-12-14T00:54:13  1. [00:54:05+0000] Collecting fastapi>=0.104.0 (from -r requirements.txt (line 1))
+[00:54:05+0000]   Downloading fastapi-0.124.4-py3-none-any.whl.metadata (30 kB)
+[00:54:06+0000] Collecting uvicorn>=0.24.0 (from -r requirements.txt (line 2))
+[00:54:06+0000]   Downloading uvicorn-0.38.0-py3-none-any.whl.metadata (6.8 kB)
+[00:54:06+0000] Collecting pyyaml>=6.0.1 (from -r requirements.txt (line 3))
+[00:54:06+0000]   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+[00:54:06+0000] Collecting python-multipart>=0.0.6 (from -r requirements.txt (line 4))
+[00:54:06+0000]   Downloading python_multipart-0.0.20-py3-none-any.whl.metadata (1.8 kB)
+[00:54:07+0000] Collecting cryptography>=41.0.0 (from -r requirements.txt (line 5))
+[00:54:07+0000]   Downloading cryptography-46.0.3-cp311-abi3-manylinux_2_28_x86_64.whl.metadata (5.7 kB)
+[00:54:08+0000] Collecting pydantic>=2.0.0 (from -r requirements.txt (line 6))
+[00:54:08+0000]   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+[00:54:08+0000]      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 1.7 MB/s eta 0:00:00
+[00:54:08+0000] Collecting opencensus-ext-azure>=1.1.9 (from -r requirements.txt (line 7))
+[00:54:08+0000]   Downloading opencensus_ext_azure-1.1.15-py2.py3-none-any.whl.metadata (17 kB)
+ERROR: Could not find a version that satisfies the requirement opencensus-ext-fastapi>=0.1.1 (from versions: 0.1.0)
+ERROR: No matching distribution found for opencensus-ext-fastapi>=0.1.1
+
+[notice] A new release of pip is available: 24.0 -> 25.3
+[notice] To update  run: pip install --upgrade pip
+2025-12-14T00:54:13  -  Next Steps: Please review your requirements.txt
+2025-12-14T00:54:13  -  For more details you can browse to https://aka.ms/troubleshoot-python
+2025-12-14T00:54:13
+2025-12-14T00:54:13  Warnings (0)
+2025-12-14T00:54:14
+2025-12-14T00:54:14  Deployment Failed. deployer = OneDeploy deploymentPath = OneDeploy

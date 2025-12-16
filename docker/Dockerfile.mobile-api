@@ -1,0 +1,15 @@
+# Codex Dominion - Mobile API Gateway Dockerfile
+
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dependencies
+RUN npm install express cors body-parser axios
+
+# Copy server file
+COPY docker/mobile-api-server.js server.js
+
+EXPOSE 8080
+
+CMD ["node", "server.js"]

@@ -100,7 +100,10 @@ with tab_summary:
     cycles = data.get("cycles", [])
     if cycles:
         for c in cycles:
-            st.write(f"• {c['id']} — {c['name']} [{c['state']}]")
+            cycle_id = c.get('id', 'Unknown')
+            cycle_name = c.get('name', c.get('title', 'Unnamed'))
+            cycle_state = c.get('state', c.get('status', 'unknown'))
+            st.write(f"• {cycle_id} — {cycle_name} [{cycle_state}]")
     else:
         st.write("No cycles recorded.")
 

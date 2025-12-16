@@ -8,6 +8,10 @@ import datetime
 import json
 import os
 import sys
+import io
+
+# Fix Windows UTF-8 encoding for emojis
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 from flask import Flask, jsonify, render_template_string
 

@@ -1,0 +1,165 @@
+2025-12-14T04:04:39  Fetching changes.
+2025-12-14T04:04:39    Starting  LocalZipHandler
+2025-12-14T04:04:39    Cleaning up temp folders from previous zip deployments and extracting pushed zip file /tmp/zipdeploy/577e1897-96a4-4e15-9fcf-0b253858ec07.zip (0.06 MB) to /tmp/zipdeploy/extracted
+2025-12-14T04:04:43  Updating submodules.
+2025-12-14T04:04:43  Preparing deployment for commit id '8805493e-6'.
+2025-12-14T04:04:43  PreDeployment: context.CleanOutputPath False
+2025-12-14T04:04:43  PreDeployment: context.OutputPath /home/site/wwwroot
+2025-12-14T04:04:43  Repository path is /tmp/zipdeploy/extracted
+2025-12-14T04:04:44  Running oryx build...
+2025-12-14T04:04:44    Command: oryx build /tmp/zipdeploy/extracted -o /home/site/wwwroot --platform python --platform-version 3.11 -p virtualenv_name=antenv --log-file /tmp/build-debug.log  -i /tmp/8de3ac5e9877a37 --compress-destination-dir | tee /tmp/oryx-build.log
+2025-12-14T04:04:46    Operation performed by Microsoft Oryx, https://github.com/Microsoft/Oryx
+2025-12-14T04:04:46    You can report issues at https://github.com/Microsoft/Oryx/issues
+2025-12-14T04:04:46
+2025-12-14T04:04:46    Oryx Version: 0.2.20251022.1+bef98bc7139feefaa74be16de9d835e2c85385d4, Commit: bef98bc7139feefaa74be16de9d835e2c85385d4, ReleaseTagName: 20251022.1
+2025-12-14T04:04:46
+2025-12-14T04:04:46    Build Operation ID: 412da6a1fc8a28b1
+2025-12-14T04:04:47    Repository Commit : 8805493e-6900-4b3b-80da-19d02b5e630a
+2025-12-14T04:04:47    OS Type           : bullseye
+2025-12-14T04:04:47    Image Type        : githubactions
+2025-12-14T04:04:47
+2025-12-14T04:04:47    Primary SDK Storage URL: https://oryx-cdn.microsoft.io
+2025-12-14T04:04:47    Backup SDK Storage URL:
+2025-12-14T04:04:47    Detecting platforms...
+2025-12-14T04:04:47    External SDK provider is enabled.
+2025-12-14T04:04:47    Requesting metadata for platform python from external SDK provider
+2025-12-14T04:04:47    Requesting metadata for platform python from external SDK provider
+2025-12-14T04:04:48    Detected following platforms:
+2025-12-14T04:04:48      python: 3.11.14
+2025-12-14T04:04:48    Requesting metadata for platform python from external SDK provider
+2025-12-14T04:04:51    Version '3.11.14' of platform 'python' is not installed. Generating script to install it...
+2025-12-14T04:04:52
+2025-12-14T04:04:52    Using intermediate directory '/tmp/8de3ac5e9877a37'.
+2025-12-14T04:04:52
+2025-12-14T04:04:52    Copying files to the intermediate directory...
+2025-12-14T04:04:52    Done in 0 sec(s).
+2025-12-14T04:04:52
+2025-12-14T04:04:52    Source directory     : /tmp/8de3ac5e9877a37
+2025-12-14T04:04:52    Destination directory: /home/site/wwwroot
+2025-12-14T04:04:52
+2025-12-14T04:04:52
+2025-12-14T04:04:52    Downloading and extracting 'python' version '3.11.14' to '/tmp/oryx/platforms/python/3.11.14'...
+2025-12-14T04:04:52    Detected image debian flavor: bullseye.
+2025-12-14T04:04:52    Skipping download of python version 3.11.14 as it is available in external sdk provider cache...
+2025-12-14T04:04:52    Extracting contents...
+2025-12-14T04:05:11    Successfully extracted python version 3.11.14 from external sdk provider cache...
+2025-12-14T04:05:11    Done in 19 sec(s).
+2025-12-14T04:05:11
+2025-12-14T04:05:11    image detector file exists, platform is python..
+2025-12-14T04:05:11    OS detector file exists, OS is bullseye..
+2025-12-14T04:05:12    Python Version: /tmp/oryx/platforms/python/3.11.14/bin/python3.11
+2025-12-14T04:05:12    Creating directory for command manifest file if it does not exist
+2025-12-14T04:05:12    Removing existing manifest file
+2025-12-14T04:05:12    Python Virtual Environment: antenv
+2025-12-14T04:05:12    Creating virtual environment...
+2025-12-14T04:05:12    Executing: /tmp/oryx/platforms/python/3.11.14/bin/python3.11 -m venv antenv --copies --system-site-packages
+2025-12-14T04:05:30    Activating virtual environment...
+2025-12-14T04:05:31    Running pip install...
+2025-12-14T04:05:55    [04:05:33+0000] Collecting fastapi>=0.104.0 (from -r requirements.txt (line 1))
+2025-12-14T04:05:55    [04:05:33+0000]   Downloading fastapi-0.124.4-py3-none-any.whl.metadata (30 kB)
+2025-12-14T04:05:55    [04:05:33+0000] Collecting uvicorn>=0.24.0 (from -r requirements.txt (line 2))
+2025-12-14T04:05:55    [04:05:33+0000]   Downloading uvicorn-0.38.0-py3-none-any.whl.metadata (6.8 kB)
+2025-12-14T04:05:55    [04:05:33+0000] Collecting gunicorn>=21.2.0 (from -r requirements.txt (line 3))
+2025-12-14T04:05:55    [04:05:33+0000]   Downloading gunicorn-23.0.0-py3-none-any.whl.metadata (4.4 kB)
+2025-12-14T04:05:55    [04:05:33+0000] Collecting pyyaml>=6.0.1 (from -r requirements.txt (line 4))
+2025-12-14T04:05:55    [04:05:33+0000]   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2025-12-14T04:05:55    [04:05:34+0000] Collecting python-multipart>=0.0.6 (from -r requirements.txt (line 5))
+2025-12-14T04:05:56    [04:05:34+0000]   Downloading python_multipart-0.0.20-py3-none-any.whl.metadata (1.8 kB)
+2025-12-14T04:05:56    [04:05:35+0000] Collecting cryptography>=41.0.0 (from -r requirements.txt (line 6))
+2025-12-14T04:05:56    [04:05:35+0000]   Downloading cryptography-46.0.3-cp311-abi3-manylinux_2_28_x86_64.whl.metadata (5.7 kB)
+2025-12-14T04:05:56    [04:05:35+0000] Collecting pydantic>=2.0.0 (from -r requirements.txt (line 7))
+2025-12-14T04:05:56    [04:05:35+0000]   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+2025-12-14T04:05:56    [04:05:35+0000]      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 3.2 MB/s eta 0:00:00
+2025-12-14T04:05:56    [04:05:36+0000] Collecting starlette<0.51.0,>=0.40.0 (from fastapi>=0.104.0->-r requirements.txt (line 1))
+2025-12-14T04:05:56    [04:05:36+0000]   Downloading starlette-0.50.0-py3-none-any.whl.metadata (6.3 kB)
+2025-12-14T04:05:56    [04:05:36+0000] Collecting typing-extensions>=4.8.0 (from fastapi>=0.104.0->-r requirements.txt (line 1))
+2025-12-14T04:05:56    [04:05:36+0000]   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2025-12-14T04:05:57    [04:05:36+0000] Collecting annotated-doc>=0.0.2 (from fastapi>=0.104.0->-r requirements.txt (line 1))
+2025-12-14T04:05:57    [04:05:36+0000]   Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+2025-12-14T04:05:57    [04:05:36+0000] Collecting click>=7.0 (from uvicorn>=0.24.0->-r requirements.txt (line 2))
+2025-12-14T04:05:57    [04:05:36+0000]   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+2025-12-14T04:05:57    [04:05:36+0000] Collecting h11>=0.8 (from uvicorn>=0.24.0->-r requirements.txt (line 2))
+2025-12-14T04:05:57    [04:05:36+0000]   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2025-12-14T04:05:57    [04:05:37+0000] Collecting packaging (from gunicorn>=21.2.0->-r requirements.txt (line 3))
+2025-12-14T04:05:57    [04:05:37+0000]   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+2025-12-14T04:05:57    [04:05:37+0000] Collecting cffi>=2.0.0 (from cryptography>=41.0.0->-r requirements.txt (line 6))
+2025-12-14T04:05:57    [04:05:37+0000]   Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+2025-12-14T04:05:57    [04:05:37+0000] Collecting annotated-types>=0.6.0 (from pydantic>=2.0.0->-r requirements.txt (line 7))
+2025-12-14T04:05:57    [04:05:37+0000]   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+2025-12-14T04:05:57    [04:05:41+0000] Collecting pydantic-core==2.41.5 (from pydantic>=2.0.0->-r requirements.txt (line 7))
+2025-12-14T04:05:57    [04:05:41+0000]   Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+2025-12-14T04:05:57    [04:05:42+0000] Collecting typing-inspection>=0.4.2 (from pydantic>=2.0.0->-r requirements.txt (line 7))
+2025-12-14T04:05:58    [04:05:42+0000]   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+2025-12-14T04:05:58    [04:05:42+0000] Collecting pycparser (from cffi>=2.0.0->cryptography>=41.0.0->-r requirements.txt (line 6))
+2025-12-14T04:05:58    [04:05:42+0000]   Downloading pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+2025-12-14T04:05:58    [04:05:42+0000] Collecting anyio<5,>=3.6.2 (from starlette<0.51.0,>=0.40.0->fastapi>=0.104.0->-r requirements.txt (line 1))
+2025-12-14T04:05:58    [04:05:42+0000]   Downloading anyio-4.12.0-py3-none-any.whl.metadata (4.3 kB)
+2025-12-14T04:05:58    [04:05:42+0000] Collecting idna>=2.8 (from anyio<5,>=3.6.2->starlette<0.51.0,>=0.40.0->fastapi>=0.104.0->-r requirements.txt (line 1))
+2025-12-14T04:05:58    [04:05:42+0000]   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+2025-12-14T04:05:58    [04:05:42+0000] Downloading fastapi-0.124.4-py3-none-any.whl (113 kB)
+2025-12-14T04:05:58    [04:05:43+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 113.3/113.3 kB 3.6 MB/s eta 0:00:00
+2025-12-14T04:05:58    [04:05:43+0000] Downloading uvicorn-0.38.0-py3-none-any.whl (68 kB)
+2025-12-14T04:05:58    [04:05:43+0000]    ━━━━━��━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 68.1/68.1 kB 2.4 MB/s eta 0:00:00
+2025-12-14T04:05:58    [04:05:43+0000] Downloading gunicorn-23.0.0-py3-none-any.whl (85 kB)
+2025-12-14T04:05:58    [04:05:43+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 85.0/85.0 kB 394.1 kB/s eta 0:00:00
+2025-12-14T04:05:58    [04:05:43+0000] Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+2025-12-14T04:05:58    [04:05:43+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 9.4 MB/s eta 0:00:00
+2025-12-14T04:05:58    [04:05:43+0000] Downloading python_multipart-0.0.20-py3-none-any.whl (24 kB)
+2025-12-14T04:05:58    [04:05:43+0000] Downloading cryptography-46.0.3-cp311-abi3-manylinux_2_28_x86_64.whl (4.5 MB)
+2025-12-14T04:05:59    [04:05:43+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 22.4 MB/s eta 0:00:00
+2025-12-14T04:05:59    [04:05:43+0000] Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+2025-12-14T04:05:59    [04:05:43+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 463.6/463.6 kB 8.1 MB/s eta 0:00:00
+2025-12-14T04:05:59    [04:05:43+0000] Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+2025-12-14T04:05:59    [04:05:43+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 22.3 MB/s eta 0:00:00
+2025-12-14T04:05:59    [04:05:43+0000] Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+2025-12-14T04:05:59    [04:05:43+0000] Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+2025-12-14T04:05:59    [04:05:43+0000] Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (215 kB)
+2025-12-14T04:05:59    [04:05:43+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 215.6/215.6 kB 7.9 MB/s eta 0:00:00
+2025-12-14T04:05:59    [04:05:43+0000] Downloading click-8.3.1-py3-none-any.whl (108 kB)
+2025-12-14T04:05:59    [04:05:44+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.3/108.3 kB 4.5 MB/s eta 0:00:00
+2025-12-14T04:05:59    [04:05:44+0000] Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2025-12-14T04:05:59    [04:05:44+0000] Downloading starlette-0.50.0-py3-none-any.whl (74 kB)
+2025-12-14T04:05:59    [04:05:44+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 74.0/74.0 kB 2.1 MB/s eta 0:00:00
+2025-12-14T04:05:59    [04:05:44+0000] Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2025-12-14T04:06:00    [04:05:44+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 1.3 MB/s eta 0:00:00
+2025-12-14T04:06:00    [04:05:44+0000] Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+2025-12-14T04:06:00    [04:05:44+0000] Downloading packaging-25.0-py3-none-any.whl (66 kB)
+2025-12-14T04:06:00    [04:05:44+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━��━━━━━ 66.5/66.5 kB 2.2 MB/s eta 0:00:00
+2025-12-14T04:06:00    [04:05:44+0000] Downloading anyio-4.12.0-py3-none-any.whl (113 kB)
+2025-12-14T04:06:00    [04:05:44+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 113.4/113.4 kB 4.4 MB/s eta 0:00:00
+2025-12-14T04:06:00    [04:05:44+0000] Downloading pycparser-2.23-py3-none-any.whl (118 kB)
+2025-12-14T04:06:00    [04:05:44+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 118.1/118.1 kB 3.4 MB/s eta 0:00:00
+2025-12-14T04:06:00    [04:05:44+0000] Downloading idna-3.11-py3-none-any.whl (71 kB)
+2025-12-14T04:06:00    [04:05:44+0000]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.0/71.0 kB 723.9 kB/s eta 0:00:00
+2025-12-14T04:06:00    [04:05:45+0000] Installing collected packages: typing-extensions, pyyaml, python-multipart, pycparser, packaging, idna, h11, click, annotated-types, annotated-doc, uvicorn, typing-inspection, pydantic-core, gunicorn, cffi, anyio, starlette, pydantic, cryptography, fastapi
+2025-12-14T04:06:00    [04:05:52+0000] Successfully installed annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.12.0 cffi-2.0.0 click-8.3.1 cryptography-46.0.3 fastapi-0.124.4 gunicorn-23.0.0 h11-0.16.0 idna-3.11 packaging-25.0 pycparser-2.23 pydantic-2.12.5 pydantic-core-2.41.5 python-multipart-0.0.20 pyyaml-6.0.3 starlette-0.50.0 typing-extensions-4.15.0 typing-inspection-0.4.2 uvicorn-0.38.0
+2025-12-14T04:06:01
+2025-12-14T04:06:01    [notice] A new release of pip is available: 24.0 -> 25.3
+2025-12-14T04:06:01    [notice] To update, run: pip install --upgrade pip
+2025-12-14T04:06:01    Not a vso image, so not writing build commands
+2025-12-14T04:06:01    Preparing output...
+2025-12-14T04:06:01
+2025-12-14T04:06:01    Copying files to destination directory '/tmp/_preCompressedDestinationDir'...
+2025-12-14T04:06:02    Done in 7 sec(s).
+2025-12-14T04:06:02    Compressing content of directory '/tmp/_preCompressedDestinationDir'...
+2025-12-14T04:06:14    Copied the compressed output to '/home/site/wwwroot'
+2025-12-14T04:06:14
+2025-12-14T04:06:15    Removing existing manifest file
+2025-12-14T04:06:15    Creating a manifest file...
+2025-12-14T04:06:15    Manifest file created.
+2025-12-14T04:06:15    Copying .ostype to manifest output directory.
+2025-12-14T04:06:15
+2025-12-14T04:06:15    Done in 83 sec(s).
+2025-12-14T04:06:15  Running post deployment command(s)...
+2025-12-14T04:06:15
+2025-12-14T04:06:15  Generating summary of Oryx build
+2025-12-14T04:06:16  Parsing the build logs
+2025-12-14T04:06:16  Found 0 issue(s)
+2025-12-14T04:06:16
+2025-12-14T04:06:16  Build Summary :
+2025-12-14T04:06:16  ===============
+2025-12-14T04:06:16  Errors (0)
+2025-12-14T04:06:16  Warnings (0)
+2025-12-14T04:06:17
+2025-12-14T04:06:17  Triggering container recycle for OneDeploy by adding/updating restartTrigger.txt to the site root path
+2025-12-14T04:06:17  Deployment successful. deployer = OneDeploy deploymentPath = OneDeploy

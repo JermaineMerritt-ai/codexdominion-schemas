@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codex-dot300
+  namespace: codex-dominion
+  labels:
+    app: dot300-agents
+    tier: backend
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: dot300-agents
+  template:
+    metadata:
+      labels:
+        app: dot300-agents
+        tier: backend
+    spec:
+      containers:
+      - name: dot300
+        image: codexdominion/dot300:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8300
+          name: http
+        env:
+        - name: AGENT_PORT
+          value: "8300"
+        - name: AGENTS_FILE
+          value: "/app/dot300_agents.json"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8300
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8300
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 2
+        volumeMounts:
+        - name: agents-data
+          mountPath: /app/dot300_agents.json
+          subPath: dot300_agents.json
+      volumes:
+      - name: agents-data
+        configMap:
+          name: dot300-agents-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dot300-service
+  namespace: codex-dominion
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "false"
+spec:
+  selector:
+    app: dot300-agents
+  ports:
+  - protocol: TCP
+    port: 8300
+    targetPort: 8300
+  type: LoadBalancer
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: dot300-hpa
+  namespace: codex-dominion
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: codex-dot300
+  minReplicas: 2
+  maxReplicas: 8
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 75
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 85

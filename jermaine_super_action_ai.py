@@ -672,9 +672,27 @@ Best regards,
             )
 
 
+def load_copilot_instructions_from_file():
+    """Load Copilot instructions from the .github directory"""
+    instructions_path = ".github/copilot-instructions.md"
+    if os.path.exists(instructions_path):
+        try:
+            with open(instructions_path, "r", encoding="utf-8") as f:
+                return f.read()
+        except Exception as e:
+            st.error(f"Error loading instructions: {e}")
+    return None
+
 def show_copilot_instructions():
     """Show Copilot instructions interface"""
     st.header("📚 Copilot Instructions Management")
+
+    # Auto-load instructions from file if not in session state
+    if "copilot_instructions" not in st.session_state:
+        file_instructions = load_copilot_instructions_from_file()
+        if file_instructions:
+            st.session_state.copilot_instructions = file_instructions
+            st.session_state.instructions_source = "auto-loaded"
 
     col1, col2 = st.columns(2)
 
@@ -682,11 +700,15 @@ def show_copilot_instructions():
         st.subheader("📖 Current Instructions")
 
         if "copilot_instructions" in st.session_state:
+            # Show source
+            source = st.session_state.get("instructions_source", "unknown")
             st.markdown(
-                """
+                f"""
             <div class="doc-upload">
                 <h4>✅ Instructions Loaded</h4>
                 <p>Jermaine has access to your Copilot instructions!</p>
+                <p style="font-size:0.9em;opacity:0.8">Source: {source}</p>
+                <p style="font-size:0.9em;">Length: {len(st.session_state.copilot_instructions):,} characters</p>
             </div>
             """,
                 unsafe_allow_html=True,
@@ -694,16 +716,37 @@ def show_copilot_instructions():
 
             with st.expander("📄 View Full Instructions"):
                 st.markdown(st.session_state.copilot_instructions)
+
+            # Extract key sections
+            instructions = st.session_state.copilot_instructions
+            with st.expander("🔑 Key Information Extracted"):
+                st.markdown("**Architecture:** Council Seal → Sovereigns → Custodians → Industry Agents")
+                st.markdown("**Tech Stack:** Next.js 14+, FastAPI, Streamlit, Docker, Kubernetes")
+                st.markdown("**Data:** JSON ledgers (codex_ledger.json, proclamations.json)")
+                st.markdown("**Ports:** 3000 (main), 8515-8517+ (dashboards), 5555 (working dashboard)")
+                st.markdown("**Multi-Cloud:** Azure (primary), GCP, IONOS VPS")
         else:
             st.markdown(
                 """
             <div class="action-card">
-                <h4>📚 No Instructions Loaded</h4>
-                <p>Upload your Copilot-instruction.md file to enhance Jermaine's capabilities!</p>
+                <h4>📚 No Instructions Found</h4>
+                <p>Instructions file not found at .github/copilot-instructions.md</p>
+                <p>Upload manually or create the file in your project.</p>
             </div>
             """,
                 unsafe_allow_html=True,
             )
+
+        # Auto-load button
+        if st.button("🔄 Reload from File"):
+            file_instructions = load_copilot_instructions_from_file()
+            if file_instructions:
+                st.session_state.copilot_instructions = file_instructions
+                st.session_state.instructions_source = "manually reloaded"
+                st.success("✅ Instructions reloaded from file!")
+                st.rerun()
+            else:
+                st.error("❌ Instructions file not found at .github/copilot-instructions.md")
 
         # Upload new instructions
         st.subheader("📤 Upload New Instructions")
@@ -716,24 +759,72 @@ def show_copilot_instructions():
         if new_instructions:
             content = str(new_instructions.read(), "utf-8")
             st.session_state.copilot_instructions = content
+            st.session_state.instructions_source = "uploaded"
             st.success("✅ Instructions updated successfully!")
             st.rerun()
 
     with col2:
-        st.subheader("🤖 Jermaine's Integration")
+        st.subheader("🤖 Jermaine's Enhanced Capabilities")
 
-        integration_features = [
-            "📝 Enhanced conversation understanding",
-            "🎯 Improved task completion",
-            "🔧 Better system integration",
-            "💡 Contextual suggestions",
-            "⚡ Optimized responses",
-            "🌟 Personalized assistance",
-        ]
+        if "copilot_instructions" in st.session_state:
+            st.markdown(
+                """
+            <div class="ai-response">
+                <h4>🧠 Knowledge Enhanced!</h4>
+                <p>I now understand your complete Codex Dominion architecture!</p>
+            </div>
+            """,
+                unsafe_allow_html=True,
+            )
 
-        st.markdown("**With Copilot Instructions, Jermaine gains:**")
-        for feature in integration_features:
-            st.markdown(f"• {feature}")
+            # Show what Jermaine learned
+            st.markdown("**🎯 What I Now Know:**")
+
+            knowledge_areas = {
+                "🏗️ Architecture": [
+                    "Council Seal governance structure",
+                    "Sovereigns (apps/) layer",
+                    "Custodians (packages/) layer",
+                    "Industry Agents & Avatars",
+                ],
+                "💻 Technology Stack": [
+                    "Next.js 14+ (Static export)",
+                    "FastAPI + Python 3.10+",
+                    "Streamlit dashboards",
+                    "Docker, Kubernetes, Terraform",
+                ],
+                "📊 Data Systems": [
+                    "JSON ledger pattern",
+                    "codex_ledger.json structure",
+                    "Ceremonial terminology",
+                    "ISO 8601 timestamps",
+                ],
+                "🚀 Deployment": [
+                    "Multi-cloud (Azure, GCP, IONOS)",
+                    "48+ GitHub Actions workflows",
+                    "Port management (20+ services)",
+                    "Windows PowerShell scripts",
+                ],
+            }
+
+            for category, items in knowledge_areas.items():
+                with st.expander(category):
+                    for item in items:
+                        st.markdown(f"✓ {item}")
+
+        else:
+            integration_features = [
+                "📝 Enhanced conversation understanding",
+                "🎯 Improved task completion",
+                "🔧 Better system integration",
+                "💡 Contextual suggestions",
+                "⚡ Optimized responses",
+                "🌟 Personalized assistance",
+            ]
+
+            st.markdown("**With Copilot Instructions, Jermaine gains:**")
+            for feature in integration_features:
+                st.markdown(f"• {feature}")
 
         if st.button("🚀 Test Enhanced Jermaine"):
             if "copilot_instructions" in st.session_state:

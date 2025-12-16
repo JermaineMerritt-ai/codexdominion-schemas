@@ -91,9 +91,11 @@ All AI systems honor:
   - Static export from Next.js 14+ App Router
   - No port 443 blocking issues (Azure-managed)
 
-- **Backend (Container Instance)**: http://codex-api.eastus.azurecontainer.io:8001
-  - FastAPI services
-  - Monthly cost: ~$20
+- **Backend (Container App with SSL)**: https://codex-backend-https.delightfulpond-6c97660b.eastus2.azurecontainerapps.io
+  - FastAPI services with automatic HTTPS
+  - Auto-scaling (1-3 replicas)
+  - Monthly cost: ~$30
+  - Legacy HTTP endpoint: http://codex-api.eastus2.azurecontainer.io:8000
 
 - **Container Registry**: `codexdominionacr.azurecr.io`
   - Stores Docker images (`jmerritt48/*` namespace)

@@ -1,0 +1,62 @@
+services:
+  #===========================================================================
+  # DOT300 AGENT API (Port 8300)
+  #===========================================================================
+  dot300:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dot300
+    container_name: codex-dot300
+    ports:
+      - "8300:8300"
+    volumes:
+      - ./dot300_agents.json:/app/dot300_agents.json:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8300/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - codex-test
+
+  #===========================================================================
+  # MOBILE API GATEWAY (Port 8080)
+  #===========================================================================
+  mobile-api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.mobile-api
+    container_name: codex-mobile-api
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - DASHBOARD_URL=http://localhost:5555
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - codex-test
+
+  #===========================================================================
+  # WEBSOCKET CHAT SERVER (Port 8765)
+  #===========================================================================
+  chat:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.chat
+    container_name: codex-chat
+    ports:
+      - "8765:8765"
+    restart: unless-stopped
+    networks:
+      - codex-test
+
+networks:
+  codex-test:
+    driver: bridge

@@ -2154,6 +2154,481 @@ def copilot():
     """VS Code Copilot page"""
     return render_template_string(COPILOT_HTML)
 
+@app.route('/social')
+def social():
+    """Social Media Management page"""
+    social_html = """
+    <!DOCTYPE html>
+    <html>
+    <head><title>📱 Social Media Management</title>
+    <style>
+        body { font-family: Arial; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; }
+        h1 { color: #667eea; }
+        .platform { background: #f5f5f5; padding: 20px; margin: 15px 0; border-radius: 10px; }
+        .btn { background: #667eea; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        .nav { margin: 20px 0; }
+        .nav a { color: #667eea; text-decoration: none; margin-right: 15px; }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav"><a href="/">← Back to Home</a></div>
+            <h1>📱 Social Media Management</h1>
+            <p>Manage all your social media platforms from one place.</p>
+
+            <div class="platform">
+                <h2>🎥 YouTube</h2>
+                <p>Status: ✅ Connected</p>
+                <p>Subscribers: 1,234 | Videos: 56 | Views: 45.6K</p>
+                <button class="btn">Upload Video</button>
+                <button class="btn">View Analytics</button>
+            </div>
+
+            <div class="platform">
+                <h2>📸 Instagram</h2>
+                <p>Status: ✅ Connected</p>
+                <p>Followers: 5,678 | Posts: 234 | Engagement: 4.2%</p>
+                <button class="btn">Create Post</button>
+                <button class="btn">View Insights</button>
+            </div>
+
+            <div class="platform">
+                <h2>🎵 TikTok</h2>
+                <p>Status: ✅ Connected</p>
+                <p>Followers: 12.3K | Videos: 145 | Likes: 234K</p>
+                <button class="btn">Upload Video</button>
+                <button class="btn">View Analytics</button>
+            </div>
+
+            <div class="platform">
+                <h2>👔 LinkedIn</h2>
+                <p>Status: ✅ Connected</p>
+                <p>Connections: 3,456 | Posts: 89 | Impressions: 67K</p>
+                <button class="btn">Create Post</button>
+                <button class="btn">View Stats</button>
+            </div>
+
+            <div class="platform">
+                <h2>📌 Pinterest</h2>
+                <p>Status: ✅ Connected</p>
+                <p>Followers: 2,345 | Pins: 567 | Monthly Views: 123K</p>
+                <button class="btn">Create Pin</button>
+                <button class="btn">View Analytics</button>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+    return social_html
+
+@app.route('/affiliate')
+def affiliate():
+    """Affiliate Marketing page"""
+    affiliate_html = """
+    <!DOCTYPE html>
+    <html>
+    <head><title>💰 Affiliate Marketing</title>
+    <style>
+        body { font-family: Arial; background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; }
+        h1 { color: #ff6b35; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+        .stat { background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center; }
+        .stat h3 { color: #667eea; margin-bottom: 10px; }
+        .stat p { font-size: 2em; font-weight: bold; color: #ff6b35; }
+        .program { background: #f9f9f9; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 4px solid #667eea; }
+        .nav { margin: 20px 0; }
+        .nav a { color: #667eea; text-decoration: none; margin-right: 15px; }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav"><a href="/">← Back to Home</a></div>
+            <h1>💰 Affiliate Marketing Dashboard</h1>
+            <p>Track your affiliate programs and earnings.</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <h3>Total Revenue</h3>
+                    <p>$12,345</p>
+                </div>
+                <div class="stat">
+                    <h3>Active Programs</h3>
+                    <p>8</p>
+                </div>
+                <div class="stat">
+                    <h3>Clicks Today</h3>
+                    <p>234</p>
+                </div>
+                <div class="stat">
+                    <h3>Conversions</h3>
+                    <p>45</p>
+                </div>
+            </div>
+
+            <h2>Active Programs</h2>
+            <div class="program">
+                <h3>Amazon Associates</h3>
+                <p>Revenue: $4,567 | Clicks: 1,234 | Conversion Rate: 3.2%</p>
+                <p>Status: ✅ Active</p>
+            </div>
+
+            <div class="program">
+                <h3>ShareASale</h3>
+                <p>Revenue: $3,456 | Clicks: 987 | Conversion Rate: 4.1%</p>
+                <p>Status: ✅ Active</p>
+            </div>
+
+            <div class="program">
+                <h3>CJ Affiliate</h3>
+                <p>Revenue: $2,345 | Clicks: 756 | Conversion Rate: 3.8%</p>
+                <p>Status: ✅ Active</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+    return affiliate_html
+
+@app.route('/chatbot')
+def chatbot():
+    """Action Chatbot page"""
+    chatbot_html = """
+    <!DOCTYPE html>
+    <html>
+    <head><title>🤖 Action Chatbot</title>
+    <style>
+        body { font-family: Arial; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; }
+        h1 { color: #667eea; }
+        .chat-interface { background: #f5f5f5; padding: 30px; border-radius: 10px; margin: 20px 0; min-height: 400px; }
+        .message { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .user-message { background: #667eea; color: white; text-align: right; }
+        .input-area { display: flex; gap: 10px; margin-top: 20px; }
+        input { flex: 1; padding: 15px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+        button { background: #667eea; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; }
+        .nav { margin: 20px 0; }
+        .nav a { color: #667eea; text-decoration: none; margin-right: 15px; }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav"><a href="/">← Back to Home</a></div>
+            <h1>🤖 Action Chatbot</h1>
+            <p>AI-powered chatbot for customer interactions and automation.</p>
+
+            <div class="chat-interface">
+                <div class="message">
+                    <strong>Bot:</strong> Welcome to Action Chatbot! How can I assist you today?
+                </div>
+                <div class="message user-message">
+                    <strong>You:</strong> Hello! I need help with social media scheduling.
+                </div>
+                <div class="message">
+                    <strong>Bot:</strong> I can help you schedule posts across multiple platforms. Which platform would you like to start with?
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" placeholder="Type your message here..." />
+                <button>Send</button>
+            </div>
+
+            <h2>🚀 Quick Actions</h2>
+            <p>• Schedule social media posts</p>
+            <p>• Generate content ideas</p>
+            <p>• Analyze engagement metrics</p>
+            <p>• Automate customer responses</p>
+            <p>• Create marketing campaigns</p>
+        </div>
+    </body>
+    </html>
+    """
+    return chatbot_html
+
+@app.route('/algorithm')
+def algorithm():
+    """Algorithm AI page"""
+    algorithm_html = """
+    <!DOCTYPE html>
+    <html>
+    <head><title>🧠 Algorithm AI</title>
+    <style>
+        body { font-family: Arial; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; }
+        h1 { color: #4facfe; }
+        .algorithm { background: #f5f5f5; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 4px solid #4facfe; }
+        .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+        .metric { background: #f9f9f9; padding: 20px; border-radius: 10px; text-align: center; }
+        .btn { background: #4facfe; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .nav { margin: 20px 0; }
+        .nav a { color: #4facfe; text-decoration: none; margin-right: 15px; }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav"><a href="/">← Back to Home</a></div>
+            <h1>🧠 Algorithm AI</h1>
+            <p>Advanced AI algorithms for optimization and decision making.</p>
+
+            <div class="metrics">
+                <div class="metric">
+                    <h3>Models Running</h3>
+                    <p style="font-size: 2em; color: #4facfe;">12</p>
+                </div>
+                <div class="metric">
+                    <h3>Predictions/Day</h3>
+                    <p style="font-size: 2em; color: #4facfe;">45.6K</p>
+                </div>
+                <div class="metric">
+                    <h3>Accuracy</h3>
+                    <p style="font-size: 2em; color: #4facfe;">98.5%</p>
+                </div>
+                <div class="metric">
+                    <h3>Processing Time</h3>
+                    <p style="font-size: 2em; color: #4facfe;">0.3s</p>
+                </div>
+            </div>
+
+            <h2>Active Algorithms</h2>
+            <div class="algorithm">
+                <h3>Content Optimization Algorithm</h3>
+                <p>Analyzes and optimizes content for maximum engagement</p>
+                <p>Status: ✅ Running | Last Updated: 5 min ago</p>
+                <button class="btn">View Details</button>
+                <button class="btn">Run Analysis</button>
+            </div>
+
+            <div class="algorithm">
+                <h3>Revenue Prediction Model</h3>
+                <p>Predicts revenue trends based on historical data and market conditions</p>
+                <p>Status: ✅ Running | Last Updated: 10 min ago</p>
+                <button class="btn">View Details</button>
+                <button class="btn">Generate Report</button>
+            </div>
+
+            <div class="algorithm">
+                <h3>Customer Behavior Analysis</h3>
+                <p>Tracks and predicts customer behavior patterns</p>
+                <p>Status: ✅ Running | Last Updated: 2 min ago</p>
+                <button class="btn">View Details</button>
+                <button class="btn">Export Data</button>
+            </div>
+
+            <div class="algorithm">
+                <h3>Social Media Engagement Optimizer</h3>
+                <p>Optimizes posting times and content for maximum reach</p>
+                <p>Status: ✅ Running | Last Updated: 1 min ago</p>
+                <button class="btn">View Details</button>
+                <button class="btn">Get Recommendations</button>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+    return algorithm_html
+
+@app.route('/autopublish')
+def autopublish():
+    """Auto-Publish page"""
+    autopublish_html = """
+    <!DOCTYPE html>
+    <html>
+    <head><title>🚀 Auto-Publish</title>
+    <style>
+        body { font-family: Arial; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; }
+        h1 { color: #f5576c; }
+        .schedule { background: #f5f5f5; padding: 20px; margin: 15px 0; border-radius: 10px; }
+        .platform-badge { display: inline-block; background: #667eea; color: white; padding: 5px 15px; border-radius: 15px; margin: 5px; }
+        .btn { background: #f5576c; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+        .stat { background: #f9f9f9; padding: 20px; border-radius: 10px; text-align: center; }
+        .nav { margin: 20px 0; }
+        .nav a { color: #f5576c; text-decoration: none; margin-right: 15px; }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav"><a href="/">← Back to Home</a></div>
+            <h1>🚀 Auto-Publish System</h1>
+            <p>Automated content publishing across all platforms.</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <h3>Scheduled Posts</h3>
+                    <p style="font-size: 2em; color: #f5576c;">47</p>
+                </div>
+                <div class="stat">
+                    <h3>Published Today</h3>
+                    <p style="font-size: 2em; color: #f5576c;">12</p>
+                </div>
+                <div class="stat">
+                    <h3>Success Rate</h3>
+                    <p style="font-size: 2em; color: #f5576c;">99.2%</p>
+                </div>
+                <div class="stat">
+                    <h3>Active Campaigns</h3>
+                    <p style="font-size: 2em; color: #f5576c;">8</p>
+                </div>
+            </div>
+
+            <h2>Upcoming Publications</h2>
+            <div class="schedule">
+                <h3>Product Launch Campaign</h3>
+                <p><strong>Scheduled:</strong> Today at 2:00 PM EST</p>
+                <span class="platform-badge">YouTube</span>
+                <span class="platform-badge">Instagram</span>
+                <span class="platform-badge">TikTok</span>
+                <span class="platform-badge">LinkedIn</span>
+                <p>Content: New product announcement video with promotional offer</p>
+                <button class="btn">Edit</button>
+                <button class="btn">Publish Now</button>
+                <button class="btn">Cancel</button>
+            </div>
+
+            <div class="schedule">
+                <h3>Weekly Newsletter</h3>
+                <p><strong>Scheduled:</strong> Tomorrow at 9:00 AM EST</p>
+                <span class="platform-badge">Email</span>
+                <span class="platform-badge">LinkedIn</span>
+                <p>Content: Weekly industry insights and tips</p>
+                <button class="btn">Edit</button>
+                <button class="btn">Publish Now</button>
+                <button class="btn">Cancel</button>
+            </div>
+
+            <div class="schedule">
+                <h3>Social Media Tips Series</h3>
+                <p><strong>Scheduled:</strong> Dec 18 at 11:00 AM EST</p>
+                <span class="platform-badge">Instagram</span>
+                <span class="platform-badge">Pinterest</span>
+                <span class="platform-badge">Facebook</span>
+                <p>Content: 10 tips for growing your social media presence</p>
+                <button class="btn">Edit</button>
+                <button class="btn">Publish Now</button>
+                <button class="btn">Cancel</button>
+            </div>
+
+            <h2>🎯 Quick Actions</h2>
+            <button class="btn">Schedule New Post</button>
+            <button class="btn">Create Campaign</button>
+            <button class="btn">View Analytics</button>
+            <button class="btn">Manage Templates</button>
+        </div>
+    </body>
+    </html>
+    """
+    return autopublish_html
+
+@app.route('/websites')
+def websites():
+    """Websites Management page"""
+    websites_html = """
+    <!DOCTYPE html>
+    <html>
+    <head><title>🌐 Websites Management</title>
+    <style>
+        body { font-family: Arial; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; }
+        h1 { color: #667eea; }
+        .website { background: #f5f5f5; padding: 20px; margin: 15px 0; border-radius: 10px; }
+        .btn { background: #667eea; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .status { display: inline-block; padding: 5px 15px; border-radius: 15px; margin: 5px; }
+        .status.online { background: #4caf50; color: white; }
+        .nav { margin: 20px 0; }
+        .nav a { color: #667eea; text-decoration: none; margin-right: 15px; }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav"><a href="/">← Back to Home</a></div>
+            <h1>🌐 Websites Management</h1>
+            <p>Manage all your websites and domains.</p>
+
+            <div class="website">
+                <h3>CodexDominion Main Site</h3>
+                <p><strong>URL:</strong> https://witty-glacier-0ebbd971e.3.azurestaticapps.net</p>
+                <span class="status online">✅ Online</span>
+                <p>Type: Azure Static Web App | SSL: ✅ Active | Uptime: 99.9%</p>
+                <button class="btn">View Site</button>
+                <button class="btn">Analytics</button>
+                <button class="btn">Settings</button>
+            </div>
+
+            <div class="website">
+                <h3>Backend API</h3>
+                <p><strong>URL:</strong> http://codex-api.eastus2.azurecontainer.io:8000</p>
+                <span class="status online">✅ Online</span>
+                <p>Type: Azure Container Instance | Health: ✅ Healthy | Response Time: 0.3s</p>
+                <button class="btn">API Docs</button>
+                <button class="btn">Monitor</button>
+                <button class="btn">Logs</button>
+            </div>
+
+            <button class="btn">Add New Website</button>
+        </div>
+    </body>
+    </html>
+    """
+    return websites_html
+
+@app.route('/stores')
+def stores():
+    """E-Commerce Stores page"""
+    stores_html = """
+    <!DOCTYPE html>
+    <html>
+    <head><title>🛒 E-Commerce Stores</title>
+    <style>
+        body { font-family: Arial; background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; }
+        h1 { color: #ff6b35; }
+        .store { background: #f5f5f5; padding: 20px; margin: 15px 0; border-radius: 10px; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+        .stat { background: white; padding: 15px; border-radius: 8px; text-align: center; }
+        .btn { background: #ff6b35; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .nav { margin: 20px 0; }
+        .nav a { color: #ff6b35; text-decoration: none; margin-right: 15px; }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav"><a href="/">← Back to Home</a></div>
+            <h1>🛒 E-Commerce Stores</h1>
+            <p>Manage your online stores and products.</p>
+
+            <div class="store">
+                <h3>WooCommerce Store</h3>
+                <p><strong>Status:</strong> ✅ Active</p>
+                <div class="stats">
+                    <div class="stat">
+                        <p><strong>Orders Today</strong></p>
+                        <p style="font-size: 2em; color: #ff6b35;">23</p>
+                    </div>
+                    <div class="stat">
+                        <p><strong>Revenue</strong></p>
+                        <p style="font-size: 2em; color: #ff6b35;">$2,345</p>
+                    </div>
+                    <div class="stat">
+                        <p><strong>Products</strong></p>
+                        <p style="font-size: 2em; color: #ff6b35;">156</p>
+                    </div>
+                </div>
+                <button class="btn">View Orders</button>
+                <button class="btn">Manage Products</button>
+                <button class="btn">Settings</button>
+            </div>
+
+            <button class="btn">Add New Store</button>
+            <button class="btn">Sync Inventory</button>
+        </div>
+    </body>
+    </html>
+    """
+    return stores_html
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     """Handle file uploads"""

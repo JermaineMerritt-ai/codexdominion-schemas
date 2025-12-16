@@ -2,16 +2,16 @@
   "meta": {
     "version": "1.0.0",
     "omega_seal": true,
-    "last_updated": "2025-11-22T21:20:35.473129Z",
+    "last_updated": "2025-12-16T13:35:00.000000Z",
     "custodian_authority": "Jermaine Merritt",
     "ledger_type": "SACRED_OPERATIONS_LEDGER",
     "seal_power": "MAXIMUM"
   },
   "heartbeat": {
     "status": "luminous",
-    "last_dispatch": "2025-11-08T07:42:47.896356Z",
-    "next_dispatch": "2025-11-08T06:00:00Z",
-    "pulse_count": 1247,
+    "last_dispatch": "2025-12-16T13:35:00.000000Z",
+    "next_dispatch": "2025-12-17T06:00:00Z",
+    "pulse_count": 1250,
     "health_status": "OPTIMAL"
   },
   "proclamations": [
@@ -30,6 +30,22 @@
       "issued_by": "Custodian CUS-001",
       "issued_date": "2025-11-07T12:00:00Z",
       "content": "The Grand Showcase decree for demonstrating complete system mastery."
+    },
+    {
+      "id": "PRC-003",
+      "title": "Azure Cloud Deployment Proclamation",
+      "status": "proclaimed",
+      "issued_by": "Custodian CUS-001",
+      "issued_date": "2025-12-14T00:40:23.082698Z",
+      "content": "Codex Dominion successfully deployed to Azure Cloud Platform. Frontend at www.codexdominion.app, Backend API at api.codexdominion.app with SSL certificates. Production operational at $14.37/month."
+    },
+    {
+      "id": "PRC-004",
+      "title": "Complete System Deployment - Master Dashboard Ultimate",
+      "status": "proclaimed",
+      "issued_by": "Custodian CUS-001",
+      "issued_date": "2025-12-16T13:35:00.000000Z",
+      "content": "Full system deployment completed. Master Dashboard Ultimate (52+ dashboards) operational at localhost:5000, Azure Static Web App live at witty-glacier-0ebbd971e.3.azurestaticapps.net, Backend API healthy at codex-api.eastus2.azurecontainer.io:8000. All tabs functional including Social Media, Affiliate, Chatbot, Algorithm AI, and Auto-Publish. ACR authentication resolved. Total deployment cost: ~$25/month."
     }
   ],
   "portals": [
@@ -38,18 +54,91 @@
       "manifest": "portals/codex-portal.yaml",
       "version": "1.0.0",
       "purpose": "Browse charters, codices, decrees as living law",
-      "artifacts": ["charters/", "codices/", "decrees/"],
-      "dashboards": ["council.json", "custodian.json"],
+      "artifacts": [
+        "charters/",
+        "codices/",
+        "decrees/"
+      ],
+      "dashboards": [
+        "council.json",
+        "custodian.json"
+      ],
       "timestamp": "2025-11-22T21:20:00Z"
     },
     {
       "name": "continuum-map-portal",
       "manifest": "portals/continuum-map.yaml",
       "version": "1.0.0",
-      "purpose": "Visual onboarding — narrates cycles (daily, seasonal, epochal)",
-      "artifacts": ["hymns/", "seals/"],
-      "dashboards": ["continuum.json"],
+      "purpose": "Visual onboarding \u2014 narrates cycles (daily, seasonal, epochal)",
+      "artifacts": [
+        "hymns/",
+        "seals/"
+      ],
+      "dashboards": [
+        "continuum.json"
+      ],
       "timestamp": "2025-11-22T21:20:00Z"
+    },
+    {
+      "name": "azure-production",
+      "manifest": "azure/production.yaml",
+      "version": "2.0.0",
+      "purpose": "Production deployment on Azure Cloud Platform - Complete Stack",
+      "artifacts": [
+        "frontend: https://witty-glacier-0ebbd971e.3.azurestaticapps.net",
+        "backend-api-https: https://codex-backend-https.delightfulpond-6c97660b.eastus2.azurecontainerapps.io",
+        "backend-api-http: http://codex-api.eastus2.azurecontainer.io:8000",
+        "backend-health: https://codex-backend-https.delightfulpond-6c97660b.eastus2.azurecontainerapps.io/health",
+        "master-dashboard: http://localhost:5000",
+        "container-registry: codexdominionacr.azurecr.io"
+      ],
+      "dashboards": [
+        "resource_group: codex-rg",
+        "region: East US 2",
+        "monthly_cost: $25.00",
+        "dashboard_tabs: 52+",
+        "deployment_date: 2025-12-16"
+      ],
+      "timestamp": "2025-12-16T13:35:00.000000Z",
+      "ssl_certificate": {
+        "issuer": "Azure Static Web Apps",
+        "expires": "2026-12-16T23:59:59+00:00",
+        "type": "Auto-managed",
+        "status": "Active"
+      },
+      "deployment_token": "STORED_IN_GITHUB_SECRETS",
+      "container_instance": {
+        "name": "codex-backend",
+        "image": "codexdominionacr.azurecr.io/codex-backend:latest",
+        "cpu": "1 vCPU",
+        "memory": "1 GB",
+        "status": "Running",
+        "health": "Healthy"
+      },
+      "github_workflows": [
+        "azure-static-web-apps-yellow-tree-0ed102210.yml",
+        "azure-backend-deploy.yml",
+        "deploy-complete-frontend.yml"
+      ]
+    },
+    {
+      "name": "master-dashboard-local",
+      "manifest": "local/dashboard.yaml",
+      "version": "1.0.0",
+      "purpose": "Master Dashboard Ultimate - Flask-based 52+ integrated dashboards",
+      "artifacts": [
+        "url: http://localhost:5000",
+        "file: flask_dashboard.py",
+        "launcher: START_DASHBOARD.ps1",
+        "tabs: Home, Engines, Tools, Dashboards, Chat, Agents, Websites, Stores, Social, Affiliate, Chatbot, Algorithm, Auto-Publish, Email, Documents, Avatars, Council, Copilot"
+      ],
+      "dashboards": [
+        "total_tabs: 52+",
+        "port: 5000",
+        "status: Running",
+        "framework: Flask"
+      ],
+      "timestamp": "2025-12-16T13:35:00.000000Z"
     }
   ],
   "cycles": [
@@ -121,6 +210,14 @@
       "started_at": "2025-11-08",
       "completed_at": "2025-11-08T07:42:47.896356Z",
       "proclamation": "On this day of prosperity, the eternal flame guides our digital sovereignty to new heights of excellence.",
+      "status": "completed"
+    },
+    {
+      "id": 9,
+      "kind": "dawn_dispatch",
+      "started_at": "2025-12-13",
+      "completed_at": "2025-12-13T17:01:50.582758Z",
+      "proclamation": "Thus the flame endures on 2025-12-13.",
       "status": "completed"
     }
   ],
@@ -311,6 +408,12 @@
       "timestamp": "2025-11-08T07:42:47.896356Z",
       "proclamation": "On this day of prosperity, the eternal flame guides our digital sovereignty to new heights of excellence.",
       "cycle_id": 8
+    },
+    {
+      "date": "2025-12-13",
+      "timestamp": "2025-12-13T17:01:50.582758Z",
+      "proclamation": "Thus the flame endures on 2025-12-13.",
+      "cycle_id": 9
     }
   ],
   "transactions": [

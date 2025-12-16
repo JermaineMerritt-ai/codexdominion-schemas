@@ -20,7 +20,7 @@ jobs:
   setup-monitoring:
     runs-on: ubuntu-latest
     name: Configure Azure Monitoring & Alerts
-    
+
     steps:
       - uses: actions/checkout@v4
 
@@ -37,13 +37,13 @@ jobs:
       - name: Create Application Insights
         run: |
           echo "📊 Setting up Application Insights..."
-          
+
           # Check if App Insights exists
           APPINSIGHTS_EXISTS=$(az monitor app-insights component show \
             --app codex-dominion-insights \
             --resource-group ${{ env.RESOURCE_GROUP }} \
             --query id -o tsv 2>/dev/null || echo "")
-          
+
           if [ -z "$APPINSIGHTS_EXISTS" ]; then
             echo "Creating Application Insights..."
             az monitor app-insights component create \
@@ -56,25 +56,25 @@ jobs:
           else
             echo "✓ Application Insights already exists"
           fi
-          
+
           # Get instrumentation key
           INSTRUMENTATION_KEY=$(az monitor app-insights component show \
             --app codex-dominion-insights \
             --resource-group ${{ env.RESOURCE_GROUP }} \
             --query instrumentationKey -o tsv)
-          
+
           echo "INSTRUMENTATION_KEY=$INSTRUMENTATION_KEY" >> $GITHUB_ENV
           echo "✓ Instrumentation Key retrieved"
 
       - name: Configure Static Web App Monitoring
         run: |
           echo "🔗 Linking Static Web Apps to Application Insights..."
-          
+
           # List all static web apps
           STATIC_APPS=$(az staticwebapp list \
             --resource-group ${{ env.RESOURCE_GROUP }} \
             --query "[].name" -o tsv)
-          
+
           for app in $STATIC_APPS; do
             echo "Configuring monitoring for: $app"
             az staticwebapp appsettings set \
@@ -87,7 +87,7 @@ jobs:
       - name: Create Availability Test for Sovereign Bridge API
         run: |
           echo "🔍 Setting up availability monitoring..."
-          
+
           # Create availability test for API endpoint
           az monitor app-insights web-test create \
             --resource-group ${{ env.RESOURCE_GROUP }} \
@@ -109,13 +109,13 @@ jobs:
       - name: Create Alert Rules
         run: |
           echo "🚨 Setting up alert rules..."
-          
+
           # Get Application Insights resource ID
           APPINSIGHTS_ID=$(az monitor app-insights component show \
             --app codex-dominion-insights \
             --resource-group ${{ env.RESOURCE_GROUP }} \
             --query id -o tsv)
-          
+
           # Alert for API failures (5xx errors)
           az monitor metrics alert create \
             --name "api-5xx-errors" \
@@ -127,7 +127,7 @@ jobs:
             --description "Alert when API returns more than 10 5xx errors in 5 minutes" \
             --severity 2 \
             2>/dev/null || echo "⚠ Alert rule may already exist or metrics not available yet"
-          
+
           # Alert for high response time
           az monitor metrics alert create \
             --name "api-slow-response" \
@@ -143,7 +143,7 @@ jobs:
       - name: Create Action Group for Notifications
         run: |
           echo "📧 Setting up notification action group..."
-          
+
           # Create action group (email notifications)
           az monitor action-group create \
             --name "codex-alerts" \
@@ -151,24 +151,24 @@ jobs:
             --short-name "CodexAlert" \
             --action email devops "your-email@example.com" \
             2>/dev/null || echo "⚠ Action group may already exist"
-          
+
           echo "✓ Notifications configured"
 
       - name: Enable Diagnostic Logs
         run: |
           echo "📝 Enabling diagnostic logs..."
-          
+
           # Get Static Web App resource IDs
           STATIC_APPS=$(az staticwebapp list \
             --resource-group ${{ env.RESOURCE_GROUP }} \
             --query "[].id" -o tsv)
-          
+
           # Create Log Analytics Workspace if not exists
           WORKSPACE_EXISTS=$(az monitor log-analytics workspace show \
             --workspace-name codex-logs \
             --resource-group ${{ env.RESOURCE_GROUP }} \
             --query id -o tsv 2>/dev/null || echo "")
-          
+
           if [ -z "$WORKSPACE_EXISTS" ]; then
             echo "Creating Log Analytics Workspace..."
             az monitor log-analytics workspace create \
@@ -177,12 +177,12 @@ jobs:
               --location eastus2
             echo "✓ Log Analytics Workspace created"
           fi
-          
+
           WORKSPACE_ID=$(az monitor log-analytics workspace show \
             --workspace-name codex-logs \
             --resource-group ${{ env.RESOURCE_GROUP }} \
             --query id -o tsv)
-          
+
           # Enable diagnostics for each static web app
           for app_id in $STATIC_APPS; do
             app_name=$(echo $app_id | rev | cut -d'/' -f1 | rev)
@@ -198,13 +198,13 @@ jobs:
       - name: Test API and Report Status
         run: |
           echo "🔍 Testing Sovereign Bridge API..."
-          
+
           STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
             "https://mango-wave-0fcc4e40f.3.azurestaticapps.net/api/agent-commands?taskId=monitoring_test" \
             || echo "000")
-          
+
           echo "API Status Code: $STATUS_CODE"
-          
+
           if [ "$STATUS_CODE" = "200" ]; then
             echo "✅ API is healthy and responding"
             echo "api_status=healthy" >> $GITHUB_ENV
@@ -220,7 +220,7 @@ jobs:
         if: always()
         run: |
           echo "📊 Creating monitoring dashboard..."
-          
+
           cat > dashboard.json << 'EOF'
           {
             "properties": {
@@ -257,7 +257,7 @@ jobs:
             "tags": {"hidden-title": "Codex Dominion Monitoring"}
           }
           EOF
-          
+
           az portal dashboard create \
             --resource-group ${{ env.RESOURCE_GROUP }} \
             --name "codex-monitoring-dashboard" \
@@ -268,47 +268,47 @@ jobs:
         if: always()
         run: |
           echo "📋 Generating monitoring setup report..."
-          
+
           cat > monitoring-report.md << EOF
           # Azure Monitoring Setup Complete
-          
+
           ## 📊 Application Insights
           - **Name**: codex-dominion-insights
           - **Resource Group**: ${{ env.RESOURCE_GROUP }}
           - **Location**: East US 2
           - **Instrumentation Key**: ${INSTRUMENTATION_KEY:0:8}...
-          
+
           ## 🔍 Monitoring Coverage
           - ✅ Application Insights configured
           - ✅ Availability tests created
           - ✅ Alert rules configured
           - ✅ Diagnostic logs enabled
           - ✅ Log Analytics Workspace created
-          
+
           ## 🚨 Active Alerts
           1. **API 5xx Errors**: Triggers when > 10 errors in 5 minutes
           2. **Slow Response Time**: Triggers when avg > 2 seconds
-          
+
           ## 📈 Dashboards
           - Azure Portal: [View Dashboard](https://portal.azure.com/#resource/subscriptions/${{ env.AZURE_SUBSCRIPTION_ID }}/resourceGroups/${{ env.RESOURCE_GROUP }}/providers/Microsoft.Insights/components/codex-dominion-insights)
-          
+
           ## 🎯 API Status
           - **Endpoint**: https://mango-wave-0fcc4e40f.3.azurestaticapps.net/api/agent-commands
           - **Status**: ${{ env.api_status || 'checking' }}
           - **Last Checked**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          
+
           ## 🔗 Quick Links
           - [Application Insights](https://portal.azure.com/#resource/subscriptions/${{ env.AZURE_SUBSCRIPTION_ID }}/resourceGroups/${{ env.RESOURCE_GROUP }}/providers/Microsoft.Insights/components/codex-dominion-insights)
           - [Log Analytics](https://portal.azure.com/#resource/subscriptions/${{ env.AZURE_SUBSCRIPTION_ID }}/resourceGroups/${{ env.RESOURCE_GROUP }}/providers/Microsoft.OperationalInsights/workspaces/codex-logs)
           - [Static Web Apps](https://portal.azure.com/#resource/subscriptions/${{ env.AZURE_SUBSCRIPTION_ID }}/resourceGroups/${{ env.RESOURCE_GROUP }}/providers/Microsoft.Web/staticSites/codex-sovereign-bridge)
-          
+
           ## 📝 Next Steps
           1. Update email address in action group: \`az monitor action-group update\`
           2. Configure custom metrics and KPIs
           3. Set up cost alerts and budgets
           4. Create runbooks for common issues
           EOF
-          
+
           cat monitoring-report.md
 
       - name: Upload Monitoring Report

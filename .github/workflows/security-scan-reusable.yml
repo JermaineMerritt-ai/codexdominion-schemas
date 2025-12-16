@@ -1,0 +1,54 @@
+name: Security Scan (Reusable)
+
+on:
+  workflow_call:
+    inputs:
+      scan-path:
+        description: 'Path to scan'
+        required: false
+        type: string
+        default: '.'
+      severity:
+        description: 'Severity levels to scan for'
+        required: false
+        type: string
+        default: 'HIGH,CRITICAL'
+
+jobs:
+  trivy-scan:
+    runs-on: ubuntu-latest
+    name: Trivy Security Scan
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Trivy Scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: ${{ inputs.scan-path }}
+          severity: ${{ inputs.severity }}
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy Results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+      - name: Generate Trivy Report (Human Readable)
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: ${{ inputs.scan-path }}
+          severity: ${{ inputs.severity }}
+          format: 'table'
+
+      - name: Fail on Critical Vulnerabilities
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: ${{ inputs.scan-path }}
+          severity: 'CRITICAL'
+          exit-code: '1'

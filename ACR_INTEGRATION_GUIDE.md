@@ -269,6 +269,22 @@ docker tag codexdominion-backend:production codexdominion.azurecr.io/codexdomini
 docker push codexdominion.azurecr.io/codexdominion-backend:latest
 ```
 
+### Build and Push Streamlit Dashboard
+
+```bash
+# Build directly in ACR (recommended - faster, no local storage)
+az acr build --registry codexdominion --image streamlit-dashboard:v1 --file Dockerfile.dashboard .
+
+# Or build locally and push
+docker build -f Dockerfile.dashboard -t codexdominion.azurecr.io/streamlit-dashboard:v1 .
+docker push codexdominion.azurecr.io/streamlit-dashboard:v1
+
+# Tag as latest
+az acr import --name codexdominion \
+  --source codexdominion.azurecr.io/streamlit-dashboard:v1 \
+  --image streamlit-dashboard:latest
+```
+
 ---
 
 ## 💰 Cost Comparison

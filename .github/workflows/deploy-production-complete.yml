@@ -1,0 +1,307 @@
+name: Deploy Complete Codex Dominion Production System
+
+on:
+  push:
+    branches: [main, production]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+
+env:
+  DOCKER_REGISTRY: codexdominion
+  AZURE_RESOURCE_GROUP: codex-dominion-rg
+  AZURE_REGION: eastus
+  GCP_PROJECT_ID: codex-dominion
+  GCP_REGION: us-central1
+
+jobs:
+  #===========================================================================
+  # BUILD & TEST
+  #===========================================================================
+  build-and-test:
+    name: Build & Test All Services
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov flake8
+
+      - name: Run Python tests
+        run: |
+          pytest tests/ --cov=. --cov-report=xml
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      - name: Install Node dependencies (Frontend)
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Build Next.js
+        working-directory: ./frontend
+        run: |
+          npm run build
+          npm run export
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            frontend/out/
+            dot300_agents.json
+            codex_ledger.json
+
+  #===========================================================================
+  # BUILD DOCKER IMAGES
+  #===========================================================================
+  build-docker-images:
+    name: Build & Push Docker Images
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [dashboard, dot300, chat, mobile-api]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push ${{ matrix.service }}
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./docker/Dockerfile.${{ matrix.service }}
+          push: true
+          tags: |
+            ${{ env.DOCKER_REGISTRY }}/${{ matrix.service }}:latest
+            ${{ env.DOCKER_REGISTRY }}/${{ matrix.service }}:${{ github.sha }}
+          cache-from: type=registry,ref=${{ env.DOCKER_REGISTRY }}/${{ matrix.service }}:buildcache
+          cache-to: type=registry,ref=${{ env.DOCKER_REGISTRY }}/${{ matrix.service }}:buildcache,mode=max
+
+  #===========================================================================
+  # DEPLOY TO AZURE (Primary)
+  #===========================================================================
+  deploy-azure:
+    name: Deploy to Azure
+    needs: build-docker-images
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.28.0'
+
+      - name: Get AKS credentials
+        run: |
+          az aks get-credentials \
+            --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+            --name codex-dominion-aks \
+            --overwrite-existing
+
+      - name: Create namespace
+        run: kubectl apply -f k8s/namespace.yaml
+
+      - name: Deploy Dashboard
+        run: kubectl apply -f k8s/deployment-dashboard.yaml
+
+      - name: Deploy DOT300 Agents
+        run: kubectl apply -f k8s/deployment-dot300.yaml
+
+      - name: Deploy Ingress
+        run: kubectl apply -f k8s/ingress.yaml
+
+      - name: Wait for deployments
+        run: |
+          kubectl rollout status deployment/codex-dashboard -n codex-dominion --timeout=5m
+          kubectl rollout status deployment/codex-dot300 -n codex-dominion --timeout=5m
+
+      - name: Get service endpoints
+        run: |
+          echo "Dashboard: $(kubectl get svc dashboard-service -n codex-dominion -o jsonpath='{.status.loadBalancer.ingress[0].ip}')"
+          echo "DOT300: $(kubectl get svc dot300-service -n codex-dominion -o jsonpath='{.status.loadBalancer.ingress[0].ip}')"
+
+  #===========================================================================
+  # DEPLOY TO GCP (Backup/Failover)
+  #===========================================================================
+  deploy-gcp:
+    name: Deploy to Google Cloud
+    needs: build-docker-images
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Deploy Dashboard to Cloud Run
+        run: |
+          gcloud run deploy codex-dashboard \
+            --image ${{ env.DOCKER_REGISTRY }}/dashboard:latest \
+            --region ${{ env.GCP_REGION }} \
+            --platform managed \
+            --allow-unauthenticated \
+            --memory 512Mi \
+            --cpu 2 \
+            --min-instances 1 \
+            --max-instances 10 \
+            --port 5555
+
+      - name: Deploy DOT300 to Cloud Run
+        run: |
+          gcloud run deploy codex-dot300 \
+            --image ${{ env.DOCKER_REGISTRY }}/dot300:latest \
+            --region ${{ env.GCP_REGION }} \
+            --platform managed \
+            --allow-unauthenticated \
+            --memory 1Gi \
+            --cpu 2 \
+            --min-instances 1 \
+            --max-instances 5 \
+            --port 8300
+
+  #===========================================================================
+  # DEPLOY TO IONOS (Europe)
+  #===========================================================================
+  deploy-ionos:
+    name: Deploy to IONOS VPS
+    needs: build-docker-images
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.IONOS_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.IONOS_SERVER }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to IONOS
+        run: |
+          ssh ${{ secrets.IONOS_USER }}@${{ secrets.IONOS_SERVER }} << 'EOF'
+            cd /var/www/codexdominion
+            git pull origin main
+            docker-compose -f docker-compose.production.yml pull
+            docker-compose -f docker-compose.production.yml up -d --remove-orphans
+            docker system prune -af --volumes
+          EOF
+
+      - name: Health check
+        run: |
+          sleep 30
+          curl -f https://codexdominion.app/health || exit 1
+
+  #===========================================================================
+  # SMOKE TESTS
+  #===========================================================================
+  smoke-tests:
+    name: Run Smoke Tests
+    needs: [deploy-azure, deploy-gcp, deploy-ionos]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Azure Dashboard
+        run: |
+          AZURE_URL="${{ secrets.AZURE_DASHBOARD_URL }}"
+          curl -f "$AZURE_URL/" || exit 1
+          echo "✅ Azure dashboard healthy"
+
+      - name: Test Azure DOT300
+        run: |
+          AZURE_API="${{ secrets.AZURE_DOT300_URL }}"
+          curl -f "$AZURE_API/health" || exit 1
+          echo "✅ Azure DOT300 healthy"
+
+      - name: Test GCP Endpoint
+        run: |
+          GCP_URL="${{ secrets.GCP_DASHBOARD_URL }}"
+          curl -f "$GCP_URL/" || exit 1
+          echo "✅ GCP dashboard healthy"
+
+      - name: Test IONOS Endpoint
+        run: |
+          curl -f https://codexdominion.app/health || exit 1
+          curl -f https://api.codexdominion.app/health || exit 1
+          echo "✅ IONOS healthy"
+
+      - name: Test DOT300 Agents API
+        run: |
+          API_URL="${{ secrets.AZURE_DOT300_URL }}"
+          RESPONSE=$(curl -s "$API_URL/api/stats")
+          COUNT=$(echo $RESPONSE | jq -r '.total_agents')
+          if [ "$COUNT" != "301" ]; then
+            echo "❌ Expected 301 agents, got $COUNT"
+            exit 1
+          fi
+          echo "✅ All 301 agents operational"
+
+  #===========================================================================
+  # NOTIFICATION
+  #===========================================================================
+  notify:
+    name: Deployment Notification
+    needs: smoke-tests
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Send success notification
+        if: success()
+        run: |
+          echo "🔥 PRODUCTION DEPLOYMENT SUCCESSFUL! 🔥"
+          echo "✅ Azure: Deployed"
+          echo "✅ GCP: Deployed"
+          echo "✅ IONOS: Deployed"
+          echo "✅ Smoke tests: Passed"
+          echo "🎯 100% MILESTONE ACHIEVED!"
+
+      - name: Send failure notification
+        if: failure()
+        run: |
+          echo "❌ DEPLOYMENT FAILED"
+          echo "Check logs for details"

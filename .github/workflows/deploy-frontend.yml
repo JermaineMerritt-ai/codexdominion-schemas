@@ -35,7 +35,7 @@ jobs:
           cd frontend
           npm run build
         env:
-          NEXT_PUBLIC_API_URL: http://codex-api-eastus.eastus.azurecontainer.io:8000
+          NEXT_PUBLIC_API_URL: https://codex-backend.azurewebsites.net
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1

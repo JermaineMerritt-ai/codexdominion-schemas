@@ -1,0 +1,13 @@
+runtime: python311
+
+entrypoint: python dashboard_complete_fixed.py
+
+env_variables:
+  FLASK_ENV: production
+  OPENAI_API_KEY: "YOUR_OPENAI_API_KEY_HERE"
+  DOT300_AGENTS_COUNT: "301"
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 5
+  target_cpu_utilization: 0.65

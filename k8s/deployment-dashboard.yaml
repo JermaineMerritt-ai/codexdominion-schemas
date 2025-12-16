@@ -1,0 +1,115 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codex-dashboard
+  namespace: codex-dominion
+  labels:
+    app: dashboard
+    tier: frontend
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: dashboard
+  template:
+    metadata:
+      labels:
+        app: dashboard
+        tier: frontend
+    spec:
+      containers:
+      - name: dashboard
+        image: codexdominion/dashboard:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5555
+          name: http
+        env:
+        - name: FLASK_ENV
+          value: "production"
+        - name: PORT
+          value: "5555"
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5555
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5555
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 2
+        volumeMounts:
+        - name: ledger-data
+          mountPath: /app/codex_ledger.json
+          subPath: codex_ledger.json
+        - name: proclamations-data
+          mountPath: /app/proclamations.json
+          subPath: proclamations.json
+      volumes:
+      - name: ledger-data
+        configMap:
+          name: codex-ledger
+      - name: proclamations-data
+        configMap:
+          name: codex-proclamations
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dashboard-service
+  namespace: codex-dominion
+spec:
+  selector:
+    app: dashboard
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5555
+  type: LoadBalancer
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: dashboard-hpa
+  namespace: codex-dominion
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: codex-dashboard
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80

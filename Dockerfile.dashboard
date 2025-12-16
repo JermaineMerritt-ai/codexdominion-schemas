@@ -1,0 +1,22 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy organized dashboard structure
+COPY main/ ./main/
+COPY intelligence/ ./intelligence/
+COPY domains/ ./domains/
+COPY business/ ./business/
+COPY omega/ ./omega/
+COPY launch/ ./launch/
+COPY utilities/ ./utilities/
+COPY modules/ ./modules/
+COPY registry/ ./registry/
+
+EXPOSE 8501
+
+CMD ["streamlit", "run", "main/master_dashboard_ultimate.py", "--server.port=8501", "--server.address=0.0.0.0"]

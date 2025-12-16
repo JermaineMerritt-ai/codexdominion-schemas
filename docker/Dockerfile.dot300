@@ -1,0 +1,90 @@
+# Codex Dominion - DOT300 Agent Orchestrator Dockerfile
+# 301 specialized AI agents API server
+
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python packages
+RUN pip install --no-cache-dir \
+    flask==3.1.0 \
+    flask-cors==4.0.0 \
+    waitress==3.0.0 \
+    requests==2.31.0
+
+# Copy agent system
+COPY dot300_multi_agent.py .
+
+# Create API wrapper
+RUN echo 'from flask import Flask, jsonify, request\n\
+from flask_cors import CORS\n\
+import json\n\
+\n\
+app = Flask(__name__)\n\
+CORS(app)\n\
+\n\
+def load_agents():\n\
+    with open("dot300_agents.json", "r") as f:\n\
+        return json.load(f)\n\
+\n\
+@app.route("/")\n\
+def index():\n\
+    return jsonify({\n\
+        "service": "DOT300 Action AI",\n\
+        "status": "operational",\n\
+        "endpoints": {\n\
+            "health": "/health",\n\
+            "agents": "/api/agents",\n\
+            "agent_by_id": "/api/agents/<id>",\n\
+            "agents_by_industry": "/api/agents/industry/<name>",\n\
+            "stats": "/api/stats"\n\
+        },\n\
+        "industries": ["healthcare", "finance", "legal", "real_estate", "ecommerce", "education", "entertainment"]\n\
+    })\n\
+\n\
+@app.route("/health")\n\
+def health():\n\
+    return jsonify({"status": "healthy", "service": "DOT300 Agents"})\n\
+\n\
+@app.route("/api/agents")\n\
+def get_agents():\n\
+    data = load_agents()\n\
+    return jsonify(data)\n\
+\n\
+@app.route("/api/agents/<agent_id>")\n\
+def get_agent(agent_id):\n\
+    data = load_agents()\n\
+    agent = next((a for a in data["agents"] if a["id"] == agent_id), None)\n\
+    return jsonify(agent) if agent else (jsonify({"error": "Not found"}), 404)\n\
+\n\
+@app.route("/api/agents/industry/<industry>")\n\
+def get_by_industry(industry):\n\
+    data = load_agents()\n\
+    agents = [a for a in data["agents"] if a["industry"] == industry.lower()]\n\
+    return jsonify({"industry": industry, "count": len(agents), "agents": agents})\n\
+\n\
+@app.route("/api/stats")\n\
+def get_stats():\n\
+    data = load_agents()\n\
+    return jsonify({\n\
+        "total_agents": data["agent_count"],\n\
+        "version": data["version"],\n\
+        "generated_at": data["generated_at"]\n\
+    })\n\
+\n\
+if __name__ == "__main__":\n\
+    from waitress import serve\n\
+    print("🤖 DOT300 Agent API starting on port 8300...")\n\
+    serve(app, host="0.0.0.0", port=8300, threads=8)' > api.py
+
+EXPOSE 8300
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8300/health || exit 1
+
+CMD ["python", "api.py"]

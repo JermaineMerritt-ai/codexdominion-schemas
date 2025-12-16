@@ -1,0 +1,182 @@
+version: '3.8'
+
+services:
+  # DOT300 API (Main Service)
+  dot300:
+    image: codex-dominion-dot300:latest
+    container_name: dot300-api
+    ports:
+      - "8300:8300"
+    volumes:
+      - ./dot300_agents.json:/app/dot300_agents.json:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8300/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: always
+    networks:
+      - monitoring
+
+  # DOT300 Orchestration (GPT-4 Integration)
+  orchestration:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.orchestration
+    container_name: dot300-orchestration
+    ports:
+      - "8400:8400"
+    volumes:
+      - ./dot300_agents.json:/app/dot300_agents.json:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - dot300
+      - redis
+    restart: always
+    networks:
+      - monitoring
+
+  # Redis (Caching & Session Management)
+  redis:
+    image: redis:7-alpine
+    container_name: dot300-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: always
+    networks:
+      - monitoring
+
+  # Prometheus (Metrics Collection)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: dot300-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+    restart: always
+    networks:
+      - monitoring
+
+  # Grafana (Visualization & Dashboards)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: dot300-grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana-dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana-datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=dot300admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_ROOT_URL=http://localhost:3001
+    depends_on:
+      - prometheus
+    restart: always
+    networks:
+      - monitoring
+
+  # Node Exporter (System Metrics)
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: dot300-node-exporter
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: always
+    networks:
+      - monitoring
+
+  # cAdvisor (Container Metrics)
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: dot300-cadvisor
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    privileged: true
+    restart: always
+    networks:
+      - monitoring
+
+  # RabbitMQ (Task Queue)
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: dot300-rabbitmq
+    ports:
+      - "5672:5672"   # AMQP port
+      - "15672:15672" # Management UI
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=dot300
+      - RABBITMQ_DEFAULT_PASS=dot300secure
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: always
+    networks:
+      - monitoring
+
+  # NGINX (Reverse Proxy & Load Balancer)
+  nginx:
+    image: nginx:alpine
+    container_name: dot300-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./monitoring/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./frontend:/usr/share/nginx/html:ro
+      - nginx-logs:/var/log/nginx
+    depends_on:
+      - dot300
+      - orchestration
+      - grafana
+    restart: always
+    networks:
+      - monitoring
+
+volumes:
+  redis-data:
+  prometheus-data:
+  grafana-data:
+  rabbitmq-data:
+  nginx-logs:
+
+networks:
+  monitoring:
+    driver: bridge
