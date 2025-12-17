@@ -1,0 +1,7 @@
+"""
+Portfolio module initialization
+"""
+
+from flask import Blueprint
+
+portfolio_bp = Blueprint('portfolio', __name__)

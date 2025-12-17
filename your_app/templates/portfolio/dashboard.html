@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% block title %}Portfolio Dashboard - Codex Dominion{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <div style="margin-bottom: 40px;">
+        <h1 style="color: #ff6b35; font-size: 2.5em; margin-bottom: 10px;">🔥 Portfolio Dashboard</h1>
+        <p style="color: #666; font-size: 1.2em;">Your Sovereign Investment Empire</p>
+    </div>
+
+    <!-- Summary Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px;">
+        <div class="metric-card" style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);">
+            <div style="font-size: 0.9em; opacity: 0.9; margin-bottom: 10px;">Total Portfolios</div>
+            <div style="font-size: 2.5em; font-weight: 700;">{{ portfolios|length }}</div>
+        </div>
+
+        <div class="metric-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 2px solid #f7931e;">
+            <div style="font-size: 0.9em; color: #666; margin-bottom: 10px;">Total Value</div>
+            <div style="font-size: 2.5em; font-weight: 700; color: #ff6b35;">
+                $<span id="total-value">0.00</span>
+            </div>
+        </div>
+
+        <div class="metric-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 2px solid #f7931e;">
+            <div style="font-size: 0.9em; color: #666; margin-bottom: 10px;">Total Gain/Loss</div>
+            <div style="font-size: 2.5em; font-weight: 700;" id="total-gain">
+                +$0.00
+            </div>
+        </div>
+
+        <div class="metric-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 2px solid #f7931e;">
+            <div style="font-size: 0.9em; color: #666; margin-bottom: 10px;">Avg Return</div>
+            <div style="font-size: 2.5em; font-weight: 700; color: #4CAF50;" id="avg-return">
+                +0.00%
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div style="margin-bottom: 40px; display: flex; gap: 15px; flex-wrap: wrap;">
+        <a href="{{ url_for('portfolio.create_portfolio') }}"
+           style="padding: 15px 30px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; border: none; border-radius: 8px; font-size: 1em; font-weight: 600; text-decoration: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; display: inline-block;"
+           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(255, 107, 53, 0.4)'"
+           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            ➕ Create New Portfolio
+        </a>
+
+        <button
+            onclick="refreshPrices()"
+            style="padding: 15px 30px; background: white; color: #ff6b35; border: 2px solid #ff6b35; border-radius: 8px; font-size: 1em; font-weight: 600; cursor: pointer; transition: all 0.2s;"
+            onmouseover="this.style.background='#ff6b35'; this.style.color='white'"
+            onmouseout="this.style.background='white'; this.style.color='#ff6b35'">
+            🔄 Refresh Prices
+        </button>
+
+        <a href="{{ url_for('stocks.analysis_list') }}"
+           style="padding: 15px 30px; background: white; color: #ff6b35; border: 2px solid #ff6b35; border-radius: 8px; font-size: 1em; font-weight: 600; text-decoration: none; display: inline-block;">
+            📊 View Analysis
+        </a>
+    </div>
+
+    <!-- Portfolio List -->
+    <div style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #ff6b35; margin-bottom: 25px; font-size: 1.8em;">Your Portfolios</h2>
+
+        {% if portfolios and portfolios|length > 0 %}
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: linear-gradient(135deg, #f7f1e3 0%, #efe7d4 100%); border-bottom: 3px solid #f7931e;">
+                        <th style="padding: 15px; text-align: left; color: #333; font-weight: 600;">Portfolio Name</th>
+                        <th style="padding: 15px; text-align: left; color: #333; font-weight: 600;">Holdings</th>
+                        <th style="padding: 15px; text-align: right; color: #333; font-weight: 600;">Total Value</th>
+                        <th style="padding: 15px; text-align: right; color: #333; font-weight: 600;">Gain/Loss</th>
+                        <th style="padding: 15px; text-align: right; color: #333; font-weight: 600;">Return %</th>
+                        <th style="padding: 15px; text-align: center; color: #333; font-weight: 600;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for portfolio in portfolios %}
+                    <tr style="border-bottom: 1px solid #eee; transition: background 0.2s;"
+                        onmouseover="this.style.background='#f7f1e3'"
+                        onmouseout="this.style.background='white'">
+                        <td style="padding: 15px;">
+                            <strong style="color: #ff6b35;">{{ portfolio.name }}</strong>
+                            <div style="color: #999; font-size: 0.85em;">ID: {{ portfolio.id }}</div>
+                        </td>
+                        <td style="padding: 15px;">{{ portfolio.holdings|length }} stocks</td>
+                        <td style="padding: 15px; text-align: right; font-weight: 600;">
+                            ${{ "%.2f"|format(portfolio.total_value or 0) }}
+                        </td>
+                        <td style="padding: 15px; text-align: right; font-weight: 600; color: {% if (portfolio.total_gain or 0) >= 0 %}#4CAF50{% else %}#f44336{% endif %};">
+                            {% if (portfolio.total_gain or 0) >= 0 %}+{% endif %}${{ "%.2f"|format(portfolio.total_gain or 0) }}
+                        </td>
+                        <td style="padding: 15px; text-align: right; font-weight: 600; color: {% if (portfolio.total_return or 0) >= 0 %}#4CAF50{% else %}#f44336{% endif %};">
+                            {% if (portfolio.total_return or 0) >= 0 %}+{% endif %}{{ "%.2f"|format(portfolio.total_return or 0) }}%
+                        </td>
+                        <td style="padding: 15px; text-align: center;">
+                            <a href="{{ url_for('portfolio.view_portfolio', portfolio_id=portfolio.id) }}"
+                               style="padding: 8px 15px; background: #ff6b35; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9em; margin-right: 5px; display: inline-block;">
+                                View
+                            </a>
+                            <a href="{{ url_for('portfolio.trade', portfolio_id=portfolio.id) }}"
+                               style="padding: 8px 15px; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9em; display: inline-block;">
+                                Trade
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div style="text-align: center; padding: 60px 20px; color: #999;">
+            <div style="font-size: 4em; margin-bottom: 20px;">📊</div>
+            <h3 style="color: #666; margin-bottom: 15px;">No Portfolios Yet</h3>
+            <p style="margin-bottom: 25px;">Create your first portfolio to start tracking your investments</p>
+            <a href="{{ url_for('portfolio.create_portfolio') }}"
+               style="padding: 15px 30px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; text-decoration: none; display: inline-block;">
+                ➕ Create Your First Portfolio
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+// Calculate totals on page load
+document.addEventListener('DOMContentLoaded', function() {
+    calculateTotals();
+});
+
+function calculateTotals() {
+    const portfolios = {{ portfolios|tojson|safe }};
+
+    if (!portfolios || portfolios.length === 0) return;
+
+    let totalValue = 0;
+    let totalGain = 0;
+    let avgReturn = 0;
+
+    portfolios.forEach(p => {
+        totalValue += (p.total_value || 0);
+        totalGain += (p.total_gain || 0);
+        avgReturn += (p.total_return || 0);
+    });
+
+    avgReturn = avgReturn / portfolios.length;
+
+    document.getElementById('total-value').textContent = formatCurrency(totalValue);
+
+    const gainEl = document.getElementById('total-gain');
+    gainEl.textContent = (totalGain >= 0 ? '+' : '') + formatCurrency(totalGain);
+    gainEl.style.color = totalGain >= 0 ? '#4CAF50' : '#f44336';
+
+    const returnEl = document.getElementById('avg-return');
+    returnEl.textContent = (avgReturn >= 0 ? '+' : '') + avgReturn.toFixed(2) + '%';
+    returnEl.style.color = avgReturn >= 0 ? '#4CAF50' : '#f44336';
+}
+
+function formatCurrency(value) {
+    return new Intl.NumberFormat('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(Math.abs(value));
+}
+
+async function refreshPrices() {
+    try {
+        const response = await fetch('/api/portfolios/refresh-prices', {
+            method: 'POST'
+        });
+
+        if (response.ok) {
+            alert('✅ Prices refreshed successfully! Reloading...');
+            window.location.reload();
+        } else {
+            alert('⚠️ Failed to refresh prices. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error refreshing prices:', error);
+        alert('❌ Error refreshing prices: ' + error.message);
+    }
+}
+</script>
+{% endblock %}

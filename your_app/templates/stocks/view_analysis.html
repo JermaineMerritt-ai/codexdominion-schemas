@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ analysis.ticker }} Analysis - Codex Dominion{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <div style="margin-bottom: 30px;">
+        <a href="{{ url_for('stocks.analysis_list') }}" style="color: #ff6b35; text-decoration: none; font-weight: 600;">
+            ← Back to All Analysis
+        </a>
+    </div>
+
+    <!-- Header -->
+    <div style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+            <div>
+                <h1 style="font-size: 3em; margin: 0 0 10px 0;">{{ analysis.ticker }}</h1>
+                <p style="opacity: 0.9; margin: 0; font-size: 1.1em;">Last Analyzed: {{ analysis.analyzed_date }}</p>
+            </div>
+            <div style="text-align: right;">
+                {% if analysis.recommendation == 'strong_buy' %}
+                <div style="padding: 15px 30px; background: rgba(255, 255, 255, 0.2); border-radius: 25px; font-weight: 700; font-size: 1.3em;">
+                    🔥 STRONG BUY
+                </div>
+                {% elif analysis.recommendation == 'buy' %}
+                <div style="padding: 15px 30px; background: rgba(255, 255, 255, 0.2); border-radius: 25px; font-weight: 700; font-size: 1.3em;">
+                    👍 BUY
+                </div>
+                {% elif analysis.recommendation == 'hold' %}
+                <div style="padding: 15px 30px; background: rgba(255, 255, 255, 0.2); border-radius: 25px; font-weight: 700; font-size: 1.3em;">
+                    ✋ HOLD
+                </div>
+                {% elif analysis.recommendation == 'sell' %}
+                <div style="padding: 15px 30px; background: rgba(255, 255, 255, 0.2); border-radius: 25px; font-weight: 700; font-size: 1.3em;">
+                    ⚠️ SELL
+                </div>
+                {% else %}
+                <div style="padding: 15px 30px; background: rgba(255, 255, 255, 0.2); border-radius: 25px; font-weight: 700; font-size: 1.3em;">
+                    🚫 STRONG SELL
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Price Metrics -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border-left: 4px solid #ff6b35;">
+            <div style="color: #999; font-size: 0.9em; margin-bottom: 8px;">Current Price</div>
+            <div style="color: #333; font-size: 2.2em; font-weight: 700;">${{ "%.2f"|format(analysis.current_price or 0) }}</div>
+        </div>
+
+        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border-left: 4px solid #4CAF50;">
+            <div style="color: #999; font-size: 0.9em; margin-bottom: 8px;">Target Price</div>
+            <div style="color: #4CAF50; font-size: 2.2em; font-weight: 700;">${{ "%.2f"|format(analysis.target_price or 0) }}</div>
+        </div>
+
+        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border-left: 4px solid #2196F3;">
+            <div style="color: #999; font-size: 0.9em; margin-bottom: 8px;">Potential Upside</div>
+            <div style="color: #2196F3; font-size: 2.2em; font-weight: 700;">
+                {% if analysis.target_price and analysis.current_price %}
+                +{{ "%.1f"|format(((analysis.target_price - analysis.current_price) / analysis.current_price * 100)) }}%
+                {% else %}
+                N/A
+                {% endif %}
+            </div>
+        </div>
+
+        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border-left: 4px solid #FFC107;">
+            <div style="color: #999; font-size: 0.9em; margin-bottom: 8px;">Confidence Level</div>
+            <div style="color: #FFC107; font-size: 2.2em; font-weight: 700; text-transform: capitalize;">
+                {{ analysis.confidence_level or 'Medium' }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis Summary -->
+    {% if analysis.summary %}
+    <div style="background: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #ff6b35; margin-bottom: 20px; font-size: 1.8em;">📝 Executive Summary</h2>
+        <p style="color: #666; line-height: 1.8; font-size: 1.05em;">{{ analysis.summary }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Key Insights -->
+    {% if analysis.key_insights %}
+    <div style="background: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #ff6b35; margin-bottom: 25px; font-size: 1.8em;">💡 Key Insights</h2>
+        <div style="display: grid; gap: 15px;">
+            {% for insight in analysis.key_insights %}
+            <div style="padding: 20px; background: linear-gradient(135deg, #f7f1e3 0%, #efe7d4 100%); border-left: 4px solid #ff6b35; border-radius: 8px;">
+                <p style="color: #333; margin: 0; line-height: 1.6;">{{ insight }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Risk Factors -->
+    {% if analysis.risk_factors %}
+    <div style="background: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #ff6b35; margin-bottom: 25px; font-size: 1.8em;">⚠️ Risk Factors</h2>
+        <div style="display: grid; gap: 15px;">
+            {% for risk in analysis.risk_factors %}
+            <div style="padding: 20px; background: #fff3e0; border-left: 4px solid #FF9800; border-radius: 8px;">
+                <p style="color: #333; margin: 0; line-height: 1.6;">{{ risk }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Catalysts -->
+    {% if analysis.catalysts %}
+    <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #ff6b35; margin-bottom: 25px; font-size: 1.8em;">🚀 Growth Catalysts</h2>
+        <div style="display: grid; gap: 15px;">
+            {% for catalyst in analysis.catalysts %}
+            <div style="padding: 20px; background: #e8f5e9; border-left: 4px solid #4CAF50; border-radius: 8px;">
+                <p style="color: #333; margin: 0; line-height: 1.6;">{{ catalyst }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

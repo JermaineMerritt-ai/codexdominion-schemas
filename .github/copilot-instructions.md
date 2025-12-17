@@ -1,5 +1,8 @@
 # Codex Dominion AI Agent Instructions
 
+> **Last Updated:** December 17, 2025
+> **System Status:** Production Live on Azure | 52+ Dashboards Operational | $95k/month Revenue Target
+
 ## Architecture Overview
 
 **Codex Dominion** is a hybrid polyglot monorepo with a ceremonial naming system, combining Python data/AI dashboards, Flask/Next.js web interfaces, FastAPI backend services, and multi-cloud infrastructure (Azure, GCP, IONOS).
@@ -17,10 +20,11 @@ Key directories:
 - `apps/` - Main applications (Sovereigns layer): api, chatbot, commerce, compliance, consent_capsule, dashboard, flutter, observatory, react-native, replay_shell, sovereign-bridge, system, treaty_capsule
 - `packages/` - Shared TypeScript packages (broadcast, council-seal, finance, healing, identity, ledger, schemas, shared, shared-types, ui, utils, workflow)
 - Root Python scripts - Standalone Streamlit/Flask dashboards (`codex_dashboard.py`, `*_analytics_dashboard.py`, `*_dashboard.py`, `flask_dashboard.py`)
+  - **Note**: 100+ dashboard files exist at root - many are variants/iterations. Primary: `flask_dashboard.py` (Master Dashboard, port 5000)
 - `backend/`, `api/`, `codex_capsules/` - FastAPI services
 - `frontend/`, `web/`, `frontend-vite/` - Next.js 14+ and Vite applications
 - `infra/`, `k8s/`, `helm/` - Infrastructure manifests (Docker, Kubernetes, Helm charts)
-- `.github/workflows/` - 50+ CI/CD workflows for multi-cloud deployment
+- `.github/workflows/` - 57+ CI/CD workflows for multi-cloud deployment
 - **Note**: `codexdominion-schemas/` and `codexdominion-clean/` are duplicate/archived directories - prefer root-level files
 
 ### Ceremonial Domain Model
@@ -66,6 +70,7 @@ All AI systems honor:
 - **FastAPI** (Python 3.10+) - API services in `api/`, `backend/`, `codex_capsules/`
 - **Streamlit** (1.28+) - Data dashboards (many `*_dashboard.py` files at root)
 - Node.js services for proxy/gateway functions
+- **Python Version**: 3.10+ baseline (production uses 3.11-3.12, development may use 3.14)
 
 ### Infrastructure
 - **Docker Compose** - `docker-compose.production.yml`, `docker-compose.complete.yml`
@@ -80,22 +85,27 @@ All AI systems honor:
 - Timestamp format: ISO 8601 with 'Z' suffix (e.g., `"2025-11-22T21:20:35.473129Z"`)
 - Always update `meta.last_updated` when modifying ledger files
 - **Current Status**: Production deployment recorded in `codex_ledger.json` under `portals.azure-production`
+- **Ledger Updates**: Last updated 2025-12-16 with complete system deployment milestone
+- **Python Virtual Environment**: `.venv` directory in root contains Python 3.10+ virtual environment (activate with `.venv\Scripts\activate.ps1` on Windows or `source .venv/bin/activate` on Linux/Mac)
 
 ### Production Deployment (December 2025)
 
-**Status**: \u2705 LIVE and OPERATIONAL
+**Status**: ✅ LIVE and OPERATIONAL
 
 **Azure Infrastructure** (Resource Group: `codex-rg`, Region: East US 2):
 - **Frontend (Static Web App)**: https://happy-flower-0e39c5c0f-preview.eastus2.3.azurestaticapps.net
   - Auto-managed SSL certificate (renewed automatically)
   - Static export from Next.js 14+ App Router
+  - Alternative: https://witty-glacier-0ebbd971e.3.azurestaticapps.net
   - No port 443 blocking issues (Azure-managed)
 
 - **Backend (Container App with SSL)**: https://codex-backend-https.delightfulpond-6c97660b.eastus2.azurecontainerapps.io
   - FastAPI services with automatic HTTPS
   - Auto-scaling (1-3 replicas)
   - Monthly cost: ~$30
-  - Legacy HTTP endpoint: http://codex-api.eastus2.azurecontainer.io:8000
+  - Legacy HTTP endpoints:
+    - http://codex-api.eastus2.azurecontainer.io:8000
+    - http://codex-api.eastus.azurecontainer.io:8001
 
 - **Container Registry**: `codexdominionacr.azurecr.io`
   - Stores Docker images (`jmerritt48/*` namespace)
@@ -116,9 +126,10 @@ All AI systems honor:
 ### Revenue & Treasury System
 - **Treasury Database**: `codex_treasury_database.py` - Revenue tracking with 8+ streams
 - **Revenue Targets**: $95,000/month across affiliate, YouTube, TikTok, WooCommerce, memberships
-- **Treasury Config**: `treasury_config.json` - Configuration for revenue stream tracking
+- **Treasury Config**: `treasury_config.json` - Configuration for revenue stream tracking (5 active streams: affiliate, stock, amm, consulting, development)
 - **Dawn Dispatch**: `dawn_dispatch_simple.py` - Scheduled messaging and notifications
 - **Access via**: `codex_unified_launcher.py treasury` commands for all treasury operations
+- **Schema Update**: Treasury config now includes PostgreSQL connection settings and alert thresholds
 
 ## Development Workflows
 
@@ -167,15 +178,34 @@ python codex_system_launcher.py  # System-level operations
 cd codex-suite && python launcher.py  # Interactive menu for multiple apps
 ```
 
+**Windows Batch Launchers** (Convenient for Windows users):
+```powershell
+# Direct batch file launchers for Windows
+.\LAUNCH_MASTER.bat           # Master system launcher
+.\LAUNCH_ANY_SYSTEM.bat        # System selection menu
+.\LAUNCH_WORKFLOW_BUILDER.bat  # Workflow builder interface
+.\START_DASHBOARD.ps1          # Primary Flask dashboard launcher (RECOMMENDED)
+```
+
+**Launcher Recommendation**: The system has 15+ launcher scripts. See `LAUNCHER_CONSOLIDATION_GUIDE.md` for complete inventory. **Primary recommendations**:
+- **Dashboard**: `START_DASHBOARD.ps1` (Flask, port 5000)
+- **CLI Operations**: `codex_unified_launcher.py` (treasury, dawn, status)
+- **Testing**: `launch.py` (Streamlit dashboards)
+
 ### Running Locally
 
 **Python Dashboards:**
 ```bash
 # CRITICAL: Always configure Python environment first
-# Use configure_python_environment tool before running
+# Activate virtual environment (Windows):
+.venv\Scripts\activate.ps1
+# Or on Linux/Mac:
+source .venv/bin/activate
+
+# Then run dashboard:
 streamlit run codex_dashboard.py --server.port 8501
 
-# Check Python environment details with get_python_environment_details
+# For AI agents: Use configure_python_environment tool before running
 ```
 
 **Next.js Frontend:**
@@ -247,13 +277,16 @@ Access at: http://localhost:5000
 - **Deployment Token**: Stored in GitHub secrets (`AZURE_STATIC_WEB_APPS_API_TOKEN`)
 - **Monthly Cost**: ~$14-20 (Azure Container Instance + Static Web App)
 
-**Critical**: This project has 50+ GitHub Actions workflows. Key workflows:
+**Critical**: This project has 57+ GitHub Actions workflows in `.github/workflows/`. Key workflows:
 - `azure-static-web-apps-yellow-tree-0ed102210.yml` - Frontend deployment (auto SSL)
 - `azure-backend-deploy.yml` - Backend Container Instance deployment
 - `deploy-complete-frontend.yml` - Complete Next.js to Azure Static Web Apps
 - `deploy-backend.yml`, `backend-deploy.yml` - API services
+- `azure-monitoring-alerts.yml` - Monitoring and alerting setup
+- `azure-production-deploy.yml` - Complete production deployment orchestration
 - Multi-cloud workflows for GCP, IONOS, Azure
 - Security scanning with Trivy integrated into deployment pipelines
+- `super-action-ai-deployment.yaml`, `super-action-ai.yaml` - AI-powered deployments
 
 **Common deployment commands:**
 ```powershell
@@ -270,7 +303,7 @@ bash quick-deploy.sh            # Interactive setup with connection testing
 
 **Azure Tasks**: VS Code tasks available for Azure Functions development:
 - `func: host start` - Start Azure Functions host (depends on pip install task)
-- Located in workspace root (no recent_uploads/configs directory)
+- **Note**: Task references `recent_uploads/configs` directory which may be outdated - Azure Functions typically run from workspace root or dedicated function app directories
 
 ### Service Management
 
@@ -469,9 +502,10 @@ if __name__ == "__main__":
    - `codex_system_launcher.py` - System-level operations
    - `codex-suite/launcher.py` - Interactive menu for suite apps
 8. **Duplicate directories**: `codexdominion-schemas/` and `codexdominion-clean/` contain archived copies - **always work in root directory**
-9. **Workflow count**: 50+ GitHub Actions workflows in `.github/workflows/` - key ones are:
+9. **Workflow count**: 57+ GitHub Actions workflows in `.github/workflows/` - key ones are:
    - `azure-static-web-apps-yellow-tree-0ed102210.yml` - Azure Static Web Apps (PRIMARY)
    - `azure-backend-deploy.yml` - Backend Container Instance (LIVE)
+   - `azure-production-deploy.yml` - Complete production orchestration
    - `deploy-complete-frontend.yml` - Next.js to Azure Static Web Apps
    - `deploy-backend.yml`, `backend-deploy.yml` - API services
    - `super-action-ai-deployment.yaml`, `super-action-ai.yaml` - AI-powered deployments

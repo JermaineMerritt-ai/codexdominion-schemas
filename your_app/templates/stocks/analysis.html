@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block title %}Stock Analysis - Codex Dominion{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <div style="margin-bottom: 40px;">
+        <h1 style="color: #ff6b35; font-size: 2.5em; margin-bottom: 10px;">📊 Stock Analysis</h1>
+        <p style="color: #666; font-size: 1.2em;">AI-Powered Market Intelligence</p>
+    </div>
+
+    <!-- Quick Stats -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
+        <div class="metric-card" style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);">
+            <div style="font-size: 0.9em; opacity: 0.9; margin-bottom: 8px;">Total Analyses</div>
+            <div style="font-size: 2em; font-weight: 700;">{{ analyses|length }}</div>
+        </div>
+
+        <div class="metric-card" style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 2px solid #4CAF50;">
+            <div style="font-size: 0.9em; color: #666; margin-bottom: 8px;">Strong Buy</div>
+            <div style="font-size: 2em; font-weight: 700; color: #4CAF50;">
+                {{ analyses|selectattr('recommendation', 'equalto', 'strong_buy')|list|length }}
+            </div>
+        </div>
+
+        <div class="metric-card" style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 2px solid #2196F3;">
+            <div style="font-size: 0.9em; color: #666; margin-bottom: 8px;">Buy</div>
+            <div style="font-size: 2em; font-weight: 700; color: #2196F3;">
+                {{ analyses|selectattr('recommendation', 'equalto', 'buy')|list|length }}
+            </div>
+        </div>
+
+        <div class="metric-card" style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 2px solid #FFC107;">
+            <div style="font-size: 0.9em; color: #666; margin-bottom: 8px;">Hold</div>
+            <div style="font-size: 2em; font-weight: 700; color: #FFC107;">
+                {{ analyses|selectattr('recommendation', 'equalto', 'hold')|list|length }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis List -->
+    <div style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+            <h2 style="color: #ff6b35; font-size: 1.8em; margin: 0;">Latest Analysis</h2>
+            <a href="{{ url_for('stocks.trading_picks') }}"
+               style="padding: 12px 25px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; border: none; border-radius: 8px; text-decoration: none; font-weight: 600;">
+                🔥 View Trading Picks
+            </a>
+        </div>
+
+        {% if analyses and analyses|length > 0 %}
+        <div style="display: grid; gap: 20px;">
+            {% for analysis in analyses %}
+            <div style="padding: 25px; border: 2px solid #f0f0f0; border-radius: 12px; transition: all 0.3s; cursor: pointer;"
+                 onmouseover="this.style.borderColor='#ff6b35'; this.style.boxShadow='0 5px 15px rgba(255, 107, 53, 0.2)'"
+                 onmouseout="this.style.borderColor='#f0f0f0'; this.style.boxShadow='none'"
+                 onclick="window.location.href='{{ url_for('stocks.view_analysis', ticker=analysis.ticker) }}'">
+
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                    <div>
+                        <h3 style="color: #ff6b35; font-size: 1.5em; margin: 0 0 5px 0;">{{ analysis.ticker }}</h3>
+                        <p style="color: #999; margin: 0; font-size: 0.9em;">Analyzed: {{ analysis.analyzed_date }}</p>
+                    </div>
+
+                    <div style="text-align: right;">
+                        {% if analysis.recommendation == 'strong_buy' %}
+                        <span style="padding: 8px 20px; background: #4CAF50; color: white; border-radius: 20px; font-weight: 600; font-size: 0.9em;">
+                            🔥 STRONG BUY
+                        </span>
+                        {% elif analysis.recommendation == 'buy' %}
+                        <span style="padding: 8px 20px; background: #2196F3; color: white; border-radius: 20px; font-weight: 600; font-size: 0.9em;">
+                            👍 BUY
+                        </span>
+                        {% elif analysis.recommendation == 'hold' %}
+                        <span style="padding: 8px 20px; background: #FFC107; color: white; border-radius: 20px; font-weight: 600; font-size: 0.9em;">
+                            ✋ HOLD
+                        </span>
+                        {% elif analysis.recommendation == 'sell' %}
+                        <span style="padding: 8px 20px; background: #FF9800; color: white; border-radius: 20px; font-weight: 600; font-size: 0.9em;">
+                            ⚠️ SELL
+                        </span>
+                        {% else %}
+                        <span style="padding: 8px 20px; background: #f44336; color: white; border-radius: 20px; font-weight: 600; font-size: 0.9em;">
+                            🚫 STRONG SELL
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 15px;">
+                    <div>
+                        <div style="color: #999; font-size: 0.85em; margin-bottom: 3px;">Current Price</div>
+                        <div style="color: #333; font-size: 1.2em; font-weight: 600;">${{ "%.2f"|format(analysis.current_price or 0) }}</div>
+                    </div>
+                    <div>
+                        <div style="color: #999; font-size: 0.85em; margin-bottom: 3px;">Target Price</div>
+                        <div style="color: #4CAF50; font-size: 1.2em; font-weight: 600;">${{ "%.2f"|format(analysis.target_price or 0) }}</div>
+                    </div>
+                    <div>
+                        <div style="color: #999; font-size: 0.85em; margin-bottom: 3px;">Upside</div>
+                        <div style="color: #4CAF50; font-size: 1.2em; font-weight: 600;">
+                            {% if analysis.target_price and analysis.current_price %}
+                            +{{ "%.1f"|format(((analysis.target_price - analysis.current_price) / analysis.current_price * 100)) }}%
+                            {% else %}
+                            N/A
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div>
+                        <div style="color: #999; font-size: 0.85em; margin-bottom: 3px;">Confidence</div>
+                        <div style="color: #ff6b35; font-size: 1.2em; font-weight: 600; text-transform: capitalize;">
+                            {{ analysis.confidence_level or 'Medium' }}
+                        </div>
+                    </div>
+                </div>
+
+                {% if analysis.summary %}
+                <p style="color: #666; margin: 15px 0 0 0; line-height: 1.6; border-top: 1px solid #f0f0f0; padding-top: 15px;">
+                    {{ analysis.summary[:200] }}{% if analysis.summary|length > 200 %}...{% endif %}
+                </p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div style="text-align: center; padding: 60px 20px; color: #999;">
+            <div style="font-size: 4em; margin-bottom: 20px;">📊</div>
+            <h3 style="color: #666; margin-bottom: 15px;">No Analysis Available</h3>
+            <p style="margin-bottom: 25px;">Stock analyses will appear here once generated</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

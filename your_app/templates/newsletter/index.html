@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block title %}Newsletter - Codex Dominion{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <!-- Header Section -->
+    <div style="text-align: center; margin-bottom: 60px;">
+        <h1 style="color: #ff6b35; font-size: 3em; margin-bottom: 15px;">📬 Trading Intelligence</h1>
+        <p style="color: #666; font-size: 1.3em; max-width: 600px; margin: 0 auto;">
+            Subscribe to receive exclusive trading picks, market analysis, and portfolio insights delivered to your inbox.
+        </p>
+    </div>
+
+    <!-- Subscription Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px;">
+        <!-- Daily Picks -->
+        <div style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);">
+            <div style="font-size: 3em; margin-bottom: 15px;">🔥</div>
+            <h3 style="font-size: 1.8em; margin-bottom: 15px;">Daily Picks</h3>
+            <p style="opacity: 0.9; margin-bottom: 25px; line-height: 1.6;">
+                Get 3-5 high-confidence stock picks every trading day with entry/exit points and risk analysis.
+            </p>
+            <ul style="list-style: none; padding: 0; margin-bottom: 25px;">
+                <li style="padding: 8px 0; opacity: 0.95;">✓ Daily trading opportunities</li>
+                <li style="padding: 8px 0; opacity: 0.95;">✓ Entry & target prices</li>
+                <li style="padding: 8px 0; opacity: 0.95;">✓ Risk management tips</li>
+            </ul>
+            <button onclick="subscribe('daily')" style="width: 100%; padding: 15px; background: white; color: #ff6b35; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: transform 0.2s;">
+                Subscribe to Daily
+            </button>
+        </div>
+
+        <!-- Weekly Digest -->
+        <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 2px solid #f7931e;">
+            <div style="font-size: 3em; margin-bottom: 15px;">📊</div>
+            <h3 style="font-size: 1.8em; margin-bottom: 15px; color: #ff6b35;">Weekly Digest</h3>
+            <p style="color: #666; margin-bottom: 25px; line-height: 1.6;">
+                Comprehensive weekly market analysis, sector trends, and portfolio performance summaries.
+            </p>
+            <ul style="list-style: none; padding: 0; margin-bottom: 25px; color: #666;">
+                <li style="padding: 8px 0;">✓ Market trend analysis</li>
+                <li style="padding: 8px 0;">✓ Sector performance</li>
+                <li style="padding: 8px 0;">✓ Portfolio reviews</li>
+            </ul>
+            <button onclick="subscribe('weekly')" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: transform 0.2s;">
+                Subscribe to Weekly
+            </button>
+        </div>
+
+        <!-- VIP Premium -->
+        <div style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 15px; right: 15px; background: #f7931e; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: 600;">
+                VIP
+            </div>
+            <div style="font-size: 3em; margin-bottom: 15px;">👑</div>
+            <h3 style="font-size: 1.8em; margin-bottom: 15px;">Premium VIP</h3>
+            <p style="opacity: 0.9; margin-bottom: 25px; line-height: 1.6;">
+                Exclusive access to all content, real-time alerts, and direct analyst consultation.
+            </p>
+            <ul style="list-style: none; padding: 0; margin-bottom: 25px;">
+                <li style="padding: 8px 0; opacity: 0.95;">✓ All daily & weekly content</li>
+                <li style="padding: 8px 0; opacity: 0.95;">✓ Real-time SMS alerts</li>
+                <li style="padding: 8px 0; opacity: 0.95;">✓ Priority support</li>
+                <li style="padding: 8px 0; opacity: 0.95;">✓ Exclusive webinars</li>
+            </ul>
+            <button onclick="subscribe('premium')" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: transform 0.2s;">
+                Upgrade to VIP
+            </button>
+        </div>
+    </div>
+
+    <!-- Subscription Form -->
+    <div style="max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #f7f1e3 0%, #efe7d4 100%); padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #ff6b35; text-align: center; margin-bottom: 30px; font-size: 2em;">Subscribe Now</h2>
+
+        <form id="subscribeForm" method="POST" action="{{ url_for('newsletter.subscribe') }}">
+            <div style="margin-bottom: 20px;">
+                <label for="email" style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Email Address *</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    style="width: 100%; padding: 15px; border: 2px solid #f7931e; border-radius: 8px; font-size: 1em; transition: border-color 0.3s;"
+                    onfocus="this.style.borderColor='#ff6b35'"
+                    onblur="this.style.borderColor='#f7931e'"
+                    placeholder="your.email@example.com"
+                >
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label for="segment" style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Subscription Type *</label>
+                <select
+                    id="segment"
+                    name="segment"
+                    required
+                    style="width: 100%; padding: 15px; border: 2px solid #f7931e; border-radius: 8px; font-size: 1em; background: white; cursor: pointer;"
+                >
+                    <option value="">Choose your subscription...</option>
+                    <option value="daily">🔥 Daily Picks - Daily updates</option>
+                    <option value="weekly">📊 Weekly Digest - Weekly summaries</option>
+                    <option value="premium">👑 Premium VIP - All access</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label style="display: flex; align-items: flex-start; cursor: pointer;">
+                    <input type="checkbox" name="consent" required style="margin-top: 3px; margin-right: 10px; width: 18px; height: 18px;">
+                    <span style="color: #333; font-size: 0.95em;">
+                        I agree to receive trading insights and market analysis via email. I can unsubscribe at any time.
+                    </span>
+                </label>
+            </div>
+
+            <button
+                type="submit"
+                style="width: 100%; padding: 18px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; border: none; border-radius: 8px; font-size: 1.2em; font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;"
+                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(255, 107, 53, 0.4)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+            >
+                📬 Subscribe to Intelligence
+            </button>
+        </form>
+    </div>
+
+    <!-- Subscriber Stats -->
+    <div style="margin-top: 60px; text-align: center;">
+        <h3 style="color: #ff6b35; font-size: 1.8em; margin-bottom: 30px;">Join Our Growing Community</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto;">
+            <div style="padding: 30px; background: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);">
+                <div style="font-size: 2.5em; color: #ff6b35; font-weight: 700;" id="total-subscribers">0</div>
+                <div style="color: #666; margin-top: 10px;">Total Subscribers</div>
+            </div>
+            <div style="padding: 30px; background: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);">
+                <div style="font-size: 2.5em; color: #ff6b35; font-weight: 700;" id="daily-count">0</div>
+                <div style="color: #666; margin-top: 10px;">Daily Subscribers</div>
+            </div>
+            <div style="padding: 30px; background: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);">
+                <div style="font-size: 2.5em; color: #ff6b35; font-weight: 700;" id="premium-count">0</div>
+                <div style="color: #666; margin-top: 10px;">VIP Members</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Load subscriber stats
+document.addEventListener('DOMContentLoaded', async function() {
+    try {
+        const response = await fetch('/api/subscribers/stats');
+        if (response.ok) {
+            const stats = await response.json();
+            document.getElementById('total-subscribers').textContent = stats.total || 0;
+            document.getElementById('daily-count').textContent = stats.daily || 0;
+            document.getElementById('premium-count').textContent = stats.premium || 0;
+        }
+    } catch (error) {
+        console.error('Error loading stats:', error);
+    }
+});
+
+function subscribe(segment) {
+    document.getElementById('segment').value = segment;
+    document.getElementById('subscribeForm').scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+        document.getElementById('email').focus();
+    }, 500);
+}
+</script>
+{% endblock %}

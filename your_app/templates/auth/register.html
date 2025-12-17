@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Codex Dominion{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 600px; margin: 80px auto;">
+    <div class="card" style="padding: 40px; background: linear-gradient(135deg, #f7f1e3 0%, #efe7d4 100%); border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #ff6b35; font-size: 2.5em; margin-bottom: 10px;">👑 Register</h1>
+            <p style="color: #666; font-size: 1.1em;">Claim Your Digital Sovereignty</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('auth.register') }}">
+            <div style="margin-bottom: 20px;">
+                <label for="email" style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Email Address *</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    style="width: 100%; padding: 12px; border: 2px solid #f7931e; border-radius: 8px; font-size: 1em; transition: border-color 0.3s;"
+                    onfocus="this.style.borderColor='#ff6b35'"
+                    onblur="this.style.borderColor='#f7931e'"
+                    placeholder="your.email@example.com"
+                >
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label for="password" style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Password *</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    minlength="8"
+                    style="width: 100%; padding: 12px; border: 2px solid #f7931e; border-radius: 8px; font-size: 1em; transition: border-color 0.3s;"
+                    onfocus="this.style.borderColor='#ff6b35'"
+                    onblur="this.style.borderColor='#f7931e'"
+                    placeholder="Min 8 characters"
+                >
+                <small style="color: #666; font-size: 0.85em; margin-top: 5px; display: block;">
+                    Must be at least 8 characters long
+                </small>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label for="password_confirm" style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Confirm Password *</label>
+                <input
+                    type="password"
+                    id="password_confirm"
+                    name="password_confirm"
+                    required
+                    minlength="8"
+                    style="width: 100%; padding: 12px; border: 2px solid #f7931e; border-radius: 8px; font-size: 1em; transition: border-color 0.3s;"
+                    onfocus="this.style.borderColor='#ff6b35'"
+                    onblur="this.style.borderColor='#f7931e'"
+                    placeholder="Re-enter your password"
+                >
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label for="risk_profile" style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Risk Profile</label>
+                <select
+                    id="risk_profile"
+                    name="risk_profile"
+                    style="width: 100%; padding: 12px; border: 2px solid #f7931e; border-radius: 8px; font-size: 1em; background: white; cursor: pointer;"
+                >
+                    <option value="conservative">🛡️ Conservative - Safety First</option>
+                    <option value="moderate" selected>⚖️ Moderate - Balanced Growth</option>
+                    <option value="aggressive">🔥 Aggressive - Maximum Returns</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 25px; padding: 15px; background: rgba(255, 107, 53, 0.1); border-left: 4px solid #ff6b35; border-radius: 5px;">
+                <label style="display: flex; align-items: flex-start; cursor: pointer;">
+                    <input type="checkbox" name="terms" required style="margin-top: 3px; margin-right: 10px; width: 18px; height: 18px;">
+                    <span style="color: #333; font-size: 0.95em;">
+                        I agree to the Terms of Service and Privacy Policy. I understand this is a portfolio management system.
+                    </span>
+                </label>
+            </div>
+
+            <button
+                type="submit"
+                style="width: 100%; padding: 15px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;"
+                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(255, 107, 53, 0.4)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+            >
+                👑 Establish Your Sovereignty
+            </button>
+        </form>
+
+        <div style="margin-top: 30px; text-align: center; padding-top: 20px; border-top: 2px solid #f7931e;">
+            <p style="color: #666; margin-bottom: 10px;">Already have an account?</p>
+            <a href="{{ url_for('auth.login') }}" style="color: #ff6b35; font-weight: 600; text-decoration: none; font-size: 1.1em;">
+                Login to Your Kingdom →
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+// Password confirmation validation
+document.querySelector('form').addEventListener('submit', function(e) {
+    const password = document.getElementById('password').value;
+    const confirm = document.getElementById('password_confirm').value;
+
+    if (password !== confirm) {
+        e.preventDefault();
+        alert('⚠️ Passwords do not match! Please try again.');
+        return false;
+    }
+});
+</script>
+{% endblock %}

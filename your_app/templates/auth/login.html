@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Codex Dominion{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 500px; margin: 100px auto;">
+    <div class="card" style="padding: 40px; background: linear-gradient(135deg, #f7f1e3 0%, #efe7d4 100%); border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #ff6b35; font-size: 2.5em; margin-bottom: 10px;">🔥 Login</h1>
+            <p style="color: #666; font-size: 1.1em;">Access Your Sovereign Portfolio</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            <div style="margin-bottom: 25px;">
+                <label for="email" style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    style="width: 100%; padding: 12px; border: 2px solid #f7931e; border-radius: 8px; font-size: 1em; transition: border-color 0.3s;"
+                    onfocus="this.style.borderColor='#ff6b35'"
+                    onblur="this.style.borderColor='#f7931e'"
+                    placeholder="admin@codexdominion.com"
+                >
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label for="password" style="display: block; margin-bottom: 8px; color: #333; font-weight: 600;">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    style="width: 100%; padding: 12px; border: 2px solid #f7931e; border-radius: 8px; font-size: 1em; transition: border-color 0.3s;"
+                    onfocus="this.style.borderColor='#ff6b35'"
+                    onblur="this.style.borderColor='#f7931e'"
+                    placeholder="Enter your password"
+                >
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" name="remember" style="margin-right: 8px; width: 18px; height: 18px;">
+                    <span style="color: #666;">Remember me for 7 days</span>
+                </label>
+            </div>
+
+            <button
+                type="submit"
+                style="width: 100%; padding: 15px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;"
+                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(255, 107, 53, 0.4)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+            >
+                🔥 Login to Your Kingdom
+            </button>
+        </form>
+
+        <div style="margin-top: 30px; text-align: center; padding-top: 20px; border-top: 2px solid #f7931e;">
+            <p style="color: #666; margin-bottom: 10px;">Don't have an account?</p>
+            <a href="{{ url_for('auth.register') }}" style="color: #ff6b35; font-weight: 600; text-decoration: none; font-size: 1.1em;">
+                Create Your Sovereign Account →
+            </a>
+        </div>
+
+        <div style="margin-top: 20px; text-align: center;">
+            <p style="color: #999; font-size: 0.9em;">
+                Default Admin: admin@codexdominion.com / codex2025
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

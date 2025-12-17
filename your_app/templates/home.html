@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Codex Dominion{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>🔥 Codex Dominion 👑</h1>
+    <h2>Portfolio Management & Investment Intelligence</h2>
+    <p class="lead">Your sovereign platform for portfolio tracking, stock analysis, trading picks, and automated insights.</p>
+
+    <div class="cta-buttons">
+        <a href="{{ url_for('portfolio.dashboard') }}" class="btn btn-primary">View Portfolio</a>
+        <a href="{{ url_for('stocks.trading_picks') }}" class="btn btn-secondary">Trading Picks</a>
+    </div>
+</div>
+
+<div class="features">
+    <h3>Platform Features</h3>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h4>📊 Portfolio Management</h4>
+            <p>Track multiple portfolios with real-time performance metrics, sector analysis, and risk assessment.</p>
+            <a href="{{ url_for('portfolio.dashboard') }}" class="btn-link">Explore →</a>
+        </div>
+
+        <div class="feature-card">
+            <h4>🎯 Stock Analysis</h4>
+            <p>AI-powered stock analysis with buy/hold/sell recommendations and target prices.</p>
+            <a href="{{ url_for('stocks.analysis_list') }}" class="btn-link">View Analysis →</a>
+        </div>
+
+        <div class="feature-card">
+            <h4>📈 Trading Picks</h4>
+            <p>Daily, swing, and position trade ideas with target prices, stop losses, and confidence ratings.</p>
+            <a href="{{ url_for('stocks.trading_picks') }}" class="btn-link">See Picks →</a>
+        </div>
+
+        <div class="feature-card">
+            <h4>📧 Newsletter</h4>
+            <p>Subscribe to personalized investment insights based on your risk profile and preferences.</p>
+            <a href="{{ url_for('newsletter.index') }}" class="btn-link">Subscribe →</a>
+        </div>
+    </div>
+</div>
+
+<div class="stats">
+    <h3>Platform Statistics</h3>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">7</div>
+            <div class="stat-label">Active Portfolios</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Pick Win Rate</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">24/7</div>
+            <div class="stat-label">Market Monitoring</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">AI</div>
+            <div class="stat-label">Powered Insights</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

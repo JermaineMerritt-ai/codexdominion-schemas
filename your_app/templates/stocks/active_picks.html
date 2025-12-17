@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+
+{% block title %}Active Trading Picks - Codex Dominion{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <div style="margin-bottom: 30px;">
+        <a href="{{ url_for('stocks.trading_picks') }}" style="color: #ff6b35; text-decoration: none; font-weight: 600;">
+            ← Back to All Picks
+        </a>
+    </div>
+
+    <div style="margin-bottom: 40px;">
+        <h1 style="color: #ff6b35; font-size: 2.5em; margin-bottom: 10px;">🔥 Active Trading Picks</h1>
+        <p style="color: #666; font-size: 1.2em;">Currently Open Positions</p>
+    </div>
+
+    <!-- Quick Stats -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
+        <div class="metric-card" style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);">
+            <div style="font-size: 0.9em; opacity: 0.9; margin-bottom: 8px;">Active Picks</div>
+            <div style="font-size: 2em; font-weight: 700;">{{ picks|length }}</div>
+        </div>
+
+        <div class="metric-card" style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 2px solid #4CAF50;">
+            <div style="font-size: 0.9em; color: #666; margin-bottom: 8px;">High Confidence</div>
+            <div style="font-size: 2em; font-weight: 700; color: #4CAF50;">
+                {{ picks|selectattr('confidence', 'equalto', 'high')|list|length }}
+            </div>
+        </div>
+
+        <div class="metric-card" style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 2px solid #2196F3;">
+            <div style="font-size: 0.9em; color: #666; margin-bottom: 8px;">Medium Confidence</div>
+            <div style="font-size: 2em; font-weight: 700; color: #2196F3;">
+                {{ picks|selectattr('confidence', 'equalto', 'medium')|list|length }}
+            </div>
+        </div>
+
+        <div class="metric-card" style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border: 2px solid #FFC107;">
+            <div style="font-size: 0.9em; color: #666; margin-bottom: 8px;">Total Upside</div>
+            <div style="font-size: 2em; font-weight: 700; color: #FFC107;">
+                {% set total_upside = 0 %}
+                {% for pick in picks if pick.target_price and pick.entry_price %}
+                    {% set _ = total_upside.__add__(((pick.target_price - pick.entry_price) / pick.entry_price * 100)) or 0 %}
+                {% endfor %}
+                +{{ "%.1f"|format(total_upside / picks|length if picks|length > 0 else 0) }}%
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Picks List -->
+    <div style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #ff6b35; margin-bottom: 25px; font-size: 1.8em;">Open Positions</h2>
+
+        {% if picks and picks|length > 0 %}
+        <div style="display: grid; gap: 25px;">
+            {% for pick in picks %}
+            <div style="padding: 30px; border: 2px solid #ff6b35; border-radius: 12px; background: linear-gradient(135deg, #fff9f5 0%, #fff 100%);">
+                <!-- Header with Status -->
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+                    <div>
+                        <h3 style="color: #ff6b35; font-size: 2em; margin: 0 0 8px 0;">{{ pick.ticker }}</h3>
+                        <p style="color: #999; margin: 0; font-size: 0.95em;">
+                            Opened: {{ pick.pick_date }} |
+                            Confidence: <span style="color:
+                                {% if pick.confidence == 'high' %}#4CAF50
+                                {% elif pick.confidence == 'medium' %}#2196F3
+                                {% else %}#FFC107{% endif %};
+                                font-weight: 600; text-transform: capitalize;">{{ pick.confidence or 'Medium' }}</span>
+                        </p>
+                    </div>
+                    <span style="padding: 10px 25px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; border-radius: 25px; font-weight: 700;">
+                        🔥 ACTIVE
+                    </span>
+                </div>
+
+                <!-- Price Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                    <div style="padding: 15px; background: white; border-radius: 8px; border: 1px solid #f0f0f0;">
+                        <div style="color: #999; font-size: 0.8em; margin-bottom: 5px;">Entry</div>
+                        <div style="color: #333; font-size: 1.2em; font-weight: 600;">${{ "%.2f"|format(pick.entry_price or 0) }}</div>
+                    </div>
+                    <div style="padding: 15px; background: white; border-radius: 8px; border: 1px solid #f0f0f0;">
+                        <div style="color: #999; font-size: 0.8em; margin-bottom: 5px;">Target</div>
+                        <div style="color: #4CAF50; font-size: 1.2em; font-weight: 600;">${{ "%.2f"|format(pick.target_price or 0) }}</div>
+                    </div>
+                    <div style="padding: 15px; background: white; border-radius: 8px; border: 1px solid #f0f0f0;">
+                        <div style="color: #999; font-size: 0.8em; margin-bottom: 5px;">Stop Loss</div>
+                        <div style="color: #f44336; font-size: 1.2em; font-weight: 600;">${{ "%.2f"|format(pick.stop_loss or 0) }}</div>
+                    </div>
+                    <div style="padding: 15px; background: white; border-radius: 8px; border: 1px solid #f0f0f0;">
+                        <div style="color: #999; font-size: 0.8em; margin-bottom: 5px;">Upside</div>
+                        <div style="color: #4CAF50; font-size: 1.2em; font-weight: 600;">
+                            {% if pick.target_price and pick.entry_price %}
+                            +{{ "%.1f"|format(((pick.target_price - pick.entry_price) / pick.entry_price * 100)) }}%
+                            {% else %}
+                            N/A
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div style="padding: 15px; background: white; border-radius: 8px; border: 1px solid #f0f0f0;">
+                        <div style="color: #999; font-size: 0.8em; margin-bottom: 5px;">R:R</div>
+                        <div style="color: #2196F3; font-size: 1.2em; font-weight: 600;">
+                            {% if pick.target_price and pick.entry_price and pick.stop_loss %}
+                            {{ "%.1f"|format(((pick.target_price - pick.entry_price) / (pick.entry_price - pick.stop_loss))) }}:1
+                            {% else %}
+                            N/A
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rationale -->
+                {% if pick.rationale %}
+                <div style="padding: 20px; background: white; border-radius: 8px; margin-bottom: 15px; border: 1px solid #f0f0f0;">
+                    <h4 style="color: #ff6b35; margin: 0 0 12px 0; font-size: 1em; display: flex; align-items: center;">
+                        <span style="margin-right: 8px;">📝</span> Trade Thesis
+                    </h4>
+                    <p style="color: #666; margin: 0; line-height: 1.7;">{{ pick.rationale }}</p>
+                </div>
+                {% endif %}
+
+                <!-- Action Buttons -->
+                <div style="display: flex; gap: 12px;">
+                    <button onclick="updatePick({{ pick.id }}, 'win')"
+                            style="flex: 1; padding: 12px; background: #4CAF50; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s;"
+                            onmouseover="this.style.background='#45a049'"
+                            onmouseout="this.style.background='#4CAF50'">
+                        ✅ Target Hit
+                    </button>
+                    <button onclick="updatePick({{ pick.id }}, 'loss')"
+                            style="flex: 1; padding: 12px; background: #f44336; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s;"
+                            onmouseover="this.style.background='#da190b'"
+                            onmouseout="this.style.background='#f44336'">
+                        ❌ Stop Loss Hit
+                    </button>
+                    <button onclick="updatePick({{ pick.id }}, 'neutral')"
+                            style="flex: 1; padding: 12px; background: #9E9E9E; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s;"
+                            onmouseover="this.style.background='#757575'"
+                            onmouseout="this.style.background='#9E9E9E'">
+                        ⏸️ Close Manually
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div style="text-align: center; padding: 60px 20px; color: #999;">
+            <div style="font-size: 4em; margin-bottom: 20px;">📭</div>
+            <h3 style="color: #666; margin-bottom: 15px;">No Active Picks</h3>
+            <p style="margin-bottom: 25px;">All positions are closed. Check back for new opportunities!</p>
+            <a href="{{ url_for('stocks.trading_picks') }}"
+               style="padding: 15px 30px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; display: inline-block;">
+                View All Picks
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+async function updatePick(pickId, result) {
+    const messages = {
+        'win': 'Mark this pick as WIN? 🎉',
+        'loss': 'Mark this pick as LOSS? 😔',
+        'neutral': 'Close this pick manually?'
+    };
+
+    if (!confirm(messages[result])) return;
+
+    try {
+        const response = await fetch(`/stocks/api/picks/${pickId}/update`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                status: 'closed',
+                result: result
+            })
+        });
+
+        if (response.ok) {
+            const resultEmoji = {
+                'win': '✅',
+                'loss': '❌',
+                'neutral': '⏸️'
+            };
+            alert(`${resultEmoji[result]} Pick updated successfully!`);
+            window.location.reload();
+        } else {
+            alert('⚠️ Failed to update pick. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error updating pick:', error);
+        alert('❌ Error: ' + error.message);
+    }
+}
+</script>
+{% endblock %}
