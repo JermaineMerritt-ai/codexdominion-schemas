@@ -13,14 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt gunicorn
 
 # Copy application files
 COPY flask_dashboard.py .
-COPY codex_ledger.json .
-COPY proclamations.json .
-COPY cycles.json .
-COPY accounts.json .
-COPY treasury_config.json .
-COPY *.json .
-COPY *.py .
-COPY Copilot-instruction.md .
+COPY . .
 
 # Environment variables
 ENV PORT=5000

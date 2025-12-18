@@ -1,4 +1,5 @@
 services:
+  # Next.js Frontend
   - type: web
     name: codexdominion-schemas
     env: static
@@ -17,3 +18,20 @@ services:
         value: Codex Dominion
       - key: NEXT_PUBLIC_APP_VERSION
         value: 2.0.0
+
+  # Flask Master Dashboard - NEW
+  - type: web
+    name: codex-master-dashboard
+    runtime: docker
+    dockerfilePath: ./Dockerfile.flask
+    plan: starter
+    healthCheckPath: /
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PORT
+        value: "5000"
+      - key: PYTHONUNBUFFERED
+        value: "1"
