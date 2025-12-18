@@ -2646,6 +2646,67 @@ def upload_file():
 
     return redirect(url_for('documents'))
 
+# Data API endpoints
+@app.route('/data/<path:filename>')
+def serve_data(filename):
+    """Serve JSON data files from /data directory"""
+    try:
+        data_dir = Path(__file__).parent / 'data'
+        file_path = data_dir / filename
+
+        if file_path.exists() and file_path.suffix == '.json':
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            return jsonify(data)
+        else:
+            return jsonify({"error": f"File not found: {filename}"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/ledger')
+def get_ledger():
+    """Get codex ledger data"""
+    try:
+        ledger_path = Path(__file__).parent / 'codex_ledger.json'
+        if ledger_path.exists():
+            with open(ledger_path, 'r', encoding='utf-8') as f:
+                return jsonify(json.load(f))
+        return jsonify({"error": "Ledger not found"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/cycles')
+def get_cycles():
+    """Get cycles data"""
+    try:
+        cycles_path = Path(__file__).parent / 'cycles.json'
+        if cycles_path.exists():
+            with open(cycles_path, 'r', encoding='utf-8') as f:
+                return jsonify(json.load(f))
+        cycles_path = Path(__file__).parent / 'data' / 'cycles.json'
+        if cycles_path.exists():
+            with open(cycles_path, 'r', encoding='utf-8') as f:
+                return jsonify(json.load(f))
+        return jsonify({"error": "Cycles not found"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/proclamations')
+def get_proclamations():
+    """Get proclamations data"""
+    try:
+        proc_path = Path(__file__).parent / 'proclamations.json'
+        if proc_path.exists():
+            with open(proc_path, 'r', encoding='utf-8') as f:
+                return jsonify(json.load(f))
+        proc_path = Path(__file__).parent / 'data' / 'proclamations.json'
+        if proc_path.exists():
+            with open(proc_path, 'r', encoding='utf-8') as f:
+                return jsonify(json.load(f))
+        return jsonify({"error": "Proclamations not found"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
     print("\n" + "="*80)
     print("👑 CODEX DOMINION MASTER DASHBOARD ULTIMATE - FLASK VERSION")
