@@ -1,4 +1,4 @@
-import { FeedbackDashboard } from '@/components/feedback-dashboard';
+import { FeedbackDashboard } from '../../components/feedback-dashboard';
 
 export const metadata = {
   title: 'Council Feedback | Codex Dominion',

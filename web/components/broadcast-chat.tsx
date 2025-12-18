@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { getUnifiedEventManager } from '@/lib/events/unified-event-manager';
+import { getUnifiedEventManager } from '../lib/events/unified-event-manager';
 
 interface ChatMessage {
   user: string;
