@@ -2736,6 +2736,11 @@ def api_proclamations():
     """Get proclamations data"""
     return load_json_response("proclamations.json")
 
+@app.route('/api/capsules')
+def api_capsules():
+    """Get capsules system data"""
+    return load_json_response("capsules.json")
+
 if __name__ == '__main__':
     print("\n" + "="*80)
     print("👑 CODEX DOMINION MASTER DASHBOARD ULTIMATE - FLASK VERSION")
