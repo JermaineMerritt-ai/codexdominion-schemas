@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { getCouncilFeedbackManager } from '@/lib/feedback/council-feedback';
+import { getCouncilFeedbackManager } from '../lib/feedback/council-feedback';
 
 /**
  * Seeds the feedback manager with sample council feedback data
