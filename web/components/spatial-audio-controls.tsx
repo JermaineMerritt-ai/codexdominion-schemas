@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getSpatialAudioEngine } from '@/lib/spatial-audio-engine';
-import { SCENE_METADATA, getSourcesByType } from '@/lib/spatial-audio-design';
+import { getSpatialAudioEngine } from '../lib/spatial-audio-engine';
+import { SCENE_METADATA, getSourcesByType } from '../lib/spatial-audio-design';
 
 export default function SpatialAudioControls() {
   const [isPlaying, setIsPlaying] = useState(false);

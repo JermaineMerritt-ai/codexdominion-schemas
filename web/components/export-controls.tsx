@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { getUnifiedEventManager } from '@/lib/events/unified-event-manager';
+import { getUnifiedEventManager } from '../lib/events/unified-event-manager';
 
 type ExportFormat = 'pdf' | 'markdown' | 'yaml' | 'json';
 type Cycle = 'daily' | 'seasonal' | 'epochal' | 'millennial' | '';
