@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: codexdominion-schemas
+    env: static
+    repo: https://github.com/JermaineMerritt-ai/codexdominion-schemas
+    rootDir: web
+    buildCommand: npm ci --legacy-peer-deps && npm run build
+    staticPublishPath: out
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_API_URL
+        value: https://codex-portfolio.onrender.com
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://codexdominion-schemas.onrender.com
+      - key: NEXT_PUBLIC_APP_NAME
+        value: Codex Dominion
+      - key: NEXT_PUBLIC_APP_VERSION
+        value: 2.0.0
