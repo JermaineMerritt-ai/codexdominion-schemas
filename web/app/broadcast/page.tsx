@@ -1,4 +1,4 @@
-import { BroadcastMode } from '@/components/broadcast-mode';
+import { BroadcastMode } from '../../components/broadcast-mode';
 
 export const metadata = {
   title: 'Sovereign Broadcast | Codex Dominion',

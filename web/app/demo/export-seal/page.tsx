@@ -1,6 +1,6 @@
 'use client';
 
-import ExportSeal from '@/components/export-seal';
+import ExportSeal from '../../../components/export-seal';
 
 export default function ExportSealDemo() {
   // Sample seal package from backend Digital Seal Service

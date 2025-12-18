@@ -1,4 +1,4 @@
-import { BroadcastAudience } from '@/components/broadcast-audience';
+import { BroadcastAudience } from '../../../components/broadcast-audience';
 
 export const metadata = {
   title: 'Heir Broadcast | Codex Dominion',
