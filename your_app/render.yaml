@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: codexdominion-backend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --config gunicorn_config.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: codexdominion-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: FLASK_APP
+        value: app.py
+
+databases:
+  - name: codexdominion-db
+    databaseName: codexdominion
+    user: codexdominion
+    plan: free

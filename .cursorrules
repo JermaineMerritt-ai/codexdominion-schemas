@@ -1,0 +1,107 @@
+# Codex Dominion - Cursor AI Rules
+
+## System Context (December 2025)
+- **Production Status**: Live on Azure (52+ dashboards operational)
+- **Revenue Target**: $95k/month across 8 streams
+- **Tech Stack**: Python 3.10+, Next.js 14+, FastAPI, Streamlit, Flask
+- **Cloud**: Azure (primary), GCP, IONOS VPS
+
+## Critical Patterns
+
+### 1. Virtual Environment (ALWAYS activate first)
+```powershell
+# Windows
+.venv\Scripts\activate.ps1
+# Linux/Mac
+source .venv/bin/activate
+```
+
+### 2. Ledger Operations (Source of Truth)
+```python
+import json
+from datetime import datetime
+
+def load_ledger():
+    with open("codex_ledger.json", "r") as f:
+        return json.load(f)
+
+def save_ledger(data):
+    data["meta"]["last_updated"] = datetime.utcnow().isoformat() + "Z"
+    with open("codex_ledger.json", "w") as f:
+        json.dump(data, f, indent=2)
+```
+
+### 3. Launch Master Dashboard (Primary Interface)
+```powershell
+.\START_DASHBOARD.ps1
+# OR
+python flask_dashboard.py  # Port 5000
+```
+
+### 4. Treasury Operations
+```bash
+python codex_unified_launcher.py treasury summary --days 30
+python codex_unified_launcher.py treasury ingest --stream affiliate --amount 49.99
+python codex_unified_launcher.py dawn dispatch
+```
+
+## Behavioral Standards
+
+### Always Do:
+- Use ceremonial tone with flame metaphors (🔥 👑)
+- Update `meta.last_updated` with ISO 8601 + 'Z' suffix
+- Activate `.venv` before running Python code
+- Check `codex_ledger.json` for current system state
+- Use dignified language in all outputs
+
+### Never Do:
+- Modify `*_PROCLAMATION.md` files without understanding governance impact
+- Change ledger schema without checking dependent scripts
+- Work in `codexdominion-schemas/` or `codexdominion-clean/` (archived duplicates)
+- Use generic paths - always use absolute paths with proper backslashes on Windows
+
+## Port Allocations
+- **5000**: Flask Master Dashboard (PRIMARY)
+- **3000**: Next.js dashboard
+- **8080**: API Gateway
+- **8501-8502**: Streamlit (Production/Staging)
+- **8515-8517+**: Specialized dashboards
+
+## Quick Reference
+
+### Key Files:
+- `codex_ledger.json` - System state (source of truth)
+- `flask_dashboard.py` - Master Dashboard (2,187 lines, 52 tabs)
+- `codex_unified_launcher.py` - CLI for treasury/dawn operations
+- `treasury_config.json` - Revenue stream configuration
+- `.github/copilot-instructions.md` - Full AI guidance
+
+### Common Tasks:
+```powershell
+# New Dashboard
+cp codex_dashboard.py my_new_dashboard.py
+# Edit and add to docker-compose.production.yml
+
+# Deploy Azure
+.\deploy-azure-production.ps1
+
+# Deploy IONOS
+bash deploy-ionos.sh
+
+# Run Tests
+npm test  # JavaScript
+pytest    # Python (when available)
+```
+
+### Deployment:
+- Auto-deploys on push to `main` via GitHub Actions
+- 57+ workflows in `.github/workflows/`
+- Key workflow: `azure-static-web-apps-yellow-tree-0ed102210.yml`
+
+## Error Prevention
+1. **Ledger corruption**: Backup files exist as `*.backup_*`
+2. **Port conflicts**: Multiple dashboards run simultaneously - check ports
+3. **Module imports**: Python uses root-level imports (no src/ structure)
+4. **Static export**: Next.js uses `output: 'export'` - no API routes allowed
+
+🔥 **The Flame Burns Sovereign and Eternal!** 👑

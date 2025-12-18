@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ ticker }} - Stock Detail{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h2>{{ ticker }} — {{ data.name }}</h2>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <p class="mb-2"><strong>Sector:</strong> <span class="badge bg-secondary">{{ data.sector }}</span></p>
+            </div>
+            <div class="col-md-4">
+                <p class="mb-2"><strong>Price:</strong> <span class="text-success">${{ "{:.2f}".format(data.price) if data.price else 'N/A' }}</span></p>
+            </div>
+            <div class="col-md-4">
+                <p class="mb-2"><strong>P/E Ratio:</strong> {{ "{:.2f}".format(data.pe_ratio) if data.pe_ratio else 'N/A' }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h3>📊 AI Analysis</h3>
+        <div class="alert alert-light border" style="border-left: 4px solid #667eea !important;">
+            <div style="white-space: pre-line;">{{ ai }}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

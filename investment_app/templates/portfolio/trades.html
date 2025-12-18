@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Trades - {{ portfolio.name }}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">📊 Trade History - {{ portfolio.name }}</h1>
+
+{% if trades %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trade in trades %}
+            <tr>
+                <td>{{ trade.trade_date.strftime('%Y-%m-%d') }}</td>
+                <td><span class="badge bg-{{ 'success' if trade.trade_type == 'buy' else 'danger' }}">{{ trade.trade_type }}</span></td>
+                <td>{{ trade.stock.ticker }}</td>
+                <td>{{ trade.shares }}</td>
+                <td>${{ "%.2f"|format(trade.price) }}</td>
+                <td>${{ "%.2f"|format(trade.shares * trade.price) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="alert alert-info">No trades recorded yet</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}My Portfolio - Investment Platform{% endblock %}
+
+{% block content %}
+<h2>Your Portfolios</h2>
+
+<a class="btn btn-primary mb-4" href="/portfolio/create">Create New Portfolio</a>
+
+{% if portfolios %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Risk Profile</th>
+            <th>Created</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in portfolios %}
+        <tr>
+            <td><strong>{{ p.name }}</strong></td>
+            <td>
+                {% if p.risk_profile == 'conservative' %}
+                    <span class="badge bg-success">{{ p.risk_profile }}</span>
+                {% elif p.risk_profile == 'moderate' %}
+                    <span class="badge bg-warning">{{ p.risk_profile }}</span>
+                {% elif p.risk_profile == 'aggressive' %}
+                    <span class="badge bg-danger">{{ p.risk_profile }}</span>
+                {% else %}
+                    <span class="badge bg-secondary">{{ p.risk_profile }}</span>
+                {% endif %}
+            </td>
+            <td>{{ p.created_at.strftime("%Y-%m-%d") if p.created_at else 'N/A' }}</td>
+            <td>
+                <a href="/portfolio/{{ p.id }}" class="btn btn-primary btn-sm">View</a>
+                <a href="/portfolio/{{ p.id }}/analyze" class="btn btn-outline-primary btn-sm">AI Analysis</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info mt-4">
+    <h4>No portfolios yet</h4>
+    <p>Create your first portfolio to start tracking investments and get AI-powered insights.</p>
+</div>
+{% endif %}
+
+{% endblock %}

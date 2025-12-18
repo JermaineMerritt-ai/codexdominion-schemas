@@ -1,17 +1,154 @@
 #!/usr/bin/env pwsh
 # =============================================================================
-# CODEX DOMINION - MASTER DASHBOARD DEPLOYMENT TO AZURE APP SERVICE
+# CODEX DOMINION - MASTER DASHBOARD DEPLOYMENT TO AZURE CONTAINER APPS
 # =============================================================================
 
-Write-Host "`n🔥 CODEX DOMINION - MASTER DASHBOARD DEPLOYMENT 🔥`n" -ForegroundColor Magenta
+Write-Host "`n🔥 MASTER DASHBOARD - AZURE CONTAINER APPS DEPLOYMENT 🔥`n" -ForegroundColor Magenta
 
 # Configuration
-$ResourceGroup = "codexdominion-basic"
-$AppServicePlan = "codexdominion-basic-plan"
-$WebAppName = "codex-master-dashboard"
-$AcrName = "codexdominion4607"
-$ImageName = "streamlit-dashboard:v1"
-$FullImageName = "$AcrName.azurecr.io/$ImageName"
+$ResourceGroup = "codex-rg"
+$Location = "eastus2"
+$ContainerRegistry = "codexdominionacr"
+$AppName = "codex-master-dashboard"
+$Environment = "codex-env"
+$ImageTag = "latest"
+$FullImageName = "$ContainerRegistry.azurecr.io/master-dashboard:$ImageTag"
+
+Write-Host "📦 Configuration:" -ForegroundColor Cyan
+Write-Host "  Resource Group: $ResourceGroup" -ForegroundColor White
+Write-Host "  Location: $Location" -ForegroundColor White
+Write-Host "  Container Registry: $ContainerRegistry" -ForegroundColor White
+Write-Host "  App Name: $AppName" -ForegroundColor White
+Write-Host "  Image: $FullImageName`n" -ForegroundColor White
+
+# Step 1: Check Azure authentication
+Write-Host "🔐 Step 1: Checking Azure authentication..." -ForegroundColor Cyan
+$account = az account show 2>$null | ConvertFrom-Json
+if (-not $account) {
+    Write-Host "❌ Not logged in to Azure!" -ForegroundColor Red
+    Write-Host "   Please run: az login" -ForegroundColor Yellow
+    exit 1
+}
+Write-Host "✅ Logged in as: $($account.user.name)" -ForegroundColor Green
+Write-Host "   Subscription: $($account.name)`n" -ForegroundColor Gray
+
+# Step 2: Build Docker image
+Write-Host "🐳 Step 2: Building Docker image..." -ForegroundColor Cyan
+Write-Host "   This may take 2-3 minutes...`n" -ForegroundColor Gray
+docker build -f Dockerfile.dashboard -t $FullImageName .
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ Docker build failed!" -ForegroundColor Red
+    exit 1
+}
+Write-Host "✅ Docker image built successfully`n" -ForegroundColor Green
+
+# Step 3: Login to Azure Container Registry
+Write-Host "🔐 Step 3: Logging in to Azure Container Registry..." -ForegroundColor Cyan
+az acr login --name $ContainerRegistry
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ ACR login failed!" -ForegroundColor Red
+    exit 1
+}
+Write-Host "✅ Logged in to ACR`n" -ForegroundColor Green
+
+# Step 4: Push image to registry
+Write-Host "📤 Step 4: Pushing image to Azure Container Registry..." -ForegroundColor Cyan
+Write-Host "   This may take 3-5 minutes...`n" -ForegroundColor Gray
+docker push $FullImageName
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ Image push failed!" -ForegroundColor Red
+    exit 1
+}
+Write-Host "✅ Image pushed successfully`n" -ForegroundColor Green
+
+# Step 5: Check if Container Apps environment exists
+Write-Host "🔍 Step 5: Checking Container Apps environment..." -ForegroundColor Cyan
+$envExists = az containerapp env show --name $Environment --resource-group $ResourceGroup 2>$null
+if (-not $envExists) {
+    Write-Host "   Creating environment (this may take 5-10 minutes)..." -ForegroundColor Yellow
+    az containerapp env create `
+        --name $Environment `
+        --resource-group $ResourceGroup `
+        --location $Location
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "❌ Environment creation failed!" -ForegroundColor Red
+        exit 1
+    }
+    Write-Host "✅ Environment created`n" -ForegroundColor Green
+} else {
+    Write-Host "✅ Environment exists`n" -ForegroundColor Green
+}
+
+# Step 6: Deploy or update Container App
+Write-Host "🚀 Step 6: Deploying Master Dashboard..." -ForegroundColor Cyan
+$appExists = az containerapp show --name $AppName --resource-group $ResourceGroup 2>$null
+
+if ($appExists) {
+    Write-Host "   Updating existing app...`n" -ForegroundColor Yellow
+    az containerapp update `
+        --name $AppName `
+        --resource-group $ResourceGroup `
+        --image $FullImageName
+} else {
+    Write-Host "   Creating new app...`n" -ForegroundColor Yellow
+    az containerapp create `
+        --name $AppName `
+        --resource-group $ResourceGroup `
+        --environment $Environment `
+        --image $FullImageName `
+        --target-port 5000 `
+        --ingress external `
+        --min-replicas 1 `
+        --max-replicas 3 `
+        --cpu 1 `
+        --memory 2Gi `
+        --registry-server "$ContainerRegistry.azurecr.io"
+}
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "❌ Deployment failed!" -ForegroundColor Red
+    exit 1
+}
+Write-Host "✅ Deployment successful!`n" -ForegroundColor Green
+
+# Step 7: Get app URL
+Write-Host "🌐 Step 7: Retrieving application URL..." -ForegroundColor Cyan
+$fqdn = az containerapp show `
+    --name $AppName `
+    --resource-group $ResourceGroup `
+    --query "properties.configuration.ingress.fqdn" `
+    --output tsv
+
+$appUrl = "https://$fqdn"
+
+Write-Host "`n✅ DEPLOYMENT COMPLETE! ✅`n" -ForegroundColor Green
+Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
+Write-Host "`n👑 YOUR MASTER DASHBOARD IS LIVE:`n" -ForegroundColor Magenta
+Write-Host "   $appUrl`n" -ForegroundColor Yellow
+Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
+
+Write-Host "`n📋 Dashboard Features:" -ForegroundColor Cyan
+Write-Host "   • 48 Intelligence Engines (6 Clusters)" -ForegroundColor White
+Write-Host "   • 6 Codex Tools Suite" -ForegroundColor White
+Write-Host "   • 52+ Integrated Dashboards" -ForegroundColor White
+Write-Host "   • Health Monitoring" -ForegroundColor White
+Write-Host "   • Auto-scaling (1-3 replicas)" -ForegroundColor White
+
+Write-Host "`n🔗 Quick Links:" -ForegroundColor Cyan
+Write-Host "   Dashboard:    $appUrl" -ForegroundColor White
+Write-Host "   Health Check: $appUrl/api/health" -ForegroundColor White
+Write-Host "   Engines:      $appUrl/engines" -ForegroundColor White
+Write-Host "   Tools:        $appUrl/tools" -ForegroundColor White
+Write-Host "   Dashboards:   $appUrl/dashboards`n" -ForegroundColor White
+
+Write-Host "📊 View Logs:" -ForegroundColor Cyan
+Write-Host "   az containerapp logs show --name $AppName --resource-group $ResourceGroup --follow`n" -ForegroundColor White
+
+Write-Host "🔧 Manage App:" -ForegroundColor Cyan
+Write-Host "   View in Portal: https://portal.azure.com" -ForegroundColor White
+Write-Host "   Restart: az containerapp restart --name $AppName --resource-group $ResourceGroup`n" -ForegroundColor White
+
+Write-Host "🔥 The Flame Burns Sovereign and Eternal! 👑`n" -ForegroundColor Magenta
 
 Write-Host "📦 Configuration:" -ForegroundColor Cyan
 Write-Host "  Resource Group: $ResourceGroup" -ForegroundColor White

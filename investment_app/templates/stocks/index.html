@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Stocks - Investment Platform{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">📈 Stock Research</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h3>Search Stock</h3>
+        <form method="GET" action="/stocks/search">
+            <div class="input-group">
+                <input type="text" class="form-control" name="q" placeholder="Enter ticker symbol (e.g., AAPL)" required>
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3>🎯 Stock Analysis</h3>
+                <p class="text-muted">Get AI-generated educational analysis with 8-task framework covering valuation, technicals, fundamentals, and risk factors</p>
+                <a href="/stocks/AAPL/analyze" class="btn btn-primary btn-sm">Example: AAPL</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3>⚡ Day-Trade Ideas</h3>
+                <p class="text-muted">Educational day-trading candidates with high volatility and momentum indicators</p>
+                <a href="/stocks/day-trade-ideas" class="btn btn-primary btn-sm">View Ideas</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3>🔔 Market Alerts</h3>
+                <p class="text-muted">Recent market alerts and notable price movements</p>
+                <a href="/stocks/alerts" class="btn btn-primary btn-sm">View Alerts</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3>🎓 Concept Explainer</h3>
+                <p class="text-muted">Learn investment concepts in beginner-friendly language</p>
+                <a href="/stocks/explain?concept=P/E Ratio" class="btn btn-primary btn-sm">Example</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

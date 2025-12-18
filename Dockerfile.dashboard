@@ -1,22 +1,39 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install dependencies
-COPY requirements.txt ./requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy organized dashboard structure
-COPY main/ ./main/
-COPY intelligence/ ./intelligence/
-COPY domains/ ./domains/
-COPY business/ ./business/
-COPY omega/ ./omega/
-COPY launch/ ./launch/
-COPY utilities/ ./utilities/
-COPY modules/ ./modules/
-COPY registry/ ./registry/
+# Copy application files (only the main dashboard file is required)
+COPY flask_dashboard.py .
 
-EXPOSE 8501
+# Copy optional data files if they exist (dashboard works without them)
+COPY codex_ledger.json* ./
+COPY Copilot-instruction.md* ./
 
-CMD ["streamlit", "run", "main/master_dashboard_ultimate.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Create uploads directory
+RUN mkdir -p uploads
+
+# Create placeholder ledger if not provided
+RUN if [ ! -f codex_ledger.json ]; then echo '{"meta":{"version":"1.0.0","last_updated":"2025-12-17T00:00:00Z"},"heartbeat":{"status":"active"}}' > codex_ledger.json; fi
+
+# Install Python dependencies directly
+RUN pip install --no-cache-dir \
+    flask>=3.0.0 \
+    gunicorn>=21.2.0 \
+    python-dotenv>=1.0.0 \
+    requests>=2.31.0
+
+# Expose port
+EXPOSE 5000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
+    CMD curl -f http://localhost:5000/api/health || exit 1
+
+# Run with gunicorn for production
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "--timeout", "120", "--access-logfile", "-", "--error-logfile", "-", "flask_dashboard:app"]

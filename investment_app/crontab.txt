@@ -1,0 +1,55 @@
+# Codex Dominion Investment Platform - Cron Schedule
+#
+# Add these entries to your crontab with: crontab -e
+# Or on Windows Task Scheduler, create tasks using these schedules
+#
+# Make sure to:
+# 1. Use absolute paths to Python interpreter
+# 2. Set PYTHONPATH if needed
+# 3. Redirect output to log files
+# 4. Set correct working directory
+
+# ------------------------------------------------------
+# DAILY JOBS - 6 AM Eastern Time
+# ------------------------------------------------------
+
+# Update stock prices (6:00 AM)
+0 6 * * * cd /path/to/investment_app && /path/to/python run_job.py update_daily_prices >> /var/log/codex/daily_prices.log 2>&1
+
+# Generate AI stock picks (6:05 AM)
+5 6 * * * cd /path/to/investment_app && /path/to/python run_job.py generate_daily_picks >> /var/log/codex/daily_picks.log 2>&1
+
+# Send daily newsletter (6:10 AM)
+10 6 * * * cd /path/to/investment_app && /path/to/python run_job.py send_daily_newsletter >> /var/log/codex/newsletter.log 2>&1
+
+
+# ------------------------------------------------------
+# WEEKLY JOBS - Sunday Evening
+# ------------------------------------------------------
+
+# Send weekly portfolio summaries (Sunday 6:00 PM)
+0 18 * * 0 cd /path/to/investment_app && /path/to/python run_job.py send_weekly_portfolio_summaries >> /var/log/codex/weekly_summaries.log 2>&1
+
+
+# ------------------------------------------------------
+# MONTHLY JOBS - 1st of Month
+# ------------------------------------------------------
+
+# Send monthly deep dive (1st at 9:00 AM)
+0 9 1 * * cd /path/to/investment_app && /path/to/python run_job.py send_monthly_deep_dive >> /var/log/codex/monthly_dive.log 2>&1
+
+
+# ------------------------------------------------------
+# WINDOWS EQUIVALENT (PowerShell Task Scheduler)
+# ------------------------------------------------------
+# Use the included setup_windows_tasks.ps1 script to create
+# Windows Scheduled Tasks automatically.
+#
+# Or create manually:
+# - Open Task Scheduler
+# - Create Basic Task
+# - Set trigger (daily/weekly/monthly)
+# - Action: Start a program
+# - Program: C:\path\to\.venv\Scripts\python.exe
+# - Arguments: run_job.py <job_name>
+# - Start in: C:\path\to\investment_app

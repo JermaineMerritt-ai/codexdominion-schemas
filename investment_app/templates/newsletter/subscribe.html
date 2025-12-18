@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Newsletter Subscription{% endblock %}
+
+{% block content %}
+<h2>Get Daily AI Stock Picks & Weekly Insights</h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ 'success' if category == 'success' else 'info' }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<form method="POST" action="/newsletter/subscribe">
+    <label>Email</label>
+    <input type="email" name="email" required>
+
+    <label>Risk Preference</label>
+    <select name="risk_profile">
+        <option value="conservative">Conservative</option>
+        <option value="moderate" selected>Moderate</option>
+        <option value="aggressive">Aggressive</option>
+        <option value="trader">Day Trader</option>
+    </select>
+
+    <label>What do you want?</label>
+    <input type="checkbox" name="segments" value="daily_picks" checked> Daily Picks<br>
+    <input type="checkbox" name="segments" value="weekly_portfolio" checked> Weekly Portfolio<br>
+    <input type="checkbox" name="segments" value="monthly_deep_dive"> Monthly Deep Dive<br>
+
+    <button class="btn-primary" type="submit">Join Free</button>
+</form>
+
+{% endblock %}

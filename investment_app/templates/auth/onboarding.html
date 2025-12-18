@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Welcome!</h2>
+<p>Your risk profile: <strong>{{ risk }}</strong></p>
+
+<p>Let's create your first portfolio based on your style.</p>
+
+<form method="POST" action="/portfolio/create-default">
+    <button class="btn-primary">Create My Starter Portfolio</button>
+</form>
+
+{% endblock %}

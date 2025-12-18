@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Investment Platform{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        border-radius: 15px;
+        margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: #333;
+    }
+
+    .hero p {
+        font-size: 1.25rem;
+        color: #666;
+        margin-bottom: 2rem;
+    }
+
+    .hero a {
+        display: inline-block;
+        margin: 0.5rem;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+        background: white;
+        color: #667eea;
+        border: 2px solid #667eea;
+    }
+
+    .btn-secondary:hover {
+        background: #667eea;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .feature {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .feature h3 {
+        color: #667eea;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .feature p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 1.75rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+        }
+
+        .features {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Build, analyze, and monitor your portfolio with AI‑powered stock intelligence.</h1>
+    <p>Track your investments, get daily AI stock picks, and build portfolios by risk level.</p>
+
+    <a class="btn-primary" href="/auth/register">Start Free Portfolio Analyzer</a>
+    <a class="btn-secondary" href="/newsletter">Get Daily AI Stock Picks</a>
+</section>
+
+<section class="features">
+    <div class="feature">
+        <h3>📊 AI Portfolio Builder</h3>
+        <p>Create conservative, moderate, or aggressive portfolios instantly.</p>
+    </div>
+
+    <div class="feature">
+        <h3>🎯 Daily AI Stock Picks</h3>
+        <p>Three day‑trade ideas every morning at 6:10 AM.</p>
+    </div>
+
+    <div class="feature">
+        <h3>⚡ Risk‑Tagged Analysis</h3>
+        <p>Every stock labeled by risk level for informed decisions.</p>
+    </div>
+
+    <div class="feature">
+        <h3>📖 Human‑Readable Research</h3>
+        <p>Plain‑English explanations for every stock and portfolio.</p>
+    </div>
+</section>
+
+<div class="alert alert-warning mt-5" role="alert">
+    <h4 class="alert-heading">⚠️ Educational Purpose Only</h4>
+    <p class="mb-0">This platform provides educational content and research tools. It does NOT provide financial advice, investment recommendations, or predictions. All content is for informational purposes only. Please consult a licensed financial advisor before making investment decisions.</p>
+</div>
+
+<div class="mt-5 p-4 bg-light rounded">
+    <h3 class="mb-4">✨ Features</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <ul class="list-unstyled">
+                <li class="mb-2">✅ AI-powered stock analysis (8-task framework)</li>
+                <li class="mb-2">✅ Portfolio health assessment</li>
+                <li class="mb-2">✅ Risk profile matching</li>
+                <li class="mb-2">✅ Market alerts</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <ul class="list-unstyled">
+                <li class="mb-2">✅ Day-trade educational ideas</li>
+                <li class="mb-2">✅ Automated newsletters</li>
+                <li class="mb-2">✅ Concept explainers</li>
+                <li class="mb-2">✅ Compliance-first content</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% if not current_user.is_authenticated %}
+<div class="text-center mt-5">
+    <a href="/auth/register" class="btn btn-primary btn-lg me-3">Create Account</a>
+    <a href="/auth/login" class="btn btn-outline-primary btn-lg">Sign In</a>
+</div>
+{% endif %}
+{% endblock %}

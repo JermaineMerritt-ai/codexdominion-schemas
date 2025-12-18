@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Market Alerts - Investment Platform{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">🔔 Market Alerts</h1>
+
+{% if alerts %}
+    <div class="list-group">
+        {% for alert in alerts %}
+        <div class="list-group-item">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5>{{ alert.stock.ticker }} - {{ alert.alert_type }}</h5>
+                    <p class="mb-1">{{ alert.message }}</p>
+                    <small class="text-muted">{{ alert.date.strftime('%Y-%m-%d %H:%M') }}</small>
+                </div>
+                <span class="badge bg-{{ 'success' if alert.triggered else 'secondary' }}">
+                    {{ 'Triggered' if alert.triggered else 'Pending' }}
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-info">No recent alerts</div>
+{% endif %}
+{% endblock %}

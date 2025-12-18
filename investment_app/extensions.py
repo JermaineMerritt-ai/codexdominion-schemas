@@ -1,0 +1,18 @@
+"""
+Flask Extensions
+Initialized here to avoid circular imports
+"""
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_login import LoginManager
+
+# Database
+db = SQLAlchemy()
+
+# Migrations
+migrate = Migrate()
+
+# Authentication
+login_manager = LoginManager()
+login_manager.login_view = 'auth.login'
+login_manager.login_message = 'Please log in to access this page.'

@@ -2,22 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'standalone', // For Docker production builds
+  output: 'export', // Static export for Render Static Site
 
-  // Image optimization
+  // Image optimization (unoptimized for static export)
   images: {
-    formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    domains: [
-      'localhost',
-      'codexdominion.app',
-      'api.codexdominion.app',
-      'codexdominion.azurewebsites.net',
-      'codexdominion-api.azurewebsites.net',
-      process.env.NEXT_PUBLIC_WP_URL?.replace('http://', '').replace('https://', '')
-    ].filter(Boolean),
-    minimumCacheTTL: 60,
+    unoptimized: true, // Required for static export
   },
 
   // Performance optimizations

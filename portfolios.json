@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "last_updated": "2025-12-17T07:52:24.962276Z",
+    "custodian_authority": "Jermaine Merritt",
+    "ledger_type": "PORTFOLIO_LEDGER"
+  },
+  "portfolios": [
+    {
+      "id": 1,
+      "user_id": 42,
+      "name": "Moderate Portfolio",
+      "risk_profile": "moderate",
+      "holdings": [],
+      "total_value": 0.0,
+      "sector_breakdown": {},
+      "performance": {
+        "total_gain_loss": 0.0,
+        "total_gain_loss_pct": 0.0,
+        "daily_change": 0.0,
+        "daily_change_pct": 0.0
+      },
+      "created_at": "2025-12-17T00:00:00.000000Z",
+      "updated_at": "2025-12-17T00:00:00.000000Z"
+    },
+    {
+      "id": 7,
+      "user_id": 42,
+      "name": "Aggressive Growth",
+      "risk_profile": "aggressive",
+      "total_value": 6911.8,
+      "holdings": [
+        {
+          "ticker": "NVDA",
+          "shares": 10,
+          "price": 450.12,
+          "value": 4501.2,
+          "weight": 65.12,
+          "gain_loss": 120.5,
+          "gain_loss_pct": 2.75,
+          "purchase_price": 438.07,
+          "purchase_date": "2025-12-01T00:00:00.000000Z"
+        },
+        {
+          "ticker": "AAPL",
+          "shares": 5,
+          "price": 182.12,
+          "value": 910.6,
+          "purchase_price": 180.5,
+          "purchase_date": "2025-12-17T07:49:26.568306Z",
+          "gain_loss": 8.1,
+          "gain_loss_pct": 0.9,
+          "sector": "Technology",
+          "weight": 13.17,
+          "daily_change": 8.1,
+          "daily_change_pct": 0.9
+        },
+        {
+          "ticker": "TSLA",
+          "shares": 6,
+          "price": 250.0,
+          "value": 1500.0,
+          "purchase_price": 250.0,
+          "purchase_date": "2025-12-17T07:50:14.273744Z",
+          "gain_loss": 0.0,
+          "gain_loss_pct": 0.0,
+          "sector": "Consumer",
+          "weight": 21.7
+        }
+      ],
+      "sector_breakdown": {
+        "Other": 65.12,
+        "Technology": 13.17,
+        "Consumer": 21.7
+      },
+      "performance": {
+        "total_gain_loss": 128.6,
+        "total_gain_loss_pct": 1.9,
+        "daily_change": 8.1,
+        "daily_change_pct": 0.12
+      },
+      "created_at": "2025-12-17T00:00:00.000000Z",
+      "updated_at": "2025-12-17T07:52:24.962276Z"
+    }
+  ],
+  "risk_profiles": {
+    "conservative": {
+      "description": "Low risk, stable returns",
+      "max_stock_allocation": 0.4,
+      "min_bond_allocation": 0.5
+    },
+    "moderate": {
+      "description": "Balanced risk and growth",
+      "max_stock_allocation": 0.7,
+      "min_bond_allocation": 0.2
+    },
+    "aggressive": {
+      "description": "High risk, maximum growth potential",
+      "max_stock_allocation": 1.0,
+      "min_bond_allocation": 0.0
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}{{ portfolio.name }} - Portfolio{% endblock %}
+
+{% block content %}
+<h2>{{ portfolio.name }} <span class="badge
+    {% if portfolio.risk_profile == 'conservative' %}bg-success
+    {% elif portfolio.risk_profile == 'moderate' %}bg-warning
+    {% elif portfolio.risk_profile == 'aggressive' %}bg-danger
+    {% else %}bg-secondary{% endif %}">{{ portfolio.risk_profile }}</span>
+</h2>
+
+{% if request.args.get("first_run") %}
+<div class="ai-box highlight">
+    <h3>Your AI Portfolio Overview</h3>
+    <p>{{ ai_insights }}</p>
+
+    <h4>Next steps</h4>
+    <ul>
+        <li><a href="/portfolio/{{ portfolio.id }}/trade/add">Add your first trade</a></li>
+        <li><a href="/ai/daily-picks">See today's AI stock picks</a></li>
+        <li><a href="/newsletter">Get daily insights by email</a></li>
+    </ul>
+</div>
+{% endif %}
+
+{% if summary %}
+<div class="card mb-4">
+    <div class="card-body">
+        <h3>Total Portfolio Value: <span class="text-primary">${{ "{:,.2f}".format(summary.total_value) }}</span></h3>
+        {% if summary.num_holdings > 0 %}
+        <p class="text-muted mb-0">
+            {{ summary.num_holdings }} position{{ 's' if summary.num_holdings != 1 else '' }}
+            {% if summary.largest_position %} • Largest: {{ summary.largest_position }}{% endif %}
+        </p>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h3>Holdings</h3>
+        {% if summary and summary.holdings %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th class="text-end">Shares</th>
+                        <th class="text-end">Price</th>
+                        <th class="text-end">Value</th>
+                        <th class="text-end">Weight</th>
+                        <th class="text-end">Gain/Loss</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for h in summary.holdings %}
+                    <tr>
+                        <td><a href="/stocks/{{ h.ticker }}" class="text-decoration-none"><strong>{{ h.ticker }}</strong></a></td>
+                        <td class="text-end">{{ "{:.2f}".format(h.shares) }}</td>
+                        <td class="text-end">${{ "{:.2f}".format(h.price) }}</td>
+                        <td class="text-end">${{ "{:,.2f}".format(h.value) }}</td>
+                        <td class="text-end">{{ "{:.1f}".format(h.weight) }}%</td>
+                        <td class="text-end {% if h.gain_loss > 0 %}text-success{% elif h.gain_loss < 0 %}text-danger{% endif %}">
+                            ${{ "{:,.2f}".format(h.gain_loss) }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% elif holdings %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th class="text-end">Shares</th>
+                        <th class="text-end">Avg Cost</th>
+                        <th class="text-end">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for holding in holdings %}
+                    <tr>
+                        <td><a href="/stocks/{{ holding.ticker }}" class="text-decoration-none"><strong>{{ holding.ticker }}</strong></a></td>
+                        <td class="text-end">{{ "{:.2f}".format(holding.shares) }}</td>
+                        <td class="text-end">${{ "{:.2f}".format(holding.avg_cost) }}</td>
+                        <td class="text-end">${{ "{:,.2f}".format(holding.shares * holding.avg_cost) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            <p class="mb-0">No holdings yet. Add your first position to get started!</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% if summary and summary.sector_breakdown %}
+<div class="card mb-4">
+    <div class="card-body">
+        <h3>🏢 Sector Allocation</h3>
+        <div class="row">
+            {% for sector, weight in summary.sector_breakdown.items() %}
+            <div class="col-md-6 mb-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>{{ sector }}</span>
+                    <span class="badge bg-secondary">{{ "{:.1f}".format(weight) }}%</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if ai_insights %}
+<div class="card">
+    <div class="card-body">
+        <h3>📊 AI Portfolio Insights</h3>
+        <div class="alert alert-light border" style="border-left: 4px solid #667eea !important;">
+            <div style="white-space: pre-line;">{{ ai_insights }}</div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

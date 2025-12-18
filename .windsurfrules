@@ -1,0 +1,138 @@
+# Codex Dominion - Windsurf AI Rules
+
+## 🔥 System Overview (Dec 2025)
+**Production Live**: Azure Static Web Apps + Container Apps | 52+ Dashboards | $95k/month Target
+
+## ⚡ Quick Actions
+
+### Start Development
+```powershell
+# 1. Activate venv
+.venv\Scripts\activate.ps1
+
+# 2. Launch Master Dashboard (PRIMARY)
+.\START_DASHBOARD.ps1
+# Access: http://localhost:5000
+
+# 3. Or use unified launcher
+python codex_unified_launcher.py status
+```
+
+### Treasury Operations
+```bash
+python codex_unified_launcher.py treasury summary --days 7
+python codex_unified_launcher.py treasury ingest --stream affiliate --amount 99.99
+python codex_unified_launcher.py dawn dispatch
+python codex_unified_launcher.py report
+```
+
+## 🏗️ Architecture
+
+### Council Seal Hierarchy
+```
+Council Seal (governance)
+├─ Sovereigns (apps/) → applications
+├─ Custodians (packages/) → shared libs
+├─ Industry Agents → AI automation
+└─ Customers → consumers
+```
+
+### Key Directories
+- `apps/` - Sovereigns layer (api, chatbot, dashboard, etc.)
+- `packages/` - Custodians layer (TypeScript shared libs)
+- Root `*.py` - Streamlit/Flask dashboards
+- `backend/`, `api/`, `codex_capsules/` - FastAPI services
+- `frontend/`, `web/` - Next.js 14+ (static export)
+- `.github/workflows/` - 57+ CI/CD workflows
+
+## 📊 Data & State
+
+### Ledger (JSON-based, no database)
+```python
+import json
+from datetime import datetime
+
+# Standard pattern for all dashboards
+def load_ledger():
+    with open("codex_ledger.json", "r") as f:
+        return json.load(f)
+
+def update_ledger(data):
+    data["meta"]["last_updated"] = datetime.utcnow().isoformat() + "Z"
+    with open("codex_ledger.json", "w") as f:
+        json.dump(data, f, indent=2)
+```
+
+### Ledger Structure
+- `meta` - version, omega_seal, last_updated, custodian_authority
+- `heartbeat` - status, last_dispatch, pulse_count, health_status
+- `proclamations` - system decrees with ceremonial language
+- `cycles` - operational phases
+- `portals` - interface gateways (Azure production status here)
+
+## 🎯 Development Standards
+
+### Ceremonial Guidelines
+- **Tone**: Use flame metaphors (🔥), dignified language, seasonal awareness
+- **Naming**: `*_PROCLAMATION.md`, `*_ETERNAL.md` are documentation artifacts
+- **Authority Levels**:
+  - Level 1: Data ops (execute immediately)
+  - Level 2: Configuration (suggest & confirm)
+  - Level 3: Strategic (escalate)
+
+### Code Patterns
+```python
+# Streamlit dashboard structure
+import streamlit as st
+
+def apply_cosmic_styling():
+    st.markdown("""
+    <style>
+    .stApp {
+        background: linear-gradient(135deg, #f7f1e3 0%, #efe7d4 100%);
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    st.set_page_config(page_title="Dashboard Name", layout="wide")
+    apply_cosmic_styling()
+    # Dashboard logic
+```
+
+## 🚀 Deployment
+
+### Production URLs
+- **Frontend**: https://happy-flower-0e39c5c0f-preview.eastus2.3.azurestaticapps.net
+- **Backend**: https://codex-backend-https.delightfulpond-6c97660b.eastus2.azurecontainerapps.io
+- **Cost**: ~$30/month (Azure Container Apps + Static Web Apps)
+
+### Deploy Commands
+```powershell
+.\deploy-azure-production.ps1   # Azure
+bash deploy-ionos.sh            # IONOS VPS
+bash deploy-gcp.sh              # GCP Cloud Run
+```
+
+### CI/CD
+- Auto-deploy on push to `main`
+- Key workflow: `azure-static-web-apps-yellow-tree-0ed102210.yml`
+- Security: Trivy scanning integrated
+
+## ⚠️ Critical Warnings
+
+1. **Always activate `.venv` first** - Python 3.10+ required
+2. **Ledger is source of truth** - No database, JSON files only
+3. **Update `meta.last_updated`** - ISO 8601 + 'Z' suffix required
+4. **Work in root** - Avoid `codexdominion-schemas/`, `codexdominion-clean/` (archived)
+5. **Port conflicts** - 20+ services can run simultaneously
+6. **Static export** - Next.js has no API routes (external only)
+7. **Windows paths** - Use backslashes in PowerShell
+
+## 📚 Resources
+- Full guide: `.github/copilot-instructions.md` (489 lines)
+- Architecture: `ARCHITECTURE.md`
+- Quick start: `QUICK_START.md`
+- Deployment: `DEPLOYMENT_GUIDE.md`
+
+🔥 **Your Digital Sovereignty Awaits!** 👑

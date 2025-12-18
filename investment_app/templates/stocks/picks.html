@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}AI Stock Picks - Today{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h2>AI Stock Action Picks — Today</h2>
+</div>
+
+{% if picks %}
+    {% for pick in picks %}
+    <div class="card mb-3 pick-card">
+        <div class="card-body">
+            <h3 class="card-title">
+                <a href="/stocks/{{ pick.ticker }}" class="text-decoration-none">{{ pick.ticker }}</a>
+            </h3>
+            <p class="card-text">{{ pick.reason }}</p>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="alert alert-info">
+        <p class="mb-0">No picks available for today. Check back later!</p>
+    </div>
+{% endif %}
+
+<style>
+    .pick-card {
+        border-left: 4px solid #667eea;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .pick-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .pick-card h3 {
+        color: #667eea;
+        margin-bottom: 10px;
+    }
+
+    .pick-card p {
+        color: #333;
+        line-height: 1.6;
+    }
+</style>
+{% endblock %}

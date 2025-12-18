@@ -1,0 +1,322 @@
+# Codex Dominion - Cline AI Rules
+
+## System Status (December 2025)
+✅ Production LIVE | Azure Cloud | 52+ Dashboards | $95,000/month Revenue Target
+
+## Environment Setup (CRITICAL - Do First!)
+
+### Windows
+```powershell
+.venv\Scripts\activate.ps1
+```
+
+### Linux/Mac
+```bash
+source .venv/bin/activate
+```
+
+**Python Version**: 3.10+ (production uses 3.11-3.12)
+
+## Primary Interface
+
+### Master Dashboard Ultimate (Flask - Port 5000)
+```powershell
+.\START_DASHBOARD.ps1
+# OR
+python flask_dashboard.py
+```
+
+**Features**: 52+ integrated dashboards including:
+- 🏠 Home - System overview
+- 🤖 AI Agents - Jermaine Super Action AI, .300 Action AI, Algorithm AI
+- 💰 Revenue - Treasury tracking
+- 📱 Social Media - YouTube, TikTok, Instagram, Facebook, Pinterest, Threads
+- 🛒 E-Commerce - WooCommerce integration
+- 📚 Copilot - AI instruction management
+
+## CLI Operations
+
+### Unified Launcher (Primary CLI Tool)
+```bash
+# Treasury operations
+python codex_unified_launcher.py treasury summary --days 30
+python codex_unified_launcher.py treasury ingest --stream affiliate --amount 49.99
+python codex_unified_launcher.py treasury list --limit 10
+
+# Dawn dispatch (notifications)
+python codex_unified_launcher.py dawn dispatch
+python codex_unified_launcher.py dawn status
+
+# System operations
+python codex_unified_launcher.py status   # Health check
+python codex_unified_launcher.py report   # Comprehensive report
+python codex_unified_launcher.py serve    # Web API (port 8080)
+```
+
+### Alternative Launchers
+```bash
+python launch.py                    # Quick Streamlit launcher
+python codex_system_launcher.py     # System-level ops
+cd codex-suite && python launcher.py # Interactive menu
+
+# Windows batch files
+.\LAUNCH_MASTER.bat                 # Master launcher
+.\LAUNCH_ANY_SYSTEM.bat             # System selection
+.\LAUNCH_WORKFLOW_BUILDER.bat       # Workflow builder
+```
+
+## Data Management
+
+### Ledger System (JSON-Based - No Database!)
+```python
+import json
+from datetime import datetime
+
+# Standard pattern (used in all dashboards)
+def load_ledger():
+    """Load the sacred ledger"""
+    with open("codex_ledger.json", "r") as f:
+        return json.load(f)
+
+def save_ledger(data):
+    """Save with proper timestamp"""
+    data["meta"]["last_updated"] = datetime.utcnow().isoformat() + "Z"
+    with open("codex_ledger.json", "w") as f:
+        json.dump(data, f, indent=2)
+```
+
+### Key Ledger Files
+- `codex_ledger.json` - Main system state (source of truth)
+- `proclamations.json` - System proclamations
+- `cycles.json` - Operational cycles
+- `accounts.json` - Account data
+- `treasury_config.json` - Revenue stream config
+
+### Ledger Schema
+```json
+{
+  "meta": {
+    "version": "1.0.0",
+    "omega_seal": true,
+    "last_updated": "2025-12-16T20:55:00.000000Z",
+    "custodian_authority": "Jermaine Merritt"
+  },
+  "heartbeat": {
+    "status": "luminous",
+    "pulse_count": 1250,
+    "health_status": "OPTIMAL"
+  },
+  "proclamations": [...],
+  "cycles": [...],
+  "portals": {
+    "azure-production": {...}
+  }
+}
+```
+
+## Architecture
+
+### Council Seal Structure
+```
+Council Seal (governance) - Supreme authority
+├─ Sovereigns (apps/) - Application execution
+│  ├─ api, chatbot, commerce, dashboard, etc.
+├─ Custodians (packages/) - Shared infrastructure
+│  ├─ shared-types, ui, utils, workflow, etc.
+├─ Industry Agents - AI automation
+│  ├─ jermaine_super_action_ai.py
+│  ├─ super_action_ai.py
+│  └─ dot300_action_ai.py
+└─ Customers - External consumers
+```
+
+### Technology Stack
+- **Frontend**: Next.js 14+ (static export), TypeScript
+- **Backend**: FastAPI (Python 3.10+), Flask, Streamlit
+- **Infrastructure**: Docker Compose, Kubernetes, Terraform
+- **Cloud**: Azure (primary), GCP, IONOS VPS
+- **CI/CD**: 57+ GitHub Actions workflows
+
+## Production Deployment
+
+### Live URLs (December 2025)
+- **Frontend**: https://happy-flower-0e39c5c0f-preview.eastus2.3.azurestaticapps.net
+- **Backend**: https://codex-backend-https.delightfulpond-6c97660b.eastus2.azurecontainerapps.io
+- **SSL**: Auto-managed (GeoTrust, expires 2026-04-14)
+- **Cost**: ~$30/month
+
+### Deployment Commands
+```powershell
+# Azure (Windows PowerShell)
+.\deploy-azure-production.ps1
+
+# IONOS (Bash)
+bash deploy-ionos.sh
+
+# GCP (Bash)
+bash deploy-gcp.sh
+
+# Quick interactive setup
+bash quick-deploy.sh
+```
+
+### CI/CD Workflows
+Auto-deploys on push to `main` branch:
+- `azure-static-web-apps-yellow-tree-0ed102210.yml` - Frontend (PRIMARY)
+- `azure-backend-deploy.yml` - Backend Container Instance
+- `azure-production-deploy.yml` - Complete orchestration
+- `super-action-ai-deployment.yaml` - AI-powered deployments
+
+## Development Workflows
+
+### New Dashboard Creation
+```python
+# 1. Create file: my_new_dashboard.py
+import streamlit as st
+import json
+from datetime import datetime
+
+LEDGER_PATH = "codex_ledger.json"
+
+def load_ledger():
+    with open(LEDGER_PATH, "r") as f:
+        return json.load(f)
+
+def apply_cosmic_styling():
+    st.markdown("""
+    <style>
+    .stApp {
+        background: linear-gradient(135deg, #f7f1e3 0%, #efe7d4 100%);
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    st.set_page_config(page_title="New Dashboard", layout="wide")
+    apply_cosmic_styling()
+
+    data = load_ledger()
+    st.title("🔥 New Dashboard 👑")
+    # Dashboard logic here
+```
+
+```bash
+# 2. Run locally
+streamlit run my_new_dashboard.py --server.port 8520
+
+# 3. Add to docker-compose.production.yml with unique port
+
+# 4. Commit and deploy
+git add my_new_dashboard.py
+git commit -m "feat: Add new dashboard"
+git push origin main  # Auto-deploys
+```
+
+### Testing
+```bash
+# JavaScript/TypeScript
+npm test  # Jest with maxWorkers=50%
+
+# Python (when tests exist)
+pytest tests/
+
+# Docker services
+docker-compose -f docker-compose.production.yml logs -f
+```
+
+## Port Allocations (20+ Services)
+- **5000**: Flask Master Dashboard (PRIMARY)
+- **3000**: Next.js dashboard
+- **5555**: Working dashboard (development)
+- **8080**: API Gateway
+- **8501**: Production Streamlit
+- **8502**: Staging Streamlit
+- **8515**: Stock analytics
+- **8516**: Analytics dashboard
+- **8517+**: Various specialized dashboards
+
+## Ceremonial Standards
+
+### Language & Tone
+- Use flame metaphors: 🔥 👑
+- Dignified, ceremonial language
+- Seasonal awareness (Spring/Summer/Autumn/Winter)
+- Council governance patterns
+
+### File Naming Conventions
+- `*_PROCLAMATION.md` - Documentation artifacts (don't modify without understanding)
+- `*_ETERNAL.md` - Permanent documentation
+- `*_CHARTERED.md` - Charter documents
+- `*_dashboard.py` - Streamlit apps
+- `*_config.json` - Configuration files
+- `deploy-*.ps1` / `deploy-*.sh` - Deployment scripts
+
+### Code Standards
+```python
+# Safe execution wrapper (common pattern)
+def safe_execute(func, *args, **kwargs):
+    """Execute with error handling"""
+    try:
+        return func(*args, **kwargs)
+    except Exception as e:
+        st.error(f"⚠️ Error: {e}")
+        return None
+
+# Caching for expensive operations
+@st.cache_data(ttl=300)
+def expensive_operation():
+    # Heavy computation here
+    return result
+```
+
+## Critical Warnings ⚠️
+
+1. **ALWAYS activate `.venv` first** before running Python code
+2. **JSON ledgers are source of truth** - No traditional database
+3. **Update `meta.last_updated`** with ISO 8601 + 'Z' suffix on ledger changes
+4. **Work in root directory** - `codexdominion-schemas/` and `codexdominion-clean/` are archived duplicates
+5. **Port management** - Check port allocations before starting new services
+6. **Windows paths** - Use backslashes in PowerShell, forward slashes in Bash
+7. **Next.js static export** - No API routes allowed (external APIs only)
+8. **Multiple launchers** - Choose correct one for context (see CLI Operations)
+9. **Ceremonial files** - Don't refactor `*_PROCLAMATION.md` without understanding governance
+10. **Docker images** - Prefixed with `jmerritt48/*` on Docker Hub
+
+## Backup & Recovery
+```bash
+# Ledger backups exist as timestamped files
+ls *.backup_*
+
+# Restoration scripts
+python restore_proclamations.py
+python smart_archiver.py
+python validate_proclamations.py
+```
+
+## External Integrations
+- **Stripe**: Payment processing (`STRIPE_*` env vars)
+- **WooCommerce**: E-commerce backend (`woocommerce_config.json`)
+- **Social Platforms**: Pinterest, TikTok, Threads, YouTube, WhatsApp (dedicated configs)
+- **Stock APIs**: Alpha Vantage, Polygon (`ai_action_stock_analytics.py`)
+- **Redis**: Optional caching (`REDIS_URL` in docker-compose)
+
+## Quick Reference Files
+- `.github/copilot-instructions.md` - Full AI guidance (489 lines)
+- `ARCHITECTURE.md` - Council Seal structure details
+- `README.md` - Production launch guide
+- `QUICK_START.md` - Deployment commands
+- `DEPLOYMENT_GUIDE.md` - Multi-cloud deployment
+
+## Need Help?
+```bash
+# System health
+python codex_unified_launcher.py status
+
+# View logs
+docker-compose -f docker-compose.production.yml logs -f [service-name]
+
+# Check running services
+docker ps
+```
+
+🔥 **The Flame Burns Sovereign and Eternal!** 👑

@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  master-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: codex-master-dashboard
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - FLASK_DEBUG=False
+    volumes:
+      - ./codex_ledger.json:/app/codex_ledger.json
+      - ./proclamations.json:/app/proclamations.json
+      - ./cycles.json:/app/cycles.json
+      - ./accounts.json:/app/accounts.json
+      - ./treasury_config.json:/app/treasury_config.json
+      - ./uploads:/app/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:5000/api/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - codex-network
+
+networks:
+  codex-network:
+    driver: bridge
