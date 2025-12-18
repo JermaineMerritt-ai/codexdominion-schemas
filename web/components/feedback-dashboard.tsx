@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FeedbackMessage, getCouncilFeedbackManager } from '@/lib/feedback/council-feedback';
-import { useSeedFeedback } from '@/hooks/useSeedFeedback';
+import { FeedbackMessage, getCouncilFeedbackManager } from '../lib/feedback/council-feedback';
+import { useSeedFeedback } from '../hooks/useSeedFeedback';
 
 export function FeedbackDashboard() {
   const [feedbackHistory, setFeedbackHistory] = useState<FeedbackMessage[]>([]);
