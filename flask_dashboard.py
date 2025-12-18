@@ -2741,6 +2741,18 @@ def api_capsules():
     """Get capsules system data"""
     return load_json_response("capsules.json")
 
+@app.route('/api/intelligence-core')
+def api_intelligence_core():
+    """Get intelligence core engines data"""
+    return load_json_response("intelligence_core.json")
+
+@app.route('/api/intelligence-core/active')
+def api_intelligence_core_active():
+    """Get only active intelligence core engines"""
+    data = load_json("intelligence_core.json")
+    active = [e for e in data if e.get("status") == "active"]
+    return jsonify(active)
+
 if __name__ == '__main__':
     print("\n" + "="*80)
     print("👑 CODEX DOMINION MASTER DASHBOARD ULTIMATE - FLASK VERSION")
