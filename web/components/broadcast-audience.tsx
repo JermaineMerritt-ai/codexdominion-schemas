@@ -4,8 +4,8 @@ import { useEffect, useState, useRef } from 'react';
 import { ConstellationMap } from './constellation-map';
 import { FeedbackPanel } from './feedback-panel';
 import BroadcastChat from './broadcast-chat';
-import { useBroadcastSync } from '@/hooks/useBroadcastSync';
-import { useReplay } from '@/context/ReplayContext';
+import { useBroadcastSync } from '../hooks/useBroadcastSync';
+import { useReplay } from '../context/ReplayContext';
 
 export interface BroadcastAudienceProps {
   role?: 'council' | 'heir' | 'observer';

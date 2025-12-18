@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { getCapsuleAnnotationManager } from '@/lib/annotations/capsule-annotations';
-import { getUnifiedEventManager } from '@/lib/events/unified-event-manager';
+import { getCapsuleAnnotationManager } from '../lib/annotations/capsule-annotations';
+import { getUnifiedEventManager } from '../lib/events/unified-event-manager';
 
 export interface AnnotationFormProps {
   capsuleId: string;

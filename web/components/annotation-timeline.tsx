@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CapsuleAnnotation, getCapsuleAnnotationManager } from '@/lib/annotations/capsule-annotations';
+import { CapsuleAnnotation, getCapsuleAnnotationManager } from '../lib/annotations/capsule-annotations';
 
 export interface AnnotationTimelineProps {
   capsuleId?: string;
