@@ -2,11 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'export', // Static export for Render Static Site
+  // output: 'export' removed - using SSR/ISR on Render Node service
 
-  // Image optimization (unoptimized for static export)
+  // Image optimization
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: true, // Keep for simplicity
   },
 
   // Performance optimizations

@@ -2,11 +2,11 @@ services:
   # Next.js Frontend
   - type: web
     name: codexdominion-schemas
-    env: static
+    env: node
     repo: https://github.com/JermaineMerritt-ai/codexdominion-schemas
     rootDir: web
-    buildCommand: npm ci --legacy-peer-deps && npm run build
-    staticPublishPath: out
+    buildCommand: npm install && npm run build
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
