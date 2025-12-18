@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CapsuleAnnotation, getCapsuleAnnotationManager } from '@/lib/annotations/capsule-annotations';
-import { useSeedAnnotations } from '@/hooks/useSeedAnnotations';
-import AnnotationArchive from '@/components/annotation-archive';
-import AnnotationExport from '@/components/annotation-export';
-import { ExportControls } from '@/components/export-controls';
-import SpatialAudioControls from '@/components/spatial-audio-controls';
+import { CapsuleAnnotation, getCapsuleAnnotationManager } from '../../lib/annotations/capsule-annotations';
+import { useSeedAnnotations } from '../../hooks/useSeedAnnotations';
+import AnnotationArchive from '../../components/annotation-archive';
+import AnnotationExport from '../../components/annotation-export';
+import { ExportControls } from '../../components/export-controls';
+import SpatialAudioControls from '../../components/spatial-audio-controls';
 
 export default function AnnotationsPage() {
   useSeedAnnotations();
