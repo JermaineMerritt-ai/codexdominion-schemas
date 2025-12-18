@@ -29,6 +29,64 @@ app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'uploads')
 # Create upload folder if it doesn't exist
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
+# JSON cache for performance
+_json_cache = {}
+
+def load_json(filename: str, use_cache: bool = True) -> Dict[str, Any]:
+    """
+    Universal JSON loader with intelligent fallback and caching
+
+    Handles:
+    - Root directory lookup
+    - /data directory fallback
+    - Missing files (returns empty dict)
+    - JSON parse errors (returns empty dict)
+    - Optional caching for performance
+
+    Args:
+        filename: Name of JSON file (e.g., 'cycles.json')
+        use_cache: Enable in-memory caching (default: True)
+
+    Returns:
+        Dict containing JSON data or empty dict on error
+    """
+    # Check cache first
+    if use_cache and filename in _json_cache:
+        return _json_cache[filename]
+
+    base_path = Path(__file__).parent
+    search_paths = [
+        base_path / filename,              # Root: /app/cycles.json
+        base_path / 'data' / filename,     # Data dir: /app/data/cycles.json
+    ]
+
+    for path in search_paths:
+        try:
+            if path.exists():
+                with open(path, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+
+                # Cache the result
+                if use_cache:
+                    _json_cache[filename] = data
+
+                return data
+        except json.JSONDecodeError as e:
+            print(f"⚠️ JSON parse error in {path}: {e}")
+            continue
+        except Exception as e:
+            print(f"⚠️ Error reading {path}: {e}")
+            continue
+
+    # File not found in any location
+    print(f"⚠️ JSON file not found: {filename} (searched {len(search_paths)} locations)")
+    return {}
+
+def clear_json_cache():
+    """Clear JSON cache to force reload"""
+    global _json_cache
+    _json_cache = {}
+
 # Dashboard HTML Template
 DASHBOARD_HTML = """
 <!DOCTYPE html>
