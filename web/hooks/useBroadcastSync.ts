@@ -12,7 +12,7 @@ import {
   CapsuleSync,
   ConstellationUpdate,
   PlaybackControl,
-} from '@/lib/broadcast/websocket-manager';
+} from '../lib/broadcast/websocket-manager';
 
 export interface BroadcastConfig {
   wsUrl: string;
