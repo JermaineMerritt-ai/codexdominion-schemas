@@ -1,6 +1,6 @@
 'use client';
 
-import RitualExperienceControls from '@/components/ritual-experience-controls';
+import RitualExperienceControls from '../../components/ritual-experience-controls';
 import Link from 'next/link';
 
 export default function RitualExperiencePage() {

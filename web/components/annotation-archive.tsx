@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { UnifiedEvent, getUnifiedEventManager } from '@/lib/events/unified-event-manager';
-import { useSeedUnifiedEvents } from '@/hooks/useSeedUnifiedEvents';
+import { UnifiedEvent, getUnifiedEventManager } from '../lib/events/unified-event-manager';
+import { useSeedUnifiedEvents } from '../hooks/useSeedUnifiedEvents';
 
 interface Filters {
   type: 'all' | 'annotation' | 'chat' | 'feedback' | 'capsule';
