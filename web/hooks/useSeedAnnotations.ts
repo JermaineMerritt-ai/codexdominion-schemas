@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { getCapsuleAnnotationManager } from '@/lib/annotations/capsule-annotations';
-import sampleAnnotations from '@/data/sample-capsule-annotations.json';
+import { getCapsuleAnnotationManager } from '../lib/annotations/capsule-annotations';
+import sampleAnnotations from '../data/sample-capsule-annotations.json';
 
 export function useSeedAnnotations() {
   useEffect(() => {

@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { getUnifiedEventManager } from '@/lib/events/unified-event-manager';
-import sampleEvents from '@/data/sample-unified-events.json';
+import { getUnifiedEventManager } from '../lib/events/unified-event-manager';
+import sampleEvents from '../data/sample-unified-events.json';
 
 export function useSeedUnifiedEvents() {
   useEffect(() => {
