@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getSpatialAudioEngine } from '@/lib/spatial-audio-engine';
+import { getSpatialAudioEngine } from '../lib/spatial-audio-engine';
 import {
   RitualPhase,
   EngineHealthStatus,
@@ -9,8 +9,8 @@ import {
   COSMIC_CHOIR_LAYERS,
   calculateHarmonicResonance,
   generateRitualExperienceDescription
-} from '@/lib/ritual-experience';
-import { getAllAudioSources } from '@/lib/spatial-audio-design';
+} from '../lib/ritual-experience';
+import { getAllAudioSources } from '../lib/spatial-audio-design';
 
 export default function RitualExperienceControls() {
   const [isPlaying, setIsPlaying] = useState(false);
