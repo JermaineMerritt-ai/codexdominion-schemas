@@ -87,6 +87,17 @@ def clear_json_cache():
     global _json_cache
     _json_cache = {}
 
+def load_json_response(filename: str, use_cache: bool = True):
+    """
+    Load JSON file and return Flask JSON response
+
+    Returns jsonify() response with data or error message
+    """
+    data = load_json(filename, use_cache)
+    if not data:
+        return jsonify({"error": f"File not found or empty: {filename}"}), 404
+    return jsonify(data)
+
 # Dashboard HTML Template
 DASHBOARD_HTML = """
 <!DOCTYPE html>
@@ -2708,62 +2719,22 @@ def upload_file():
 @app.route('/data/<path:filename>')
 def serve_data(filename):
     """Serve JSON data files from /data directory"""
-    try:
-        data_dir = Path(__file__).parent / 'data'
-        file_path = data_dir / filename
-
-        if file_path.exists() and file_path.suffix == '.json':
-            with open(file_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            return jsonify(data)
-        else:
-            return jsonify({"error": f"File not found: {filename}"}), 404
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return load_json_response(filename)
 
 @app.route('/api/ledger')
-def get_ledger():
+def api_ledger():
     """Get codex ledger data"""
-    try:
-        ledger_path = Path(__file__).parent / 'codex_ledger.json'
-        if ledger_path.exists():
-            with open(ledger_path, 'r', encoding='utf-8') as f:
-                return jsonify(json.load(f))
-        return jsonify({"error": "Ledger not found"}), 404
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return load_json_response("codex_ledger.json")
 
 @app.route('/api/cycles')
-def get_cycles():
+def api_cycles():
     """Get cycles data"""
-    try:
-        cycles_path = Path(__file__).parent / 'cycles.json'
-        if cycles_path.exists():
-            with open(cycles_path, 'r', encoding='utf-8') as f:
-                return jsonify(json.load(f))
-        cycles_path = Path(__file__).parent / 'data' / 'cycles.json'
-        if cycles_path.exists():
-            with open(cycles_path, 'r', encoding='utf-8') as f:
-                return jsonify(json.load(f))
-        return jsonify({"error": "Cycles not found"}), 404
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return load_json_response("cycles.json")
 
 @app.route('/api/proclamations')
-def get_proclamations():
+def api_proclamations():
     """Get proclamations data"""
-    try:
-        proc_path = Path(__file__).parent / 'proclamations.json'
-        if proc_path.exists():
-            with open(proc_path, 'r', encoding='utf-8') as f:
-                return jsonify(json.load(f))
-        proc_path = Path(__file__).parent / 'data' / 'proclamations.json'
-        if proc_path.exists():
-            with open(proc_path, 'r', encoding='utf-8') as f:
-                return jsonify(json.load(f))
-        return jsonify({"error": "Proclamations not found"}), 404
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return load_json_response("proclamations.json")
 
 if __name__ == '__main__':
     print("\n" + "="*80)
