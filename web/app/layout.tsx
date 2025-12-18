@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Providers } from '@/components/providers';
-import { ReplayProvider } from '@/context/ReplayContext';
-import { TopBar } from '@/components/layout/top-bar';
-import { LeftTabs } from '@/components/layout/left-tabs';
-import { AICommandStrip } from '@/components/layout/ai-command-strip';
-import { Analytics } from '@/components/analytics';
+import { Providers } from '../components/providers';
+import { ReplayProvider } from '../context/ReplayContext';
+import { TopBar } from '../components/layout/top-bar';
+import { LeftTabs } from '../components/layout/left-tabs';
+import { AICommandStrip } from '../components/layout/ai-command-strip';
+import { Analytics } from '../components/analytics';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });

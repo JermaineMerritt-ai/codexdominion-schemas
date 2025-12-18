@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import { useReplay } from '@/context/ReplayContext';
+import { useReplay } from '../context/ReplayContext';
 
 interface Node {
   id: string;

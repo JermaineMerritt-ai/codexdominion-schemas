@@ -4,7 +4,7 @@
  */
 
 import { useEffect, useRef, useState } from 'react';
-import { useReplay } from '@/context/ReplayContext';
+import { useReplay } from '../context/ReplayContext';
 import {
   BroadcastWebSocketManager,
   BroadcastRole,
