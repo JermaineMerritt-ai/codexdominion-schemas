@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { UnifiedEvent, EventCorrelation, getUnifiedEventManager } from '@/lib/events/unified-event-manager';
+import { UnifiedEvent, EventCorrelation, getUnifiedEventManager } from '../lib/events/unified-event-manager';
 
 interface EventCorrelationViewerProps {
   capsuleId: string;

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { CouncilFeedback, getCouncilFeedbackManager } from '@/lib/feedback/council-feedback';
-import { useReplay } from '@/context/ReplayContext';
+import { CouncilFeedback, getCouncilFeedbackManager } from '../lib/feedback/council-feedback';
+import { useReplay } from '../context/ReplayContext';
 
 export interface FeedbackPanelProps {
   userName: string;
