@@ -1,0 +1,1683 @@
+// ======================================================
+// CODEXDOMINION 2.0 - PRISMA SCHEMA
+// Civilization Era Database Architecture
+// ======================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ======================================================
+// CORE ENTITIES
+// ======================================================
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  passwordHash  String
+  firstName     String
+  lastName      String
+  dateOfBirth   DateTime?
+  status        UserStatus     @default(ACTIVE)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  // Relations
+  roles         UserRole[]
+  profile       Profile?
+  circlesLed    Circle[]       @relation("CircleCaptain")
+  circleMemberships CircleMember[]
+  missionAssignments MissionAssignment[]
+  missionSubmissions MissionSubmission[]
+  missionsCreated Mission[]     @relation("MissionCreator")
+  artifacts     Artifact[]     @relation("UserArtifacts")
+  creatorChallengesCreated CreatorChallenge[] @relation("CreatorChallenges")
+  creatorChallengesSubmitted ChallengeSubmission[]
+  ambassadorOutreach AmbassadorOutreach[] @relation("AmbassadorUser")
+  regionDirected Region[]      @relation("RegionDirector")
+  eventsCreated Event[]        @relation("EventCreator")
+  eventsAttended EventAttendance[]
+  circleAttendance CircleAttendance[]
+  alertsAcknowledged Alert[]   @relation("AlertAcknowledger")
+  
+  // Governance Layer
+  proposedDecisions GovernanceDecision[] @relation("ProposedDecisions")
+  decisionActions   DecisionHistory[]    @relation("DecisionActions")
+  leadershipReadiness LeadershipReadiness?
+  assessments       LeadershipAssessment[] @relation("LeadershipAssessments")
+  meetingMinutes    MeetingMinutes[]     @relation("MeetingMinutes")
+  
+  // Orchestration Layer
+  orchestrationCycles OrchestrationCycle[] @relation("OrchestrationCycles")
+  missionCurriculumLinks MissionCurriculumLink[] @relation("MissionCurriculumLinks")
+  intelligenceActions IntelligenceAction[] @relation("IntelligenceActions")
+  executedActions   IntelligenceAction[] @relation("ExecutedActions")
+  civilizationEvents CivilizationEvent[] @relation("CivilizationEvents")
+  
+  // Intelligence API V1 Layer
+  insightEvents     InsightEvent[]       @relation("insight_events")
+
+  @@index([email])
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  ARCHIVED
+}
+
+model Role {
+  id    Int        @id @default(autoincrement())
+  name  RoleName   @unique
+
+  users UserRole[]
+}
+
+enum RoleName {
+  YOUTH
+  YOUTH_CAPTAIN
+  AMBASSADOR
+  CREATOR
+  EDUCATOR
+  REGIONAL_DIRECTOR
+  COUNCIL
+  ADMIN
+}
+
+model UserRole {
+  userId String
+  roleId Int
+
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role   Role @relation(fields: [roleId], references: [id])
+
+  @@id([userId, roleId])
+}
+
+model Profile {
+  userId          String   @id
+  bio             String?
+  regionId        String?
+  schoolId        String?
+  culturalIdentity String?
+  diasporaOrigin  String?
+  risePath        RisePath?
+  avatarUrl       String?
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  region Region? @relation(fields: [regionId], references: [id])
+  school School? @relation(fields: [schoolId], references: [id])
+}
+
+enum RisePath {
+  IDENTITY
+  MASTERY
+  CREATION
+  LEADERSHIP
+}
+
+// ======================================================
+// YOUTH CIRCLE ENGINE
+// ======================================================
+
+model Circle {
+  id        String   @id @default(uuid())
+  name      String
+  captainId String
+  regionId  String?
+  createdAt DateTime @default(now())
+
+  captain   User     @relation("CircleCaptain", fields: [captainId], references: [id])
+  region    Region?  @relation(fields: [regionId], references: [id])
+  members   CircleMember[]
+  sessions  CircleSession[]
+  missionAssignments MissionAssignment[]
+  missionSubmissions MissionSubmission[]
+}
+
+model CircleMember {
+  circleId String
+  userId   String
+  joinedAt DateTime @default(now())
+
+  circle   Circle @relation(fields: [circleId], references: [id], onDelete: Cascade)
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([circleId, userId])
+}
+
+model CircleSession {
+  id         String   @id @default(uuid())
+  circleId   String
+  scheduledAt DateTime
+  topic      String?
+  season     SeasonName?
+  weekNumber Int?
+
+  circle     Circle   @relation(fields: [circleId], references: [id], onDelete: Cascade)
+  attendance CircleAttendance[]
+}
+
+model CircleAttendance {
+  sessionId String
+  userId    String
+  status    AttendanceStatus
+
+  session   CircleSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  user      User          @relation(fields: [userId], references: [id])
+
+  @@id([sessionId, userId])
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  EXCUSED
+}
+
+// ======================================================
+// MISSION ENGINE
+// ======================================================
+
+model Season {
+  id        String      @id @default(uuid())
+  name      SeasonName  @unique
+  startDate DateTime?
+  endDate   DateTime?
+
+  missions  Mission[]
+  culturalStories CulturalStory[]
+  curriculumModules CurriculumModule[]
+  creatorChallenges CreatorChallenge[]
+  strategicRecommendations StrategicRecommendation[]
+  
+  // Governance Layer
+  decisions       GovernanceDecision[]
+  meetings        GovernanceMeeting[]
+  milestones      CivilizationMilestone[]
+  
+  // Orchestration Layer
+  orchestrationCycles OrchestrationCycle[]
+  seasonalSync    SeasonalSynchronization?
+  creatorSeasonalChallenges CreatorSeasonalChallenge[]
+}
+
+enum SeasonName {
+  IDENTITY
+  MASTERY
+  CREATION
+  LEADERSHIP
+}
+
+model Mission {
+  id          String       @id @default(uuid())
+  title       String
+  description String
+  seasonId    String
+  month       Int?
+  week        Int?
+  type        MissionType
+  createdById String?
+
+  season      Season       @relation(fields: [seasonId], references: [id])
+  createdBy   User?        @relation("MissionCreator", fields: [createdById], references: [id])
+  assignments MissionAssignment[]
+  submissions MissionSubmission[]
+  artifacts   Artifact[]
+  
+  // Orchestration Layer
+  curriculumLinks MissionCurriculumLink[]
+}
+
+enum MissionType {
+  GLOBAL
+  REGIONAL
+  CIRCLE
+}
+
+model MissionAssignment {
+  id        String   @id @default(uuid())
+  missionId String
+  userId    String?
+  circleId  String?
+  assignedAt DateTime @default(now())
+
+  mission   Mission @relation(fields: [missionId], references: [id], onDelete: Cascade)
+  user      User?   @relation(fields: [userId], references: [id])
+  circle    Circle? @relation(fields: [circleId], references: [id])
+
+  submissions MissionSubmission[]
+}
+
+model MissionSubmission {
+  id         String   @id @default(uuid())
+  missionId  String
+  userId     String
+  circleId   String?
+  assignmentId String?
+  content    String?  // text or JSON reference
+  reflection String?
+  status     SubmissionStatus @default(SUBMITTED)
+  submittedAt DateTime        @default(now())
+
+  mission    Mission @relation(fields: [missionId], references: [id])
+  user       User   @relation(fields: [userId], references: [id])
+  circle     Circle? @relation(fields: [circleId], references: [id])
+  assignment MissionAssignment? @relation(fields: [assignmentId], references: [id])
+}
+
+enum SubmissionStatus {
+  SUBMITTED
+  APPROVED
+  NEEDS_REVISION
+}
+
+// ======================================================
+// CURRICULUM ENGINE
+// ======================================================
+
+model CurriculumModule {
+  id        String       @id @default(uuid())
+  title     String
+  seasonId  String
+  month     Int?
+  week      Int?
+  content   String       // markdown or JSON
+  type      CurriculumType
+
+  season    Season       @relation(fields: [seasonId], references: [id])
+  resources CurriculumResource[]
+  
+  // Orchestration Layer
+  missionLinks MissionCurriculumLink[]
+}
+
+enum CurriculumType {
+  STORY
+  LESSON
+  ACTIVITY
+}
+
+model CurriculumResource {
+  id          String   @id @default(uuid())
+  moduleId    String
+  resourceType ResourceType
+  url         String
+  description String?
+
+  module      CurriculumModule @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+}
+
+enum ResourceType {
+  VIDEO
+  DOCUMENT
+  LINK
+  IMAGE
+  OTHER
+}
+
+// ======================================================
+// CREATOR ENGINE
+// ======================================================
+
+model Artifact {
+  id           String   @id @default(uuid())
+  creatorId    String
+  title        String
+  description  String?
+  artifactType ArtifactType
+  fileUrl      String?
+  missionId    String?
+  status       ArtifactStatus @default(PUBLISHED)
+  createdAt    DateTime @default(now())
+
+  creator      User     @relation("UserArtifacts", fields: [creatorId], references: [id])
+  mission      Mission? @relation(fields: [missionId], references: [id])
+  challengeSubmissions ChallengeSubmission[]
+}
+
+enum ArtifactType {
+  AUTOMATION
+  DESIGN
+  WRITING
+  VIDEO
+  APP
+  OTHER
+}
+
+enum ArtifactStatus {
+  DRAFT
+  SUBMITTED
+  PUBLISHED
+  ARCHIVED
+}
+
+model CreatorChallenge {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  seasonId    String?
+  deadline    DateTime?
+  createdBy   String
+  createdAt   DateTime @default(now())
+
+  season      Season?  @relation(fields: [seasonId], references: [id])
+  creator     User     @relation("CreatorChallenges", fields: [createdBy], references: [id])
+  submissions ChallengeSubmission[]
+  
+  // Orchestration Layer
+  seasonalChallenges CreatorSeasonalChallenge[]
+}
+
+model ChallengeSubmission {
+  id          String   @id @default(uuid())
+  challengeId String
+  creatorId   String
+  artifactId  String
+  submittedAt DateTime @default(now())
+
+  challenge   CreatorChallenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  creator     User             @relation(fields: [creatorId], references: [id])
+  artifact    Artifact         @relation(fields: [artifactId], references: [id])
+}
+
+// ======================================================
+// CULTURE ENGINE
+// ======================================================
+
+model CulturalStory {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  seasonId  String?
+  week      Int?
+  regionId  String?
+  createdAt DateTime @default(now())
+
+  season    Season?  @relation(fields: [seasonId], references: [id])
+  region    Region?  @relation(fields: [regionId], references: [id])
+}
+
+model Ritual {
+  id          String      @id @default(uuid())
+  name        String
+  description String?
+  type        RitualType
+}
+
+enum RitualType {
+  OPENING
+  CLOSING
+  SEASONAL
+  UNITY
+  CEREMONY
+}
+
+// ======================================================
+// AMBASSADOR & EXPANSION
+// ======================================================
+
+model Region {
+  id         String   @id @default(uuid())
+  name       String
+  country    String?
+  timezone   String?
+  directorId String?
+
+  director   User?    @relation("RegionDirector", fields: [directorId], references: [id])
+  schools    School[]
+  circles    Circle[]
+  outreach   AmbassadorOutreach[]
+  events     Event[]
+  metrics    MetricSnapshot[]
+  profiles   Profile[]
+  culturalStories CulturalStory[]
+  strategicRecommendations StrategicRecommendation[]
+  
+  // Governance Layer
+  decisions       GovernanceDecision[]
+  meetings        GovernanceMeeting[]
+  governance      RegionalGovernance?
+  milestones      CivilizationMilestone[]
+  
+  // Orchestration Layer
+  orchestrationCycles OrchestrationCycle[]
+  regionalOrchestration RegionalOrchestration?
+  civilizationEvents CivilizationEvent[]
+}
+
+model School {
+  id           String   @id @default(uuid())
+  regionId     String
+  name         String
+  address      String?
+  contactPerson String?
+
+  region       Region   @relation(fields: [regionId], references: [id])
+  profiles     Profile[]
+  ambassadorOutreach AmbassadorOutreach[]
+}
+
+model AmbassadorOutreach {
+  id           String          @id @default(uuid())
+  ambassadorId String
+  schoolId     String?
+  regionId     String
+  type         OutreachType
+  notes        String?
+  date         DateTime
+
+  ambassador   User            @relation("AmbassadorUser", fields: [ambassadorId], references: [id])
+  school       School?         @relation(fields: [schoolId], references: [id])
+  region       Region          @relation(fields: [regionId], references: [id])
+}
+
+enum OutreachType {
+  VISIT
+  EVENT
+  MEETING
+}
+
+// ======================================================
+// EVENTS & CEREMONIES ENGINE
+// ======================================================
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  eventType   EventType
+  regionId    String?
+  scheduledAt DateTime
+  createdBy   String
+  createdAt   DateTime @default(now())
+
+  region      Region?  @relation(fields: [regionId], references: [id])
+  creator     User     @relation("EventCreator", fields: [createdBy], references: [id])
+  attendance  EventAttendance[]
+  script      CeremonyScript?
+
+  @@index([regionId, scheduledAt])
+  @@index([eventType])
+}
+
+enum EventType {
+  LAUNCH
+  CIRCLE_CEREMONY
+  SEASON_CEREMONY
+  SHOWCASE
+  SUMMIT
+  AMBASSADOR_EVENT
+  COMMUNITY_EVENT
+  // Legacy values (deprecated but kept for migration)
+  CEREMONY
+  TRAINING
+  OTHER
+}
+
+model EventAttendance {
+  eventId     String
+  userId      String
+  status      EventAttendanceStatus
+  checkedInAt DateTime?
+
+  event   Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user    User  @relation(fields: [userId], references: [id])
+
+  @@id([eventId, userId])
+  @@index([eventId])
+}
+
+enum EventAttendanceStatus {
+  REGISTERED
+  PRESENT
+  ABSENT
+  // Legacy values (deprecated but kept for migration)
+  ATTENDED
+  NO_SHOW
+}
+
+model CeremonyScript {
+  id        String   @id @default(uuid())
+  eventId   String   @unique
+  sections  Json     // { rituals: [], readings: [], affirmations: [], transitions: [] }
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+}
+
+// ======================================================
+// ANALYTICS ENGINE
+// ======================================================
+
+model MetricSnapshot {
+  id         String   @id @default(uuid())
+  date       DateTime
+  regionId   String?
+  metricType MetricType
+  value      Int
+  metadata   Json?
+
+  region     Region?  @relation(fields: [regionId], references: [id])
+
+  @@index([date, regionId, metricType])
+}
+
+enum MetricType {
+  ACTIVE_YOUTH
+  ACTIVE_CREATORS
+  CIRCLES_COUNT
+  MISSIONS_COMPLETED
+  ARTIFACTS_SUBMITTED
+  EVENTS_HELD
+  SCHOOLS_PARTNERED
+}
+
+// ======================================================
+// ALERTS & NOTIFICATIONS ENGINE
+// ======================================================
+
+model Alert {
+  id            String       @id @default(uuid())
+  domain        AlertDomain
+  rule          String       // Rule identifier (e.g., "C2", "M1", "A3")
+  message       String
+  severity      AlertSeverity
+  metadata      Json?        // Additional context data
+  acknowledged  Boolean      @default(false)
+  acknowledgedAt DateTime?
+  acknowledgedBy String?
+  createdAt     DateTime     @default(now())
+  
+  acknowledger  User?        @relation("AlertAcknowledger", fields: [acknowledgedBy], references: [id])
+
+  @@index([domain, severity, acknowledged])
+  @@index([createdAt])
+}
+
+enum AlertDomain {
+  CIRCLES
+  MISSIONS
+  YOUTH
+  CREATORS
+  REGIONS
+  SYSTEM
+}
+
+enum AlertSeverity {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+// ======================================================
+// STRATEGIC INTELLIGENCE LAYER
+// ======================================================
+
+model StrategicRecommendation {
+  id                String                   @id @default(uuid())
+  
+  // Classification
+  type              RecommendationType
+  domain            AlertDomain              // Reusing AlertDomain enum
+  priority          RecommendationPriority
+  status            RecommendationStatus     @default(GENERATED)
+  
+  // Context
+  entityId          String?                  // Youth/Circle/Mission/Region ID
+  entityType        String?                  // "youth", "circle", "mission"
+  regionId          String?
+  seasonId          String?
+  
+  // Recommendation Content
+  title             String
+  description       String                   // Full explanation
+  reasoning         String                   // Why this recommendation
+  expectedOutcome   String                   // What success looks like
+  
+  // Action Plan
+  actionItems       Json                     // Array of specific actions
+  timeHorizon       String                   // "next_week", "next_season", "next_year"
+  estimatedDuration Int?                     // Days to implement
+  
+  // Intelligence Sources
+  predictionIds     String[]                 // Which predictions informed this
+  memoryPatterns    Json?                    // Memory insights used
+  confidence        Float                    // 0-1 confidence score
+  
+  // Success Metrics
+  successMetrics    Json                     // How to measure success
+  
+  // Lifecycle
+  generatedAt       DateTime                 @default(now())
+  reviewedAt        DateTime?
+  reviewedBy        String?                  // User ID
+  implementedAt     DateTime?
+  completedAt       DateTime?
+  
+  // Relations
+  region            Region?                  @relation(fields: [regionId], references: [id])
+  season            Season?                  @relation(fields: [seasonId], references: [id])
+  history           StrategyHistory[]
+  
+  @@index([domain, status, priority])
+  @@index([entityId, entityType, status])
+  @@index([regionId, status])
+  @@index([generatedAt])
+}
+
+enum RecommendationType {
+  YOUTH_PATH              // Leadership track, creator track, curriculum path
+  CIRCLE_STRUCTURE        // Split, merge, captain change
+  MISSION_EMPHASIS        // Emphasize, retire, introduce, regionalize
+  CURRICULUM_EVOLUTION    // Module reordering, seasonal alignment
+  CREATOR_CHALLENGE       // Challenge sequence, artifact type
+  REGIONAL_EXPANSION      // Expansion, consolidation, leadership focus
+  EXCHANGE_PATH           // Learning path, risk management, screener mastery
+  CIVILIZATION_THEME      // Seasonal theme, cultural ritual, leadership cycle
+}
+
+enum RecommendationPriority {
+  CRITICAL    // Immediate action required (next 7 days)
+  HIGH        // Action recommended soon (next 30 days)
+  MEDIUM      // Consider for next season (next 90 days)
+  LOW         // Long-term consideration (next 180+ days)
+}
+
+enum RecommendationStatus {
+  GENERATED       // Strategy created
+  UNDER_REVIEW    // Being evaluated by leadership
+  APPROVED        // Accepted for implementation
+  IN_PROGRESS     // Currently being executed
+  COMPLETED       // Successfully implemented
+  REJECTED        // Leadership declined
+  DEFERRED        // Postponed to future season
+}
+
+model StrategyHistory {
+  id                    String   @id @default(uuid())
+  recommendationId      String
+  timestamp             DateTime @default(now())
+  statusChange          String?  // Status transition
+  actualOutcome         Json?    // What actually happened
+  variance              Float?   // How close to expected outcome
+  lessonsLearned        String?  // Retrospective insights
+  
+  recommendation        StrategicRecommendation @relation(fields: [recommendationId], references: [id], onDelete: Cascade)
+  
+  @@index([recommendationId, timestamp])
+}
+
+model StrategicPattern {
+  id                String   @id @default(uuid())
+  patternType       String   // "successful_split", "failed_expansion", "effective_leadership_path"
+  domain            AlertDomain
+  description       String
+  successRate       Float    // 0-1
+  totalInstances    Int
+  context           Json     // When this pattern applies
+  recommendation    String   // What to recommend when pattern detected
+  
+  @@index([domain, patternType])
+}
+
+// ======================================================
+// GOVERNANCE LAYER - CIVILIZATION INTELLIGENCE (LAYER 7)
+// Constitutional layer: approvals, leadership, coordination
+// ======================================================
+
+model GovernanceDecision {
+  id                  String         @id @default(uuid())
+  type                DecisionType
+  domain              String         // mission, curriculum, circle, region, leadership, etc.
+  title               String
+  description         String         @db.Text
+  reasoning           String         @db.Text
+  
+  // Proposal tracking
+  proposedBy          String
+  proposedAt          DateTime       @default(now())
+  
+  // Approval workflow
+  status              DecisionStatus @default(PENDING)
+  approvers           Json           // Array of {userId, role, status, timestamp}
+  requiredApprovals   Int            @default(1)
+  currentApprovals    Int            @default(0)
+  
+  // Context
+  entityId            String?        // ID of mission, circle, region, etc.
+  entityType          String?        // "mission", "circle", "region", etc.
+  seasonId            String?
+  regionId            String?
+  
+  // Resolution
+  approvedAt          DateTime?
+  approvedBy          String?
+  rejectedAt          DateTime?
+  rejectedBy          String?
+  implementedAt       DateTime?
+  
+  // Impact
+  impactScore         Float?         // 0-1
+  impactDescription   String?        @db.Text
+  
+  // Relations
+  proposer            User           @relation("ProposedDecisions", fields: [proposedBy], references: [id])
+  season              Season?        @relation(fields: [seasonId], references: [id])
+  region              Region?        @relation(fields: [regionId], references: [id])
+  history             DecisionHistory[]
+  
+  @@index([status, type, domain])
+  @@index([proposedAt])
+  @@index([regionId, status])
+}
+
+enum DecisionType {
+  MISSION_APPROVAL       // Approve mission for season
+  CURRICULUM_APPROVAL    // Approve curriculum content
+  CIRCLE_CREATION        // Create new youth circle
+  REGION_CREATION        // Establish new region
+  LEADERSHIP_PROMOTION   // Promote to leadership role
+  CHALLENGE_APPROVAL     // Approve creator challenge
+  SEASONAL_THEME         // Set seasonal focus
+  BUDGET_ALLOCATION      // Allocate resources
+  POLICY_CHANGE          // Modify governance rules
+  EXPANSION_INITIATIVE   // New expansion project
+}
+
+enum DecisionStatus {
+  PENDING              // Awaiting review
+  UNDER_REVIEW         // Being considered
+  APPROVED             // Accepted for implementation
+  REJECTED             // Declined
+  IMPLEMENTED          // Executed successfully
+  DEFERRED             // Postponed
+}
+
+model DecisionHistory {
+  id          String   @id @default(uuid())
+  decisionId  String
+  action      String   // PROPOSED, APPROVED, REJECTED, IMPLEMENTED, REVISED
+  actorId     String
+  timestamp   DateTime @default(now())
+  notes       String?  @db.Text
+  metadata    Json?
+  
+  decision    GovernanceDecision @relation(fields: [decisionId], references: [id], onDelete: Cascade)
+  actor       User              @relation("DecisionActions", fields: [actorId], references: [id])
+  
+  @@index([decisionId, timestamp])
+}
+
+model LeadershipReadiness {
+  id                  String   @id @default(uuid())
+  userId              String   @unique
+  
+  // Current state
+  currentRole         RoleName
+  targetRole          RoleName
+  readinessScore      Float    // 0-100
+  
+  // Readiness factors
+  attendance          Float    // 0-100
+  missionCompletion   Float    // 0-100
+  leadershipSignals   Float    // 0-100 (initiative, collaboration, problem-solving)
+  mentorshipHours     Int      @default(0)
+  
+  // Assessment
+  isReady             Boolean  @default(false)
+  recommendedPath     String?  @db.Text
+  timeToReadiness     Int?     // Days until ready
+  
+  lastAssessment      DateTime @default(now())
+  nextAssessment      DateTime?
+  
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assessments         LeadershipAssessment[]
+  
+  @@index([isReady, targetRole])
+  @@index([lastAssessment])
+}
+
+model LeadershipAssessment {
+  id              String   @id @default(uuid())
+  readinessId     String
+  assessedBy      String
+  timestamp       DateTime @default(now())
+  
+  score           Float    // 0-100
+  strengths       Json     // Array of strength areas
+  growthAreas     Json     // Array of improvement areas
+  recommendations Json     // Array of next steps
+  notes           String?  @db.Text
+  
+  readiness       LeadershipReadiness @relation(fields: [readinessId], references: [id], onDelete: Cascade)
+  assessor        User                @relation("LeadershipAssessments", fields: [assessedBy], references: [id])
+  
+  @@index([readinessId, timestamp])
+}
+
+model GovernanceMeeting {
+  id            String        @id @default(uuid())
+  type          MeetingType
+  title         String
+  description   String?       @db.Text
+  
+  // Scheduling
+  scheduledAt   DateTime
+  duration      Int           // Minutes
+  location      String?       // Physical or virtual
+  
+  // Participants
+  attendees     Json          // Array of {userId, role, status: confirmed/declined/pending}
+  facilitator   String?
+  
+  // Content
+  agenda        Json          // Array of agenda items
+  decisions     Json?         // Array of decision IDs made in meeting
+  
+  // Status
+  status        MeetingStatus @default(SCHEDULED)
+  summary       String?       @db.Text
+  actionItems   Json?         // Array of action items
+  nextMeeting   DateTime?
+  
+  // Context
+  seasonId      String?
+  regionId      String?
+  
+  season        Season?       @relation(fields: [seasonId], references: [id])
+  region        Region?       @relation(fields: [regionId], references: [id])
+  minutes       MeetingMinutes[]
+  
+  @@index([type, scheduledAt])
+  @@index([status])
+}
+
+enum MeetingType {
+  COUNCIL         // Full council meeting
+  REGIONAL        // Regional leadership
+  LEADERSHIP      // Cross-region leadership
+  SEASONAL        // Season planning
+  EMERGENCY       // Crisis response
+  PLANNING        // Strategic planning
+}
+
+enum MeetingStatus {
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  RESCHEDULED
+}
+
+model MeetingMinutes {
+  id          String   @id @default(uuid())
+  meetingId   String
+  recordedBy  String
+  timestamp   DateTime @default(now())
+  
+  content     String   @db.Text  // Markdown format
+  decisions   Json?    // Array of decisions made
+  actionItems Json?    // Array of action items
+  
+  meeting     GovernanceMeeting @relation(fields: [meetingId], references: [id], onDelete: Cascade)
+  recorder    User              @relation("MeetingMinutes", fields: [recordedBy], references: [id])
+  
+  @@index([meetingId])
+}
+
+model ApprovalWorkflow {
+  id          String   @id @default(uuid())
+  name        String
+  description String?  @db.Text
+  entityType  String   // mission, curriculum, circle, region, etc.
+  
+  steps       Json     // Array of {order, role, required}
+  
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([entityType, isActive])
+}
+
+model RegionalGovernance {
+  id              String   @id @default(uuid())
+  regionId        String   @unique
+  
+  // Leadership
+  director        String?
+  coDirector      String?
+  council         Json?    // Array of {userId, role}
+  
+  // Autonomy
+  healthScore     Float    @default(0)  // 0-100
+  autonomyLevel   String   @default("SUPERVISED")  // SUPERVISED, SEMI_AUTONOMOUS, AUTONOMOUS
+  
+  // Metrics
+  circleCount     Int      @default(0)
+  youthCount      Int      @default(0)
+  missionCompletion Float  @default(0)  // 0-100
+  
+  // Support
+  needsSupport    Boolean  @default(false)
+  supportAreas    Json?    // Array of support needs
+  escalations     Int      @default(0)
+  
+  // Review
+  lastReview      DateTime @default(now())
+  nextReview      DateTime?
+  
+  region          Region   @relation(fields: [regionId], references: [id], onDelete: Cascade)
+}
+
+model CivilizationMilestone {
+  id            String        @id @default(uuid())
+  type          MilestoneType
+  title         String
+  description   String        @db.Text
+  
+  achievedAt    DateTime      @default(now())
+  achievedBy    Json          // Array of contributors {userId, contribution}
+  
+  impactScore   Float         // 0-1
+  significance  String        @db.Text
+  
+  seasonId      String?
+  regionId      String?
+  
+  celebrated    Boolean       @default(false)
+  celebratedAt  DateTime?
+  
+  season        Season?       @relation(fields: [seasonId], references: [id])
+  region        Region?       @relation(fields: [regionId], references: [id])
+  
+  @@index([type, achievedAt])
+}
+
+enum MilestoneType {
+  SEASONAL_COMPLETION      // Season successfully completed
+  REGIONAL_LAUNCH          // New region established
+  YOUTH_MILESTONE          // Youth achievement (100th youth, etc.)
+  CREATOR_MILESTONE        // Creator achievement
+  CURRICULUM_MILESTONE     // Curriculum completion
+  EXPANSION_MILESTONE      // Major expansion achieved
+  CULTURAL_MILESTONE       // Cultural achievement
+}
+
+// =============================================================================
+// ORCHESTRATION LAYER - The Dominion's Heartbeat
+// =============================================================================
+// Synchronizes cycles, coordinates engines, moves the entire civilization
+// in unified rhythm. The conductor of all engines.
+
+// Orchestration Cycle - Represents coordination cycles across all engines
+model OrchestrationCycle {
+  id                String            @id @default(uuid())
+  name              String            // e.g., "Identity Season Transition", "Q1 Regional Sync"
+  type              CycleType
+  status            CycleStatus       @default(SCHEDULED)
+  
+  // Timing
+  startDate         DateTime
+  endDate           DateTime
+  actualStartDate   DateTime?
+  actualEndDate     DateTime?
+  
+  // Scope
+  seasonId          String?
+  regionId          String?
+  scope             CycleScope        // GLOBAL, REGIONAL, CIRCLE-level
+  
+  // Orchestration details
+  involvedEngines   Json              // Array of engine names: ["mission", "curriculum", "creator"]
+  coordinationPlan  Json              // Detailed orchestration steps
+  dependencies      Json              // Other cycles this depends on
+  
+  // Execution tracking
+  progress          Float             @default(0) // 0-1
+  checkpoints       Json              // Array of {name, completed, timestamp}
+  blockers          Json?             // Array of blocking issues
+  
+  // Results
+  successMetrics    Json?             // KPIs for this cycle
+  outcomes          Json?             // Actual results achieved
+  lessons           String?           // Lessons learned (Markdown)
+  
+  // Metadata
+  createdBy         String
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  
+  // Relations
+  season            Season?           @relation(fields: [seasonId], references: [id])
+  region            Region?           @relation(fields: [regionId], references: [id])
+  creator           User              @relation("OrchestrationCycles", fields: [createdBy], references: [id])
+  engineStates      EngineState[]
+  
+  @@index([status, type])
+  @@index([startDate, endDate])
+  @@index([regionId, status])
+}
+
+// Engine State - Tracks state of each engine in the system
+model EngineState {
+  id                  String              @id @default(uuid())
+  engineName          EngineName          @unique
+  
+  // Current state
+  status              EngineStatus        @default(OPERATIONAL)
+  health              Float               @default(1.0) // 0-1
+  lastHeartbeat       DateTime            @default(now())
+  
+  // Configuration
+  currentConfig       Json                // Current engine configuration
+  targetConfig        Json?               // Target configuration (if transitioning)
+  
+  // Performance
+  metrics             Json                // Engine-specific metrics
+  throughput          Float               @default(0) // Operations per cycle
+  errorRate           Float               @default(0) // Error percentage
+  
+  // Orchestration
+  cycleId             String?
+  alignedToSeason     Boolean             @default(false)
+  lastSync            DateTime?
+  nextSync            DateTime?
+  
+  // Dependencies
+  dependencies        Json                // Engines this depends on
+  dependents          Json                // Engines that depend on this
+  
+  // Metadata
+  updatedAt           DateTime            @updatedAt
+  
+  // Relations
+  cycle               OrchestrationCycle? @relation(fields: [cycleId], references: [id])
+  
+  @@index([status])
+  @@index([lastHeartbeat])
+}
+
+// Seasonal Synchronization - Tracks seasonal alignment across all systems
+model SeasonalSynchronization {
+  id                  String            @id @default(uuid())
+  seasonId            String
+  
+  // Alignment tracking
+  curriculumAligned   Boolean           @default(false)
+  missionsAligned     Boolean           @default(false)
+  creatorsAligned     Boolean           @default(false)
+  exchangeAligned     Boolean           @default(false)
+  intelligenceAligned Boolean           @default(false)
+  
+  // Alignment scores (0-1)
+  curriculumScore     Float             @default(0)
+  missionScore        Float             @default(0)
+  creatorScore        Float             @default(0)
+  exchangeScore       Float             @default(0)
+  overallScore        Float             @default(0)
+  
+  // Transition tracking
+  transitionStarted   DateTime?
+  transitionCompleted DateTime?
+  transitionPlan      Json?             // Steps to complete transition
+  
+  // Regional variations
+  regionalVariations  Json              // Region-specific adjustments
+  
+  // Metadata
+  lastSyncCheck       DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  
+  // Relations
+  season              Season            @relation(fields: [seasonId], references: [id])
+  
+  @@unique([seasonId])
+}
+
+// Regional Orchestration - Regional-specific coordination
+model RegionalOrchestration {
+  id                    String          @id @default(uuid())
+  regionId              String          @unique
+  
+  // Cycle timing (regional customization)
+  missionCycleStart     DateTime
+  curriculumCycleStart  DateTime
+  creatorCycleStart     DateTime
+  
+  // Cultural customization
+  culturalThemes        Json            // Region-specific themes
+  languagePreferences   Json            // Localization settings
+  customRituals         Json            // Regional rituals
+  
+  // Coordination status
+  syncedWithGlobal      Boolean         @default(true)
+  autonomyLevel         Float           @default(0.5) // 0-1, how much regional autonomy
+  needsGlobalSync       Boolean         @default(false)
+  
+  // Performance
+  coordinationScore     Float           @default(0) // 0-1
+  lastGlobalSync        DateTime?
+  nextGlobalSync        DateTime?
+  
+  // Metadata
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+  
+  // Relations
+  region                Region          @relation(fields: [regionId], references: [id])
+}
+
+// Mission-Curriculum Link - Links missions to curriculum modules
+model MissionCurriculumLink {
+  id                  String            @id @default(uuid())
+  missionId           String
+  moduleId            String
+  
+  // Link type
+  linkType            LinkType          // PREREQUISITE, REINFORCEMENT, EXTENSION
+  
+  // Prerequisites
+  moduleRequired      Boolean           @default(false)
+  moduleCompletion    Float             @default(1.0) // 0-1, how much of module needed
+  
+  // Alignment
+  alignmentScore      Float             @default(0) // 0-1, how well they align
+  pedagogicalFit      String?           // Notes on educational alignment
+  
+  // Tracking
+  studentsLinked      Int               @default(0) // How many youth have this link
+  completionRate      Float             @default(0) // Success rate for this link
+  
+  // Metadata
+  createdAt           DateTime          @default(now())
+  createdBy           String
+  
+  // Relations
+  mission             Mission           @relation(fields: [missionId], references: [id])
+  module              CurriculumModule  @relation(fields: [moduleId], references: [id])
+  creator             User              @relation("MissionCurriculumLinks", fields: [createdBy], references: [id])
+  
+  @@unique([missionId, moduleId])
+  @@index([linkType])
+}
+
+// Creator Seasonal Challenge - Season-aligned creator challenges
+model CreatorSeasonalChallenge {
+  id                  String            @id @default(uuid())
+  challengeId         String
+  seasonId            String
+  
+  // Seasonal alignment
+  seasonalTheme       String            // How this aligns with seasonal theme
+  themeScore          Float             @default(0) // 0-1, alignment strength
+  
+  // Timing
+  launchDate          DateTime
+  endDate             DateTime
+  peakDate            DateTime?         // Peak engagement target
+  
+  // Coordination
+  linkedMissions      Json              // Mission IDs this connects to
+  linkedCurriculum    Json              // Curriculum module IDs
+  linkedExchange      Json?             // Exchange lesson IDs
+  
+  // Performance
+  participation       Int               @default(0)
+  submissionCount     Int               @default(0)
+  qualityScore        Float             @default(0) // 0-1
+  
+  // Metadata
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  
+  // Relations
+  challenge           CreatorChallenge  @relation(fields: [challengeId], references: [id])
+  season              Season            @relation(fields: [seasonId], references: [id])
+  
+  @@unique([challengeId, seasonId])
+  @@index([launchDate, endDate])
+}
+
+// Intelligence Action - Intelligence insights that trigger actions
+model IntelligenceAction {
+  id                  String            @id @default(uuid())
+  insightType         String            // e.g., "C2_ATTENDANCE_DROP", "Y3_AT_RISK"
+  insightSeverity     String            // LOW, MEDIUM, HIGH, CRITICAL
+  
+  // Source
+  sourceEngine        EngineName
+  sourceData          Json              // Original insight data
+  detectedAt          DateTime          @default(now())
+  
+  // Triggered action
+  actionType          ActionType
+  targetRole          String            // Role that should act (YOUTH_CAPTAIN, REGIONAL_DIRECTOR, etc.)
+  targetUserId        String?           // Specific user to act (if known)
+  actionDescription   String            // What action to take
+  actionPriority      Int               @default(5) // 1-10
+  
+  // Routing
+  routedAt            DateTime?
+  routedTo            Json?             // Array of user IDs action was routed to
+  
+  // Execution
+  status              ActionStatus      @default(PENDING)
+  startedAt           DateTime?
+  completedAt         DateTime?
+  executedBy          String?           // User who executed the action
+  
+  // Results
+  outcome             String?           // Result of the action
+  impactScore         Float?            // 0-1, how effective was the action
+  
+  // Metadata
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  
+  // Relations
+  targetUser          User?             @relation("IntelligenceActions", fields: [targetUserId], references: [id])
+  executor            User?             @relation("ExecutedActions", fields: [executedBy], references: [id])
+  
+  @@index([status, actionPriority])
+  @@index([sourceEngine, insightSeverity])
+  @@index([detectedAt])
+}
+
+// Exchange Integration - Financial realm integration points
+model ExchangeIntegration {
+  id                  String            @id @default(uuid())
+  
+  // Link to Dominion system
+  entityType          String            // MISSION, CURRICULUM, CREATOR_CHALLENGE, SEASON
+  entityId            String
+  
+  // Financial lesson/tool
+  exchangeLessonId    String?           // Lesson from Dominion Exchange
+  financialTool       String?           // Tool name (e.g., "RISK_SCREENER", "PORTFOLIO_BUILDER")
+  
+  // Alignment
+  alignmentTheme      String            // How this aligns (e.g., "Leadership + Financial Leadership")
+  integrationScore    Float             @default(0) // 0-1
+  
+  // Tracking
+  youthEngaged        Int               @default(0)
+  toolsUsed           Int               @default(0)
+  lessonsCompleted    Int               @default(0)
+  
+  // Metadata
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  
+  @@unique([entityType, entityId])
+  @@index([entityType])
+}
+
+// Civilization Event - Civilization-wide coordinated events
+model CivilizationEvent {
+  id                  String                @id @default(uuid())
+  name                String
+  type                CivilizationEventType
+  
+  // Timing
+  scheduledAt         DateTime
+  duration            Int               // Minutes
+  endTime             DateTime
+  
+  // Scope
+  scope               CycleScope        // GLOBAL, REGIONAL, CIRCLE
+  regionId            String?
+  
+  // Orchestration
+  involvedEngines     Json              // Engines coordinated for this event
+  ritualSteps         Json              // Steps in the event/ritual
+  participantRoles    Json              // Roles expected to participate
+  
+  // Participation
+  expectedParticipants Int             @default(0)
+  actualParticipants   Int             @default(0)
+  participationRate    Float            @default(0) // 0-1
+  
+  // Results
+  status              EventStatus       @default(SCHEDULED)
+  outcomes            Json?             // Event outcomes
+  culturalImpact      Float             @default(0) // 0-1
+  
+  // Metadata
+  createdBy           String
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  
+  // Relations
+  region              Region?           @relation(fields: [regionId], references: [id])
+  creator             User              @relation("CivilizationEvents", fields: [createdBy], references: [id])
+  
+  @@index([type, scheduledAt])
+  @@index([status])
+}
+
+// =============================================================================
+// ORCHESTRATION ENUMS
+// =============================================================================
+
+enum CycleType {
+  SEASONAL_TRANSITION   // Transition between seasons
+  MISSION_CURRICULUM    // Mission-curriculum sync
+  CREATOR_SEASONAL      // Creator-season alignment
+  REGIONAL_SYNC         // Regional synchronization
+  INTELLIGENCE_ACTION   // Intelligence-triggered coordination
+  EXCHANGE_INTEGRATION  // Financial integration cycle
+  CIVILIZATION_EVENT    // Major civilization event
+  ENGINE_HEALTH         // Engine health check cycle
+}
+
+enum CycleStatus {
+  SCHEDULED             // Cycle is scheduled
+  IN_PROGRESS           // Cycle is executing
+  COMPLETED             // Cycle completed successfully
+  FAILED                // Cycle failed
+  BLOCKED               // Cycle blocked by dependencies
+  CANCELLED             // Cycle cancelled
+}
+
+enum CycleScope {
+  GLOBAL                // Affects entire Dominion
+  REGIONAL              // Affects one or more regions
+  CIRCLE                // Affects specific circles
+  INDIVIDUAL            // Affects specific users
+}
+
+enum EngineName {
+  CIRCLE                // Circle Engine
+  YOUTH                 // Youth Engine
+  MISSION               // Mission Engine
+  CURRICULUM            // Curriculum Engine
+  CREATOR               // Creator Engine
+  EXCHANGE              // Dominion Exchange Engine
+  INTELLIGENCE          // Intelligence Engine
+  GOVERNANCE            // Governance Engine
+  ORCHESTRATION         // Orchestration Engine itself
+}
+
+enum EngineStatus {
+  OPERATIONAL           // Engine running normally
+  DEGRADED              // Engine running with issues
+  SYNCING               // Engine synchronizing
+  OFFLINE               // Engine offline
+  MAINTENANCE           // Engine in maintenance mode
+}
+
+enum LinkType {
+  PREREQUISITE          // Module required before mission
+  REINFORCEMENT         // Mission reinforces module
+  EXTENSION             // Mission extends module learning
+  OPTIONAL              // Optional connection
+}
+
+enum ActionType {
+  LEADERSHIP_INTERVENTION  // Leader needs to intervene
+  SYSTEM_ADJUSTMENT        // System configuration change
+  NOTIFICATION             // Send notification to someone
+  ESCALATION               // Escalate to higher leadership
+  SUPPORT_REQUEST          // Request support from team
+  AUTOMATED_FIX            // Automated system fix
+}
+
+enum ActionStatus {
+  PENDING               // Action not yet started
+  ROUTED                // Action routed to responsible party
+  IN_PROGRESS           // Action being executed
+  COMPLETED             // Action completed successfully
+  FAILED                // Action failed
+  DISMISSED             // Action dismissed as unnecessary
+}
+
+enum CivilizationEventType {
+  SEASONAL_TRANSITION   // Season transition ceremony
+  CULTURAL_RITUAL       // Cultural ritual
+  LEADERSHIP_CYCLE      // Leadership transition
+  EXPANSION_EPOCH       // Expansion milestone
+  CURRICULUM_ARC        // Curriculum milestone
+  MISSION_EPOCH         // Mission milestone
+  CREATOR_RENAISSANCE   // Creator celebration
+  FINANCIAL_SEASON      // Financial milestone
+}
+
+enum EventStatus {
+  SCHEDULED             // Event scheduled
+  ACTIVE                // Event happening now
+  COMPLETED             // Event completed
+  CANCELLED             // Event cancelled
+  POSTPONED             // Event postponed
+}
+
+// ==============================================================================
+// INTELLIGENCE API V1 LAYER
+// ==============================================================================
+// The 47-rule intelligence system that "talks back to leadership"
+// Generates alerts, recommendations, forecasts, and opportunities
+// Powers role-scoped intelligence feeds in Empire Dashboard
+
+// Insight Type Classification
+enum InsightType {
+  ALERT                 // Urgent issues requiring immediate attention
+  RECOMMENDATION        // Actionable suggestions for improvement
+  FORECAST              // Future-facing projections for planning
+  OPPORTUNITY           // Positive signals to celebrate/leverage
+}
+
+// Insight Priority Levels
+enum InsightPriority {
+  CRITICAL              // Requires immediate action (e.g., attendance crisis)
+  IMPORTANT             // Should be addressed soon (e.g., at-risk youth)
+  INFO                  // Informational, no urgency (e.g., milestone achieved)
+}
+
+// Intelligence Domain Categories
+enum InsightDomain {
+  YOUTH                 // Youth engagement, at-risk detection, milestones
+  CIRCLES               // Circle health, attendance, captain effectiveness
+  MISSIONS              // Mission completion, forecasting, impact
+  CURRICULUM            // Module engagement, drop-offs, alignment
+  CULTURE               // Stories, rituals, cultural identity
+  CREATORS              // Creator activity, quality, spotlights
+  EXPANSION             // Regional health, ambassador effectiveness, readiness
+}
+
+// Audience Role Scoping
+enum AudienceRole {
+  ADMIN                 // Civilization-wide visibility
+  COUNCIL               // Strategic oversight across all domains
+  REGIONAL_DIRECTOR     // Regional scope (circles, youth, missions, culture)
+  AMBASSADOR            // Expansion/outreach scope
+  CAPTAIN               // Circle-specific scope
+  YOUTH                 // Personal scope (future)
+}
+
+// Insight Lifecycle Status
+enum InsightStatus {
+  ACTIVE                // New insight, needs attention
+  ACKNOWLEDGED          // Leadership has seen it
+  RESOLVED              // Issue addressed, action taken
+  DISMISSED             // Not relevant, archived
+}
+
+// Intelligence Insight Record
+// Generated by 47-rule engine, consumed by dashboard feeds
+model Insight {
+  id                    String            @id @default(uuid())
+  type                  InsightType       // ALERT, RECOMMENDATION, FORECAST, OPPORTUNITY
+  priority              InsightPriority   // CRITICAL, IMPORTANT, INFO
+  domain                InsightDomain     // YOUTH, CIRCLES, MISSIONS, etc.
+  rule_code             String            // e.g., Y2_AT_RISK_YOUTH, C2_ATTENDANCE_DROP
+  
+  // Content
+  title                 String            // Short, human-readable title
+  message               String            @db.Text // Full description/guidance
+  context               Json              // Entity references: user_id, circle_id, region_id, etc.
+  
+  // Audience Targeting
+  audience_role         AudienceRole      // Who should see this?
+  audience_scope_id     String?           // Specific user/region/circle (nullable for global)
+  
+  // Lifecycle
+  status                InsightStatus     @default(ACTIVE)
+  created_at            DateTime          @default(now())
+  updated_at            DateTime          @updatedAt
+  expires_at            DateTime?         // Optional expiration for time-bound alerts
+  
+  // Relations
+  events                InsightEvent[]    // Audit trail of actions taken
+  
+  @@index([type])
+  @@index([priority])
+  @@index([domain])
+  @@index([audience_role])
+  @@index([audience_scope_id])
+  @@index([status])
+  @@index([created_at])
+  @@index([expires_at])
+  @@map("insights")
+}
+
+// Insight Action Audit Trail
+// Tracks leadership responsiveness and insight lifecycle
+model InsightEvent {
+  id                    String            @id @default(uuid())
+  insight_id            String
+  user_id               String            // Who took action
+  action                String            // ACKNOWLEDGED, RESOLVED, DISMISSED
+  created_at            DateTime          @default(now())
+  
+  // Relations
+  insight               Insight           @relation(fields: [insight_id], references: [id], onDelete: Cascade)
+  user                  User              @relation("insight_events", fields: [user_id], references: [id], onDelete: Cascade)
+  
+  @@index([insight_id])
+  @@index([user_id])
+  @@index([created_at])
+  @@map("insight_events")
+}
+
+// ======================================================
+// ACTION AI TASK ENGINE V0
+// ======================================================
+
+// Task: Unit of work AI can execute or supervise
+model Task {
+  id                String           @id @default(uuid())
+  type              TaskType
+  status            TaskStatus       @default(PENDING)
+  priority          TaskPriority     @default(MEDIUM)
+  mode              TaskMode         @default(SUGGESTION)
+  
+  ownerType         OwnerType
+  ownerId           String?          // user/team/system identifier
+  
+  subjectRefType    SubjectRefType
+  subjectRefId      String           // invoice/lead ID in domain system
+  
+  dueAt             DateTime?
+  scheduledAt       DateTime?        // when system plans execution
+  completedAt       DateTime?
+  failedAt          DateTime?
+  
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  
+  source            String           // OVERDUE_INVOICE_DETECTOR, LEAD_STALENESS_DETECTOR, MANUAL
+  payload           Json             // complete context: customer details, invoice details, etc.
+  lastError         String?          @db.Text
+  
+  // Relations
+  events            TaskEvent[]
+  
+  @@index([status, scheduledAt])
+  @@index([type, subjectRefType, subjectRefId, source])
+  @@index([ownerType, ownerId])
+  @@index([dueAt])
+  @@map("tasks")
+}
+
+// Task Event: Audit log for every task transition
+model TaskEvent {
+  id                String           @id @default(uuid())
+  taskId            String
+  eventType         TaskEventType
+  oldStatus         TaskStatus?
+  newStatus         TaskStatus?
+  metadata          Json?            // error details, actor info, contextual data
+  actorType         ActorType
+  actorId           String?
+  createdAt         DateTime         @default(now())
+  
+  // Relations
+  task              Task             @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  
+  @@index([taskId])
+  @@index([eventType])
+  @@index([actorType, actorId])
+  @@index([createdAt])
+  @@map("task_events")
+}
+
+enum TaskType {
+  INVOICE_FOLLOW_UP
+  LEAD_FOLLOW_UP
+}
+
+enum TaskStatus {
+  PENDING           // Created, not yet scheduled
+  SCHEDULED         // Scheduled for execution
+  IN_PROGRESS       // Currently executing
+  COMPLETED         // Successfully executed (terminal)
+  FAILED            // Execution failed (terminal)
+  CANCELLED         // Intentionally stopped (terminal)
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum TaskMode {
+  SUGGESTION        // Draft + notify human
+  ASSISTED          // Auto-send unless high-risk
+  AUTONOMOUS        // Auto-send within guardrails
+}
+
+enum OwnerType {
+  AI
+  HUMAN
+}
+
+enum SubjectRefType {
+  INVOICE
+  LEAD
+}
+
+enum TaskEventType {
+  TASK_CREATED
+  TASK_STATUS_CHANGED
+  TASK_EXECUTION_STARTED
+  TASK_EXECUTION_COMPLETED
+  TASK_EXECUTION_FAILED
+  TASK_CANCELLED
+}
+
+enum ActorType {
+  SYSTEM
+  AI
+  HUMAN
+}

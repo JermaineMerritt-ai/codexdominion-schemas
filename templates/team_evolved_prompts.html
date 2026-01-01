@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolved Prompts - {{ team.name }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #2d2d44;
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header-subtitle {
+            color: #888;
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb a {
+            color: #6a89cc;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(106, 137, 204, 0.1);
+            border: 1px solid #6a89cc;
+            border-radius: 8px;
+            color: #6a89cc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .back-button:hover {
+            background: rgba(106, 137, 204, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 2px;
+        }
+
+        .strongest-prompts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .prompt-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .prompt-card:hover {
+            border-color: #6a89cc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(106, 137, 204, 0.2);
+        }
+
+        .prompt-rank {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .prompt-text {
+            font-size: 1rem;
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .prompt-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #aaa;
+        }
+
+        .stat-value {
+            color: #6a89cc;
+            font-weight: 600;
+        }
+
+        .effectiveness-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .effectiveness-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .evolved-set {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(106, 137, 204, 0.2);
+        }
+
+        .evolved-set-header {
+            margin-bottom: 25px;
+        }
+
+        .evolved-set-title {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .original-prompt {
+            background: rgba(106, 137, 204, 0.1);
+            border-left: 4px solid #6a89cc;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .variant-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .variant-card:hover {
+            border-color: #00f2fe;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2);
+        }
+
+        .variant-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .variant-text {
+            font-size: 0.95rem;
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .variant-meta {
+            display: flex;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #888;
+            flex-wrap: wrap;
+        }
+
+        .variant-meta span {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .use-prompt-button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .use-prompt-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #666;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .empty-state p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .intro-banner {
+            background: linear-gradient(135deg, rgba(106, 137, 204, 0.1) 0%, rgba(79, 172, 254, 0.1) 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(106, 137, 204, 0.2);
+        }
+
+        .intro-banner h2 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .intro-banner p {
+            color: #aaa;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/studio/graphics/team/{{ team.id }}" class="back-button">
+            ← Back to Library
+        </a>
+
+        <div class="header">
+            <div class="breadcrumb">
+                <a href="/teams">Teams</a> / 
+                <a href="/studio/graphics/team/{{ team.id }}">{{ team.name }}</a> / 
+                <span>Evolved Prompts</span>
+            </div>
+            <h1>🧬 Team-Level Prompt Evolution</h1>
+            <p class="header-subtitle">Your strongest prompts, evolved based on collective creative patterns</p>
+        </div>
+
+        <div class="intro-banner">
+            <h2>How This Works</h2>
+            <p>We've analyzed your team's creative output and identified the prompts that led to the most successful projects. Below are evolved variants that build on your collective strengths—crafted to amplify what already works while introducing fresh creative directions.</p>
+        </div>
+
+        {% if strongest_prompts %}
+        <h2 class="section-title">🏆 Your Strongest Prompts</h2>
+        <div class="strongest-prompts-grid">
+            {% for prompt in strongest_prompts %}
+            <div class="prompt-card">
+                <div class="prompt-rank">#{{ loop.index }}</div>
+                <div class="prompt-text">{{ prompt.prompt_text }}</div>
+                <div class="prompt-stats">
+                    <div class="stat">
+                        <span>Used:</span>
+                        <span class="stat-value">{{ prompt.times_used }}×</span>
+                    </div>
+                    <div class="stat">
+                        <span>Saved:</span>
+                        <span class="stat-value">{{ prompt.times_saved }}×</span>
+                    </div>
+                    <div class="stat">
+                        <span>Reused:</span>
+                        <span class="stat-value">{{ prompt.times_reused }}×</span>
+                    </div>
+                    <div class="stat">
+                        <span>Score:</span>
+                        <span class="stat-value">{{ "%.1f"|format(prompt.effectiveness_score) }}</span>
+                    </div>
+                </div>
+                <div class="effectiveness-bar">
+                    <div class="effectiveness-fill" style="width: {{ (prompt.effectiveness_score / 100 * 100)|int }}%"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if evolved_sets %}
+        <h2 class="section-title">✨ Evolved Variants</h2>
+        {% for set in evolved_sets %}
+        <div class="evolved-set">
+            <div class="evolved-set-header">
+                <div class="evolved-set-title">Evolved from Rank #{{ loop.index }} Prompt</div>
+                <div class="original-prompt">
+                    <strong>Original:</strong> {{ set.original_prompt.prompt_text }}
+                </div>
+                <div class="prompt-stats">
+                    <div class="stat">
+                        <span>Effectiveness:</span>
+                        <span class="stat-value">{{ "%.1f"|format(set.effectiveness) }}</span>
+                    </div>
+                    <div class="stat">
+                        <span>Usage:</span>
+                        <span class="stat-value">{{ set.times_used }}×</span>
+                    </div>
+                    <div class="stat">
+                        <span>Saves:</span>
+                        <span class="stat-value">{{ set.times_saved }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="variants-grid">
+                {% for variant in set.variants %}
+                <div class="variant-card">
+                    <div class="variant-badge">Generation {{ variant.generation }}</div>
+                    <div class="variant-text">{{ variant.prompt }}</div>
+                    <div class="variant-meta">
+                        <span>🎭 {{ variant.mood }}</span>
+                        <span>🎨 {{ variant.palette }}</span>
+                        <span>💡 {{ variant.lighting }}</span>
+                    </div>
+                    <button class="use-prompt-button" onclick="usePrompt('{{ variant.prompt|e }}', '{{ variant.mood }}', '{{ variant.palette }}', '{{ variant.lighting }}')">
+                        Use This Prompt
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% else %}
+        <div class="empty-state">
+            <div class="empty-state-icon">🌱</div>
+            <p>Your team hasn't created enough projects yet to generate evolved prompts.</p>
+            <p>Start creating to build your creative DNA!</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function usePrompt(prompt, mood, palette, lighting) {
+            // Store in session storage
+            sessionStorage.setItem('selected_prompt', prompt);
+            sessionStorage.setItem('selected_mood', mood);
+            sessionStorage.setItem('selected_palette', palette);
+            sessionStorage.setItem('selected_lighting', lighting);
+            
+            // Redirect to studio with pre-filled prompt
+            window.location.href = '/studio/graphics?team_id={{ team.id }}&preset=evolved';
+        }
+    </script>
+</body>
+</html>

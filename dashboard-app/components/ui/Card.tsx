@@ -1,0 +1,33 @@
+/**
+ * Card Components - Sovereign-styled containers
+ */
+
+import { ReactNode } from "react";
+import { styles } from "@/lib/design-system";
+
+interface CardProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function Card({ children, className = "" }: CardProps) {
+  return <div className={`${styles.card} ${className}`}>{children}</div>;
+}
+
+interface CardHeaderProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function CardHeader({ children, className = "" }: CardHeaderProps) {
+  return <div className={`${styles.cardHeader} ${className}`}>{children}</div>;
+}
+
+interface CardBodyProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function CardBody({ children, className = "" }: CardBodyProps) {
+  return <div className={`${styles.cardBody} ${className}`}>{children}</div>;
+}

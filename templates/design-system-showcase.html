@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex Dominion - Design System Showcase</title>
+    <link rel="stylesheet" href="/static/css/design-system.css">
+    <style>
+        .showcase-section {
+            margin-bottom: var(--space-12);
+        }
+        .component-group {
+            background: rgba(242, 201, 76, 0.05);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-5);
+        }
+        .color-swatch {
+            width: 100px;
+            height: 100px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+        }
+        .code-block {
+            background: var(--color-dm-surface);
+            color: var(--color-dm-text);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container section">
+        <h1 class="display">🎨 Codex Dominion Design System</h1>
+        <p>Complete UI kit with Caribbean Blue & Gold palette, 8-point spacing, and smooth motion system.</p>
+        
+        <!-- Color Palette -->
+        <section class="showcase-section">
+            <h2>Color Palette</h2>
+            <div class="component-group">
+                <h3>Primary Colors</h3>
+                <div class="grid">
+                    <div class="col-3">
+                        <div class="color-swatch" style="background: var(--color-deep-blue);"></div>
+                        <p class="caption mt-4">Deep Blue<br>#003049</p>
+                    </div>
+                    <div class="col-3">
+                        <div class="color-swatch" style="background: var(--color-gold);"></div>
+                        <p class="caption mt-4">Gold Accent<br>#F2C94C</p>
+                    </div>
+                    <div class="col-3">
+                        <div class="color-swatch" style="background: var(--color-coral);"></div>
+                        <p class="caption mt-4">Coral<br>#FF6B6B</p>
+                    </div>
+                    <div class="col-3">
+                        <div class="color-swatch" style="background: var(--color-teal);"></div>
+                        <p class="caption mt-4">Teal<br>#00A896</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section class="showcase-section">
+            <h2>Typography</h2>
+            <div class="component-group">
+                <p class="display">Display Text - 48px Bold</p>
+                <h1>Heading 1 - 32px Bold</h1>
+                <h2>Heading 2 - 24px Semi-bold</h2>
+                <h3>Heading 3 - 20px Semi-bold</h3>
+                <p>Body Text - 16px Regular. Direct, warm, confident. Short sentences, minimal jargon.</p>
+                <p class="caption">Caption - 14px Regular</p>
+                <p class="label">LABEL / OVERLINE - 12px UPPERCASE</p>
+            </div>
+        </section>
+
+        <!-- Buttons -->
+        <section class="showcase-section">
+            <h2>Buttons</h2>
+            <div class="component-group">
+                <h3 class="mb-4">Primary Buttons</h3>
+                <div class="d-flex gap-4 flex-wrap mb-5">
+                    <button class="btn btn-primary">Start Earning</button>
+                    <button class="btn btn-primary btn-lg">Large Button</button>
+                    <button class="btn btn-primary btn-sm">Small Button</button>
+                    <button class="btn btn-primary" disabled>Disabled</button>
+                </div>
+
+                <h3 class="mb-4">Secondary Buttons</h3>
+                <div class="d-flex gap-4 flex-wrap mb-5">
+                    <button class="btn btn-secondary">Learn More</button>
+                    <button class="btn btn-secondary btn-lg">View Marketplace</button>
+                    <button class="btn btn-secondary btn-sm">Small Secondary</button>
+                </div>
+
+                <h3 class="mb-4">Tertiary Buttons</h3>
+                <div class="d-flex gap-4 flex-wrap">
+                    <button class="btn btn-tertiary">See all</button>
+                    <button class="btn btn-tertiary">View details</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section class="showcase-section">
+            <h2>Cards</h2>
+            
+            <!-- Creator Cards -->
+            <h3>Creator Cards</h3>
+            <div class="grid mb-6">
+                <div class="col-4">
+                    <div class="card card-creator">
+                        <div class="card-creator__avatar" style="background: linear-gradient(135deg, var(--color-teal), var(--color-gold));"></div>
+                        <h3 class="card-creator__name">Amara Johnson</h3>
+                        <p class="card-creator__title">Digital Marketing Ebook</p>
+                        <p class="card-creator__price">$29.99</p>
+                        <div class="card-creator__tags">
+                            <span class="tag tag--gold">Ebook</span>
+                            <span class="tag tag--teal">Marketing</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card card-creator">
+                        <div class="card-creator__avatar" style="background: linear-gradient(135deg, var(--color-coral), var(--color-gold));"></div>
+                        <h3 class="card-creator__name">Marcus Williams</h3>
+                        <p class="card-creator__title">Resume Template Pack</p>
+                        <p class="card-creator__price">$19.99</p>
+                        <div class="card-creator__tags">
+                            <span class="tag tag--coral">Template</span>
+                            <span class="tag">Career</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card card-creator">
+                        <div class="card-creator__avatar" style="background: linear-gradient(135deg, var(--color-deep-blue), var(--color-teal));"></div>
+                        <h3 class="card-creator__name">Zuri Thompson</h3>
+                        <p class="card-creator__title">Budget Planning Tool</p>
+                        <p class="card-creator__price">$14.99</p>
+                        <div class="card-creator__tags">
+                            <span class="tag tag--teal">Tool</span>
+                            <span class="tag">Finance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Cards -->
+            <h3>Product Cards</h3>
+            <div class="grid mb-6">
+                <div class="col-4">
+                    <div class="card card-product">
+                        <div class="card-product__badge">Promoted</div>
+                        <div class="card-product__thumbnail" style="background: linear-gradient(135deg, var(--color-gold), #f9d865);"></div>
+                        <span class="card-product__category">Ebook</span>
+                        <h3 class="card-product__title">Side Hustle Success Guide</h3>
+                        <p class="card-product__price">$24.99</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card card-product">
+                        <div class="card-product__thumbnail" style="background: linear-gradient(135deg, var(--color-teal), var(--color-deep-blue));"></div>
+                        <span class="card-product__category">Course</span>
+                        <h3 class="card-product__title">AI Automation Basics</h3>
+                        <p class="card-product__price">$49.99</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card card-product">
+                        <div class="card-product__thumbnail" style="background: linear-gradient(135deg, var(--color-coral), var(--color-gold));"></div>
+                        <span class="card-product__category">Template</span>
+                        <h3 class="card-product__title">Social Media Kit</h3>
+                        <p class="card-product__price">$19.99</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leaderboard -->
+            <h3>Leaderboard Rows</h3>
+            <div class="component-group">
+                <div class="leaderboard-row leaderboard-row--top">
+                    <div class="leaderboard-row__rank">1</div>
+                    <div class="leaderboard-row__username">@CreatorKing</div>
+                    <div class="leaderboard-row__earnings">$2,450</div>
+                    <div class="leaderboard-row__badges">
+                        <span class="badge">🏆</span>
+                        <span class="badge">⭐</span>
+                    </div>
+                </div>
+                <div class="leaderboard-row">
+                    <div class="leaderboard-row__rank">2</div>
+                    <div class="leaderboard-row__username">@YouthHustle</div>
+                    <div class="leaderboard-row__earnings">$1,875</div>
+                    <div class="leaderboard-row__badges">
+                        <span class="badge">🥈</span>
+                    </div>
+                </div>
+                <div class="leaderboard-row">
+                    <div class="leaderboard-row__rank">3</div>
+                    <div class="leaderboard-row__username">@DiasporaPower</div>
+                    <div class="leaderboard-row__earnings">$1,520</div>
+                    <div class="leaderboard-row__badges">
+                        <span class="badge">🥉</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Inputs -->
+        <section class="showcase-section">
+            <h2>Form Elements</h2>
+            <div class="component-group">
+                <div class="grid">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-label">Text Input</label>
+                            <input type="text" class="form-control" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Input</label>
+                            <input type="email" class="form-control" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Textarea</label>
+                            <textarea class="form-control" placeholder="Tell us about your product..."></textarea>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-label">Select Dropdown</label>
+                            <div class="select">
+                                <select class="form-control">
+                                    <option>Choose category...</option>
+                                    <option>Ebook</option>
+                                    <option>Template</option>
+                                    <option>Course</option>
+                                    <option>Tool</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox">
+                                <input type="checkbox" checked>
+                                <span>I agree to the terms and conditions</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                <span>Send me marketing updates</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tags & Badges -->
+        <section class="showcase-section">
+            <h2>Tags & Badges</h2>
+            <div class="component-group">
+                <h3 class="mb-4">Tags</h3>
+                <div class="d-flex gap-3 flex-wrap mb-5">
+                    <span class="tag">Default</span>
+                    <span class="tag tag--gold">Gold</span>
+                    <span class="tag tag--coral">Coral</span>
+                    <span class="tag tag--teal">Teal</span>
+                </div>
+
+                <h3 class="mb-4">Badges</h3>
+                <div class="d-flex gap-4 align-center">
+                    <div>
+                        <span class="avatar"></span>
+                        <span class="badge">5</span>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">
+                            Notifications
+                            <span class="badge">12</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid System -->
+        <section class="showcase-section">
+            <h2>12-Column Grid System</h2>
+            <div class="component-group">
+                <div class="grid mb-4">
+                    <div class="col-12" style="background: var(--color-gold); padding: var(--space-4); border-radius: var(--radius-md); text-align: center;">12 columns</div>
+                </div>
+                <div class="grid mb-4">
+                    <div class="col-6" style="background: var(--color-teal); color: white; padding: var(--space-4); border-radius: var(--radius-md); text-align: center;">6 columns</div>
+                    <div class="col-6" style="background: var(--color-coral); color: white; padding: var(--space-4); border-radius: var(--radius-md); text-align: center;">6 columns</div>
+                </div>
+                <div class="grid">
+                    <div class="col-4" style="background: var(--color-light-grey); padding: var(--space-4); border-radius: var(--radius-md); text-align: center;">4 columns</div>
+                    <div class="col-4" style="background: var(--color-light-grey); padding: var(--space-4); border-radius: var(--radius-md); text-align: center;">4 columns</div>
+                    <div class="col-4" style="background: var(--color-light-grey); padding: var(--space-4); border-radius: var(--radius-md); text-align: center;">4 columns</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacing System -->
+        <section class="showcase-section">
+            <h2>8-Point Spacing System</h2>
+            <div class="component-group">
+                <div class="code-block">
+--space-1: 4px<br>
+--space-2: 8px<br>
+--space-3: 12px<br>
+--space-4: 16px<br>
+--space-5: 24px<br>
+--space-6: 32px<br>
+--space-7: 40px<br>
+--space-8: 48px<br>
+--space-10: 64px<br>
+--space-12: 80px<br>
+--space-14: 96px
+                </div>
+            </div>
+        </section>
+
+        <!-- Motion Demo -->
+        <section class="showcase-section">
+            <h2>Motion System</h2>
+            <div class="component-group">
+                <h3 class="mb-4">Hover States</h3>
+                <div class="d-flex gap-4 mb-5">
+                    <div class="card" style="width: 150px; height: 150px; display: flex; align-items: center; justify-content: center;">
+                        <p>Hover Me</p>
+                    </div>
+                    <button class="btn btn-primary">Hover Button</button>
+                </div>
+
+                <h3 class="mb-4">Loading Skeleton</h3>
+                <div class="grid mb-5">
+                    <div class="col-4">
+                        <div class="skeleton" style="height: 200px; margin-bottom: var(--space-3);"></div>
+                        <div class="skeleton" style="height: 20px; margin-bottom: var(--space-2);"></div>
+                        <div class="skeleton" style="height: 20px; width: 60%;"></div>
+                    </div>
+                </div>
+
+                <h3 class="mb-4">Badge Unlock Animation</h3>
+                <button class="btn btn-primary" onclick="unlockBadge()">
+                    Unlock Badge
+                </button>
+                <div id="badge-demo" style="margin-top: var(--space-4);"></div>
+            </div>
+        </section>
+
+        <!-- Toast Notifications -->
+        <section class="showcase-section">
+            <h2>Toast Notifications</h2>
+            <div class="component-group">
+                <div class="d-flex gap-4">
+                    <button class="btn btn-primary" onclick="showToast('success')">Success Toast</button>
+                    <button class="btn btn-secondary" onclick="showToast('error')">Error Toast</button>
+                    <button class="btn btn-tertiary" onclick="showToast('info')">Info Toast</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dark Mode Toggle -->
+        <section class="showcase-section">
+            <h2>Dark Mode</h2>
+            <div class="component-group">
+                <button class="btn btn-primary" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+                <p class="caption mt-4">All components support dark mode with automatic color adjustments.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="divider"></div>
+        <div class="text-center">
+            <p style="font-size: var(--font-h2); font-weight: var(--weight-bold); color: var(--color-gold);">
+                🔥 The Flame Burns Sovereign and Eternal! 👑
+            </p>
+            <p class="caption">Codex Dominion Design System v1.0.0</p>
+        </div>
+    </div>
+
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+        }
+
+        // Load dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Badge Unlock Demo
+        function unlockBadge() {
+            const demo = document.getElementById('badge-demo');
+            demo.innerHTML = '<span class="badge badge-unlock" style="font-size: 48px;">🏆</span>';
+            setTimeout(() => {
+                demo.innerHTML += '<p class="caption mt-4">Badge unlocked!</p>';
+            }, 500);
+        }
+
+        // Toast Notifications
+        function showToast(type) {
+            const messages = {
+                success: '✅ You moved up in the leaderboard!',
+                error: '❌ Something went wrong. Please try again.',
+                info: '💰 New sale: $49.99 earned!'
+            };
+
+            const toast = document.createElement('div');
+            toast.className = `toast toast--${type}`;
+            toast.innerHTML = `<strong>${messages[type]}</strong>`;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'toastEnter 200ms cubic-bezier(0.7, 0, 0.84, 0) reverse';
+                setTimeout(() => toast.remove(), 200);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

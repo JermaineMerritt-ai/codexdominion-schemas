@@ -1,0 +1,689 @@
+{
+  "meta": {
+    "version": "1.2.0",
+    "name": "Codex Dominion Engines Registry",
+    "description": "Core processing engines that power capsules, realms, and agents",
+    "last_updated": "2025-12-18T00:00:00Z",
+    "total_engines": 26,
+    "engine_categories": ["content", "commerce", "intelligence", "automation", "infrastructure", "ai", "personalization"]
+  },
+
+  "engines": [
+    {
+      "id": "commerce_engine",
+      "name": "Commerce Engine",
+      "category": "commerce",
+      "description": "Core e-commerce processing: cart, checkout, order fulfillment",
+      "capabilities": [
+        "shopping_cart_management",
+        "checkout_processing",
+        "order_lifecycle_management",
+        "product_catalog_operations"
+      ],
+      "used_by_capsules": ["capsule_07"],
+      "status": "active",
+      "version": "2.1.0"
+    },
+    {
+      "id": "pricing_engine",
+      "name": "Pricing Engine",
+      "category": "commerce",
+      "description": "Dynamic pricing, discounts, bundles, promotional calculations",
+      "capabilities": [
+        "dynamic_pricing_rules",
+        "discount_code_validation",
+        "bundle_pricing",
+        "tiered_pricing_strategies"
+      ],
+      "used_by_capsules": ["capsule_07"],
+      "status": "active",
+      "version": "1.8.0"
+    },
+    {
+      "id": "marketplace_engine",
+      "name": "Marketplace Engine",
+      "category": "commerce",
+      "description": "Multi-vendor marketplace operations and vendor management",
+      "capabilities": [
+        "vendor_onboarding",
+        "multi_vendor_catalog",
+        "vendor_storefronts",
+        "marketplace_analytics"
+      ],
+      "used_by_capsules": ["capsule_08"],
+      "status": "planned",
+      "version": "1.0.0-alpha"
+    },
+    {
+      "id": "payment_engine",
+      "name": "Payment Engine",
+      "category": "commerce",
+      "description": "Payment processing across Stripe, PayPal, and other providers",
+      "capabilities": [
+        "stripe_integration",
+        "paypal_integration",
+        "payment_method_management",
+        "transaction_processing"
+      ],
+      "used_by_capsules": ["capsule_08", "capsule_09"],
+      "status": "active",
+      "version": "3.2.0"
+    },
+    {
+      "id": "finance_engine",
+      "name": "Finance Engine",
+      "category": "commerce",
+      "description": "Financial operations: invoicing, revenue tracking, financial reporting",
+      "capabilities": [
+        "invoice_generation",
+        "revenue_tracking",
+        "financial_reporting",
+        "tax_calculation"
+      ],
+      "used_by_capsules": ["capsule_09", "capsule_11"],
+      "status": "active",
+      "version": "2.5.0"
+    },
+    {
+      "id": "subscription_engine",
+      "name": "Subscription Engine",
+      "category": "commerce",
+      "description": "Recurring billing, subscription lifecycle, tier management",
+      "capabilities": [
+        "recurring_billing",
+        "subscription_tiers",
+        "auto_renewal",
+        "cancellation_handling"
+      ],
+      "used_by_capsules": ["capsule_09"],
+      "status": "active",
+      "version": "2.0.0"
+    },
+    {
+      "id": "treasury_engine",
+      "name": "Treasury Engine",
+      "category": "commerce",
+      "description": "Revenue stream tracking, treasury database operations, financial intelligence",
+      "capabilities": [
+        "revenue_stream_tracking",
+        "financial_forecasting",
+        "cash_flow_analysis",
+        "revenue_optimization"
+      ],
+      "used_by_capsules": ["capsule_09"],
+      "status": "active",
+      "version": "1.3.0"
+    },
+    {
+      "id": "advertising_engine",
+      "name": "Advertising Engine",
+      "category": "commerce",
+      "description": "Ad campaign management, targeting, placement optimization",
+      "capabilities": [
+        "campaign_management",
+        "ad_targeting",
+        "placement_optimization",
+        "ad_rotation"
+      ],
+      "used_by_capsules": ["capsule_10"],
+      "status": "planned",
+      "version": "1.0.0-concept"
+    },
+    {
+      "id": "affiliate_engine",
+      "name": "Affiliate Engine",
+      "category": "commerce",
+      "description": "Affiliate program management, link tracking, commission calculation",
+      "capabilities": [
+        "affiliate_recruitment",
+        "link_tracking",
+        "commission_calculation",
+        "payout_processing"
+      ],
+      "used_by_capsules": ["capsule_11"],
+      "status": "active",
+      "version": "2.1.0"
+    },
+    {
+      "id": "logistics_engine",
+      "name": "Logistics Engine",
+      "category": "commerce",
+      "description": "Shipping, fulfillment, carrier integration, delivery tracking",
+      "capabilities": [
+        "shipping_carrier_integration",
+        "fulfillment_orchestration",
+        "delivery_tracking",
+        "shipping_rate_calculation"
+      ],
+      "used_by_capsules": ["capsule_12"],
+      "status": "planned",
+      "version": "1.0.0-concept"
+    },
+    {
+      "id": "inventory_engine",
+      "name": "Inventory Engine",
+      "category": "commerce",
+      "description": "Stock tracking, inventory management, low-stock alerts",
+      "capabilities": [
+        "real_time_inventory_tracking",
+        "low_stock_alerts",
+        "stock_replenishment",
+        "multi_location_inventory"
+      ],
+      "used_by_capsules": ["capsule_12"],
+      "status": "planned",
+      "version": "1.0.0-concept"
+    },
+    {
+      "id": "analytics_engine",
+      "name": "Analytics Engine",
+      "category": "intelligence",
+      "description": "Data analysis, metrics tracking, business intelligence",
+      "capabilities": [
+        "metrics_calculation",
+        "trend_analysis",
+        "dashboard_generation",
+        "predictive_analytics"
+      ],
+      "used_by_capsules": ["capsule_06", "capsule_10", "capsule_11"],
+      "status": "active",
+      "version": "3.0.0"
+    },
+    {
+      "id": "niche_blueprints",
+      "name": "Niche Blueprints Engine",
+      "category": "intelligence",
+      "description": "Industry-specific templates and workflow automation",
+      "capabilities": [
+        "niche_identification",
+        "blueprint_generation",
+        "workflow_templates",
+        "industry_best_practices"
+      ],
+      "used_by_realms": ["content_creation_realm"],
+      "status": "active",
+      "version": "1.5.0"
+    },
+    {
+      "id": "cultural_intelligence",
+      "name": "Cultural Intelligence Engine",
+      "category": "intelligence",
+      "description": "Denominational awareness, seasonal content, cultural sensitivity",
+      "capabilities": [
+        "denominational_detection",
+        "seasonal_content_optimization",
+        "cultural_sensitivity_checking",
+        "tradition_awareness"
+      ],
+      "used_by_realms": ["content_creation_realm"],
+      "status": "active",
+      "version": "2.0.0"
+    },
+    {
+      "id": "semantic_memory",
+      "name": "Semantic Memory Engine",
+      "category": "intelligence",
+      "description": "Context retention, personalization, user preference learning",
+      "capabilities": [
+        "context_retention",
+        "preference_learning",
+        "behavioral_prediction",
+        "personalization_rules"
+      ],
+      "used_by_realms": ["content_creation_realm"],
+      "status": "active",
+      "version": "1.8.0"
+    },
+    {
+      "id": "domain_packs",
+      "name": "Domain Packs Engine",
+      "category": "intelligence",
+      "description": "Pre-configured domain expertise bundles for rapid deployment",
+      "capabilities": [
+        "domain_expertise_packaging",
+        "workflow_bundling",
+        "quick_start_templates",
+        "domain_best_practices"
+      ],
+      "used_by_realms": ["content_creation_realm"],
+      "status": "active",
+      "version": "1.2.0"
+    },
+    {
+      "id": "content_engine",
+      "name": "Content Generation Engine",
+      "category": "content",
+      "description": "AI-powered content creation: text, images, devotionals, curricula",
+      "capabilities": [
+        "bulk_content_generation",
+        "template_rendering",
+        "theological_accuracy",
+        "multi_format_export"
+      ],
+      "used_by_realms": ["content_creation_realm"],
+      "status": "active",
+      "version": "3.5.0"
+    },
+    {
+      "id": "publishing_engine",
+      "name": "Multi-Platform Publishing Engine",
+      "category": "content",
+      "description": "Distribute content to WooCommerce, social media, email, affiliates",
+      "capabilities": [
+        "woocommerce_sync",
+        "social_media_scheduling",
+        "email_campaign_automation",
+        "affiliate_network_distribution"
+      ],
+      "used_by_realms": ["content_creation_realm"],
+      "status": "active",
+      "version": "2.3.0"
+    },
+    {
+      "id": "compliance_engine",
+      "name": "Compliance & Safety Engine",
+      "category": "infrastructure",
+      "description": "COPPA, GDPR, copyright, theological accuracy verification",
+      "capabilities": [
+        "coppa_compliance_checking",
+        "gdpr_data_protection",
+        "copyright_verification",
+        "age_gate_enforcement"
+      ],
+      "used_by_capsules": ["capsule_03"],
+      "status": "active",
+      "version": "2.0.0"
+    },
+    {
+      "id": "authentication_engine",
+      "name": "Authentication & Identity Engine",
+      "category": "infrastructure",
+      "description": "User authentication, OAuth, roles, permissions",
+      "capabilities": [
+        "email_password_auth",
+        "oauth_providers",
+        "multi_factor_auth",
+        "role_based_access_control"
+      ],
+      "used_by_capsules": ["capsule_01"],
+      "status": "active",
+      "version": "3.0.0"
+    },
+    {
+      "id": "notification_engine",
+      "name": "Notification Engine",
+      "category": "automation",
+      "description": "Email, SMS, push notifications, alert delivery",
+      "capabilities": [
+        "email_delivery",
+        "sms_notifications",
+        "push_notifications",
+        "notification_templates"
+      ],
+      "used_by_capsules": ["capsule_01", "capsule_02"],
+      "status": "active",
+      "version": "2.2.0"
+    },
+    {
+      "id": "workflow_engine",
+      "name": "Workflow Automation Engine",
+      "category": "automation",
+      "description": "Process orchestration, task scheduling, workflow execution",
+      "capabilities": [
+        "workflow_definition",
+        "task_orchestration",
+        "scheduled_execution",
+        "conditional_logic"
+      ],
+      "used_by_realms": ["commerce_automation_realm", "intelligence_operations_realm"],
+      "status": "active",
+      "version": "2.5.0"
+    },
+    {
+      "id": "ai_orchestrator",
+      "name": "AI Agent Orchestration Engine",
+      "category": "automation",
+      "description": "Coordinate AI agents, manage agent lifecycle, inter-agent communication",
+      "capabilities": [
+        "agent_coordination",
+        "task_delegation",
+        "inter_agent_messaging",
+        "agent_health_monitoring"
+      ],
+      "used_by_realms": ["intelligence_operations_realm"],
+      "status": "active",
+      "version": "1.5.0"
+    },
+    {
+      "id": "search_engine",
+      "name": "Search & Discovery Engine",
+      "category": "intelligence",
+      "description": "Full-text search, semantic search, product discovery",
+      "capabilities": [
+        "full_text_search",
+        "semantic_search",
+        "faceted_filtering",
+        "search_analytics"
+      ],
+      "used_by_capsules": ["capsule_06"],
+      "status": "active",
+      "version": "2.0.0"
+    },
+    {
+      "id": "ai_engine",
+      "name": "AI Engine",
+      "category": "ai",
+      "description": "Core artificial intelligence and machine learning capabilities powering intelligent automation, natural language processing, computer vision, and predictive analytics across all capsules",
+      "capabilities": [
+        "natural_language_processing",
+        "natural_language_understanding",
+        "natural_language_generation",
+        "sentiment_analysis",
+        "text_classification",
+        "named_entity_recognition",
+        "language_translation",
+        "content_summarization",
+        "conversational_ai",
+        "chatbot_framework",
+        "computer_vision",
+        "image_classification",
+        "object_detection",
+        "image_generation",
+        "video_analysis",
+        "machine_learning_training",
+        "model_deployment",
+        "predictive_analytics",
+        "anomaly_detection",
+        "recommendation_engine",
+        "personalization_algorithms",
+        "intent_detection",
+        "context_management",
+        "memory_retention",
+        "learning_from_feedback",
+        "ethical_ai_guardrails",
+        "bias_detection_mitigation",
+        "explainable_ai",
+        "ai_audit_logging"
+      ],
+      "ai_models": [
+        {
+          "name": "GPT-4",
+          "provider": "OpenAI",
+          "use_cases": ["content_generation", "conversational_ai", "text_analysis"],
+          "status": "active"
+        },
+        {
+          "name": "Claude",
+          "provider": "Anthropic",
+          "use_cases": ["theological_accuracy", "long_context_analysis", "code_generation"],
+          "status": "active"
+        },
+        {
+          "name": "DALL-E 3",
+          "provider": "OpenAI",
+          "use_cases": ["image_generation", "printable_design", "cover_art"],
+          "status": "active"
+        },
+        {
+          "name": "Stable Diffusion",
+          "provider": "Stability AI",
+          "use_cases": ["bulk_image_generation", "style_transfer", "illustration"],
+          "status": "planned"
+        },
+        {
+          "name": "Custom Fine-Tuned Models",
+          "provider": "Internal",
+          "use_cases": ["denominational_sensitivity", "age_appropriate_filtering", "brand_voice"],
+          "status": "concept"
+        }
+      ],
+      "primary_capsules": [
+        "capsule_07",
+        "capsule_11",
+        "capsule_10"
+      ],
+      "secondary_capsules": [
+        "capsule_01",
+        "capsule_02",
+        "capsule_03",
+        "capsule_06",
+        "capsule_09",
+        "capsule_12"
+      ],
+      "agent_integration": {
+        "content_creator_agent": ["natural_language_generation", "theological_accuracy", "image_generation"],
+        "commerce_optimizer_agent": ["predictive_analytics", "recommendation_engine", "pricing_optimization"],
+        "social_amplifier_agent": ["sentiment_analysis", "optimal_timing", "content_personalization"],
+        "compliance_guardian_agent": ["content_classification", "age_appropriateness_detection", "policy_violation_detection"],
+        "youth_protection_agent": ["harmful_content_detection", "age_verification", "safe_interaction_monitoring"],
+        "analytics_advisor_agent": ["predictive_analytics", "trend_forecasting", "business_intelligence"]
+      },
+      "ethical_frameworks": {
+        "bias_mitigation": "Active monitoring and correction of demographic, religious, and cultural biases",
+        "transparency": "All AI decisions logged with explainability reports",
+        "human_oversight": "Critical decisions require human approval (content moderation, compliance violations)",
+        "privacy_protection": "PII detection and redaction, GDPR/COPPA compliance",
+        "theological_accuracy": "Multi-denominational validation, scripture reference verification",
+        "youth_safety": "Strict content filtering, age-appropriate language, COPPA enforcement"
+      },
+      "performance_metrics": {
+        "response_time_p95": "< 500ms",
+        "accuracy_threshold": "> 95%",
+        "uptime_sla": "99.9%",
+        "cost_per_request": "< $0.02",
+        "token_efficiency": "Optimized prompts for 30% cost reduction"
+      },
+      "training_data": {
+        "scripture_corpus": "Multiple Bible translations (NIV, KJV, ESV, NASB)",
+        "theological_texts": "Denominational doctrines, study guides, commentaries",
+        "curriculum_standards": "Common Core, homeschool frameworks, age-appropriate pedagogy",
+        "customer_interactions": "Historical customer service conversations (anonymized)",
+        "product_performance": "Sales data, review sentiment, engagement metrics"
+      },
+      "integration_apis": [
+        "OpenAI API",
+        "Anthropic API",
+        "Hugging Face Transformers",
+        "TensorFlow Serving",
+        "PyTorch Models",
+        "Azure Cognitive Services",
+        "Google Cloud AI"
+      ],
+      "used_by_realms": ["content_creation_realm", "commerce_automation_realm", "intelligence_operations_realm"],
+      "dependencies": ["semantic_memory", "analytics_engine", "compliance_engine", "notification_engine"],
+      "status": "active",
+      "version": "4.0.0",
+      "last_model_update": "2025-12-15T00:00:00Z"
+    },
+    {
+      "id": "recommendation_engine",
+      "name": "Recommendation Engine",
+      "category": "personalization",
+      "description": "Advanced recommendation system powering product suggestions, content discovery, personalized experiences, and cross-sell/upsell opportunities using collaborative filtering, content-based filtering, and hybrid ML approaches",
+      "capabilities": [
+        "collaborative_filtering",
+        "content_based_filtering",
+        "hybrid_recommendations",
+        "cross_sell_recommendations",
+        "upsell_recommendations",
+        "bundle_recommendations",
+        "similar_products_discovery",
+        "frequently_bought_together",
+        "personalized_search_results",
+        "trending_content_detection",
+        "seasonal_recommendations",
+        "demographic_based_suggestions",
+        "behavioral_targeting",
+        "purchase_history_analysis",
+        "browsing_pattern_analysis",
+        "cart_abandonment_recovery",
+        "real_time_personalization",
+        "a_b_testing_framework",
+        "recommendation_explainability",
+        "cold_start_handling",
+        "diversity_optimization",
+        "serendipity_injection",
+        "context_aware_recommendations"
+      ],
+      "algorithms": [
+        {
+          "name": "Collaborative Filtering",
+          "type": "User-Based & Item-Based",
+          "use_cases": ["similar_customer_preferences", "frequently_bought_together"],
+          "accuracy": "85%",
+          "status": "active"
+        },
+        {
+          "name": "Content-Based Filtering",
+          "type": "Feature Matching",
+          "use_cases": ["similar_products", "category_recommendations"],
+          "accuracy": "78%",
+          "status": "active"
+        },
+        {
+          "name": "Matrix Factorization",
+          "type": "SVD/ALS",
+          "use_cases": ["rating_prediction", "implicit_feedback"],
+          "accuracy": "88%",
+          "status": "active"
+        },
+        {
+          "name": "Deep Learning",
+          "type": "Neural Collaborative Filtering",
+          "use_cases": ["complex_patterns", "multi_modal_recommendations"],
+          "accuracy": "92%",
+          "status": "planned"
+        },
+        {
+          "name": "Context-Aware",
+          "type": "Contextual Bandits",
+          "use_cases": ["time_based", "location_based", "device_based"],
+          "accuracy": "80%",
+          "status": "planned"
+        }
+      ],
+      "recommendation_types": {
+        "product_recommendations": {
+          "similar_products": "Products like the one you're viewing",
+          "complementary_products": "Products that pair well with your selection",
+          "trending_products": "Popular products in your niche",
+          "personalized_picks": "Curated for your preferences and history"
+        },
+        "content_recommendations": {
+          "related_content": "Articles, guides, devotionals related to interests",
+          "next_in_series": "Continue your learning path",
+          "seasonal_content": "Advent, Easter, Christmas themed content",
+          "denomination_specific": "Content matching your faith tradition"
+        },
+        "bundle_recommendations": {
+          "smart_bundles": "Auto-generated bundles based on purchase patterns",
+          "seasonal_bundles": "Holiday-specific product combinations",
+          "curriculum_bundles": "Complete learning packages",
+          "family_bundles": "Multi-age group packages"
+        },
+        "subscription_recommendations": {
+          "upgrade_suggestions": "Move to higher tier based on usage",
+          "plan_optimization": "Better plans for your needs",
+          "add_on_recommendations": "Complementary subscription features"
+        }
+      },
+      "primary_capsules": [
+        "capsule_07",
+        "capsule_08",
+        "capsule_09",
+        "capsule_11"
+      ],
+      "secondary_capsules": [
+        "capsule_01",
+        "capsule_06",
+        "capsule_10"
+      ],
+      "data_sources": {
+        "purchase_history": "Complete order history with timestamps",
+        "browsing_behavior": "Page views, time on page, scroll depth",
+        "cart_activity": "Items added/removed, abandonment patterns",
+        "product_metadata": "Categories, tags, descriptions, attributes",
+        "customer_demographics": "Age, location, family size, preferences",
+        "social_signals": "Shares, likes, comments, pins",
+        "search_queries": "What customers are searching for",
+        "email_engagement": "Open rates, click patterns, preferences",
+        "subscription_data": "Plan usage, feature adoption, engagement"
+      },
+      "personalization_rules": {
+        "youth_protection": "Age-appropriate content filtering, COPPA compliance",
+        "theological_sensitivity": "Denomination-aware recommendations",
+        "seasonal_awareness": "Advent, Lent, Easter, Christmas context",
+        "family_context": "Multi-age household considerations",
+        "homeschool_grade_level": "Age/grade appropriate curriculum",
+        "privacy_first": "Opt-in tracking, GDPR compliance, data minimization"
+      },
+      "performance_metrics": {
+        "click_through_rate": "Target: > 12%",
+        "conversion_rate": "Target: > 8%",
+        "average_order_value_lift": "Target: +25%",
+        "recommendation_coverage": "Target: > 90% of catalog",
+        "response_time": "< 100ms",
+        "accuracy_at_k": "Top 5 recommendations: > 75% relevance"
+      },
+      "business_impact": {
+        "revenue_lift": "15-25% increase in AOV from recommendations",
+        "cross_sell_success": "35% of customers purchase recommended items",
+        "cart_recovery": "20% abandoned cart recovery via email recommendations",
+        "subscription_upsells": "12% upgrade rate from recommendations",
+        "customer_satisfaction": "4.5/5 rating on recommendation quality"
+      },
+      "integration_points": [
+        "WooCommerce product catalog",
+        "Stripe subscription data",
+        "Google Analytics behavioral data",
+        "Email marketing platform",
+        "Social media engagement",
+        "Customer support interactions",
+        "Product review sentiment"
+      ],
+      "used_by_realms": ["commerce_automation_realm", "content_creation_realm", "community_engagement_realm"],
+      "dependencies": ["analytics_engine", "ai_engine", "semantic_memory", "search_engine"],
+      "agent_integration": {
+        "commerce_optimizer_agent": "Product recommendations, pricing optimization, bundle suggestions",
+        "content_creator_agent": "Content recommendations, topic suggestions",
+        "social_amplifier_agent": "Best content for each audience segment"
+      },
+      "status": "active",
+      "version": "3.1.0",
+      "last_training": "2025-12-10T00:00:00Z",
+      "next_training": "2025-12-24T00:00:00Z"
+    }
+  ],
+
+  "engine_dependencies": {
+    "commerce_engine": ["payment_engine", "inventory_engine", "notification_engine"],
+    "marketplace_engine": ["commerce_engine", "payment_engine", "compliance_engine"],
+    "subscription_engine": ["payment_engine", "notification_engine", "finance_engine"],
+    "affiliate_engine": ["analytics_engine", "finance_engine", "notification_engine"],
+    "content_engine": ["semantic_memory", "cultural_intelligence", "compliance_engine"],
+    "publishing_engine": ["content_engine", "analytics_engine", "workflow_engine"],
+    "analytics_engine": ["search_engine"],
+    "ai_orchestrator": ["workflow_engine", "notification_engine", "analytics_engine"],
+    "ai_engine": ["semantic_memory", "analytics_engine", "compliance_engine", "notification_engine", "content_engine"],
+    "recommendation_engine": ["analytics_engine", "ai_engine", "semantic_memory", "search_engine"]
+  },
+
+  "engine_integration_points": {
+    "woocommerce": ["commerce_engine", "pricing_engine", "inventory_engine", "recommendation_engine"],
+    "stripe": ["payment_engine", "subscription_engine", "finance_engine", "recommendation_engine"],
+    "google_analytics": ["analytics_engine", "recommendation_engine"],
+    "instagram": ["publishing_engine", "ai_engine"],
+    "pinterest": ["publishing_engine", "ai_engine"],
+    "tiktok": ["publishing_engine", "ai_engine"],
+    "youtube": ["publishing_engine", "content_engine", "ai_engine"],
+    "clickbank": ["affiliate_engine", "finance_engine"],
+    "shareasale": ["affiliate_engine", "finance_engine"],
+    "openai": ["ai_engine", "content_engine"],
+    "anthropic": ["ai_engine"],
+    "huggingface": ["ai_engine"],
+    "azure_cognitive": ["ai_engine"],
+    "google_ai": ["ai_engine"],
+    "mailchimp": ["recommendation_engine", "notification_engine"],
+    "klaviyo": ["recommendation_engine", "notification_engine"]
+  }
+}

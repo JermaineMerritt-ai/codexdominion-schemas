@@ -1,11 +1,10 @@
 # Codex Dominion AI Agent Instructions
 
-> **Last Updated:** December 17, 2025
-> **System Status:** Production Live on Azure | 52+ Dashboards Operational | $95k/month Revenue Target
-
 ## Architecture Overview
 
-**Codex Dominion** is a hybrid polyglot monorepo with a ceremonial naming system, combining Python data/AI dashboards, Flask/Next.js web interfaces, FastAPI backend services, and multi-cloud infrastructure (Azure, GCP, IONOS).
+**Codex Dominion** is a hybrid polyglot monorepo with a ceremonial naming system, combining Python data/AI dashboards, Next.js/TypeScript frontend, FastAPI backend services, and multi-cloud infrastructure (Azure, GCP, IONOS).
+
+**Status (Dec 2025)**: Production LIVE | Azure Cloud | 52+ Dashboards | $95k/month Revenue Target
 
 ### Core Hierarchy ("Council Seal Structure")
 ```
@@ -17,293 +16,877 @@ Council Seal (governance)
 ```
 
 Key directories:
-- `apps/` - Main applications (Sovereigns layer): api, chatbot, commerce, compliance, consent_capsule, dashboard, flutter, observatory, react-native, replay_shell, sovereign-bridge, system, treaty_capsule
-- `packages/` - Shared TypeScript packages (broadcast, council-seal, finance, healing, identity, ledger, schemas, shared, shared-types, ui, utils, workflow)
-- Root Python scripts - Standalone Streamlit/Flask dashboards (`codex_dashboard.py`, `*_analytics_dashboard.py`, `*_dashboard.py`, `flask_dashboard.py`)
-  - **Note**: 100+ dashboard files exist at root - many are variants/iterations. Primary: `flask_dashboard.py` (Master Dashboard, port 5000)
-- `backend/`, `api/`, `codex_capsules/` - FastAPI services
-- `frontend/`, `web/`, `frontend-vite/` - Next.js 14+ and Vite applications
-- `infra/`, `k8s/`, `helm/` - Infrastructure manifests (Docker, Kubernetes, Helm charts)
-- `.github/workflows/` - 57+ CI/CD workflows for multi-cloud deployment
-- **Note**: `codexdominion-schemas/` and `codexdominion-clean/` are duplicate/archived directories - prefer root-level files
+- **Root directory** - **PRIMARY LOCATION**: 200+ Python scripts (dashboards, utilities, AI tools)
+  - `flask_dashboard.py`, `*_dashboard.py` - Streamlit/Flask analytics dashboards
+  - `codex_unified_launcher.py` - CLI tool for treasury, dawn dispatch, system operations
+  - `system_launcher.py` - Multi-dashboard launcher with port management
+  - `codex_ledger.json`, `proclamations.json`, `cycles.json` - JSON-based data stores (legacy 1.0)
+- `backend/` - NestJS TypeScript API (Civilization Era 2.0) at `/api/v1`
+- `frontend/` - Next.js 14+ application (Empire Dashboard)
+- `packages/` - Shared TypeScript packages (identity, ledger, workflow, finance, broadcast, shared-types)
+- `infra/`, `k8s/`, `helm/` - Infrastructure manifests
+- `.github/workflows/` - 40+ CI/CD workflows for multi-cloud deployment
+- `api/`, `codex_capsules/` - Legacy FastAPI services (being phased out)
 
 ### Ceremonial Domain Model
 
-The system uses a **"ledger"** data structure (`codex_ledger.json`) with ceremonial terminology:
-- **meta** - version, omega_seal (boolean), last_updated (ISO 8601), custodian_authority, ledger_type, seal_power
-- **heartbeat** - status (luminous/active), last_dispatch, next_dispatch, pulse_count, health_status
-- **proclamations** - system decrees with id, title, status, issued_by, issued_date, content
+The system uses a **"ledger"** data structure (`codex_ledger.json`) with sacred terminology:
+- **proclamations** - system decrees/announcements
 - **cycles** - operational phases with states (initiated/active/completed)
-- **contributions** - developer/system contributions logged with timestamps
-- **completed_archives** - historical records of completed work
-- **capsules** - autonomous execution units
-- **video_generations** - ceremonial video production records
-- **ai_commands** - AI system command history
+- **heartbeat** - system health status
+- **omega_seal** - completion/authorization flag
 - **portals** - interface gateways to subsystems
+- **completed_archives** - historical records
 
-Files ending in `_PROCLAMATION.md`, `_ETERNAL.md`, `_CHARTERED.md` are documentation artifacts reflecting this ceremonial style.
+Files ending in `_PROCLAMATION.md` or `_ETERNAL.md` are documentation artifacts reflecting this ceremonial style.
 
-### Ceremonial AI Integration
+### Identity Architecture (Infrastructure Layer)
 
-The system has ceremonial AI systems that follow specific guidelines:
-- **Copilot-instruction.md** at root - Primary AI governance document (loaded by dashboards for ceremonial context)
-- **Jermaine Super Action AI** (`jermaine_super_action_ai.py`) - Conversational AI with Copilot instruction awareness
-- **Super Action AI** (`super_action_ai.py`) - Deployment automation with ceremonial validation
-- **.300 Action AI** (`dot300_action_ai.py`) - High-precision automation with Copilot guideline integration
+The system implements a **four-identity model** that determines user experience, access, and progression:
 
-All AI systems honor:
-- Ceremonial tone with flame metaphors
-- Seasonal awareness (Spring/Summer/Autumn/Winter)
-- Council governance patterns
-- SSL-first validation before operations
-- Dual environment support (production/staging)
+**The Four Identities:**
+- **Diaspora** - Global community members (belonging) - receive cultural continuity, economic pathways
+- **Youth** - Inheritors in training (becoming) - receive leadership development, curriculum, mentorship
+- **Creator** - Builders and innovators (building) - receive tools, dashboards, workflows, revenue systems
+- **Legacy-Builder** - Stewards and mentors (stewardship) - receive governance roles, cultural authority
+
+**Identity Progression Model:**
+```
+Diaspora → Youth (age-eligible) → Creator → Legacy-Builder → Council/Custodian
+```
+Progression based on contribution, participation, leadership, mastery, and stewardship.
+
+**Identity-Aware Systems:**
+Every system (dashboards, workflows, curriculum, notifications, missions) uses identity detection and routing:
+- Youth see youth content
+- Creators see creator tools
+- Diaspora see cultural content
+- Legacy-Builders see stewardship frameworks
+
+**Identity Engine (2.0)** handles:
+- Detection (registration, onboarding, age/role-based logic)
+- Routing (dashboard, curriculum, mission, content routing)
+- Expansion (progression tracking, seasonal advancement)
+- Integration (governance, culture, economics, operations)
+
+When working with user-facing features, always consider which identity(ies) should access the functionality.
+
+### Governance & Leadership (Stewardship Layer)
+
+The Dominion operates on **stewardship-based governance** with seasonal rhythms rather than corporate calendars.
+
+**Leadership Structure:**
+- **The Council** - Primary leadership body with representatives from each identity (Youth, Creator, Diaspora, Legacy-Builder)
+  - Upholds Constitution and cultural covenant
+  - Guides seasonal missions and identity progression
+  - Meets in alignment with seasonal cycles (Dawn/Day/Dusk/Night Council)
+- **The Custodian** - Keeper of the flame, responsible for continuity and cultural coherence
+  - Narrative, cultural, and constitutional authority
+  - Guides Council through stewardship, not command
+  - Succession based on stewardship, mastery, contribution
+- **The Ambassadors** - External-facing leaders who carry the Dominion's voice to communities
+  - Represent, teach curriculum, support circles, guide creators
+- **The Circles** - Community units aligned by identity (Youth Circles, Creator Circles, Diaspora Circles, Legacy Circles)
+  - Leadership development, curriculum delivery, community building
+
+**Seasonal Governance Model:**
+- **Dawn** (Vision) - Set goals, define missions, align identity pathways
+- **Day** (Action) - Execute missions, run operations, support circles
+- **Dusk** (Reflection) - Review outcomes, gather insights, refine systems
+- **Night** (Renewal) - Reset, restore, prepare for next cycle
+
+**Compliance & Audit Framework:**
+Audits occur at end of each season, year, and major transitions:
+- Identity audits, curriculum audits, financial audits, cultural audits, operational audits
+- Ensures ethical stewardship, financial transparency, identity protection, cultural fidelity
+
+**Leadership Roles (Operational Tier):**
+- **Youth Captains** - Run Youth Circles, deliver curriculum, guide missions, track progression
+- **Ambassadors** - Represent publicly, teach orientation, expand regional presence
+- **Regional Directors** - Oversee circles, manage ambassadors, coordinate events, maintain quality
+- **Creator Leaders** - Lead creator circles, mentor emerging creators, build cultural assets
+- **Educators & Advisors** - Support curriculum, guide youth/creators, uphold continuity
+
+**Leadership Principles (Non-Negotiable):**
+1. Stewardship over authority - guide, protect, elevate (not dominate)
+2. Identity before infrastructure - decisions must reinforce the four identities
+3. Culture as first technology - rituals, stories, symbols before tools
+4. Clarity over complexity - speak plainly, move intentionally
+5. Continuity over urgency - build for generations, not moments
+
+**Leadership Ascension Path:**
+Initiate (learn Constitution/culture) → Steward (lead circles/missions) → Architect (build systems) → Director (oversee regions) → Custodian-Track (long-term stewardship)
+
+**Leadership Oath:**
+"I protect the flame. I uphold the culture. I guide with clarity. I build with excellence. I steward with humility. I serve the youth, creators, and diaspora. I move with the seasons. I honor the Dominion."
+
+**Leadership Training Framework:**
+Four-module mastery system ensures leaders can run circles, teach curriculum, and communicate with sovereignty
+- **Module 1** - Identity & Culture Training (Four Identities, Cultural Covenant, Seasonal Rhythm)
+- **Module 2** - Mission & Curriculum Training (Mission Engine, Curriculum Map, Circle Facilitation)
+- **Module 3** - Communication & Brand Training (Dominion Voice, Brand Identity, Public Representation)
+- **Module 4** - Leadership Execution Training (Weekly Rhythm, Reporting & Metrics, Leadership Scenarios)
+
+Each module includes lessons, exercises, practice scenarios, and mastery checkpoints. Completion requires running one full circle/outreach event, one mission cycle, one cultural ritual, and creating one brand-aligned communication piece.
+
+**Leadership Ascension Ceremony:**
+Ritual marking transition from participant to civilization-bearer
+- **Purpose**: Unify leaders under one culture, anchor in stewardship, connect to lineage
+- **Structure**: Opening (flame lit) → Story of Ascension → Four Identities Invocation → Seasonal Invocation → Leadership Charge → Leadership Oath (spoken together) → Anointing of Roles → Passing of Flame → Closing
+- **Setting**: Circle formation, flame symbol, Dominion symbols visible, intentional environment
+- **Oath Recited**: "I carry the flame. I rise in identity, mastery, creation, and leadership. I serve my community. I protect our unity. I build our dominion. I lead with culture, purpose, and sovereignty."
+- Can be held in physical circles, digital gatherings, retreats, or community spaces
+
+When building governance features, align with seasonal rhythms and identity-based leadership roles.
+
+### Cultural Core (Identity & Narrative Layer)
+
+Culture is the Dominion's foundational technology—the stories, symbols, and rituals that give the system its soul and ensure continuity.
+
+**Core Symbols (appear in UI, curriculum, dashboards, ceremonies):**
+- **The Flame** - continuity, inheritance, sovereignty
+- **The Circle** - unity, community, identity cycles
+- **The Four Seasons** - operational rhythm
+- **The Crown** - stewardship (not domination)
+- **The Bridge** - diaspora connection
+
+**Core Rituals (create behavioral rhythm):**
+- Dawn Dispatch - daily alignment
+- Circle Gathering - weekly community
+- Seasonal Reset - quarterly renewal
+- Custodian's Oath - leadership integrity
+- Dominion Reflection - collective wisdom
+
+**Story Types (integrated into curriculum, onboarding, dashboards):**
+- Origin Stories, Diaspora Stories, Youth Stories, Creator Stories, Legacy Stories
+- Stories transmit values, shape identity, and create emotional connection
+
+**Seasonal Narratives:**
+Each season has distinct narrative purpose and shapes all system features:
+- **Dawn** (Vision) - clarity, intention, direction
+- **Day** (Action) - building, executing, contributing
+- **Dusk** (Reflection) - learning, reviewing, refining
+- **Night** (Renewal) - rest, restoration, preparation
+
+**The Dominion Voice (all communications follow these principles):**
+- **Clarity** - no jargon, no confusion
+- **Warmth** - human, grounded, welcoming
+- **Sovereignty** - confident, intentional, dignified
+- **Continuity** - always connected to the larger story
+
+**Mythic Timeline (directional framework):**
+- **1.0** - Origin Era (foundation, early architecture)
+- **2.0** - Civilization Era (structure, identity, governance, culture) ← Current
+- **3.0** - Network Era (global marketplace, economic engine, diaspora network)
+- **4.0** - Legacy Era (generational institutions, academies, archives)
+
+When writing UI copy, notifications, or user-facing content, maintain the Dominion Voice. Symbols should appear consistently across interfaces.
+
+### Youth Empire (Development & Curriculum Layer)
+
+Youth are the Dominion's inheritors—every system ultimately exists to strengthen the next generation. The Youth Empire is the structured, identity-aware system that develops young people into leaders, creators, and stewards.
+
+**Youth Circle Curriculum:**
+Leadership engine built around identity, culture, leadership, economics, creativity, community, and stewardship
+- **Lessons** - foundational knowledge
+- **Missions** - applied challenges and real-world impact
+- **Reflections** - personal growth tracking
+- **Gatherings** - community building
+- **Seasonal Projects** - tangible contributions
+
+**Four Seasons of Youth Development:**
+- **Dawn** (Vision) - Self-awareness, identity, purpose, direction
+- **Day** (Action) - Skill building, mission completion, circle contribution
+- **Dusk** (Reflection) - Growth review, challenges, insights
+- **Night** (Renewal) - Rest, reset, preparation for next cycle
+
+**Leadership Tracks:**
+- **Personal Leadership** - self-awareness, emotional intelligence, discipline, communication
+- **Community Leadership** - teamwork, facilitation, conflict resolution, cultural stewardship
+- **Creative Leadership** - innovation, storytelling, digital creation, entrepreneurship
+- **Civic Leadership** - service, advocacy, community impact, diaspora engagement
+
+**Integration Points:**
+Designed to integrate with schools, after-school programs, community centers, youth groups, diaspora organizations
+- Facilitator guides, lesson plans, mission kits, digital dashboards, identity assessments
+
+**Youth Portfolio System:**
+Living record of growth, identity, and leadership including:
+- Mission completions, reflections, skills, leadership badges, seasonal achievements, creative work, community impact
+- Serves as confidence builder, leadership resume, cultural archive, and bridge to Creator/Legacy-Builder identities
+
+When building youth-facing features, prioritize accessibility, cultural grounding, and clear progression pathways.
+
+### Creator Dominion (Builder Economy Layer)
+
+Creators are architects of culture, commerce, and identity—not content producers. The Creator Dominion empowers builders to earn, grow, and ascend within the civilization.
+
+**Creator Identity:**
+Sovereign builders who embody innovation, cultural expression, economic agency, leadership, and craftsmanship
+
+**Creator Tools (reduce friction, increase output):**
+- Content creation workflows, AI-powered assistants, brand kits, storytelling frameworks
+- Product templates, marketing scripts, revenue calculators, portfolio dashboards
+
+**Creator Dashboard (command center):**
+- Identity overview, content pipeline, product builder, revenue analytics, audience insights
+- Mission tracker, seasonal goals, AI advisor
+
+**Creator Workflows (seasonal alignment):**
+- **Dawn** (Vision) - Define creative direction, set seasonal goals, plan product cycles
+- **Day** (Action) - Create content, build products, engage audiences, collaborate with circles
+- **Dusk** (Reflection) - Review analytics, refine strategy, gather feedback
+- **Night** (Renewal) - Rest, reset, prepare for next cycle
+
+**Creator Treasury (economic engine):**
+- Revenue tracking, product sales, subscription management, affiliate pathways
+- Grants/microfunds, creator-to-creator commerce
+
+**Creator Ascension Path:**
+1. Initiate (learning tools) → 2. Builder (consistent production) → 3. Architect (systems/products) → 4. Sovereign (circle leadership) → 5. Legacy-Builder (mentorship)
+- Progression based on contribution, consistency, leadership, cultural alignment, economic impact
+
+When building creator features, support workflows that prevent burnout and enable sustainable ascension.
+
+### Operational Engine (Systems & Rhythms Layer)
+
+The Dominion runs on clear, repeatable systems that turn intention into action and culture into continuity. The Operational Engine ensures every identity, circle, mission, and season moves with coherence.
+
+**Core Systems Architecture:**
+- **Dashboards** - Identity-aware command centers
+- **Workflows** - Structured processes for creators, youth, leaders
+- **Templates** - Standardized documents for consistency
+- **Checklists** - Operational clarity for recurring tasks
+- **Dispatch Cycles** - Daily, weekly, seasonal rhythms
+- **Economic Engines** - Portfolio, markets, news systems
+- **AI Advisors** - Intelligence layers supporting decisions
+
+**Workflow Types:**
+- Identity Workflows (onboarding, progression, advancement)
+- Creator Workflows (content, product, revenue, collaboration)
+- Youth Workflows (missions, reflections, portfolio updates)
+- Leadership Workflows (council cycles, ambassador duties)
+- Operational Workflows (dispatch, audits, resets)
+
+**Template & Checklist System:**
+Templates reduce friction and ensure quality; checklists prevent drift and ensure excellence
+- Curriculum, mission, reflection, product, leadership, seasonal, audit, communication templates
+- Daily, weekly, seasonal, mission, creator, youth, leadership checklists
+
+**Three Primary Cycles:**
+- **Daily** - Dawn Dispatch, identity tasks, creator actions, youth missions, operational updates
+- **Weekly** - Circle gatherings, mission reviews, creator analytics, leadership syncs
+- **Seasonal** - Vision setting, mission execution, reflection, renewal
+
+**The Dawn Dispatch:**
+Daily heartbeat message aligning identity, mission, culture, operations, and focus—ensures every member starts the day with clarity and purpose
+
+**Dominion Dashboard (Master Command Center):**
+- **Tech Stack**: Flask (Python backend), Next.js (React frontend), PostgreSQL, AI integrations (OpenAI/Anthropic)
+- **Features**: Identity-aware routing, creator tools, youth missions, portfolio analytics, markets data, news intelligence, seasonal progress, AI advisor, treasury overview
+- **Entry Point**: `flask_dashboard.py` (Port 5000) with 52+ integrated dashboards
+- **Deployment**: Multi-cloud (Azure primary, GCP, IONOS)
+
+**Community Onboarding (Transition & Activation):**
+Structured 7-day "Rise Path" for welcoming new members into the Civilization Era
+- **Day 1-2**: Identity discovery (Youth/Creator/Diaspora/Legacy-Builder), cultural foundations (Flame, Circle, Crown, Seasons)
+- **Day 3-4**: Mission overview, Circle joining
+- **Day 5-6**: First mission step, reflection with Circle
+- **Day 7**: Citizen's Oath - "I rise with my identity. I honor my community. I carry the flame. I build with purpose. I walk with unity. I grow with the seasons. I am part of the Dominion."
+- **Orientation Experience**: 20-minute intro covering story, four identities, seasonal rhythm, first steps
+- **Mission Structure**: Week 1 (Story+Lesson) → Week 2 (Action) → Week 3 (Circle Dialogue) → Week 4 (Showcase+Reflection)
+
+When building operational features, prioritize clarity, repeatability, and seasonal alignment. All workflows should support the daily/weekly/seasonal rhythm.
+
+### Economic Layer (Financial Intelligence & Markets)
+
+The Dominion's economic system is empowerment-focused, not extractive. It's a structured, identity-aware financial nervous system that blends culture, intelligence, and technology.
+
+**Portfolio Architecture (Personal Wealth Engine):**
+- Portfolio creation, holdings tracking, trade history, risk profiles, performance analytics, AI-powered insights
+- **Identity Integration**: Youth (simplified dashboards, financial literacy), Creators (revenue-linked portfolios), Diaspora (long-term strategies), Legacy-Builders (generational planning)
+- Teaches not just investing, but legacy building
+
+**Markets Architecture (Intelligence Layer):**
+- Real-time stock data, sector heatmaps, market movers, volatility alerts, earnings calendars
+- **Cultural Alpha Engine**: Analyzes cultural trends, diaspora influence, creator movements, youth sentiment, global narratives
+- Culture becomes a market signal
+
+**News Architecture (Information Filter):**
+- Verified news streams, timeline-based filtering, identity-aware recommendations, cultural context overlays
+- AI-powered summaries, misinformation detection
+- **Identity-Aware**: Youth (simplified educational), Creators (industry insights), Diaspora (global updates), Legacy-Builders (long-term analysis)
+- Ensures informed decision-making without information overload
+
+**Cultural Alpha Engine (Signature Innovation):**
+- Transforms cultural patterns into economic insight
+- **Inputs**: Diaspora trends, creator movements, youth sentiment, cultural narratives, global events
+- **Outputs**: Market signals, product opportunities, creator trends, community insights, economic forecasts
+- Culture → Data → Strategy → Sovereignty
+
+**Revenue Streams (Sustainable & Generational):**
+- Creator products, youth programs, digital courses, subscriptions, marketplace fees, partnerships, cultural alpha insights, community events
+- Revenue supports continuity, not extraction
+
+**Marketplace Vision (3.0 Era):**
+Global, identity-aware economic ecosystem with creator storefronts, youth products, diaspora goods, digital assets, cultural alpha insights, community commerce
+
+When building economic features, integrate identity awareness and prioritize financial literacy for all users, especially youth.
+
+### Brand & Messaging System (Voice & Identity Layer)
+
+Brand is identity made visible—culture made legible. The Brand & Messaging System ensures every touchpoint speaks with one unified, sovereign voice.
+
+**The Dominion Identity (Four Pillars):**
+- **Sovereignty** - Build systems that empower, not extract
+- **Clarity** - Speak plainly, move intentionally, design with purpose
+- **Warmth** - Welcome, uplift, humanize every interaction
+- **Continuity** - Build for generations, not moments
+
+**Visual Language:**
+Designed to feel modern, ancestral, sovereign, warm, and structured
+- **Core Elements**: The Flame (continuity), The Circle (unity), The Crown (stewardship), The Seasons (rhythm), The Bridge (diaspora connection)
+- **Color System**: Earth, fire, dusk, dawn, night—cultural, grounded, timeless palette
+
+**Naming Conventions (Structured Patterns):**
+- **Identity Names**: Youth Circle, Creator Dominion, Diaspora Network, Legacy Path
+- **System Names**: Dawn Dispatch, Cultural Alpha Engine, Dominion Dashboard, Seasonal Reset
+- **Ceremonial Names**: Custodian's Oath, Circle Gathering, Sovereign Reflection
+- Names chosen for clarity, resonance, and continuity
+
+**Messaging Pillars (Reinforce Purpose):**
+- **Pillar I** - Identity (who you are inside the Dominion)
+- **Pillar II** - Culture (stories, symbols, rituals that bind)
+- **Pillar III** - Sovereignty (systems that empower)
+- **Pillar IV** - Continuity (generational mission)
+
+**Public Narrative:**
+"We are building a sovereign civilization for youth, creators, and the global diaspora—one that blends culture, identity, and technology into a generational engine."
+- Appears in: announcements, onboarding, curriculum, dashboards, partnerships, public materials
+- Mythic yet grounded, aspirational yet actionable
+
+**Launch Framework (Seasonal Rhythm):**
+- **Dawn** (Reveal) - Announce vision, share story, introduce identity
+- **Day** (Activation) - Release tools, run missions, engage community
+- **Dusk** (Reflection) - Gather insights, refine system, celebrate progress
+- **Night** (Renewal) - Rest, reset, prepare for next cycle
+- Launches become cultural events, not just product releases
+
+When creating public-facing content, maintain the four identity pillars and use naming conventions consistently. All launches follow the seasonal rhythm.
+
+### Master Archive (Documentation & Continuity Layer)
+
+A civilization survives through memory—not just stories, but structured documentation. The Master Archive preserves the Dominion's past, organizes its present, and prepares its future.
+
+**CodexDominion 1.0 Artifacts (Origin Era):**
+Foundational documents from the birth of the Dominion
+- Early youth empowerment notes, diaspora mission drafts, creator empowerment concepts
+- Cultural stories and symbols, operational sketches, brand fragments
+- Early dashboards, pre-2.0 workflows, naming experiments, leadership reflections
+- Preserved for historical continuity and cultural grounding—honored, not overwritten
+
+**CodexDominion 2.0 Artifacts (Civilization Era - Current):**
+The structured, unified, identity-aware systems defining the present
+- Constitution, Identity Charter, Cultural Covenant
+- Youth Circle Curriculum, Creator Dominion Framework, Governance Model
+- Seasonal System, Operational Engine, Economic Layer, Brand & Messaging System
+- Dominion Dashboard architecture, Cultural Alpha Engine
+- These form the living structure of the Dominion
+
+**Retired Documents (Archived Lineage):**
+Growth requires evolution—outdated systems are archived, not deleted
+- Outdated naming conventions, redundant documents, early drafts replaced by 2.0
+- Pre-2.0 identity models, legacy workflows, deprecated rituals
+- Remain part of the Dominion's lineage for historical reference
+
+**Eternal Documents (Timeless Artifacts):**
+Some artifacts transcend eras—they are the Dominion's soul
+- Diaspora Mandate, Custodian's Oath, Flame Symbol, Circle Symbol
+- Seasonal Rhythm, Dominion Voice, Sovereign Law, Cultural Virtues
+- These never retire
+
+**Future Expansion Notes (3.0 & 4.0 Horizon):**
+The Dominion always has a horizon
+- **3.0** - Network Era (marketplace, global partnerships, creator engines)
+- **4.0** - Legacy Era (academies, cultural institutions, multi-region hubs)
+- AI-powered identity systems, governance evolution
+
+When working with documentation, respect the archive structure. 1.0 artifacts inform context, 2.0 artifacts are current implementation, Eternal artifacts are immutable principles.
+
+### The Eternal Appendix (Reference & Structural Memory)
+
+The Dominion's reference layer—definitions, symbols, maps, and timelines that ensure clarity and continuity for all who enter the civilization.
+
+**Glossary (Core Terms):**
+- **Dominion** - Sovereign civilization built for youth, creators, and diaspora
+- **Custodian** - Steward of the Dominion's identity and continuity
+- **Council** - Leadership circle guiding the Dominion through each season
+- **Circle** - Community unit aligned with identity and mission
+- **Identity Engine** - System that personalizes experiences across the Dominion
+- **Seasonal Rhythm** - Four-phase cycle (Dawn, Day, Dusk, Night)
+- **Cultural Alpha** - Economic insight derived from cultural patterns
+- **Dawn Dispatch** - Daily alignment ritual
+- **Youth Portfolio** - Record of youth growth and leadership
+- **Creator Treasury** - Economic engine for creators
+- **Master Archive** - Historical and structural memory
+
+**Symbols Index (Visual Language):**
+- **Primary**: The Flame (continuity), The Circle (unity), The Crown (stewardship), The Bridge (diaspora), The Seasons (rhythm)
+- **Secondary**: The Path (progression), The Loom (culture), The Compass (direction)
+- Appear in curriculum, dashboards, rituals, public identity
+
+**Identity Map (Progression Flow):**
+```
+Diaspora (belonging) → Youth (becoming) → Creator (building) → 
+Legacy-Builder (stewarding) → Council (guiding) → Custodian (protecting)
+```
+
+**Seasonal Map (Operational Rhythm):**
+- **Dawn** - Set goals, define missions, align identity
+- **Day** - Execute, build, contribute
+- **Dusk** - Review, refine, learn
+- **Night** - Rest, reset, prepare
+- Governs curriculum, governance, workflows, missions, operations
+
+**Dominion Timeline (Eras):**
+- **1.0** - Origin Era (spark, foundation, early architecture)
+- **2.0** - Civilization Era (structure, identity, governance, culture) ← Current
+- **3.0** - Network Era (marketplace, economic engine, global network) ← Future
+- **4.0** - Legacy Era (institutions, academies, archives, generational systems) ← Future
+
+**Custodian Principles (Guiding Reminders):**
+- Protect the flame, build for generations
+- Culture is the first technology, identity is the foundation
+- Governance must remain cyclical, not static
+- Youth are inheritors—center them; Creators are builders—empower them; Diaspora is family—honor them
+- Stewardship is sacred—lead with clarity and humility
+
+Use this reference when encountering unfamiliar terms, understanding progression paths, or aligning features with seasonal rhythms.
 
 ## Technology Stack
 
 ### Frontend
-- **Next.js 14+** (App Router) - Primary web interface
-- Static export mode for Azure Static Web Apps deployment
-- TypeScript with strict mode
-- Located in `frontend/` and `web/` directories
+- **Next.js 14+** (App Router, TypeScript) - Empire Dashboard and web interface
+- Located in `frontend/` directory
+- Consumes REST API from NestJS backend
+- Type-safe API client wrappers in `frontend/src/lib/`
 
-### Backend
-- **FastAPI** (Python 3.10+) - API services in `api/`, `backend/`, `codex_capsules/`
-- **Streamlit** (1.28+) - Data dashboards (many `*_dashboard.py` files at root)
-- Node.js services for proxy/gateway functions
-- **Python Version**: 3.10+ baseline (production uses 3.11-3.12, development may use 3.14)
+### Backend (Civilization Era 2.0)
+- **NestJS** (Node.js, TypeScript) - Primary REST API at `/api/v1`
+- **Modular Architecture**: Separate modules for auth, users, profiles, seasons, missions, circles, curriculum, culture, creators, regions, events, analytics
+- **JWT Authentication**: Access + refresh tokens with role-based guards
+- **Swagger Docs**: Auto-generated from decorators at `/api-docs`
+- Located in `backend/` directory
+
+### Legacy Systems (1.0 Era)
+- **FastAPI** (Python 3.10+) - Legacy API services in `api/`, `codex_capsules/`
+- **Streamlit** (1.28+) - Analytics dashboards (`*_dashboard.py` files at root)
+- Being phased out in favor of NestJS backend
 
 ### Infrastructure
-- **Docker Compose** - `docker-compose.production.yml`, `docker-compose.complete.yml`
+- **Docker Compose** - PostgreSQL for local dev (`backend/docker-compose.yml`), production configs
 - **Kubernetes/Helm** - Charts in `helm/codexdominion/`, manifests in `k8s/`
 - **Terraform** - IaC in root (`.tf` files)
 - **Multi-cloud**: Azure (primary), GCP (Cloud Run/Functions), IONOS VPS
 
 ### Data & State
-- JSON-based ledgers: `codex_ledger.json`, `proclamations.json`, `cycles.json`, `accounts.json`
-- **Critical**: No traditional database - file-based JSON stores are source of truth
-- Ledger backup files: `*.backup_*` (timestamped, used for restoration)
-- Timestamp format: ISO 8601 with 'Z' suffix (e.g., `"2025-11-22T21:20:35.473129Z"`)
-- Always update `meta.last_updated` when modifying ledger files
-- **Current Status**: Production deployment recorded in `codex_ledger.json` under `portals.azure-production`
-- **Ledger Updates**: Last updated 2025-12-16 with complete system deployment milestone
-- **Python Virtual Environment**: `.venv` directory in root contains Python 3.10+ virtual environment (activate with `.venv\Scripts\activate.ps1` on Windows or `source .venv/bin/activate` on Linux/Mac)
+- **PostgreSQL** (Civilization Era 2.0) - Primary database with Prisma ORM
+- **Prisma Schema**: Located at `backend/prisma/schema.prisma` (20+ models)
+- **Migrations**: Database versioning in `backend/prisma/migrations/`
+- **Seeding**: Initial data setup in `backend/prisma/seed.ts`
+- **JSON Ledgers** (Legacy 1.0): `codex_ledger.json`, `proclamations.json`, `cycles.json` - Being migrated to PostgreSQL
 
-### Production Deployment (December 2025)
+**2.0 Database Schema (Prisma/PostgreSQL):**
+The Civilization Era introduces structured relational data with the following core entities:
 
-**Status**: ✅ LIVE and OPERATIONAL
+**Phase 1 Models (Implement First):** User, Profile, UserRole, Season, Mission, MissionAssignment, MissionSubmission, Circle, CircleMember, CircleSession, SessionAttendance, CulturalStory, MetricSnapshot
 
-**Azure Infrastructure** (Resource Group: `codex-rg`, Region: East US 2):
-- **Frontend (Static Web App)**: https://happy-flower-0e39c5c0f-preview.eastus2.3.azurestaticapps.net
-  - Auto-managed SSL certificate (renewed automatically)
-  - Static export from Next.js 14+ App Router
-  - Alternative: https://witty-glacier-0ebbd971e.3.azurestaticapps.net
-  - No port 443 blocking issues (Azure-managed)
+**Phase 2+ Models (Future):** CurriculumModule, Artifact, CreatorChallenge, ChallengeSubmission, Ritual, Region, School, AmbassadorOutreach, Event, EventAttendance
+- **User** - Identity foundation with roles (YOUTH, YOUTH_CAPTAIN, AMBASSADOR, CREATOR, EDUCATOR, REGIONAL_DIRECTOR, COUNCIL, ADMIN)
+- **Profile** - Extended user data including `risePath` (IDENTITY, MASTERY, CREATION, LEADERSHIP), cultural identity, diaspora origin
+- **Circle** - Youth community units with captain, members, sessions, and attendance tracking
+- **Season** - Seasonal rhythm (IDENTITY, MASTERY, CREATION, LEADERSHIP) driving missions, curriculum, challenges
+- **Mission** - Mission Engine with assignments, submissions, and status tracking (GLOBAL, REGIONAL, CIRCLE types)
+- **CurriculumModule** - Lesson content (STORY, LESSON, ACTIVITY) with resources
+- **Artifact** - Creator outputs (AUTOMATION, DESIGN, WRITING, VIDEO, APP) linked to challenges
+- **CreatorChallenge** - Seasonal creator challenges with submissions
+- **CulturalStory** - Narrative content tied to seasons and regions
+- **Region** - Geographic units with directors, schools, circles, and outreach
+- **Event** - Ceremonies, launches, summits, training sessions
+- **MetricSnapshot** - Analytics tracking (ACTIVE_YOUTH, MISSIONS_COMPLETED, ARTIFACTS_SUBMITTED, etc.)
 
-- **Backend (Container App with SSL)**: https://codex-backend-https.delightfulpond-6c97660b.eastus2.azurecontainerapps.io
-  - FastAPI services with automatic HTTPS
-  - Auto-scaling (1-3 replicas)
-  - Monthly cost: ~$30
-  - Legacy HTTP endpoints:
-    - http://codex-api.eastus2.azurecontainer.io:8000
-    - http://codex-api.eastus.azurecontainer.io:8001
+Schema location: `schema.prisma` (Prisma ORM)  
+Key patterns: Identity roles drive access, seasonal cycles organize content, missions link users→circles→submissions, artifacts link creators→challenges
 
-- **Container Registry**: `codexdominionacr.azurecr.io`
-  - Stores Docker images (`jmerritt48/*` namespace)
+## NestJS Backend Architecture
 
-**Deployment Tokens**: All stored in GitHub secrets, configured in workflows
+### Module Structure (Civilization Era 2.0)
 
-**SSL Certificate Details** (recorded in ledger):
-```json
-{
-  "issuer": "GeoTrust Global TLS RSA4096 SHA256 2022 CA1",
-  "expires": "2026-04-14T23:59:59+00:00",
-  "type": "SNI"
+The backend follows NestJS modular architecture with domain-driven design:
+
+```
+backend/src/
+├── auth/               # JWT authentication (access + refresh tokens)
+├── users/              # User management and roles
+├── profiles/           # Extended user profiles (risePath, cultural identity)
+├── seasons/            # Seasonal rhythm engine (Dawn/Day/Dusk/Night)
+├── missions/           # Mission Engine (global, regional, circle missions)
+├── circles/            # Youth Circles (creation, membership, sessions, attendance)
+├── curriculum/         # Curriculum modules by season/week
+├── culture/            # Cultural stories, rituals, symbols
+├── creators/           # Creator artifacts, challenges, submissions
+├── regions/            # Geographic units, schools, ambassador outreach
+├── events/             # Launches, ceremonies, summits, training
+├── analytics/          # System metrics and insights
+├── common/             # Shared guards, interceptors, decorators, DTOs
+├── main.ts             # Application entry point
+└── app.module.ts       # Root module
+```
+
+### Key Patterns
+
+**Identity-Aware Guards:**
+```typescript
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(UserRole.YOUTH_CAPTAIN, UserRole.AMBASSADOR)
+export class CirclesController {
+  // Only Youth Captains and Ambassadors can access
 }
 ```
 
-**CI/CD Status**: Auto-deploys on push to `main` branch via GitHub Actions
+**Seasonal Context Injection:**
+```typescript
+@Injectable()
+export class MissionsService {
+  async getCurrentMission(@CurrentSeason() season: Season) {
+    // Auto-injected current season from decorator
+  }
+}
+```
 
-### Revenue & Treasury System
-- **Treasury Database**: `codex_treasury_database.py` - Revenue tracking with 8+ streams
-- **Revenue Targets**: $95,000/month across affiliate, YouTube, TikTok, WooCommerce, memberships
-- **Treasury Config**: `treasury_config.json` - Configuration for revenue stream tracking (5 active streams: affiliate, stock, amm, consulting, development)
-- **Dawn Dispatch**: `dawn_dispatch_simple.py` - Scheduled messaging and notifications
-- **Access via**: `codex_unified_launcher.py treasury` commands for all treasury operations
-- **Schema Update**: Treasury config now includes PostgreSQL connection settings and alert thresholds
+**Module Dependencies:**
+- **AuthModule** → Used by all protected routes
+- **UsersModule** → Exports UsersService for profile/circle membership
+- **SeasonsModule** → Provides current season context globally
+- **CommonModule** → Shared utilities, guards, decorators
+
+### API Versioning
+
+All endpoints prefixed with `/api/v1`:
+- `/api/v1/auth/register`
+- `/api/v1/missions/current`
+- `/api/v1/circles/{id}/sessions`
+
+### Swagger Documentation
+
+Auto-generated at `/api-docs` from NestJS decorators:
+```typescript
+@ApiTags('missions')
+@ApiBearerAuth()
+export class MissionsController {
+  @ApiOperation({ summary: 'Get current mission for user' })
+  @ApiResponse({ status: 200, type: Mission })
+  @Get('current')
+  async getCurrent() { }
+}
+```
+
+### Environment Configuration
+
+`backend/.env.example`:
+```
+DATABASE_URL="postgresql://codex:codex@localhost:5432/codexdominion"
+JWT_SECRET="super-secret-dev-key"
+JWT_REFRESH_SECRET="another-secret-key"
+JWT_EXPIRATION=15m
+JWT_REFRESH_EXPIRATION=7d
+PORT=4000
+```
+
+## Phase 1 Implementation (MVP Scope)
+
+**CRITICAL**: Phase 1 implements ONLY these engines. Everything else waits for Phase 2+.
+
+### Phase 1 Engines
+- **Auth & Identity** - Registration, login, JWT tokens, role-based access
+- **Seasons & Missions** - Current season, mission listing, submissions
+- **Youth Circles** - Creation, membership, sessions, attendance tracking
+- **Culture** - Current story and story listing
+- **Analytics** - High-level overview dashboard
+- **Minimal Admin** - Mission/circle/story creation for admins
+
+### Phase 1 Endpoints (Backend)
+
+**Auth & Identity:**
+- `POST /auth/register` - Create new user account
+- `POST /auth/login` - Authenticate and get tokens
+- `POST /auth/refresh` - Refresh access token
+- `GET /users/me` - Get current user profile
+- `PATCH /users/me` - Update current user
+- `GET /profiles/me` - Get extended profile
+- `PATCH /profiles/me` - Update profile (risePath, cultural identity)
+
+**Seasons & Missions:**
+- `GET /seasons` - List all seasons
+- `GET /seasons/current` - Get current active season
+- `GET /missions` - List missions (filterable by season_id, month)
+- `GET /missions/current` - Get mission for current week/season
+- `GET /missions/:id` - Get specific mission
+- `POST /missions` - Create mission (ADMIN only)
+- `POST /missions/:id/assign` - Assign mission to user/circle (ADMIN/YOUTH_CAPTAIN)
+- `POST /mission-submissions` - Submit mission work
+- `GET /mission-submissions` - List submissions (filter by mission_id, circle_id)
+
+**Youth Circles:**
+- `GET /circles` - List all circles
+- `POST /circles` - Create circle (ADMIN/AMBASSADOR)
+- `GET /circles/:id` - Get circle details
+- `PATCH /circles/:id` - Update circle (captain, name, region)
+- `POST /circles/:id/members` - Add member to circle
+- `DELETE /circles/:id/members/:user_id` - Remove member from circle
+- `GET /circles/:id/sessions` - List circle sessions
+- `POST /circles/:id/sessions` - Create session
+- `POST /circles/:id/sessions/:session_id/attendance` - Record attendance
+
+**Culture:**
+- `GET /culture/story/current` - Get current week's cultural story
+- `GET /culture/stories` - List stories (filter by season_id)
+- `POST /culture/stories` - Create story (ADMIN/COUNCIL)
+
+**Analytics:**
+- `GET /analytics/overview` - High-level dashboard (active youth, circles, missions completed, regions)
+
+**Out of Scope for Phase 1:**
+- Curriculum modules (endpoints exist in spec but not implemented)
+- Creator artifacts and challenges
+- Regions, schools, ambassador outreach
+- Events and ceremonies
+- Advanced analytics beyond overview
+
+### Auth Implementation Strategy
+
+**Token Architecture:**
+- **Access Token**:
+  - JWT, short-lived (15-30 minutes)
+  - Stored in memory/localStorage on frontend
+  - Sent as `Authorization: Bearer <token>` header
+  - Contains: user_id, email, roles, exp
+- **Refresh Token**:
+  - Longer-lived (7-30 days)
+  - Stored in database `refresh_tokens` table (Phase 1), migrate to HTTP-only cookies later
+  - Returned in login/register response body
+  - Used only for `/auth/refresh` endpoint
+
+**Login/Register Flow:**
+```typescript
+// POST /auth/register
+1. Validate input (email unique, password strength)
+2. Hash password with bcrypt (salt rounds: 10)
+3. Create User record with status: ACTIVE
+4. Create Profile record with default risePath: IDENTITY
+5. Assign default role: YOUTH
+6. Generate access token + refresh token
+7. Store refresh token in DB
+8. Return { user, accessToken, refreshToken }
+
+// POST /auth/login
+1. Find user by email
+2. Verify password with bcrypt.compare
+3. Generate new access token + refresh token
+4. Store new refresh token in DB (invalidate old ones optional)
+5. Return { user, accessToken, refreshToken }
+
+// POST /auth/refresh
+1. Verify refresh token exists in DB and not expired
+2. Issue new access token
+3. Optionally rotate refresh token
+4. Return { accessToken, refreshToken? }
+```
+
+**Role-Based Access Control:**
+```typescript
+// Use NestJS decorators for authorization
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles('ADMIN')
+@Post('/missions')
+createMission() {
+  // Only ADMIN can create missions
+}
+
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles('ADMIN', 'YOUTH_CAPTAIN')
+@Post('/missions/:id/assign')
+assignMission() {
+  // ADMIN or YOUTH_CAPTAIN can assign missions
+}
+
+// Custom RolesGuard implementation
+@Injectable()
+export class RolesGuard implements CanActivate {
+  canActivate(context: ExecutionContext): boolean {
+    const requiredRoles = this.reflector.get<string[]>('roles', context.getHandler());
+    if (!requiredRoles) return true;
+    
+    const request = context.switchToHttp().getRequest();
+    const user = request.user; // Injected by JwtAuthGuard
+    
+    return requiredRoles.some(role => user.roles?.includes(role));
+  }
+}
+```
+
+**Password Security:**
+- Use `bcrypt` with 10 salt rounds minimum
+- Never store plaintext passwords
+- Password requirements: min 8 characters (enforce at validation layer)
+
+**JWT Payload Structure:**
+```typescript
+interface JwtPayload {
+  sub: string;        // user_id (UUID)
+  email: string;
+  roles: UserRole[];  // Array of assigned roles
+  iat: number;        // Issued at timestamp
+  exp: number;        // Expiration timestamp
+}
+```
 
 ## Development Workflows
 
-### CLI Entry Points
+### Primary Entry Points
 
-The system has multiple launcher scripts for different purposes:
-
-**Master Dashboard (Primary Interface)**:
+**CRITICAL**: Always activate virtual environment first:
 ```powershell
-# Launch Flask-based Master Dashboard Ultimate (2,187 lines, 52+ dashboards)
-.\START_DASHBOARD.ps1
-# Or Python directly
-python flask_dashboard.py  # Runs on http://localhost:5000
+# Windows
+.venv\Scripts\activate.ps1
+
+# Linux/Mac  
+source .venv/bin/activate
 ```
 
-**Unified CLI Launcher** (Backend Operations):
+**Master Dashboard (PRIMARY INTERFACE)** - Flask with 52+ integrated dashboards:
+```powershell
+.\START_DASHBOARD.ps1
+# OR
+python flask_dashboard.py  # Port 5000
+```
+
+**Unified CLI Tool** - Treasury, dawn dispatch, and system operations:
 ```bash
-# Treasury and Dawn dispatch operations - preferred for system operations
 python codex_unified_launcher.py treasury summary --days 30
 python codex_unified_launcher.py treasury ingest --stream affiliate --amount 49.99
-python codex_unified_launcher.py treasury list --limit 10
 python codex_unified_launcher.py dawn dispatch
-python codex_unified_launcher.py dawn status
-python codex_unified_launcher.py status  # Overall system status
-python codex_unified_launcher.py report  # Comprehensive system report
-python codex_unified_launcher.py serve   # Flask API server for Cloud Run
-python codex_unified_launcher.py setup   # Database setup (PostgreSQL)
+python codex_unified_launcher.py status    # Health check
+python codex_unified_launcher.py serve     # Web API on port 8080
 ```
 
-**Available commands**:
-- `treasury` - Revenue tracking (summary, ingest, list)
-- `dawn` - Dawn dispatch operations (dispatch, status)
-- `status` - System health check across all components
-- `report` - Generate detailed report with treasury + dawn data
-- `serve` - Start web API on port 8080 (supports /health, /api/treasury/summary, /api/dawn/status)
-- `setup` - Initialize PostgreSQL database if available
-
-**Quick Dashboard Launchers**:
-```bash
-python launch.py  # Quick launcher for Streamlit dashboards
-python codex_system_launcher.py  # System-level operations
+**System Launcher** - Multi-dashboard launcher with port management:
+```python
+python system_launcher.py  # Interactive menu for all dashboards
+python LAUNCH_SYSTEM.py    # Alternative unified launcher
 ```
-
-**Suite Launcher** (Interactive menu):
-```bash
-cd codex-suite && python launcher.py  # Interactive menu for multiple apps
-```
-
-**Windows Batch Launchers** (Convenient for Windows users):
-```powershell
-# Direct batch file launchers for Windows
-.\LAUNCH_MASTER.bat           # Master system launcher
-.\LAUNCH_ANY_SYSTEM.bat        # System selection menu
-.\LAUNCH_WORKFLOW_BUILDER.bat  # Workflow builder interface
-.\START_DASHBOARD.ps1          # Primary Flask dashboard launcher (RECOMMENDED)
-```
-
-**Launcher Recommendation**: The system has 15+ launcher scripts. See `LAUNCHER_CONSOLIDATION_GUIDE.md` for complete inventory. **Primary recommendations**:
-- **Dashboard**: `START_DASHBOARD.ps1` (Flask, port 5000)
-- **CLI Operations**: `codex_unified_launcher.py` (treasury, dawn, status)
-- **Testing**: `launch.py` (Streamlit dashboards)
 
 ### Running Locally
 
-**Python Dashboards:**
+**NestJS Backend (Civilization Era 2.0):**
 ```bash
-# CRITICAL: Always configure Python environment first
-# Activate virtual environment (Windows):
-.venv\Scripts\activate.ps1
-# Or on Linux/Mac:
-source .venv/bin/activate
+cd backend
 
-# Then run dashboard:
-streamlit run codex_dashboard.py --server.port 8501
+# Copy environment variables
+cp .env.example .env
+# Edit .env with your actual values (DATABASE_URL, JWT secrets)
 
-# For AI agents: Use configure_python_environment tool before running
+# Start PostgreSQL
+docker-compose up -d postgres
+
+# Install dependencies
+npm install  # Note: Uses npm, not pnpm (package-lock.json present)
+
+# Run Prisma migrations
+npm run prisma:generate
+npm run prisma:migrate
+
+# Seed database (optional)
+npm run db:seed
+
+# Start development server
+npm run start:dev  # Port 4000 with hot reload (configurable via PORT env var)
+
+# View Swagger docs at http://localhost:4000/api-docs
 ```
 
-**Next.js Frontend:**
+**Next.js Frontend (Empire Dashboard):**
 ```bash
-cd frontend  # or web/ or frontend-vite/
-npm install
+cd frontend
+
+# Copy environment variables
+cp .env.local.example .env.local
+# Edit .env.local with API URL and other config
+
+npm install  # Note: Uses npm (package-lock.json present)
 npm run dev  # Development server on http://localhost:3000
-npm run build  # Static export for production (outputs to out/)
+npm run build  # Production build
+npm run export  # Static export for deployment
 ```
 
-**FastAPI Services:**
+**Legacy Python Dashboards (1.0 Era):**
 ```bash
-cd backend  # or api/
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8080
+# Use Python environment tool first
+python -m streamlit run app.py
+streamlit run codex_dashboard.py --server.port 8501
+python flask_dashboard.py  # Port 5000
 ```
 
 **Full Stack (Docker):**
 ```bash
-docker-compose -f docker-compose.production.yml up -d
-# Services exposed:
-# - dashboard: 3000, api-gateway: 8080
-# - stockanalytics: 8515, analytics: 8516
-# - Additional dashboards: 8517+
+# NestJS + PostgreSQL + Next.js
+cd backend
+docker-compose up -d
+
+# Legacy stack
+docker-compose -f docker-compose.production.yml up
 ```
-
-**View logs:**
-```bash
-docker-compose -f docker-compose.production.yml logs -f [service-name]
-docker ps  # Check running containers
-```
-
-### Master Dashboard Ultimate
-
-**Primary Web Interface** (Flask-based, 2,187 lines, 52+ integrated dashboards):
-```powershell
-# Quick launch
-.\START_DASHBOARD.ps1
-
-# Or directly
-python flask_dashboard.py
-```
-
-Access at: http://localhost:5000
-
-**Integrated Features**:
-- 🏠 Home - System overview
-- 🤖 AI Agents - Jermaine Super Action AI, .300 Action AI, Algorithm AI
-- 📱 Social Media - YouTube, TikTok, Instagram, Facebook, Pinterest, Threads
-- 💰 Revenue - Treasury tracking ($95k/month target)
-- 🛒 E-Commerce - WooCommerce integration
-- 📚 Copilot - AI instruction management (loads Copilot-instruction.md)
-- 👤 Avatar - Digital identity system
-- 🤝 Council - Governance & approval system
-
-**Key Advantage**: No Streamlit platform compatibility issues - works with any Python version.
 
 ### Testing
 
-- **JavaScript/TypeScript**: `npm test` (Jest, maxWorkers=50%)
+**NestJS Backend:**
+```bash
+cd backend
+npm run test           # Unit tests
+npm run test:e2e       # End-to-end tests
+npm run test:cov       # Coverage report
+```
+
+**Frontend:**
+```bash
+cd frontend
+npm test               # Jest tests
+```
+
+**Legacy Systems:**
 - **Python**: Tests in `tests/` directories (unit, integration)
-- No unified test command - run per-language/framework
+- Run per-language/framework as needed
 
 ### Deployment
 
-**Production Status**: LIVE on Azure (as of December 2025)
-- **Frontend**: https://happy-flower-0e39c5c0f-preview.eastus2.3.azurestaticapps.net (Auto SSL)
-- **Backend API**: http://codex-api.eastus.azurecontainer.io:8001
-- **Deployment Token**: Stored in GitHub secrets (`AZURE_STATIC_WEB_APPS_API_TOKEN`)
-- **Monthly Cost**: ~$14-20 (Azure Container Instance + Static Web App)
-
-**Critical**: This project has 57+ GitHub Actions workflows in `.github/workflows/`. Key workflows:
-- `azure-static-web-apps-yellow-tree-0ed102210.yml` - Frontend deployment (auto SSL)
-- `azure-backend-deploy.yml` - Backend Container Instance deployment
-- `deploy-complete-frontend.yml` - Complete Next.js to Azure Static Web Apps
+**Critical**: This project has 40+ GitHub Actions workflows. Key workflows:
+- `deploy-complete-frontend.yml` - Deploys Next.js to Azure Static Web Apps
 - `deploy-backend.yml`, `backend-deploy.yml` - API services
-- `azure-monitoring-alerts.yml` - Monitoring and alerting setup
-- `azure-production-deploy.yml` - Complete production deployment orchestration
 - Multi-cloud workflows for GCP, IONOS, Azure
-- Security scanning with Trivy integrated into deployment pipelines
-- `super-action-ai-deployment.yaml`, `super-action-ai.yaml` - AI-powered deployments
 
 **Common deployment commands:**
 ```powershell
 # Windows PowerShell scripts at root:
-.\deploy-codex.ps1              # Unified deployment script (WSL or Git Bash wrapper)
-.\deploy-azure-production.ps1   # Azure-specific deployment
-.\deploy-ionos-production.ps1   # IONOS VPS deployment
+.\deploy-codex.ps1
+.\deploy-azure-production.ps1
+.\deploy-ionos-production.ps1
 
 # Bash alternatives:
-bash deploy-ionos.sh            # Direct IONOS deployment
-bash deploy-gcp.sh              # GCP deployment
-bash quick-deploy.sh            # Interactive setup with connection testing
+bash deploy-ionos.sh
+bash deploy-gcp.sh
 ```
 
-**Azure Tasks**: VS Code tasks available for Azure Functions development:
-- `func: host start` - Start Azure Functions host (depends on pip install task)
-- **Note**: Task references `recent_uploads/configs` directory which may be outdated - Azure Functions typically run from workspace root or dedicated function app directories
+**Azure Functions**: Subdirectory `recent_uploads/configs` has Azure Functions tooling. Use task `func: host start` (depends on pip install task).
 
 ### Service Management
 
@@ -312,16 +895,24 @@ Linux systemd units: `.service` and `.timer` files at root
 
 ## Project-Specific Conventions
 
-### Ceremonial Behavioral Guidelines
+### Critical Reality Check
 
-When working with this codebase, maintain ceremonial standards:
-- **Always Do**: Use dignified language, think revenue impact, integrate systems, be proactive
-- **Never Do**: Avoid redundancy, hesitation, vague recommendations, working in silos
-- **Tone**: Ceremonial clarity with flame metaphors and seasonal awareness
-- **Authority Levels**:
-  - Level 1: Data retrieval, analytics, navigation (execute immediately)
-  - Level 2: Optimization, configuration, automation (suggest & confirm)
-  - Level 3: Strategic planning only for finance, legal, architecture (escalate)
+**IMPORTANT**: This is a **massive monorepo** with 200+ Python scripts at the root level. The ceremonial "Council Seal" architecture described earlier is aspirational/conceptual - the actual file structure is a flat hierarchy with heavy Python usage.
+
+**Actual Structure:**
+- Root directory contains the bulk of executable code (Python dashboards, utilities, AI agents)
+- `backend/` is NestJS (TypeScript) - modern API layer (2.0 era)
+- `frontend/` is Next.js (TypeScript) - web interface (primary)
+- `web/` is Next.js (TypeScript) - alternative frontend (legacy/parallel implementation)
+- `packages/` contains shared TypeScript libraries
+- Everything else (API services, legacy systems, infrastructure) coexists at various levels
+
+**Navigation Strategy:**
+- Use `grep_search` heavily - files are not deeply nested
+- Dashboard files: `*_dashboard.py`, `flask_dashboard.py`
+- Launcher files: `*_launcher.py`, `system_launcher.py`, `LAUNCH_*.bat`, `launch*.py`
+- Config files: `*_config.json`, `.env*`, `config/*.json`
+- Deployment: `deploy-*.ps1`, `deploy-*.sh`
 
 ### Naming Patterns
 - **Ceremonial files**: `*_PROCLAMATION.md`, `*_ETERNAL_*.md`, `*_CHARTERED_*.md` are documentation
@@ -330,36 +921,26 @@ When working with this codebase, maintain ceremonial standards:
 - **Deployment scripts**: `deploy-*.ps1`, `deploy-*.sh`, prefixed with target platform
 
 ### Code Organization
-- **Monorepo workspaces**: `package.json` defines workspaces for `apps/*` and `packages/*`
-- **TypeScript paths**: Use `@/*` aliases (see `tsconfig.json` baseUrl/paths)
-- **Python imports**: Root-level imports (no src/ structure for Python)
-- **Shared types**: TypeScript types in `packages/shared-types/`
+- **NestJS Backend**: Modular architecture in `backend/src/` with domain modules
+- **Module pattern**: Each domain (auth, missions, circles) has its own module, controller, service, entities
+- **Shared code**: Common guards, decorators, DTOs in `backend/src/common/`
+- **Prisma integration**: Schema at `backend/prisma/schema.prisma`, auto-generated client
+- **TypeScript paths**: Use `@/*` aliases (configured in `backend/tsconfig.json`)
+- **Frontend**: Next.js App Router in `frontend/src/` with API client wrappers
+- **Legacy monorepo**: `apps/*` and `packages/*` (being phased out)
+- **Shared types**: Generated from Prisma schema, shared between backend and frontend
 
 ### Data Access Patterns
 ```python
-# Loading ledger (standard pattern across all dashboards):
+# Loading ledger (standard pattern):
 import json
-from datetime import datetime
+with open("codex_ledger.json", "r") as f:
+    data = json.load(f)
 
-def load_ledger():
-    """Standard ledger loading pattern - see codex_dashboard.py"""
-    with open("codex_ledger.json", "r") as f:
-        return json.load(f)
-
-# Updating ledger with proper metadata:
-data = load_ledger()
+# Updating with metadata:
 data["meta"]["last_updated"] = datetime.utcnow().isoformat() + "Z"
 with open("codex_ledger.json", "w") as f:
     json.dump(data, f, indent=2)
-
-# Safe execution wrapper (common pattern):
-def safe_execute(func, *args, **kwargs):
-    """Execute function with error handling - see codex_dashboard.py"""
-    try:
-        return func(*args, **kwargs)
-    except Exception as e:
-        st.error(f"⚠️ Error: {e}")
-        return None
 ```
 
 ### Environment Variables
@@ -411,46 +992,6 @@ def safe_execute(func, *args, **kwargs):
 - Kubernetes: Apply with `kubectl apply -f k8s/` or use Helm charts in `helm/codexdominion/`
 - Terraform: State in `.terraform/` - use `terraform plan` before `apply`
 
-## Python Development Patterns
-
-### Streamlit Dashboard Structure
-All dashboards follow a consistent pattern (see `codex_dashboard.py` as reference):
-```python
-import streamlit as st
-import json
-from datetime import datetime
-
-LEDGER_PATH = "codex_ledger.json"
-
-def load_ledger():
-    """Standard ledger loading"""
-    with open(LEDGER_PATH, "r") as f:
-        return json.load(f)
-
-def apply_cosmic_styling():
-    """Apply ceremonial styling with st.markdown"""
-    st.markdown("""
-    <style>
-    .stApp {
-        background: linear-gradient(135deg, #f7f1e3 0%, #efe7d4 100%);
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-# Main execution
-if __name__ == "__main__":
-    st.set_page_config(page_title="Dashboard Name", layout="wide")
-    apply_cosmic_styling()
-    # Dashboard logic here
-```
-
-### Common Dashboard Patterns
-- **Caching**: Use `@st.cache_data(ttl=300)` for expensive operations
-- **Session state**: Store state in `st.session_state`
-- **Error handling**: Wrap operations with `safe_execute()` helper
-- **Styling**: Use `apply_cosmic_styling()` for consistent look
-- **Metrics**: Display with custom CSS `.metric-card` class
-
 ## Debugging Tips
 
 ### Streamlit Issues
@@ -484,31 +1025,10 @@ if __name__ == "__main__":
 
 ## Important Gotchas
 
-1. **Ceremonial naming**: Don't refactor `*_PROCLAMATION.md` or ledger terminology without understanding impact - these are part of the governance/branding system
-2. **JSON ledgers are source of truth**: Not a traditional database - many scripts depend on exact schema. Always update `meta.last_updated` with ISO 8601 + 'Z' suffix
-3. **Multi-language**: Python and TypeScript coexist - use appropriate tooling per file type. Node.js 18+, Python 3.10+ required
-4. **Port management**: 20+ services can run simultaneously - track port allocations:
-   - **5000: Master Dashboard Ultimate (Flask) - PRIMARY INTERFACE**
-   - 3000: Next.js dashboard (secondary)
-   - 5555: Working dashboard (development)
-   - 8080: API Gateway
-   - 8501-8502: Production/Staging Streamlit
-   - 8515-8517+: Various specialized dashboards
+1. **Ceremonial naming**: Don't refactor `*_PROCLAMATION.md` or ledger terminology without understanding impact
+2. **JSON ledgers are source of truth**: Not a traditional database - many scripts depend on exact schema
+3. **Multi-language**: Python and TypeScript coexist - use appropriate tooling per file type
+4. **Port management**: 20+ services can run simultaneously - track port allocations
 5. **Windows paths**: Use backslashes in PowerShell, forward slashes in WSL/Git Bash
-6. **Azure Functions require Python 3.9**: Check `app.yaml` runtime version for GCP deployment
-7. **No single entry point**: Multiple launcher scripts (`launch*.py`, `*.ps1`) - choose correct one for context:
-   - `codex_unified_launcher.py` - Treasury, dawn dispatch, system operations (primary CLI)
-   - `launch.py` - Quick Streamlit dashboard launcher
-   - `codex_system_launcher.py` - System-level operations
-   - `codex-suite/launcher.py` - Interactive menu for suite apps
-8. **Duplicate directories**: `codexdominion-schemas/` and `codexdominion-clean/` contain archived copies - **always work in root directory**
-9. **Workflow count**: 57+ GitHub Actions workflows in `.github/workflows/` - key ones are:
-   - `azure-static-web-apps-yellow-tree-0ed102210.yml` - Azure Static Web Apps (PRIMARY)
-   - `azure-backend-deploy.yml` - Backend Container Instance (LIVE)
-   - `azure-production-deploy.yml` - Complete production orchestration
-   - `deploy-complete-frontend.yml` - Next.js to Azure Static Web Apps
-   - `deploy-backend.yml`, `backend-deploy.yml` - API services
-   - `super-action-ai-deployment.yaml`, `super-action-ai.yaml` - AI-powered deployments
-10. **Static export mode**: Next.js uses static export (`output: 'export'`) - no API routes, only client-side or external API calls
-11. **Streamlit port conflicts**: Multiple dashboards may conflict - use `--server.port` flag to specify unique ports
-12. **Docker image naming**: Images prefixed with `jmerritt48/*` on Docker Hub (e.g., `jmerritt48/codex-dashboard:latest`)
+6. **Azure Functions require Python 3.9**: Check `app.yaml` runtime version
+7. **No single entry point**: Multiple launcher scripts (`launch*.py`, `*.ps1`) - choose correct one for context

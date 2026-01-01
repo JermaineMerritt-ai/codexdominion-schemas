@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "generated_at": "2025-12-20T10:23:57.749266Z",
+    "version": "1.0.0"
+  },
+  "global": {
+    "site_name": "Test Site",
+    "default_title": "Test Site",
+    "title_template": "%s | Test Site",
+    "default_description": "Testing deprecation fix",
+    "default_keywords": [
+      "test site",
+      "professional services",
+      "consulting",
+      "solutions"
+    ],
+    "default_og_image": "/og-image.png",
+    "twitter_handle": "@testsite",
+    "language": "en",
+    "locale": "en_US",
+    "theme_color": "#1a1a1a",
+    "favicon": "/favicon.ico",
+    "canonical_base": "https://example.com"
+  },
+  "pages": {
+    "home": {
+      "title": "Testing deprecation fix",
+      "description": "Testing deprecation fix",
+      "keywords": [
+        "test site",
+        "professional services",
+        "consulting",
+        "solutions",
+        "home"
+      ],
+      "canonical": "https://example.com/",
+      "og": {
+        "title": "Testing deprecation fix",
+        "description": "Testing deprecation fix",
+        "type": "website",
+        "url": "https://example.com/",
+        "image": "/og-images/home.png"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Testing deprecation fix",
+        "description": "Testing deprecation fix",
+        "image": "/og-images/home.png"
+      },
+      "robots": {
+        "index": true,
+        "follow": true
+      }
+    },
+    "contact": {
+      "title": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+      "description": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+      "keywords": [
+        "test site",
+        "professional services",
+        "consulting",
+        "solutions",
+        "contact"
+      ],
+      "canonical": "https://example.com/contact",
+      "og": {
+        "title": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+        "description": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+        "type": "article",
+        "url": "https://example.com/contact",
+        "image": "/og-images/contact.png"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+        "description": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+        "image": "/og-images/contact.png"
+      },
+      "robots": {
+        "index": true,
+        "follow": true
+      }
+    }
+  },
+  "sitemap": {
+    "pages": [
+      {
+        "loc": "/",
+        "lastmod": "2025-12-20T10:23:57.749266Z",
+        "changefreq": "weekly",
+        "priority": 1.0
+      },
+      {
+        "loc": "/contact",
+        "lastmod": "2025-12-20T10:23:57.749266Z",
+        "changefreq": "weekly",
+        "priority": 0.7
+      }
+    ],
+    "change_frequency": "weekly",
+    "priority_rules": {
+      "home": 1.0,
+      "about": 0.8,
+      "services": 0.9,
+      "contact": 0.7,
+      "blog": 0.6
+    }
+  },
+  "robots": {
+    "rules": [
+      {
+        "userAgent": "*",
+        "allow": "/"
+      },
+      {
+        "userAgent": "*",
+        "disallow": "/api/"
+      },
+      {
+        "userAgent": "*",
+        "disallow": "/admin/"
+      }
+    ],
+    "sitemap": "/sitemap.xml"
+  },
+  "schema_org": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Test Site",
+      "description": "Testing deprecation fix",
+      "url": "https://example.com",
+      "logo": "https://example.com/logo.png",
+      "sameAs": []
+    },
+    "website": {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Test Site",
+      "url": "https://example.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://example.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  },
+  "robots_txt": "User-agent: *\nAllow: /\n\nUser-agent: *\nDisallow: /api/\n\nUser-agent: *\nDisallow: /admin/\n\nSitemap: /sitemap.xml"
+}

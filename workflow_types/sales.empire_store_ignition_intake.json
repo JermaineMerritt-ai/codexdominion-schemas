@@ -1,0 +1,49 @@
+{
+  "id": "sales.empire_store_ignition_intake",
+  "name": "Empire Store Ignition Intake",
+  "description": "Captures a prospect's brand, product, and readiness information, routes to review, and, if approved, triggers store creation workflows.",
+  "category": "sales",
+  "domain": "commerce",
+  "required_inputs": {
+    "contact_name": "string",
+    "contact_email": "string",
+    "brand_name": "string",
+    "brand_description": "string",
+    "current_stage": "idea | prototype | live_store",
+    "current_store_platform": "none | shopify | woocommerce | other",
+    "current_store_url": "string | null",
+    "primary_products": ["string"],
+    "target_audience": "string",
+    "target_countries": ["string"],
+    "estimated_monthly_revenue_goal": "number",
+    "biggest_blockers": "string",
+    "timeline_readiness": "ready_now | 30_days | 90_days",
+    "preferred_platform": "shopify | woocommerce | undecided"
+  },
+  "default_calculator_profile": {
+    "tasks_per_week": 10,
+    "time_per_task_minutes": 45,
+    "hourly_wage": 50,
+    "automation_percent": 0.5,
+    "error_rate": 0.15,
+    "cost_per_error": 40,
+    "value_per_accelerated_task": 0
+  },
+  "execution_steps": [
+    "Capture intake data from the Empire Store Ignition application form.",
+    "Score the lead based on readiness, clarity of offer, and revenue goals.",
+    "Generate a short intake summary and recommendation for the sales/operator team.",
+    "Route the intake to the Sales/Commerce Council for review.",
+    "If approved, create a store.create_shopify_store (or WooCommerce) workflow with mapped inputs.",
+    "Notify the team and prospect about next steps and timelines."
+  ],
+  "governance": {
+    "requires_review": true,
+    "review_council": "council_commerce",
+    "auto_execute_if_low_risk": false,
+    "risk_flags": [
+      "client_fit",
+      "financial_commitment"
+    ]
+  }
+}

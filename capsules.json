@@ -14,6 +14,69 @@
       "User profile identity",
       "Diaspora cultural alignment"
     ],
-    "linked_modules": ["auth", "profiles", "brand_assets", "story_engine"]
+    "linked_modules": ["auth", "profiles", "brand_assets", "story_engine"],
+    "lifecycle": "beta",
+    "overlays": {
+      "stewardship": true,
+      "wellbeing": false,
+      "planetary": true,
+      "intergenerational": true
+    },
+    "owner_role": "Steward of Knowledge Systems",
+    "owner_entity": "DominionYouth"
+  },
+  {
+    "id": "infrastructure",
+    "realm": "automation",
+    "realm_index": 5,
+    "capsule_index": 1,
+    "name": "Infrastructure Capsule",
+    "description": "Hosting, databases, APIs, integrations, CI/CD, runtime environments, deployment pipelines.",
+    "status": "active",
+    "tags": ["hosting", "runtime", "devops", "environments"],
+    "primary_systems": ["Azure", "Docker", "GitHub Actions", "Render"],
+    "primary_use_cases": [
+      "Application deployment",
+      "Database management",
+      "API gateway",
+      "CI/CD automation"
+    ],
+    "linked_modules": ["docker", "kubernetes", "terraform", "cicd"],
+    "lifecycle": "stable",
+    "overlays": {
+      "stewardship": true,
+      "wellbeing": false,
+      "planetary": false,
+      "intergenerational": false
+    },
+    "owner_role": "Platform Engineer",
+    "owner_entity": "CodexDominion"
+  },
+  {
+    "id": "data",
+    "realm": "knowledge",
+    "realm_index": 3,
+    "capsule_index": 1,
+    "name": "Data Capsule",
+    "description": "Analytics, dashboards, observability, logging, metrics, intelligence loops.",
+    "status": "active",
+    "tags": ["analytics", "logging", "metrics", "monitoring"],
+    "primary_systems": ["Grafana", "Prometheus", "Azure Monitor", "Flask Dashboard"],
+    "primary_use_cases": [
+      "System observability",
+      "Performance metrics",
+      "Business intelligence",
+      "Log aggregation"
+    ],
+    "linked_modules": ["analytics", "dashboards", "logging", "metrics"],
+    "lifecycle": "stable",
+    "overlays": {
+      "stewardship": true,
+      "wellbeing": false,
+      "planetary": false,
+      "intergenerational": true
+    },
+    "owner_role": "Data Steward",
+    "owner_entity": "CodexDominion"
   }
 ]

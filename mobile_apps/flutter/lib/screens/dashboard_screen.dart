@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../services/api_client.dart';
 import '../services/websocket_service.dart';
 
 class DashboardScreen extends StatefulWidget {

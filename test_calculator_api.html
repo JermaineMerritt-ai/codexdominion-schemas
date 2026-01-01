@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Calculator API</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; }
+        button { background: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; font-size: 16px; }
+        button:hover { background: #45a049; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 4px; overflow-x: auto; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Calculator API Test</h1>
+        <p>Click the button to test the /api/calculators/savings endpoint</p>
+        <button onclick="testAPI()">🚀 Test Calculator API</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>⏳ Testing...</p>';
+
+            const testData = {
+                tasks_per_week: 200,
+                time_per_task_minutes: 10,
+                hourly_wage: 25,
+                automation_percent: 0.7,
+                error_rate: 0.1,
+                cost_per_error: 15,
+                value_per_accelerated_task: 0
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/api/calculators/savings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(testData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <h2>✅ Success!</h2>
+                    <h3>💰 Savings:</h3>
+                    <ul>
+                        <li>Weekly: $${data.weekly_savings}</li>
+                        <li>Monthly: $${data.monthly_savings}</li>
+                        <li>Yearly: $${data.yearly_savings}</li>
+                    </ul>
+                    <h3>⏰ Time Saved:</h3>
+                    <ul>
+                        <li>Hours/Week: ${data.hours_saved_per_week}</li>
+                    </ul>
+                    <h3>📊 Effectiveness: ${data.effectiveness}</h3>
+                    <h3>📋 Full Response:</h3>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h2>❌ Error</h2>
+                    <p>${error.message}</p>
+                    <pre>${error.stack}</pre>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

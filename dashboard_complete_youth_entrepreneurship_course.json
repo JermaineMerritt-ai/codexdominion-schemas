@@ -1,0 +1,371 @@
+{
+  "dashboard_type": "Dominion Command Dashboard",
+  "project_id": "youth_entrepreneurship_course",
+  "generated_at": "2025-12-23T07:19:23.256511Z",
+  "project_overview": {
+    "project_id": "youth_entrepreneurship_course",
+    "project_name": "Youth Entrepreneurship Video Course",
+    "status": "complete",
+    "current_phase": "complete",
+    "progress_percentage": 1.0,
+    "next_step": "Project complete \u2014 deliverables ready",
+    "estimated_completion": "2025-12-23T07:19:23.255710Z",
+    "started_at": "2025-12-23T07:19:23.255542Z",
+    "elapsed_time_seconds": 7.5e-05,
+    "metadata": {
+      "pic_complete": true,
+      "cre_complete": true,
+      "mmoe_complete": true,
+      "adg_complete": true,
+      "ccs_complete": true,
+      "oae_complete": true
+    }
+  },
+  "studio_status": {
+    "graphics_studio": {
+      "studio_name": "Graphics Studio",
+      "status": "active",
+      "active_tasks": 2,
+      "queued_tasks": 3,
+      "completed_tasks": 5,
+      "failed_tasks": 0,
+      "errors": [],
+      "average_completion_time_seconds": 45.0,
+      "last_activity": "2025-12-23T07:19:23.255814Z"
+    },
+    "audio_studio": {
+      "studio_name": "Audio Studio",
+      "status": "active",
+      "active_tasks": 1,
+      "queued_tasks": 1,
+      "completed_tasks": 5,
+      "failed_tasks": 0,
+      "errors": [],
+      "average_completion_time_seconds": 45.0,
+      "last_activity": "2025-12-23T07:19:23.255834Z"
+    },
+    "video_studio": {
+      "studio_name": "Video Studio",
+      "status": "active",
+      "active_tasks": 2,
+      "queued_tasks": 1,
+      "completed_tasks": 5,
+      "failed_tasks": 0,
+      "errors": [],
+      "average_completion_time_seconds": 45.0,
+      "last_activity": "2025-12-23T07:19:23.255839Z"
+    },
+    "integration_layer": {
+      "studio_name": "Integration Layer",
+      "status": "active",
+      "active_tasks": 1,
+      "queued_tasks": 1,
+      "completed_tasks": 5,
+      "failed_tasks": 0,
+      "errors": [],
+      "average_completion_time_seconds": 45.0,
+      "last_activity": "2025-12-23T07:19:23.255842Z"
+    },
+    "assembly_engine": {
+      "studio_name": "Assembly Engine",
+      "status": "active",
+      "active_tasks": 1,
+      "queued_tasks": 1,
+      "completed_tasks": 5,
+      "failed_tasks": 0,
+      "errors": [],
+      "average_completion_time_seconds": 45.0,
+      "last_activity": "2025-12-23T07:19:23.255844Z"
+    },
+    "overall_health": "healthy",
+    "timestamp": "2025-12-23T07:19:23.255922Z"
+  },
+  "asset_map": {
+    "project_id": "youth_entrepreneurship_course",
+    "total_assets": 4,
+    "nodes": [
+      {
+        "asset_id": "asset_script_001",
+        "asset_name": "Course Script",
+        "asset_type": "script",
+        "status": "complete",
+        "version": 1,
+        "dependencies": [],
+        "dependents": [
+          "asset_vo_001"
+        ],
+        "cross_medium_links": [],
+        "position": [
+          0,
+          0
+        ]
+      },
+      {
+        "asset_id": "asset_vo_001",
+        "asset_name": "Voiceover Recording",
+        "asset_type": "audio",
+        "status": "complete",
+        "version": 1,
+        "dependencies": [
+          "asset_script_001"
+        ],
+        "dependents": [
+          "asset_vid_001"
+        ],
+        "cross_medium_links": [],
+        "position": [
+          150,
+          100
+        ]
+      },
+      {
+        "asset_id": "asset_gfx_001",
+        "asset_name": "Intro Graphics",
+        "asset_type": "graphics",
+        "status": "complete",
+        "version": 1,
+        "dependencies": [],
+        "dependents": [
+          "asset_vid_001"
+        ],
+        "cross_medium_links": [
+          "asset_vid_001"
+        ],
+        "position": [
+          300,
+          200
+        ]
+      },
+      {
+        "asset_id": "asset_vid_001",
+        "asset_name": "Final Video",
+        "asset_type": "video",
+        "status": "in_progress",
+        "version": 1,
+        "dependencies": [
+          "asset_vo_001",
+          "asset_gfx_001"
+        ],
+        "dependents": [],
+        "cross_medium_links": [],
+        "position": [
+          450,
+          0
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "asset_script_001",
+        "to": "asset_vo_001",
+        "type": "requires"
+      },
+      {
+        "from": "asset_gfx_001",
+        "to": "asset_vid_001",
+        "type": "cross_medium"
+      },
+      {
+        "from": "asset_vo_001",
+        "to": "asset_vid_001",
+        "type": "requires"
+      },
+      {
+        "from": "asset_gfx_001",
+        "to": "asset_vid_001",
+        "type": "requires"
+      }
+    ],
+    "status_breakdown": {
+      "complete": 3,
+      "in_progress": 1
+    },
+    "version_conflicts": [],
+    "timestamp": "2025-12-23T07:19:23.256023Z"
+  },
+  "continuity_report": {
+    "project_id": "youth_entrepreneurship_course",
+    "style_consistency": {
+      "dimension": "Style Consistency",
+      "score": 0.92,
+      "quality_level": "excellent",
+      "violations": [],
+      "recommendations": [
+        "Maintain current color palette"
+      ]
+    },
+    "narrative_continuity": {
+      "dimension": "Narrative Continuity",
+      "score": 0.95,
+      "quality_level": "excellent",
+      "violations": [],
+      "recommendations": []
+    },
+    "audio_visual_harmony": {
+      "dimension": "Audio-Visual Harmony",
+      "score": 0.88,
+      "quality_level": "good",
+      "violations": [
+        {
+          "severity": "minor",
+          "issue": "Music tempo slightly slow for video pace"
+        }
+      ],
+      "recommendations": [
+        "Consider increasing music tempo by 5 BPM"
+      ]
+    },
+    "brand_identity": {
+      "dimension": "Brand Identity",
+      "score": 0.96,
+      "quality_level": "excellent",
+      "violations": [],
+      "recommendations": []
+    },
+    "cross_medium_validation": {
+      "dimension": "Cross-Medium Validation",
+      "score": 0.94,
+      "quality_level": "excellent",
+      "violations": [],
+      "recommendations": []
+    },
+    "overall_score": 0.93,
+    "overall_quality": "excellent",
+    "total_violations": 1,
+    "critical_violations": 0,
+    "ready_for_assembly": true,
+    "timestamp": "2025-12-23T07:19:23.256110Z"
+  },
+  "timeline_view": {
+    "project_id": "youth_entrepreneurship_course",
+    "total_tasks": 3,
+    "completed_tasks": 2,
+    "active_tasks": 1,
+    "pending_tasks": 0,
+    "tasks": [
+      {
+        "task_id": "task_1",
+        "task_name": "Create intro graphics",
+        "studio": "graphics_studio",
+        "status": "complete",
+        "start_time": "2025-12-23T07:19:23.255303Z",
+        "end_time": "2025-12-23T07:19:23.255303Z",
+        "duration_seconds": 120.0,
+        "dependencies": [],
+        "progress_percentage": 1.0
+      },
+      {
+        "task_id": "task_2",
+        "task_name": "Record voiceover",
+        "studio": "audio_studio",
+        "status": "complete",
+        "start_time": "2025-12-23T07:19:23.255303Z",
+        "end_time": "2025-12-23T07:19:23.255303Z",
+        "duration_seconds": 180.0,
+        "dependencies": [],
+        "progress_percentage": 1.0
+      },
+      {
+        "task_id": "task_3",
+        "task_name": "Assemble final video",
+        "studio": "video_studio",
+        "status": "in_progress",
+        "start_time": "2025-12-23T07:19:23.255378Z",
+        "end_time": null,
+        "duration_seconds": 240.0,
+        "dependencies": [
+          "intro_graphics",
+          "voiceover"
+        ],
+        "progress_percentage": 0.5
+      }
+    ],
+    "parallel_streams": 2,
+    "critical_path_tasks": [
+      "task_1",
+      "task_2",
+      "task_3"
+    ],
+    "estimated_total_duration_seconds": 540.0,
+    "actual_elapsed_seconds": 300.0,
+    "timestamp": "2025-12-23T07:19:23.256208Z"
+  },
+  "deliverables": {
+    "project_id": "youth_entrepreneurship_course",
+    "total_deliverables": 3,
+    "deliverables": [
+      {
+        "deliverable_id": "deliv_1",
+        "deliverable_type": "video",
+        "platform": "youtube",
+        "format": "mp4",
+        "resolution": "1920x1080",
+        "duration_seconds": 720.0,
+        "file_path": "/exports/youth_entrepreneurship_course/youtube/video.mp4",
+        "file_size_mb": 1800.0,
+        "version": 1,
+        "created_at": "2025-12-23T07:19:23.256277Z",
+        "download_url": "https://codexdominion.app/downloads/youth_entrepreneurship_course/deliv_1"
+      },
+      {
+        "deliverable_id": "deliv_2",
+        "deliverable_type": "video",
+        "platform": "tiktok",
+        "format": "mp4",
+        "resolution": "1080x1920",
+        "duration_seconds": 60.0,
+        "file_path": "/exports/youth_entrepreneurship_course/tiktok/video.mp4",
+        "file_size_mb": 150.0,
+        "version": 1,
+        "created_at": "2025-12-23T07:19:23.256293Z",
+        "download_url": "https://codexdominion.app/downloads/youth_entrepreneurship_course/deliv_2"
+      },
+      {
+        "deliverable_id": "deliv_3",
+        "deliverable_type": "video",
+        "platform": "instagram",
+        "format": "mp4",
+        "resolution": "1080x1080",
+        "duration_seconds": 60.0,
+        "file_path": "/exports/youth_entrepreneurship_course/instagram/video.mp4",
+        "file_size_mb": 150.0,
+        "version": 1,
+        "created_at": "2025-12-23T07:19:23.256299Z",
+        "download_url": "https://codexdominion.app/downloads/youth_entrepreneurship_course/deliv_3"
+      }
+    ],
+    "platforms": [
+      "instagram",
+      "tiktok",
+      "youtube"
+    ],
+    "formats": [
+      "mp4"
+    ],
+    "version_history": {
+      "deliv_1": [
+        1
+      ],
+      "deliv_2": [
+        1
+      ],
+      "deliv_3": [
+        1
+      ]
+    },
+    "latest_export_time": "2025-12-23T07:19:23.256299Z",
+    "total_size_mb": 2100.0,
+    "timestamp": "2025-12-23T07:19:23.256423Z"
+  },
+  "summary": {
+    "phase": "complete",
+    "status": "complete",
+    "progress": "100.0%",
+    "next_step": "Project complete \u2014 deliverables ready",
+    "overall_health": "healthy",
+    "assets_tracked": 4,
+    "continuity_score": 0.93,
+    "tasks_completed": 2,
+    "deliverables_ready": 3
+  }
+}

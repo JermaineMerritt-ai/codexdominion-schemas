@@ -7,8 +7,8 @@
   "scripts": {
     "build": "tsc",
     "build:fast": "tsc --incremental",
-    "test": "jest --maxWorkers=50%",
-    "test:watch": "jest --watch --maxWorkers=25%",
+    "test": "pnpm exec jest --maxWorkers=50%",
+    "test:watch": "pnpm exec jest --watch --maxWorkers=25%",
     "validate": "pwsh -File validate-and-release.ps1",
     "precommit": "pre-commit run --all-files",
     "clean": "rm -rf node_modules/.cache dist .next coverage",

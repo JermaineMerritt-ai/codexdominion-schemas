@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creative Universe - {{ team.name }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #e4e4e4;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .project-count {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .section {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #4f46e5;
+            text-align: center;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #9ca3af;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        /* Tag Cloud Styles */
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: rgba(79, 70, 229, 0.1);
+            border: 1px solid rgba(79, 70, 229, 0.3);
+            color: #a5b4fc;
+            transition: all 0.3s ease;
+            cursor: default;
+            white-space: nowrap;
+        }
+
+        .tag:hover {
+            background: rgba(79, 70, 229, 0.2);
+            border-color: rgba(79, 70, 229, 0.5);
+            color: #c7d2fe;
+            transform: scale(1.05);
+        }
+
+        .tag-size-1 {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        .tag-size-2 {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .tag-size-3 {
+            font-size: 1.3rem;
+            opacity: 0.8;
+        }
+
+        .tag-size-4 {
+            font-size: 1.7rem;
+            opacity: 0.9;
+        }
+
+        .tag-size-5 {
+            font-size: 2.2rem;
+            opacity: 1;
+            font-weight: 600;
+            background: rgba(79, 70, 229, 0.15);
+            border-color: rgba(79, 70, 229, 0.6);
+        }
+
+        .tag-count {
+            font-size: 0.75em;
+            opacity: 0.7;
+            margin-left: 6px;
+        }
+
+        /* Category Map Styles */
+        .category-map {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 30px;
+            min-height: 250px;
+        }
+
+        .bubble {
+            position: relative;
+            background: radial-gradient(circle at 30% 30%, rgba(79, 70, 229, 0.3), rgba(79, 70, 229, 0.1));
+            border: 2px solid rgba(79, 70, 229, 0.5);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.2);
+        }
+
+        .bubble:hover {
+            transform: scale(1.08);
+            background: radial-gradient(circle at 30% 30%, rgba(79, 70, 229, 0.4), rgba(79, 70, 229, 0.15));
+            border-color: rgba(79, 70, 229, 0.7);
+            box-shadow: 0 8px 30px rgba(79, 70, 229, 0.4);
+        }
+
+        .bubble-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+            color: #e4e4e4;
+            margin-bottom: 5px;
+        }
+
+        .bubble-count {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #4f46e5;
+        }
+
+        .bubble-label {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bubble-meta {
+            position: absolute;
+            bottom: -30px;
+            font-size: 0.7rem;
+            color: #6b7280;
+            white-space: nowrap;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .empty-state-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #9ca3af;
+        }
+
+        .empty-state-text {
+            font-size: 1rem;
+        }
+
+        /* Navigation */
+        .nav-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: #4f46e5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-secondary {
+            background: #374151;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(79, 70, 229, 0.05);
+            border-radius: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-sample {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            background: rgba(79, 70, 229, 0.3);
+            border: 1px solid rgba(79, 70, 229, 0.5);
+        }
+
+        .legend-label {
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌌 {{ team.name }} Creative Universe</h1>
+        <p class="subtitle">A constellation map of your team's creative journey</p>
+        <p class="project-count">Based on {{ total_projects }} project{{ 's' if total_projects != 1 else '' }}</p>
+    </div>
+
+    {% if total_projects == 0 %}
+        <div class="section">
+            <div class="empty-state">
+                <div class="empty-state-icon">🌌</div>
+                <div class="empty-state-title">Your Universe Awaits</div>
+                <p class="empty-state-text">Create team projects to see your creative constellation emerge.</p>
+            </div>
+        </div>
+    {% else %}
+        <!-- Tag Cloud Section -->
+        <div class="section">
+            <h2 class="section-title">☁️ Creative Weather</h2>
+            <p class="section-description">The pulse of your team's themes and patterns</p>
+            
+            {% if tag_cloud %}
+                <div class="tag-cloud">
+                    {% for item in tag_cloud %}
+                        <span class="tag tag-size-{{ item.size }}">
+                            {{ item.tag }}
+                            <span class="tag-count">{{ item.count }}</span>
+                        </span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <p class="empty-state-text">No tags yet. Add tags to your projects to see patterns emerge.</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Category Map Section -->
+        <div class="section">
+            <h2 class="section-title">🗺️ Creative Terrain</h2>
+            <p class="section-description">Your team's creative continents—where you build and explore</p>
+            
+            {% if category_bubbles %}
+                <div class="category-map">
+                    {% for bubble in category_bubbles %}
+                        <div class="bubble" 
+                             style="width: {{ bubble.size }}px; height: {{ bubble.size }}px;"
+                             title="{{ bubble.name }}: {{ bubble.count }} project{{ 's' if bubble.count != 1 else '' }}">
+                            <div class="bubble-name">{{ bubble.name }}</div>
+                            <div class="bubble-count">{{ bubble.count }}</div>
+                            <div class="bubble-label">project{{ 's' if bubble.count != 1 else '' }}</div>
+                            {% if bubble.mood or bubble.palette %}
+                                <div class="bubble-meta">
+                                    {{ bubble.mood or '' }}{{ ' • ' if bubble.mood and bubble.palette else '' }}{{ bubble.palette or '' }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-sample"></div>
+                        <span class="legend-label">Bubble size = project count</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-label">Hover to see dominant mood & palette</span>
+                    </div>
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <p class="empty-state-text">No categories yet. Organize your projects into categories to map your creative terrain.</p>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div class="nav-actions">
+        <a href="/studio/graphics/team/{{ team.id }}" class="btn btn-secondary">← Back to Team Library</a>
+        <a href="/studio/graphics" class="btn">+ Create New Project</a>
+        <a href="/studio/graphics/team/{{ team.id }}/constellation" class="btn" style="background: linear-gradient(135deg, #f59e0b, #ec4899);">🌠 Constellation</a>
+        <a href="/studio/graphics/recommendations/{{ team.id }}/prompts" class="btn">✨ AI Prompt Suggestions</a>
+    </div>
+</body>
+</html>

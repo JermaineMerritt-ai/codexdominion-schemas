@@ -1,0 +1,287 @@
+{
+  "meta": {
+    "site_name": "Pixel Perfect Studios",
+    "description": "Bold, beautiful web design that makes your brand unforgettable",
+    "version": "1.0.0",
+    "platform": "nextjs",
+    "created_at": "2025-12-20T10:24:06.539038Z",
+    "blueprint_id": "bp_00f8523598b8"
+  },
+  "pages": [
+    {
+      "slug": "home",
+      "title": "Home",
+      "path": "/",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "layout": "centered",
+          "components": [
+            "heading",
+            "subheading",
+            "cta_primary",
+            "cta_secondary"
+          ],
+          "content_keys": [
+            "hero_title",
+            "hero_subtitle",
+            "cta_text",
+            "cta_secondary_text"
+          ]
+        },
+        {
+          "id": "features",
+          "type": "feature_grid",
+          "layout": "three_column",
+          "components": [
+            "feature_card"
+          ],
+          "content_keys": [
+            "features_title",
+            "features_subtitle",
+            "feature_items"
+          ]
+        },
+        {
+          "id": "testimonials",
+          "type": "testimonials",
+          "layout": "carousel",
+          "components": [
+            "testimonial_card"
+          ],
+          "content_keys": [
+            "testimonials_title",
+            "testimonial_items"
+          ]
+        },
+        {
+          "id": "cta",
+          "type": "call_to_action",
+          "layout": "split",
+          "components": [
+            "heading",
+            "body",
+            "cta_primary"
+          ],
+          "content_keys": [
+            "cta_title",
+            "cta_body",
+            "cta_button_text"
+          ]
+        }
+      ],
+      "seo_key": "seo_home",
+      "schema_markup": true
+    },
+    {
+      "slug": "about",
+      "title": "About",
+      "path": "/about",
+      "sections": [
+        {
+          "id": "story",
+          "type": "text_with_image",
+          "layout": "left_image",
+          "components": [
+            "heading",
+            "body",
+            "image"
+          ],
+          "content_keys": [
+            "about_title",
+            "about_story",
+            "about_image"
+          ]
+        },
+        {
+          "id": "mission",
+          "type": "icon_grid",
+          "layout": "four_column",
+          "components": [
+            "icon_card"
+          ],
+          "content_keys": [
+            "mission_title",
+            "mission_items"
+          ]
+        },
+        {
+          "id": "team",
+          "type": "team_grid",
+          "layout": "three_column",
+          "components": [
+            "team_member_card"
+          ],
+          "content_keys": [
+            "team_title",
+            "team_members"
+          ]
+        }
+      ],
+      "seo_key": "seo_about",
+      "schema_markup": true
+    },
+    {
+      "slug": "services",
+      "title": "Services",
+      "path": "/services",
+      "sections": [
+        {
+          "id": "services_intro",
+          "type": "text_centered",
+          "layout": "centered",
+          "components": [
+            "heading",
+            "body"
+          ],
+          "content_keys": [
+            "services_title",
+            "services_intro"
+          ]
+        },
+        {
+          "id": "services_list",
+          "type": "service_cards",
+          "layout": "two_column",
+          "components": [
+            "service_card"
+          ],
+          "content_keys": [
+            "services_items"
+          ]
+        }
+      ],
+      "seo_key": "seo_services",
+      "schema_markup": true
+    },
+    {
+      "slug": "portfolio",
+      "title": "Portfolio",
+      "path": "/portfolio",
+      "sections": [
+        {
+          "id": "default",
+          "type": "text_centered",
+          "layout": "centered",
+          "components": [
+            "heading",
+            "body"
+          ],
+          "content_keys": [
+            "portfolio_title",
+            "portfolio_content"
+          ]
+        }
+      ],
+      "seo_key": "seo_portfolio",
+      "schema_markup": false
+    },
+    {
+      "slug": "contact",
+      "title": "Contact",
+      "path": "/contact",
+      "sections": [
+        {
+          "id": "contact_header",
+          "type": "text_centered",
+          "layout": "centered",
+          "components": [
+            "heading",
+            "body"
+          ],
+          "content_keys": [
+            "contact_title",
+            "contact_subtitle"
+          ]
+        },
+        {
+          "id": "contact_form",
+          "type": "form",
+          "layout": "single_column",
+          "components": [
+            "text_input",
+            "textarea",
+            "submit_button"
+          ],
+          "content_keys": [
+            "form_fields",
+            "submit_text"
+          ]
+        },
+        {
+          "id": "contact_info",
+          "type": "info_cards",
+          "layout": "three_column",
+          "components": [
+            "info_card"
+          ],
+          "content_keys": [
+            "contact_methods"
+          ]
+        }
+      ],
+      "seo_key": "seo_contact",
+      "schema_markup": false
+    }
+  ],
+  "navigation": {
+    "primary": [
+      {
+        "label": "Home",
+        "href": "/",
+        "order": 0
+      },
+      {
+        "label": "About",
+        "href": "/about",
+        "order": 1
+      },
+      {
+        "label": "Services",
+        "href": "/services",
+        "order": 2
+      },
+      {
+        "label": "Contact",
+        "href": "/contact",
+        "order": 4
+      }
+    ],
+    "footer": [
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Services",
+        "href": "/services"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ]
+  },
+  "sections_library": {},
+  "components_used": [
+    "heading",
+    "subheading",
+    "cta_primary",
+    "cta_secondary",
+    "feature_card",
+    "testimonial_card",
+    "body",
+    "image",
+    "icon_card",
+    "team_member_card",
+    "service_card",
+    "text_input",
+    "textarea",
+    "submit_button",
+    "info_card"
+  ],
+  "seo_placeholders": {},
+  "content_placeholders": {},
+  "theme_reference": "theme.json"
+}

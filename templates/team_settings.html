@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ team.name }} - Team Settings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0d0d0d;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .description {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #333;
+            color: #e0e0e0;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .back-button:hover {
+            background: #444;
+        }
+
+        .section {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #4f46e5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Member List */
+        .members-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .member-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0d0d0d;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .member-card:hover {
+            border-color: #4f46e5;
+        }
+
+        .member-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .member-email {
+            font-size: 1rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .member-role {
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .role-owner {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+
+        .role-admin {
+            background: rgba(79, 70, 229, 0.2);
+            color: #a5b4fc;
+            border: 1px solid rgba(79, 70, 229, 0.4);
+        }
+
+        .role-editor {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+            border: 1px solid rgba(34, 197, 94, 0.4);
+        }
+
+        .role-viewer {
+            background: rgba(156, 163, 175, 0.2);
+            color: #d1d5db;
+            border: 1px solid rgba(156, 163, 175, 0.4);
+        }
+
+        .member-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        select {
+            padding: 8px 12px;
+            background: #0d0d0d;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        select:hover {
+            border-color: #4f46e5;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #4338ca;
+        }
+
+        .btn-danger {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #b91c1c;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+
+        /* Add Member Form */
+        .add-member-form {
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #777;
+            padding: 40px;
+            font-style: italic;
+        }
+
+        /* Role Descriptions */
+        .role-descriptions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .role-card {
+            background: #0d0d0d;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .role-card-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .role-card-desc {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            line-height: 1.5;
+        }
+
+        .role-card-permissions {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #333;
+        }
+
+        .role-card-permissions ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .role-card-permissions li::before {
+            content: "✓ ";
+            color: #4ade80;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/studio/graphics/team/{{ team.id }}" class="back-button">← Back to Team Library</a>
+
+        <h1>⚙️ {{ team.name }} Settings</h1>
+        {% if team.description %}
+            <p class="description">{{ team.description }}</p>
+        {% endif %}
+
+        <!-- Role Descriptions -->
+        <div class="section">
+            <h2 class="section-title">👥 Team Roles</h2>
+            <div class="role-descriptions">
+                <div class="role-card">
+                    <div class="role-card-title">
+                        <span class="role-badge role-owner">Owner</span>
+                    </div>
+                    <div class="role-card-desc">Full control over the team</div>
+                    <div class="role-card-permissions">
+                        <ul>
+                            <li>All permissions</li>
+                            <li>Delete team</li>
+                            <li>Promote/demote roles</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-card-title">
+                        <span class="role-badge role-admin">Admin</span>
+                    </div>
+                    <div class="role-card-desc">Manages members and content</div>
+                    <div class="role-card-permissions">
+                        <ul>
+                            <li>Manage members</li>
+                            <li>Edit/delete all projects</li>
+                            <li>Manage tags/categories</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-card-title">
+                        <span class="role-badge role-editor">Editor</span>
+                    </div>
+                    <div class="role-card-desc">Creates and edits content</div>
+                    <div class="role-card-permissions">
+                        <ul>
+                            <li>Create projects</li>
+                            <li>Edit own projects</li>
+                            <li>View team library</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-card-title">
+                        <span class="role-badge role-viewer">Viewer</span>
+                    </div>
+                    <div class="role-card-desc">Read-only access</div>
+                    <div class="role-card-permissions">
+                        <ul>
+                            <li>Browse library</li>
+                            <li>View analytics</li>
+                            <li>No editing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Members -->
+        <div class="section">
+            <h2 class="section-title">
+                <span>Current Members</span>
+                <span style="font-size: 1rem; color: #9ca3af;">({{ members|length }})</span>
+            </h2>
+
+            {% if members %}
+                <div class="members-list">
+                    {% for membership, user in members %}
+                        <div class="member-card">
+                            <div class="member-info">
+                                <div class="member-email">{{ user.email }}</div>
+                                <div class="member-role">
+                                    <span class="role-badge role-{{ membership.role }}">{{ membership.role }}</span>
+                                </div>
+                            </div>
+
+                            <div class="member-actions">
+                                {% if membership.role != 'owner' or user_role == 'owner' %}
+                                    <form method="POST" action="/teams/{{ team.id }}/set_role" style="margin: 0;">
+                                        <input type="hidden" name="member_id" value="{{ user.id }}">
+                                        <select name="role" onchange="this.form.submit()">
+                                            <option value="viewer" {% if membership.role == 'viewer' %}selected{% endif %}>Viewer</option>
+                                            <option value="editor" {% if membership.role == 'editor' %}selected{% endif %}>Editor</option>
+                                            <option value="admin" {% if membership.role == 'admin' %}selected{% endif %}>Admin</option>
+                                            {% if user_role == 'owner' %}
+                                                <option value="owner" {% if membership.role == 'owner' %}selected{% endif %}>Owner</option>
+                                            {% endif %}
+                                        </select>
+                                    </form>
+
+                                    {% if membership.role != 'owner' %}
+                                        <form method="POST" action="/studio/graphics/team/{{ team.id }}/members/{{ membership.id }}/remove" style="margin: 0;" onsubmit="return confirm('Remove {{ user.email }} from team?')">
+                                            <button type="submit" class="btn btn-danger btn-small">Remove</button>
+                                        </form>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state">No members yet</div>
+            {% endif %}
+        </div>
+
+        <!-- Add New Member -->
+        <div class="section">
+            <h2 class="section-title">➕ Add New Member</h2>
+
+            {% if available_users %}
+                <form method="POST" action="/studio/graphics/team/{{ team.id }}/members/add" class="add-member-form">
+                    <div class="form-group">
+                        <label>User</label>
+                        <select name="user_id" required>
+                            <option value="">Select a user...</option>
+                            {% for user in available_users %}
+                                <option value="{{ user.id }}">{{ user.email }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select name="role" required>
+                            <option value="viewer">Viewer</option>
+                            <option value="editor" selected>Editor</option>
+                            <option value="admin">Admin</option>
+                            {% if user_role == 'owner' %}
+                                <option value="owner">Owner</option>
+                            {% endif %}
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Add Member</button>
+                </form>
+            {% else %}
+                <div class="empty-state">No users available to add</div>
+            {% endif %}
+        </div>
+
+        <!-- Danger Zone - Delete Team (Owner Only) -->
+        {% if user_role == 'owner' %}
+        <div class="section" style="border-color: #dc2626;">
+            <h2 class="section-title" style="color: #dc2626;">⚠️ Danger Zone</h2>
+            <p style="color: #9ca3af; margin-bottom: 20px;">
+                Deleting the team will remove all members and reassign projects to their creators' personal libraries.
+                <strong style="color: #fca5a5;">This action cannot be undone.</strong>
+            </p>
+            <form method="POST" action="/teams/{{ team.id }}/delete" onsubmit="return confirm('Are you ABSOLUTELY SURE you want to delete this team? This cannot be undone! Type the team name to confirm.')">
+                <button type="submit" class="btn btn-danger" style="background: #dc2626;">
+                    🗑️ Delete Team Permanently
+                </button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

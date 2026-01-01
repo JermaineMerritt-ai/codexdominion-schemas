@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ team.name }} - Activity Feed</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .role-badge.owner { background: #f59e0b; color: #000; }
+        .role-badge.admin { background: #8b5cf6; color: #fff; }
+        .role-badge.editor { background: #10b981; color: #fff; }
+        .role-badge.viewer { background: #6b7280; color: #fff; }
+
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .nav-links a.active {
+            background: rgba(79, 70, 229, 0.3);
+            border-color: #4f46e5;
+        }
+
+        /* Activity Feed */
+        .activity-feed {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .activity-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.2s ease;
+        }
+
+        .activity-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 6px;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .activity-indicator.project { background: #8b5cf6; color: #8b5cf6; }
+        .activity-indicator.tag { background: #3b82f6; color: #3b82f6; }
+        .activity-indicator.member { background: #10b981; color: #10b981; }
+        .activity-indicator.role { background: #f59e0b; color: #f59e0b; }
+        .activity-indicator.ai { background: #ec4899; color: #ec4899; }
+        .activity-indicator.constellation { background: #8b5cf6; color: #8b5cf6; }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-content .activity-line {
+            font-size: 1rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .activity-content .user-name {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .activity-content .action-text {
+            color: #ccc;
+        }
+
+        .activity-content .action-detail {
+            color: #a78bfa;
+            font-weight: 500;
+        }
+
+        .activity-content .timestamp {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 6px;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+
+        .empty-state .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                {{ team.name }} - Activity Feed
+                <span class="role-badge {{ user_role }}">{{ user_role }}</span>
+            </h1>
+            <p class="subtitle">{{ team.description or "Team activity log" }}</p>
+        </div>
+
+        <div class="nav-links">
+            <a href="/studio/graphics/team/{{ team.id }}">📚 Library</a>
+            <a href="/studio/graphics/team/{{ team.id }}/universe">🌌 Universe</a>
+            <a href="/studio/graphics/recommendations/{{ team.id }}/prompts">💡 AI Prompts</a>
+            <a href="/studio/graphics/team/{{ team.id }}/constellation">🌠 Constellation</a>
+            <a href="/studio/graphics/team/{{ team.id }}/activity" class="active">📋 Activity</a>
+            {% if user_role in ['admin', 'owner'] %}
+            <a href="/teams/{{ team.id }}/manage">⚙️ Settings</a>
+            {% endif %}
+        </div>
+
+        <div class="activity-feed">
+            {% if activities %}
+                {% for activity, user in activities %}
+                <div class="activity-item">
+                    <div class="activity-indicator 
+                        {% if 'project' in activity.action %}project
+                        {% elif 'tag' in activity.action %}tag
+                        {% elif 'joined' in activity.action or 'member' in activity.action %}member
+                        {% elif 'role' in activity.action %}role
+                        {% elif 'AI' in activity.action or 'prompt' in activity.action %}ai
+                        {% elif 'constellation' in activity.action %}constellation
+                        {% else %}project{% endif %}">
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-line">
+                            <span class="user-name">{{ user.email.split('@')[0].title() }}</span>
+                            
+                            {% if 'created a project' in activity.action %}
+                                <span class="action-text">created a new project</span>
+                                {% if activity.metadata and activity.metadata.project_id %}
+                                    <span class="action-detail">"Project #{{ activity.metadata.project_id }}"</span>
+                                {% endif %}
+                            
+                            {% elif 'updated tags' in activity.action %}
+                                <span class="action-text">updated tags:</span>
+                                {% if activity.metadata and activity.metadata.tags %}
+                                    <span class="action-detail">{{ activity.metadata.tags }}</span>
+                                {% endif %}
+                            
+                            {% elif 'joined the team' in activity.action %}
+                                <span class="action-text">joined the team</span>
+                            
+                            {% elif 'changed role' in activity.action %}
+                                <span class="action-text">changed a member's role to</span>
+                                {% if activity.metadata and activity.metadata.new_role %}
+                                    <span class="action-detail">{{ activity.metadata.new_role }}</span>
+                                {% endif %}
+                            
+                            {% elif 'requested AI prompt suggestions' in activity.action %}
+                                <span class="action-text">viewed AI prompt suggestions</span>
+                            
+                            {% elif 'explored the constellation map' in activity.action %}
+                                <span class="action-text">explored the constellation map</span>
+                            
+                            {% else %}
+                                <span class="action-text">{{ activity.action }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="timestamp">{{ activity.timestamp.strftime('%B %d, %Y at %I:%M %p') }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty-state">
+                    <div class="icon">📋</div>
+                    <h3>No Activity Yet</h3>
+                    <p>Team activity will appear here as members create projects, update tags, and collaborate.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

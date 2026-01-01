@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ seo_title }}</title>
+    <meta name="description" content="{{ seo_description }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/design-system.css') }}">
+    <style>
+        /* Hero Section Custom Styles */
+        .hero {
+            background: linear-gradient(135deg, var(--color-deep-blue) 0%, #004d6b 100%);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(242, 201, 76, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 168, 150, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: var(--space-8) var(--space-4);
+        }
+
+        .hero__headline {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--space-5);
+            color: var(--color-white);
+        }
+
+        .hero__subheadline {
+            font-size: clamp(18px, 3vw, 24px);
+            line-height: 1.5;
+            margin-bottom: var(--space-8);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero__cta-group {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Feature Columns */
+        .feature-columns {
+            background: var(--color-white);
+        }
+
+        .feature-columns__title {
+            text-align: center;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
+            color: var(--color-deep-blue);
+            margin-bottom: var(--space-10);
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: var(--space-6);
+            background: var(--color-white);
+            border-radius: 16px;
+            border: 2px solid var(--color-light-grey);
+            transition: all var(--transition-base);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 48, 73, 0.12);
+            border-color: var(--color-gold);
+        }
+
+        .feature-item__label {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-deep-blue);
+            margin-bottom: var(--space-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+
+        .feature-item__icon {
+            font-size: 32px;
+        }
+
+        .feature-item__description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-slate-grey);
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-top: 1px solid var(--color-light-grey);
+        }
+
+        .quick-links__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-5);
+        }
+
+        .quick-link-card {
+            background: var(--color-white);
+            padding: var(--space-5);
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: all var(--transition-base);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .quick-link-card__title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-deep-blue);
+            margin-bottom: var(--space-2);
+        }
+
+        .quick-link-card__description {
+            font-size: 14px;
+            color: var(--color-slate-grey);
+            line-height: 1.5;
+        }
+
+        /* Dark Mode Support */
+        .dark-mode .hero {
+            background: linear-gradient(135deg, #0a1929 0%, #1e3a5f 100%);
+        }
+
+        .dark-mode .feature-columns {
+            background: var(--color-dm-bg);
+        }
+
+        .dark-mode .feature-columns__title {
+            color: var(--color-dm-text);
+        }
+
+        .dark-mode .feature-item {
+            background: var(--color-dm-surface);
+            border-color: var(--color-dm-border);
+        }
+
+        .dark-mode .feature-item__label {
+            color: var(--color-dm-text);
+        }
+
+        .dark-mode .feature-item__description {
+            color: rgba(226, 232, 240, 0.8);
+        }
+
+        .dark-mode .quick-links {
+            background: var(--color-dm-bg);
+            border-top-color: var(--color-dm-border);
+        }
+
+        .dark-mode .quick-link-card {
+            background: var(--color-dm-surface);
+        }
+
+        .dark-mode .quick-link-card__title {
+            color: var(--color-dm-text);
+        }
+
+        .dark-mode .quick-link-card__description {
+            color: rgba(226, 232, 240, 0.8);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: rgba(0, 48, 73, 0.95);
+            backdrop-filter: blur(10px);
+            padding: var(--space-3) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(242, 201, 76, 0.2);
+        }
+
+        .top-bar__container {
+            max-width: var(--content-max-width);
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar__logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-gold);
+            text-decoration: none;
+        }
+
+        .top-bar__nav {
+            display: flex;
+            gap: var(--space-5);
+            align-items: center;
+        }
+
+        .top-bar__link {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .top-bar__link:hover {
+            color: var(--color-gold);
+        }
+
+        .dark-mode-toggle {
+            background: transparent;
+            border: none;
+            color: var(--color-white);
+            font-size: 20px;
+            cursor: pointer;
+            padding: var(--space-2);
+            border-radius: 8px;
+            transition: all var(--transition-fast);
+        }
+
+        .dark-mode-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="top-bar__container">
+            <a href="/" class="top-bar__logo">CodexDominion</a>
+            <nav class="top-bar__nav">
+                <a href="/marketplace" class="top-bar__link">Marketplace</a>
+                <a href="/dominionyouth" class="top-bar__link">DominionYouth</a>
+                <a href="/ai-agents" class="top-bar__link">Action AI</a>
+                <a href="/design-system" class="top-bar__link">Design System</a>
+                <button onclick="toggleDarkMode()" class="dark-mode-toggle" title="Toggle Dark Mode">
+                    🌙
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__content">
+            <h1 class="hero__headline">{{ hero_headline }}</h1>
+            <p class="hero__subheadline">{{ hero_subheadline }}</p>
+            <div class="hero__cta-group">
+                <a href="{{ primary_cta_href }}" class="btn btn-primary btn-lg">
+                    {{ primary_cta_label }}
+                </a>
+                <a href="{{ secondary_cta_href }}" class="btn btn-secondary btn-lg">
+                    {{ secondary_cta_label }}
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Engines Section -->
+    <section class="feature-columns section">
+        <div class="container">
+            <h2 class="feature-columns__title">{{ engines_title }}</h2>
+            <div class="grid gap-6">
+                {% for item in engine_items %}
+                <div class="col-4 col-md-12">
+                    <div class="feature-item">
+                        <div class="feature-item__label">
+                            <span class="feature-item__icon">
+                                {% if loop.index == 1 %}🏝️
+                                {% elif loop.index == 2 %}🎓
+                                {% else %}🤖
+                                {% endif %}
+                            </span>
+                            {{ item.label }}
+                        </div>
+                        <p class="feature-item__description">{{ item.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links section">
+        <div class="container">
+            <h2 class="feature-columns__title mb-10">Explore Codex Dominion</h2>
+            <div class="quick-links__grid">
+                <a href="/revenue" class="quick-link-card">
+                    <div class="quick-link-card__title">📊 Revenue Dashboard</div>
+                    <p class="quick-link-card__description">Track earnings, analyze trends, and monitor treasury performance.</p>
+                </a>
+                <a href="/social" class="quick-link-card">
+                    <div class="quick-link-card__title">📱 Social Media Hub</div>
+                    <p class="quick-link-card__description">Manage Instagram, TikTok, YouTube, and more from one place.</p>
+                </a>
+                <a href="/scheduler" class="quick-link-card">
+                    <div class="quick-link-card__title">📅 Content Scheduler</div>
+                    <p class="quick-link-card__description">Schedule posts across 6 platforms with smart automation.</p>
+                </a>
+                <a href="/product-generator" class="quick-link-card">
+                    <div class="quick-link-card__title">✨ AI Product Generator</div>
+                    <p class="quick-link-card__description">Generate product descriptions with AI in 5 different styles.</p>
+                </a>
+                <a href="/stores" class="quick-link-card">
+                    <div class="quick-link-card__title">🛍️ E-Commerce Stores</div>
+                    <p class="quick-link-card__description">Manage your digital storefronts and WooCommerce integration.</p>
+                </a>
+                <a href="/ai-agents" class="quick-link-card">
+                    <div class="quick-link-card__title">🤖 AI Agents</div>
+                    <p class="quick-link-card__description">Meet Jermaine, .300, and Algorithm—your AI workforce.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="section" style="background: var(--color-deep-blue); color: var(--color-white); text-align: center; padding: var(--space-8) var(--space-4);">
+        <div class="container">
+            <p class="body mb-4">🔥 The Flame Burns Sovereign and Eternal! 👑</p>
+            <p class="caption">
+                CodexDominion &copy; 2025 | Built with the <a href="/design-system" style="color: var(--color-gold);">Caribbean Design System</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            
+            // Update toggle button emoji
+            const toggle = document.querySelector('.dark-mode-toggle');
+            toggle.textContent = isDark ? '☀️' : '🌙';
+        }
+
+        // Load saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.dark-mode-toggle').textContent = '☀️';
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add page transition animation
+        document.body.style.opacity = '0';
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 300ms ease-out';
+                document.body.style.opacity = '1';
+            }, 50);
+        });
+    </script>
+</body>
+</html>

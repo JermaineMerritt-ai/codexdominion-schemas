@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Suggestions - {{ team.name }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0d0d0d;
+            color: #e0e0e0;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #f59e0b, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .role-owner { background: #dc2626; color: white; }
+        .role-admin { background: #2563eb; color: white; }
+        .role-editor { background: #059669; color: white; }
+        .role-viewer { background: #6b7280; color: white; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 12px 24px;
+            background: #333;
+            color: #e0e0e0;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            background: #444;
+        }
+
+        /* Team DNA Section */
+        .dna-section {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            border: 1px solid #4338ca;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .dna-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dna-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .dna-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .dna-card h4 {
+            color: #a78bfa;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dna-list {
+            list-style: none;
+        }
+
+        .dna-list li {
+            color: #e0e0e0;
+            padding: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dna-count {
+            background: #4338ca;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Suggestions Section */
+        .suggestions-title {
+            font-size: 2rem;
+            margin: 40px 0 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .suggestions-subtitle {
+            text-align: center;
+            color: #9ca3af;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .suggestions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .suggestion-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #333;
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.2s, border-color 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .suggestion-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #ec4899, #8b5cf6);
+        }
+
+        .suggestion-card:hover {
+            transform: translateY(-4px);
+            border-color: #f59e0b;
+        }
+
+        .suggestion-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #f59e0b, #ec4899);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .suggestion-prompt {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #f3f4f6;
+            margin-bottom: 20px;
+            padding-right: 50px;
+            min-height: 80px;
+        }
+
+        .suggestion-meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.85rem;
+        }
+
+        .meta-label {
+            color: #9ca3af;
+            display: block;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+
+        .meta-value {
+            color: #f3f4f6;
+            font-weight: 500;
+        }
+
+        .suggestion-twist {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 15px;
+        }
+
+        .twist-label {
+            color: #f59e0b;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .twist-text {
+            color: #fbbf24;
+            font-size: 0.9rem;
+        }
+
+        .dna-match {
+            display: inline-block;
+            background: #059669;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .use-button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: linear-gradient(135deg, #f59e0b, #ec4899);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .use-button:hover {
+            opacity: 0.9;
+        }
+
+        .use-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #777;
+            padding: 60px 40px;
+            font-style: italic;
+            background: #1a1a1a;
+            border-radius: 16px;
+            border: 2px dashed #333;
+        }
+
+        .empty-state h3 {
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+
+        .generate-more-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .generate-more-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+            text-decoration: none;
+        }
+
+        .generate-more-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(139, 92, 246, 0.6);
+        }
+
+        .generate-more-button:active {
+            transform: translateY(0);
+        }
+
+        .generate-more-button.loading {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        .inspiration-tagline {
+            color: #9ca3af;
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎨 AI Prompt Suggestions</h1>
+        <p class="subtitle">
+            {{ team.name }}
+            {% if user_role %}
+                <span class="role-badge role-{{ user_role }}">{{ user_role }}</span>
+            {% endif %}
+        </p>
+        <p class="subtitle">Team-specific inspiration from {{ total_projects }} projects</p>
+    </div>
+
+    <div class="container">
+        <a href="/studio/graphics/team/{{ team.id }}" class="back-button">← Back to Team Library</a>
+
+        {% if suggestions %}
+            <!-- Team DNA Section -->
+            <div class="dna-section">
+                <div class="dna-title">
+                    🧬 Your Team's Creative DNA
+                </div>
+                <p style="color: #c7d2fe; margin-bottom: 20px;">
+                    These patterns define your team's style. Our AI uses them to generate prompts that feel familiar but push into new territory.
+                </p>
+                
+                <div class="dna-grid">
+                    {% if top_moods %}
+                    <div class="dna-card">
+                        <h4>Dominant Moods</h4>
+                        <ul class="dna-list">
+                            {% for mood, count in top_moods %}
+                            <li>
+                                <span>{{ mood }}</span>
+                                <span class="dna-count">{{ count }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    {% if top_palettes %}
+                    <div class="dna-card">
+                        <h4>Favorite Palettes</h4>
+                        <ul class="dna-list">
+                            {% for palette, count in top_palettes %}
+                            <li>
+                                <span>{{ palette }}</span>
+                                <span class="dna-count">{{ count }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    {% if top_lighting %}
+                    <div class="dna-card">
+                        <h4>Preferred Lighting</h4>
+                        <ul class="dna-list">
+                            {% for lighting, count in top_lighting %}
+                            <li>
+                                <span>{{ lighting }}</span>
+                                <span class="dna-count">{{ count }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    {% if top_tags %}
+                    <div class="dna-card">
+                        <h4>Popular Themes</h4>
+                        <ul class="dna-list">
+                            {% for tag, count in top_tags[:3] %}
+                            <li>
+                                <span>{{ tag }}</span>
+                                <span class="dna-count">{{ count }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- AI Suggestions -->
+            <h2 class="suggestions-title">✨ 5 Fresh Prompts For Your Team</h2>
+            <p class="suggestions-subtitle">
+                Based on your creative DNA — familiar patterns with strategic twists. <strong>Not random. Not generic.</strong>
+            </p>
+
+            <div class="suggestions-grid">
+                {% for suggestion in suggestions %}
+                <div class="suggestion-card">
+                    <div class="suggestion-number">{{ loop.index }}</div>
+                    
+                    <div class="suggestion-prompt">
+                        "{{ suggestion.prompt }}"
+                    </div>
+
+                    <div class="suggestion-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Mood</span>
+                            <div class="meta-value">{{ suggestion.mood }}</div>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Palette</span>
+                            <div class="meta-value">{{ suggestion.palette }}</div>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Lighting</span>
+                            <div class="meta-value">{{ suggestion.lighting }}</div>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Camera</span>
+                            <div class="meta-value">{{ suggestion.camera }}</div>
+                        </div>
+                    </div>
+
+                    <div class="suggestion-twist">
+                        <span class="twist-label">🎯 The Twist</span>
+                        <div class="twist-text">{{ suggestion.twist }}</div>
+                    </div>
+
+                    <span class="dna-match">{{ suggestion.dna_match }} DNA Match</span>
+
+                    {% if user_role in ['editor', 'admin', 'owner'] %}
+                    <button class="use-button" onclick="usePrompt('{{ suggestion.prompt }}', '{{ suggestion.mood }}', '{{ suggestion.palette }}', '{{ suggestion.lighting }}', '{{ suggestion.camera }}', '{{ suggestion.category }}')">
+                        ✨ Use This Prompt
+                    </button>
+                    {% else %}
+                    <button class="use-button" disabled title="Editor, Admin, or Owner role required">
+                        🔒 Editor+ Only
+                    </button>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Generate More Button -->
+            <div class="generate-more-section">
+                <button class="generate-more-button" onclick="generateMore()">
+                    🔮 Generate 5 More Prompts
+                </button>
+                <p class="inspiration-tagline">Unlimited inspiration. Your style. Infinite possibilities.</p>
+            </div>
+
+        {% else %}
+            <div class="empty-state">
+                <h3>No creative DNA yet!</h3>
+                <p>Create some team projects to unlock AI-powered prompt suggestions.</p>
+                <p style="margin-top: 10px;">The more you create, the smarter the suggestions become.</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function usePrompt(prompt, mood, palette, lighting, camera, category) {
+            // Store suggestion data in sessionStorage
+            sessionStorage.setItem('suggested_prompt', prompt);
+            sessionStorage.setItem('suggested_mood', mood);
+            sessionStorage.setItem('suggested_palette', palette);
+            sessionStorage.setItem('suggested_lighting', lighting);
+            sessionStorage.setItem('suggested_camera', camera);
+            sessionStorage.setItem('suggested_category', category);
+            
+            // Navigate to graphics studio
+            window.location.href = '/studio/graphics';
+        }
+
+        function generateMore() {
+            const button = document.querySelector('.generate-more-button');
+            button.classList.add('loading');
+            button.innerHTML = '🔮 Generating Fresh Prompts...';
+            
+            // Reload page to regenerate suggestions
+            // (Random seed in generation function creates new prompts)
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
+        }
+    </script>
+</body>
+</html>

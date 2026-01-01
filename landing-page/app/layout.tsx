@@ -1,0 +1,35 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Codex Dominion - Digital Sovereignty Platform',
+  description: 'AI-powered treasury management, workflow automation, and council governance system',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <style>{`
+          * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+          }
+          html, body {
+            max-width: 100vw;
+            overflow-x: hidden;
+          }
+          @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+          }
+        `}</style>
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+}

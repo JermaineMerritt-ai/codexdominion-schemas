@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Constellation - {{ team.name }}</title>
+    <script src="https://unpkg.com/force-graph"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #000;
+            color: #e0e0e0;
+            overflow: hidden;
+        }
+
+        #graph-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .overlay-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px 30px;
+        }
+
+        .overlay-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #f59e0b, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .overlay-header .subtitle {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .role-owner { background: #dc2626; color: white; }
+        .role-admin { background: #2563eb; color: white; }
+        .role-editor { background: #059669; color: white; }
+        .role-viewer { background: #6b7280; color: white; }
+
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-button {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px 20px;
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .control-button:hover {
+            background: rgba(139, 92, 246, 0.3);
+            border-color: #8b5cf6;
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            width: 250px;
+        }
+
+        .legend-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .legend-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-label {
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        .stats {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            width: 200px;
+        }
+
+        .stats-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .stat-label {
+            color: #9ca3af;
+        }
+
+        .stat-value {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.95);
+            border: 1px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 12px 16px;
+            pointer-events: none;
+            z-index: 100;
+            display: none;
+            max-width: 300px;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .tooltip-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .tooltip-info {
+            color: #9ca3af;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(139, 92, 246, 0.2);
+            border-top-color: #8b5cf6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="graph-container">
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <div>Rendering your creative constellation...</div>
+        </div>
+    </div>
+
+    <div class="overlay-header">
+        <h1>🌌 Creative Constellation</h1>
+        <div class="subtitle">
+            {{ team.name }}
+            {% if user_role %}
+                <span class="role-badge role-{{ user_role }}">{{ user_role }}</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="controls">
+        <a href="/studio/graphics/team/{{ team.id }}" class="control-button">← Back to Library</a>
+        <a href="/studio/graphics/recommendations/{{ team.id }}/prompts" class="control-button">✨ AI Prompts</a>
+        <a href="/studio/graphics/team/{{ team.id }}/universe" class="control-button">🌌 Universe Map</a>
+    </div>
+
+    <div class="legend">
+        <div class="legend-title">Node Types</div>
+        <div class="legend-item">
+            <div class="legend-icon" style="background: #64748b;"></div>
+            <div class="legend-label">Projects (stars)</div>
+        </div>
+        <div class="legend-item">
+            <div class="legend-icon" style="background: #f59e0b;"></div>
+            <div class="legend-label">Tags (themes)</div>
+        </div>
+        <div class="legend-item">
+            <div class="legend-icon" style="background: #8b5cf6;"></div>
+            <div class="legend-label">Categories (clusters)</div>
+        </div>
+    </div>
+
+    <div class="stats">
+        <div class="stats-title">Constellation Stats</div>
+        <div class="stat-row">
+            <span class="stat-label">Projects:</span>
+            <span class="stat-value">{{ graph_data.stats.totalProjects }}</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Tags:</span>
+            <span class="stat-value">{{ graph_data.stats.totalTags }}</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Categories:</span>
+            <span class="stat-value">{{ graph_data.stats.totalCategories }}</span>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip">
+        <div class="tooltip-title" id="tooltip-title"></div>
+        <div class="tooltip-info" id="tooltip-info"></div>
+    </div>
+
+    <script>
+        const graphData = {{ graph_data | tojson }};
+        
+        // Transform data for force-graph
+        const nodes = graphData.nodes.map(n => ({
+            id: n.id,
+            label: n.label,
+            type: n.type,
+            val: n.size,
+            color: n.color,
+            ...n
+        }));
+
+        const links = graphData.edges.map(e => ({
+            source: e.source,
+            target: e.target,
+            strength: e.strength
+        }));
+
+        const data = { nodes, links };
+
+        // Initialize force-graph
+        const elem = document.getElementById('graph-container');
+        const Graph = ForceGraph()(elem)
+            .graphData(data)
+            .nodeLabel('label')
+            .nodeVal('val')
+            .nodeColor('color')
+            .nodeCanvasObject((node, ctx, globalScale) => {
+                const label = node.label;
+                const fontSize = 12/globalScale;
+                ctx.font = `${fontSize}px Sans-Serif`;
+                const textWidth = ctx.measureText(label).width;
+                const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2);
+
+                // Draw node circle with glow
+                const nodeSize = node.val || 5;
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, nodeSize, 0, 2 * Math.PI, false);
+                ctx.fillStyle = node.color;
+                ctx.shadowColor = node.color;
+                ctx.shadowBlur = 15;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                // Draw label for categories and tags
+                if (node.type === 'category' || node.type === 'tag') {
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillStyle = '#e0e0e0';
+                    ctx.fillText(label, node.x, node.y + nodeSize + 10);
+                }
+            })
+            .linkColor(() => 'rgba(255, 255, 255, 0.15)')
+            .linkWidth(0.5)
+            .linkDirectionalParticles(0)
+            .backgroundColor('#000000')
+            .onNodeHover(node => {
+                elem.style.cursor = node ? 'pointer' : 'default';
+                
+                if (node) {
+                    const tooltip = document.getElementById('tooltip');
+                    const tooltipTitle = document.getElementById('tooltip-title');
+                    const tooltipInfo = document.getElementById('tooltip-info');
+                    
+                    tooltipTitle.textContent = node.label;
+                    
+                    if (node.type === 'project') {
+                        tooltipInfo.innerHTML = `
+                            <div><strong>Mood:</strong> ${node.mood || 'N/A'}</div>
+                            <div><strong>Palette:</strong> ${node.palette || 'N/A'}</div>
+                            <div><strong>Category:</strong> ${node.category || 'N/A'}</div>
+                            <div style="margin-top: 8px; font-style: italic;">"${node.prompt ? node.prompt.substring(0, 100) : 'No prompt'}..."</div>
+                        `;
+                    } else if (node.type === 'tag') {
+                        tooltipInfo.textContent = `Tag used in ${node.count} project${node.count !== 1 ? 's' : ''}`;
+                    } else if (node.type === 'category') {
+                        tooltipInfo.textContent = `${node.count} project${node.count !== 1 ? 's' : ''} in this category`;
+                    }
+                    
+                    tooltip.style.display = 'block';
+                } else {
+                    document.getElementById('tooltip').style.display = 'none';
+                }
+            })
+            .onNodeClick(node => {
+                if (node.type === 'project') {
+                    // Open project in studio
+                    const form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = '/studio/graphics/open';
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'project_id';
+                    input.value = node.projectId;
+                    form.appendChild(input);
+                    document.body.appendChild(form);
+                    form.submit();
+                } else if (node.type === 'tag') {
+                    // Future: Filter library by tag
+                    console.log('Filter by tag:', node.label);
+                } else if (node.type === 'category') {
+                    // Future: Navigate to category page
+                    console.log('Navigate to category:', node.label);
+                }
+            })
+            .d3Force('charge').strength(-200)
+            .d3Force('link').distance(100)
+            .warmupTicks(100)
+            .cooldownTicks(1000)
+            .onEngineStop(() => {
+                document.getElementById('loading').style.display = 'none';
+            });
+
+        // Track mouse for tooltip positioning
+        document.addEventListener('mousemove', (e) => {
+            const tooltip = document.getElementById('tooltip');
+            if (tooltip.style.display === 'block') {
+                tooltip.style.left = (e.clientX + 15) + 'px';
+                tooltip.style.top = (e.clientY + 15) + 'px';
+            }
+        });
+
+        // Auto-rotate slowly for "breathing" effect
+        let angle = 0;
+        setInterval(() => {
+            angle += 0.0005;
+            Graph.cameraPosition({
+                x: 0,
+                y: 0,
+                z: 1000
+            }, null, 0);
+        }, 50);
+    </script>
+</body>
+</html>

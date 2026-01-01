@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graphics Studio - Codex Dominion</title>
+    <style>
+        body {
+            background: #0d0d0d;
+            color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        .studio-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #111;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #222;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            background: #0d0d0d;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1rem;
+        }
+
+        .generate-button {
+            margin-top: 20px;
+            padding: 14px 20px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s ease;
+        }
+
+        .generate-button:hover {
+            background: #6366f1;
+        }
+
+        .results {
+            margin-top: 40px;
+            text-align: center;
+            color: #aaa;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .style-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .style-button {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 10px 16px;
+            border-radius: 8px;
+            color: #eee;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .style-button:hover {
+            background: #4f46e5;
+            border-color: #6366f1;
+        }
+
+        .style-button.active {
+            background: #4f46e5;
+            border-color: #6366f1;
+        }
+
+        .generate-button {
+            background: #4f46e5;
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s ease;
+            margin-right: 12px;
+            margin-top: 15px;
+        }
+
+        .generate-button:hover {
+            background: #6366f1;
+            transform: translateY(-2px);
+        }
+
+        .variation-button {
+            margin-top: 10px;
+            padding: 12px 18px;
+            background: #1f1f1f;
+            color: #eee;
+            border: 1px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .variation-button:hover {
+            background: #333;
+            border-color: #555;
+        }
+
+        .save-button {
+            margin-top: 20px;
+            padding: 12px 18px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .save-button:hover {
+            background: #6366f1;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .export-button {
+            padding: 10px 16px;
+            background: #1f1f1f;
+            color: #eee;
+            border: 1px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .export-button:hover {
+            background: #333;
+            border-color: #555;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            background: #111;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #222;
+            transition: 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: #444;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .control label {
+            display: block;
+            margin-bottom: 6px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .control select {
+            width: 100%;
+            padding: 10px;
+            background: #0d0d0d;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 6px;
+        }
+
+        .control input {
+            width: 100%;
+            padding: 10px;
+            background: #0d0d0d;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 6px;
+        }
+
+        .library-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .library-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="/studio/graphics/library" class="library-link">� Project Library</a>    <a href="/teams" class="library-link" style="margin-left:15px;">👥 Teams</a>
+    <h1>🖼️ Graphics Studio</h1>
+    <p>Create brand visuals, posters, banners, and creative assets.</p>
+
+    {% if saved %}
+        <p style="color:#4f46e5; margin-top:20px;">
+            Project saved successfully.
+        </p>
+    {% endif %}
+
+    <div class="studio-container">
+
+        <form action="/studio/graphics/generate" method="POST">
+
+            <h2>Choose a Style</h2>
+
+            <div class="style-grid">
+
+                <button type="button" class="style-button" data-style="Cinematic lighting, dramatic shadows, ultra-detailed">
+                    🎥 Cinematic
+                </button>
+
+                <button type="button" class="style-button" data-style="Afrofuturism, neon colors, cultural patterns, cosmic energy">
+                    🌍 Afrofuturism
+                </button>
+
+                <button type="button" class="style-button" data-style="Minimalist, clean lines, soft colors, modern design">
+                    ✨ Minimalist
+                </button>
+
+                <button type="button" class="style-button" data-style="Vibrant Caribbean colors, tropical light, cultural textures">
+                    🌴 Caribbean Modern
+                </button>
+
+                <button type="button" class="style-button" data-style="Dark mode, glowing accents, futuristic UI aesthetic">
+                    🟣 Tech Noir
+                </button>
+
+            </div>
+
+            <h2>Advanced Controls</h2>
+
+            <div class="controls-grid">
+
+                <div class="control">
+                    <label>Aspect Ratio</label>
+                    <select name="aspect_ratio">
+                        <option value="1:1">1:1 (Square)</option>
+                        <option value="16:9">16:9 (Widescreen)</option>
+                        <option value="9:16">9:16 (Vertical)</option>
+                        <option value="4:5">4:5 (Portrait)</option>
+                        <option value="3:2">3:2 (Classic)</option>
+                    </select>
+                </div>
+
+                <div class="control">
+                    <label>Color Palette</label>
+                    <select name="color_palette">
+                        <option value="vibrant">Vibrant</option>
+                        <option value="muted">Muted</option>
+                        <option value="neon">Neon</option>
+                        <option value="earthy">Earthy</option>
+                        <option value="monochrome">Monochrome</option>
+                    </select>
+                </div>
+
+                <div class="control">
+                    <label>Mood</label>
+                    <select name="mood">
+                        <option value="epic">Epic</option>
+                        <option value="calm">Calm</option>
+                        <option value="dramatic">Dramatic</option>
+                        <option value="mysterious">Mysterious</option>
+                        <option value="joyful">Joyful</option>
+                    </select>
+                </div>
+
+                <div class="control">
+                    <label>Lighting</label>
+                    <select name="lighting">
+                        <option value="soft">Soft</option>
+                        <option value="hard">Hard</option>
+                        <option value="cinematic">Cinematic</option>
+                        <option value="neon glow">Neon Glow</option>
+                        <option value="golden hour">Golden Hour</option>
+                    </select>
+                </div>
+
+                <div class="control">
+                    <label>Camera Angle</label>
+                    <select name="camera_angle">
+                        <option value="eye level">Eye Level</option>
+                        <option value="low angle">Low Angle</option>
+                        <option value="high angle">High Angle</option>
+                        <option value="wide shot">Wide Shot</option>
+                        <option value="close up">Close Up</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <h2>Organization</h2>
+
+            <div class="controls-grid">
+
+                <div class="control">
+                    <label>Tags (comma-separated)</label>
+                    <input type="text" name="tags" placeholder="neon, afrofuturism, portraits">
+                </div>
+
+                <div class="control">
+                    <label>Category</label>
+                    <input type="text" name="category" placeholder="Campaign, Series, Brand Kit">
+                </div>
+
+                <div class="control">
+                    <label>Save to Team</label>
+                    <select name="team_id">
+                        <option value="">Personal Only</option>
+                        {% for team in user_teams %}
+                            <option value="{{ team.id }}">{{ team.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+
+            <h2>Describe Your Image</h2>
+
+            <textarea name="prompt" placeholder="Example: A futuristic Caribbean city at sunset, neon lights, cultural patterns, cinematic lighting..."></textarea>
+
+            <div style="margin-top: 15px;">
+                <button type="submit" class="generate-button">Generate Image</button>
+                <button type="submit" name="variation" value="true" class="variation-button">Generate Variations</button>
+            </div>
+
+        </form>
+
+        <div id="loading" style="display:none; text-align:center; margin-top:30px;">
+            <div class="spinner" style="
+                border: 4px solid #333;
+                border-top: 4px solid #4f46e5;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                margin: 0 auto 10px;
+                animation: spin 1s linear infinite;
+            "></div>
+            <p style="color:#ccc;">Generating…</p>
+        </div>
+
+        <div class="results">
+            {% if generated_images %}
+                <h3>Generated Images:</h3>
+
+                {% if is_variation %}
+                    <p style="color:#aaa; margin-top:10px;">
+                        Variation mode active — generating alternate interpretations.
+                    </p>
+                {% endif %}
+
+                <div class="gallery">
+                    {% for img in generated_images %}
+                        <div class="gallery-item">
+                            <img src="{{ img }}" alt="Generated Image">
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <form action="/studio/graphics/save" method="POST">
+                    <input type="hidden" name="prompt" value="{{ prompt }}">
+                    <input type="hidden" name="aspect_ratio" value="{{ aspect_ratio }}">
+                    <input type="hidden" name="color_palette" value="{{ color_palette }}">
+                    <input type="hidden" name="mood" value="{{ mood }}">
+                    <input type="hidden" name="lighting" value="{{ lighting }}">
+                    <input type="hidden" name="camera_angle" value="{{ camera_angle }}">
+                    <input type="hidden" name="thumbnail_url" value="{{ generated_images[0] if generated_images else '' }}">
+
+                    <button type="submit" class="save-button">Save Project</button>
+                </form>
+
+                <div class="export-buttons">
+
+                    <form action="/studio/graphics/export/json" method="POST">
+                        <input type="hidden" name="prompt" value="{{ prompt }}">
+                        <input type="hidden" name="aspect_ratio" value="{{ aspect_ratio }}">
+                        <input type="hidden" name="color_palette" value="{{ color_palette }}">
+                        <input type="hidden" name="mood" value="{{ mood }}">
+                        <input type="hidden" name="lighting" value="{{ lighting }}">
+                        <input type="hidden" name="camera_angle" value="{{ camera_angle }}">
+                        <button type="submit" class="export-button">Export JSON</button>
+                    </form>
+
+                    <form action="/studio/graphics/export/image" method="POST">
+                        <input type="hidden" name="image_url" value="{{ generated_images[0] }}">
+                        <button type="submit" class="export-button">Export Image</button>
+                    </form>
+
+                </div>
+
+            {% elif prompt %}
+                <h3>Prompt:</h3>
+                <p>{{ prompt }}</p>
+
+                <h4>Settings:</h4>
+                <ul>
+                    <li>Aspect Ratio: {{ aspect_ratio }}</li>
+                    <li>Color Palette: {{ color_palette }}</li>
+                    <li>Mood: {{ mood }}</li>
+                    <li>Lighting: {{ lighting }}</li>
+                    <li>Camera Angle: {{ camera_angle }}</li>
+                </ul>
+
+                {% if final_prompt %}
+                    <h3>Final Prompt Sent to Generator:</h3>
+                    <pre style="background:#111; padding:15px; border-radius:8px; color:#ccc;">
+{{ final_prompt }}
+                    </pre>
+                {% endif %}
+
+            {% else %}
+                <p>Your generated images will appear here.</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <script>
+        const form = document.querySelector("form");
+        const loading = document.getElementById("loading");
+        const styleButtons = document.querySelectorAll(".style-button");
+        const textarea = document.querySelector("textarea");
+
+        styleButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const style = button.getAttribute("data-style");
+                textarea.value = textarea.value + "\n\nStyle: " + style;
+            });
+        });
+
+        form.addEventListener("submit", () => {
+            loading.style.display = "block";
+        });
+
+        // Auto-fill from AI suggestions (from recommendations page)
+        window.addEventListener('DOMContentLoaded', () => {
+            const suggestedPrompt = sessionStorage.getItem('suggested_prompt');
+            const suggestedMood = sessionStorage.getItem('suggested_mood');
+            const suggestedPalette = sessionStorage.getItem('suggested_palette');
+            const suggestedLighting = sessionStorage.getItem('suggested_lighting');
+            const suggestedCamera = sessionStorage.getItem('suggested_camera');
+            const suggestedCategory = sessionStorage.getItem('suggested_category');
+
+            if (suggestedPrompt) {
+                // Pre-fill prompt
+                const promptField = document.querySelector('textarea[name="prompt"]');
+                if (promptField) {
+                    promptField.value = suggestedPrompt;
+                }
+
+                // Pre-select mood
+                if (suggestedMood) {
+                    const moodSelect = document.querySelector('select[name="mood"]');
+                    if (moodSelect) {
+                        for (let option of moodSelect.options) {
+                            if (option.value.toLowerCase() === suggestedMood.toLowerCase()) {
+                                option.selected = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Pre-select color palette
+                if (suggestedPalette) {
+                    const paletteSelect = document.querySelector('select[name="color_palette"]');
+                    if (paletteSelect) {
+                        for (let option of paletteSelect.options) {
+                            if (option.value.toLowerCase() === suggestedPalette.toLowerCase()) {
+                                option.selected = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Pre-select lighting
+                if (suggestedLighting) {
+                    const lightingSelect = document.querySelector('select[name="lighting"]');
+                    if (lightingSelect) {
+                        for (let option of lightingSelect.options) {
+                            if (option.value.toLowerCase() === suggestedLighting.toLowerCase()) {
+                                option.selected = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Pre-select camera angle
+                if (suggestedCamera) {
+                    const cameraSelect = document.querySelector('select[name="camera_angle"]');
+                    if (cameraSelect) {
+                        for (let option of cameraSelect.options) {
+                            if (option.value.toLowerCase() === suggestedCamera.toLowerCase()) {
+                                option.selected = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Pre-fill category
+                if (suggestedCategory) {
+                    const categoryInput = document.querySelector('input[name="category"]');
+                    if (categoryInput) {
+                        categoryInput.value = suggestedCategory;
+                    }
+                }
+
+                // Clear session storage after use
+                sessionStorage.removeItem('suggested_prompt');
+                sessionStorage.removeItem('suggested_mood');
+                sessionStorage.removeItem('suggested_palette');
+                sessionStorage.removeItem('suggested_lighting');
+                sessionStorage.removeItem('suggested_camera');
+                sessionStorage.removeItem('suggested_category');
+
+                // Visual feedback
+                promptField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                promptField.style.boxShadow = '0 0 20px rgba(245, 158, 11, 0.5)';
+                setTimeout(() => {
+                    promptField.style.boxShadow = '';
+                }, 2000);
+            }
+        });
+    </script>
+
+</body>
+</html>

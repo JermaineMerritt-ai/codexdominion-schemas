@@ -1,10 +1,27 @@
-FROM python:3.11-slim
+FROM node:18-alpine
+
+# Install OpenSSL for Prisma
+RUN apk add --no-cache openssl
 
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy application files
 COPY . .
-EXPOSE 8000
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Generate Prisma client
+RUN npx prisma generate
+
+# Build application
+RUN npm run build
+
+# Expose port
+EXPOSE 8080
+
+# Start application
+CMD ["node", "dist/main.js"]

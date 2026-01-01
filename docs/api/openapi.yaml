@@ -1,0 +1,1653 @@
+openapi: 3.0.3
+info:
+  title: CodexDominion Civilization API
+  version: 1.0.0
+  description: >
+    Core API for CodexDominion 2.0 — youth, creators, circles, missions,
+    culture, ambassadors, events, and analytics.
+
+servers:
+  - url: https://api.codexdominion.com/api/v1
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: RESOURCE_NOT_FOUND
+            message:
+              type: string
+              example: Circle not found
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        first_name:
+          type: string
+        last_name:
+          type: string
+        status:
+          type: string
+          enum: [ACTIVE, SUSPENDED, ARCHIVED]
+
+    Profile:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+        region_id:
+          type: string
+          format: uuid
+          nullable: true
+        school_id:
+          type: string
+          format: uuid
+          nullable: true
+        cultural_identity:
+          type: string
+        diaspora_origin:
+          type: string
+        rise_path:
+          type: string
+          enum: [IDENTITY, MASTERY, CREATION, LEADERSHIP]
+        avatar_url:
+          type: string
+          format: uri
+
+    Season:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          enum: [IDENTITY, MASTERY, CREATION, LEADERSHIP]
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+
+    Mission:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        season_id:
+          type: string
+          format: uuid
+        month:
+          type: integer
+        week:
+          type: integer
+        type:
+          type: string
+          enum: [GLOBAL, REGIONAL, CIRCLE]
+
+    MissionSubmission:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        mission_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        circle_id:
+          type: string
+          format: uuid
+          nullable: true
+        content:
+          type: string
+        reflection:
+          type: string
+        status:
+          type: string
+          enum: [SUBMITTED, APPROVED, NEEDS_REVISION]
+        submitted_at:
+          type: string
+          format: date-time
+
+    Circle:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        captain_id:
+          type: string
+          format: uuid
+        region_id:
+          type: string
+          format: uuid
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+
+    CircleSession:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        circle_id:
+          type: string
+          format: uuid
+        scheduled_at:
+          type: string
+          format: date-time
+        topic:
+          type: string
+        season:
+          type: string
+          enum: [IDENTITY, MASTERY, CREATION, LEADERSHIP]
+        week_number:
+          type: integer
+
+    CurriculumModule:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        season_id:
+          type: string
+          format: uuid
+        month:
+          type: integer
+        week:
+          type: integer
+        type:
+          type: string
+          enum: [STORY, LESSON, ACTIVITY]
+        content:
+          type: object
+          properties:
+            format:
+              type: string
+              example: markdown
+            body:
+              type: string
+
+    Artifact:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        creator_id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        artifact_type:
+          type: string
+          enum: [AUTOMATION, DESIGN, WRITING, VIDEO, APP, OTHER]
+        file_url:
+          type: string
+          format: uri
+        created_at:
+          type: string
+          format: date-time
+
+    CreatorChallenge:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        season_id:
+          type: string
+          format: uuid
+          nullable: true
+        deadline:
+          type: string
+          format: date-time
+          nullable: true
+
+    CulturalStory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        content:
+          type: object
+          properties:
+            format:
+              type: string
+              example: markdown
+            body:
+              type: string
+        season_id:
+          type: string
+          format: uuid
+          nullable: true
+        week:
+          type: integer
+          nullable: true
+        region_id:
+          type: string
+          format: uuid
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+
+    Ritual:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum: [OPENING, CLOSING, SEASONAL, UNITY, CEREMONY]
+
+    Region:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        country:
+          type: string
+        timezone:
+          type: string
+
+    School:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        region_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        address:
+          type: string
+        contact_person:
+          type: string
+
+    AmbassadorOutreach:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        ambassador_id:
+          type: string
+          format: uuid
+        school_id:
+          type: string
+          format: uuid
+          nullable: true
+        region_id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum: [VISIT, EVENT, MEETING]
+        notes:
+          type: string
+        date:
+          type: string
+          format: date
+
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        event_type:
+          type: string
+          enum: [LAUNCH, CEREMONY, SUMMIT, TRAINING, OTHER]
+        region_id:
+          type: string
+          format: uuid
+          nullable: true
+        scheduled_at:
+          type: string
+          format: date-time
+
+    AnalyticsOverview:
+      type: object
+      properties:
+        active_youth:
+          type: integer
+        active_circles:
+          type: integer
+        missions_completed_this_week:
+          type: integer
+        regions_active:
+          type: integer
+
+security:
+  - bearerAuth: []
+
+paths:
+
+  # ----------------------------------------------------
+  # 2. AUTH & IDENTITY
+  # ----------------------------------------------------
+
+  /auth/register:
+    post:
+      summary: Register a new user
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password, first_name, last_name]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                date_of_birth:
+                  type: string
+                  format: date
+      responses:
+        '201':
+          description: User registered
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  token:
+                    type: string
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /auth/login:
+    post:
+      summary: Log in
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Authenticated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  token:
+                    type: string
+
+  /auth/refresh:
+    post:
+      summary: Refresh access token
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refresh_token:
+                  type: string
+      responses:
+        '200':
+          description: Token refreshed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+
+  /users/me:
+    get:
+      summary: Get current user
+      tags: [Users]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Current user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                  profile:
+                    $ref: '#/components/schemas/Profile'
+
+    patch:
+      summary: Update current user
+      tags: [Users]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                status:
+                  type: string
+                  enum: [ACTIVE, SUSPENDED, ARCHIVED]
+      responses:
+        '200':
+          description: Updated user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /profiles/me:
+    get:
+      summary: Get current user profile
+      tags: [Profiles]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+    patch:
+      summary: Update current user profile
+      tags: [Profiles]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                region_id:
+                  type: string
+                  format: uuid
+                school_id:
+                  type: string
+                  format: uuid
+                cultural_identity:
+                  type: string
+                diaspora_origin:
+                  type: string
+                rise_path:
+                  type: string
+                  enum: [IDENTITY, MASTERY, CREATION, LEADERSHIP]
+                avatar_url:
+                  type: string
+                  format: uri
+      responses:
+        '200':
+          description: Updated profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+
+  /users:
+    get:
+      summary: List users filtered by role/region
+      tags: [Users]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: query
+          name: role
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: region_id
+          schema:
+            type: string
+            format: uuid
+          required: false
+      responses:
+        '200':
+          description: Users list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+  # ----------------------------------------------------
+  # 3. SEASONS, MISSIONS & SUBMISSIONS
+  # ----------------------------------------------------
+
+  /seasons/current:
+    get:
+      summary: Get current season
+      tags: [Missions]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Current season
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Season'
+
+  /seasons:
+    get:
+      summary: List seasons
+      tags: [Missions]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Seasons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Season'
+
+  /missions/current:
+    get:
+      summary: Get mission relevant to caller for current week/season
+      tags: [Missions]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Current mission
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mission'
+
+  /missions:
+    get:
+      summary: List missions
+      tags: [Missions]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: query
+          name: season_id
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: month
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Missions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Mission'
+    post:
+      summary: Create mission
+      tags: [Missions]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, description, season_id, type]
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                season_id:
+                  type: string
+                  format: uuid
+                month:
+                  type: integer
+                week:
+                  type: integer
+                type:
+                  type: string
+                  enum: [GLOBAL, REGIONAL, CIRCLE]
+      responses:
+        '201':
+          description: Mission created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mission'
+
+  /missions/{id}:
+    get:
+      summary: Get mission by id
+      tags: [Missions]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Mission
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mission'
+
+  /missions/{id}/assign:
+    post:
+      summary: Assign mission to user or circle
+      tags: [Missions]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  format: uuid
+                circle_id:
+                  type: string
+                  format: uuid
+      responses:
+        '201':
+          description: Assignment created
+
+  /mission-assignments:
+    get:
+      summary: List mission assignments for a user
+      tags: [Missions]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: query
+          name: user_id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Mission assignments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+
+  /mission-submissions:
+    post:
+      summary: Submit mission work
+      tags: [Missions]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [mission_id, content]
+              properties:
+                mission_id:
+                  type: string
+                  format: uuid
+                content:
+                  type: string
+                reflection:
+                  type: string
+                circle_id:
+                  type: string
+                  format: uuid
+                  nullable: true
+      responses:
+        '201':
+          description: Submission created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MissionSubmission'
+
+    get:
+      summary: List submissions for mission/circle
+      tags: [Missions]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: query
+          name: mission_id
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: circle_id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Submissions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MissionSubmission'
+
+  # ----------------------------------------------------
+  # 4. YOUTH CIRCLES
+  # ----------------------------------------------------
+
+  /circles:
+    get:
+      summary: List circles
+      tags: [Circles]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Circles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Circle'
+    post:
+      summary: Create circle
+      tags: [Circles]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, captain_id]
+              properties:
+                name:
+                  type: string
+                captain_id:
+                  type: string
+                  format: uuid
+                region_id:
+                  type: string
+                  format: uuid
+      responses:
+        '201':
+          description: Circle created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Circle'
+
+  /circles/{id}:
+    get:
+      summary: Get circle by id
+      tags: [Circles]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Circle
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Circle'
+    patch:
+      summary: Update circle
+      tags: [Circles]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                captain_id:
+                  type: string
+                  format: uuid
+                region_id:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: Updated circle
+
+  /circles/{id}/members:
+    post:
+      summary: Add member to circle
+      tags: [Circles]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  format: uuid
+      responses:
+        '201':
+          description: Member added
+
+  /circles/{id}/members/{user_id}:
+    delete:
+      summary: Remove member from circle
+      tags: [Circles]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Member removed
+
+  /circles/{id}/sessions:
+    get:
+      summary: List circle sessions
+      tags: [Circles]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CircleSession'
+
+    post:
+      summary: Create circle session
+      tags: [Circles]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [scheduled_at]
+              properties:
+                scheduled_at:
+                  type: string
+                  format: date-time
+                topic:
+                  type: string
+                season:
+                  type: string
+                  enum: [IDENTITY, MASTERY, CREATION, LEADERSHIP]
+                week_number:
+                  type: integer
+      responses:
+        '201':
+          description: Session created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircleSession'
+
+  /circles/{id}/sessions/{session_id}/attendance:
+    post:
+      summary: Record attendance for session
+      tags: [Circles]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: path
+          name: session_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                records:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      user_id:
+                        type: string
+                        format: uuid
+                      status:
+                        type: string
+                        enum: [present, absent, excused]
+      responses:
+        '201':
+          description: Attendance recorded
+
+  # ----------------------------------------------------
+  # 5. CURRICULUM
+  # ----------------------------------------------------
+
+  /curriculum/modules:
+    get:
+      summary: List curriculum modules
+      tags: [Curriculum]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: query
+          name: season_id
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: month
+          schema:
+            type: integer
+        - in: query
+          name: week
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Curriculum modules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CurriculumModule'
+
+    post:
+      summary: Create curriculum module
+      tags: [Curriculum]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, season_id, type, content]
+              properties:
+                title:
+                  type: string
+                season_id:
+                  type: string
+                  format: uuid
+                month:
+                  type: integer
+                week:
+                  type: integer
+                type:
+                  type: string
+                  enum: [STORY, LESSON, ACTIVITY]
+                content:
+                  type: object
+                  properties:
+                    format:
+                      type: string
+                    body:
+                      type: string
+      responses:
+        '201':
+          description: Module created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurriculumModule'
+
+  /curriculum/modules/{id}:
+    get:
+      summary: Get curriculum module
+      tags: [Curriculum]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Module
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurriculumModule'
+
+  # ----------------------------------------------------
+  # 6. CREATOR & ARTIFACT ENGINE
+  # ----------------------------------------------------
+
+  /artifacts:
+    get:
+      summary: List artifacts
+      tags: [Creators]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: query
+          name: creator_id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Artifacts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Artifact'
+
+    post:
+      summary: Create artifact
+      tags: [Creators]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, artifact_type]
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                artifact_type:
+                  type: string
+                  enum: [AUTOMATION, DESIGN, WRITING, VIDEO, APP, OTHER]
+                file_url:
+                  type: string
+                  format: uri
+                creator_id:
+                  type: string
+                  format: uuid
+      responses:
+        '201':
+          description: Artifact created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artifact'
+
+  /artifacts/{id}:
+    get:
+      summary: Get artifact
+      tags: [Creators]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Artifact
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artifact'
+
+  /creator-challenges:
+    get:
+      summary: List creator challenges
+      tags: [Creators]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Creator challenges
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CreatorChallenge'
+
+  /creator-challenges/{id}/submit:
+    post:
+      summary: Submit artifact to creator challenge
+      tags: [Creators]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                artifact_id:
+                  type: string
+                  format: uuid
+      responses:
+        '201':
+          description: Challenge submission created
+
+  # ----------------------------------------------------
+  # 7. CULTURE ENGINE
+  # ----------------------------------------------------
+
+  /culture/story/current:
+    get:
+      summary: Get current cultural story
+      tags: [Culture]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Current cultural story
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalStory'
+
+  /culture/stories:
+    get:
+      summary: List cultural stories
+      tags: [Culture]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: query
+          name: season_id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Cultural stories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CulturalStory'
+
+  /culture/stories/create:
+    post:
+      summary: Create cultural story
+      tags: [Culture]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, content]
+              properties:
+                title:
+                  type: string
+                content:
+                  type: object
+                  properties:
+                    format:
+                      type: string
+                    body:
+                      type: string
+                season_id:
+                  type: string
+                  format: uuid
+                week:
+                  type: integer
+                region_id:
+                  type: string
+                  format: uuid
+      responses:
+        '201':
+          description: Cultural story created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CulturalStory'
+
+  /culture/rituals:
+    get:
+      summary: List rituals
+      tags: [Culture]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Rituals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ritual'
+
+  # ----------------------------------------------------
+  # 8. AMBASSADOR & EXPANSION
+  # ----------------------------------------------------
+
+  /regions:
+    get:
+      summary: List regions
+      tags: [Regions]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Regions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Region'
+
+  /regions/{id}:
+    get:
+      summary: Get region
+      tags: [Regions]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Region
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Region'
+
+  /schools:
+    get:
+      summary: List schools
+      tags: [Regions]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: query
+          name: region_id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Schools
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/School'
+    post:
+      summary: Create school
+      tags: [Regions]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [region_id, name]
+              properties:
+                region_id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+                address:
+                  type: string
+                contact_person:
+                  type: string
+      responses:
+        '201':
+          description: School created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/School'
+
+  /ambassador-outreach:
+    get:
+      summary: List ambassador outreach entries
+      tags: [Ambassadors]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: query
+          name: region_id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Outreach records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AmbassadorOutreach'
+
+    post:
+      summary: Create ambassador outreach entry
+      tags: [Ambassadors]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ambassador_id, region_id, type, date]
+              properties:
+                ambassador_id:
+                  type: string
+                  format: uuid
+                school_id:
+                  type: string
+                  format: uuid
+                region_id:
+                  type: string
+                  format: uuid
+                type:
+                  type: string
+                  enum: [VISIT, EVENT, MEETING]
+                notes:
+                  type: string
+                date:
+                  type: string
+                  format: date
+      responses:
+        '201':
+          description: Outreach created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AmbassadorOutreach'
+
+  # ----------------------------------------------------
+  # 9. EVENTS & CEREMONIES
+  # ----------------------------------------------------
+
+  /events:
+    get:
+      summary: List events
+      tags: [Events]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: query
+          name: region_id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+    post:
+      summary: Create event
+      tags: [Events]
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, event_type, scheduled_at]
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                event_type:
+                  type: string
+                  enum: [LAUNCH, CEREMONY, SUMMIT, TRAINING, OTHER]
+                region_id:
+                  type: string
+                  format: uuid
+                scheduled_at:
+                  type: string
+                  format: date-time
+      responses:
+        '201':
+          description: Event created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+
+  /events/{id}:
+    get:
+      summary: Get event
+      tags: [Events]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Event
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+
+  /events/{id}/attendance:
+    post:
+      summary: Record event attendance
+      tags: [Events]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                records:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      user_id:
+                        type: string
+                        format: uuid
+                      status:
+                        type: string
+                        enum: [present, absent]
+      responses:
+        '201':
+          description: Attendance recorded
+
+  # ----------------------------------------------------
+  # 10. ANALYTICS
+  # ----------------------------------------------------
+
+  /analytics/overview:
+    get:
+      summary: Get high-level analytics overview
+      tags: [Analytics]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Overview
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsOverview'

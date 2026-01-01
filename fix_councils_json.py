@@ -1,0 +1,90 @@
+"""Fix councils.json by reconstructing from scratch"""
+import json
+
+# Minimal valid structure
+councils_data = {
+    "councils": [
+        {
+            "id": "council_commerce",
+            "name": "Commerce Council",
+            "purpose": "Oversee pricing, marketplace rules, financial integrity, and commercial operations across the ecosystem.",
+            "domain": "commerce",
+            "cluster": "Commerce",
+            "members": ["agent_commerce_strategist", "agent_pricing_analyst"],
+            "primary_engines": ["engine_commerce", "engine_analytics"],
+            "oversight": {
+                "review_actions": True,
+                "review_threshold_weekly_savings": 7000,
+                "blocked_action_types": []
+            },
+            "status": "active"
+        },
+        {
+            "id": "council_finance",
+            "name": "Finance Council",
+            "purpose": "Govern treasury operations, cost management, and financial strategy.",
+            "domain": "finance",
+            "cluster": "Finance",
+            "members": ["agent_finance_controller", "agent_risk_analyst"],
+            "primary_engines": ["engine_commerce", "engine_analytics"],
+            "oversight": {
+                "review_actions": True,
+                "review_threshold_weekly_savings": 10000,
+                "blocked_action_types": ["large_fund_transfer"]
+            },
+            "status": "active"
+        },
+        {
+            "id": "council_media",
+            "name": "Media Council",
+            "purpose": "Govern content distribution, moderation, and media partnerships.",
+            "domain": "media",
+            "cluster": "Media",
+            "members": ["agent_media_director", "agent_content_moderator"],
+            "primary_engines": ["engine_content", "engine_media"],
+            "oversight": {
+                "review_actions": True,
+                "review_threshold_weekly_savings": 5000,
+                "blocked_action_types": []
+            },
+            "status": "active"
+        },
+        {
+            "id": "council_technology",
+            "name": "Technology Council",
+            "purpose": "Oversee infrastructure, security, and technical innovation.",
+            "domain": "technology",
+            "cluster": "Technology",
+            "members": ["agent_tech_architect", "agent_security_specialist"],
+            "primary_engines": ["engine_infrastructure", "engine_security"],
+            "oversight": {
+                "review_actions": True,
+                "review_threshold_weekly_savings": 8000,
+                "blocked_action_types": []
+            },
+            "status": "active"
+        },
+        {
+            "id": "council_governance",
+            "name": "Governance Council",
+            "purpose": "Supreme oversight of all councils and system-wide policy.",
+            "domain": "governance",
+            "cluster": "Governance",
+            "members": ["agent_governance_lead", "agent_policy_advisor"],
+            "primary_engines": ["engine_governance"],
+            "oversight": {
+                "review_actions": True,
+                "review_threshold_weekly_savings": 15000,
+                "blocked_action_types": []
+            },
+            "status": "active"
+        }
+    ]
+}
+
+# Write to file
+with open("councils.json", "w", encoding="utf-8") as f:
+    json.dump(councils_data, f, indent=2)
+
+print("✅ Created clean councils.json with 5 councils")
+print("Councils:", [c["id"] for c in councils_data["councils"]])

@@ -1,140 +1,120 @@
-# Codex Dominion - Docker ignore file
-
-# Git files
-.git
-.gitignore
-.gitattributes
-README.md
-*.md
-
-# Python cache
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-env/
-venv/
 .venv/
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage
+venv/
+ENV/
+env/
 .pytest_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
 
-# IDE files
+# Node.js - EXCLUDE ALL DEEPLY NESTED PATHS
+**/node_modules/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+.pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.next/
+out/
+dashboard-app/
+apps/
+frontend/
+frontend-vite/
+web/
+codexdominion-clean/
+codexdominion-schemas/
+
+# IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS files
+# OS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
-# Logs and data (will be mounted as volumes)
-logs/
+# Git
+.git/
+.gitignore
+.gitattributes
+.github/
+
+# Logs
 *.log
-data/
-temp/
-tmp/
-
-# Docker files (don't include in image)
-docker-compose*.yml
-.dockerignore
-
-# Node modules
-node_modules/
-.next/
-build/
-dist/
-out/
-
-# Deployment scripts
-deploy-*.sh
-deploy-*.ps1
-
-# SSL certificates (will be mounted)
-ssl/
-*.pem
-*.key
-*.crt
-
-# Large files that shouldn't be in container
+logs/
 *.zip
 *.tar.gz
-*.rar
 
-# Test files
-tests/
-test_*
-*_test.py
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
 
-# Documentation
-docs/
-*.txt
-!requirements.txt
-
-# Environment files
-.env
-.env.local
-.env.production
-.env.staging
-
-# Node modules (if any)
-node_modules/
-frontend/node_modules/
-frontend-vite/node_modules/
-web/node_modules/
-apps/*/node_modules/
-
-# Large duplicate directories
-codexdominion-clean/
-codexdominion-schemas/
-recent_uploads/
-infra/
+# Kubernetes
 k8s/
 helm/
-backend-logs/
-backend-logs2/
-dashboard-logs/
-dashboard-logs2/
-dashboard-logs3/
-*.zip
+istio-latest/
 
-# Streamlit cache
-.streamlit/
-.git
-.venv
-node_modules
-__pycache__
-*.log
-*.csv
-*.html
-old_versions/
-archive/
+# Cloud providers
+aws-*/
+azure-*/
+gcp-*/
+alicloud-*/
+digitalocean-*/
+linode-*/
+ovh-*/
+kubernetes-*/
+serverless-*/
 
-# Frontend directories (not needed for dashboard)
-frontend/
-frontend-vite/
-web/
+# Documentation
+*.md
+!README.md
+docs/
+playbooks/
+
+# Archives
+backups/
+archives/
+*.backup
+codexdominion-schemas/
+codexdominion-clean/
+
+# Large directories
+ai_design_assets/
+ai_models/
+video_projects/
+render_farm/
+generated_sites/
+lovable_destroyer_projects/
+nano_banana_destroyer_content/
+notebookllm_destroyer_research/
+
+# Development
+test*.py
+TEST*.ps1
+*_test.py
+tests/
+.env.development
+.env.staging
+.env.example
+.env.3cloud.example
+
+# Dashboard apps (not needed in backend)
+dashboard-app/
+dashboard/
+dashboards/
 apps/
 packages/
-api/
-codex_capsules/
-system_capsules/
-cloud-function/
-backend/
-
-# Config and data files
-*.json
-!requirements.txt
-*.backup_*
-*.sqlite
-*.db

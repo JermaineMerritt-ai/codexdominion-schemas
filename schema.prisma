@@ -1,0 +1,484 @@
+// ======================================================
+// CODEXDOMINION 2.0 - PRISMA SCHEMA
+// Civilization Era Database Architecture
+// ======================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ======================================================
+// CORE ENTITIES
+// ======================================================
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  passwordHash  String
+  firstName     String
+  lastName      String
+  dateOfBirth   DateTime?
+  status        UserStatus     @default(ACTIVE)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  // Relations
+  roles         UserRole[]
+  profile       Profile?
+  circlesLed    Circle[]       @relation("CircleCaptain")
+  circleMemberships CircleMember[]
+  missionAssignments MissionAssignment[]
+  missionSubmissions MissionSubmission[]
+  artifacts     Artifact[]     @relation("UserArtifacts")
+  creatorChallengesSubmitted ChallengeSubmission[]
+  ambassadorOutreach AmbassadorOutreach[] @relation("AmbassadorUser")
+  regionDirected Region[]      @relation("RegionDirector")
+  eventsAttended EventAttendance[]
+
+  @@index([email])
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  ARCHIVED
+}
+
+model Role {
+  id    Int        @id @default(autoincrement())
+  name  RoleName   @unique
+
+  users UserRole[]
+}
+
+enum RoleName {
+  YOUTH
+  YOUTH_CAPTAIN
+  AMBASSADOR
+  CREATOR
+  EDUCATOR
+  REGIONAL_DIRECTOR
+  COUNCIL
+  ADMIN
+}
+
+model UserRole {
+  userId String
+  roleId Int
+
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role   Role @relation(fields: [roleId], references: [id])
+
+  @@id([userId, roleId])
+}
+
+model Profile {
+  userId          String   @id
+  bio             String?
+  regionId        String?
+  schoolId        String?
+  culturalIdentity String?
+  diasporaOrigin  String?
+  risePath        RisePath?
+  avatarUrl       String?
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  region Region? @relation(fields: [regionId], references: [id])
+  school School? @relation(fields: [schoolId], references: [id])
+}
+
+enum RisePath {
+  IDENTITY
+  MASTERY
+  CREATION
+  LEADERSHIP
+}
+
+// ======================================================
+// YOUTH CIRCLE ENGINE
+// ======================================================
+
+model Circle {
+  id        String   @id @default(uuid())
+  name      String
+  captainId String
+  regionId  String?
+  createdAt DateTime @default(now())
+
+  captain   User     @relation("CircleCaptain", fields: [captainId], references: [id])
+  region    Region?  @relation(fields: [regionId], references: [id])
+  members   CircleMember[]
+  sessions  CircleSession[]
+  missionAssignments MissionAssignment[]
+  missionSubmissions MissionSubmission[]
+}
+
+model CircleMember {
+  circleId String
+  userId   String
+  joinedAt DateTime @default(now())
+
+  circle   Circle @relation(fields: [circleId], references: [id], onDelete: Cascade)
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([circleId, userId])
+}
+
+model CircleSession {
+  id         String   @id @default(uuid())
+  circleId   String
+  scheduledAt DateTime
+  topic      String?
+  season     SeasonName?
+  weekNumber Int?
+
+  circle     Circle   @relation(fields: [circleId], references: [id], onDelete: Cascade)
+  attendance CircleAttendance[]
+}
+
+model CircleAttendance {
+  sessionId String
+  userId    String
+  status    AttendanceStatus
+
+  session   CircleSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  user      User          @relation(fields: [userId], references: [id])
+
+  @@id([sessionId, userId])
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  EXCUSED
+}
+
+// ======================================================
+// MISSION ENGINE
+// ======================================================
+
+model Season {
+  id        String      @id @default(uuid())
+  name      SeasonName  @unique
+  startDate DateTime?
+  endDate   DateTime?
+
+  missions  Mission[]
+  culturalStories CulturalStory[]
+  curriculumModules CurriculumModule[]
+  creatorChallenges CreatorChallenge[]
+}
+
+enum SeasonName {
+  IDENTITY
+  MASTERY
+  CREATION
+  LEADERSHIP
+}
+
+model Mission {
+  id          String       @id @default(uuid())
+  title       String
+  description String
+  seasonId    String
+  month       Int?
+  week        Int?
+  type        MissionType
+  createdById String?
+
+  season      Season       @relation(fields: [seasonId], references: [id])
+  createdBy   User?        @relation(fields: [createdById], references: [id])
+  assignments MissionAssignment[]
+  submissions MissionSubmission[]
+}
+
+enum MissionType {
+  GLOBAL
+  REGIONAL
+  CIRCLE
+}
+
+model MissionAssignment {
+  id        String   @id @default(uuid())
+  missionId String
+  userId    String?
+  circleId  String?
+  assignedAt DateTime @default(now())
+
+  mission   Mission @relation(fields: [missionId], references: [id], onDelete: Cascade)
+  user      User?   @relation(fields: [userId], references: [id])
+  circle    Circle? @relation(fields: [circleId], references: [id])
+
+  submissions MissionSubmission[]
+}
+
+model MissionSubmission {
+  id         String   @id @default(uuid())
+  missionId  String
+  userId     String
+  circleId   String?
+  assignmentId String?
+  content    String?  // text or JSON reference
+  reflection String?
+  status     SubmissionStatus @default(SUBMITTED)
+  submittedAt DateTime        @default(now())
+
+  mission    Mission @relation(fields: [missionId], references: [id])
+  user       User   @relation(fields: [userId], references: [id])
+  circle     Circle? @relation(fields: [circleId], references: [id])
+  assignment MissionAssignment? @relation(fields: [assignmentId], references: [id])
+}
+
+enum SubmissionStatus {
+  SUBMITTED
+  APPROVED
+  NEEDS_REVISION
+}
+
+// ======================================================
+// CURRICULUM ENGINE
+// ======================================================
+
+model CurriculumModule {
+  id        String       @id @default(uuid())
+  title     String
+  seasonId  String
+  month     Int?
+  week      Int?
+  content   String       // markdown or JSON
+  type      CurriculumType
+
+  season    Season       @relation(fields: [seasonId], references: [id])
+  resources CurriculumResource[]
+}
+
+enum CurriculumType {
+  STORY
+  LESSON
+  ACTIVITY
+}
+
+model CurriculumResource {
+  id          String   @id @default(uuid())
+  moduleId    String
+  resourceType ResourceType
+  url         String
+  description String?
+
+  module      CurriculumModule @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+}
+
+enum ResourceType {
+  VIDEO
+  DOCUMENT
+  LINK
+  IMAGE
+  OTHER
+}
+
+// ======================================================
+// CREATOR ENGINE
+// ======================================================
+
+model Artifact {
+  id           String   @id @default(uuid())
+  creatorId    String
+  title        String
+  description  String?
+  artifactType ArtifactType
+  fileUrl      String?
+  createdAt    DateTime @default(now())
+
+  creator      User     @relation("UserArtifacts", fields: [creatorId], references: [id])
+  challengeSubmissions ChallengeSubmission[]
+}
+
+enum ArtifactType {
+  AUTOMATION
+  DESIGN
+  WRITING
+  VIDEO
+  APP
+  OTHER
+}
+
+model CreatorChallenge {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  seasonId    String?
+  deadline    DateTime?
+
+  season      Season?  @relation(fields: [seasonId], references: [id])
+  submissions ChallengeSubmission[]
+}
+
+model ChallengeSubmission {
+  id          String   @id @default(uuid())
+  challengeId String
+  creatorId   String
+  artifactId  String
+  submittedAt DateTime @default(now())
+
+  challenge   CreatorChallenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  creator     User             @relation(fields: [creatorId], references: [id])
+  artifact    Artifact         @relation(fields: [artifactId], references: [id])
+}
+
+// ======================================================
+// CULTURE ENGINE
+// ======================================================
+
+model CulturalStory {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  seasonId  String?
+  week      Int?
+  regionId  String?
+  createdAt DateTime @default(now())
+
+  season    Season?  @relation(fields: [seasonId], references: [id])
+  region    Region?  @relation(fields: [regionId], references: [id])
+}
+
+model Ritual {
+  id          String      @id @default(uuid())
+  name        String
+  description String?
+  type        RitualType
+}
+
+enum RitualType {
+  OPENING
+  CLOSING
+  SEASONAL
+  UNITY
+  CEREMONY
+}
+
+// ======================================================
+// AMBASSADOR & EXPANSION
+// ======================================================
+
+model Region {
+  id         String   @id @default(uuid())
+  name       String
+  country    String?
+  timezone   String?
+  directorId String?
+
+  director   User?    @relation("RegionDirector", fields: [directorId], references: [id])
+  schools    School[]
+  circles    Circle[]
+  outreach   AmbassadorOutreach[]
+  events     Event[]
+  metrics    MetricSnapshot[]
+  profiles   Profile[]
+  culturalStories CulturalStory[]
+}
+
+model School {
+  id           String   @id @default(uuid())
+  regionId     String
+  name         String
+  address      String?
+  contactPerson String?
+
+  region       Region   @relation(fields: [regionId], references: [id])
+  profiles     Profile[]
+  ambassadorOutreach AmbassadorOutreach[]
+}
+
+model AmbassadorOutreach {
+  id           String          @id @default(uuid())
+  ambassadorId String
+  schoolId     String?
+  regionId     String
+  type         OutreachType
+  notes        String?
+  date         DateTime
+
+  ambassador   User            @relation("AmbassadorUser", fields: [ambassadorId], references: [id])
+  school       School?         @relation(fields: [schoolId], references: [id])
+  region       Region          @relation(fields: [regionId], references: [id])
+}
+
+enum OutreachType {
+  VISIT
+  EVENT
+  MEETING
+}
+
+// ======================================================
+// EVENTS & CEREMONIES
+// ======================================================
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  eventType   EventType
+  regionId    String?
+  scheduledAt DateTime
+
+  region      Region?  @relation(fields: [regionId], references: [id])
+  attendance  EventAttendance[]
+}
+
+enum EventType {
+  LAUNCH
+  CEREMONY
+  SUMMIT
+  TRAINING
+  OTHER
+}
+
+model EventAttendance {
+  eventId String
+  userId  String
+  status  EventAttendanceStatus
+
+  event   Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user    User  @relation(fields: [userId], references: [id])
+
+  @@id([eventId, userId])
+}
+
+enum EventAttendanceStatus {
+  REGISTERED
+  ATTENDED
+  NO_SHOW
+}
+
+// ======================================================
+// ANALYTICS ENGINE
+// ======================================================
+
+model MetricSnapshot {
+  id         String   @id @default(uuid())
+  date       DateTime
+  regionId   String?
+  metricType MetricType
+  value      Int
+  metadata   Json?
+
+  region     Region?  @relation(fields: [regionId], references: [id])
+
+  @@index([date, regionId, metricType])
+}
+
+enum MetricType {
+  ACTIVE_YOUTH
+  ACTIVE_CREATORS
+  CIRCLES_COUNT
+  MISSIONS_COMPLETED
+  ARTIFACTS_SUBMITTED
+  EVENTS_HELD
+  SCHOOLS_PARTNERED
+}

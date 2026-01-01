@@ -1,0 +1,892 @@
+{
+  "meta": {
+    "version": "4.0.0",
+    "name": "Codex Dominion Platform Architecture",
+    "description": "Complete capsule-based architecture specification for the Codex Dominion ecosystem",
+    "last_updated": "2025-12-18T00:00:00Z",
+    "total_realms": 6,
+    "total_capsules": 36,
+    "total_modules": 144,
+    "total_features": 288,
+    "architecture_status": "comprehensive_specification",
+    "implementation_phase": "blueprint"
+  },
+
+  "foundation": [
+    {
+      "id": "capsule_01",
+      "name": "Identity Capsule",
+      "realm": "Foundation",
+      "description": "Manages authentication, roles, permissions, and identity verification.",
+      "modules": [
+        {
+          "id": "mod_01_01",
+          "name": "Authentication Module",
+          "description": "Handles login, OAuth, and multi-factor authentication.",
+          "features": [
+            { "id": "feat_01_01_01", "name": "Email Login", "description": "Standard email/password login.", "status": "planned" },
+            { "id": "feat_01_01_02", "name": "OAuth Login", "description": "Google, Microsoft, Apple sign-in options.", "status": "planned" },
+            { "id": "feat_01_01_03", "name": "Multi-Factor Auth", "description": "Optional multi-factor authentication for higher security.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_01_02",
+          "name": "Roles & Permissions Module",
+          "description": "Defines user roles and associated permissions.",
+          "features": [
+            { "id": "feat_01_02_01", "name": "Role Definitions", "description": "Admin, creator, teen, parent, school roles.", "status": "planned" },
+            { "id": "feat_01_02_02", "name": "Permission Groups", "description": "Grouped permissions for easier management.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_01_03",
+          "name": "Profile Module",
+          "description": "Stores and manages user profile data.",
+          "features": [
+            { "id": "feat_01_03_01", "name": "Profile Fields", "description": "Name, bio, location, preferences.", "status": "planned" },
+            { "id": "feat_01_03_02", "name": "Profile Completion Tracker", "description": "Tracks how complete a profile is.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_01_04",
+          "name": "Identity Verification Module",
+          "description": "Verifies age, identity, and guardianship where required.",
+          "features": [
+            { "id": "feat_01_04_01", "name": "Age Verification", "description": "Verifies age for teen accounts.", "status": "planned" },
+            { "id": "feat_01_04_02", "name": "Parent Linking", "description": "Links teen accounts to parent/guardian accounts.", "status": "planned" }
+          ]
+        }
+      ],
+      "engines": ["identity_engine", "security_engine"],
+      "industries": ["all"],
+      "status": "planned",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_02",
+      "name": "Governance Capsule",
+      "realm": "Foundation",
+      "description": "Defines system rules, admin controls, and decision flows.",
+      "modules": [
+        {
+          "id": "mod_02_01",
+          "name": "Policy Engine Module",
+          "description": "Central configuration of system-wide policies.",
+          "features": [
+            { "id": "feat_02_01_01", "name": "Rule Definitions", "description": "Create and manage governance rules.", "status": "planned" },
+            { "id": "feat_02_01_02", "name": "Policy Versioning", "description": "Track changes to policies over time.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_02_02",
+          "name": "Admin Console Module",
+          "description": "Administrative dashboard for managing the platform.",
+          "features": [
+            { "id": "feat_02_02_01", "name": "User Management", "description": "View and manage user accounts.", "status": "planned" },
+            { "id": "feat_02_02_02", "name": "System Logs", "description": "View important system events and logs.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_02_03",
+          "name": "Decision Flow Module",
+          "description": "Models how governance decisions are made and escalated.",
+          "features": [
+            { "id": "feat_02_03_01", "name": "Escalation Paths", "description": "Define escalation paths for issues.", "status": "planned" },
+            { "id": "feat_02_03_02", "name": "Approval Workflows", "description": "Configure multi-step approvals.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_02_04",
+          "name": "Audit Trail Module",
+          "description": "Tracks key actions for accountability.",
+          "features": [
+            { "id": "feat_02_04_01", "name": "Action Logging", "description": "Log critical user and admin actions.", "status": "planned" },
+            { "id": "feat_02_04_02", "name": "Export Reports", "description": "Export audit data for review.", "status": "planned" }
+          ]
+        }
+      ],
+      "engines": ["governance_engine"],
+      "industries": ["all"],
+      "status": "planned",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_03",
+      "name": "Compliance Capsule",
+      "realm": "Foundation",
+      "description": "Ensures legal, ethical, and safety compliance across the system.",
+      "modules": [
+        {
+          "id": "mod_03_01",
+          "name": "Safety Module",
+          "description": "Implements safety policies with a focus on youth protection.",
+          "features": [
+            { "id": "feat_03_01_01", "name": "Content Filters", "description": "Filter inappropriate content and communication.", "status": "planned" },
+            { "id": "feat_03_01_02", "name": "Safety Rules", "description": "Safety rule sets tailored by age group.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_03_02",
+          "name": "Legal Compliance Module",
+          "description": "Manages regulatory compliance logic.",
+          "features": [
+            { "id": "feat_03_02_01", "name": "Regional Compliance Profiles", "description": "Handle region-specific laws (e.g., GDPR-like logic).", "status": "planned" },
+            { "id": "feat_03_02_02", "name": "Policy References", "description": "Reference legal policies and internal rules.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_03_03",
+          "name": "Financial Compliance Module",
+          "description": "Supports safe and compliant financial operations.",
+          "features": [
+            { "id": "feat_03_03_01", "name": "Transaction Monitoring", "description": "Monitor transactions for risk flags.", "status": "planned" },
+            { "id": "feat_03_03_02", "name": "Fee & Tax Rules", "description": "Apply proper tax and fee logic.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_03_04",
+          "name": "Reporting Module",
+          "description": "Surfaces safety and compliance incidents.",
+          "features": [
+            { "id": "feat_03_04_01", "name": "Abuse Reports", "description": "Allow users to report abuse or issues.", "status": "planned" },
+            { "id": "feat_03_04_02", "name": "Compliance Dashboards", "description": "View metrics on policy adherence and incidents.", "status": "planned" }
+          ]
+        }
+      ],
+      "engines": ["safety_engine", "governance_engine"],
+      "industries": ["all"],
+      "status": "planned",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_04",
+      "name": "Infrastructure Capsule",
+      "realm": "Foundation",
+      "description": "Provides core hosting, API, and system infrastructure.",
+      "modules": [
+        {
+          "id": "mod_04_01",
+          "name": "Hosting Module",
+          "description": "Defines deployment and hosting configuration.",
+          "features": [
+            { "id": "feat_04_01_01", "name": "Environment Profiles", "description": "Separate dev, staging, and production configs.", "status": "planned" },
+            { "id": "feat_04_01_02", "name": "Deployment Pipelines", "description": "Document CI/CD pipeline steps.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_04_02",
+          "name": "API Gateway Module",
+          "description": "Manages API routing, limits, and versioning.",
+          "features": [
+            { "id": "feat_04_02_01", "name": "Routing Rules", "description": "Route traffic to appropriate services.", "status": "planned" },
+            { "id": "feat_04_02_02", "name": "Rate Limits", "description": "Basic rate limiting for key APIs.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_04_03",
+          "name": "System Health Module",
+          "description": "Tracks health, uptime, and error events.",
+          "features": [
+            { "id": "feat_04_03_01", "name": "Health Checks", "description": "Periodic health checks for core services.", "status": "planned" },
+            { "id": "feat_04_03_02", "name": "Error Monitoring", "description": "Log and surface critical errors.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_04_04",
+          "name": "Storage Module",
+          "description": "Manages file storage and backup policies.",
+          "features": [
+            { "id": "feat_04_04_01", "name": "Storage Buckets", "description": "Logical buckets for files and assets.", "status": "planned" },
+            { "id": "feat_04_04_02", "name": "Backup Rules", "description": "Backup frequency and retention rules.", "status": "planned" }
+          ]
+        }
+      ],
+      "engines": ["infrastructure_engine"],
+      "industries": ["all"],
+      "status": "planned",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_05",
+      "name": "Security Capsule",
+      "realm": "Foundation",
+      "description": "Protects users, data, and core services from threats.",
+      "modules": [
+        {
+          "id": "mod_05_01",
+          "name": "Threat Detection Module",
+          "description": "Identifies suspicious or risky activity.",
+          "features": [
+            { "id": "feat_05_01_01", "name": "Suspicious Login Detection", "description": "Flag unusual login patterns.", "status": "planned" },
+            { "id": "feat_05_01_02", "name": "IP Monitoring", "description": "Monitor risky IP ranges or geos.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_05_02",
+          "name": "Encryption Module",
+          "description": "Defines data encryption practices.",
+          "features": [
+            { "id": "feat_05_02_01", "name": "At-Rest Encryption", "description": "Encrypt sensitive data at rest.", "status": "planned" },
+            { "id": "feat_05_02_02", "name": "In-Transit Encryption", "description": "TLS everywhere for sensitive paths.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_05_03",
+          "name": "Access Security Module",
+          "description": "Manages sessions and device access.",
+          "features": [
+            { "id": "feat_05_03_01", "name": "Session Management", "description": "Handle login sessions securely.", "status": "planned" },
+            { "id": "feat_05_03_02", "name": "Device Tracking", "description": "Track recognized devices per user.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_05_04",
+          "name": "Incident Response Module",
+          "description": "Outlines responses to security incidents.",
+          "features": [
+            { "id": "feat_05_04_01", "name": "Incident Playbooks", "description": "Predefined responses to common incidents.", "status": "planned" },
+            { "id": "feat_05_04_02", "name": "Notification Rules", "description": "Who gets notified when incidents occur.", "status": "planned" }
+          ]
+        }
+      ],
+      "engines": ["security_engine"],
+      "industries": ["all"],
+      "status": "planned",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_06",
+      "name": "Data Capsule",
+      "realm": "Foundation",
+      "description": "Manages data models, analytics, and insights.",
+      "modules": [
+        {
+          "id": "mod_06_01",
+          "name": "Data Model Module",
+          "description": "Defines core schemas for users, products, and transactions.",
+          "features": [
+            { "id": "feat_06_01_01", "name": "User Schema", "description": "Standard user data model.", "status": "planned" },
+            { "id": "feat_06_01_02", "name": "Product & Transaction Schemas", "description": "Models for products and transactions.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_06_02",
+          "name": "Analytics Module",
+          "description": "Tracks core analytics across platforms.",
+          "features": [
+            { "id": "feat_06_02_01", "name": "User Analytics", "description": "Engagement and retention metrics.", "status": "planned" },
+            { "id": "feat_06_02_02", "name": "Revenue Analytics", "description": "Sales and revenue reporting.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_06_03",
+          "name": "Data Pipeline Module",
+          "description": "Defines how data flows and is transformed.",
+          "features": [
+            { "id": "feat_06_03_01", "name": "ETL Flows", "description": "Simple extract-transform-load processes.", "status": "planned" },
+            { "id": "feat_06_03_02", "name": "Aggregation Jobs", "description": "Scheduled data aggregation tasks.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_06_04",
+          "name": "Insights Module",
+          "description": "Produces actionable insights and dashboards.",
+          "features": [
+            { "id": "feat_06_04_01", "name": "Insight Cards", "description": "Key metrics surfaced as insight cards.", "status": "planned" },
+            { "id": "feat_06_04_02", "name": "Trend Detection", "description": "Highlight trends in key metrics.", "status": "planned" }
+          ]
+        }
+      ],
+      "engines": ["analytics_engine"],
+      "industries": ["all"],
+      "status": "planned",
+      "lifecycle": "concept"
+    }
+  ],
+
+  "economic": [
+    {
+      "id": "capsule_07",
+      "name": "Commerce Capsule",
+      "realm": "Economic",
+      "description": "Full e-commerce functionality including product catalog, shopping cart, checkout, and order management.",
+      "modules": [
+        {
+          "id": "mod_07_01",
+          "name": "Product Catalog Module",
+          "description": "Manages product listings, variants, and inventory.",
+          "features": [
+            { "id": "feat_07_01_01", "name": "Product Listings", "description": "Create and manage product pages with descriptions, images, pricing.", "status": "active" },
+            { "id": "feat_07_01_02", "name": "Product Variants", "description": "Color, size, format options for products.", "status": "active" }
+          ]
+        },
+        {
+          "id": "mod_07_02",
+          "name": "Shopping Cart Module",
+          "description": "Cart management and checkout flow.",
+          "features": [
+            { "id": "feat_07_02_01", "name": "Add to Cart", "description": "Add items, update quantities, remove items.", "status": "active" },
+            { "id": "feat_07_02_02", "name": "Checkout Flow", "description": "Secure checkout with payment processing.", "status": "active" }
+          ]
+        },
+        {
+          "id": "mod_07_03",
+          "name": "Order Management Module",
+          "description": "Process and track customer orders.",
+          "features": [
+            { "id": "feat_07_03_01", "name": "Order Processing", "description": "Capture orders, send confirmations, fulfillment tracking.", "status": "active" },
+            { "id": "feat_07_03_02", "name": "Order History", "description": "Customer order history and status tracking.", "status": "active" }
+          ]
+        },
+        {
+          "id": "mod_07_04",
+          "name": "Pricing Engine Module",
+          "description": "Dynamic pricing, discounts, and promotions.",
+          "features": [
+            { "id": "feat_07_04_01", "name": "Dynamic Pricing", "description": "Set prices based on customer segments, bundles.", "status": "planned" },
+            { "id": "feat_07_04_02", "name": "Discount Codes", "description": "Coupon codes and promotional pricing.", "status": "active" }
+          ]
+        }
+      ],
+      "engines": ["commerce_engine", "pricing_engine"],
+      "industries": ["christian_printables", "homeschool_curriculum", "wedding_planning"],
+      "status": "active",
+      "lifecycle": "production"
+    },
+    {
+      "id": "capsule_08",
+      "name": "Marketplace Capsule",
+      "realm": "Economic",
+      "description": "Multi-vendor marketplace platform enabling third-party sellers.",
+      "modules": [
+        {
+          "id": "mod_08_01",
+          "name": "Vendor Onboarding Module",
+          "description": "Register and verify third-party sellers.",
+          "features": [
+            { "id": "feat_08_01_01", "name": "Vendor Registration", "description": "Application and approval process for sellers.", "status": "planned" },
+            { "id": "feat_08_01_02", "name": "Vendor Profiles", "description": "Public storefronts for each vendor.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_08_02",
+          "name": "Commission Module",
+          "description": "Calculate and manage marketplace fees.",
+          "features": [
+            { "id": "feat_08_02_01", "name": "Commission Rates", "description": "Configure percentage-based or flat fees.", "status": "planned" },
+            { "id": "feat_08_02_02", "name": "Payout System", "description": "Automated vendor payouts on schedule.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_08_03",
+          "name": "Quality Control Module",
+          "description": "Review and approve vendor products.",
+          "features": [
+            { "id": "feat_08_03_01", "name": "Product Review Queue", "description": "Admin approval before products go live.", "status": "planned" },
+            { "id": "feat_08_03_02", "name": "Vendor Rating System", "description": "Customer ratings and reviews for vendors.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_08_04",
+          "name": "Dispute Resolution Module",
+          "description": "Handle conflicts between buyers and sellers.",
+          "features": [
+            { "id": "feat_08_04_01", "name": "Dispute Portal", "description": "Submit and track disputes.", "status": "concept" },
+            { "id": "feat_08_04_02", "name": "Mediation Workflow", "description": "Admin-mediated resolution process.", "status": "concept" }
+          ]
+        }
+      ],
+      "engines": ["marketplace_engine", "payment_engine"],
+      "industries": ["all"],
+      "status": "planned",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_09",
+      "name": "Finance Capsule",
+      "realm": "Economic",
+      "description": "Financial management including invoicing, payments, subscriptions, and revenue tracking.",
+      "modules": [
+        {
+          "id": "mod_09_01",
+          "name": "Invoicing Module",
+          "description": "Generate and manage invoices.",
+          "features": [
+            { "id": "feat_09_01_01", "name": "Invoice Generation", "description": "Auto-generate invoices for orders and subscriptions.", "status": "active" },
+            { "id": "feat_09_01_02", "name": "Invoice History", "description": "Archive and retrieve past invoices.", "status": "active" }
+          ]
+        },
+        {
+          "id": "mod_09_02",
+          "name": "Payment Processing Module",
+          "description": "Accept and process payments securely.",
+          "features": [
+            { "id": "feat_09_02_01", "name": "Stripe Integration", "description": "Credit card processing via Stripe.", "status": "active" },
+            { "id": "feat_09_02_02", "name": "PayPal Integration", "description": "Alternative payment via PayPal.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_09_03",
+          "name": "Subscription Management Module",
+          "description": "Recurring billing and subscription lifecycle.",
+          "features": [
+            { "id": "feat_09_03_01", "name": "Recurring Billing", "description": "Automatic monthly/annual subscription charges.", "status": "active" },
+            { "id": "feat_09_03_02", "name": "Subscription Tiers", "description": "Multiple subscription plans with different features.", "status": "active" }
+          ]
+        },
+        {
+          "id": "mod_09_04",
+          "name": "Revenue Tracking Module",
+          "description": "Monitor revenue streams and financial health.",
+          "features": [
+            { "id": "feat_09_04_01", "name": "Revenue Dashboard", "description": "Real-time revenue metrics and trends.", "status": "active" },
+            { "id": "feat_09_04_02", "name": "Financial Reports", "description": "Monthly/quarterly financial summaries.", "status": "planned" }
+          ]
+        }
+      ],
+      "engines": ["finance_engine", "subscription_engine", "treasury_engine"],
+      "industries": ["all"],
+      "status": "active",
+      "lifecycle": "production"
+    },
+    {
+      "id": "capsule_10",
+      "name": "Advertising Capsule",
+      "realm": "Economic",
+      "description": "Ad campaign management, placement, targeting, and performance tracking.",
+      "modules": [
+        {
+          "id": "mod_10_01",
+          "name": "Campaign Management Module",
+          "description": "Create and manage advertising campaigns.",
+          "features": [
+            { "id": "feat_10_01_01", "name": "Campaign Builder", "description": "Design campaigns with targeting and budgets.", "status": "planned" },
+            { "id": "feat_10_01_02", "name": "Ad Creative Library", "description": "Store and manage ad images, videos, copy.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_10_02",
+          "name": "Ad Placement Module",
+          "description": "Determine where ads appear on platform.",
+          "features": [
+            { "id": "feat_10_02_01", "name": "Placement Zones", "description": "Define ad slots on pages.", "status": "planned" },
+            { "id": "feat_10_02_02", "name": "Ad Rotation", "description": "Rotate multiple ads in same placement.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_10_03",
+          "name": "Targeting Module",
+          "description": "Target ads based on user demographics and behavior.",
+          "features": [
+            { "id": "feat_10_03_01", "name": "Demographic Targeting", "description": "Target by age, location, interests.", "status": "planned" },
+            { "id": "feat_10_03_02", "name": "Behavioral Targeting", "description": "Target based on past browsing/purchase behavior.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_10_04",
+          "name": "Performance Analytics Module",
+          "description": "Track ad impressions, clicks, conversions.",
+          "features": [
+            { "id": "feat_10_04_01", "name": "Campaign Metrics", "description": "Impressions, CTR, conversion rates.", "status": "planned" },
+            { "id": "feat_10_04_02", "name": "ROI Calculator", "description": "Calculate return on ad spend.", "status": "planned" }
+          ]
+        }
+      ],
+      "engines": ["advertising_engine", "analytics_engine"],
+      "industries": ["all"],
+      "status": "planned",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_11",
+      "name": "Affiliate Capsule",
+      "realm": "Economic",
+      "description": "Affiliate program management with tracking, commissions, and payouts.",
+      "modules": [
+        {
+          "id": "mod_11_01",
+          "name": "Affiliate Recruitment Module",
+          "description": "Recruit and onboard affiliate partners.",
+          "features": [
+            { "id": "feat_11_01_01", "name": "Application Portal", "description": "Public application form for affiliates.", "status": "active" },
+            { "id": "feat_11_01_02", "name": "Affiliate Profiles", "description": "Manage affiliate information and performance.", "status": "active" }
+          ]
+        },
+        {
+          "id": "mod_11_02",
+          "name": "Link Tracking Module",
+          "description": "Generate and track affiliate referral links.",
+          "features": [
+            { "id": "feat_11_02_01", "name": "Unique Tracking Links", "description": "Generate unique URLs for each affiliate.", "status": "active" },
+            { "id": "feat_11_02_02", "name": "Click Tracking", "description": "Monitor clicks, conversions, attribution.", "status": "active" }
+          ]
+        },
+        {
+          "id": "mod_11_03",
+          "name": "Commission Module",
+          "description": "Calculate affiliate commissions automatically.",
+          "features": [
+            { "id": "feat_11_03_01", "name": "Commission Rules", "description": "Percentage or flat-rate commission structures.", "status": "active" },
+            { "id": "feat_11_03_02", "name": "Commission Tracking", "description": "Real-time tracking of earned commissions.", "status": "active" }
+          ]
+        },
+        {
+          "id": "mod_11_04",
+          "name": "Payout Module",
+          "description": "Process affiliate payments.",
+          "features": [
+            { "id": "feat_11_04_01", "name": "Payout Scheduling", "description": "Monthly or threshold-based payouts.", "status": "planned" },
+            { "id": "feat_11_04_02", "name": "Payment Methods", "description": "PayPal, direct deposit, check options.", "status": "planned" }
+          ]
+        }
+      ],
+      "engines": ["affiliate_engine", "finance_engine", "analytics_engine"],
+      "industries": ["christian_printables", "homeschool_curriculum", "wedding_planning"],
+      "status": "active",
+      "lifecycle": "production"
+    },
+    {
+      "id": "capsule_12",
+      "name": "Supply Chain Capsule",
+      "realm": "Economic",
+      "description": "Inventory management, supplier coordination, and fulfillment logistics.",
+      "modules": [
+        {
+          "id": "mod_12_01",
+          "name": "Inventory Management Module",
+          "description": "Track stock levels and product availability.",
+          "features": [
+            { "id": "feat_12_01_01", "name": "Stock Tracking", "description": "Real-time inventory counts for physical products.", "status": "planned" },
+            { "id": "feat_12_01_02", "name": "Low Stock Alerts", "description": "Notifications when inventory runs low.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_12_02",
+          "name": "Supplier Management Module",
+          "description": "Manage relationships with product suppliers.",
+          "features": [
+            { "id": "feat_12_02_01", "name": "Supplier Directory", "description": "Contact info and terms for suppliers.", "status": "planned" },
+            { "id": "feat_12_02_02", "name": "Purchase Orders", "description": "Generate and track supplier orders.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_12_03",
+          "name": "Fulfillment Module",
+          "description": "Coordinate order fulfillment and shipping.",
+          "features": [
+            { "id": "feat_12_03_01", "name": "Shipping Integration", "description": "Connect with shipping carriers (USPS, UPS, FedEx).", "status": "planned" },
+            { "id": "feat_12_03_02", "name": "Fulfillment Tracking", "description": "Track shipment status and delivery.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_12_04",
+          "name": "Returns Module",
+          "description": "Process product returns and refunds.",
+          "features": [
+            { "id": "feat_12_04_01", "name": "Return Portal", "description": "Customer portal for initiating returns.", "status": "concept" },
+            { "id": "feat_12_04_02", "name": "Refund Processing", "description": "Automated refunds upon return receipt.", "status": "concept" }
+          ]
+        }
+      ],
+      "engines": ["logistics_engine", "inventory_engine"],
+      "industries": ["christian_printables", "wedding_planning"],
+      "status": "planned",
+      "lifecycle": "concept"
+    }
+  ],
+
+  "knowledge": [
+    {
+      "id": "capsule_13",
+      "name": "Knowledge Base Capsule",
+      "realm": "Knowledge",
+      "description": "Centralized knowledge repository with articles, tutorials, FAQs, and documentation.",
+      "modules": [
+        {
+          "id": "mod_13_01",
+          "name": "Content Management Module",
+          "description": "Create and organize knowledge articles.",
+          "features": [
+            { "id": "feat_13_01_01", "name": "Article Editor", "description": "Rich text editor for knowledge articles.", "status": "planned" },
+            { "id": "feat_13_01_02", "name": "Article Categories", "description": "Organize content by topics and categories.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_13_02",
+          "name": "Search Module",
+          "description": "Powerful search across knowledge base.",
+          "features": [
+            { "id": "feat_13_02_01", "name": "Full-Text Search", "description": "Search article content, titles, tags.", "status": "planned" },
+            { "id": "feat_13_02_02", "name": "Related Articles", "description": "Suggest related content automatically.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_13_03",
+          "name": "FAQ Module",
+          "description": "Frequently asked questions library.",
+          "features": [
+            { "id": "feat_13_03_01", "name": "FAQ Management", "description": "Create Q&A pairs with categories.", "status": "planned" },
+            { "id": "feat_13_03_02", "name": "FAQ Analytics", "description": "Track most viewed questions.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_13_04",
+          "name": "Feedback Module",
+          "description": "Gather user feedback on articles.",
+          "features": [
+            { "id": "feat_13_04_01", "name": "Helpfulness Ratings", "description": "Was this helpful? Yes/No voting.", "status": "planned" },
+            { "id": "feat_13_04_02", "name": "Article Comments", "description": "User comments and clarifications.", "status": "concept" }
+          ]
+        }
+      ],
+      "engines": ["search_engine", "analytics_engine"],
+      "industries": ["all"],
+      "status": "planned",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_14",
+      "name": "Certification Capsule",
+      "realm": "Knowledge",
+      "description": "Learning paths, courses, assessments, and certifications for skill development.",
+      "modules": [
+        {
+          "id": "mod_14_01",
+          "name": "Course Management Module",
+          "description": "Create structured learning courses.",
+          "features": [
+            { "id": "feat_14_01_01", "name": "Course Builder", "description": "Lessons, videos, readings, assignments.", "status": "planned" },
+            { "id": "feat_14_01_02", "name": "Learning Paths", "description": "Sequential courses for mastery.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_14_02",
+          "name": "Assessment Module",
+          "description": "Quizzes and tests for knowledge validation.",
+          "features": [
+            { "id": "feat_14_02_01", "name": "Quiz Builder", "description": "Multiple choice, true/false, essay questions.", "status": "planned" },
+            { "id": "feat_14_02_02", "name": "Auto-Grading", "description": "Automatic scoring for objective questions.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_14_03",
+          "name": "Certification Module",
+          "description": "Issue certificates upon course completion.",
+          "features": [
+            { "id": "feat_14_03_01", "name": "Certificate Generation", "description": "PDF certificates with unique IDs.", "status": "concept" },
+            { "id": "feat_14_03_02", "name": "Verification Portal", "description": "Verify certificate authenticity.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_14_04",
+          "name": "Progress Tracking Module",
+          "description": "Monitor learner progress and engagement.",
+          "features": [
+            { "id": "feat_14_04_01", "name": "Progress Dashboard", "description": "Track completion percentage, time spent.", "status": "planned" },
+            { "id": "feat_14_04_02", "name": "Badges & Achievements", "description": "Gamification rewards.", "status": "concept" }
+          ]
+        }
+      ],
+      "engines": ["content_engine", "analytics_engine"],
+      "industries": ["homeschool_curriculum", "faith_education"],
+      "status": "planned",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_15",
+      "name": "Mentorship Capsule",
+      "realm": "Knowledge",
+      "description": "Connect learners with mentors for 1-on-1 guidance and coaching.",
+      "modules": [
+        {
+          "id": "mod_15_01",
+          "name": "Mentor Matching Module",
+          "description": "Match learners with appropriate mentors.",
+          "features": [
+            { "id": "feat_15_01_01", "name": "Mentor Profiles", "description": "Expertise, availability, bio, ratings.", "status": "concept" },
+            { "id": "feat_15_01_02", "name": "Smart Matching", "description": "AI-powered mentor recommendations.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_15_02",
+          "name": "Session Management Module",
+          "description": "Schedule and manage mentoring sessions.",
+          "features": [
+            { "id": "feat_15_02_01", "name": "Booking Calendar", "description": "Schedule sessions with mentor availability.", "status": "concept" },
+            { "id": "feat_15_02_02", "name": "Video Conferencing", "description": "Integrated video calls for sessions.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_15_03",
+          "name": "Communication Module",
+          "description": "Messaging between mentors and mentees.",
+          "features": [
+            { "id": "feat_15_03_01", "name": "Direct Messaging", "description": "Private chat conversations.", "status": "concept" },
+            { "id": "feat_15_03_02", "name": "Resource Sharing", "description": "Share documents, links, notes.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_15_04",
+          "name": "Evaluation Module",
+          "description": "Track progress and provide feedback.",
+          "features": [
+            { "id": "feat_15_04_01", "name": "Session Notes", "description": "Document key takeaways from sessions.", "status": "concept" },
+            { "id": "feat_15_04_02", "name": "Goal Tracking", "description": "Set and monitor mentee goals.", "status": "concept" }
+          ]
+        }
+      ],
+      "engines": ["ai_engine", "notification_engine"],
+      "industries": ["faith_education", "homeschool"],
+      "status": "concept",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_16",
+      "name": "Research Capsule",
+      "realm": "Knowledge",
+      "description": "Research tools, citation management, collaboration for academic work.",
+      "modules": [
+        {
+          "id": "mod_16_01",
+          "name": "Research Tools Module",
+          "description": "Tools for academic research.",
+          "features": [
+            { "id": "feat_16_01_01", "name": "Note Taking", "description": "Structured research notes with tagging.", "status": "concept" },
+            { "id": "feat_16_01_02", "name": "Source Collection", "description": "Save and organize research sources.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_16_02",
+          "name": "Citation Module",
+          "description": "Manage bibliographies and citations.",
+          "features": [
+            { "id": "feat_16_02_01", "name": "Citation Generator", "description": "APA, MLA, Chicago style citations.", "status": "concept" },
+            { "id": "feat_16_02_02", "name": "Bibliography Builder", "description": "Auto-generate bibliographies.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_16_03",
+          "name": "Collaboration Module",
+          "description": "Team research and shared workspaces.",
+          "features": [
+            { "id": "feat_16_03_01", "name": "Shared Projects", "description": "Collaborative research projects.", "status": "concept" },
+            { "id": "feat_16_03_02", "name": "Commenting", "description": "Annotate and discuss research.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_16_04",
+          "name": "Export Module",
+          "description": "Export research in various formats.",
+          "features": [
+            { "id": "feat_16_04_01", "name": "PDF Export", "description": "Generate formatted research documents.", "status": "concept" },
+            { "id": "feat_16_04_02", "name": "Data Export", "description": "Export citations, notes as JSON/CSV.", "status": "concept" }
+          ]
+        }
+      ],
+      "engines": ["content_engine", "ai_engine"],
+      "industries": ["homeschool_curriculum", "faith_education"],
+      "status": "concept",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_17",
+      "name": "Library Capsule",
+      "realm": "Knowledge",
+      "description": "Digital library of ebooks, resources, documents, and media files.",
+      "modules": [
+        {
+          "id": "mod_17_01",
+          "name": "Asset Management Module",
+          "description": "Organize and categorize library content.",
+          "features": [
+            { "id": "feat_17_01_01", "name": "File Upload", "description": "Upload PDFs, ebooks, videos, audio.", "status": "planned" },
+            { "id": "feat_17_01_02", "name": "Metadata Tagging", "description": "Tag content for discoverability.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_17_02",
+          "name": "Access Control Module",
+          "description": "Manage who can view library content.",
+          "features": [
+            { "id": "feat_17_02_01", "name": "Permission Levels", "description": "Public, members-only, premium access.", "status": "planned" },
+            { "id": "feat_17_02_02", "name": "DRM Protection", "description": "Digital rights management for content.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_17_03",
+          "name": "Reader Module",
+          "description": "In-platform content viewing.",
+          "features": [
+            { "id": "feat_17_03_01", "name": "PDF Viewer", "description": "Read PDFs directly in browser.", "status": "planned" },
+            { "id": "feat_17_03_02", "name": "Ebook Reader", "description": "EPUB reader with bookmarks, highlights.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_17_04",
+          "name": "Curation Module",
+          "description": "Create curated collections and lists.",
+          "features": [
+            { "id": "feat_17_04_01", "name": "Reading Lists", "description": "Curated collections for specific topics.", "status": "planned" },
+            { "id": "feat_17_04_02", "name": "Staff Picks", "description": "Editor recommendations.", "status": "planned" }
+          ]
+        }
+      ],
+      "engines": ["search_engine", "recommendation_engine"],
+      "industries": ["all"],
+      "status": "planned",
+      "lifecycle": "concept"
+    },
+    {
+      "id": "capsule_18",
+      "name": "Assessment Capsule",
+      "realm": "Knowledge",
+      "description": "Testing, quizzes, surveys, and skill evaluation tools.",
+      "modules": [
+        {
+          "id": "mod_18_01",
+          "name": "Test Builder Module",
+          "description": "Create assessments and tests.",
+          "features": [
+            { "id": "feat_18_01_01", "name": "Question Bank", "description": "Reusable question library.", "status": "planned" },
+            { "id": "feat_18_01_02", "name": "Test Templates", "description": "Pre-built test formats.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_18_02",
+          "name": "Delivery Module",
+          "description": "Administer tests to students.",
+          "features": [
+            { "id": "feat_18_02_01", "name": "Timed Tests", "description": "Set time limits for completion.", "status": "planned" },
+            { "id": "feat_18_02_02", "name": "Randomization", "description": "Random question order, answer shuffling.", "status": "planned" }
+          ]
+        },
+        {
+          "id": "mod_18_03",
+          "name": "Grading Module",
+          "description": "Score and evaluate assessments.",
+          "features": [
+            { "id": "feat_18_03_01", "name": "Auto Grading", "description": "Automatic scoring for objective tests.", "status": "planned" },
+            { "id": "feat_18_03_02", "name": "Rubrics", "description": "Scoring rubrics for subjective answers.", "status": "concept" }
+          ]
+        },
+        {
+          "id": "mod_18_04",
+          "name": "Analytics Module",
+          "description": "Analyze test results and performance.",
+          "features": [
+            { "id": "feat_18_04_01", "name": "Performance Reports", "description": "Individual and class-level analytics.", "status": "planned" },
+            { "id": "feat_18_04_02", "name": "Item Analysis", "description": "Question difficulty, discrimination analysis.", "status": "concept" }
+          ]
+        }
+      ],
+      "engines": ["analytics_engine", "ai_engine"],
+      "industries": ["homeschool_curriculum", "faith_education"],
+      "status": "planned",
+      "lifecycle": "concept"
+    }
+  ],
+
+  "community": [],
+  "automation": [],
+  "media": []
+}

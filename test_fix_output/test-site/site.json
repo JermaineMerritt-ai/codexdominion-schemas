@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "site_name": "Test Site",
+    "description": "Testing deprecation fix",
+    "version": "1.0.0",
+    "platform": "nextjs",
+    "created_at": "2025-12-20T10:23:57.749266Z",
+    "blueprint_id": "bp_7086cc97772a"
+  },
+  "pages": [
+    {
+      "slug": "home",
+      "title": "Home",
+      "path": "/",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "layout": "centered",
+          "components": [
+            "heading",
+            "subheading",
+            "cta_primary",
+            "cta_secondary"
+          ],
+          "content_keys": [
+            "hero_title",
+            "hero_subtitle",
+            "cta_text",
+            "cta_secondary_text"
+          ]
+        },
+        {
+          "id": "features",
+          "type": "feature_grid",
+          "layout": "three_column",
+          "components": [
+            "feature_card"
+          ],
+          "content_keys": [
+            "features_title",
+            "features_subtitle",
+            "feature_items"
+          ]
+        },
+        {
+          "id": "testimonials",
+          "type": "testimonials",
+          "layout": "carousel",
+          "components": [
+            "testimonial_card"
+          ],
+          "content_keys": [
+            "testimonials_title",
+            "testimonial_items"
+          ]
+        },
+        {
+          "id": "cta",
+          "type": "call_to_action",
+          "layout": "split",
+          "components": [
+            "heading",
+            "body",
+            "cta_primary"
+          ],
+          "content_keys": [
+            "cta_title",
+            "cta_body",
+            "cta_button_text"
+          ]
+        }
+      ],
+      "seo_key": "seo_home",
+      "schema_markup": true
+    },
+    {
+      "slug": "contact",
+      "title": "Contact",
+      "path": "/contact",
+      "sections": [
+        {
+          "id": "contact_header",
+          "type": "text_centered",
+          "layout": "centered",
+          "components": [
+            "heading",
+            "body"
+          ],
+          "content_keys": [
+            "contact_title",
+            "contact_subtitle"
+          ]
+        },
+        {
+          "id": "contact_form",
+          "type": "form",
+          "layout": "single_column",
+          "components": [
+            "text_input",
+            "textarea",
+            "submit_button"
+          ],
+          "content_keys": [
+            "form_fields",
+            "submit_text"
+          ]
+        },
+        {
+          "id": "contact_info",
+          "type": "info_cards",
+          "layout": "three_column",
+          "components": [
+            "info_card"
+          ],
+          "content_keys": [
+            "contact_methods"
+          ]
+        }
+      ],
+      "seo_key": "seo_contact",
+      "schema_markup": false
+    }
+  ],
+  "navigation": {
+    "primary": [
+      {
+        "label": "Home",
+        "href": "/",
+        "order": 0
+      },
+      {
+        "label": "Contact",
+        "href": "/contact",
+        "order": 4
+      }
+    ],
+    "footer": [
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ]
+  },
+  "sections_library": {},
+  "components_used": [
+    "heading",
+    "subheading",
+    "cta_primary",
+    "cta_secondary",
+    "feature_card",
+    "testimonial_card",
+    "body",
+    "text_input",
+    "textarea",
+    "submit_button",
+    "info_card"
+  ],
+  "seo_placeholders": {},
+  "content_placeholders": {},
+  "theme_reference": "theme.json"
+}

@@ -1,0 +1,23 @@
+# Dockerfile for Next.js Dashboard (Azure Container Apps)
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY dashboard-app/package*.json ./
+RUN npm ci --production
+
+# Copy the already-built .next folder
+COPY dashboard-app/.next ./.next
+COPY dashboard-app/public ./public
+COPY dashboard-app/next.config.js ./
+
+# Set environment
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV NEXT_PUBLIC_API_BASE_URL=https://codex-backend.bravefield-eea1536e.eastus.azurecontainerapps.io
+
+EXPOSE 3000
+
+# Run Next.js production server
+CMD ["npx", "next", "start"]

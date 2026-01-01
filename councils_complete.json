@@ -1,0 +1,694 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "last_updated": "2025-12-19T00:00:00Z",
+    "total_councils": 36,
+    "active_councils": 36
+  },
+  "councils": [
+    {
+      "id": "council_governance",
+      "name": "Governance Council",
+      "purpose": "Steward policies, safety, and rule changes.",
+      "domain": "governance",
+      "members": ["agent_jermaine_super_action", "agent_governance_advisor"],
+      "primary_engines": ["engine_governance", "engine_safety", "engine_identity"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 5000,
+        "blocked_action_types": ["delete_user_data"],
+        "requires_majority_vote": true,
+        "min_votes": 2
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_treasury",
+      "name": "Treasury Council",
+      "purpose": "Oversee financial operations, budgets, and revenue streams.",
+      "domain": "finance",
+      "members": ["agent_jermaine_super_action", "agent_financial_analyst", "agent_treasury_guardian"],
+      "primary_engines": ["engine_finance", "engine_analytics", "engine_forecasting"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 10000,
+        "blocked_action_types": ["transfer_funds", "delete_financial_records"],
+        "requires_majority_vote": true,
+        "min_votes": 2
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_analytics",
+      "name": "Analytics Council",
+      "purpose": "Monitor performance metrics and data insights.",
+      "domain": "analytics",
+      "members": ["agent_data_scientist", "agent_analytics_specialist"],
+      "primary_engines": ["engine_analytics", "engine_forecasting", "engine_reporting"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 3000,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_security",
+      "name": "Security Council",
+      "purpose": "Protect systems, data, and user privacy.",
+      "domain": "security",
+      "members": ["agent_security_specialist", "agent_compliance_officer"],
+      "primary_engines": ["engine_security", "engine_compliance", "engine_audit"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 0,
+        "blocked_action_types": ["bypass_security", "disable_encryption", "expose_credentials"],
+        "requires_majority_vote": true,
+        "min_votes": 2
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_operations",
+      "name": "Operations Council",
+      "purpose": "Manage daily operations and workflow execution.",
+      "domain": "operations",
+      "members": ["agent_operations_manager", "agent_workflow_specialist"],
+      "primary_engines": ["engine_workflow", "engine_automation", "engine_monitoring"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 2000,
+        "blocked_action_types": ["shutdown_system"],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_customer_success",
+      "name": "Customer Success Council",
+      "purpose": "Ensure customer satisfaction and retention.",
+      "domain": "customer_success",
+      "members": ["agent_customer_success", "agent_support_specialist"],
+      "primary_engines": ["engine_customer_service", "engine_feedback", "engine_satisfaction"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 1500,
+        "blocked_action_types": ["delete_customer_data"],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_marketing",
+      "name": "Marketing Council",
+      "purpose": "Drive growth and brand awareness.",
+      "domain": "marketing",
+      "members": ["agent_marketing_specialist", "agent_content_creator"],
+      "primary_engines": ["engine_marketing", "engine_social_media", "engine_seo"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 2500,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_product",
+      "name": "Product Council",
+      "purpose": "Guide product development and feature prioritization.",
+      "domain": "product",
+      "members": ["agent_product_manager", "agent_ux_designer"],
+      "primary_engines": ["engine_product", "engine_user_research", "engine_roadmap"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 4000,
+        "blocked_action_types": ["delete_product"],
+        "requires_majority_vote": true,
+        "min_votes": 2
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_engineering",
+      "name": "Engineering Council",
+      "purpose": "Maintain technical excellence and system reliability.",
+      "domain": "engineering",
+      "members": ["agent_lead_engineer", "agent_devops_specialist"],
+      "primary_engines": ["engine_development", "engine_deployment", "engine_infrastructure"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 3500,
+        "blocked_action_types": ["deploy_without_tests", "delete_production_data"],
+        "requires_majority_vote": true,
+        "min_votes": 2
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_data_science",
+      "name": "Data Science Council",
+      "purpose": "Drive AI/ML models and predictive analytics.",
+      "domain": "data_science",
+      "members": ["agent_data_scientist", "agent_ml_engineer"],
+      "primary_engines": ["engine_machine_learning", "engine_prediction", "engine_modeling"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 5000,
+        "blocked_action_types": ["delete_training_data"],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_automation",
+      "name": "Automation Council",
+      "purpose": "Maximize workflow automation and efficiency.",
+      "domain": "automation",
+      "members": ["agent_automation_specialist", "agent_workflow_designer"],
+      "primary_engines": ["engine_automation", "engine_workflow", "engine_optimization"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 2000,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_compliance",
+      "name": "Compliance Council",
+      "purpose": "Ensure regulatory and legal compliance.",
+      "domain": "compliance",
+      "members": ["agent_compliance_officer", "agent_legal_advisor"],
+      "primary_engines": ["engine_compliance", "engine_audit", "engine_legal"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 0,
+        "blocked_action_types": ["violate_regulation", "expose_pii"],
+        "requires_majority_vote": true,
+        "min_votes": 2
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_sales",
+      "name": "Sales Council",
+      "purpose": "Drive revenue and close deals.",
+      "domain": "sales",
+      "members": ["agent_sales_specialist", "agent_account_manager"],
+      "primary_engines": ["engine_sales", "engine_crm", "engine_prospecting"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 3000,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_hr",
+      "name": "Human Resources Council",
+      "purpose": "Manage talent, culture, and employee wellbeing.",
+      "domain": "human_resources",
+      "members": ["agent_hr_specialist", "agent_recruiter"],
+      "primary_engines": ["engine_hr", "engine_recruiting", "engine_performance"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 1000,
+        "blocked_action_types": ["terminate_employee", "delete_employee_data"],
+        "requires_majority_vote": true,
+        "min_votes": 2
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_quality_assurance",
+      "name": "Quality Assurance Council",
+      "purpose": "Maintain product quality and testing standards.",
+      "domain": "quality_assurance",
+      "members": ["agent_qa_engineer", "agent_test_automation"],
+      "primary_engines": ["engine_testing", "engine_quality", "engine_validation"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 1500,
+        "blocked_action_types": ["skip_tests", "deploy_untested"],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_infrastructure",
+      "name": "Infrastructure Council",
+      "purpose": "Manage cloud resources and system architecture.",
+      "domain": "infrastructure",
+      "members": ["agent_devops_specialist", "agent_cloud_architect"],
+      "primary_engines": ["engine_infrastructure", "engine_cloud", "engine_scaling"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 4000,
+        "blocked_action_types": ["delete_infrastructure", "shutdown_production"],
+        "requires_majority_vote": true,
+        "min_votes": 2
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_innovation",
+      "name": "Innovation Council",
+      "purpose": "Explore emerging technologies and R&D.",
+      "domain": "innovation",
+      "members": ["agent_innovation_lead", "agent_researcher"],
+      "primary_engines": ["engine_research", "engine_prototyping", "engine_innovation"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 5000,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_community",
+      "name": "Community Council",
+      "purpose": "Build and engage user communities.",
+      "domain": "community",
+      "members": ["agent_community_manager", "agent_moderator"],
+      "primary_engines": ["engine_community", "engine_engagement", "engine_moderation"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 1000,
+        "blocked_action_types": ["ban_user"],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_partnerships",
+      "name": "Partnerships Council",
+      "purpose": "Manage strategic partnerships and integrations.",
+      "domain": "partnerships",
+      "members": ["agent_partnership_manager", "agent_integration_specialist"],
+      "primary_engines": ["engine_partnerships", "engine_integration", "engine_ecosystem"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 3000,
+        "blocked_action_types": [],
+        "requires_majority_vote": true,
+        "min_votes": 2
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_content",
+      "name": "Content Council",
+      "purpose": "Create and curate high-quality content.",
+      "domain": "content",
+      "members": ["agent_content_creator", "agent_editor"],
+      "primary_engines": ["engine_content", "engine_writing", "engine_publishing"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 1500,
+        "blocked_action_types": ["delete_published_content"],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_design",
+      "name": "Design Council",
+      "purpose": "Maintain design systems and user experience.",
+      "domain": "design",
+      "members": ["agent_ux_designer", "agent_ui_designer"],
+      "primary_engines": ["engine_design", "engine_ux", "engine_accessibility"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 2000,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_research",
+      "name": "Research Council",
+      "purpose": "Conduct user research and market analysis.",
+      "domain": "research",
+      "members": ["agent_researcher", "agent_analyst"],
+      "primary_engines": ["engine_research", "engine_survey", "engine_insights"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 2000,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_training",
+      "name": "Training Council",
+      "purpose": "Develop training programs and agent improvement.",
+      "domain": "training",
+      "members": ["agent_trainer", "agent_education_specialist"],
+      "primary_engines": ["engine_training", "engine_education", "engine_skills"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 1000,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_billing",
+      "name": "Billing Council",
+      "purpose": "Manage subscriptions, invoices, and payments.",
+      "domain": "billing",
+      "members": ["agent_billing_specialist", "agent_accounts_receivable"],
+      "primary_engines": ["engine_billing", "engine_invoicing", "engine_payment"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 2000,
+        "blocked_action_types": ["write_off_debt", "delete_invoice"],
+        "requires_majority_vote": true,
+        "min_votes": 2
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_reporting",
+      "name": "Reporting Council",
+      "purpose": "Generate reports and business intelligence.",
+      "domain": "reporting",
+      "members": ["agent_reporting_specialist", "agent_bi_analyst"],
+      "primary_engines": ["engine_reporting", "engine_bi", "engine_dashboards"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 1500,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_integration",
+      "name": "Integration Council",
+      "purpose": "Build and maintain third-party integrations.",
+      "domain": "integration",
+      "members": ["agent_integration_specialist", "agent_api_developer"],
+      "primary_engines": ["engine_integration", "engine_api", "engine_connector"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 2500,
+        "blocked_action_types": ["expose_api_keys"],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_monitoring",
+      "name": "Monitoring Council",
+      "purpose": "Track system health and performance.",
+      "domain": "monitoring",
+      "members": ["agent_monitoring_specialist", "agent_sre"],
+      "primary_engines": ["engine_monitoring", "engine_alerting", "engine_observability"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 1000,
+        "blocked_action_types": ["disable_monitoring"],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_documentation",
+      "name": "Documentation Council",
+      "purpose": "Maintain comprehensive documentation.",
+      "domain": "documentation",
+      "members": ["agent_technical_writer", "agent_docs_maintainer"],
+      "primary_engines": ["engine_documentation", "engine_knowledge", "engine_search"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 500,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_accessibility",
+      "name": "Accessibility Council",
+      "purpose": "Ensure inclusive and accessible design.",
+      "domain": "accessibility",
+      "members": ["agent_accessibility_specialist", "agent_inclusive_design"],
+      "primary_engines": ["engine_accessibility", "engine_wcag", "engine_assistive"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 1000,
+        "blocked_action_types": ["remove_accessibility_features"],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_localization",
+      "name": "Localization Council",
+      "purpose": "Manage translations and regional adaptations.",
+      "domain": "localization",
+      "members": ["agent_localization_specialist", "agent_translator"],
+      "primary_engines": ["engine_localization", "engine_translation", "engine_i18n"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 1500,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_performance",
+      "name": "Performance Council",
+      "purpose": "Optimize speed and resource efficiency.",
+      "domain": "performance",
+      "members": ["agent_performance_specialist", "agent_optimization_engineer"],
+      "primary_engines": ["engine_performance", "engine_optimization", "engine_caching"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 2000,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_sustainability",
+      "name": "Sustainability Council",
+      "purpose": "Promote environmental and resource sustainability.",
+      "domain": "sustainability",
+      "members": ["agent_sustainability_lead", "agent_green_tech"],
+      "primary_engines": ["engine_sustainability", "engine_carbon", "engine_efficiency"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 3000,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_ethics",
+      "name": "Ethics Council",
+      "purpose": "Ensure ethical AI practices and decision-making.",
+      "domain": "ethics",
+      "members": ["agent_ethics_advisor", "agent_ai_safety"],
+      "primary_engines": ["engine_ethics", "engine_fairness", "engine_transparency"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 0,
+        "blocked_action_types": ["biased_decision", "discriminatory_action"],
+        "requires_majority_vote": true,
+        "min_votes": 2
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_incident_response",
+      "name": "Incident Response Council",
+      "purpose": "Handle system incidents and emergencies.",
+      "domain": "incident_response",
+      "members": ["agent_incident_commander", "agent_sre"],
+      "primary_engines": ["engine_incident", "engine_recovery", "engine_postmortem"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 0,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_forecasting",
+      "name": "Forecasting Council",
+      "purpose": "Predict trends and future scenarios.",
+      "domain": "forecasting",
+      "members": ["agent_forecasting_specialist", "agent_predictive_analyst"],
+      "primary_engines": ["engine_forecasting", "engine_prediction", "engine_scenario"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 2500,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    },
+    {
+      "id": "council_experimentation",
+      "name": "Experimentation Council",
+      "purpose": "Run A/B tests and product experiments.",
+      "domain": "experimentation",
+      "members": ["agent_experiment_designer", "agent_data_scientist"],
+      "primary_engines": ["engine_experimentation", "engine_ab_testing", "engine_statistics"],
+      "oversight": {
+        "review_actions": true,
+        "review_threshold_weekly_savings": 1500,
+        "blocked_action_types": [],
+        "requires_majority_vote": false,
+        "min_votes": 1
+      },
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "total_votes": 0,
+      "pending_reviews": 0
+    }
+  ]
+}

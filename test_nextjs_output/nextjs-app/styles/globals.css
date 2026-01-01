@@ -1,0 +1,67 @@
+
+:root {
+  /* Brand Colors */
+  --color-primary: #1a1a1a;
+  --color-secondary: #f7f1e3;
+  --color-accent: #d4af37;
+  
+  /* Typography */
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  
+  /* Spacing */
+  --spacing-base: 8px;
+  --container-max: 1280px;
+  
+  /* Borders */
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  /* Light Mode */
+  --background: #ffffff;
+  --foreground: #171717;
+  --muted: #fafafa;
+  --border: #e5e5e5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Mode */
+    --background: #0a0a0a;
+    --foreground: #fafafa;
+    --muted: #171717;
+    --border: #262626;
+  }
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-body);
+  color: var(--foreground);
+  background: var(--background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-white rounded-lg hover:opacity-90 transition-opacity;
+  }
+  
+  .card {
+    @apply p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow;
+  }
+}

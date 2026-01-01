@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Video Studio - Phase 2: Timeline Engine + Scene Editor</title>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .studio-container {
+            display: grid;
+            grid-template-areas:
+                "header header header header"
+                "scenes preview preview assets"
+                "timeline timeline timeline timeline"
+                "controls controls controls controls";
+            grid-template-columns: 280px 1fr 350px 300px;
+            grid-template-rows: 60px 1fr 250px 120px;
+            height: 100vh;
+            gap: 1px;
+            background: #000;
+        }
+
+        /* Header */
+        .studio-header {
+            grid-area: header;
+            background: #16213e;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #0f4c75;
+        }
+
+        .studio-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .phase-badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+
+        /* Scene Editor (Left) */
+        .scene-editor {
+            grid-area: scenes;
+            background: #1a1a2e;
+            padding: 15px;
+            overflow-y: auto;
+            border-right: 1px solid #2d2d44;
+        }
+
+        .panel-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .scene-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scene-card:hover { border-color: #6a89cc; }
+        .scene-card.active { border-color: #f5576c; background: rgba(245, 87, 108, 0.1); }
+
+        .scene-thumbnail {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(135deg, #2d2d44 0%, #1a1a2e 100%);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .scene-duration-badge {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: #fff;
+        }
+
+        .scene-prompt {
+            font-size: 0.85rem;
+            color: #fff;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            max-height: 3.6em;
+            overflow: hidden;
+        }
+
+        .scene-actions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .scene-action-btn {
+            flex: 1;
+            min-width: 48%;
+            padding: 6px 10px;
+            background: rgba(106, 137, 204, 0.2);
+            border: 1px solid #6a89cc;
+            border-radius: 4px;
+            color: #6a89cc;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+
+        .scene-action-btn:hover {
+            background: rgba(106, 137, 204, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Preview Window (Center) */
+        .preview-window {
+            grid-area: preview;
+            background: #0a0a0f;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+        }
+
+        .preview-screen {
+            flex: 1;
+            background: #000;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .preview-placeholder {
+            text-align: center;
+            color: #666;
+        }
+
+        .preview-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 15px;
+            border-radius: 8px;
+        }
+
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .time-display {
+            font-size: 0.9rem;
+            color: #aaa;
+            min-width: 100px;
+        }
+
+        .scrubber {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .scrubber-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 3px;
+            width: 0%;
+        }
+
+        /* Assets Library (Right Top) */
+        .assets-panel {
+            grid-area: assets;
+            background: #1a1a2e;
+            padding: 15px;
+            overflow-y: auto;
+            border-left: 1px solid #2d2d44;
+        }
+
+        .asset-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .asset-tab {
+            flex: 1;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            border-radius: 6px;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .asset-tab.active {
+            background: rgba(106, 137, 204, 0.3);
+            color: #6a89cc;
+        }
+
+        .asset-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: grab;
+            transition: all 0.3s;
+        }
+
+        .asset-item:active {
+            cursor: grabbing;
+        }
+
+        .asset-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .asset-preview {
+            width: 100%;
+            height: 70px;
+            background: #0a0a0f;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 1.5rem;
+        }
+
+        .asset-meta {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        /* Timeline Editor (Bottom) */
+        .timeline-editor {
+            grid-area: timeline;
+            background: #16213e;
+            padding: 15px;
+            overflow: auto;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .timeline-zoom {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .zoom-btn {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 4px;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .zoom-level {
+            font-size: 0.85rem;
+            color: #aaa;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .timeline-ruler {
+            height: 30px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            color: #666;
+            font-size: 0.75rem;
+            position: relative;
+        }
+
+        .ruler-marker {
+            position: absolute;
+            height: 100%;
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            padding-left: 5px;
+            padding-top: 5px;
+        }
+
+        .timeline-track {
+            min-height: 70px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            padding: 8px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .track-label {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .track-content {
+            min-height: 45px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-clip {
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(135deg, #6a89cc 0%, #5a79bc 100%);
+            border-radius: 4px;
+            border: 2px solid #4a69ac;
+            cursor: move;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            font-size: 0.75rem;
+            color: white;
+            transition: all 0.2s;
+        }
+
+        .timeline-clip:hover {
+            border-color: #f5576c;
+            z-index: 10;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: #f5576c;
+            cursor: pointer;
+        }
+
+        .timeline-marker::before {
+            content: '📍';
+            position: absolute;
+            top: -20px;
+            left: -8px;
+            font-size: 0.9rem;
+        }
+
+        /* Bottom Controls */
+        .bottom-controls {
+            grid-area: controls;
+            background: #1a1a2e;
+            padding: 15px 20px;
+            border-top: 1px solid #2d2d44;
+        }
+
+        .prompt-section {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .prompt-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px 15px;
+            color: #fff;
+            font-size: 0.9rem;
+            resize: none;
+            font-family: inherit;
+        }
+
+        .engine-selector {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px 15px;
+            color: #fff;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .control-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(240, 147, 251, 0.5);
+        }
+
+        .add-scene-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(106, 137, 204, 0.1);
+            border: 2px dashed #6a89cc;
+            border-radius: 8px;
+            color: #6a89cc;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .add-scene-btn:hover {
+            background: rgba(106, 137, 204, 0.2);
+            border-color: #7a99dc;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a2e;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="studio-container">
+        <!-- Header -->
+        <div class="studio-header">
+            <div class="studio-title">
+                🎬 Video Studio
+                <span class="phase-badge">PHASE 2</span>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary btn-sm" onclick="location.href='/studio/video/library'">📚 Library</button>
+                <button class="btn btn-primary btn-sm" onclick="saveProject()">💾 Save</button>
+                <button class="btn btn-secondary btn-sm" onclick="exportVideo()">📤 Export</button>
+            </div>
+        </div>
+
+        <!-- Scene Editor (Left) -->
+        <div class="scene-editor">
+            <div class="panel-title">
+                🎞️ Scenes
+                <span style="font-size: 0.8rem; color: #666;" id="scene-count">0 scenes</span>
+            </div>
+            
+            <div id="storyboard-scenes">
+                <!-- Scenes will be dynamically added here -->
+            </div>
+            
+            <button class="add-scene-btn" onclick="showGenerateModal()">+ Add Scene</button>
+        </div>
+
+        <!-- Preview Window (Center) -->
+        <div class="preview-window">
+            <div class="preview-screen">
+                <div class="preview-placeholder" id="preview-placeholder">
+                    <div style="font-size: 4rem;">🎥</div>
+                    <div style="font-size: 1.2rem; color: #aaa; margin-top: 20px;">
+                        Your video will appear here
+                    </div>
+                    <div style="font-size: 0.9rem; color: #666; margin-top: 10px;">
+                        Generate scenes and arrange them on the timeline
+                    </div>
+                </div>
+                <video id="preview-video" style="display:none; width:100%; height:100%; border-radius:12px;"></video>
+            </div>
+            
+            <div class="preview-controls">
+                <button class="play-btn" onclick="togglePlay()">▶</button>
+                <div class="time-display" id="time-display">00:00 / 00:00</div>
+                <div class="scrubber" onclick="seekTo(event)">
+                    <div class="scrubber-progress" id="scrubber-progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assets Library (Right) -->
+        <div class="assets-panel">
+            <div class="panel-title">📦 Assets</div>
+            
+            <div class="asset-tabs">
+                <button class="asset-tab active" onclick="switchAssetTab('clips')">Clips</button>
+                <button class="asset-tab" onclick="switchAssetTab('audio')">Audio</button>
+                <button class="asset-tab" onclick="switchAssetTab('overlays')">Overlays</button>
+            </div>
+            
+            <div id="assets-list">
+                <!-- Assets will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Timeline Editor (Bottom) -->
+        <div class="timeline-editor">
+            <div class="timeline-header">
+                <div class="panel-title" style="margin-bottom: 0;">⏱️ Timeline</div>
+                <div class="timeline-zoom">
+                    <button class="zoom-btn" onclick="zoomOut()">-</button>
+                    <div class="zoom-level" id="zoom-level">100%</div>
+                    <button class="zoom-btn" onclick="zoomIn()">+</button>
+                </div>
+            </div>
+            
+            <div class="timeline-ruler" id="timeline-ruler">
+                <!-- Time markers will be dynamically added -->
+            </div>
+            
+            <div id="timeline-tracks">
+                <div class="timeline-track">
+                    <div class="track-label">
+                        <span>🎬 Video Layer 1</span>
+                        <button class="btn btn-secondary btn-sm" style="padding: 4px 8px; font-size: 0.7rem;" onclick="addTrack('video')">+ Track</button>
+                    </div>
+                    <div class="track-content" id="video-track-1" data-track="video_1">
+                        <!-- Clips will be added here -->
+                    </div>
+                </div>
+                
+                <div class="timeline-track">
+                    <div class="track-label">
+                        <span>🎵 Audio Track</span>
+                        <button class="btn btn-secondary btn-sm" style="padding: 4px 8px; font-size: 0.7rem;" onclick="addTrack('audio')">+ Track</button>
+                    </div>
+                    <div class="track-content" id="audio-track-1" data-track="audio_1">
+                        <!-- Audio clips will be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Controls -->
+        <div class="bottom-controls">
+            <div class="prompt-section">
+                <textarea 
+                    class="prompt-input" 
+                    id="scene-prompt"
+                    placeholder="Describe your scene... (e.g., 'A mystical forest at dawn with ethereal mist')"
+                    rows="2"
+                ></textarea>
+                
+                <select class="engine-selector" id="engine-selector">
+                    <option value="runway">Runway Gen-3</option>
+                    <option value="pika">Pika Labs</option>
+                    <option value="luma">Luma AI</option>
+                    <option value="stability">Stability Video</option>
+                </select>
+            </div>
+            
+            <div class="control-actions">
+                <button class="generate-btn" onclick="generateScene()">✨ Generate Scene</button>
+                <button class="btn btn-secondary" onclick="addMarker()">📍 Add Marker</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generate Modal -->
+    <div class="modal" id="generate-modal">
+        <div class="modal-content">
+            <div class="modal-title">Generate New Scene</div>
+            <textarea 
+                class="prompt-input" 
+                id="modal-prompt"
+                placeholder="Describe your scene..."
+                rows="4"
+                style="width: 100%; margin-bottom: 15px;"
+            ></textarea>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" onclick="closeGenerateModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="confirmGenerate()">Generate</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let currentProject = null;
+        let scenes = [];
+        let timelineClips = [];
+        let markers = [];
+        let zoomLevel = 1.0;
+        let pixelsPerSecond = 50;
+        let activeScene = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeTimeline();
+            loadSampleData();
+        });
+
+        function initializeTimeline() {
+            updateTimelineRuler();
+            makeAssetsD draggable();
+        }
+
+        function loadSampleData() {
+            // Add sample scene
+            addSceneCard({
+                id: 1,
+                prompt: "Opening scene - mystical forest at dawn",
+                duration: 5.0,
+                thumbnail: null,
+                video_url: null
+            });
+        }
+
+        function addSceneCard(scene) {
+            scenes.push(scene);
+            
+            const sceneCard = document.createElement('div');
+            sceneCard.className = 'scene-card';
+            sceneCard.dataset.sceneId = scene.id;
+            sceneCard.innerHTML = `
+                <div class="scene-thumbnail">
+                    🎬
+                    <div class="scene-duration-badge">${scene.duration}s</div>
+                </div>
+                <div class="scene-prompt">${scene.prompt}</div>
+                <div class="scene-actions">
+                    <button class="scene-action-btn" onclick="evolveScene(${scene.id})">🔄 Evolve</button>
+                    <button class="scene-action-btn" onclick="extendScene(${scene.id})">➕ Extend</button>
+                    <button class="scene-action-btn" onclick="editPrompt(${scene.id})">✏️ Edit</button>
+                    <button class="scene-action-btn" onclick="addToTimeline(${scene.id})">⏱️ Timeline</button>
+                </div>
+            `;
+            
+            sceneCard.onclick = (e) => {
+                if (!e.target.classList.contains('scene-action-btn')) {
+                    selectScene(scene.id);
+                }
+            };
+            
+            document.getElementById('storyboard-scenes').appendChild(sceneCard);
+            updateSceneCount();
+        }
+
+        function selectScene(sceneId) {
+            document.querySelectorAll('.scene-card').forEach(card => {
+                card.classList.toggle('active', card.dataset.sceneId == sceneId);
+            });
+            activeScene = sceneId;
+        }
+
+        function updateSceneCount() {
+            document.getElementById('scene-count').textContent = `${scenes.length} scene${scenes.length !== 1 ? 's' : ''}`;
+        }
+
+        async function generateScene() {
+            const prompt = document.getElementById('scene-prompt').value;
+            const engine = document.getElementById('engine-selector').value;
+            
+            if (!prompt.trim()) {
+                alert('Please enter a prompt');
+                return;
+            }
+            
+            console.log('Generating scene:', prompt, engine);
+            alert(`Scene generation initiated!\nPrompt: ${prompt}\nEngine: ${engine}\n\n(API integration pending)`);
+            
+            // Simulate adding scene
+            addSceneCard({
+                id: scenes.length + 1,
+                prompt: prompt,
+                duration: 5.0,
+                thumbnail: null,
+                video_url: null
+            });
+            
+            document.getElementById('scene-prompt').value = '';
+        }
+
+        function evolveScene(sceneId) {
+            const scene = scenes.find(s => s.id === sceneId);
+            if (!scene) return;
+            
+            const types = ['variation', 'mood', 'lighting', 'angle'];
+            const type = prompt(`Evolution type:\n1. Variation\n2. Mood\n3. Lighting\n4. Angle\n\nEnter 1-4:`);
+            
+            console.log('Evolving scene:', scene, types[parseInt(type) - 1]);
+            alert(`Scene evolution initiated!\nType: ${types[parseInt(type) - 1]}\n\n(API integration pending)`);
+        }
+
+        function extendScene(sceneId) {
+            const scene = scenes.find(s => s.id === sceneId);
+            if (!scene) return;
+            
+            const types = ['next_moment', 'next_shot', 'next_beat'];
+            const type = prompt(`Extension type:\n1. Next Moment\n2. Next Shot\n3. Next Beat\n\nEnter 1-3:`);
+            
+            console.log('Extending scene:', scene, types[parseInt(type) - 1]);
+            alert(`Scene extension initiated!\nType: ${types[parseInt(type) - 1]}\n\n(API integration pending)`);
+        }
+
+        function editPrompt(sceneId) {
+            const scene = scenes.find(s => s.id === sceneId);
+            if (!scene) return;
+            
+            const newPrompt = prompt('Edit prompt:', scene.prompt);
+            if (newPrompt) {
+                scene.prompt = newPrompt;
+                document.querySelector(`[data-scene-id="${sceneId}"] .scene-prompt`).textContent = newPrompt;
+            }
+        }
+
+        function addToTimeline(sceneId) {
+            const scene = scenes.find(s => s.id === sceneId);
+            if (!scene) return;
+            
+            const trackContent = document.getElementById('video-track-1');
+            const existingClips = trackContent.querySelectorAll('.timeline-clip');
+            let startTime = 0;
+            
+            if (existingClips.length > 0) {
+                const lastClip = existingClips[existingClips.length - 1];
+                const lastStart = parseFloat(lastClip.dataset.startTime);
+                const lastDuration = parseFloat(lastClip.dataset.duration);
+                startTime = lastStart + lastDuration;
+            }
+            
+            addClipToTrack('video-track-1', scene, startTime);
+        }
+
+        function addClipToTrack(trackId, scene, startTime) {
+            const clip = document.createElement('div');
+            clip.className = 'timeline-clip';
+            clip.dataset.sceneId = scene.id;
+            clip.dataset.startTime = startTime;
+            clip.dataset.duration = scene.duration;
+            
+            const left = startTime * pixelsPerSecond * zoomLevel;
+            const width = scene.duration * pixelsPerSecond * zoomLevel;
+            
+            clip.style.left = `${left}px`;
+            clip.style.width = `${width}px`;
+            clip.textContent = scene.prompt.substring(0, 20) + '...';
+            
+            document.getElementById(trackId).appendChild(clip);
+        }
+
+        function updateTimelineRuler() {
+            const ruler = document.getElementById('timeline-ruler');
+            ruler.innerHTML = '';
+            
+            const maxTime = 60; // 60 seconds visible
+            const step = 5; // 5 second intervals
+            
+            for (let i = 0; i <= maxTime; i += step) {
+                const marker = document.createElement('div');
+                marker.className = 'ruler-marker';
+                marker.style.left = `${i * pixelsPerSecond * zoomLevel}px`;
+                marker.textContent = `${i}s`;
+                ruler.appendChild(marker);
+            }
+        }
+
+        function zoomIn() {
+            zoomLevel = Math.min(zoomLevel + 0.2, 3.0);
+            updateZoom();
+        }
+
+        function zoomOut() {
+            zoomLevel = Math.max(zoomLevel - 0.2, 0.5);
+            updateZoom();
+        }
+
+        function updateZoom() {
+            document.getElementById('zoom-level').textContent = `${Math.round(zoomLevel * 100)}%`;
+            updateTimelineRuler();
+            // Update clip positions
+            document.querySelectorAll('.timeline-clip').forEach(clip => {
+                const start = parseFloat(clip.dataset.startTime);
+                const duration = parseFloat(clip.dataset.duration);
+                clip.style.left = `${start * pixelsPerSecond * zoomLevel}px`;
+                clip.style.width = `${duration * pixelsPerSecond * zoomLevel}px`;
+            });
+        }
+
+        function addMarker() {
+            const time = prompt('Marker time (seconds):');
+            if (time) {
+                alert(`Marker added at ${time}s\n\n(Full implementation pending)`);
+            }
+        }
+
+        function togglePlay() {
+            alert('Play/Pause functionality\n\n(Full implementation pending)');
+        }
+
+        function seekTo(event) {
+            const scrubber = event.currentTarget;
+            const rect = scrubber.getBoundingClientRect();
+            const percent = (event.clientX - rect.left) / rect.width;
+            alert(`Seek to ${Math.round(percent * 100)}%\n\n(Full implementation pending)`);
+        }
+
+        function switchAssetTab(tab) {
+            document.querySelectorAll('.asset-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            console.log('Switched to tab:', tab);
+        }
+
+        function addTrack(type) {
+            alert(`Add ${type} track\n\n(Full implementation pending)`);
+        }
+
+        function showGenerateModal() {
+            document.getElementById('generate-modal').classList.add('active');
+        }
+
+        function closeGenerateModal() {
+            document.getElementById('generate-modal').classList.remove('active');
+        }
+
+        function confirmGenerate() {
+            const prompt = document.getElementById('modal-prompt').value;
+            if (prompt.trim()) {
+                document.getElementById('scene-prompt').value = prompt;
+                closeGenerateModal();
+                generateScene();
+            }
+        }
+
+        function saveProject() {
+            console.log('Saving project:', scenes, timelineClips);
+            alert('Project saved!\n\n(Full API integration pending)');
+        }
+
+        function exportVideo() {
+            alert('Export functionality\n\n(Rendering engine integration pending)');
+        }
+
+        function makeAssetsDraggable() {
+            // Drag and drop will be implemented with Sortable.js in next iteration
+            console.log('Drag and drop initialized');
+        }
+    </script>
+</body>
+</html>
